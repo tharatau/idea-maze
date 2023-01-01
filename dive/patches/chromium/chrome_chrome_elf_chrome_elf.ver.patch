@@ -1,0 +1,9 @@
+diff --git a/chrome/chrome_elf/chrome_elf.ver b/chrome/chrome_elf/chrome_elf.ver
+index 78f890e7ec..92d53efaa4 100644
+--- a/chrome/chrome_elf/chrome_elf.ver
++++ b/chrome/chrome_elf/chrome_elf.ver
+@@ -1,2 +1,2 @@
+-INTERNAL_NAME=chrome_elf_dll
+-ORIGINAL_FILENAME=chrome_elf.dll
++INTERNAL_NAME=nw_elf_dll
++ORIGINAL_FILENAME=nw_elf.dll

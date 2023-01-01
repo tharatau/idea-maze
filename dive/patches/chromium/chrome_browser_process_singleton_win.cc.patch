@@ -1,0 +1,12 @@
+diff --git a/chrome/browser/process_singleton_win.cc b/chrome/browser/process_singleton_win.cc
+index 41bc176510..18c800500a 100644
+--- a/chrome/browser/process_singleton_win.cc
++++ b/chrome/browser/process_singleton_win.cc
+@@ -423,6 +423,7 @@ bool ProcessSingleton::Create() {
+                                                     notification_callback_),
+                                 user_data_dir_.value());
+         CHECK(result && window_.hwnd());
++	::ChangeWindowMessageFilter(WM_COPYDATA, MSGFLT_ADD);
+       }
+     }
+   }

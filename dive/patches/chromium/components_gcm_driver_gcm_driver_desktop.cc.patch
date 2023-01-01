@@ -1,0 +1,23 @@
+diff --git a/components/gcm_driver/gcm_driver_desktop.cc b/components/gcm_driver/gcm_driver_desktop.cc
+index 4b53e3b073..0225e9393f 100644
+--- a/components/gcm_driver/gcm_driver_desktop.cc
++++ b/components/gcm_driver/gcm_driver_desktop.cc
+@@ -30,6 +30,8 @@
+ #include "net/base/ip_endpoint.h"
+ #include "services/network/public/cpp/shared_url_loader_factory.h"
+
++#include "content/nw/src/nw_base.h"
++
+ namespace gcm {
+
+ class GCMDriverDesktop::IOWorker : public GCMClient::Delegate {
+@@ -1174,6 +1176,9 @@ GCMClient::Result GCMDriverDesktop::EnsureStarted(
+   if (gcm_started_)
+     return GCMClient::SUCCESS;
+
++  if (!nw::gcm_enabled())
++    return GCMClient::GCM_DISABLED;
++
+   // Have any app requested the service?
+   if (app_handlers().empty())
+     return GCMClient::UNKNOWN_ERROR;

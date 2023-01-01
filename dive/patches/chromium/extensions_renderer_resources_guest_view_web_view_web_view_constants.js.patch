@@ -1,0 +1,12 @@
+diff --git a/extensions/renderer/resources/guest_view/web_view/web_view_constants.js b/extensions/renderer/resources/guest_view/web_view/web_view_constants.js
+index 680e19bbc9..524bca58b3 100644
+--- a/extensions/renderer/resources/guest_view/web_view/web_view_constants.js
++++ b/extensions/renderer/resources/guest_view/web_view/web_view_constants.js
+@@ -17,6 +17,7 @@ var WebViewConstants = {
+   ATTRIBUTE_NAME: 'name',
+   ATTRIBUTE_PARTITION: 'partition',
+   ATTRIBUTE_SRC: 'src',
++  ATTRIBUTE_ALLOWNW:  'allownw',
+
+   // Error/warning messages.
+   ERROR_MSG_ALREADY_NAVIGATED: '<webview>: ' +

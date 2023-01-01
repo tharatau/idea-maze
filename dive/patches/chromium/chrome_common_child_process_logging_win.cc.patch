@@ -1,0 +1,12 @@
+diff --git a/chrome/common/child_process_logging_win.cc b/chrome/common/child_process_logging_win.cc
+index 3cb69614ff..436aaa7d3b 100644
+--- a/chrome/common/child_process_logging_win.cc
++++ b/chrome/common/child_process_logging_win.cc
+@@ -3,6 +3,7 @@
+ // found in the LICENSE file.
+
+ #include "chrome/common/child_process_logging.h"
++#include "chrome/chrome_elf/chrome_elf_main.h"
+
+ #include <windows.h>
+

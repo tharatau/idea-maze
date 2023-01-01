@@ -1,0 +1,45 @@
+diff --git a/lib/internal/bootstrap/switches/is_main_thread.js b/lib/internal/bootstrap/switches/is_main_thread.js
+index e4042ebe..00a57970 100644
+--- a/lib/internal/bootstrap/switches/is_main_thread.js
++++ b/lib/internal/bootstrap/switches/is_main_thread.js
+@@ -122,6 +122,18 @@ function dummyDestroy(err, cb) {
+   }
+ }
+ 
++function createWritableDummyStream(fd) {
++  var DummyStream = require('dummystream');
++  var stream = new DummyStream();
++  stream.fd = fd;
++
++  stream._isStdio = true;
++  stream.isTTY = false;
++
++  return stream;
++
++}
++
+ let stdin;
+ let stdout;
+ let stderr;
+@@ -145,7 +157,10 @@ function addCleanup(fn) {
+ 
+ function getStdout() {
+   if (stdout) return stdout;
+-  stdout = createWritableStdioStream(1);
++  if (process.platform === 'win32')
++    stdout = createWritableDummyStream(1);
++  else
++    stdout = createWritableStdioStream(1);
+   stdout.destroySoon = stdout.destroy;
+   // Override _destroy so that the fd is never actually closed.
+   stdoutDestroy = stdout._destroy;
+@@ -167,6 +182,9 @@ function getStdout() {
+ 
+ function getStderr() {
+   if (stderr) return stderr;
++  if (process.platform === 'win32')
++    stderr = createWritableDummyStream(2);
++  else
+   stderr = createWritableStdioStream(2);
+   stderr.destroySoon = stderr.destroy;
+   stderrDestroy = stderr._destroy;

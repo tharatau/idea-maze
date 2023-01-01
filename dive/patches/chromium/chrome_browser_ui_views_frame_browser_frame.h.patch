@@ -1,0 +1,38 @@
+diff --git a/chrome/browser/ui/views/frame/browser_frame.h b/chrome/browser/ui/views/frame/browser_frame.h
+index 9bd586697d..c18e1683f4 100644
+--- a/chrome/browser/ui/views/frame/browser_frame.h
++++ b/chrome/browser/ui/views/frame/browser_frame.h
+@@ -53,7 +53,7 @@ enum class TabDragKind {
+ // This is a virtual interface that allows system specific browser frames.
+ class BrowserFrame : public views::Widget, public views::ContextMenuController {
+  public:
+-  explicit BrowserFrame(BrowserView* browser_view);
++  explicit BrowserFrame(BrowserView* browser_view, bool frameless = false);
+
+   BrowserFrame(const BrowserFrame&) = delete;
+   BrowserFrame& operator=(const BrowserFrame&) = delete;
+@@ -61,7 +61,7 @@ class BrowserFrame : public views::Widget, public views::ContextMenuController {
+   ~BrowserFrame() override;
+
+   // Initialize the frame (creates the underlying native window).
+-  void InitBrowserFrame();
++  bool InitBrowserFrame();
+
+   // Determine the distance of the left edge of the minimize button from the
+   // left edge of the window. Used in our Non-Client View's Layout.
+@@ -151,6 +151,7 @@ class BrowserFrame : public views::Widget, public views::ContextMenuController {
+   void SetTabDragKind(TabDragKind tab_drag_kind);
+   TabDragKind tab_drag_kind() const { return tab_drag_kind_; }
+
++  bool frameless() { return frameless_; }
+  protected:
+   // views::Widget:
+   ui::ColorProviderManager::Key GetColorProviderKey() const override;
+@@ -167,6 +168,7 @@ class BrowserFrame : public views::Widget, public views::ContextMenuController {
+   // Regenerate the frame on theme change if necessary. Returns true if
+   // regenerated.
+   bool RegenerateFrameOnThemeChange(BrowserThemeChangeType theme_change_type);
++  bool frameless_;
+
+   raw_ptr<NativeBrowserFrame> native_browser_frame_;
+

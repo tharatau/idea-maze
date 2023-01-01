@@ -1,0 +1,14 @@
+diff --git a/extensions/browser/app_window/test_app_window_contents.h b/extensions/browser/app_window/test_app_window_contents.h
+index e62de69a9c..53e569847f 100644
+--- a/extensions/browser/app_window/test_app_window_contents.h
++++ b/extensions/browser/app_window/test_app_window_contents.h
+@@ -31,7 +31,8 @@ class TestAppWindowContents : public AppWindowContents {
+   // apps:AppWindowContents:
+   void Initialize(content::BrowserContext* context,
+                   content::RenderFrameHost* creator_frame,
+-                  const GURL& url) override;
++                  const GURL& url,
++                  const Extension* extension, bool skip_blocking_parser) override;
+   void LoadContents(int32_t creator_process_id) override;
+   void NativeWindowChanged(NativeAppWindow* native_app_window) override;
+   void NativeWindowClosed(bool send_onclosed) override;

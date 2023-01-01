@@ -1,0 +1,20 @@
+diff --git a/extensions/browser/script_executor.cc b/extensions/browser/script_executor.cc
+index 32c0914195..a303b04f2d 100644
+--- a/extensions/browser/script_executor.cc
++++ b/extensions/browser/script_executor.cc
+@@ -364,6 +364,7 @@ void ScriptExecutor::ExecuteScript(const mojom::HostID& host_id,
+                                    const std::set<int>& frame_ids,
+                                    ScriptExecutor::MatchAboutBlank about_blank,
+                                    mojom::RunLocation run_at,
++                                   ScriptExecutor::WorldType world_type,
+                                    ScriptExecutor::ProcessType process_type,
+                                    const GURL& webview_src,
+                                    ScriptFinishedCallback callback) {
+@@ -399,6 +400,7 @@ void ScriptExecutor::ExecuteScript(const mojom::HostID& host_id,
+   auto params = mojom::ExecuteCodeParams::New();
+   params->host_id = host_id.Clone();
+   params->injection = std::move(injection);
++  params->in_main_world = (world_type == MAIN_WORLD);
+   params->match_about_blank = (about_blank == MATCH_ABOUT_BLANK);
+   params->run_at = run_at;
+   params->is_web_view = (process_type == WEB_VIEW_PROCESS);

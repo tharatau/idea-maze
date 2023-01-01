@@ -1,0 +1,13 @@
+diff --git a/third_party/zlib/google/zip_reader.cc b/third_party/zlib/google/zip_reader.cc
+index 075ba70aa8..241d8ff369 100644
+--- a/third_party/zlib/google/zip_reader.cc
++++ b/third_party/zlib/google/zip_reader.cc
+@@ -150,7 +150,7 @@ bool ZipReader::OpenFromPlatformFile(base::PlatformFile zip_fd) {
+   zip_file_ = internal::OpenHandleForUnzipping(zip_fd);
+ #endif
+   if (!zip_file_) {
+-    LOG(ERROR) << "Cannot open ZIP from file handle " << zip_fd;
++    VLOG(1) << "Cannot open ZIP from file handle " << zip_fd;
+     return false;
+   }
+

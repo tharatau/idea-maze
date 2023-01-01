@@ -1,0 +1,38 @@
+diff --git a/chrome/browser/metrics/chrome_metrics_service_client.cc b/chrome/browser/metrics/chrome_metrics_service_client.cc
+index 393ae7098e..6c6bcd4aa9 100644
+--- a/chrome/browser/metrics/chrome_metrics_service_client.cc
++++ b/chrome/browser/metrics/chrome_metrics_service_client.cc
+@@ -753,13 +753,17 @@ void ChromeMetricsServiceClient::RegisterMetricsServiceProviders() {
+         std::make_unique<metrics::SamplingMetricsProvider>(sample_rate));
+   }
+
++#if 0
+   metrics_service_->RegisterMetricsProvider(
+       std::make_unique<translate::TranslateRankerMetricsProvider>());
++#endif
+
++#if 1
+   metrics_service_->RegisterMetricsProvider(
+       std::make_unique<metrics::ComponentMetricsProvider>(
+           std::make_unique<ChromeComponentMetricsProviderDelegate>(
+               g_browser_process->component_updater())));
++#endif
+
+   metrics_service_->RegisterMetricsProvider(
+       std::make_unique<tracing::ChromeBackgroundTracingMetricsProvider>());
+@@ -877,6 +881,7 @@ void ChromeMetricsServiceClient::RegisterMetricsServiceProviders() {
+   metrics_service_->RegisterMetricsProvider(
+       std::make_unique<HttpsEngagementMetricsProvider>());
+
++#if 0
+   metrics_service_->RegisterMetricsProvider(
+       std::make_unique<CertificateReportingMetricsProvider>());
+
+@@ -894,6 +899,7 @@ void ChromeMetricsServiceClient::RegisterMetricsServiceProviders() {
+   metrics_service_->RegisterMetricsProvider(
+       metrics::CreateDesktopSessionMetricsProvider());
+ #endif  // BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || (BUILDFLAG(IS_LINUX)
++#endif
+ }
+
+ void ChromeMetricsServiceClient::RegisterUKMProviders() {

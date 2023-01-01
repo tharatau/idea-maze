@@ -1,0 +1,11 @@
+diff --git a/remoting/remoting_enable.gni b/remoting/remoting_enable.gni
+index 707404d3d3..361f8f02ad 100644
+--- a/remoting/remoting_enable.gni
++++ b/remoting/remoting_enable.gni
+@@ -9,5 +9,5 @@ if (is_ios) {
+ }
+
+ declare_args() {
+-  enable_remoting = !is_castos && !is_cast_android && !is_fuchsia
++  enable_remoting = false
+ }

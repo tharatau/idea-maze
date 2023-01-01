@@ -1,0 +1,27 @@
+diff --git a/chrome/browser/ui/views/frame/opaque_browser_frame_view_layout.cc b/chrome/browser/ui/views/frame/opaque_browser_frame_view_layout.cc
+index 0c1d948019..8fbfcfa890 100644
+--- a/chrome/browser/ui/views/frame/opaque_browser_frame_view_layout.cc
++++ b/chrome/browser/ui/views/frame/opaque_browser_frame_view_layout.cc
+@@ -105,10 +105,19 @@ gfx::Rect OpaqueBrowserFrameViewLayout::GetBoundsForTabStripRegion(
+                    tabstrip_minimum_size.height());
+ }
+
++gfx::Size OpaqueBrowserFrameViewLayout::GetMaximumSize(
++         const views::View* host) const {
++  return GetMinimumSizeHelper(host, true);
++}
+ gfx::Size OpaqueBrowserFrameViewLayout::GetMinimumSize(
+-    const views::View* host) const {
+-  // Ensure that we can fit the main browser view.
+-  gfx::Size min_size = delegate_->GetBrowserViewMinimumSize();
++         const views::View* host) const {
++  return GetMinimumSizeHelper(host, false);
++}
++gfx::Size OpaqueBrowserFrameViewLayout::GetMinimumSizeHelper(
++         const views::View* host, bool max) const {
++  gfx::Size min_size = max? delegate_->GetBrowserViewMaximumSize() : delegate_->GetBrowserViewMinimumSize();
++  if (max && min_size.IsEmpty())
++    return min_size;
+
+   // Ensure that we can, at minimum, hold our window controls and a tab strip.
+   int top_width = minimum_size_for_buttons_;

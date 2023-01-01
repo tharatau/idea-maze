@@ -1,0 +1,15 @@
+diff --git a/chrome/installer/util/util_constants.cc b/chrome/installer/util/util_constants.cc
+index fef9775deb..c159e1e4bb 100644
+--- a/chrome/installer/util/util_constants.cc
++++ b/chrome/installer/util/util_constants.cc
+@@ -216,8 +216,8 @@ const char kGoogleUpdateIsMachineEnvVar[] = "GoogleUpdateIsMachine";
+ // TODO(gab): Rename setup.exe itself altogether and use the same binary for
+ // Active Setup.
+ const wchar_t kActiveSetupExe[] = L"chrmstp.exe";
+-const wchar_t kChromeDll[] = L"chrome.dll";
+-const wchar_t kChromeExe[] = L"chrome.exe";
++const wchar_t kChromeDll[] = L"nw.dll";
++const wchar_t kChromeExe[] = L"nw.exe";
+ const wchar_t kChromeNewExe[] = L"new_chrome.exe";
+ const wchar_t kChromeOldExe[] = L"old_chrome.exe";
+ const wchar_t kChromeProxyExe[] = L"chrome_proxy.exe";

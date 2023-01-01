@@ -1,0 +1,33 @@
+diff --git a/content/browser/renderer_host/input/touch_emulator.cc b/content/browser/renderer_host/input/touch_emulator.cc
+index f59e89ff14..b6e071d8a9 100644
+--- a/content/browser/renderer_host/input/touch_emulator.cc
++++ b/content/browser/renderer_host/input/touch_emulator.cc
+@@ -5,6 +5,8 @@
+ #include "content/browser/renderer_host/input/touch_emulator.h"
+
+ #include <memory>
++#include "content/public/browser/render_frame_host.h"
++#include "content/browser/renderer_host/render_frame_host_impl.h"
+
+ #include "base/containers/queue.h"
+ #include "base/time/time.h"
+@@ -69,6 +71,7 @@ constexpr base::TimeDelta kMouseMoveDropInterval = base::Milliseconds(5);
+ TouchEmulator::TouchEmulator(TouchEmulatorClient* client,
+                              float device_scale_factor)
+     : client_(client),
++      rfh_limit_(nullptr),
+       gesture_provider_config_type_(
+           ui::GestureProviderConfigType::CURRENT_PLATFORM),
+       double_tap_enabled_(true),
+@@ -183,6 +186,11 @@ bool TouchEmulator::HandleMouseEvent(const WebMouseEvent& mouse_event,
+   if (!enabled() || mode_ != Mode::kEmulatingTouchFromMouse)
+     return false;
+
++  if (rfh_limit_) {
++    if (rfh_limit_->GetView() != target_view)
++      return false;
++  }
++
+   UpdateCursor();
+
+   if (mouse_event.button == WebMouseEvent::Button::kRight &&

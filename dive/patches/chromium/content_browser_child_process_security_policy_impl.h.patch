@@ -1,0 +1,12 @@
+diff --git a/content/browser/child_process_security_policy_impl.h b/content/browser/child_process_security_policy_impl.h
+index 1f67839724..9c8feb9387 100644
+--- a/content/browser/child_process_security_policy_impl.h
++++ b/content/browser/child_process_security_policy_impl.h
+@@ -143,6 +143,7 @@ class CONTENT_EXPORT ChildProcessSecurityPolicyImpl
+   static ChildProcessSecurityPolicyImpl* GetInstance();
+
+   // ChildProcessSecurityPolicy implementation.
++  void GrantAll(int child_id) override;
+   void RegisterWebSafeScheme(const std::string& scheme) override;
+   void RegisterWebSafeIsolatedScheme(
+       const std::string& scheme,

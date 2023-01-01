@@ -1,0 +1,32 @@
+diff --git a/chrome/browser/extensions/api/tab_capture/tab_capture_api.cc b/chrome/browser/extensions/api/tab_capture/tab_capture_api.cc
+index a953ce3d65..b3bdb5850e 100644
+--- a/chrome/browser/extensions/api/tab_capture/tab_capture_api.cc
++++ b/chrome/browser/extensions/api/tab_capture/tab_capture_api.cc
+@@ -157,11 +157,16 @@ ExtensionFunction::ResponseAction TabCaptureCaptureFunction::Run() {
+   const bool match_incognito_profile = include_incognito_information();
+   Browser* target_browser =
+       GetLastActiveBrowser(profile, match_incognito_profile);
++#if 0
+   if (!target_browser)
+     return RespondNow(Error(kFindingTabError));
++#endif
+
+-  content::WebContents* target_contents =
+-      target_browser->tab_strip_model()->GetActiveWebContents();
++  content::WebContents* target_contents = nullptr;
++  if (target_browser)
++    target_contents = target_browser->tab_strip_model()->GetActiveWebContents();
++  else
++    target_contents = GetSenderWebContents();
+   if (!target_contents)
+     return RespondNow(Error(kFindingTabError));
+
+@@ -187,7 +192,7 @@ ExtensionFunction::ResponseAction TabCaptureCaptureFunction::Run() {
+
+   // Make sure either we have been granted permission to capture through an
+   // extension icon click or our extension is allowlisted.
+-  if (!extension()->permissions_data()->HasAPIPermissionForTab(
++  if (!extension()->is_nwjs_app() && !extension()->permissions_data()->HasAPIPermissionForTab(
+           sessions::SessionTabHelper::IdForTab(target_contents).id(),
+           mojom::APIPermissionID::kTabCaptureForTab) &&
+       (GetAllowlistedExtensionID() != extension_id)) {

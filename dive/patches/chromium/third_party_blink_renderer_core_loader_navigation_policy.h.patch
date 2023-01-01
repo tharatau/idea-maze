@@ -1,0 +1,12 @@
+diff --git a/third_party/blink/renderer/core/loader/navigation_policy.h b/third_party/blink/renderer/core/loader/navigation_policy.h
+index 56dc9dbd7c..48a293239d 100644
+--- a/third_party/blink/renderer/core/loader/navigation_policy.h
++++ b/third_party/blink/renderer/core/loader/navigation_policy.h
+@@ -39,6 +39,7 @@ class Event;
+ struct WebWindowFeatures;
+
+ enum NavigationPolicy {
++  kNavigationPolicyIgnore,
+   kNavigationPolicyDownload,
+   kNavigationPolicyCurrentTab,
+   kNavigationPolicyNewBackgroundTab,

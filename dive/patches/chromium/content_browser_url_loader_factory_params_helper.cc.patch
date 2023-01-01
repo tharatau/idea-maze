@@ -1,0 +1,16 @@
+diff --git a/content/browser/url_loader_factory_params_helper.cc b/content/browser/url_loader_factory_params_helper.cc
+index ff719ad527..579c022ac9 100644
+--- a/content/browser/url_loader_factory_params_helper.cc
++++ b/content/browser/url_loader_factory_params_helper.cc
+@@ -96,6 +96,11 @@ network::mojom::URLLoaderFactoryParamsPtr CreateParams(
+
+   params->trust_token_redemption_policy = trust_token_redemption_policy;
+
++  if (GetContentClient()->browser()->IsNWOrigin(origin, process->GetBrowserContext())) {
++    params->is_corb_enabled = false;
++    params->disable_web_security = true;
++  }
++
+   GetContentClient()->browser()->OverrideURLLoaderFactoryParams(
+       process->GetBrowserContext(), origin, is_for_isolated_world,
+       params.get());

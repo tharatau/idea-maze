@@ -1,0 +1,12 @@
+diff --git a/third_party/blink/renderer/core/frame/local_frame_client_impl.h b/third_party/blink/renderer/core/frame/local_frame_client_impl.h
+index c974fa2f7c..456d666ff4 100644
+--- a/third_party/blink/renderer/core/frame/local_frame_client_impl.h
++++ b/third_party/blink/renderer/core/frame/local_frame_client_impl.h
+@@ -69,6 +69,7 @@ class CORE_EXPORT LocalFrameClientImpl final : public LocalFrameClient {
+   // LocalFrameClient ----------------------------------------------
+   WebContentCaptureClient* GetWebContentCaptureClient() const override;
+   void DidCommitDocumentReplacementNavigation(DocumentLoader*) override;
++  void willHandleNavigationPolicy(const blink::ResourceRequest& request, blink::NavigationPolicy* policy, WebString* manifest = nullptr, bool new_win = true) override;
+   // Notifies the WebView delegate that the JS window object has been cleared,
+   // giving it a chance to bind native objects to the window before script
+   // parsing begins.

@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/extensions/api/tabs/windows_event_router.h b/chrome/browser/extensions/api/tabs/windows_event_router.h
+index fe96bd09f9..7256470064 100644
+--- a/chrome/browser/extensions/api/tabs/windows_event_router.h
++++ b/chrome/browser/extensions/api/tabs/windows_event_router.h
+@@ -57,6 +57,8 @@ class WindowsEventRouter : public AppWindowRegistry::Observer,
+
+   // |window_controller| is NULL to indicate a focused window has lost focus.
+   void OnActiveWindowChanged(WindowController* window_controller);
++  void OnWindowMove(WindowController* window_controller);
++  void OnWindowChanged(WindowController* window_controller);
+
+  private:
+   // extensions::AppWindowRegistry::Observer:

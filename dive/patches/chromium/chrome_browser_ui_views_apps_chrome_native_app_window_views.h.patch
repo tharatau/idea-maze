@@ -1,0 +1,12 @@
+diff --git a/chrome/browser/ui/views/apps/chrome_native_app_window_views.h b/chrome/browser/ui/views/apps/chrome_native_app_window_views.h
+index 916a52af5d..fbdd3efa0f 100644
+--- a/chrome/browser/ui/views/apps/chrome_native_app_window_views.h
++++ b/chrome/browser/ui/views/apps/chrome_native_app_window_views.h
+@@ -54,6 +54,7 @@ class ChromeNativeAppWindowViews
+       views::Widget* widget) override;
+   bool WidgetHasHitTestMask() const override;
+   void GetWidgetHitTestMask(SkPath* mask) const override;
++  bool NWCanClose(bool user_force = false) const override;
+
+   // views::View implementation.
+   bool AcceleratorPressed(const ui::Accelerator& accelerator) override;

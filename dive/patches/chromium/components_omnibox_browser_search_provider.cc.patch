@@ -1,0 +1,22 @@
+diff --git a/components/omnibox/browser/search_provider.cc b/components/omnibox/browser/search_provider.cc
+index d4d255ca0c..4dada38580 100644
+--- a/components/omnibox/browser/search_provider.cc
++++ b/components/omnibox/browser/search_provider.cc
+@@ -1,7 +1,7 @@
+ // Copyright 2012 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+-
++#pragma clang diagnostic ignored "-Wunreachable-code"
+ #include "components/omnibox/browser/search_provider.h"
+
+ #include <stddef.h>
+@@ -944,7 +944,7 @@ void SearchProvider::ApplyCalculatedNavigationRelevance(
+ std::unique_ptr<network::SimpleURLLoader> SearchProvider::CreateSuggestLoader(
+     const TemplateURL* template_url,
+     const AutocompleteInput& input) {
+-  if (!template_url || template_url->suggestions_url().empty())
++  if (true || !template_url || template_url->suggestions_url().empty())
+     return nullptr;
+
+   // Setting SuggestUrl the same as SearchUrl is a typical misconfiguration.

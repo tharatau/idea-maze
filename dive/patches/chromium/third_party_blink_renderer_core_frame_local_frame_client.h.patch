@@ -1,0 +1,12 @@
+diff --git a/third_party/blink/renderer/core/frame/local_frame_client.h b/third_party/blink/renderer/core/frame/local_frame_client.h
+index 83a62e23b1..a162a91b1f 100644
+--- a/third_party/blink/renderer/core/frame/local_frame_client.h
++++ b/third_party/blink/renderer/core/frame/local_frame_client.h
+@@ -123,6 +123,7 @@ class CORE_EXPORT LocalFrameClient : public FrameClient {
+   virtual WebLocalFrame* GetWebFrame() const { return nullptr; }
+
+   virtual bool HasWebView() const = 0;  // mainly for assertions
++  virtual void willHandleNavigationPolicy(const ResourceRequest& request, NavigationPolicy* policy, WebString* manifest = NULL, bool new_win = true) {}
+
+   virtual base::UnguessableToken GetDevToolsFrameToken() const = 0;
+

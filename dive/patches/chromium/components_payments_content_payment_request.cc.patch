@@ -1,0 +1,31 @@
+diff --git a/components/payments/content/payment_request.cc b/components/payments/content/payment_request.cc
+index a725774630..0984add912 100644
+--- a/components/payments/content/payment_request.cc
++++ b/components/payments/content/payment_request.cc
+@@ -133,8 +133,9 @@ void PaymentRequest::Init(
+     return;
+   }
+
+-  bool allowed_origin =
++  bool allowed_origin = last_committed_url.SchemeIs("chrome-extension") ||
+       UrlUtil::IsOriginAllowedToUseWebPaymentApis(last_committed_url);
++
+   if (!allowed_origin) {
+     reject_show_error_message_ = errors::kProhibitedOrigin;
+   }
+@@ -301,6 +302,7 @@ void PaymentRequest::Show(bool wait_for_updated_details) {
+     return;
+   }
+
++#if 0
+   if (!delegate_->IsBrowserWindowActive()) {
+     log_.Error(errors::kCannotShowInBackgroundTab);
+     DCHECK(!has_recorded_completion_);
+@@ -311,6 +313,7 @@ void PaymentRequest::Show(bool wait_for_updated_details) {
+     ResetAndDeleteThis();
+     return;
+   }
++#endif
+
+   if (wait_for_updated_details) {
+     // Put |spec_| into uninitialized state, so the UI knows to show a spinner.

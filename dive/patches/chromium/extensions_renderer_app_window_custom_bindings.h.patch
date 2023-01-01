@@ -1,0 +1,13 @@
+diff --git a/extensions/renderer/app_window_custom_bindings.h b/extensions/renderer/app_window_custom_bindings.h
+index 13df224fe0..efe8bf94c8 100644
+--- a/extensions/renderer/app_window_custom_bindings.h
++++ b/extensions/renderer/app_window_custom_bindings.h
+@@ -24,6 +24,8 @@ class AppWindowCustomBindings : public ObjectBackedNativeHandler {
+  private:
+   void GetFrame(const v8::FunctionCallbackInfo<v8::Value>& args);
+   void ResumeParser(const v8::FunctionCallbackInfo<v8::Value>& args);
++
++  void FixGamePadAPI(const v8::FunctionCallbackInfo<v8::Value>& args);
+ };
+
+ }  // namespace extensions

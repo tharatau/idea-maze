@@ -1,0 +1,14 @@
+diff --git a/third_party/blink/renderer/core/frame/web_local_frame_impl.cc b/third_party/blink/renderer/core/frame/web_local_frame_impl.cc
+index a31fe747be..b9f5446b5a 100644
+--- a/third_party/blink/renderer/core/frame/web_local_frame_impl.cc
++++ b/third_party/blink/renderer/core/frame/web_local_frame_impl.cc
+@@ -2258,6 +2258,9 @@ LocalFrame* WebLocalFrameImpl::CreateChildFrame(
+   policy_container_data->sandbox_flags |= frame_policy.sandbox_flags;
+   frame_policy.sandbox_flags = policy_container_data->sandbox_flags;
+
++  owner_properties.nwFakeTop = owner_element->FastHasAttribute(html_names::kNwfaketopAttr);
++  owner_properties.nwuseragent = owner_element->nwuseragent();
++
+   // FIXME: Using subResourceAttributeName as fallback is not a perfect
+   // solution. subResourceAttributeName returns just one attribute name. The
+   // element might not have the attribute, and there might be other attributes

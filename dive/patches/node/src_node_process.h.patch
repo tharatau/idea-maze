@@ -1,0 +1,13 @@
+diff --git a/src/node_process.h b/src/node_process.h
+index 68956cb0..3545e117 100644
+--- a/src/node_process.h
++++ b/src/node_process.h
+@@ -41,7 +41,7 @@ v8::Maybe<bool> ProcessEmitDeprecationWarning(Environment* env,
+                                               const char* warning,
+                                               const char* deprecation_code);
+ 
+-v8::MaybeLocal<v8::Object> CreateProcessObject(Environment* env);
++v8::MaybeLocal<v8::Object> CreateProcessObject(Environment* env, bool node_is_nwjs);
+ void PatchProcessObject(const v8::FunctionCallbackInfo<v8::Value>& args);
+ 
+ namespace process {

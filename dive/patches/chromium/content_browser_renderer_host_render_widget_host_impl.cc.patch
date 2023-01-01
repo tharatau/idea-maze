@@ -1,0 +1,46 @@
+diff --git a/content/browser/renderer_host/render_widget_host_impl.cc b/content/browser/renderer_host/render_widget_host_impl.cc
+index 311dd906e4..a2786dfa1b 100644
+--- a/content/browser/renderer_host/render_widget_host_impl.cc
++++ b/content/browser/renderer_host/render_widget_host_impl.cc
+@@ -4,6 +4,8 @@
+
+ #include "content/browser/renderer_host/render_widget_host_impl.h"
+
++#include "content/public/common/content_switches.h"
++
+ #include <math.h>
+
+ #include <algorithm>
+@@ -823,9 +825,15 @@ void RenderWidgetHostImpl::WasHidden() {
+   // Don't bother reporting hung state when we aren't active.
+   StopInputEventAckTimeout();
+
++  // If we have bound the blink widget interface, then inform it that we are
++  // being hidden so it can reduce its resource utilization.
++  if (blink_widget_) {
++    if (!base::CommandLine::ForCurrentProcess()->HasSwitch(switches::kDisableRAFThrottling))
++    blink_widget_->WasHidden();
++  }
++  else if (pending_show_params_) {
+   // Show/Hide state is not sent to the renderer when it has requested for us to
+   // wait until it requests them via Init().
+-  if (pending_show_params_) {
+     pending_show_params_.reset();
+   } else {
+     // Widgets start out hidden, so we must have previously been shown to get
+@@ -1344,8 +1352,13 @@ void RenderWidgetHostImpl::SetPageFocus(bool focused) {
+     if (IsKeyboardLocked())
+       UnlockKeyboard();
+
+-    if (auto* touch_emulator = GetExistingTouchEmulator())
+-      touch_emulator->CancelTouch();
++    if (auto* touch_emulator = GetExistingTouchEmulator()) {
++      if (touch_emulator->rfh_limit()) {
++        if (touch_emulator->rfh_limit()->GetView() == GetView())
++          touch_emulator->CancelTouch();
++      } else
++        touch_emulator->CancelTouch();
++    }
+   } else if (keyboard_lock_allowed_) {
+     LockKeyboard();
+   }

@@ -1,0 +1,37 @@
+diff --git a/chrome/browser/chrome_browser_main_win.cc b/chrome/browser/chrome_browser_main_win.cc
+index 554ed1e6c5..39b135ce7a 100644
+--- a/chrome/browser/chrome_browser_main_win.cc
++++ b/chrome/browser/chrome_browser_main_win.cc
+@@ -394,6 +394,7 @@ void ShowCloseBrowserFirstMessageBox() {
+       l10n_util::GetStringUTF16(IDS_UNINSTALL_CLOSE_APP));
+ }
+
++#if 0
+ void MaybePostSettingsResetPrompt() {
+   if (base::FeatureList::IsEnabled(safe_browsing::kSettingsResetPrompt)) {
+     content::GetUIThreadTaskRunner({base::TaskPriority::BEST_EFFORT})
+@@ -402,6 +403,7 @@ void MaybePostSettingsResetPrompt() {
+                        safe_browsing::MaybeShowSettingsResetPromptWithDelay));
+   }
+ }
++#endif
+
+ // Updates all Progressive Web App launchers in |profile_dir| to the latest
+ // version.
+@@ -634,6 +636,7 @@ void ChromeBrowserMainPartsWin::PostBrowserStart() {
+   // complete run of the Chrome Cleanup tool. If post-cleanup settings reset is
+   // enabled, we delay checks for settings reset prompt until the scheduled
+   // reset is finished.
++#if 0
+   if (safe_browsing::PostCleanupSettingsResetter::IsEnabled() &&
+       !base::CommandLine::ForCurrentProcess()->HasSwitch(switches::kAppId)) {
+     // Using last opened profiles, because we want to find reset the profile
+@@ -647,6 +650,8 @@ void ChromeBrowserMainPartsWin::PostBrowserStart() {
+   } else {
+     MaybePostSettingsResetPrompt();
+   }
++#endif
++
+   // Record UMA data about whether the fault-tolerant heap is enabled.
+   // Use a delayed task to minimize the impact on startup time.
+   content::GetUIThreadTaskRunner({})->PostDelayedTask(

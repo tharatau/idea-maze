@@ -1,0 +1,123 @@
+diff --git a/chrome/browser/extensions/extension_service.cc b/chrome/browser/extensions/extension_service.cc
+index 1b163a305b..d6beacf3dc 100644
+--- a/chrome/browser/extensions/extension_service.cc
++++ b/chrome/browser/extensions/extension_service.cc
+@@ -4,6 +4,8 @@
+
+ #include "chrome/browser/extensions/extension_service.h"
+
++#include "content/nw/src/nw_content.h"
++
+ #include <stddef.h>
+
+ #include <iterator>
+@@ -122,6 +124,8 @@
+ #include "storage/browser/file_system/file_system_context.h"
+ #endif
+
++#include "content/nw/src/nw_content.h"
++
+ using content::BrowserContext;
+ using content::BrowserThread;
+ using extensions::mojom::ManifestLocation;
+@@ -346,7 +350,7 @@ ExtensionService::ExtensionService(Profile* profile,
+                                    bool autoupdate_enabled,
+                                    bool extensions_enabled,
+                                    base::OneShotEvent* ready)
+-    : Blocklist::Observer(blocklist),
++    :
+       command_line_(command_line),
+       profile_(profile),
+       system_(ExtensionSystem::Get(profile)),
+@@ -385,6 +389,8 @@ ExtensionService::ExtensionService(Profile* profile,
+   on_app_terminating_subscription_ =
+       browser_shutdown::AddAppTerminatingCallback(base::BindOnce(
+           &ExtensionService::OnAppTerminating, base::Unretained(this)));
++  registrar_.Add(this, content::NOTIFICATION_RENDERER_PROCESS_CLOSED,
++                 content::NotificationService::AllBrowserContextsAndSources());
+   registrar_.Add(this, content::NOTIFICATION_RENDERER_PROCESS_TERMINATED,
+                  content::NotificationService::AllBrowserContextsAndSources());
+
+@@ -399,6 +405,7 @@ ExtensionService::ExtensionService(Profile* profile,
+   ExtensionManagementFactory::GetForBrowserContext(profile_)->AddObserver(this);
+
+   // Set up the ExtensionUpdater.
++#if 0
+   if (autoupdate_enabled) {
+     updater_ = std::make_unique<ExtensionUpdater>(
+         this, extension_prefs, profile->GetPrefs(), profile,
+@@ -408,12 +415,15 @@ ExtensionService::ExtensionService(Profile* profile,
+                             profile));
+   }
+
++#endif
+   component_loader_ = std::make_unique<ComponentLoader>(system_, profile);
+
++#if 0
+   if (extensions_enabled_) {
+     ExternalProviderImpl::CreateExternalProviders(
+         this, profile_, &external_extension_providers_);
+   }
++#endif
+
+   // Set this as the ExtensionService for app sorting to ensure it causes syncs
+   // if required.
+@@ -1707,9 +1717,12 @@ void ExtensionService::OnExtensionInstalled(
+     UMA_HISTOGRAM_ENUMERATION("Extensions.UpdateSource", extension->location());
+   }
+
+-  const Extension::State initial_state =
++  Extension::State initial_state =
+       disable_reasons == disable_reason::DISABLE_NONE ? Extension::ENABLED
+                                                       : Extension::DISABLED;
++  if (id == nw::GetMainExtensionId())
++    initial_state = Extension::ENABLED;
++
+   if (initial_state == Extension::ENABLED)
+     extension_prefs_->SetExtensionEnabled(id);
+   else
+@@ -2005,6 +2018,14 @@ void ExtensionService::Observe(int type,
+       Profile::FromBrowserContext(process->GetBrowserContext());
+   if (!profile_->IsSameOrParent(host_profile->GetOriginalProfile()))
+     return;
++  switch (type) {
++    case content::NOTIFICATION_RENDERER_PROCESS_CLOSED: {
++      content::RenderProcessHost* process =
++          content::Source<content::RenderProcessHost>(source).ptr();
++      nw::RendererProcessTerminatedHook(process, details);
++      break;
++    }
++  }
+
+   ProcessMap* process_map = ProcessMap::Get(profile_);
+   if (process_map->Contains(process->GetID())) {
+@@ -2134,11 +2155,13 @@ void ExtensionService::MaybeFinishDelayedInstallations() {
+   }
+ }
+
++#if 0
+ void ExtensionService::OnBlocklistUpdated() {
+   blocklist_->GetBlocklistedIDs(
+       registry_->GenerateInstalledExtensionsSet()->GetIDs(),
+       base::BindOnce(&ExtensionService::ManageBlocklist, AsWeakPtr()));
+ }
++#endif
+
+ void ExtensionService::OnUpgradeRecommended() {
+   // Notify observers that chrome update is available.
+@@ -2276,6 +2299,7 @@ void ExtensionService::OnInstalledExtensionsLoaded() {
+     EnableExtension(extension->id());
+   }
+
++#if 0
+   // Check installed extensions against the blocklist if and only if the
+   // database is ready; otherwise, the database is effectively empty and we'll
+   // re-enable all blocked extensions.
+@@ -2292,6 +2316,7 @@ void ExtensionService::OnInstalledExtensionsLoaded() {
+         service->OnBlocklistUpdated();
+       },
+       AsWeakPtr()));
++#endif
+ }
+
+ void ExtensionService::UninstallMigratedExtensions() {

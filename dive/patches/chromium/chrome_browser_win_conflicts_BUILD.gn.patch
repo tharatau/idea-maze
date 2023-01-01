@@ -1,0 +1,16 @@
+diff --git a/chrome/browser/win/conflicts/BUILD.gn b/chrome/browser/win/conflicts/BUILD.gn
+index d7c4c63013..388fcdfb3e 100644
+--- a/chrome/browser/win/conflicts/BUILD.gn
++++ b/chrome/browser/win/conflicts/BUILD.gn
+@@ -27,7 +27,10 @@ source_set("module_info") {
+     "//content/public/common",
+   ]
+
+-  deps = [ "//base:i18n" ]
++  deps = [
++    "//base:i18n",
++    #"//chrome/common/safe_browsing:pe_image_reader",
++  ]
+
+   libs = [ "crypt32.lib" ]
+ }

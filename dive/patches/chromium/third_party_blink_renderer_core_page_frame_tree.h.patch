@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/page/frame_tree.h b/third_party/blink/renderer/core/page/frame_tree.h
+index 6db0760a1d..3156c780a7 100644
+--- a/third_party/blink/renderer/core/page/frame_tree.h
++++ b/third_party/blink/renderer/core/page/frame_tree.h
+@@ -80,7 +80,7 @@ class CORE_EXPORT FrameTree final {
+                           FrameTreeBoundary::kIgnoreFence) const;
+
+   // For plugins and tests only.
+-  Frame* FindFrameByName(const AtomicString& name) const;
++  Frame* FindFrameByName(const AtomicString& name, bool nw = false) const;
+
+   // https://html.spec.whatwg.org/#the-rules-for-choosing-a-browsing-context-given-a-browsing-context-name
+   struct FindResult {

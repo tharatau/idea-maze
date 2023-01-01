@@ -1,0 +1,52 @@
+diff --git a/chrome/browser/ui/browser_commands.cc b/chrome/browser/ui/browser_commands.cc
+index 0eb899ad4b..ff7b9be325 100644
+--- a/chrome/browser/ui/browser_commands.cc
++++ b/chrome/browser/ui/browser_commands.cc
+@@ -188,6 +188,7 @@ namespace {
+ const char kOsOverrideForTabletSite[] = "Linux; Android 9; Chrome tablet";
+ const char kChPlatformOverrideForTabletSite[] = "Android";
+
++#if 0
+ translate::TranslateBubbleUiEvent TranslateBubbleResultToUiEvent(
+     ShowTranslateBubbleResult result) {
+   switch (result) {
+@@ -204,6 +205,7 @@ translate::TranslateBubbleUiEvent TranslateBubbleResultToUiEvent(
+           BUBBLE_NOT_SHOWN_EDITABLE_FIELD_IS_ACTIVE;
+   }
+ }
++#endif
+
+ // Creates a new tabbed browser window, with the same size, type and profile as
+ // |original_browser|'s window, inserts |contents| into it, and shows it.
+@@ -451,6 +453,7 @@ int GetContentRestrictions(const Browser* browser) {
+ }
+
+ void NewEmptyWindow(Profile* profile, bool should_trigger_session_restore) {
++#if 0
+   bool off_the_record = profile->IsOffTheRecord();
+   PrefService* prefs = profile->GetPrefs();
+   if (off_the_record) {
+@@ -490,6 +493,7 @@ void NewEmptyWindow(Profile* profile, bool should_trigger_session_restore) {
+       OpenEmptyWindow(profile->GetOriginalProfile());
+     }
+   }
++#endif
+ }
+
+ Browser* OpenEmptyWindow(Profile* profile,
+@@ -1249,6 +1253,7 @@ void ShowVirtualCardEnrollBubble(Browser* browser) {
+ }
+
+ void Translate(Browser* browser) {
++#if 0
+   if (!browser->window()->IsActive())
+     return;
+
+@@ -1277,6 +1282,7 @@ void Translate(Browser* browser) {
+   if (result != ShowTranslateBubbleResult::SUCCESS)
+     translate::ReportTranslateBubbleUiAction(
+         TranslateBubbleResultToUiEvent(result));
++#endif
+ }
+
+ void ManagePasswordsForPage(Browser* browser) {

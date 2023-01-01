@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/ui/webui/extensions/extensions_internals_source.cc b/chrome/browser/ui/webui/extensions/extensions_internals_source.cc
+index 9b92463fa0..a6068e29b1 100644
+--- a/chrome/browser/ui/webui/extensions/extensions_internals_source.cc
++++ b/chrome/browser/ui/webui/extensions/extensions_internals_source.cc
+@@ -51,6 +51,8 @@ const char* TypeToString(extensions::Manifest::Type type) {
+       return "TYPE_LEGACY_PACKAGED_APP";
+     case extensions::Manifest::TYPE_PLATFORM_APP:
+       return "TYPE_PLATFORM_APP";
++    case extensions::Manifest::TYPE_NWJS_APP:
++      return "TYPE_NWJS_APP";
+     case extensions::Manifest::TYPE_SHARED_MODULE:
+       return "TYPE_SHARED_MODULE";
+     case extensions::Manifest::TYPE_LOGIN_SCREEN_EXTENSION:

@@ -1,0 +1,18 @@
+diff --git a/third_party/blink/renderer/core/page/create_window.h b/third_party/blink/renderer/core/page/create_window.h
+index da595dc0e7..bdcb6d2a0c 100644
+--- a/third_party/blink/renderer/core/page/create_window.h
++++ b/third_party/blink/renderer/core/page/create_window.h
+@@ -36,11 +36,12 @@ class Frame;
+ class KURL;
+ class LocalDOMWindow;
+ class LocalFrame;
++class WebString;
+ struct FrameLoadRequest;
+
+ Frame* CreateNewWindow(LocalFrame& opener_frame,
+                        FrameLoadRequest&,
+-                       const AtomicString& name);
++                       const AtomicString& name, WebString* manifes);
+
+ CORE_EXPORT WebWindowFeatures
+ GetWindowFeaturesFromString(const String& feature_string,

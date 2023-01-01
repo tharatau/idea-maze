@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/extensions/content_verifier_browsertest.cc b/chrome/browser/extensions/content_verifier_browsertest.cc
+index 72eebca8e8..dc94bd6a10 100644
+--- a/chrome/browser/extensions/content_verifier_browsertest.cc
++++ b/chrome/browser/extensions/content_verifier_browsertest.cc
+@@ -395,7 +395,7 @@ IN_PROC_BROWSER_TEST_F(ContentVerifierTest, PolicyCorrupted) {
+   TestExtensionRegistryObserver registry_observer(
+       ExtensionRegistry::Get(profile()), kExtensionId);
+   ContentVerifier* verifier = system->content_verifier();
+-  verifier->VerifyFailedForTest(kExtensionId, ContentVerifyJob::HASH_MISMATCH);
++  verifier->VerifyFailed(kExtensionId, base::FilePath(), ContentVerifyJob::HASH_MISMATCH, nullptr);
+
+   // Set our mock update client to check that the corrupt bit is set on the
+   // data structure it receives.

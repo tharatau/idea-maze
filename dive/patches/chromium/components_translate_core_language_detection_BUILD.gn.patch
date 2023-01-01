@@ -1,0 +1,13 @@
+diff --git a/components/translate/core/language_detection/BUILD.gn b/components/translate/core/language_detection/BUILD.gn
+index 44cb037c6d..240798e85c 100644
+--- a/components/translate/core/language_detection/BUILD.gn
++++ b/components/translate/core/language_detection/BUILD.gn
+@@ -40,7 +40,7 @@ static_library("language_detection") {
+     "//components/language/core/common",
+     "//components/optimization_guide/core:features",
+     "//components/translate/core/common",
+-    "//third_party/cld_3/src/src:cld_3",
++    #"//third_party/cld_3/src/src:cld_3",
+     "//third_party/flatbuffers",
+     "//third_party/icu",
+     "//third_party/smhasher:murmurhash2",

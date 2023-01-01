@@ -1,0 +1,15 @@
+diff --git a/extensions/browser/content_verifier_delegate.h b/extensions/browser/content_verifier_delegate.h
+index f89399239d..65d6568253 100644
+--- a/extensions/browser/content_verifier_delegate.h
++++ b/extensions/browser/content_verifier_delegate.h
+@@ -61,7 +61,9 @@ class ContentVerifierDelegate {
+   // Called when the content verifier detects that a read of a file inside an
+   // extension did not match its expected hash.
+   virtual void VerifyFailed(const std::string& extension_id,
+-                            ContentVerifyJob::FailureReason reason) = 0;
++                            const base::FilePath& relative_path,
++                            ContentVerifyJob::FailureReason reason,
++                            scoped_refptr<ContentVerifyJob> verify_job) = 0;
+
+   // Called when ExtensionSystem is shutting down.
+   virtual void Shutdown() = 0;

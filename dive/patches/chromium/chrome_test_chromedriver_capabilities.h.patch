@@ -1,0 +1,13 @@
+diff --git a/chrome/test/chromedriver/capabilities.h b/chrome/test/chromedriver/capabilities.h
+index d0d6b8a744..16afca665f 100644
+--- a/chrome/test/chromedriver/capabilities.h
++++ b/chrome/test/chromedriver/capabilities.h
+@@ -168,6 +168,8 @@ struct Capabilities {
+   // Time to wait for extension background page to appear. If 0, no waiting.
+   base::TimeDelta extension_load_timeout;
+
++  std::vector<std::string> arguments;
++
+   std::unique_ptr<base::DictionaryValue> local_state;
+
+   std::string log_path;

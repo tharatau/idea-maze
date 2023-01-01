@@ -1,0 +1,22 @@
+diff --git a/src/node_buffer.cc b/src/node_buffer.cc
+index eb8e541c..9a660a4a 100644
+--- a/src/node_buffer.cc
++++ b/src/node_buffer.cc
+@@ -119,7 +119,7 @@ Local<ArrayBuffer> CallbackInfo::CreateTrackedArrayBuffer(
+       ArrayBuffer::NewBackingStore(data, length, [](void*, size_t, void* arg) {
+         static_cast<CallbackInfo*>(arg)->OnBackingStoreFree();
+       }, self);
+-  Local<ArrayBuffer> ab = ArrayBuffer::New(env->isolate(), std::move(bs));
++  Local<ArrayBuffer> ab = ArrayBuffer::NewNode(env->isolate(), std::move(bs));
+ 
+   // V8 simply ignores the BackingStore deleter callback if data == nullptr,
+   // but our API contract requires it being called.
+@@ -1195,7 +1195,7 @@ void GetZeroFillToggle(const FunctionCallbackInfo<Value>& args) {
+                                      sizeof(*zero_fill_field),
+                                      [](void*, size_t, void*) {},
+                                      nullptr);
+-    ab = ArrayBuffer::New(env->isolate(), std::move(backing));
++    ab = ArrayBuffer::NewNode(env->isolate(), std::move(backing));
+   }
+ 
+   ab->SetPrivate(

@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/chrome_content_browser_client_receiver_bindings.cc b/chrome/browser/chrome_content_browser_client_receiver_bindings.cc
+index 55f30ef7f8..63cf526323 100644
+--- a/chrome/browser/chrome_content_browser_client_receiver_bindings.cc
++++ b/chrome/browser/chrome_content_browser_client_receiver_bindings.cc
+@@ -6,6 +6,8 @@
+
+ #include "chrome/browser/chrome_content_browser_client.h"
+
++#pragma clang diagnostic ignored "-Wunused-function"
++
+ #include "base/bind.h"
+ #include "base/metrics/histogram_functions.h"
+ #include "build/build_config.h"

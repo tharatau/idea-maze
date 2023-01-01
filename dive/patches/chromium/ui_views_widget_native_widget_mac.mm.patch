@@ -1,0 +1,85 @@
+diff --git a/ui/views/widget/native_widget_mac.mm b/ui/views/widget/native_widget_mac.mm
+index b3fc364e7b..b8f79c6c10 100644
+--- a/ui/views/widget/native_widget_mac.mm
++++ b/ui/views/widget/native_widget_mac.mm
+@@ -47,6 +47,10 @@
+
+ using remote_cocoa::mojom::WindowVisibilityState;
+
++namespace content {
++  extern bool g_support_transparency;
++}
++
+ namespace views {
+
+ namespace {
+@@ -384,6 +388,8 @@ void NativeWidgetMac::GetWindowPlacement(
+     *show_state = ui::SHOW_STATE_FULLSCREEN;
+   else if (IsMinimized())
+     *show_state = ui::SHOW_STATE_MINIMIZED;
++  else if (IsMaximized())
++    *show_state = ui::SHOW_STATE_MAXIMIZED;
+   else
+     *show_state = ui::SHOW_STATE_NORMAL;
+ }
+@@ -554,8 +560,9 @@ void NativeWidgetMac::Show(ui::WindowShowState show_state,
+     case ui::SHOW_STATE_NORMAL:
+     case ui::SHOW_STATE_INACTIVE:
+     case ui::SHOW_STATE_MINIMIZED:
+-      break;
++    case ui::SHOW_STATE_HIDDEN:
+     case ui::SHOW_STATE_MAXIMIZED:
++      break;
+     case ui::SHOW_STATE_FULLSCREEN:
+       NOTIMPLEMENTED();
+       break;
+@@ -574,6 +581,8 @@ void NativeWidgetMac::Show(ui::WindowShowState show_state,
+                        : WindowVisibilityState::kShowInactive;
+   }
+   GetNSWindowMojo()->SetVisibilityState(window_state);
++  if (show_state == ui::SHOW_STATE_MAXIMIZED)
++    GetNSWindowMojo()->SetRestoredBounds(restore_bounds);
+
+   // Ignore the SetInitialFocus() result. BridgedContentView should get
+   // firstResponder status regardless.
+@@ -627,7 +636,9 @@ bool NativeWidgetMac::IsVisibleOnAllWorkspaces() const {
+ }
+
+ void NativeWidgetMac::Maximize() {
+-  NOTIMPLEMENTED();  // See IsMaximized().
++  if (IsFullscreen())
++    return;
++  GetNSWindowMojo()->SetMaximized(true);
+ }
+
+ void NativeWidgetMac::Minimize() {
+@@ -637,9 +648,9 @@ void NativeWidgetMac::Minimize() {
+ }
+
+ bool NativeWidgetMac::IsMaximized() const {
+-  // The window frame isn't altered on Mac unless going fullscreen. The green
+-  // "+" button just makes the window bigger. So, always false.
+-  return false;
++  if (!ns_window_host_)
++    return false;
++  return ns_window_host_->IsMaximized();
+ }
+
+ bool NativeWidgetMac::IsMinimized() const {
+@@ -653,6 +664,7 @@ void NativeWidgetMac::Restore() {
+     return;
+   GetNSWindowMojo()->ExitFullscreen();
+   GetNSWindowMojo()->SetMiniaturized(false);
++  GetNSWindowMojo()->SetMaximized(false);
+ }
+
+ void NativeWidgetMac::SetFullscreen(bool fullscreen,
+@@ -807,7 +819,7 @@ void NativeWidgetMac::SetVisibilityAnimationTransition(
+ }
+
+ bool NativeWidgetMac::IsTranslucentWindowOpacitySupported() const {
+-  return false;
++  return content::g_support_transparency;
+ }
+
+ ui::GestureRecognizer* NativeWidgetMac::GetGestureRecognizer() {

@@ -1,0 +1,12 @@
+diff --git a/chrome/browser/resources/print_preview/native_layer.ts b/chrome/browser/resources/print_preview/native_layer.ts
+index 5469b40a95..a71e6f6bca 100644
+--- a/chrome/browser/resources/print_preview/native_layer.ts
++++ b/chrome/browser/resources/print_preview/native_layer.ts
+@@ -88,6 +88,7 @@ export interface Policies {
+  * @see corresponding field name definitions in print_preview_handler.cc
+  */
+ export interface NativeInitialSettings {
++  nwPrintMode: boolean,
+   isInKioskAutoPrintMode: boolean;
+   isInAppKioskMode: boolean;
+   uiLocale: string;

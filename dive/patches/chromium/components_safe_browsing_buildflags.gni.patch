@@ -1,0 +1,12 @@
+diff --git a/components/safe_browsing/buildflags.gni b/components/safe_browsing/buildflags.gni
+index ebdc4d3e94..9be6aa8d44 100644
+--- a/components/safe_browsing/buildflags.gni
++++ b/components/safe_browsing/buildflags.gni
+@@ -17,6 +17,6 @@ declare_args() {
+   } else if (is_android) {
+     safe_browsing_mode = 2
+   } else {
+-    safe_browsing_mode = 1
++    safe_browsing_mode = 0
+   }
+ }

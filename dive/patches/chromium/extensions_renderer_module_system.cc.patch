@@ -1,0 +1,37 @@
+diff --git a/extensions/renderer/module_system.cc b/extensions/renderer/module_system.cc
+index b6ea135911..28b8c23bd7 100644
+--- a/extensions/renderer/module_system.cc
++++ b/extensions/renderer/module_system.cc
+@@ -522,11 +522,11 @@ void ModuleSystem::SetLazyField(v8::Local<v8::Object> object,
+   CHECK(v8_helpers::IsTrue(maybe));
+ }
+
+-void ModuleSystem::OnNativeBindingCreated(
++v8::Local<v8::Value> ModuleSystem::OnNativeBindingCreated(
+     const std::string& api_name,
+     v8::Local<v8::Value> api_bridge_value) {
+   DCHECK(!get_internal_api_.IsEmpty());
+-  v8::HandleScope scope(GetIsolate());
++  v8::EscapableHandleScope scope(GetIsolate());
+   if (source_map_->Contains(api_name)) {
+     // We need to load the custom bindings and store them in our modules.
+     // Storing them is important so that calls through CallModuleMethod() route
+@@ -536,7 +536,7 @@ void ModuleSystem::OnNativeBindingCreated(
+                     &modules) ||
+         !modules->IsObject()) {
+       NOTREACHED();
+-      return;
++      return v8::Undefined(GetIsolate());
+     }
+
+     NativesEnabledScope enabled(this);
+@@ -544,7 +544,9 @@ void ModuleSystem::OnNativeBindingCreated(
+         LoadModuleWithNativeAPIBridge(api_name, api_bridge_value);
+     SetPrivateProperty(context()->v8_context(), modules.As<v8::Object>(),
+                        gin::StringToSymbol(GetIsolate(), api_name), exports);
++    return scope.Escape(exports);
+   }
++  return v8::Undefined(GetIsolate());
+ }
+
+ void ModuleSystem::SetGetInternalAPIHook(

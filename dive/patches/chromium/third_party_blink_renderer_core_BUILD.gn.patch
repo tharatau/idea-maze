@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/BUILD.gn b/third_party/blink/renderer/core/BUILD.gn
+index 5bea05b031..a460fa9b75 100644
+--- a/third_party/blink/renderer/core/BUILD.gn
++++ b/third_party/blink/renderer/core/BUILD.gn
+@@ -188,7 +188,7 @@ component("core") {
+   output_name = "blink_core"
+
+   visibility = []  # Allow re-assignment of list.
+-  visibility = [ "//third_party/blink/*" ]
++  visibility = [ "//third_party/blink/*", "//content/nw/*" ]
+
+   sources = [
+     "core_initializer.cc",

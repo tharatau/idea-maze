@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/extensions/safe_browsing_verdict_handler.cc b/chrome/browser/extensions/safe_browsing_verdict_handler.cc
+index 94d2fdc659..4cb402caea 100644
+--- a/chrome/browser/extensions/safe_browsing_verdict_handler.cc
++++ b/chrome/browser/extensions/safe_browsing_verdict_handler.cc
+@@ -47,6 +47,7 @@ SafeBrowsingVerdictHandler::~SafeBrowsingVerdictHandler() = default;
+ void SafeBrowsingVerdictHandler::Init() {
+   TRACE_EVENT0("browser,startup", "SafeBrowsingVerdictHandler::Init");
+
++#if 0
+   std::unique_ptr<ExtensionSet> all_extensions =
+       registry_->GenerateInstalledExtensionsSet();
+
+@@ -67,6 +68,7 @@ void SafeBrowsingVerdictHandler::Init() {
+       blocklist_.Insert(extension);
+     }
+   }
++#endif
+ }
+
+ void SafeBrowsingVerdictHandler::ManageBlocklist(

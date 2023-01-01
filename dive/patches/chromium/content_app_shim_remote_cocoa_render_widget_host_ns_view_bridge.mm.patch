@@ -1,0 +1,63 @@
+diff --git a/content/app_shim_remote_cocoa/render_widget_host_ns_view_bridge.mm b/content/app_shim_remote_cocoa/render_widget_host_ns_view_bridge.mm
+index ded91def45..3bef821e3e 100644
+--- a/content/app_shim_remote_cocoa/render_widget_host_ns_view_bridge.mm
++++ b/content/app_shim_remote_cocoa/render_widget_host_ns_view_bridge.mm
+@@ -18,6 +18,11 @@
+ #include "ui/events/keycodes/dom/dom_code.h"
+ #include "ui/gfx/mac/coordinate_conversion.h"
+
++namespace content {
++  extern bool g_support_transparency;
++  extern bool g_force_cpu_draw;
++}
++
+ namespace remote_cocoa {
+
+ RenderWidgetHostNSViewBridge::RenderWidgetHostNSViewBridge(
+@@ -31,13 +36,21 @@ RenderWidgetHostNSViewBridge::RenderWidgetHostNSViewBridge(
+       withHostHelper:host_helper]);
+
+   background_layer_.reset([[CALayer alloc] init]);
++
+   display_ca_layer_tree_ =
+       std::make_unique<ui::DisplayCALayerTree>(background_layer_.get());
++
++  bool isOpaque = [cocoa_view_ isOpaque];
++  if (content::g_support_transparency) {
++    [background_layer_ setBackgroundColor: (isOpaque || !content::g_support_transparency) ?
++      CGColorGetConstantColor(kCGColorWhite) : CGColorGetConstantColor(kCGColorClear)];
++  }
++
+   [cocoa_view_ setLayer:background_layer_];
+-  [cocoa_view_ setWantsLayer:YES];
++  [cocoa_view_ setWantsLayer:!content::g_force_cpu_draw];
+
+   view_id_ = std::make_unique<remote_cocoa::ScopedNSViewIdMapping>(ns_view_id,
+-                                                                   cocoa_view_);
++        cocoa_view_);
+ }
+
+ RenderWidgetHostNSViewBridge::~RenderWidgetHostNSViewBridge() {
+@@ -147,6 +160,10 @@ void RenderWidgetHostNSViewBridge::SetCALayerParams(
+   if (display_disabled_)
+     return;
+   display_ca_layer_tree_->UpdateCALayerTree(ca_layer_params);
++  if (content::g_force_cpu_draw) {
++    // this is to tell parent window, that the window content has been updated
++    [[cocoa_view_ superview] setNeedsDisplay:YES];
++  }
+ }
+
+ void RenderWidgetHostNSViewBridge::SetBackgroundColor(SkColor color) {
+@@ -237,6 +254,11 @@ void RenderWidgetHostNSViewBridge::OnDisplayMetricsChanged(
+   [cocoa_view_ updateScreenProperties];
+ }
+
++CALayer* RenderWidgetHostNSViewBridge::GetBackgroundLayer() {
++  assert(content::g_force_cpu_draw);
++  return background_layer_;
++}
++
+ void RenderWidgetHostNSViewBridge::DisplayCursor(const ui::Cursor& cursor) {
+   [cocoa_view_ updateCursor:content::WebCursor(cursor).GetNativeCursor()];
+ }

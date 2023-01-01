@@ -1,0 +1,14 @@
+diff --git a/chrome/browser/sessions/session_service.cc b/chrome/browser/sessions/session_service.cc
+index e7bd30edd8..3b1120a3fe 100644
+--- a/chrome/browser/sessions/session_service.cc
++++ b/chrome/browser/sessions/session_service.cc
+@@ -506,7 +506,8 @@ bool SessionService::ShouldRestoreWindowOfType(
+ bool SessionService::RestoreIfNecessary(const StartupTabs& startup_tabs,
+                                         Browser* browser,
+                                         bool restore_apps) {
+-  if (ShouldRestore(browser)) {
++  //nwjs#7516
++  if (false && ShouldRestore(browser)) {
+     // We're going from no tabbed browsers to a tabbed browser (and not in
+     // process startup), restore the last session.
+     if (move_on_new_browser_ && is_saving_enabled()) {

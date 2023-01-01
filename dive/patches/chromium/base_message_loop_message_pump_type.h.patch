@@ -1,0 +1,15 @@
+diff --git a/base/message_loop/message_pump_type.h b/base/message_loop/message_pump_type.h
+index d21fb67960..f76e496089 100644
+--- a/base/message_loop/message_pump_type.h
++++ b/base/message_loop/message_pump_type.h
+@@ -39,6 +39,7 @@ enum class MessagePumpType {
+   // OSX and IOS.
+   NS_RUNLOOP,
+ #endif  // BUILDFLAG(IS_APPLE)
++  NODE,
+ };
+
+ }  // namespace base
+diff --git a/base/message_loop/message_pump_uv.cc b/base/message_loop/message_pump_uv.cc
+new file mode 100644
+index 0000000000..151bed5ce8

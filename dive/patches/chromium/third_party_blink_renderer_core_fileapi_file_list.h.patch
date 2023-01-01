@@ -1,0 +1,12 @@
+diff --git a/third_party/blink/renderer/core/fileapi/file_list.h b/third_party/blink/renderer/core/fileapi/file_list.h
+index 296f0e1dd1..3bd559e2fe 100644
+--- a/third_party/blink/renderer/core/fileapi/file_list.h
++++ b/third_party/blink/renderer/core/fileapi/file_list.h
+@@ -49,6 +49,7 @@ class CORE_EXPORT FileList final : public ScriptWrappable {
+
+   bool IsEmpty() const { return files_.IsEmpty(); }
+   void clear() { files_.clear(); }
++  void append(File* file) { Append(file); }
+   void Append(File* file) { files_.push_back(file); }
+   Vector<base::FilePath> PathsForUserVisibleFiles() const;
+

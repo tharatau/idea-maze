@@ -1,0 +1,26 @@
+diff --git a/chrome/browser/ui/startup/startup_browser_creator_impl.cc b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
+index 66d8732483..8f890e0cdd 100644
+--- a/chrome/browser/ui/startup/startup_browser_creator_impl.cc
++++ b/chrome/browser/ui/startup/startup_browser_creator_impl.cc
+@@ -351,7 +351,7 @@ StartupBrowserCreatorImpl::DetermineURLsAndLaunch(
+         IncompatibleApplicationsUpdater::HasCachedApplications();
+   }
+ #endif
+-  welcome::JoinOnboardingGroup(profile_);
++  //welcome::JoinOnboardingGroup(profile_);
+ #endif
+
+   // Presentation of promotional and/or educational tabs may be controlled via
+@@ -375,10 +375,11 @@ StartupBrowserCreatorImpl::DetermineURLsAndLaunch(
+   // TODO(https://crbug.com/1276034): Cleanup this code, in particular on Ash
+   // where the welcome flow is never shown.
+   bool welcome_enabled = true;
++
+ #if BUILDFLAG(IS_CHROMEOS_LACROS)
+   if (AccountConsistencyModeManager::IsMirrorEnabledForProfile(profile_))
+     welcome_enabled = false;
+-#elif !BUILDFLAG(IS_CHROMEOS_ASH)
++#elif 0 //!BUILDFLAG(IS_CHROMEOS_ASH)
+   welcome_enabled =
+       welcome::IsEnabled(profile_) && welcome::HasModulesToShow(profile_);
+ #endif  // !BUILDFLAG(IS_CHROMEOS_ASH)

@@ -1,0 +1,13 @@
+diff --git a/extensions/common/features/manifest_feature.cc b/extensions/common/features/manifest_feature.cc
+index 9829af929c..66f0690797 100644
+--- a/extensions/common/features/manifest_feature.cc
++++ b/extensions/common/features/manifest_feature.cc
+@@ -22,6 +22,8 @@ Feature::Availability ManifestFeature::IsAvailableToContextImpl(
+     Feature::Platform platform,
+     int context_id,
+     bool check_developer_mode) const {
++  if (extension && extension->is_nwjs_app())
++    return CreateAvailability(IS_AVAILABLE);
+   Availability availability = SimpleFeature::IsAvailableToContextImpl(
+       extension, context, url, platform, context_id, check_developer_mode);
+   if (!availability.is_available())

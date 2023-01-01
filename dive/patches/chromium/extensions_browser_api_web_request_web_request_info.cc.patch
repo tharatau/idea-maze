@@ -1,0 +1,13 @@
+diff --git a/extensions/browser/api/web_request/web_request_info.cc b/extensions/browser/api/web_request/web_request_info.cc
+index 9b5441b93f..5686fca414 100644
+--- a/extensions/browser/api/web_request/web_request_info.cc
++++ b/extensions/browser/api/web_request/web_request_info.cc
+@@ -208,6 +208,8 @@ void WebRequestInfoInitParams::InitializeWebViewAndFrameData(
+         navigation_ui_data->web_view_rules_registry_id();
+     frame_data = navigation_ui_data->frame_data();
+     parent_routing_id = navigation_ui_data->parent_routing_id();
++    web_view_embedder_process_id =
++        navigation_ui_data->web_view_embedder_process_id();
+   } else if (frame_routing_id != MSG_ROUTING_NONE) {
+     // Grab any WebView-related information if relevant.
+     WebViewRendererState::WebViewInfo web_view_info;

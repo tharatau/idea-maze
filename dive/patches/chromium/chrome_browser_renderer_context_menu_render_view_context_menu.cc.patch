@@ -1,0 +1,179 @@
+diff --git a/chrome/browser/renderer_context_menu/render_view_context_menu.cc b/chrome/browser/renderer_context_menu/render_view_context_menu.cc
+index 039a9e48ea..06b5f44a4e 100644
+--- a/chrome/browser/renderer_context_menu/render_view_context_menu.cc
++++ b/chrome/browser/renderer_context_menu/render_view_context_menu.cc
+@@ -6,6 +6,8 @@
+
+ #include <stddef.h>
+
++#include "content/nw/src/common/shell_switches.h"
++
+ #include <algorithm>
+ #include <memory>
+ #include <set>
+@@ -933,6 +935,8 @@ bool RenderViewContextMenu::IsInProgressiveWebApp() const {
+ void RenderViewContextMenu::InitMenu() {
+   RenderViewContextMenuBase::InitMenu();
+
++#if 0
++
+   if (content_type_->SupportsGroup(
+           ContextMenuContentType::ITEM_GROUP_PASSWORD)) {
+     AppendPasswordItems();
+@@ -982,7 +986,7 @@ void RenderViewContextMenu::InitMenu() {
+           ContextMenuContentType::ITEM_GROUP_MEDIA_PLUGIN)) {
+     AppendPluginItems();
+   }
+-
++#endif
+   // ITEM_GROUP_MEDIA_FILE has no specific items.
+
+   bool editable =
+@@ -1009,6 +1013,7 @@ void RenderViewContextMenu::InitMenu() {
+     }
+   }
+
++#if 0
+   if (content_type_->SupportsGroup(
+           ContextMenuContentType::ITEM_GROUP_EXISTING_LINK_TO_TEXT)) {
+     AppendLinkToTextItems();
+@@ -1103,7 +1108,7 @@ void RenderViewContextMenu::InitMenu() {
+         ContextMenuContentType::ITEM_GROUP_CURRENT_EXTENSION));
+     AppendAllExtensionItems();
+   }
+-
++#endif
+   if (content_type_->SupportsGroup(
+           ContextMenuContentType::ITEM_GROUP_CURRENT_EXTENSION)) {
+     DCHECK(!content_type_->SupportsGroup(
+@@ -1119,20 +1124,34 @@ void RenderViewContextMenu::InitMenu() {
+   if (!IsDevToolsURL(params_.page_url))
+     added_accessibility_labels_items = AppendAccessibilityLabelsItems();
+
++#if defined(NWJS_SDK)
++  bool enable_devtools = true;
++  const base::CommandLine* command_line =
++      base::CommandLine::ForCurrentProcess();
++  if (command_line->HasSwitch(switches::kDisableDevTools))
++    enable_devtools = false;
++
++#if 0
+   if (content_type_->SupportsGroup(
+           ContextMenuContentType::ITEM_GROUP_DEVELOPER)) {
++    if (enable_devtools)
+     AppendDeveloperItems();
+   }
++#endif
+
+   if (content_type_->SupportsGroup(
+           ContextMenuContentType::ITEM_GROUP_DEVTOOLS_UNPACKED_EXT)) {
++    if (enable_devtools)
+     AppendDevtoolsForUnpackedExtensions();
+   }
++#endif
+
++#if 0
+   if (content_type_->SupportsGroup(
+           ContextMenuContentType::ITEM_GROUP_PRINT_PREVIEW)) {
+     AppendPrintPreviewItems();
+   }
++#endif
+
+   // Remove any redundant trailing separator.
+   size_t count = menu_model_.GetItemCount();
+@@ -1347,6 +1366,7 @@ const Extension* RenderViewContextMenu::GetExtension() const {
+ }
+
+ std::u16string RenderViewContextMenu::GetTargetLanguageDisplayName() const {
++#if 0
+   std::unique_ptr<translate::TranslatePrefs> prefs(
+       ChromeTranslateClient::CreateTranslatePrefs(GetPrefs(browser_context_)));
+   language::LanguageModel* language_model =
+@@ -1355,6 +1375,8 @@ std::u16string RenderViewContextMenu::GetTargetLanguageDisplayName() const {
+   std::string locale = translate::TranslateManager::GetTargetLanguage(
+       prefs.get(), language_model);
+   return l10n_util::GetDisplayNameForLocale(locale, locale, true);
++#endif
++  return std::u16string();
+ }
+
+ void RenderViewContextMenu::AppendDeveloperItems() {
+@@ -1804,6 +1826,7 @@ void RenderViewContextMenu::AppendPageItems() {
+   if (has_sharing_menu_items)
+     menu_model_.AddSeparator(ui::NORMAL_SEPARATOR);
+
++#if 0
+   ChromeTranslateClient* chrome_translate_client =
+       ChromeTranslateClient::FromWebContents(embedder_web_contents_);
+   const bool canTranslate =
+@@ -1816,6 +1839,7 @@ void RenderViewContextMenu::AppendPageItems() {
+         l10n_util::GetStringFUTF16(IDS_CONTENT_CONTEXT_TRANSLATE,
+                                    GetTargetLanguageDisplayName()));
+   }
++#endif
+ }
+
+ void RenderViewContextMenu::AppendExitFullscreenItem() {
+@@ -1962,7 +1986,11 @@ void RenderViewContextMenu::AppendSearchProvider() {
+ }
+
+ void RenderViewContextMenu::AppendSpellingAndSearchSuggestionItems() {
+-  const bool use_spelling = !chrome::IsRunningInForcedAppMode();
++  bool use_spelling = !chrome::IsRunningInForcedAppMode();
++  const base::CommandLine* command_line =
++      base::CommandLine::ForCurrentProcess();
++  if (!command_line->HasSwitch(switches::kEnableSpellChecking))
++    use_spelling = false;
+   if (use_spelling)
+     AppendSpellingSuggestionItems();
+
+@@ -2051,6 +2079,7 @@ void RenderViewContextMenu::AppendOtherEditableItems() {
+ }
+
+ void RenderViewContextMenu::AppendLanguageSettings() {
++#if 0
+   const bool use_spelling = !chrome::IsRunningInForcedAppMode();
+   if (!use_spelling)
+     return;
+@@ -2069,6 +2098,7 @@ void RenderViewContextMenu::AppendLanguageSettings() {
+   spelling_options_submenu_observer_->InitMenu(params_);
+   observers_.AddObserver(spelling_options_submenu_observer_.get());
+ #endif
++#endif
+ }
+
+ void RenderViewContextMenu::AppendSpellingSuggestionItems() {
+@@ -3088,6 +3118,9 @@ bool RenderViewContextMenu::IsDevCommandEnabled(int id) const {
+ }
+
+ bool RenderViewContextMenu::IsTranslateEnabled() const {
++#if 1
++  return false;
++#else
+   ChromeTranslateClient* chrome_translate_client =
+       ChromeTranslateClient::FromWebContents(embedder_web_contents_);
+   // If no |chrome_translate_client| attached with this WebContents or we're
+@@ -3108,6 +3141,7 @@ bool RenderViewContextMenu::IsTranslateEnabled() const {
+          !source_lang.empty() &&  // Did we receive the page language yet?
+          // Disable on the Instant Extended NTP.
+          !search::IsInstantNTP(embedder_web_contents_);
++#endif
+ }
+
+ bool RenderViewContextMenu::IsSaveLinkAsEnabled() const {
+@@ -3756,6 +3790,7 @@ void RenderViewContextMenu::ExecRouteMedia() {
+ }
+
+ void RenderViewContextMenu::ExecTranslate() {
++#if 0
+   ChromeTranslateClient* chrome_translate_client =
+       ChromeTranslateClient::FromWebContents(embedder_web_contents_);
+   if (!chrome_translate_client)
+@@ -3766,6 +3801,7 @@ void RenderViewContextMenu::ExecTranslate() {
+   DCHECK(manager);
+   manager->ShowTranslateUI(/*auto_translate=*/true,
+                            /*triggered_from_menu=*/true);
++#endif
+ }
+
+ void RenderViewContextMenu::ExecPartialTranslate() {

@@ -1,0 +1,15 @@
+diff --git a/third_party/blink/renderer/core/frame/location.cc b/third_party/blink/renderer/core/frame/location.cc
+index a1aeede568..36d785b900 100644
+--- a/third_party/blink/renderer/core/frame/location.cc
++++ b/third_party/blink/renderer/core/frame/location.cc
+@@ -108,7 +108,10 @@ DOMStringList* Location::ancestorOrigins() const {
+        frame; frame = frame->Tree().Parent(FrameTreeBoundary::kFenced)) {
+     origins->Append(
+         frame->GetSecurityContext()->GetSecurityOrigin()->ToString());
++    if (dom_window_->GetFrame()->isNwFakeTop())
++      break;
+   }
++
+   return origins;
+ }
+

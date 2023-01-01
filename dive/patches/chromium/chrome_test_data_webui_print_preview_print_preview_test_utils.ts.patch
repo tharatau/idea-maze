@@ -1,0 +1,12 @@
+diff --git a/chrome/test/data/webui/print_preview/print_preview_test_utils.ts b/chrome/test/data/webui/print_preview/print_preview_test_utils.ts
+index e2318203fc..126c580809 100644
+--- a/chrome/test/data/webui/print_preview/print_preview_test_utils.ts
++++ b/chrome/test/data/webui/print_preview/print_preview_test_utils.ts
+@@ -15,6 +15,7 @@ export function getDefaultInitialSettings(isPdf: boolean = false):
+     NativeInitialSettings {
+   return {
+     isInKioskAutoPrintMode: false,
++    nwPrintMode: false,
+     isInAppKioskMode: false,
+     pdfPrinterDisabled: false,
+     thousandsDelimiter: ',',

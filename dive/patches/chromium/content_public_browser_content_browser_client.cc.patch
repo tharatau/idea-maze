@@ -1,0 +1,52 @@
+diff --git a/content/public/browser/content_browser_client.cc b/content/public/browser/content_browser_client.cc
+index a9c96d4b46..19080979de 100644
+--- a/content/public/browser/content_browser_client.cc
++++ b/content/public/browser/content_browser_client.cc
+@@ -4,6 +4,8 @@
+
+ #include "content/public/browser/content_browser_client.h"
+
++#include "content/nw/src/browser/nw_content_browser_hooks.h"
++
+ #include <utility>
+
+ #include "base/callback_helpers.h"
+@@ -163,6 +165,8 @@ bool ContentBrowserClient::ShouldLockProcessToSite(
+     BrowserContext* browser_context,
+     const GURL& effective_url) {
+   DCHECK(browser_context);
++  if (nw::PinningRenderer())
++    return false;
+   return true;
+ }
+
+@@ -177,6 +181,7 @@ bool ContentBrowserClient::ShouldTreatURLSchemeAsFirstPartyWhenTopLevel(
+   return false;
+ }
+
++
+ bool ContentBrowserClient::ShouldIgnoreSameSiteCookieRestrictionsWhenTopLevel(
+     base::StringPiece scheme,
+     bool is_embedded_origin_secure) {
+@@ -189,6 +194,10 @@ std::string ContentBrowserClient::GetSiteDisplayNameForCdmProcess(
+   return site_url.spec();
+ }
+
++bool ContentBrowserClient::IsNWOrigin(const url::Origin& origin, BrowserContext* context) {
++  return false;
++}
++
+ void ContentBrowserClient::OverrideURLLoaderFactoryParams(
+     BrowserContext* browser_context,
+     const url::Origin& origin,
+@@ -452,6 +461,10 @@ void ContentBrowserClient::AllowWorkerFileSystem(
+   std::move(callback).Run(true);
+ }
+
++base::FilePath ContentBrowserClient::GetRootPath() {
++  return base::FilePath();
++}
++
+ bool ContentBrowserClient::AllowWorkerIndexedDB(
+     const GURL& url,
+     BrowserContext* browser_context,

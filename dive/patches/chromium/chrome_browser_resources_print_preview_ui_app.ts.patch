@@ -1,0 +1,33 @@
+diff --git a/chrome/browser/resources/print_preview/ui/app.ts b/chrome/browser/resources/print_preview/ui/app.ts
+index 478ee7f2a7..b5ef8139a2 100644
+--- a/chrome/browser/resources/print_preview/ui/app.ts
++++ b/chrome/browser/resources/print_preview/ui/app.ts
+@@ -105,6 +105,12 @@ export class PrintPreviewAppElement extends PrintPreviewAppElementBase {
+       },
+
+       maxSheets_: Number,
++      /** @private {boolean} */
++      isInNWPrintMode_: {
++        type: Boolean,
++        notify: true,
++        value: false,
++      },
+     };
+   }
+
+@@ -130,6 +136,7 @@ export class PrintPreviewAppElement extends PrintPreviewAppElementBase {
+   private startPreviewWhenReady_: boolean = false;
+   private showSystemDialogBeforePrint_: boolean = false;
+   private openPdfInPreview_: boolean = false;
++  private isInNWPrintMode_: boolean = false;
+   private isInKioskAutoPrintMode_: boolean = false;
+   private whenReady_: Promise<void>|null = null;
+   private openDialogs_: CrDialogElement[] = [];
+@@ -295,6 +302,7 @@ export class PrintPreviewAppElement extends PrintPreviewAppElementBase {
+           settings.pdfPrinterDisabled, settings.isDriveMounted || false);
+       this.destinationsManaged_ = settings.destinationsManaged;
+       this.isInKioskAutoPrintMode_ = settings.isInKioskAutoPrintMode;
++      this.isInNWPrintMode_ = settings.nwPrintMode;
+
+       // This is only visible in the task manager.
+       let title = document.head.querySelector('title');

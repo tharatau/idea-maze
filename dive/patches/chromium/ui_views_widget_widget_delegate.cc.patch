@@ -1,0 +1,50 @@
+diff --git a/ui/views/widget/widget_delegate.cc b/ui/views/widget/widget_delegate.cc
+index 6d58e740b5..8355c7e13e 100644
+--- a/ui/views/widget/widget_delegate.cc
++++ b/ui/views/widget/widget_delegate.cc
+@@ -68,6 +68,8 @@ void WidgetDelegate::SetCanActivate(bool can_activate) {
+
+ void WidgetDelegate::OnWidgetMove() {}
+
++void WidgetDelegate::OnWidgetResize() {}
++
+ void WidgetDelegate::OnDisplayChanged() {}
+
+ void WidgetDelegate::OnWorkAreaChanged() {}
+@@ -108,6 +110,10 @@ bool WidgetDelegate::CanActivate() const {
+   return can_activate_;
+ }
+
++bool WidgetDelegate::NWCanClose(bool user_force) const {
++  return true;
++}
++
+ ui::ModalType WidgetDelegate::GetModalType() const {
+   return params_.modal_type;
+ }
+@@ -141,6 +147,10 @@ bool WidgetDelegate::ShouldShowCloseButton() const {
+   return params_.show_close_button;
+ }
+
++bool WidgetDelegate::ShouldHandleOnSize() const {
++  return false;
++}
++
+ ui::ImageModel WidgetDelegate::GetWindowAppIcon() {
+   // Prefer app icon if available.
+   if (!params_.app_icon.isNull())
+@@ -162,6 +172,14 @@ bool WidgetDelegate::ExecuteWindowsCommand(int command_id) {
+   return false;
+ }
+
++bool WidgetDelegate::ExecuteAppCommand(int command_id) {
++  return ExecuteWindowsCommand(command_id);
++}
++
++bool WidgetDelegate::HandleSize(unsigned int param, const gfx::Size& size) {
++  return false;
++}
++
+ std::string WidgetDelegate::GetWindowName() const {
+   return std::string();
+ }

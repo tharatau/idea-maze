@@ -1,0 +1,15 @@
+diff --git a/extensions/renderer/script_context.h b/extensions/renderer/script_context.h
+index adbf770b6c..fd626c7f9d 100644
+--- a/extensions/renderer/script_context.h
++++ b/extensions/renderer/script_context.h
+@@ -335,6 +335,10 @@ class ScriptContext {
+   int32_t id_counter = 1;
+
+   base::ThreadChecker thread_checker_;
++
++ public:
++  base::WeakPtrFactory<ScriptContext> weak_factory_;
++
+ };
+
+ }  // namespace extensions

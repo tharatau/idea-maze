@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/frame/remote_frame_owner.cc b/third_party/blink/renderer/core/frame/remote_frame_owner.cc
+index ad620676d9..92315ccc72 100644
+--- a/third_party/blink/renderer/core/frame/remote_frame_owner.cc
++++ b/third_party/blink/renderer/core/frame/remote_frame_owner.cc
+@@ -26,6 +26,8 @@ RemoteFrameOwner::RemoteFrameOwner(
+       browsing_context_container_name_(
+           static_cast<String>(frame_owner_properties.name)),
+       scrollbar_(frame_owner_properties.scrollbar_mode),
++      nwfaketop_(frame_owner_properties.nwFakeTop),
++      nwuseragent_(frame_owner_properties.nwuseragent),
+       margin_width_(frame_owner_properties.margin_width),
+       margin_height_(frame_owner_properties.margin_height),
+       allow_fullscreen_(frame_owner_properties.allow_fullscreen),

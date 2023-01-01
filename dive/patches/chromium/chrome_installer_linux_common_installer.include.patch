@@ -1,0 +1,17 @@
+diff --git a/chrome/installer/linux/common/installer.include b/chrome/installer/linux/common/installer.include
+index 6309df66f1..cb61a5dd60 100644
+--- a/chrome/installer/linux/common/installer.include
++++ b/chrome/installer/linux/common/installer.include
+@@ -158,9 +158,9 @@ stage_install_common() {
+   # we should flag all installer files in FILES.cfg and get them from there, so
+   # there's only one place people need to keep track of such things (and in
+   # only the public repository).
+-  if [ -r "${OUTPUTDIR}/chrome_100_percent.pak" ]; then
+-    install -m 644 "${OUTPUTDIR}/chrome_100_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"
+-    install -m 644 "${OUTPUTDIR}/chrome_200_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"
++  if [ -r "${OUTPUTDIR}/nw_100_percent.pak" ]; then
++    install -m 644 "${OUTPUTDIR}/nw_100_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"
++    install -m 644 "${OUTPUTDIR}/nw_200_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"
+   else
+     install -m 644 "${OUTPUTDIR}/theme_resources_100_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"
+     install -m 644 "${OUTPUTDIR}/ui_resources_100_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"

@@ -1,0 +1,16 @@
+diff --git a/content/browser/renderer_host/navigator.cc b/content/browser/renderer_host/navigator.cc
+index 8caea1c8d5..844dafc2fd 100644
+--- a/content/browser/renderer_host/navigator.cc
++++ b/content/browser/renderer_host/navigator.cc
+@@ -58,6 +58,11 @@
+ #include "url/gurl.h"
+ #include "url/url_util.h"
+
++namespace nw {
++  typedef bool(*RphGuestFilterURLHookFn)(content::RenderProcessHost* rph, const GURL* url);
++  extern RphGuestFilterURLHookFn gRphGuestFilterURLHook;
++}
++
+ namespace content {
+
+ namespace {

@@ -1,0 +1,113 @@
+diff --git a/content/renderer/render_frame_impl.cc b/content/renderer/render_frame_impl.cc
+index d70f6df69a..59ebaab98f 100644
+--- a/content/renderer/render_frame_impl.cc
++++ b/content/renderer/render_frame_impl.cc
+@@ -258,6 +258,9 @@
+
+ using base::Time;
+ using blink::ContextMenuData;
++
++#include "content/nw/src/nw_content.h"
++
+ using blink::WebContentDecryptionModule;
+ using blink::WebData;
+ using blink::WebDocument;
+@@ -1156,6 +1159,7 @@ WindowOpenDisposition NavigationPolicyToDisposition(
+     case blink::kWebNavigationPolicyDownload:
+       return WindowOpenDisposition::SAVE_TO_DISK;
+     case blink::kWebNavigationPolicyCurrentTab:
++    case blink::kWebNavigationPolicyIgnore:
+       return WindowOpenDisposition::CURRENT_TAB;
+     case blink::kWebNavigationPolicyNewBackgroundTab:
+       return WindowOpenDisposition::NEW_BACKGROUND_TAB;
+@@ -1428,6 +1432,16 @@ blink::WebLocalFrame* RenderFrameImpl::UniqueNameFrameAdapter::GetWebFrame()
+   return render_frame_->frame_;
+ }
+
++void RenderFrameImpl::willHandleNavigationPolicy(
++                                                blink::WebFrame* frame,
++                                                const blink::WebURLRequest& request,
++                                                blink::WebNavigationPolicy* policy,
++                                                blink::WebString* manifest,
++                                                bool new_win) {
++  GetContentClient()->renderer()
++    ->willHandleNavigationPolicy(this, frame, request, policy, manifest, new_win);
++}
++
+ // static
+ RenderFrameImpl* RenderFrameImpl::Create(
+     AgentSchedulingGroup& agent_scheduling_group,
+@@ -1819,7 +1833,8 @@ RenderFrameImpl::CreateParams& RenderFrameImpl::CreateParams::operator=(
+
+ // RenderFrameImpl ----------------------------------------------------------
+ RenderFrameImpl::RenderFrameImpl(CreateParams params)
+-    : agent_scheduling_group_(*params.agent_scheduling_group),
++  : skip_blocking_parser_(true), frame_(nullptr),
++      agent_scheduling_group_(*params.agent_scheduling_group),
+       is_main_frame_(true),
+       unique_name_frame_adapter_(this),
+       unique_name_helper_(&unique_name_frame_adapter_),
+@@ -2468,6 +2483,10 @@ void RenderFrameImpl::GetInterfaceProvider(
+   interface_provider_receivers_.Add(this, std::move(receiver), task_runner);
+ }
+
++void RenderFrameImpl::SetSkipBlockingParser(bool value) {
++  skip_blocking_parser_ = value;
++}
++
+ void RenderFrameImpl::BlockRequests() {
+   frame_request_blocker_->Block();
+ }
+@@ -4341,6 +4360,7 @@ void RenderFrameImpl::DidCreateScriptContext(v8::Local<v8::Context> context,
+         context, std::move(mojo_js_interface_broker_));
+   }
+
++  GetFrameHost()->SetContextCreated(true);
+   for (auto& observer : observers_)
+     observer.DidCreateScriptContext(context, world_id);
+ }
+@@ -4349,6 +4369,7 @@ void RenderFrameImpl::WillReleaseScriptContext(v8::Local<v8::Context> context,
+                                                int world_id) {
+   for (auto& observer : observers_)
+     observer.WillReleaseScriptContext(context, world_id);
++  GetFrameHost()->SetContextCreated(false);
+ }
+
+ void RenderFrameImpl::DidChangeScrollOffset() {
+@@ -4376,6 +4397,10 @@ blink::WebEncryptedMediaClient* RenderFrameImpl::EncryptedMediaClient() {
+ }
+
+ blink::WebString RenderFrameImpl::UserAgentOverride() {
++  std::string user_agent;
++  if (nw::GetUserAgentFromManifest(&user_agent))
++    return WebString::FromUTF8(user_agent);
++
+   if (ShouldUseUserAgentOverride()) {
+     return WebString::FromUTF8(GetWebView()
+                                    ->GetRendererPreferences()
+@@ -6142,7 +6167,8 @@ WebView* RenderFrameImpl::CreateNewWindow(
+     bool& consumed_user_gesture,
+     const absl::optional<blink::Impression>& impression,
+     const absl::optional<blink::WebPictureInPictureWindowOptions>&
+-        pip_options) {
++    pip_options,
++    blink::WebString* manifest) {
+   consumed_user_gesture = false;
+   mojom::CreateNewWindowParamsPtr params = mojom::CreateNewWindowParams::New();
+
+@@ -6173,6 +6199,7 @@ WebView* RenderFrameImpl::CreateNewWindow(
+         request.GetReferrerPolicy());
+   }
+   params->features = ConvertWebWindowFeaturesToMojoWindowFeatures(features);
++  params->nw_window_manifest = manifest->Utf16();
+
+   params->is_form_submission = request.IsFormSubmission();
+   params->form_submission_post_data =
+@@ -6256,6 +6283,7 @@ WebView* RenderFrameImpl::CreateNewWindow(
+   // disagrees.
+   mojom::CreateViewParamsPtr view_params = mojom::CreateViewParams::New();
+
++  view_params->skip_blocking_parser = true;
+   view_params->opener_frame_token = GetWebFrame()->GetFrameToken();
+   view_params->window_was_opened_by_another_window = true;
+   view_params->renderer_preferences = GetWebView()->GetRendererPreferences();

@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/html/forms/color_input_type.cc b/third_party/blink/renderer/core/html/forms/color_input_type.cc
+index 7845bc2533..1910d24123 100644
+--- a/third_party/blink/renderer/core/html/forms/color_input_type.cc
++++ b/third_party/blink/renderer/core/html/forms/color_input_type.cc
+@@ -150,7 +150,7 @@ void ColorInputType::HandleDOMActivateEvent(Event& event) {
+     return;
+
+   Document& document = GetElement().GetDocument();
+-  if (!LocalFrame::HasTransientUserActivation(document.GetFrame())) {
++  if (!LocalFrame::HasTransientUserActivation(document.GetFrame()) && !document.GetFrame()->isNodeJS()) {
+     document.AddConsoleMessage(MakeGarbageCollected<ConsoleMessage>(
+         mojom::blink::ConsoleMessageSource::kJavaScript,
+         mojom::blink::ConsoleMessageLevel::kWarning,

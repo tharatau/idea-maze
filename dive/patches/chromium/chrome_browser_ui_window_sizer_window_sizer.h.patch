@@ -1,0 +1,30 @@
+diff --git a/chrome/browser/ui/window_sizer/window_sizer.h b/chrome/browser/ui/window_sizer/window_sizer.h
+index 8ee76a01a2..5418ea7b61 100644
+--- a/chrome/browser/ui/window_sizer/window_sizer.h
++++ b/chrome/browser/ui/window_sizer/window_sizer.h
+@@ -72,14 +72,14 @@ class WindowSizer {
+   //
+   // |show_state| will be overwritten and return the initial visual state of
+   // the window to use.
+-  static void GetBrowserWindowBoundsAndShowState(
++  static bool GetBrowserWindowBoundsAndShowState(
+       const gfx::Rect& specified_bounds,
+       const Browser* browser,
+       gfx::Rect* window_bounds,
+       ui::WindowShowState* show_state);
+
+   // As above, but takes a state provider for testing.
+-  static void GetBrowserWindowBoundsAndShowState(
++  static bool GetBrowserWindowBoundsAndShowState(
+       std::unique_ptr<StateProvider> state_provider,
+       const gfx::Rect& specified_bounds,
+       const Browser* browser,
+@@ -106,7 +106,7 @@ class WindowSizer {
+   virtual ~WindowSizer();
+
+   // See GetBrowserWindowBoundsAndShowState() above.
+-  virtual void DetermineWindowBoundsAndShowState(
++  virtual bool DetermineWindowBoundsAndShowState(
+       const gfx::Rect& specified_bounds,
+       gfx::Rect* bounds,
+       ui::WindowShowState* show_state);

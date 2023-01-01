@@ -1,0 +1,13 @@
+diff --git a/ui/ozone/common/egl_util.cc b/ui/ozone/common/egl_util.cc
+index 75c59f9359..54f0124b96 100644
+--- a/ui/ozone/common/egl_util.cc
++++ b/ui/ozone/common/egl_util.cc
+@@ -130,7 +130,7 @@ bool LoadDefaultEGLGLES2Bindings(
+     if (!base::PathService::Get(base::DIR_MODULE, &module_path))
+       return false;
+ #endif
+-
++    module_path = module_path.Append("lib/");
+     glesv2_path = module_path.Append(kAngleGlesSoname);
+     egl_path = module_path.Append(kAngleEglSoname);
+   } else {

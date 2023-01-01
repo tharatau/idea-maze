@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/ui/views/frame/system_menu_model_builder.cc b/chrome/browser/ui/views/frame/system_menu_model_builder.cc
+index c55c6f33c7..e85050610e 100644
+--- a/chrome/browser/ui/views/frame/system_menu_model_builder.cc
++++ b/chrome/browser/ui/views/frame/system_menu_model_builder.cc
+@@ -118,6 +118,7 @@ void SystemMenuModelBuilder::BuildSystemMenuForBrowserWindow(
+
+ void SystemMenuModelBuilder::BuildSystemMenuForAppOrPopupWindow(
+     ui::SimpleMenuModel* model) {
++#if 0
+   model->AddItemWithStringId(IDC_BACK, IDS_CONTENT_CONTEXT_BACK);
+   model->AddItemWithStringId(IDC_FORWARD, IDS_CONTENT_CONTEXT_FORWARD);
+   model->AddItemWithStringId(IDC_RELOAD, IDS_APP_MENU_RELOAD);
+@@ -152,6 +153,7 @@ void SystemMenuModelBuilder::BuildSystemMenuForAppOrPopupWindow(
+   AppendMoveToDesksMenu(model);
+ #endif
+   AppendTeleportMenu(model);
++#endif
+ }
+
+ void SystemMenuModelBuilder::AddFrameToggleItems(ui::SimpleMenuModel* model) {

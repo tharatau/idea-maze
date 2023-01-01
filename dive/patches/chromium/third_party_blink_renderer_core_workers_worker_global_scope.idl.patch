@@ -1,0 +1,12 @@
+diff --git a/third_party/blink/renderer/core/workers/worker_global_scope.idl b/third_party/blink/renderer/core/workers/worker_global_scope.idl
+index 324372ba80..b6aebeb83f 100644
+--- a/third_party/blink/renderer/core/workers/worker_global_scope.idl
++++ b/third_party/blink/renderer/core/workers/worker_global_scope.idl
+@@ -44,6 +44,7 @@
+     // Although RaisesException is not specified, importScripts() can actually
+     // throw exceptions directly to V8.
+     void importScripts(ScriptURLString... urls);
++    [CallWith=ScriptState] any importNWBin(ArrayBuffer buffer);
+     readonly attribute WorkerNavigator navigator;
+
+

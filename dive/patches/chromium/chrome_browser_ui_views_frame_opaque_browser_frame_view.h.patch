@@ -1,0 +1,28 @@
+diff --git a/chrome/browser/ui/views/frame/opaque_browser_frame_view.h b/chrome/browser/ui/views/frame/opaque_browser_frame_view.h
+index 45ae28c4ae..c9e03e3503 100644
+--- a/chrome/browser/ui/views/frame/opaque_browser_frame_view.h
++++ b/chrome/browser/ui/views/frame/opaque_browser_frame_view.h
+@@ -68,6 +68,7 @@ class OpaqueBrowserFrameView : public BrowserNonClientFrameView,
+   void PaintAsActiveChanged() override;
+   void UpdateFrameColor() override;
+   void OnThemeChanged() override;
++  gfx::Size GetMaximumSize() const override;
+
+   // views::NonClientFrameView:
+   gfx::Rect GetBoundsForClientView() const override;
+@@ -93,6 +94,7 @@ class OpaqueBrowserFrameView : public BrowserNonClientFrameView,
+   std::u16string GetWindowTitle() const override;
+   int GetIconSize() const override;
+   gfx::Size GetBrowserViewMinimumSize() const override;
++  gfx::Size GetBrowserViewMaximumSize() const override;
+   bool ShouldShowCaptionButtons() const override;
+   bool IsRegularOrGuestSession() const override;
+   bool CanMaximize() const override;
+@@ -210,6 +212,7 @@ class OpaqueBrowserFrameView : public BrowserNonClientFrameView,
+   void UpdateCaptionButtonToolTipsForWindowControlsOverlay();
+ #endif
+
++  bool frameless_;
+   // Our layout manager also calculates various bounds.
+   raw_ptr<OpaqueBrowserFrameViewLayout> layout_;
+

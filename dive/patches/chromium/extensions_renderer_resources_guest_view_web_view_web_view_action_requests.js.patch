@@ -1,0 +1,32 @@
+diff --git a/extensions/renderer/resources/guest_view/web_view/web_view_action_requests.js b/extensions/renderer/resources/guest_view/web_view/web_view_action_requests.js
+index 83ac48bf7d..78f21f6420 100644
+--- a/extensions/renderer/resources/guest_view/web_view/web_view_action_requests.js
++++ b/extensions/renderer/resources/guest_view/web_view/web_view_action_requests.js
+@@ -21,8 +21,9 @@ var PERMISSION_TYPES = ['media',
+ // The browser will kill us if we send it a bad instance ID.
+ // TODO(780728): Remove once the cause of the bad ID is known.
+ function CrashIfInvalidInstanceId(instanceId, culpritFunction) {
++  //NWJS: zero instance id is allowed in NW.
+   logging.CHECK(
+-      instanceId > 0,
++      instanceId >= 0,
+       'WebView: Invalid instance ID (' + instanceId + ') from ' +
+           culpritFunction);
+ }
+@@ -137,13 +138,14 @@ Dialog.prototype.getInterfaceObject = function() {
+     ok: $Function.bind(function(user_input) {
+       this.validateCall();
+       user_input = user_input || '';
+-      CrashIfInvalidInstanceId(this.guestInstanceId, 'Dialog ok');
++      //NWJS: zero instance id is allowed in NW.
++      //CrashIfInvalidInstanceId(this.guestInstanceId, 'Dialog ok');
+       WebViewInternal.setPermission(
+           this.guestInstanceId, this.requestId, 'allow', user_input);
+     }, this),
+     cancel: $Function.bind(function() {
+       this.validateCall();
+-      CrashIfInvalidInstanceId(this.guestInstanceId, 'Dialog cancel');
++      //CrashIfInvalidInstanceId(this.guestInstanceId, 'Dialog cancel');
+       WebViewInternal.setPermission(
+           this.guestInstanceId, this.requestId, 'deny');
+     }, this)

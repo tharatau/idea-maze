@@ -1,0 +1,19 @@
+diff --git a/chrome/browser/webshare/share_service_impl.cc b/chrome/browser/webshare/share_service_impl.cc
+index 1443f79d5f..b21dca3bfb 100644
+--- a/chrome/browser/webshare/share_service_impl.cc
++++ b/chrome/browser/webshare/share_service_impl.cc
+@@ -198,14 +198,6 @@ void ShareServiceImpl::Share(const std::string& title,
+       return;
+     }
+
+-    // Check if at least one file is marked by the download protection service
+-    // to send a ping to check this file type.
+-    if (!should_check_url &&
+-        safe_browsing::FileTypePolicies::GetInstance()->IsCheckedBinaryFile(
+-            path)) {
+-      should_check_url = true;
+-    }
+-
+     // In the case where the original blob handle was to a native file (of
+     // unknown size), the serialized data does not contain an accurate file
+     // size. To handle this, the comparison against kMaxSharedFileBytes should

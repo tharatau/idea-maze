@@ -1,0 +1,73 @@
+diff --git a/chrome/common/chrome_constants.cc b/chrome/common/chrome_constants.cc
+index 47f9bf73a4..3a8a4ae534 100644
+--- a/chrome/common/chrome_constants.cc
++++ b/chrome/common/chrome_constants.cc
+@@ -15,7 +15,7 @@
+ #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
+ #define PRODUCT_STRING "Google Chrome"
+ #elif BUILDFLAG(CHROMIUM_BRANDING)
+-#define PRODUCT_STRING "Chromium"
++#define PRODUCT_STRING "nwjs"
+ #else
+ #error Unknown branding
+ #endif
+@@ -44,9 +44,9 @@ const char kChromeVersion[] = CHROME_VERSION_STRING;
+
+ #if BUILDFLAG(IS_WIN)
+ const base::FilePath::CharType kBrowserProcessExecutableName[] =
+-    FPL("chrome.exe");
++    FPL("nw.exe");
+ const base::FilePath::CharType kHelperProcessExecutableName[] =
+-    FPL("chrome.exe");
++    FPL("nw.exe");
+ #elif BUILDFLAG(IS_MAC)
+ const base::FilePath::CharType kBrowserProcessExecutableName[] =
+     FPL(PRODUCT_STRING);
+@@ -58,7 +58,7 @@ const base::FilePath::CharType kBrowserProcessExecutableName[] = FPL("chrome");
+ const base::FilePath::CharType kHelperProcessExecutableName[] =
+     FPL("sandboxed_process");
+ #elif BUILDFLAG(IS_POSIX)
+-const base::FilePath::CharType kBrowserProcessExecutableName[] = FPL("chrome");
++const base::FilePath::CharType kBrowserProcessExecutableName[] = FPL("nw");
+ // Helper processes end up with a name of "exe" due to execing via
+ // /proc/self/exe.  See bug 22703.
+ const base::FilePath::CharType kHelperProcessExecutableName[] = FPL("exe");
+@@ -66,9 +66,9 @@ const base::FilePath::CharType kHelperProcessExecutableName[] = FPL("exe");
+
+ #if BUILDFLAG(IS_WIN)
+ const base::FilePath::CharType kBrowserProcessExecutablePath[] =
+-    FPL("chrome.exe");
++    FPL("nw.exe");
+ const base::FilePath::CharType kHelperProcessExecutablePath[] =
+-    FPL("chrome.exe");
++    FPL("nw.exe");
+ #elif BUILDFLAG(IS_MAC)
+ const base::FilePath::CharType kBrowserProcessExecutablePath[] =
+     FPL(PRODUCT_STRING ".app/Contents/MacOS/" PRODUCT_STRING);
+@@ -78,8 +78,8 @@ const base::FilePath::CharType kHelperProcessExecutablePath[] =
+ const base::FilePath::CharType kBrowserProcessExecutablePath[] = FPL("chrome");
+ const base::FilePath::CharType kHelperProcessExecutablePath[] = FPL("chrome");
+ #elif BUILDFLAG(IS_POSIX)
+-const base::FilePath::CharType kBrowserProcessExecutablePath[] = FPL("chrome");
+-const base::FilePath::CharType kHelperProcessExecutablePath[] = FPL("chrome");
++const base::FilePath::CharType kBrowserProcessExecutablePath[] = FPL("nw");
++const base::FilePath::CharType kHelperProcessExecutablePath[] = FPL("nw");
+ #endif  // OS_*
+
+ #if BUILDFLAG(IS_MAC)
+@@ -91,11 +91,11 @@ const char kMacHelperSuffixAlerts[] = " (Alerts)";
+ #endif  // BUILDFLAG(IS_MAC)
+
+ #if BUILDFLAG(IS_WIN)
+-const base::FilePath::CharType kBrowserResourcesDll[] = FPL("chrome.dll");
+-const base::FilePath::CharType kElfDll[] = FPL("chrome_elf.dll");
++const base::FilePath::CharType kBrowserResourcesDll[] = FPL("nw.dll");
++const base::FilePath::CharType kElfDll[] = FPL("nw_elf.dll");
+ const base::FilePath::CharType kStatusTrayWindowClass[] =
+-    FPL("Chrome_StatusTrayWindow");
+-#endif  // BUILDFLAG(IS_WIN)
++    FPL("NWJS_StatusTrayWindow");
++#endif  // defined(OS_WIN)
+
+ const char kInitialProfile[] = "Default";
+ const char kMultiProfileDirPrefix[] = "Profile ";

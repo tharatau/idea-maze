@@ -1,0 +1,21 @@
+diff --git a/chrome/test/base/test_browser_window.h b/chrome/test/base/test_browser_window.h
+index a3dab069ac..5f53904adf 100644
+--- a/chrome/test/base/test_browser_window.h
++++ b/chrome/test/base/test_browser_window.h
+@@ -55,7 +55,16 @@ class TestBrowserWindow : public BrowserWindow {
+   TestBrowserWindow& operator=(const TestBrowserWindow&) = delete;
+   ~TestBrowserWindow() override;
+
++  void SetShowInTaskbar(bool) override {}
++  void SetResizable(bool) override {}
++  void SetAllVisible(bool) override {}
++  void SetMinimumSize(gfx::Size) override {}
++  void SetMaximumSize(gfx::Size) override {}
++  void NativeWindowChanged() override {}
+   // BrowserWindow:
++  void UpdateDraggableRegions(
++         const std::vector<extensions::DraggableRegion>& regions) override;
++  SkRegion* GetDraggableRegion() override;
+   void Show() override {}
+   void ShowInactive() override {}
+   void Hide() override {}

@@ -1,0 +1,18 @@
+diff --git a/chrome/browser/ui/views/page_action/page_action_icon_controller.cc b/chrome/browser/ui/views/page_action/page_action_icon_controller.cc
+index 0e1505f6fc..d6128d4e70 100644
+--- a/chrome/browser/ui/views/page_action/page_action_icon_controller.cc
++++ b/chrome/browser/ui/views/page_action/page_action_icon_controller.cc
+@@ -201,11 +201,13 @@ void PageActionIconController::Init(const PageActionIconParams& params,
+                       params.page_action_icon_delegate, params.browser));
+         break;
+       case PageActionIconType::kTranslate:
++#if 0
+         DCHECK(params.command_updater);
+         add_page_action_icon(
+             type, std::make_unique<TranslateIconView>(
+                       params.command_updater, params.icon_label_bubble_delegate,
+                       params.page_action_icon_delegate));
++#endif
+         break;
+       case PageActionIconType::kVirtualCardEnroll:
+         add_page_action_icon(

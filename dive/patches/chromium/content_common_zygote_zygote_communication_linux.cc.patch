@@ -1,0 +1,20 @@
+diff --git a/content/common/zygote/zygote_communication_linux.cc b/content/common/zygote/zygote_communication_linux.cc
+index 769d9d1d4d..e174b1fe1f 100644
+--- a/content/common/zygote/zygote_communication_linux.cc
++++ b/content/common/zygote/zygote_communication_linux.cc
+@@ -4,6 +4,7 @@
+
+ #include "content/common/zygote/zygote_communication_linux.h"
+
++#include "content/nw/src/common/shell_switches.h"
+ #include <string.h>
+ #include <sys/socket.h>
+
+@@ -240,6 +241,7 @@ void ZygoteCommunication::Init(
+   static const char* const kForwardSwitches[] = {
+       sandbox::policy::switches::kAllowSandboxDebugging,
+       switches::kDisableInProcessStackTraces,
++      "enable-spell-checking",
+       sandbox::policy::switches::kDisableSeccompFilterSandbox,
+       sandbox::policy::switches::kNoSandbox,
+   };

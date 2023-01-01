@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/ui/cocoa/status_icons/status_icon_mac.h b/chrome/browser/ui/cocoa/status_icons/status_icon_mac.h
+index 65ca089be4..1533525902 100644
+--- a/chrome/browser/ui/cocoa/status_icons/status_icon_mac.h
++++ b/chrome/browser/ui/cocoa/status_icons/status_icon_mac.h
+@@ -39,7 +39,7 @@ class StatusIconMac : public StatusIcon {
+
+  protected:
+   // Overridden from StatusIcon.
+-  void UpdatePlatformContextMenu(StatusIconMenuModel* model) override;
++  void UpdatePlatformContextMenu(ui::MenuModel* model) override;
+
+  private:
+   FRIEND_TEST_ALL_PREFIXES(StatusIconMacTest, CreateMenu);

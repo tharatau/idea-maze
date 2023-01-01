@@ -1,0 +1,14 @@
+diff --git a/content/test/test_web_contents.cc b/content/test/test_web_contents.cc
+index 1a64f301f5..b25ccc95cb 100644
+--- a/content/test/test_web_contents.cc
++++ b/content/test/test_web_contents.cc
+@@ -366,7 +366,8 @@ void TestWebContents::ShowCreatedWindow(RenderFrameHostImpl* opener,
+                                         int route_id,
+                                         WindowOpenDisposition disposition,
+                                         const gfx::Rect& initial_rect,
+-                                        bool user_gesture) {}
++                                        bool user_gesture, std::string) {
++}
+
+ void TestWebContents::ShowCreatedWidget(int process_id,
+                                         int route_id,

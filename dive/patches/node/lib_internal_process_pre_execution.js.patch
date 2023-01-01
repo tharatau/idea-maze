@@ -1,0 +1,33 @@
+diff --git a/lib/internal/process/pre_execution.js b/lib/internal/process/pre_execution.js
+index 23d4dbcf..2291ab3a 100644
+--- a/lib/internal/process/pre_execution.js
++++ b/lib/internal/process/pre_execution.js
+@@ -43,11 +43,15 @@ function prepareMainThreadExecution(expandArgv1 = false,
+ 
+   // Patch the process object with legacy properties and normalizations
+   patchProcessObject(expandArgv1);
+-  setupTraceCategoryState();
++  //setupTraceCategoryState();
+   setupPerfHooks();
+   setupInspectorHooks();
++
+   setupWarningHandler();
+-  setupFetch();
++  if (process.__nwjs) {
++  } else {
++    setupFetch();
++  }
+   setupWebCrypto();
+   setupCustomEvent();
+ 
+@@ -555,8 +559,8 @@ function initializeESMLoader() {
+   const esm = require('internal/process/esm_loader');
+   // Setup per-isolate callbacks that locate data or callbacks that we keep
+   // track of for different ESM modules.
+-  setInitializeImportMetaObjectCallback(esm.initializeImportMetaObject);
+-  setImportModuleDynamicallyCallback(esm.importModuleDynamicallyCallback);
++  //setInitializeImportMetaObjectCallback(esm.initializeImportMetaObject);
++  //setImportModuleDynamicallyCallback(esm.importModuleDynamicallyCallback);
+ 
+   // Patch the vm module when --experimental-vm-modules is on.
+   // Please update the comments in vm.js when this block changes.

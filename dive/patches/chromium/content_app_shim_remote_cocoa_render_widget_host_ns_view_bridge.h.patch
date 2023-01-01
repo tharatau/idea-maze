@@ -1,0 +1,21 @@
+diff --git a/content/app_shim_remote_cocoa/render_widget_host_ns_view_bridge.h b/content/app_shim_remote_cocoa/render_widget_host_ns_view_bridge.h
+index fb407a15d6..553e2e3054 100644
+--- a/content/app_shim_remote_cocoa/render_widget_host_ns_view_bridge.h
++++ b/content/app_shim_remote_cocoa/render_widget_host_ns_view_bridge.h
+@@ -20,6 +20,8 @@
+ #include "ui/base/mojom/attributed_string.mojom-forward.h"
+ #include "ui/display/display_observer.h"
+
++@class CALayer;
++
+ namespace remote_cocoa {
+
+ // Mojo bridge for a RenderWidgetHostViewMac's NSView. This class may be
+@@ -86,6 +88,7 @@ class RenderWidgetHostNSViewBridge : public mojom::RenderWidgetHostNSView,
+       ShowSharingServicePickerCallback callback) override;
+   void Destroy() override;
+
++  CALayer* GetBackgroundLayer();
+  private:
+   bool IsPopup() const { return !!popup_window_; }
+

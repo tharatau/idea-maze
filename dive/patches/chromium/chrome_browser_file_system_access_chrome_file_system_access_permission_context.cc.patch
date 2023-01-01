@@ -1,0 +1,87 @@
+diff --git a/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc b/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc
+index cccb3b901e..6f09fe27dd 100644
+--- a/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc
++++ b/chrome/browser/file_system_access/chrome_file_system_access_permission_context.cc
+@@ -1,8 +1,11 @@
+ // Copyright 2019 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
++#pragma clang diagnostic ignored "-Wunused-function"
+
+ #include "chrome/browser/file_system_access/chrome_file_system_access_permission_context.h"
++#include "content/public/common/content_client.h"
++#include "content/public/browser/content_browser_client.h"
+
+ #include <memory>
+ #include <string>
+@@ -840,6 +843,7 @@ ChromeFileSystemAccessPermissionContext::
+       profile_(context),
+       clock_(clock) {
+   DETACH_FROM_SEQUENCE(sequence_checker_);
++  browser_context_ = context;
+   content_settings_ = base::WrapRefCounted(
+       HostContentSettingsMapFactory::GetForProfile(profile_));
+
+@@ -1141,6 +1145,8 @@ ContentSetting
+ ChromeFileSystemAccessPermissionContext::GetWriteGuardContentSetting(
+     const url::Origin& origin) {
+   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
++  if (content::GetContentClient()->browser()->IsNWOrigin(origin, browser_context_))
++    return CONTENT_SETTING_ALLOW;
+   return content_settings()->GetContentSetting(
+       origin.GetURL(), origin.GetURL(),
+       ContentSettingsType::FILE_SYSTEM_WRITE_GUARD);
+@@ -1150,6 +1156,8 @@ ContentSetting
+ ChromeFileSystemAccessPermissionContext::GetReadGuardContentSetting(
+     const url::Origin& origin) {
+   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
++  if (content::GetContentClient()->browser()->IsNWOrigin(origin, browser_context_))
++    return CONTENT_SETTING_ALLOW;
+   return content_settings()->GetContentSetting(
+       origin.GetURL(), origin.GetURL(),
+       ContentSettingsType::FILE_SYSTEM_READ_GUARD);
+@@ -1191,6 +1199,11 @@ void ChromeFileSystemAccessPermissionContext::ConfirmSensitiveEntryAccess(
+     return;
+   }
+
++  if (content::GetContentClient()->browser()->IsNWOrigin(origin, browser_context_)) {
++    std::move(callback).Run(SensitiveEntryResult::kAllowed);
++    return;
++  }
++
+   base::ThreadPool::PostTaskAndReplyWithResult(
+       FROM_HERE, {base::MayBlock(), base::TaskPriority::USER_VISIBLE},
+       base::BindOnce(&ShouldBlockAccessToPath, path, handle_type),
+@@ -1205,6 +1218,8 @@ void ChromeFileSystemAccessPermissionContext::PerformAfterWriteChecks(
+     content::GlobalRenderFrameHostId frame_id,
+     base::OnceCallback<void(AfterWriteCheckResult)> callback) {
+   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
++  std::move(callback).Run(AfterWriteCheckResult::kAllow);
++#if 0
+   content::GetUIThreadTaskRunner({})->PostTask(
+       FROM_HERE,
+       base::BindOnce(
+@@ -1220,6 +1235,7 @@ void ChromeFileSystemAccessPermissionContext::PerformAfterWriteChecks(
+                                    InterpretSafeBrowsingResult(result)));
+               },
+               base::SequencedTaskRunnerHandle::Get(), std::move(callback))));
++#endif
+ }
+
+ void ChromeFileSystemAccessPermissionContext::
+@@ -1233,6 +1249,7 @@ void ChromeFileSystemAccessPermissionContext::
+         bool should_block) {
+   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+   if (!should_block) {
++#if 0
+     // If attempting to save a file with a dangerous extension, prompt the user
+     // to make them confirm they actually want to save the file.
+     if (dialog_type == ui::SelectFileDialog::SELECT_SAVEAS_FILE) {
+@@ -1254,6 +1271,7 @@ void ChromeFileSystemAccessPermissionContext::
+         return;
+       }
+     }
++#endif
+     std::move(callback).Run(SensitiveEntryResult::kAllowed);
+     return;
+   }

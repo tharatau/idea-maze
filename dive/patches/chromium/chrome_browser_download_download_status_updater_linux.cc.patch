@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/download/download_status_updater_linux.cc b/chrome/browser/download/download_status_updater_linux.cc
+index c6184fb5ae..d172419977 100644
+--- a/chrome/browser/download/download_status_updater_linux.cc
++++ b/chrome/browser/download/download_status_updater_linux.cc
+@@ -118,6 +118,7 @@ NO_SANITIZE("cfi-icall")
+ bool IsRunning() {
+   return inspector && get_unity_running && get_unity_running(inspector);
+ }
++}  // namespace
+
+ NO_SANITIZE("cfi-icall")
+ void SetDownloadCount(int count) {
+@@ -136,7 +137,6 @@ void SetProgressFraction(float percentage) {
+   }
+ }
+
+-}  // namespace
+
+ void DownloadStatusUpdater::UpdateAppIconDownloadProgress(
+     download::DownloadItem* download) {

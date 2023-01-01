@@ -1,0 +1,24 @@
+diff --git a/deps/uv/src/uv-common.h b/deps/uv/src/uv-common.h
+index 8a190bf8..8b79d8fa 100644
+--- a/deps/uv/src/uv-common.h
++++ b/deps/uv/src/uv-common.h
+@@ -130,7 +130,10 @@ enum {
+   UV_SIGNAL_ONE_SHOT                    = 0x02000000,
+ 
+   /* Only used by uv_poll_t handles. */
+-  UV_HANDLE_POLL_SLOW                   = 0x01000000
++  UV_HANDLE_POLL_SLOW                   = 0x01000000,
++
++  /* Only used by uv_process_t handles. */
++  UV_HANDLE_REAP                        = 0x10000000
+ };
+ 
+ int uv__loop_configure(uv_loop_t* loop, uv_loop_option option, va_list ap);
+@@ -320,6 +323,7 @@ void uv__threadpool_cleanup(void);
+ # define UV_REQ_INIT(req, typ)                                                \
+   do {                                                                        \
+     (req)->type = (typ);                                                      \
++    (req)->next_req = NULL;                                                   \
+     (req)->u.io.overlapped.Internal = 0;  /* SET_REQ_SUCCESS() */             \
+   }                                                                           \
+   while (0)

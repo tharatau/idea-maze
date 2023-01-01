@@ -1,0 +1,16 @@
+diff --git a/ui/views/widget/native_widget_private.cc b/ui/views/widget/native_widget_private.cc
+index 904fbad6f6..6b26d3d767 100644
+--- a/ui/views/widget/native_widget_private.cc
++++ b/ui/views/widget/native_widget_private.cc
+@@ -11,6 +11,11 @@
+ namespace views {
+ namespace internal {
+
++#if defined(OS_WIN)
++void NativeWidgetPrivate::SetPosition(const gfx::Point& pos) {
++
++}
++#endif
+ // static
+ gfx::Rect NativeWidgetPrivate::ConstrainBoundsToDisplayWorkArea(
+     const gfx::Rect& bounds) {

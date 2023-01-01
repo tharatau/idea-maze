@@ -1,0 +1,15 @@
+diff --git a/chrome/browser/download/bubble/download_bubble_controller.cc b/chrome/browser/download/bubble/download_bubble_controller.cc
+index 8fe6e4ee84..1c53a1bd04 100644
+--- a/chrome/browser/download/bubble/download_bubble_controller.cc
++++ b/chrome/browser/download/bubble/download_bubble_controller.cc
+@@ -400,8 +400,10 @@ void DownloadBubbleUIController::ProcessDownloadButtonPress(
+       ProcessDownloadWarningButtonPress(model, command);
+       break;
+     case DownloadCommands::REVIEW:
++#if 0
+       model->ReviewScanningVerdict(
+           browser_->tab_strip_model()->GetActiveWebContents());
++#endif
+       break;
+     case DownloadCommands::RETRY:
+       RetryDownload(model, command);

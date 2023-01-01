@@ -1,0 +1,36 @@
+diff --git a/extensions/renderer/script_context.cc b/extensions/renderer/script_context.cc
+index b01ddac2a1..ba11daffc7 100644
+--- a/extensions/renderer/script_context.cc
++++ b/extensions/renderer/script_context.cc
+@@ -201,7 +201,8 @@ ScriptContext::ScriptContext(const v8::Local<v8::Context>& v8_context,
+       context_id_(base::UnguessableToken::Create()),
+       safe_builtins_(this),
+       isolate_(v8_context->GetIsolate()),
+-      service_worker_version_id_(blink::mojom::kInvalidServiceWorkerVersionId) {
++      service_worker_version_id_(blink::mojom::kInvalidServiceWorkerVersionId),
++      weak_factory_(this) {
+   VLOG(1) << "Created context:\n" << GetDebugString();
+   v8_context_.AnnotateStrongRetainer("extensions::ScriptContext::v8_context_");
+   if (web_frame_)
+@@ -389,8 +390,10 @@ GURL ScriptContext::GetDocumentLoaderURLForFrame(
+ GURL ScriptContext::GetAccessCheckedFrameURL(
+     const blink::WebLocalFrame* frame) {
+   const blink::WebURL& weburl = frame->GetDocument().Url();
+-  if (weburl.IsEmpty()) {
++  if (weburl.IsEmpty() || GURL(weburl) == GURL("about:blank")) {
+     blink::WebDocumentLoader* document_loader = CurrentDocumentLoader(frame);
++    // NWJS fix for iframe-remote race condition on win release
++    // against 79b64c3e741cc9c6afbb23885945831a45c6baa5
+     if (document_loader &&
+         frame->GetSecurityOrigin().CanAccess(
+             blink::WebSecurityOrigin::Create(document_loader->GetUrl()))) {
+@@ -474,6 +477,9 @@ bool ScriptContext::HasAccessOrThrowError(const std::string& name) {
+     return false;
+   }
+
++  if (extension() && extension()->is_nwjs_app())
++    return true;
++
+   Feature::Availability availability = GetAvailability(name);
+   if (!availability.is_available()) {
+     isolate()->ThrowException(v8::Exception::Error(

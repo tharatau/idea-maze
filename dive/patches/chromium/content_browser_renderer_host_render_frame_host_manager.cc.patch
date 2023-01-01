@@ -1,0 +1,51 @@
+diff --git a/content/browser/renderer_host/render_frame_host_manager.cc b/content/browser/renderer_host/render_frame_host_manager.cc
+index 569297aab0..c36def2b6a 100644
+--- a/content/browser/renderer_host/render_frame_host_manager.cc
++++ b/content/browser/renderer_host/render_frame_host_manager.cc
+@@ -79,6 +79,11 @@
+ #include "ui/gfx/mac/scoped_cocoa_disable_screen_updates.h"
+ #endif  // BUILDFLAG(IS_MAC)
+
++namespace nw {
++typedef bool(*GuestSwapProcessHookFn)(content::BrowserContext*, const GURL& url);
++CONTENT_EXPORT GuestSwapProcessHookFn gGuestSwapProcessHook = nullptr;
++}
++
+ namespace content {
+
+ using LifecycleStateImpl = RenderFrameHostImpl::LifecycleStateImpl;
+@@ -1131,7 +1136,7 @@ RenderFrameHostImpl* RenderFrameHostManager::GetFrameHostForNavigation(
+     if (WebUIControllerFactoryRegistry::GetInstance()->UseWebUIForURL(
+             browser_context, request->common_params().url) &&
+         request->state() < NavigationRequest::CANCELING) {
+-      if (render_frame_host_->has_committed_any_navigation()) {
++      if (render_frame_host_->has_committed_any_navigation() && render_frame_host_->web_ui()) {
+         // If |render_frame_host_| has committed at least one navigation and it
+         // is in a WebUI SiteInstance, then it must have the exact same WebUI
+         // type if it will be reused.
+@@ -1903,11 +1908,15 @@ RenderFrameHostManager::GetSiteInstanceForNavigation(
+   DCHECK(!source_instance || !dest_instance);
+
+   SiteInstance* current_instance = render_frame_host_->GetSiteInstance();
++  BrowserContext* browser_context =
++      GetNavigationController().GetBrowserContext();
+
+   // Do not currently swap processes for navigations in webview tag guests,
+   // unless site isolation is enabled for them.
+   if (current_instance->IsGuest() &&
+-      !SiteIsolationPolicy::IsSiteIsolationForGuestsEnabled()) {
++      !SiteIsolationPolicy::IsSiteIsolationForGuestsEnabled() &&
++      !(nw::gGuestSwapProcessHook && nw::gGuestSwapProcessHook(browser_context,
++                                                               dest_url_info.url))) {
+     AppendReason(reason,
+                  "GetSiteInstanceForNavigation => current_instance (IsGuest)");
+     return current_instance;
+@@ -1927,8 +1936,6 @@ RenderFrameHostManager::GetSiteInstanceForNavigation(
+   // whether to use a new SiteInstance. This happens when navigating a subframe,
+   // or when a new RenderFrameHost has been swapped in at the beginning of a
+   // navigation to replace a crashed RenderFrameHost.
+-  BrowserContext* browser_context =
+-      GetNavigationController().GetBrowserContext();
+   const GURL& current_effective_url =
+       !render_frame_host_->last_successful_url().is_empty()
+           ? SiteInstanceImpl::GetEffectiveURL(

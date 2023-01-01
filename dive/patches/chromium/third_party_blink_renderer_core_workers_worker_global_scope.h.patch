@@ -1,0 +1,20 @@
+diff --git a/third_party/blink/renderer/core/workers/worker_global_scope.h b/third_party/blink/renderer/core/workers/worker_global_scope.h
+index e63eb55131..2d7ef64c13 100644
+--- a/third_party/blink/renderer/core/workers/worker_global_scope.h
++++ b/third_party/blink/renderer/core/workers/worker_global_scope.h
+@@ -57,6 +57,7 @@ namespace blink {
+
+ struct BlinkTransferableMessage;
+ struct GlobalScopeCreationParams;
++class DOMArrayBuffer;
+ class ConsoleMessage;
+ class FetchClientSettingsObjectSnapshot;
+ class FontFaceSet;
+@@ -119,6 +120,7 @@ class CORE_EXPORT WorkerGlobalScope
+   // This doesn't take an ExceptionState argument, but actually can throw
+   // exceptions directly to V8 (crbug/1114610).
+   virtual void importScripts(const Vector<String>& urls);
++  ScriptValue importNWBin(ScriptState* state, DOMArrayBuffer* buffer);
+
+   // ExecutionContext
+   const KURL& Url() const final;

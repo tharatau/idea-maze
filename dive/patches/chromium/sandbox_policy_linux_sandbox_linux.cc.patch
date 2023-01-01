@@ -1,0 +1,16 @@
+diff --git a/sandbox/policy/linux/sandbox_linux.cc b/sandbox/policy/linux/sandbox_linux.cc
+index 225d25c800..0033975a64 100644
+--- a/sandbox/policy/linux/sandbox_linux.cc
++++ b/sandbox/policy/linux/sandbox_linux.cc
+@@ -152,9 +152,11 @@ SandboxLinux::SandboxLinux()
+ }
+
+ SandboxLinux::~SandboxLinux() {
++#if 0
+   if (pre_initialized_) {
+     CHECK(initialize_sandbox_ran_);
+   }
++#endif
+ }
+
+ SandboxLinux* SandboxLinux::GetInstance() {

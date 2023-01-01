@@ -1,0 +1,13 @@
+diff --git a/chrome/app/app-Info.plist b/chrome/app/app-Info.plist
+index 4b5e163687..c010643add 100644
+--- a/chrome/app/app-Info.plist
++++ b/chrome/app/app-Info.plist
+@@ -257,7 +257,7 @@
+ 				<string>public.data</string>
+ 			</array>
+ 			<key>UTTypeDescription</key>
+-			<string>Chromium Extra</string>
++			<string>NWJS Extra</string>
+ 			<key>UTTypeIdentifier</key>
+ 			<string>org.chromium.extension</string>
+ 			<key>UTTypeTagSpecification</key>

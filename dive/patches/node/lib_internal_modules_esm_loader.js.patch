@@ -1,0 +1,16 @@
+diff --git a/lib/internal/modules/esm/loader.js b/lib/internal/modules/esm/loader.js
+index 8dad259a..8b31605c 100644
+--- a/lib/internal/modules/esm/loader.js
++++ b/lib/internal/modules/esm/loader.js
+@@ -235,9 +235,9 @@ class ESMLoader {
+   translators = translators;
+ 
+   constructor() {
+-    if (getOptionValue('--experimental-loader').length > 0) {
++/*    if (getOptionValue('--experimental-loader').length > 0) {
+       emitExperimentalWarning('Custom ESM Loaders');
+-    }
++    } */
+     if (getOptionValue('--experimental-network-imports')) {
+       emitExperimentalWarning('Network Imports');
+     }

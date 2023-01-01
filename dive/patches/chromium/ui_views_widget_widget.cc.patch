@@ -1,0 +1,85 @@
+diff --git a/ui/views/widget/widget.cc b/ui/views/widget/widget.cc
+index 2cb71ae39f..18031e79d3 100644
+--- a/ui/views/widget/widget.cc
++++ b/ui/views/widget/widget.cc
+@@ -420,6 +420,8 @@ void Widget::Init(InitParams params) {
+     } else if (show_state == ui::SHOW_STATE_MINIMIZED) {
+       Minimize();
+       saved_show_state_ = ui::SHOW_STATE_MINIMIZED;
++    } else if (show_state == ui::SHOW_STATE_FULLSCREEN) {
++      SetFullscreen(true);
+     }
+   } else if (delegate) {
+     SetContentsView(delegate->TransferOwnershipOfContentsView());
+@@ -589,6 +591,12 @@ void Widget::SetBounds(const gfx::Rect& bounds) {
+   native_widget_->SetBounds(bounds);
+ }
+
++#if defined(OS_WIN)
++void Widget::SetPosition(const gfx::Point& pos) {
++  native_widget_->SetPosition(pos);
++}
++#endif
++
+ void Widget::SetSize(const gfx::Size& size) {
+   native_widget_->SetSize(size);
+ }
+@@ -644,13 +652,18 @@ void Widget::SetShape(std::unique_ptr<ShapeRects> shape) {
+   native_widget_->SetShape(std::move(shape));
+ }
+
+-void Widget::CloseWithReason(ClosedReason closed_reason) {
++void Widget::CloseWithReason(ClosedReason closed_reason, bool force) {
+   if (widget_closed_) {
+     // It appears we can hit this code path if you close a modal dialog then
+     // close the last browser before the destructor is hit, which triggers
+     // invoking Close again.
+     return;
+   }
++  if (!force && !force_closing_ && !NWCanClose())
++    return;
++  if (force)
++    force_closing_ = true; //for reentering this function after force close
++
+   if (block_close_) {
+     return;
+   }
+@@ -658,6 +671,7 @@ void Widget::CloseWithReason(ClosedReason closed_reason) {
+                               CloseRequestResult::kCannotClose) {
+     return;
+   }
++
+   // This is the last chance to cancel closing.
+   if (widget_delegate_ && !widget_delegate_->OnCloseRequested(closed_reason))
+     return;
+@@ -690,8 +704,8 @@ void Widget::CloseWithReason(ClosedReason closed_reason) {
+   native_widget_->Close();
+ }
+
+-void Widget::Close() {
+-  CloseWithReason(ClosedReason::kUnspecified);
++void Widget::Close(bool force) {
++  CloseWithReason(ClosedReason::kUnspecified, force);
+ }
+
+ void Widget::CloseNow() {
+@@ -1324,6 +1338,10 @@ bool Widget::IsNativeWidgetInitialized() const {
+   return native_widget_initialized_;
+ }
+
++bool Widget::NWCanClose(bool user_force) const {
++  return widget_delegate_->NWCanClose(user_force);
++}
++
+ bool Widget::OnNativeWidgetActivationChanged(bool active) {
+   if (!ShouldHandleNativeWidgetActivationChanged(active))
+     return false;
+@@ -1461,6 +1479,8 @@ void Widget::OnNativeWidgetSizeChanged(const gfx::Size& new_size) {
+   NotifyCaretBoundsChanged(GetInputMethod());
+   SaveWindowPlacementIfInitialized();
+
++  widget_delegate_->OnWidgetResize();
++
+   for (WidgetObserver& observer : observers_)
+     observer.OnWidgetBoundsChanged(this, GetWindowBoundsInScreen());
+ }

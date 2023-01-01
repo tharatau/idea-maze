@@ -1,0 +1,15 @@
+diff --git a/chrome/renderer/chrome_content_settings_agent_delegate.cc b/chrome/renderer/chrome_content_settings_agent_delegate.cc
+index 8d4373d27c..d47fac74dd 100644
+--- a/chrome/renderer/chrome_content_settings_agent_delegate.cc
++++ b/chrome/renderer/chrome_content_settings_agent_delegate.cc
+@@ -115,8 +115,10 @@ ChromeContentSettingsAgentDelegate::AllowWriteToClipboard() {
+ }
+
+ absl::optional<bool> ChromeContentSettingsAgentDelegate::AllowMutationEvents() {
++#if 0
+   if (IsPlatformApp())
+     return false;
++#endif
+   return absl::nullopt;
+ }
+

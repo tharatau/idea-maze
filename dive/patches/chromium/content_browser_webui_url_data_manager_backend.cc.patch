@@ -1,0 +1,25 @@
+diff --git a/content/browser/webui/url_data_manager_backend.cc b/content/browser/webui/url_data_manager_backend.cc
+index 3ed4bcf2ed..963aa3ac57 100644
+--- a/content/browser/webui/url_data_manager_backend.cc
++++ b/content/browser/webui/url_data_manager_backend.cc
+@@ -7,6 +7,8 @@
+ #include <set>
+ #include <utility>
+
++#include "content/nw/src/nw_content.h"
++
+ #include "base/bind.h"
+ #include "base/containers/contains.h"
+ #include "base/location.h"
+@@ -43,6 +45,11 @@
+ #include "ui/base/webui/i18n_source_stream.h"
+ #include "url/url_util.h"
+
++namespace nw {
++typedef bool (*CheckStoragePartitionMatchesFn)(int render_process_id, const GURL& url);
++CONTENT_EXPORT CheckStoragePartitionMatchesFn gCheckStoragePartitionMatches = nullptr;
++}
++
+ namespace content {
+
+ namespace {

@@ -1,0 +1,22 @@
+diff --git a/third_party/blink/renderer/core/loader/frame_loader.h b/third_party/blink/renderer/core/loader/frame_loader.h
+index 4ca0e9113d..bb2157f344 100644
+--- a/third_party/blink/renderer/core/loader/frame_loader.h
++++ b/third_party/blink/renderer/core/loader/frame_loader.h
+@@ -206,6 +206,8 @@ class CORE_EXPORT FrameLoader final {
+   void SaveScrollAnchor();
+   void SaveScrollState();
+   void RestoreScrollPositionAndViewState();
++  void setUserAgentOverride(const String& agent);
++  String userAgentOverride() const;
+
+   bool HasProvisionalNavigation() const {
+     return committing_navigation_ || client_navigation_.get();
+@@ -316,6 +318,8 @@ class CORE_EXPORT FrameLoader final {
+   enum class State { kUninitialized, kInitialized, kDetached };
+   State state_ = State::kUninitialized;
+
++  String user_agent_override_;
++
+   bool dispatching_did_clear_window_object_in_main_world_;
+   bool committing_navigation_ = false;
+   bool has_accessed_initial_document_ = false;

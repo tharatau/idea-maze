@@ -1,0 +1,53 @@
+diff --git a/content/public/common/content_client.h b/content/public/common/content_client.h
+index aded7807a3..895abc67cc 100644
+--- a/content/public/common/content_client.h
++++ b/content/public/common/content_client.h
+@@ -5,6 +5,8 @@
+ #ifndef CONTENT_PUBLIC_COMMON_CONTENT_CLIENT_H_
+ #define CONTENT_PUBLIC_COMMON_CONTENT_CLIENT_H_
+
++#include "base/files/file_path.h"
++
+ #include <set>
+ #include <string>
+ #include <vector>
+@@ -24,6 +26,7 @@ namespace base {
+ class FilePath;
+ class RefCountedMemory;
+ class SequencedTaskRunner;
++class DictionaryValue;
+ }
+
+ namespace blink {
+@@ -61,10 +64,10 @@ struct PepperPluginInfo;
+ // content code is called.
+ CONTENT_EXPORT void SetContentClient(ContentClient* client);
+
+-#if defined(CONTENT_IMPLEMENTATION)
++//#if defined(CONTENT_IMPLEMENTATION)
+ // Content's embedder API should only be used by content.
+-ContentClient* GetContentClient();
+-#endif
++CONTENT_EXPORT ContentClient* GetContentClient();
++//#endif
+
+ // Used for tests to override the relevant embedder interfaces. Each method
+ // returns the old value. In browser tests it seems safest to call these in
+@@ -84,6 +87,9 @@ class CONTENT_EXPORT ContentClient {
+   ContentClient();
+   virtual ~ContentClient();
+
++  virtual void LoadNWAppAsExtension(base::DictionaryValue* manifest,
++                                    const base::FilePath& path,
++                                    std::string* error) {}
+   ContentBrowserClient* browser() { return browser_; }
+   ContentGpuClient* gpu() { return gpu_; }
+   ContentRendererClient* renderer() { return renderer_; }
+@@ -97,6 +103,7 @@ class CONTENT_EXPORT ContentClient {
+   // WebSecurityOrigin or a full URL (if called from the browser process) and a
+   // string is the lowest-common-denominator.
+   virtual void SetActiveURL(const GURL& url, std::string top_origin) {}
++  virtual void SetNWReportURL(const GURL& url) {}
+
+   // Sets the data on the current gpu.
+   virtual void SetGpuInfo(const gpu::GPUInfo& gpu_info) {}

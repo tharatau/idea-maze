@@ -1,0 +1,19 @@
+diff --git a/chrome/browser/ui/views/profiles/profile_picker_signed_in_flow_controller.cc b/chrome/browser/ui/views/profiles/profile_picker_signed_in_flow_controller.cc
+index 86c6c8622d..f7884be080 100644
+--- a/chrome/browser/ui/views/profiles/profile_picker_signed_in_flow_controller.cc
++++ b/chrome/browser/ui/views/profiles/profile_picker_signed_in_flow_controller.cc
+@@ -146,12 +146,14 @@ bool ProfilePickerSignedInFlowController::HandleContextMenu(
+ }
+
+ void ProfilePickerSignedInFlowController::SwitchToSyncConfirmationFinished() {
++#if 0
+   DCHECK(IsInitialized());
+   // Initialize the WebUI page once we know it's committed.
+   SyncConfirmationUI* sync_confirmation_ui =
+       static_cast<SyncConfirmationUI*>(contents()->GetWebUI()->GetController());
+
+   sync_confirmation_ui->InitializeMessageHandlerWithBrowser(nullptr);
++#endif
+ }
+
+ void ProfilePickerSignedInFlowController::

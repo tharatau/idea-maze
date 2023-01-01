@@ -1,0 +1,47 @@
+diff --git a/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc b/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
+index dfb28cdf7e..7124bc6d12 100644
+--- a/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
++++ b/chrome/browser/profiles/chrome_browser_main_extra_parts_profiles.cc
+@@ -343,6 +343,7 @@ void ChromeBrowserMainExtraPartsProfiles::
+ #if BUILDFLAG(ENABLE_CAPTIVE_PORTAL_DETECTION)
+   CaptivePortalServiceFactory::GetInstance();
+ #endif
++#if 0
+ #if !BUILDFLAG(IS_ANDROID)
+   CartServiceFactory::GetInstance();
+ #endif
+@@ -353,7 +354,6 @@ void ChromeBrowserMainExtraPartsProfiles::
+ #if BUILDFLAG(IS_CHROMEOS_LACROS)
+   CertDbInitializerFactory::GetInstance();
+ #endif
+-#if BUILDFLAG(SAFE_BROWSING_AVAILABLE)
+   CertificateReportingServiceFactory::GetInstance();
+ #endif
+ #if !BUILDFLAG(IS_ANDROID)
+@@ -437,7 +437,7 @@ void ChromeBrowserMainExtraPartsProfiles::
+ // of lacros-chrome is complete.
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || \
+     (BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS_LACROS))
+-  metrics::DesktopProfileSessionDurationsServiceFactory::GetInstance();
++  //metrics::DesktopProfileSessionDurationsServiceFactory::GetInstance();
+ #endif
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX)
+   enterprise_idle::IdleServiceFactory::GetInstance();
+@@ -582,7 +582,7 @@ void ChromeBrowserMainExtraPartsProfiles::
+   }
+ #endif
+   TabRestoreServiceFactory::GetInstance();
+-  safe_browsing::TailoredSecurityServiceFactory::GetInstance();
++  //safe_browsing::TailoredSecurityServiceFactory::GetInstance();
+   TemplateURLFetcherFactory::GetInstance();
+   TemplateURLServiceFactory::GetInstance();
+ #if !BUILDFLAG(IS_ANDROID)
+@@ -595,7 +595,7 @@ void ChromeBrowserMainExtraPartsProfiles::
+   ToolbarActionsModelFactory::GetInstance();
+ #endif
+   TopSitesFactory::GetInstance();
+-  translate::TranslateRankerFactory::GetInstance();
++  //translate::TranslateRankerFactory::GetInstance();
+ #if BUILDFLAG(IS_WIN)
+   TriggeredProfileResetterFactory::GetInstance();
+ #endif

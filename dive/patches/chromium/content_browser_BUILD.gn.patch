@@ -1,0 +1,13 @@
+diff --git a/content/browser/BUILD.gn b/content/browser/BUILD.gn
+index 993ec8acd4..d7080411ce 100644
+--- a/content/browser/BUILD.gn
++++ b/content/browser/BUILD.gn
+@@ -1829,6 +1829,8 @@ source_set("browser") {
+     "renderer_host/ui_events_helper.h",
+     "renderer_host/visible_time_request_trigger.cc",
+     "renderer_host/visible_time_request_trigger.h",
++    "resolve_proxy_helper.cc",
++    "resolve_proxy_helper.h",
+     "resource_context_impl.cc",
+     "resource_context_impl.h",
+     "resource_coordinator_service.cc",

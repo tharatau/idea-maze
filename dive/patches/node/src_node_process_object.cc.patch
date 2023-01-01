@@ -1,0 +1,22 @@
+diff --git a/src/node_process_object.cc b/src/node_process_object.cc
+index 569c93cc..673ff27d 100644
+--- a/src/node_process_object.cc
++++ b/src/node_process_object.cc
+@@ -77,7 +77,7 @@ static void GetParentProcessId(Local<Name> property,
+   info.GetReturnValue().Set(uv_os_getppid());
+ }
+ 
+-MaybeLocal<Object> CreateProcessObject(Environment* env) {
++MaybeLocal<Object> CreateProcessObject(Environment* env, bool node_is_nwjs) {
+   Isolate* isolate = env->isolate();
+   EscapableHandleScope scope(isolate);
+   Local<Context> context = env->context();
+@@ -91,6 +91,8 @@ MaybeLocal<Object> CreateProcessObject(Environment* env) {
+     return MaybeLocal<Object>();
+   }
+ 
++  if (node_is_nwjs)
++    READONLY_PROPERTY(process, "__nwjs", Integer::New(env->isolate(), 1));
+   // process[exiting_aliased_Uint32Array]
+   if (process
+           ->SetPrivate(context,

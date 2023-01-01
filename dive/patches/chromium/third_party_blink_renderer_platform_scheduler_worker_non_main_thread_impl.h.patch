@@ -1,0 +1,20 @@
+diff --git a/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.h b/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.h
+index bb4365e8da..09f3146483 100644
+--- a/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.h
++++ b/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.h
+@@ -73,6 +73,7 @@ class PLATFORM_EXPORT NonMainThreadImpl : public NonMainThread {
+
+     explicit SimpleThreadImpl(const WTF::String& name_prefix,
+                               const base::SimpleThread::Options& options,
++                              bool is_node,
+                               bool supports_gc,
+                               NonMainThreadImpl* worker_thread);
+
+@@ -120,6 +121,7 @@ class PLATFORM_EXPORT NonMainThreadImpl : public NonMainThread {
+         non_main_thread_scheduler_;
+     scoped_refptr<base::SingleThreadTaskRunner> default_task_runner_;
+     base::RunLoop* run_loop_;
++    bool nodejs_;
+     bool supports_gc_;
+     std::unique_ptr<GCSupport> gc_support_;
+   };

@@ -1,0 +1,22 @@
+diff --git a/chrome/utility/BUILD.gn b/chrome/utility/BUILD.gn
+index 696cd2684b..bdf26dad3c 100644
+--- a/chrome/utility/BUILD.gn
++++ b/chrome/utility/BUILD.gn
+@@ -46,7 +46,7 @@ static_library("utility") {
+     "//components/password_manager/services/csv_password:lib",
+     "//components/safe_browsing:buildflags",
+     "//components/search_engines",
+-    "//components/services/language_detection",
++    #"//components/services/language_detection",
+     "//components/services/paint_preview_compositor",
+     "//components/services/patch:lib",
+     "//components/services/screen_ai/buildflags",
+@@ -245,7 +245,7 @@ static_library("utility") {
+
+   if (safe_browsing_mode == 1) {
+     deps += [ "//chrome/services/file_util" ]
+-    if (is_mac) {
++    if (false && is_mac) {
+       deps += [ "//chrome/utility/safe_browsing/mac" ]
+     }
+   }

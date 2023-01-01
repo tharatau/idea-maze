@@ -1,0 +1,28 @@
+diff --git a/net/proxy_resolution/configured_proxy_resolution_service.cc b/net/proxy_resolution/configured_proxy_resolution_service.cc
+index 929ddb38cc..19a48e08a6 100644
+--- a/net/proxy_resolution/configured_proxy_resolution_service.cc
++++ b/net/proxy_resolution/configured_proxy_resolution_service.cc
+@@ -1299,6 +1299,23 @@ ConfiguredProxyResolutionService::ResetProxyConfig(bool reset_fetched_config) {
+   return previous_state;
+ }
+
++void ConfiguredProxyResolutionService::ResetConfigService(
++       std::unique_ptr<ProxyConfigService> new_proxy_config_service) {
++  DCHECK_CALLED_ON_VALID_THREAD(thread_checker_);
++  State previous_state = ResetProxyConfig(true);
++
++  // Release the old configuration service.
++  if (config_service_.get())
++    config_service_->RemoveObserver(this);
++
++  // Set the new configuration service.
++  config_service_ = std::move(new_proxy_config_service);
++  config_service_->AddObserver(this);
++
++  if (previous_state != STATE_NONE)
++    ApplyProxyConfigIfAvailable();
++}
++
+ void ConfiguredProxyResolutionService::ForceReloadProxyConfig() {
+   DCHECK_CALLED_ON_VALID_THREAD(thread_checker_);
+   ResetProxyConfig(false);

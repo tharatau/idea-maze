@@ -1,0 +1,26 @@
+diff --git a/third_party/blink/renderer/core/inspector/inspected_frames.h b/third_party/blink/renderer/core/inspector/inspected_frames.h
+index 392fb96bc9..0dcd1f2931 100644
+--- a/third_party/blink/renderer/core/inspector/inspected_frames.h
++++ b/third_party/blink/renderer/core/inspector/inspected_frames.h
+@@ -11,6 +11,8 @@
+ #include "third_party/blink/renderer/platform/wtf/forward.h"
+ #include "third_party/blink/renderer/platform/wtf/text/wtf_string.h"
+
++#include "third_party/blink/renderer/core/frame/local_frame.h"
++
+ namespace blink {
+
+ class LocalFrame;
+@@ -40,7 +42,11 @@ class CORE_EXPORT InspectedFrames final
+   InspectedFrames(const InspectedFrames&) = delete;
+   InspectedFrames& operator=(const InspectedFrames&) = delete;
+
+-  LocalFrame* Root() { return root_; }
++  LocalFrame* Root() {
++    LocalFrame* f = root_;
++    LocalFrame* jail = (LocalFrame*)f->getDevtoolsJail();
++    return jail ? jail : f;
++  }
+   bool Contains(LocalFrame*) const;
+   LocalFrame* FrameWithSecurityOrigin(const String& origin_raw_string);
+   LocalFrame* FrameWithStorageKey(const String& key_raw_string);

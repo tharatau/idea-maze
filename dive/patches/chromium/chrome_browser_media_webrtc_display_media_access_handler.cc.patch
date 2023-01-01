@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/media/webrtc/display_media_access_handler.cc b/chrome/browser/media/webrtc/display_media_access_handler.cc
+index eec2cb4773..4ee3d9d7e1 100644
+--- a/chrome/browser/media/webrtc/display_media_access_handler.cc
++++ b/chrome/browser/media/webrtc/display_media_access_handler.cc
+@@ -109,6 +109,7 @@ void DisplayMediaAccessHandler::HandleRequest(
+     return;
+   }
+
++#if 0
+   // SafeBrowsing Delayed Warnings experiment can delay some SafeBrowsing
+   // warnings until user interaction. If the current page has a delayed warning,
+   // it'll have a user interaction observer attached. Show the warning
+@@ -124,6 +125,7 @@ void DisplayMediaAccessHandler::HandleRequest(
+     observer->OnDesktopCaptureRequest();
+     return;
+   }
++#endif
+
+ #if BUILDFLAG(IS_MAC)
+   // Do not allow picker UI to be shown on a page that isn't in the foreground

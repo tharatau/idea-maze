@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/bindings/bindings.gni b/third_party/blink/renderer/bindings/bindings.gni
+index 79a14195b9..f538454de0 100644
+--- a/third_party/blink/renderer/bindings/bindings.gni
++++ b/third_party/blink/renderer/bindings/bindings.gni
+@@ -21,6 +21,8 @@ blink_core_sources_bindings =
+                     "core/v8/callback_invoke_helper.cc",
+                     "core/v8/callback_invoke_helper.h",
+                     "core/v8/callback_promise_adapter.h",
++                    "core/v8/custom/v8_html_iframe_element_custom.cc",
++                    "core/v8/custom/v8_filelist_custom.cc",
+                     "core/v8/custom/v8_custom_xpath_ns_resolver.cc",
+                     "core/v8/custom/v8_custom_xpath_ns_resolver.h",
+                     "core/v8/custom/v8_dev_tools_host_custom.cc",

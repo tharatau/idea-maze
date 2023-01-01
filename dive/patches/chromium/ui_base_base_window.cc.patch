@@ -1,0 +1,14 @@
+diff --git a/ui/base/base_window.cc b/ui/base/base_window.cc
+index 231a177179..40e00cb7cd 100644
+--- a/ui/base/base_window.cc
++++ b/ui/base/base_window.cc
+@@ -12,5 +12,9 @@ bool BaseWindow::IsRestored(const BaseWindow& window) {
+      !window.IsFullscreen();
+ }
+
++void BaseWindow::ForceClose() {
++  Close();
++}
++
+ }  // namespace ui
+

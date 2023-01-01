@@ -1,0 +1,17 @@
+diff --git a/ui/aura/window_tree_host.cc b/ui/aura/window_tree_host.cc
+index 0d9378ddf1..d87fed5313 100644
+--- a/ui/aura/window_tree_host.cc
++++ b/ui/aura/window_tree_host.cc
+@@ -269,6 +269,12 @@ void WindowTreeHost::UpdateCompositorScaleAndSize(
+                                window_->GetLocalSurfaceId());
+ }
+
++#if defined(OS_WIN)
++void WindowTreeHost::SetPositionInPixels(const gfx::Point& pos_in_pixels) {
++
++}
++#endif
++
+ void WindowTreeHost::ConvertDIPToScreenInPixels(gfx::Point* point) const {
+   ConvertDIPToPixels(point);
+   gfx::Point location = GetLocationOnScreenInPixels();

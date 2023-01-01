@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/component_updater/component_updater_prefs.cc b/chrome/browser/component_updater/component_updater_prefs.cc
+index e6b7fa9642..bf9283e553 100644
+--- a/chrome/browser/component_updater/component_updater_prefs.cc
++++ b/chrome/browser/component_updater/component_updater_prefs.cc
+@@ -20,7 +20,7 @@ namespace component_updater {
+ void RegisterPrefs(PrefRegistrySimple* registry) {
+   RegisterComponentUpdateServicePrefs(registry);
+   RegisterPrefsForRecoveryComponent(registry);
+-  AutofillStatesComponentInstallerPolicy::RegisterPrefs(registry);
++  //AutofillStatesComponentInstallerPolicy::RegisterPrefs(registry);
+ }
+
+ }  // namespace component_updater

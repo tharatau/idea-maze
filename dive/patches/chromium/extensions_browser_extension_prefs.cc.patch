@@ -1,0 +1,50 @@
+diff --git a/extensions/browser/extension_prefs.cc b/extensions/browser/extension_prefs.cc
+index 67488494b4..3efefc60a0 100644
+--- a/extensions/browser/extension_prefs.cc
++++ b/extensions/browser/extension_prefs.cc
+@@ -299,10 +299,12 @@ class ScopedExtensionPrefUpdate : public prefs::ScopedDictionaryPrefUpdate {
+     std::unique_ptr<prefs::DictionaryValueUpdate> dict =
+         ScopedDictionaryPrefUpdate::Get();
+     std::unique_ptr<prefs::DictionaryValueUpdate> extension;
+-    if (!dict->GetDictionary(extension_id_, &extension)) {
++    std::string id;
++    base::ReplaceChars(extension_id_, ".", "", &id);
++    if (!dict->GetDictionary(id, &extension)) {
+       // Extension pref does not exist, create it.
+       extension = dict->SetDictionary(
+-          extension_id_, std::make_unique<base::DictionaryValue>());
++          id, std::make_unique<base::DictionaryValue>());
+     }
+     return extension;
+   }
+@@ -480,6 +482,9 @@ void ExtensionPrefs::MakePathsRelative() {
+
+ const base::DictionaryValue* ExtensionPrefs::GetExtensionPref(
+     const std::string& extension_id) const {
++  std::string id;
++  base::ReplaceChars(extension_id, ".", "", &id);
++
+   // TODO(https://1297144): Should callers of this method proactively filter out
+   // extension IDs? Previously, this function would (potentially surprisingly)
+   // return `extensions` below if supplied with an empty `extension_id` due to
+@@ -491,7 +496,7 @@ const base::DictionaryValue* ExtensionPrefs::GetExtensionPref(
+       prefs_->GetDictionary(pref_names::kExtensions);
+   if (!extensions)
+     return nullptr;
+-  const base::Value* extension_dict = extensions->FindDictPath(extension_id);
++  const base::Value* extension_dict = extensions->FindDictPath(id);
+   return extension_dict ? &base::Value::AsDictionaryValue(*extension_dict)
+                         : nullptr;
+ }
+@@ -2453,7 +2458,10 @@ void ExtensionPrefs::LoadExtensionControlledPrefs(
+   std::string scope_string;
+   if (!pref_names::ScopeToPrefName(scope, &scope_string))
+     return;
+-  std::string key = extension_id + "." + scope_string;
++
++  std::string id;
++  base::ReplaceChars(extension_id, ".", "", &id);
++  std::string key = id + "." + scope_string;
+
+   const base::Value* source_dict =
+       pref_service()->GetDictionary(pref_names::kExtensions);

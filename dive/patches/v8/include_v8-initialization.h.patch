@@ -1,0 +1,12 @@
+diff --git a/include/v8-initialization.h b/include/v8-initialization.h
+index 224ae0dc6b..67a072d12a 100644
+--- a/include/v8-initialization.h
++++ b/include/v8-initialization.h
+@@ -154,6 +154,7 @@ class V8_EXPORT V8 {
+    */
+   static bool InitializeICUDefaultLocation(const char* exec_path,
+                                            const char* icu_data_file = nullptr);
++  static void* RawICUData();
+ 
+   /**
+    * Initialize the external startup data. The embedder only needs to

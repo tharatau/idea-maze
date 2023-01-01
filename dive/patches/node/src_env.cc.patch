@@ -1,0 +1,67 @@
+diff --git a/src/env.cc b/src/env.cc
+index 24aeb329..216b636f 100644
+--- a/src/env.cc
++++ b/src/env.cc
+@@ -62,6 +62,8 @@ using v8::WeakCallbackInfo;
+ using v8::WeakCallbackType;
+ using worker::Worker;
+ 
++extern bool node_is_nwjs;
++
+ int const ContextEmbedderTag::kNodeContextTag = 0x6e6f64;
+ void* const ContextEmbedderTag::kNodeContextTagPtr = const_cast<void*>(
+     static_cast<const void*>(&ContextEmbedderTag::kNodeContextTag));
+@@ -625,7 +627,7 @@ void Environment::CreateProperties() {
+ #undef V
+ 
+   Local<Object> process_object =
+-      node::CreateProcessObject(this).FromMaybe(Local<Object>());
++    node::CreateProcessObject(this, node_is_nwjs).FromMaybe(Local<Object>());
+   set_process_object(process_object);
+ }
+ 
+@@ -719,16 +721,19 @@ Environment::Environment(IsolateData* isolate_data,
+   inspector_agent_ = std::make_unique<inspector::Agent>(this);
+ #endif
+ 
++#if 0
+   if (tracing::AgentWriterHandle* writer = GetTracingAgentWriter()) {
+     trace_state_observer_ = std::make_unique<TrackingTraceStateObserver>(this);
+     if (TracingController* tracing_controller = writer->GetTracingController())
+       tracing_controller->AddTraceStateObserver(trace_state_observer_.get());
+   }
++#endif
+ 
+   destroy_async_id_list_.reserve(512);
+ 
+   performance_state_ = std::make_unique<performance::PerformanceState>(
+       isolate, MAYBE_FIELD_PTR(env_info, performance_state));
++#if 0
+ 
+   if (*TRACE_EVENT_API_GET_CATEGORY_GROUP_ENABLED(
+           TRACING_CATEGORY_NODE1(environment)) != 0) {
+@@ -745,6 +750,7 @@ Environment::Environment(IsolateData* isolate_data,
+                                       "args",
+                                       std::move(traced_value));
+   }
++#endif
+ }
+ 
+ Environment::Environment(IsolateData* isolate_data,
+@@ -870,6 +876,7 @@ Environment::~Environment() {
+ void Environment::InitializeLibuv() {
+   HandleScope handle_scope(isolate());
+   Context::Scope context_scope(context());
++  uv_initialized_ = true;
+ 
+   CHECK_EQ(0, uv_timer_init(event_loop(), timer_handle()));
+   uv_unref(reinterpret_cast<uv_handle_t*>(timer_handle()));
+@@ -1264,7 +1271,7 @@ void Environment::CheckImmediate(uv_check_t* handle) {
+ }
+ 
+ void Environment::ToggleImmediateRef(bool ref) {
+-  if (started_cleanup_) return;
++  if (started_cleanup_|| !uv_initialized_) return;
+ 
+   if (ref) {
+     // Idle handle is needed only to stop the event loop from blocking in poll.

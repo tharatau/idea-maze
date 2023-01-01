@@ -1,0 +1,14 @@
+diff --git a/ui/aura/window_tree_host.h b/ui/aura/window_tree_host.h
+index b82002bbe8..769d27b88e 100644
+--- a/ui/aura/window_tree_host.h
++++ b/ui/aura/window_tree_host.h
+@@ -223,6 +223,9 @@ class AURA_EXPORT WindowTreeHost : public ui::ImeKeyEventDispatcher,
+   // depending on the platform. The |local_surface_id| takes effect when (and
+   // if) the new size is confirmed (potentially asynchronously) by the platform.
+   virtual void SetBoundsInPixels(const gfx::Rect& bounds_in_pixels) = 0;
++#if defined(OS_WIN)
++  virtual void SetPositionInPixels(const gfx::Point& pos_in_pixels);
++#endif
+   virtual gfx::Rect GetBoundsInPixels() const = 0;
+
+   // Gets the bounds in DIP.

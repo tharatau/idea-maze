@@ -1,0 +1,12 @@
+diff --git a/chrome/common/extensions/api/api_sources.gni b/chrome/common/extensions/api/api_sources.gni
+index 3511ad1374..2e2a6261a5 100644
+--- a/chrome/common/extensions/api/api_sources.gni
++++ b/chrome/common/extensions/api/api_sources.gni
+@@ -45,7 +45,6 @@ schema_sources_ = [
+   "passwords_private.idl",
+   "permissions.json",
+   "resources_private.idl",
+-  "safe_browsing_private.idl",
+   "scripting.idl",
+   "search.idl",
+   "sessions.json",

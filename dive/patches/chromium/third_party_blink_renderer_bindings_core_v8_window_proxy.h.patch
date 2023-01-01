@@ -1,0 +1,20 @@
+diff --git a/third_party/blink/renderer/bindings/core/v8/window_proxy.h b/third_party/blink/renderer/bindings/core/v8/window_proxy.h
+index a210bea0e5..f850225a7b 100644
+--- a/third_party/blink/renderer/bindings/core/v8/window_proxy.h
++++ b/third_party/blink/renderer/bindings/core/v8/window_proxy.h
+@@ -167,6 +167,7 @@ class CORE_EXPORT WindowProxy : public GarbageCollected<WindowProxy> {
+   virtual bool IsLocal() const { return false; }
+
+   enum FrameReuseStatus { kFrameWillNotBeReused, kFrameWillBeReused };
++  bool ContextNotReady() const { return lifecycle_ == Lifecycle::kContextIsUninitialized;}
+
+  protected:
+   // Lifecycle represents the following four states.
+@@ -262,7 +263,6 @@ class CORE_EXPORT WindowProxy : public GarbageCollected<WindowProxy> {
+
+   v8::Isolate* GetIsolate() const { return isolate_; }
+   Frame* GetFrame() const { return frame_.Get(); }
+-
+ #if DCHECK_IS_ON()
+   void DidAttachGlobalObject() { is_global_object_attached_ = true; }
+   void DidDetachGlobalObject() { is_global_object_attached_ = false; }

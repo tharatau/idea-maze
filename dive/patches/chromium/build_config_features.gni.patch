@@ -1,0 +1,13 @@
+diff --git a/build/config/features.gni b/build/config/features.gni
+index 0464f06dbb..a0d75d29bb 100644
+--- a/build/config/features.gni
++++ b/build/config/features.gni
+@@ -28,7 +28,7 @@ declare_args() {
+   #
+   # TODO(crbug.com/1314528): Remove chromecast-related conditions and force
+   # builds to explicitly specify this.
+-  proprietary_codecs = is_chrome_branded || is_castos || is_cast_android
++  proprietary_codecs = true
+
+   # libudev usage. This currently only affects the content layer.
+   use_udev = (is_linux && !is_castos) || is_chromeos

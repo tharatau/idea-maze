@@ -1,0 +1,56 @@
+diff --git a/ui/views/window/custom_frame_view.cc b/ui/views/window/custom_frame_view.cc
+index f1d82e98a2..654f899359 100644
+--- a/ui/views/window/custom_frame_view.cc
++++ b/ui/views/window/custom_frame_view.cc
+@@ -7,6 +7,8 @@
+ #include <algorithm>
+ #include <utility>
+ #include <vector>
++#include "ui/gfx/image/image_skia_operations.h"
++#include "ui/base/models/image_model.h"
+
+ #include "base/containers/adapters.h"
+ #include "base/strings/utf_string_conversions.h"
+@@ -75,7 +77,7 @@ CustomFrameView::CustomFrameView(Widget* frame)
+     : frame_(frame), frame_background_(new FrameBackground()) {
+   close_button_ = InitWindowCaptionButton(
+       base::BindRepeating(&Widget::CloseWithReason, base::Unretained(frame_),
+-                          views::Widget::ClosedReason::kCloseButtonClicked),
++                          views::Widget::ClosedReason::kCloseButtonClicked, false),
+       IDS_APP_ACCNAME_CLOSE, IDR_CLOSE, IDR_CLOSE_H, IDR_CLOSE_P);
+   minimize_button_ = InitWindowCaptionButton(
+       base::BindRepeating(&Widget::Minimize, base::Unretained(frame_)),
+@@ -88,10 +90,13 @@ CustomFrameView::CustomFrameView(Widget* frame)
+       IDS_APP_ACCNAME_RESTORE, IDR_RESTORE, IDR_RESTORE_H, IDR_RESTORE_P);
+
+   if (frame_->widget_delegate()->ShouldShowWindowIcon()) {
+-    window_icon_ =
+-        AddChildView(std::make_unique<ImageButton>(Button::PressedCallback()));
++    ui::ImageModel icon;
++    icon = frame_->widget_delegate()->GetWindowAppIcon();
++    window_icon_ = new ImageButton(Button::PressedCallback());
++    window_icon_->SetImage(Button::STATE_NORMAL, icon.GetImage().ToImageSkia());
+     // `window_icon_` does not need to be focusable as it is not used here as a
+     // button and is not interactive.
++    AddChildView(window_icon_.get());
+     window_icon_->SetFocusBehavior(FocusBehavior::NEVER);
+   }
+ }
+@@ -172,8 +177,16 @@ void CustomFrameView::ResetWindowControls() {
+ }
+
+ void CustomFrameView::UpdateWindowIcon() {
+-  if (window_icon_)
++  if (window_icon_) {
++    ui::ImageModel icon;
++    icon = frame_->widget_delegate()->GetWindowAppIcon();
++    int size = IconSize();
++    gfx::ImageSkia icon2 = gfx::ImageSkiaOperations::CreateResizedImage(*icon.GetImage().ToImageSkia(),
++                               skia::ImageOperations::RESIZE_BEST,
++                               gfx::Size(size, size));
++    window_icon_->SetImage(Button::STATE_NORMAL, &icon2);
+     window_icon_->SchedulePaint();
++  }
+ }
+
+ void CustomFrameView::UpdateWindowTitle() {

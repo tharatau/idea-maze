@@ -1,0 +1,64 @@
+{
+  "name": "piskel",
+  "version": "0.15.2-SNAPSHOT",
+  "description": "Pixel art editor",
+  "author": {
+    "name": "Ayushman Chhabra",
+    "email": "ayushmxn@outlook.com",
+    "url": "http://ayushmannchhabra.com"
+  },
+  "homepage": "http://github.com/tharatau/sprite",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/tharatau/sprite.git"
+  },
+  "main": "./dest/prod/index.html",
+  "scripts": {
+    "test": "grunt test",
+    "dev": "grunt play",
+    "start": "grunt build && nw",
+    "preversion": "grunt test build",
+    "postversion": "git push && git push --tags && npm publish",
+    "release": "grunt && node ./bin/copy-to-piskel-website",
+    "build": "grunt desktop",
+    "build:mac": "grunt desktop-mac",
+    "format": "grunt eslint --fix"
+  },
+  "devDependencies": {
+    "date-fns": "2.29.3",
+    "grunt": "1.5.3",
+    "grunt-casperjs": "2.2.1",
+    "grunt-cli": "1.4.3",
+    "grunt-contrib-clean": "2.0.1",
+    "grunt-contrib-concat": "2.1.0",
+    "grunt-contrib-connect": "3.0.0",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-uglify": "5.2.2",
+    "grunt-contrib-watch": "1.1.0",
+    "grunt-eslint": "24.0.1",
+    "grunt-include-replace": "5.0.0",
+    "grunt-karma": "4.0.2",
+    "grunt-leading-indent": "0.2.0",
+    "grunt-nw-builder": "3.8.2",
+    "grunt-replace": "2.0.2",
+    "grunt-spritesmith": "6.10.0",
+    "jasmine-core": "4.5.0",
+    "karma": "6.4.1",
+    "karma-chrome-launcher": "3.1.1",
+    "karma-jasmine": "5.1.0",
+    "karma-phantomjs-launcher": "1.0.4",
+    "load-grunt-tasks": "5.1.0",
+    "phantomjs-polyfill-object-assign": "0.0.2",
+    "phantomjs-prebuilt": "2.1.16",
+    "promise-polyfill": "8.2.3",
+    "puppeteer": "19.4.1"
+  },
+  "window": {
+    "title": "Piskel",
+    "icon": "dest/prod/logo.png",
+    "toolbar": false,
+    "width": 1000,
+    "height": 700
+  }
+}

@@ -1,0 +1,12 @@
+diff --git a/ipc/ipc_message_start.h b/ipc/ipc_message_start.h
+index 46882f437b..92bdba8633 100644
+--- a/ipc/ipc_message_start.h
++++ b/ipc/ipc_message_start.h
+@@ -18,6 +18,7 @@ enum IPCMessageStart {
+   NaClMsgStart,
+   PpapiMsgStart,
+   ExtensionMsgStart,
++  ShellMsgStart,
+   ChromotingMsgStart,
+   NaClHostMsgStart,
+   EncryptedMediaMsgStart,

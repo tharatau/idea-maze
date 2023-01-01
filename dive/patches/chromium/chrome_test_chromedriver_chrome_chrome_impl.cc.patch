@@ -1,0 +1,41 @@
+diff --git a/chrome/test/chromedriver/chrome/chrome_impl.cc b/chrome/test/chromedriver/chrome/chrome_impl.cc
+index d8dd07670b..f803cc255c 100644
+--- a/chrome/test/chromedriver/chrome/chrome_impl.cc
++++ b/chrome/test/chromedriver/chrome/chrome_impl.cc
+@@ -18,6 +18,7 @@
+ #include "base/values.h"
+ #include "chrome/test/chromedriver/chrome/chrome.h"
+ #include "chrome/test/chromedriver/chrome/device_metrics.h"
++#include "base/strings/string_util.h"
+ #include "chrome/test/chromedriver/chrome/devtools_client.h"
+ #include "chrome/test/chromedriver/chrome/devtools_client_impl.h"
+ #include "chrome/test/chromedriver/chrome/devtools_event_listener.h"
+@@ -65,13 +66,25 @@ Status ChromeImpl::GetWebViewIdForFirstTab(std::string* web_view_id,
+   status = UpdateWebViews(views_info, w3c_compliant);
+   if (status.IsError())
+     return status;
++  std::string ret;
+   for (int i = views_info.GetSize() - 1; i >= 0; --i) {
+     const WebViewInfo& view = views_info.Get(i);
+-    if (view.type == WebViewInfo::kPage) {
+-      *web_view_id = view.id;
+-      return Status(kOk);
++    if (view.type == WebViewInfo::kPage ||
++        view.type == WebViewInfo::kApp ||
++        (view.type == WebViewInfo::kOther &&
++         !base::StartsWith(view.url, "chrome-extension://", base::CompareCase::SENSITIVE) &&
++         !base::StartsWith(view.url, "about:blank", base::CompareCase::SENSITIVE))) {
++      ret = view.id;
++      if (view.type != WebViewInfo::kOther) {
++        *web_view_id = view.id;
++        return Status(kOk);
++      }
+     }
+   }
++  if (!ret.empty()) {
++    *web_view_id = ret;
++    return Status(kOk);
++  }
+   return Status(kUnknownError, "unable to discover open window in chrome");
+ }
+

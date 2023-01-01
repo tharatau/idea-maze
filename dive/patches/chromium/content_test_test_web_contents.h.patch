@@ -1,0 +1,13 @@
+diff --git a/content/test/test_web_contents.h b/content/test/test_web_contents.h
+index 6e9a4f47d0..606a34767a 100644
+--- a/content/test/test_web_contents.h
++++ b/content/test/test_web_contents.h
+@@ -192,7 +192,7 @@ class TestWebContents : public WebContentsImpl, public WebContentsTester {
+                          int route_id,
+                          WindowOpenDisposition disposition,
+                          const gfx::Rect& initial_rect,
+-                         bool user_gesture) override;
++                         bool user_gesture, std::string) override;
+   void ShowCreatedWidget(int process_id,
+                          int route_id,
+                          const gfx::Rect& initial_rect,

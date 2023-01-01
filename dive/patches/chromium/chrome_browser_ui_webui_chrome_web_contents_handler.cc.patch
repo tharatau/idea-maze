@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/ui/webui/chrome_web_contents_handler.cc b/chrome/browser/ui/webui/chrome_web_contents_handler.cc
+index 813cbbe544..515cc16de0 100644
+--- a/chrome/browser/ui/webui/chrome_web_contents_handler.cc
++++ b/chrome/browser/ui/webui/chrome_web_contents_handler.cc
+@@ -102,7 +102,7 @@ void ChromeWebContentsHandler::AddNewContents(
+       return;
+     }
+     browser = Browser::Create(
+-        Browser::CreateParams(Browser::TYPE_NORMAL, profile, user_gesture));
++        Browser::CreateParams(Browser::TYPE_POPUP, profile, user_gesture));
+   }
+   NavigateParams params(browser, std::move(new_contents));
+   params.source_contents = source;

@@ -1,0 +1,94 @@
+diff --git a/chrome/renderer/chrome_content_renderer_client.cc b/chrome/renderer/chrome_content_renderer_client.cc
+index a7ffa185b5..daad135449 100644
+--- a/chrome/renderer/chrome_content_renderer_client.cc
++++ b/chrome/renderer/chrome_content_renderer_client.cc
+@@ -248,6 +248,9 @@
+ #include "chrome/renderer/supervised_user/supervised_user_error_page_controller_delegate_impl.h"
+ #endif
+
++#include "content/nw/src/nw_content.h"
++#include "content/nw/src/common/shell_switches.h"
++
+ using autofill::AutofillAgent;
+ using autofill::PasswordAutofillAgent;
+ using autofill::PasswordGenerationAgent;
+@@ -385,6 +388,15 @@ ChromeContentRendererClient::ChromeContentRendererClient()
+
+ ChromeContentRendererClient::~ChromeContentRendererClient() {}
+
++void ChromeContentRendererClient::willHandleNavigationPolicy(content::RenderFrame* rv,
++                                                             blink::WebFrame* frame,
++                                                             const blink::WebURLRequest& request,
++                                                             blink::WebNavigationPolicy* policy,
++                                                             blink::WebString* manifest,
++                                                             bool new_win) {
++  nw::willHandleNavigationPolicy(rv, frame, request, policy, manifest, new_win);
++}
++
+ void ChromeContentRendererClient::RenderThreadStarted() {
+   RenderThread* thread = RenderThread::Get();
+
+@@ -429,25 +441,28 @@ void ChromeContentRendererClient::RenderThreadStarted() {
+       WebString::FromASCII(extensions::kExtensionScheme));
+ #endif
+
++  base::CommandLine* command_line = base::CommandLine::ForCurrentProcess();
+ #if BUILDFLAG(ENABLE_SPELLCHECK)
+-  if (!spellcheck_)
++  if (!spellcheck_ && command_line->HasSwitch(switches::kEnableSpellChecking)) {
+     InitSpellCheck();
++  }
+ #endif
+
+   subresource_filter_ruleset_dealer_ =
+       std::make_unique<subresource_filter::UnverifiedRulesetDealer>();
+
++#if 0
+   phishing_model_setter_ =
+       std::make_unique<safe_browsing::PhishingModelSetterImpl>();
++#endif
+
+   thread->AddObserver(chrome_observer_.get());
+   thread->AddObserver(subresource_filter_ruleset_dealer_.get());
+-  thread->AddObserver(phishing_model_setter_.get());
++  //thread->AddObserver(phishing_model_setter_.get());
+
+   blink::WebScriptController::RegisterExtension(
+       extensions_v8::LoadTimesExtension::Get());
+
+-  base::CommandLine* command_line = base::CommandLine::ForCurrentProcess();
+   if (command_line->HasSwitch(variations::switches::kEnableBenchmarking)) {
+     blink::WebScriptController::RegisterExtension(
+         extensions_v8::BenchmarkingExtension::Get());
+@@ -703,10 +718,12 @@ void ChromeContentRendererClient::RenderFrameCreated(
+     subresource_filter_agent->Initialize();
+   }
+
++#if 0
+   if (translate::IsSubFrameTranslationEnabled()) {
+     new translate::PerFrameTranslateAgent(
+         render_frame, ISOLATED_WORLD_ID_TRANSLATE, associated_interfaces);
+   }
++#endif
+
+ #if !BUILDFLAG(IS_ANDROID)
+   base::CommandLine* command_line = base::CommandLine::ForCurrentProcess();
+@@ -729,6 +746,7 @@ void ChromeContentRendererClient::RenderFrameCreated(
+   }
+
+ #if BUILDFLAG(ENABLE_SPELLCHECK)
++  if (command_line->HasSwitch(switches::kEnableSpellChecking))
+   new SpellCheckProvider(render_frame, spellcheck_.get(), this);
+
+ #if BUILDFLAG(HAS_SPELLCHECK_PANEL)
+@@ -1572,6 +1590,10 @@ bool ChromeContentRendererClient::IsPluginAllowedToUseCameraDeviceAPI(
+   return false;
+ }
+
++base::FilePath ChromeContentRendererClient::GetRootPath() {
++  return nw::GetRootPathRenderer();
++}
++
+ void ChromeContentRendererClient::RunScriptsAtDocumentStart(
+     content::RenderFrame* render_frame) {
+ #if BUILDFLAG(ENABLE_EXTENSIONS)

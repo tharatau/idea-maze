@@ -1,0 +1,12 @@
+diff --git a/testing/buildbot/trybot_analyze_config.json b/testing/buildbot/trybot_analyze_config.json
+index f8890159a9..dc76ea3c51 100644
+--- a/testing/buildbot/trybot_analyze_config.json
++++ b/testing/buildbot/trybot_analyze_config.json
+@@ -12,6 +12,7 @@
+       "build/check_gn_headers_whitelist.txt",
+       "build/get_landmines.py",
+       "build/gn_helpers.py",
++      "build/gyp_chromium",
+       "build/mac_toolchain.py",
+       "build/toolchain/apple/.*py",
+       "build/toolchain/get_concurrent_links.py",

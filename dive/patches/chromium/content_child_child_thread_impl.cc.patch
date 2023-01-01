@@ -1,0 +1,13 @@
+diff --git a/content/child/child_thread_impl.cc b/content/child/child_thread_impl.cc
+index c446a310d8..18cd8d5afa 100644
+--- a/content/child/child_thread_impl.cc
++++ b/content/child/child_thread_impl.cc
+@@ -655,7 +655,7 @@ void ChildThreadImpl::Init(const Options& options) {
+   // Requires base::PowerMonitor to be initialized first.
+   power_scheduler::PowerModeArbiter::GetInstance()->OnThreadPoolAvailable();
+
+-#if BUILDFLAG(IS_POSIX)
++#if 0 //BUILDFLAG(IS_POSIX)
+   // Check that --process-type is specified so we don't do this in unit tests
+   // and single-process mode.
+   if (base::CommandLine::ForCurrentProcess()->HasSwitch(

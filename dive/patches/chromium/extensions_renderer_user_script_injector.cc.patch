@@ -1,0 +1,15 @@
+diff --git a/extensions/renderer/user_script_injector.cc b/extensions/renderer/user_script_injector.cc
+index 1ef39ccd16..2a05b2abfe 100644
+--- a/extensions/renderer/user_script_injector.cc
++++ b/extensions/renderer/user_script_injector.cc
+@@ -138,6 +138,10 @@ mojom::InjectionType UserScriptInjector::script_type() const {
+   return mojom::InjectionType::kContentScript;
+ }
+
++bool UserScriptInjector::ShouldExecuteInMainWorld() const {
++  return script_->in_main_world();
++}
++
+ blink::mojom::UserActivationOption UserScriptInjector::IsUserGesture() const {
+   return blink::mojom::UserActivationOption::kDoNotActivate;
+ }

@@ -1,0 +1,29 @@
+diff --git a/chrome/browser/ui/omnibox/chrome_omnibox_client.cc b/chrome/browser/ui/omnibox/chrome_omnibox_client.cc
+index e87de40bb0..a0e516f04a 100644
+--- a/chrome/browser/ui/omnibox/chrome_omnibox_client.cc
++++ b/chrome/browser/ui/omnibox/chrome_omnibox_client.cc
+@@ -241,20 +241,24 @@ bool ChromeOmniboxClient::ProcessExtensionKeyword(
+ void ChromeOmniboxClient::OnInputStateChanged() {
+   if (!controller_->GetWebContents())
+     return;
++#if 0
+   if (auto* helper =
+           OmniboxTabHelper::FromWebContents(controller_->GetWebContents())) {
+     helper->OnInputStateChanged();
+   }
++#endif
+ }
+
+ void ChromeOmniboxClient::OnFocusChanged(OmniboxFocusState state,
+                                          OmniboxFocusChangeReason reason) {
+   if (!controller_->GetWebContents())
+     return;
++#if 0
+   if (auto* helper =
+           OmniboxTabHelper::FromWebContents(controller_->GetWebContents())) {
+     helper->OnFocusChanged(state, reason);
+   }
++#endif
+ }
+
+ void ChromeOmniboxClient::OnResultChanged(

@@ -1,0 +1,24 @@
+diff --git a/chrome/browser/renderer_preferences_util.cc b/chrome/browser/renderer_preferences_util.cc
+index cc8ea09718..4f845b9477 100644
+--- a/chrome/browser/renderer_preferences_util.cc
++++ b/chrome/browser/renderer_preferences_util.cc
+@@ -43,6 +43,8 @@
+ #include "ui/linux/linux_ui.h"
+ #endif
+
++#include "content/nw/src/common/nw_content_common_hooks.h"
++
+ namespace {
+
+ // Parses a string |range| with a port range in the form "<min>-<max>".
+@@ -202,6 +204,10 @@ void UpdateFromSystemSettings(blink::RendererPreferences* prefs,
+ #else
+   prefs->focus_ring_color = SkColorSetRGB(0x10, 0x10, 0x10);
+ #endif
++
++  std::string user_agent;
++  if (nw::GetUserAgentFromManifest(&user_agent))
++    prefs->user_agent_override.ua_string_override = user_agent;
+ }
+
+ }  // namespace renderer_preferences_util

@@ -1,0 +1,13 @@
+diff --git a/build/config/win/BUILD.gn b/build/config/win/BUILD.gn
+index abde4a97d8..af1acdb852 100644
+--- a/build/config/win/BUILD.gn
++++ b/build/config/win/BUILD.gn
+@@ -72,7 +72,7 @@ config("compiler") {
+
+   if (is_clang) {
+     cflags += [
+-      "/Zc:twoPhase",
++      #"/Zc:twoPhase",
+
+       # Consistently use backslash as the path separator when expanding the
+       # __FILE__ macro when targeting Windows regardless of the build

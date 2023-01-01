@@ -1,0 +1,12 @@
+diff --git a/chrome/app/version_assembly/BUILD.gn b/chrome/app/version_assembly/BUILD.gn
+index b2dd3ac6d3..fda04bc070 100644
+--- a/chrome/app/version_assembly/BUILD.gn
++++ b/chrome/app/version_assembly/BUILD.gn
+@@ -25,7 +25,6 @@ windows_manifest("chrome_exe_manifest") {
+     as_invoker_manifest,
+     common_controls_manifest,
+     default_compatibility_manifest,
+-    version_assembly_output_file,
+   ]
+
+   if (enable_segment_heap) {

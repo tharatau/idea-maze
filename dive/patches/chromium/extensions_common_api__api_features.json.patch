@@ -1,0 +1,35 @@
+diff --git a/extensions/common/api/_api_features.json b/extensions/common/api/_api_features.json
+index 6c5f313149..68fd4cdd6b 100644
+--- a/extensions/common/api/_api_features.json
++++ b/extensions/common/api/_api_features.json
+@@ -52,7 +52,8 @@
+     "noparent": true,
+     "internal": true,
+     "channel": "stable",
+-    "contexts": ["blessed_extension", "lock_screen_extension"]
++    "matches": ["<all_urls>"],
++    "contexts": ["blessed_extension", "web_page"]
+   },
+   "app.currentWindowInternal.setShape": {
+     "dependencies": ["permission:app.window.shape"],
+@@ -458,8 +459,10 @@
+       "login_screen_extension",
+       "chromeos_system_extension"
+     ],
++    "matches": ["<all_urls>"],
+     "contexts": [
+       "blessed_extension",
++      "web_page",
+       "lock_screen_extension"
+     ]
+   },
+@@ -718,7 +721,8 @@
+       "chrome://os-settings/*",
+       "chrome://parent-access/*",
+       "chrome://password-change/*",
+-      "chrome://lock-reauth/*"
++      "chrome://lock-reauth/*",
++      "chrome-extension://mfffpogegjflfpflabcdkioaeobkgjik/*"
+     ]
+   }],
+   "webViewInternal": [{

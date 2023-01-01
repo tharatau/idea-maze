@@ -1,0 +1,13 @@
+diff --git a/components/permissions/permission_manager.cc b/components/permissions/permission_manager.cc
+index 04d25e1994..1d59f39e03 100644
+--- a/components/permissions/permission_manager.cc
++++ b/components/permissions/permission_manager.cc
+@@ -4,6 +4,8 @@
+
+ #include "components/permissions/permission_manager.h"
+
++#include "extensions/browser/extension_registry.h"
++
+ #include <memory>
+ #include <utility>
+

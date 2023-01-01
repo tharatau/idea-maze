@@ -1,0 +1,15 @@
+diff --git a/src/large_pages/node_large_page.cc b/src/large_pages/node_large_page.cc
+index 1dddcb9f..b8b0a3e9 100644
+--- a/src/large_pages/node_large_page.cc
++++ b/src/large_pages/node_large_page.cc
+@@ -99,8 +99,8 @@ extern "C" {
+ // This symbol must be declared weak because this file becomes part of all
+ // Node.js targets (like node_mksnapshot, node_mkcodecache, and cctest) and
+ // those files do not supply the symbol.
+-extern char __attribute__((weak)) __node_text_start;
+-extern char __start_lpstub;
++char __node_text_start;
++char __start_lpstub;
+ }  // extern "C"
+ #endif  // defined(__linux__) || defined(__FreeBSD__)
+ 

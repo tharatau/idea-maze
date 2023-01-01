@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/html/forms/file_chooser.h b/third_party/blink/renderer/core/html/forms/file_chooser.h
+index 8044933764..e8fddf74c8 100644
+--- a/third_party/blink/renderer/core/html/forms/file_chooser.h
++++ b/third_party/blink/renderer/core/html/forms/file_chooser.h
+@@ -52,7 +52,7 @@ using FileChooserFileInfoList = Vector<mojom::blink::FileChooserFileInfoPtr>;
+ class CORE_EXPORT FileChooserClient : public PopupOpeningObserver {
+  public:
+   virtual void FilesChosen(FileChooserFileInfoList,
+-                           const base::FilePath& base_dir) = 0;
++                           const base::FilePath& base_dir, bool canceled = false) = 0;
+   virtual LocalFrame* FrameOrNull() const = 0;
+   ~FileChooserClient() override;
+

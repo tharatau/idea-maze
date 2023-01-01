@@ -1,0 +1,12 @@
+diff --git a/chrome/renderer/chrome_render_frame_observer.h b/chrome/renderer/chrome_render_frame_observer.h
+index ebd13da3a4..fbc261b79f 100644
+--- a/chrome/renderer/chrome_render_frame_observer.h
++++ b/chrome/renderer/chrome_render_frame_observer.h
+@@ -5,6 +5,7 @@
+ #ifndef CHROME_RENDERER_CHROME_RENDER_FRAME_OBSERVER_H_
+ #define CHROME_RENDERER_CHROME_RENDER_FRAME_OBSERVER_H_
+
++#pragma clang diagnostic ignored "-Wunused-private-field"
+ #include <string>
+ #include <vector>
+

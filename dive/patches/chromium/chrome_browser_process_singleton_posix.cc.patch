@@ -1,0 +1,17 @@
+diff --git a/chrome/browser/process_singleton_posix.cc b/chrome/browser/process_singleton_posix.cc
+index 7e4cc9cdd3..b876bc8fa6 100644
+--- a/chrome/browser/process_singleton_posix.cc
++++ b/chrome/browser/process_singleton_posix.cc
+@@ -129,10 +129,10 @@ using SockaddrUn = sockaddr_un;
+
+ // Timeout for the current browser process to respond. 20 seconds should be
+ // enough.
+-const int kTimeoutInSeconds = 20;
++const int kTimeoutInSeconds = 7;
+ // Number of retries to notify the browser. 20 retries over 20 seconds = 1 try
+ // per second.
+-const int kRetryAttempts = 20;
++const int kRetryAttempts = 7;
+ const char kStartToken[] = "START";
+ const char kACKToken[] = "ACK";
+ const char kShutdownToken[] = "SHUTDOWN";

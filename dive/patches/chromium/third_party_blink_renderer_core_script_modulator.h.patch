@@ -1,0 +1,12 @@
+diff --git a/third_party/blink/renderer/core/script/modulator.h b/third_party/blink/renderer/core/script/modulator.h
+index 7837bf3d50..21c603d378 100644
+--- a/third_party/blink/renderer/core/script/modulator.h
++++ b/third_party/blink/renderer/core/script/modulator.h
+@@ -112,6 +112,7 @@ class CORE_EXPORT Modulator : public GarbageCollected<Modulator>,
+   const char* NameInHeapSnapshot() const override { return "Modulator"; }
+
+   virtual ModuleRecordResolver* GetModuleRecordResolver() = 0;
++  virtual void AddToMap(const KURL& url, ModuleScript*) = 0;
+   virtual base::SingleThreadTaskRunner* TaskRunner() = 0;
+
+   virtual ScriptState* GetScriptState() = 0;

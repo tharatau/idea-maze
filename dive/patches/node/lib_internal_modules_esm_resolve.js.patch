@@ -1,0 +1,19 @@
+diff --git a/lib/internal/modules/esm/resolve.js b/lib/internal/modules/esm/resolve.js
+index bfee2802..af4428b9 100644
+--- a/lib/internal/modules/esm/resolve.js
++++ b/lib/internal/modules/esm/resolve.js
+@@ -73,13 +73,7 @@ const userConditions = getOptionValue('--conditions');
+ const noAddons = getOptionValue('--no-addons');
+ const addonConditions = noAddons ? [] : ['node-addons'];
+ 
+-const DEFAULT_CONDITIONS = ObjectFreeze([
+-  'node',
+-  'import',
+-  ...addonConditions,
+-  ...userConditions,
+-]);
+-
++const DEFAULT_CONDITIONS = ObjectFreeze(['node', 'import']);
+ const DEFAULT_CONDITIONS_SET = new SafeSet(DEFAULT_CONDITIONS);
+ 
+ const emittedPackageWarnings = new SafeSet();

@@ -1,0 +1,19 @@
+diff --git a/third_party/blink/renderer/core/frame/local_frame_client_impl.cc b/third_party/blink/renderer/core/frame/local_frame_client_impl.cc
+index 2ac22a0410..a623472a00 100644
+--- a/third_party/blink/renderer/core/frame/local_frame_client_impl.cc
++++ b/third_party/blink/renderer/core/frame/local_frame_client_impl.cc
+@@ -168,6 +168,14 @@ void ResetWheelAndTouchEventHandlerProperties(LocalFrame& frame) {
+ LocalFrameClientImpl::LocalFrameClientImpl(WebLocalFrameImpl* frame)
+     : web_frame_(frame) {}
+
++void LocalFrameClientImpl::willHandleNavigationPolicy(const ResourceRequest& request, NavigationPolicy* policy, WebString* manifest, bool new_win)
++{
++  if (web_frame_->Client()) {
++    WrappedResourceRequest webreq(request);
++    web_frame_->Client()->willHandleNavigationPolicy(web_frame_, webreq, (WebNavigationPolicy*)policy, manifest, new_win);
++  }
++}
++
+ LocalFrameClientImpl::~LocalFrameClientImpl() = default;
+
+ void LocalFrameClientImpl::Trace(Visitor* visitor) const {

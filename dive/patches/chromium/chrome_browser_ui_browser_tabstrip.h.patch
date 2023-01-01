@@ -1,0 +1,14 @@
+diff --git a/chrome/browser/ui/browser_tabstrip.h b/chrome/browser/ui/browser_tabstrip.h
+index 6c2a57a1e5..7b1237ec23 100644
+--- a/chrome/browser/ui/browser_tabstrip.h
++++ b/chrome/browser/ui/browser_tabstrip.h
+@@ -49,7 +49,8 @@ void AddWebContents(
+     const GURL& target_url,
+     WindowOpenDisposition disposition,
+     const gfx::Rect& initial_rect,
+-    NavigateParams::WindowAction window_action = NavigateParams::SHOW_WINDOW);
++    NavigateParams::WindowAction window_action = NavigateParams::SHOW_WINDOW,
++    std::string manifest = std::string());
+
+ // Closes the specified WebContents in the specified Browser. If
+ // |add_to_history| is true, an entry in the historical tab database is created.

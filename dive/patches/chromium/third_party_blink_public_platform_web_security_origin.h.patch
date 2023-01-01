@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/public/platform/web_security_origin.h b/third_party/blink/public/platform/web_security_origin.h
+index 739d20d24e..477aa02adb 100644
+--- a/third_party/blink/public/platform/web_security_origin.h
++++ b/third_party/blink/public/platform/web_security_origin.h
+@@ -119,6 +119,8 @@ class WebSecurityOrigin {
+   // https://html.spec.whatwg.org/#same-origin
+   BLINK_PLATFORM_EXPORT bool IsSameOriginWith(const WebSecurityOrigin&) const;
+
++  BLINK_PLATFORM_EXPORT void grantUniversalAccess();
++
+ #if INSIDE_BLINK
+   BLINK_PLATFORM_EXPORT WebSecurityOrigin(scoped_refptr<const SecurityOrigin>);
+   BLINK_PLATFORM_EXPORT WebSecurityOrigin& operator=(

@@ -1,0 +1,31 @@
+diff --git a/third_party/blink/renderer/core/editing/commands/clipboard_commands.cc b/third_party/blink/renderer/core/editing/commands/clipboard_commands.cc
+index d89c1a77fb..ebc63917ae 100644
+--- a/third_party/blink/renderer/core/editing/commands/clipboard_commands.cc
++++ b/third_party/blink/renderer/core/editing/commands/clipboard_commands.cc
+@@ -59,6 +59,8 @@ bool ClipboardCommands::CanReadClipboard(LocalFrame& frame,
+                                          EditorCommandSource source) {
+   if (source == EditorCommandSource::kMenuOrKeyBinding)
+     return true;
++  if (frame.isNodeJS())
++    return true;
+   Settings* const settings = frame.GetSettings();
+   const bool default_value = settings &&
+                              settings->GetJavaScriptCanAccessClipboard() &&
+@@ -73,6 +75,8 @@ bool ClipboardCommands::CanWriteClipboard(LocalFrame& frame,
+                                           EditorCommandSource source) {
+   if (source == EditorCommandSource::kMenuOrKeyBinding)
+     return true;
++  if (frame.isNodeJS())
++    return true;
+   Settings* const settings = frame.GetSettings();
+   const bool default_value =
+       (settings && settings->GetJavaScriptCanAccessClipboard()) ||
+@@ -83,6 +87,8 @@ bool ClipboardCommands::CanWriteClipboard(LocalFrame& frame,
+ }
+
+ bool ClipboardCommands::CanSmartReplaceInClipboard(LocalFrame& frame) {
++  //if (frame.isNodeJS())
++  //  return true; //commented out for NWJS#7363
+   return frame.GetEditor().SmartInsertDeleteEnabled() &&
+          frame.GetSystemClipboard()->IsFormatAvailable(
+              blink::mojom::ClipboardFormat::kSmartPaste);

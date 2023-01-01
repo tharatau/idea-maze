@@ -1,0 +1,49 @@
+diff --git a/chrome/browser/extensions/api/tabs/windows_event_router.cc b/chrome/browser/extensions/api/tabs/windows_event_router.cc
+index 4d0befa34c..03a6353cad 100644
+--- a/chrome/browser/extensions/api/tabs/windows_event_router.cc
++++ b/chrome/browser/extensions/api/tabs/windows_event_router.cc
+@@ -281,6 +281,44 @@ void WindowsEventRouter::OnNoKeyWindow() {
+ }
+ #endif
+
++void WindowsEventRouter::OnWindowMove(WindowController* window_controller) {
++  if (!HasEventListener(windows::OnMove::kEventName))
++    return;
++  if (!window_controller)
++    return;
++  if (!profile_->IsSameOrParent(window_controller->profile()))
++    return;
++  // Ignore any windows without an associated browser (e.g., AppWindows).
++  if (!window_controller->GetBrowser())
++    return;
++
++  std::unique_ptr<base::ListValue> args(new base::ListValue());
++  args->Append(base::Value::FromUniquePtrValue(ExtensionTabUtil::CreateWindowValueForExtension(
++      *window_controller->GetBrowser(), nullptr,
++      ExtensionTabUtil::kDontPopulateTabs, Feature::UNSPECIFIED_CONTEXT)));
++  DispatchEvent(events::UNKNOWN, windows::OnMove::kEventName,
++                window_controller, std::move(args));
++}
++
++void WindowsEventRouter::OnWindowChanged(WindowController* window_controller) {
++  if (!window_controller)
++    return;
++  if (!HasEventListener(windows::OnWindowChanged::kEventName))
++    return;
++  if (!profile_->IsSameOrParent(window_controller->profile()))
++    return;
++  // Ignore any windows without an associated browser (e.g., AppWindows).
++  if (!window_controller->GetBrowser())
++    return;
++
++  std::unique_ptr<base::ListValue> args(new base::ListValue());
++  args->Append(base::Value::FromUniquePtrValue(ExtensionTabUtil::CreateWindowValueForExtension(
++      *window_controller->GetBrowser(), nullptr,
++      ExtensionTabUtil::kDontPopulateTabs, Feature::UNSPECIFIED_CONTEXT)));
++  DispatchEvent(events::UNKNOWN, windows::OnWindowChanged::kEventName,
++                window_controller, std::move(args));
++}
++
+ void WindowsEventRouter::OnActiveWindowChanged(
+     WindowController* window_controller) {
+   Profile* window_profile = nullptr;

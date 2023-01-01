@@ -1,0 +1,31 @@
+diff --git a/content/app/content_main_runner_impl.cc b/content/app/content_main_runner_impl.cc
+index fb4af331fb..34658455c9 100644
+--- a/content/app/content_main_runner_impl.cc
++++ b/content/app/content_main_runner_impl.cc
+@@ -1009,10 +1009,10 @@ int NO_STACK_PROTECTOR ContentMainRunnerImpl::Run() {
+   DCHECK(is_initialized_);
+   DCHECK(content_main_params_);
+   DCHECK(!is_shutdown_);
+-  const base::CommandLine* command_line =
+-      base::CommandLine::ForCurrentProcess();
++  base::CommandLine& command_line =
++      *base::CommandLine::ForCurrentProcess();
+   std::string process_type =
+-      command_line->GetSwitchValueASCII(switches::kProcessType);
++      command_line.GetSwitchValueASCII(switches::kProcessType);
+   // Run this logic on all child processes.
+   if (!process_type.empty()) {
+     if (process_type != switches::kZygoteProcess) {
+@@ -1044,7 +1044,11 @@ int NO_STACK_PROTECTOR ContentMainRunnerImpl::Run() {
+ #endif  // BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
+   }
+
+-  MainFunctionParams main_params(command_line);
++  if (process_type.empty()) {
++    command_line.AppendSwitch(sandbox::policy::switches::kNoSandbox);
++    command_line.AppendSwitch(switches::kNoZygote);
++  }
++  MainFunctionParams main_params(&command_line);
+   main_params.ui_task = std::move(content_main_params_->ui_task);
+   main_params.created_main_parts_closure =
+       std::move(content_main_params_->created_main_parts_closure);

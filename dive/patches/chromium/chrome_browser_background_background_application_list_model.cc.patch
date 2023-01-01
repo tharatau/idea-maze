@@ -1,0 +1,26 @@
+diff --git a/chrome/browser/background/background_application_list_model.cc b/chrome/browser/background/background_application_list_model.cc
+index d6975c34cb..406b6534e6 100644
+--- a/chrome/browser/background/background_application_list_model.cc
++++ b/chrome/browser/background/background_application_list_model.cc
+@@ -244,8 +244,10 @@ bool BackgroundApplicationListModel::IsPersistentBackgroundApp(
+   //    manifest.
+
+   // Not a background app if we don't have the background permission.
++  // NWJS: nwjs_default_app is listed as background app and prevents
++  // quit so we need to disable it here
+   if (!extension.permissions_data()->HasAPIPermission(
+-          APIPermissionID::kBackground)) {
++                     APIPermissionID::kBackground, true)) {
+     return false;
+   }
+
+@@ -382,7 +384,8 @@ void BackgroundApplicationListModel::OnExtensionPermissionsUpdated(
+         // Policy changes are only used for host permissions, so the
+         // "background"
+         // permission would never be present in  permissions .
+-        NOTREACHED();
++        break;
++        //NOTREACHED();
+     }
+   }
+ }

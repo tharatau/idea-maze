@@ -1,0 +1,39 @@
+diff --git a/extensions/renderer/bindings/api_request_handler.cc b/extensions/renderer/bindings/api_request_handler.cc
+index 5a2fcd5519..6f38befd87 100644
+--- a/extensions/renderer/bindings/api_request_handler.cc
++++ b/extensions/renderer/bindings/api_request_handler.cc
+@@ -421,7 +421,11 @@ v8::Local<v8::Promise> APIRequestHandler::StartRequest(
+     binding::AsyncResponseType async_type,
+     v8::Local<v8::Function> callback,
+     v8::Local<v8::Function> custom_callback,
+-    binding::ResultModifierFunction result_modifier) {
++    binding::ResultModifierFunction result_modifier,
++    bool sync,
++    bool* success,
++    base::Value::List* response,
++    std::string* error) {
+   v8::Isolate* isolate = context->GetIsolate();
+
+   v8::Local<v8::Promise> promise;
+@@ -441,6 +445,7 @@ v8::Local<v8::Promise> APIRequestHandler::StartRequest(
+     request->has_async_response_handler = true;
+   }
+
++  if (!sync)
+   pending_requests_.emplace(
+       request_id,
+       PendingRequest(isolate, context, method, std::move(async_handler),
+@@ -452,6 +457,13 @@ v8::Local<v8::Promise> APIRequestHandler::StartRequest(
+   request->method_name = method;
+
+   last_sent_request_id_ = request_id;
++  request->sync = sync;
++  if (sync) {
++    request->response = response;
++    request->success = success;
++    request->error = error;
++  }
++
+   send_request_.Run(std::move(request), context);
+
+   return promise;

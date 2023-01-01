@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/ui/views/overlay/overlay_window_views.h b/chrome/browser/ui/views/overlay/overlay_window_views.h
+index b2ed2e7cd2..5c1e8b1204 100644
+--- a/chrome/browser/ui/views/overlay/overlay_window_views.h
++++ b/chrome/browser/ui/views/overlay/overlay_window_views.h
+@@ -16,6 +16,8 @@
+ #include "ui/gfx/geometry/size.h"
+ #include "ui/views/widget/widget.h"
+
++#pragma clang diagnostic push
++#pragma clang diagnostic ignored "-Woverloaded-virtual"
+ // Base class for the Chrome desktop implementation of VideoOverlayWindow and
+ // DocumentOverlayWindow. This will only be implemented in views, which will
+ // support all desktop platforms.
+@@ -188,4 +190,6 @@ class OverlayWindowViews : public views::Widget,
+   absl::optional<bool> force_controls_visible_;
+ };
+
++#pragma clang diagnostic pop
++
+ #endif  // CHROME_BROWSER_UI_VIEWS_OVERLAY_OVERLAY_WINDOW_VIEWS_H_

@@ -1,0 +1,15 @@
+diff --git a/build/config/dcheck_always_on.gni b/build/config/dcheck_always_on.gni
+index de40c048aa..e4a73dbab9 100644
+--- a/build/config/dcheck_always_on.gni
++++ b/build/config/dcheck_always_on.gni
+@@ -21,8 +21,8 @@ declare_args() {
+   # Other clients typically set this to false. If another client wants to use
+   # the same default value as Chromium, we'd need to add a separate gclient
+   # variable to replace build_with_chromium here.
+-  dcheck_always_on =
+-      (build_with_chromium && !is_official_build) || dcheck_is_configurable
++  dcheck_always_on = false
++      #(build_with_chromium && !is_official_build) || dcheck_is_configurable
+ }
+
+ declare_args() {

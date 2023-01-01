@@ -1,0 +1,58 @@
+diff --git a/chrome/browser/ui/views/frame/browser_view_layout.cc b/chrome/browser/ui/views/frame/browser_view_layout.cc
+index 5f1e08e77d..73776d4c4e 100644
+--- a/chrome/browser/ui/views/frame/browser_view_layout.cc
++++ b/chrome/browser/ui/views/frame/browser_view_layout.cc
+@@ -58,6 +58,8 @@ const int kTabShadowSize = 2;
+ // of the omnibox.
+ const int kConstrainedWindowOverlap = 3;
+
++const int kMenuHeight = 25;
++
+ // Combines View::ConvertPointToTarget and View::HitTest for a given |point|.
+ // Converts |point| from |src| to |dst| and hit tests it against |dst|. The
+ // converted |point| can then be retrieved and used for additional tests.
+@@ -103,7 +105,7 @@ class BrowserViewLayout::WebContentsModalDialogHostViews
+     views::View* view = browser_view_layout_->contents_container_;
+     gfx::Rect content_area = view->ConvertRectToWidget(view->GetLocalBounds());
+     const int middle_x = content_area.x() + content_area.width() / 2;
+-    const int top = browser_view_layout_->web_contents_modal_dialog_top_y_;
++    const int top = content_area.y() + content_area.height() / 2 - size.height() / 2; //browser_view_layout_->web_contents_modal_dialog_top_y_;
+     return gfx::Point(middle_x - size.width() / 2, top);
+   }
+
+@@ -165,6 +167,7 @@ BrowserViewLayout::BrowserViewLayout(
+       browser_view_(browser_view),
+       top_container_(top_container),
+       tab_strip_region_view_(tab_strip_region_view),
++      menu_bar_(nullptr),
+       toolbar_(toolbar),
+       infobar_container_(infobar_container),
+       contents_container_(contents_container),
+@@ -226,11 +229,14 @@ gfx::Size BrowserViewLayout::GetMinimumSize(const views::View* host) const {
+                       kMainBrowserContentsMinimumHeight)
+           : kContentsMinimumSize);
+
+-  const int min_height =
++  int min_height =
+       delegate_->GetTopInsetInBrowserView() + tabstrip_size.height() +
+       toolbar_size.height() + bookmark_bar_size.height() +
+       infobar_container_size.height() + contents_size.height();
+
++  if (menu_bar_)
++    min_height += kMenuHeight;
++
+   const int min_width = std::max(
+       {tabstrip_size.width(), toolbar_size.width(), bookmark_bar_size.width(),
+        infobar_container_size.width(), contents_size.width()});
+@@ -377,6 +383,11 @@ void BrowserViewLayout::Layout(views::View* browser_view) {
+   top = LayoutWebUITabStrip(top);
+   top = LayoutToolbar(top);
+
++  if (menu_bar_) {
++    menu_bar_->SetBounds(0, top, browser_view_->width(), kMenuHeight);
++    top += kMenuHeight;
++  }
++
+   top = LayoutBookmarkAndInfoBars(top, browser_view->y());
+
+   // Top container requires updated toolbar and bookmark bar to compute bounds.

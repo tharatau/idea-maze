@@ -1,0 +1,13 @@
+diff --git a/extensions/browser/user_script_loader.cc b/extensions/browser/user_script_loader.cc
+index dc2251c2c7..ba24f787d1 100644
+--- a/extensions/browser/user_script_loader.cc
++++ b/extensions/browser/user_script_loader.cc
+@@ -87,7 +87,7 @@ bool CanExecuteScriptEverywhere(BrowserContext* browser_context,
+           ->GetExtensionById(host_id.id, ExtensionRegistry::ENABLED);
+
+   return extension && PermissionsData::CanExecuteScriptEverywhere(
+-                          extension->id(), extension->location());
++                                                                  extension->id(), extension->location(), extension->GetType());
+ }
+
+ }  // namespace

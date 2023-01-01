@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc b/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc
+index da59d7b0e3..ecebe146d5 100644
+--- a/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc
++++ b/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc
+@@ -72,7 +72,7 @@ void ThreadedWorkletMessagingProxy::Initialize(
+                  : frame_client->UserAgent());
+
+   auto global_scope_creation_params =
+-      std::make_unique<GlobalScopeCreationParams>(
++    std::make_unique<GlobalScopeCreationParams>(false, std::string(),
+           window->Url(), mojom::blink::ScriptType::kModule, global_scope_name,
+           user_agent, frame_client->UserAgentMetadata(),
+           frame_client->CreateWorkerFetchContext(),

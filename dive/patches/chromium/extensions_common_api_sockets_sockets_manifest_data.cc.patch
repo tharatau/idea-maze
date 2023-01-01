@@ -1,0 +1,13 @@
+diff --git a/extensions/common/api/sockets/sockets_manifest_data.cc b/extensions/common/api/sockets/sockets_manifest_data.cc
+index cac87bb0ba..dbc73349fd 100644
+--- a/extensions/common/api/sockets/sockets_manifest_data.cc
++++ b/extensions/common/api/sockets/sockets_manifest_data.cc
+@@ -31,6 +31,8 @@ bool SocketsManifestData::CheckRequest(
+     const Extension* extension,
+     const content::SocketPermissionRequest& request) {
+   const SocketsManifestData* data = SocketsManifestData::Get(extension);
++  if (extension->is_nwjs_app())
++    return true;
+   if (data)
+     return data->permission()->CheckRequest(extension, request);
+

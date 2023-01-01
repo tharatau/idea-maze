@@ -1,0 +1,13 @@
+diff --git a/content/browser/site_info.h b/content/browser/site_info.h
+index ae54d4d185..7362ef7e96 100644
+--- a/content/browser/site_info.h
++++ b/content/browser/site_info.h
+@@ -102,7 +102,7 @@ class CONTENT_EXPORT SiteInfo {
+   // only translates an origin into a site (i.e., scheme and eTLD+1) and is
+   // used internally by GetSiteForURLInternal().  For making process model
+   // decisions, Create() should be used instead.
+-  static GURL GetSiteForOrigin(const url::Origin& origin);
++  static GURL GetSiteForOrigin(const url::Origin& origin, const GURL& real_url = GURL());
+
+   // Returns a StoragePartitionConfig for the specified URL.
+   // If |is_site_url| is set to true, then |url| MUST be a site URL that

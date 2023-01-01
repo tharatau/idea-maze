@@ -1,0 +1,35 @@
+diff --git a/extensions/common/manifest_constants.h b/extensions/common/manifest_constants.h
+index 62ab91059d..69553c8c74 100644
+--- a/extensions/common/manifest_constants.h
++++ b/extensions/common/manifest_constants.h
+@@ -12,6 +12,14 @@ namespace extensions {
+
+ // Keys used in JSON representation of extensions.
+ namespace manifest_keys {
++extern const char kNWJSInternalFlag[];
++extern const char kNWJSInternalMainFilename[];
++extern const char kNWJSInternalManifest[];
++extern const char kNWJSContentVerifyFlag[];
++extern const char kNWJSMain[];
++extern const char kNWJSMixedContext[];
++extern const char kNWJSEnableNode[];
++extern const char kNWJSDomain[];
+
+ extern const char kAboutPage[];
+ extern const char kAction[];
+@@ -92,6 +100,7 @@ extern const char kLinkedAppIcons[];
+ extern const char kLinkedAppIconURL[];
+ extern const char kLinkedAppIconSize[];
+ extern const char kManifestVersion[];
++extern const char kInMainWorld[];
+ extern const char kMatches[];
+ extern const char kMIMETypes[];
+ extern const char kMimeTypesHandler[];
+@@ -350,6 +359,7 @@ extern const char kInvalidManifestKey[];
+ extern const char kInvalidManifestVersionMissingKey[];
+ extern const char kInvalidManifestVersionUnsupported[];
+ extern const char kInvalidMatch[];
++extern const char kInvalidInMainWorld[];
+ extern const char kInvalidMatchCount[];
+ extern const char kInvalidMatches[];
+ extern const char16_t kInvalidMIMETypes[];

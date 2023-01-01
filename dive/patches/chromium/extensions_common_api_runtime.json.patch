@@ -1,0 +1,16 @@
+diff --git a/extensions/common/api/runtime.json b/extensions/common/api/runtime.json
+index 921db0f22b..4adda9de4a 100644
+--- a/extensions/common/api/runtime.json
++++ b/extensions/common/api/runtime.json
+@@ -445,6 +445,11 @@
+         "type": "function",
+         "description": "Fired when a profile that has this extension installed first starts up. This event is not fired when an incognito profile is started, even if this extension is operating in 'split' incognito mode."
+       },
++      {
++        "name": "onInstalledNW",
++        "type": "function",
++        "description": ""
++      },
+       {
+         "name": "onInstalled",
+         "type": "function",

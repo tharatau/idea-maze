@@ -1,0 +1,13 @@
+diff --git a/services/network/BUILD.gn b/services/network/BUILD.gn
+index 8d1558735a..f508dd572e 100644
+--- a/services/network/BUILD.gn
++++ b/services/network/BUILD.gn
+@@ -176,6 +176,8 @@ component("network_service") {
+     "web_bundle/web_bundle_manager.h",
+     "web_transport.cc",
+     "web_transport.h",
++    "../../content/nw/src/policy_cert_verifier.cc",
++    "../../content/nw/src/policy_cert_verifier.h",
+   ]
+
+   if (is_p2p_enabled) {

@@ -1,0 +1,22 @@
+diff --git a/chrome/browser/sync/sync_service_factory.cc b/chrome/browser/sync/sync_service_factory.cc
+index 1df51b2587..0c93c5b72b 100644
+--- a/chrome/browser/sync/sync_service_factory.cc
++++ b/chrome/browser/sync/sync_service_factory.cc
+@@ -154,6 +154,7 @@ std::unique_ptr<KeyedService> BuildSyncService(
+                                      : syncer::SyncServiceImpl::MANUAL_START;
+   }
+
++#if 0
+   auto sync_service =
+       std::make_unique<syncer::SyncServiceImpl>(std::move(init_params));
+   sync_service->Initialize();
+@@ -173,6 +174,9 @@ std::unique_ptr<KeyedService> BuildSyncService(
+   }
+
+   return sync_service;
++#endif
++
++  return nullptr;
+ }
+
+ }  // anonymous namespace

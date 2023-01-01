@@ -1,0 +1,23 @@
+diff --git a/components/component_updater/component_updater_service.h b/components/component_updater/component_updater_service.h
+index 8cb5fc3728..7782996468 100644
+--- a/components/component_updater/component_updater_service.h
++++ b/components/component_updater/component_updater_service.h
+@@ -24,6 +24,10 @@
+ class ComponentsHandler;
+ class PluginObserver;
+
++namespace extensions {
++class NwAppUpdateComponentFunction;
++}
++
+ namespace policy {
+ class ComponentUpdaterPolicyTest;
+ }
+@@ -195,6 +199,7 @@ class OnDemandUpdater {
+   virtual ~OnDemandUpdater() = default;
+
+  private:
++  friend class extensions::NwAppUpdateComponentFunction;
+   friend class OnDemandTester;
+   friend class policy::ComponentUpdaterPolicyTest;
+   friend class ::ComponentsHandler;

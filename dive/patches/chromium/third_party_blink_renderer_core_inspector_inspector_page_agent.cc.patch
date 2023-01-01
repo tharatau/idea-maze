@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/inspector/inspector_page_agent.cc b/third_party/blink/renderer/core/inspector/inspector_page_agent.cc
+index ca945342fb..e0ae006bc1 100644
+--- a/third_party/blink/renderer/core/inspector/inspector_page_agent.cc
++++ b/third_party/blink/renderer/core/inspector/inspector_page_agent.cc
+@@ -146,6 +146,8 @@ String NavigationPolicyToProtocol(NavigationPolicy policy) {
+       return DispositionEnum::NewWindow;
+     case kNavigationPolicyPictureInPicture:
+       return DispositionEnum::NewWindow;
++    case kNavigationPolicyIgnore:
++      return DispositionEnum::Nwignore;
+   }
+   return DispositionEnum::CurrentTab;
+ }

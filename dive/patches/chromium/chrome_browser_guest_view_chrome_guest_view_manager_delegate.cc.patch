@@ -1,0 +1,22 @@
+diff --git a/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc b/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc
+index 83a37d8948..a42c353b19 100644
+--- a/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc
++++ b/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc
+@@ -13,6 +13,9 @@
+ #include "chrome/browser/ash/app_mode/kiosk_app_manager.h"
+ #endif
+
++#include "components/sessions/content/session_tab_helper.h"
++#include "chrome/browser/sessions/session_tab_helper_factory.h"
++
+ namespace extensions {
+
+ ChromeGuestViewManagerDelegate::ChromeGuestViewManagerDelegate(
+@@ -31,6 +34,7 @@ void ChromeGuestViewManagerDelegate::OnGuestAdded(
+   // |guest_web_contents| so that their corresponding tasks show up in the task
+   // manager.
+   task_manager::WebContentsTags::CreateForGuestContents(guest_web_contents);
++  CreateSessionServiceTabHelper(guest_web_contents);
+
+ #if BUILDFLAG(IS_CHROMEOS_ASH)
+   // Notifies kiosk session about the added guest.

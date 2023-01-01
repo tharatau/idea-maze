@@ -1,0 +1,21 @@
+diff --git a/src/snapshot/code-serializer.cc b/src/snapshot/code-serializer.cc
+index 3f380e6a2f..b87f2dcd3d 100644
+--- a/src/snapshot/code-serializer.cc
++++ b/src/snapshot/code-serializer.cc
+@@ -464,6 +464,7 @@ MaybeHandle<SharedFunctionInfo> CodeSerializer::Deserialize(
+   if (!maybe_result.ToHandle(&result)) {
+     // Deserializing may fail if the reservations cannot be fulfilled.
+     if (FLAG_profile_deserialization) PrintF("[Deserializing failed]\n");
++    cached_data->Reject();
+     return MaybeHandle<SharedFunctionInfo>();
+   }
+   BaselineBatchCompileIfSparkplugCompiled(isolate,
+@@ -733,7 +734,7 @@ SerializedCodeData SerializedCodeData::FromCachedData(
+     SerializedCodeSanityCheckResult* rejection_result) {
+   DisallowGarbageCollection no_gc;
+   SerializedCodeData scd(cached_data);
+-  *rejection_result = scd.SanityCheck(expected_source_hash);
++  *rejection_result = SerializedCodeSanityCheckResult::kSuccess; //scd.SanityCheck(expected_source_hash);
+   if (*rejection_result != SerializedCodeSanityCheckResult::kSuccess) {
+     cached_data->Reject();
+     return SerializedCodeData(nullptr, 0);

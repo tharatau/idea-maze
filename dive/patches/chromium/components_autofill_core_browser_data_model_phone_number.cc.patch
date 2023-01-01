@@ -1,0 +1,12 @@
+diff --git a/components/autofill/core/browser/data_model/phone_number.cc b/components/autofill/core/browser/data_model/phone_number.cc
+index f31a7707c1..4e2de9853c 100644
+--- a/components/autofill/core/browser/data_model/phone_number.cc
++++ b/components/autofill/core/browser/data_model/phone_number.cc
+@@ -5,6 +5,7 @@
+ #include "components/autofill/core/browser/data_model/phone_number.h"
+
+ #include <algorithm>
++#include <cctype>
+
+ #include "base/check_op.h"
+ #include "base/notreached.h"

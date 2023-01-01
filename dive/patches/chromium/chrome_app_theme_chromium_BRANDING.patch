@@ -1,0 +1,45 @@
+diff --git a/chrome/app/theme/chromium/BRANDING b/chrome/app/theme/chromium/BRANDING
+index f8363d5b29..15eef7d75d 100644
+--- a/chrome/app/theme/chromium/BRANDING
++++ b/chrome/app/theme/chromium/BRANDING
+@@ -1,10 +1,10 @@
+-COMPANY_FULLNAME=The Chromium Authors
+-COMPANY_SHORTNAME=The Chromium Authors
+-PRODUCT_FULLNAME=Chromium
+-PRODUCT_SHORTNAME=Chromium
+-PRODUCT_INSTALLER_FULLNAME=Chromium Installer
+-PRODUCT_INSTALLER_SHORTNAME=Chromium Installer
+-COPYRIGHT=Copyright @LASTCHANGE_YEAR@ The Chromium Authors. All rights reserved.
+-MAC_BUNDLE_ID=org.chromium.Chromium
+-MAC_CREATOR_CODE=Cr24
++COMPANY_FULLNAME=The NW.js Community
++COMPANY_SHORTNAME=nwjs.io
++PRODUCT_FULLNAME=nwjs
++PRODUCT_SHORTNAME=nwjs
++PRODUCT_INSTALLER_FULLNAME=NWJS Installer
++PRODUCT_INSTALLER_SHORTNAME=NWJS Installer
++COPYRIGHT=Copyright @LASTCHANGE_YEAR@, The NW.js community and The Chromium Authors. All rights reserved.
++MAC_BUNDLE_ID=io.nwjs.nwjs
++MAC_CREATOR_CODE=NWJS
+ MAC_TEAM_ID=
+diff --git a/chrome/app/theme/chromium/mac/app.icns b/chrome/app/theme/chromium/mac/app.icns
+index d2d7296fad..1a03ae29c1 100644
+Binary files a/chrome/app/theme/chromium/mac/app.icns and b/chrome/app/theme/chromium/mac/app.icns differ
+diff --git a/chrome/app/theme/chromium/mac/document.icns b/chrome/app/theme/chromium/mac/document.icns
+index 13915b9c21..1a03ae29c1 100644
+Binary files a/chrome/app/theme/chromium/mac/document.icns and b/chrome/app/theme/chromium/mac/document.icns differ
+diff --git a/chrome/app/theme/chromium/product_logo_128.png b/chrome/app/theme/chromium/product_logo_128.png
+index 9f88fb10a2..7e63ba7f8c 100644
+Binary files a/chrome/app/theme/chromium/product_logo_128.png and b/chrome/app/theme/chromium/product_logo_128.png differ
+diff --git a/chrome/app/theme/chromium/product_logo_22_mono.png b/chrome/app/theme/chromium/product_logo_22_mono.png
+index b8874d44bc..1207110f2c 100644
+Binary files a/chrome/app/theme/chromium/product_logo_22_mono.png and b/chrome/app/theme/chromium/product_logo_22_mono.png differ
+diff --git a/chrome/app/theme/chromium/product_logo_24.png b/chrome/app/theme/chromium/product_logo_24.png
+index e6d9e56fe8..543bff73b3 100644
+Binary files a/chrome/app/theme/chromium/product_logo_24.png and b/chrome/app/theme/chromium/product_logo_24.png differ
+diff --git a/chrome/app/theme/chromium/product_logo_256.png b/chrome/app/theme/chromium/product_logo_256.png
+index 3f932dbd02..00664f9eca 100644
+Binary files a/chrome/app/theme/chromium/product_logo_256.png and b/chrome/app/theme/chromium/product_logo_256.png differ
+diff --git a/chrome/app/theme/chromium/product_logo_32.xpm b/chrome/app/theme/chromium/product_logo_32.xpm
+new file mode 100644
+index 0000000000..71ab1b52f1

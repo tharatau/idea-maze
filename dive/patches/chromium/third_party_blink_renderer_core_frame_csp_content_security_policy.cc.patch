@@ -1,0 +1,15 @@
+diff --git a/third_party/blink/renderer/core/frame/csp/content_security_policy.cc b/third_party/blink/renderer/core/frame/csp/content_security_policy.cc
+index 33a9d25e5e..7104194246 100644
+--- a/third_party/blink/renderer/core/frame/csp/content_security_policy.cc
++++ b/third_party/blink/renderer/core/frame/csp/content_security_policy.cc
+@@ -1239,6 +1239,10 @@ bool ContentSecurityPolicy::ShouldBypassMainWorldDeprecated(
+   if (!context)
+     return false;
+
++  if (const_cast<ExecutionContext*>(context)->GetSecurityOrigin() &&
++      const_cast<ExecutionContext*>(context)->GetSecurityOrigin()->hasUniversalAccess())
++    return true;
++
+   return ShouldBypassMainWorldDeprecated(context->GetCurrentWorld().get());
+ }
+

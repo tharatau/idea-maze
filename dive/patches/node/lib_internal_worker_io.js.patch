@@ -1,0 +1,14 @@
+diff --git a/lib/internal/worker/io.js b/lib/internal/worker/io.js
+index 61f9a536..c8319793 100644
+--- a/lib/internal/worker/io.js
++++ b/lib/internal/worker/io.js
+@@ -207,7 +207,9 @@ ObjectDefineProperties(MessageEvent.prototype, {
+   },
+ });
+ 
++
+ const originalCreateEvent = EventTarget.prototype[kCreateEvent];
++
+ ObjectDefineProperty(
+   MessagePort.prototype,
+   kCreateEvent,

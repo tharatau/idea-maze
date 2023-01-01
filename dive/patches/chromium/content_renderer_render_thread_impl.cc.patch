@@ -1,0 +1,18 @@
+diff --git a/content/renderer/render_thread_impl.cc b/content/renderer/render_thread_impl.cc
+index a15cfb291d..25c19e8212 100644
+--- a/content/renderer/render_thread_impl.cc
++++ b/content/renderer/render_thread_impl.cc
+@@ -998,6 +998,13 @@ int RenderThreadImpl::PostTaskToAllWebWorkers(base::RepeatingClosure closure) {
+       std::move(closure));
+ }
+
++bool RenderThreadImpl::ResolveProxy(const GURL& url, std::string* proxy_list) {
++  absl::optional<std::string> result;
++  GetRendererHost()->ResolveProxy(url, &result);
++  *proxy_list = result.value_or(std::string());
++  return result.has_value();
++}
++
+ media::GpuVideoAcceleratorFactories* RenderThreadImpl::GetGpuFactories() {
+   DCHECK(IsMainThread());
+

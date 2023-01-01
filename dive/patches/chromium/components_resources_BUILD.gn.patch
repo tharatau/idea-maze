@@ -1,0 +1,14 @@
+diff --git a/components/resources/BUILD.gn b/components/resources/BUILD.gn
+index 3901f6d185..6040af90e9 100644
+--- a/components/resources/BUILD.gn
++++ b/components/resources/BUILD.gn
+@@ -131,3 +131,9 @@ if (is_android) {
+     public_deps = [ "//device/vr/buildflags" ]
+   }
+ }
++
++copy("about_credits_nw") {
++  sources = [ about_credits_file ]
++  outputs = [ "$root_build_dir/credits.html" ]
++  deps = [ ":about_credits" ]
++}

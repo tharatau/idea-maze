@@ -1,0 +1,12 @@
+diff --git a/content/public/test/mock_render_thread.h b/content/public/test/mock_render_thread.h
+index 05f281794a..297a9fda1d 100644
+--- a/content/public/test/mock_render_thread.h
++++ b/content/public/test/mock_render_thread.h
+@@ -78,6 +78,7 @@ class MockRenderThread : public RenderThread {
+   void RecordAction(const base::UserMetricsAction& action) override;
+   void RecordComputedAction(const std::string& action) override;
+   int PostTaskToAllWebWorkers(base::RepeatingClosure closure) override;
++  bool ResolveProxy(const GURL& url, std::string* proxy_list) override;
+   base::WaitableEvent* GetShutdownEvent() override;
+   int32_t GetClientId() override;
+   void SetRendererProcessType(

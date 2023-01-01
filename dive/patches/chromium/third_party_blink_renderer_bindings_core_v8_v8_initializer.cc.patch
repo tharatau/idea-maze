@@ -1,0 +1,79 @@
+diff --git a/third_party/blink/renderer/bindings/core/v8/v8_initializer.cc b/third_party/blink/renderer/bindings/core/v8/v8_initializer.cc
+index db5bd67354..f4bd8990ca 100644
+--- a/third_party/blink/renderer/bindings/core/v8/v8_initializer.cc
++++ b/third_party/blink/renderer/bindings/core/v8/v8_initializer.cc
+@@ -27,6 +27,7 @@
+
+ #include <algorithm>
+ #include <limits>
++#include "third_party/node-nw/src/node_webkit.h"
+ #include <memory>
+ #include <utility>
+
+@@ -99,6 +100,13 @@
+ #include "gin/public/v8_snapshot_file_type.h"
+ #endif
+
++#if defined(OS_WIN)
++#include <windows.h>
++#endif
++
++extern VoidHookFn g_promise_reject_callback_fn;
++
++
+ namespace blink {
+
+ static String ExtractMessageForConsole(v8::Isolate* isolate,
+@@ -262,6 +270,12 @@ static void PromiseRejectHandler(v8::PromiseRejectMessage data,
+   v8::Isolate* isolate = script_state->GetIsolate();
+   ExecutionContext* context = ExecutionContext::From(script_state);
+
++#if 0 //FIXME (#4577)
++  LocalDOMWindow* window = currentDOMWindow(isolate);
++  if (window->frame()->isNodeJS() && g_promise_reject_callback_fn)
++    g_promise_reject_callback_fn(&data);
++#endif
++
+   v8::Local<v8::Value> exception = data.GetValue();
+   if (V8DOMWrapper::IsWrapper(isolate, exception)) {
+     // Try to get the stack & location from a wrapped exception object (e.g.
+@@ -732,6 +746,10 @@ void ReportV8OOMError(const char* location, const v8::OOMDetails& details) {
+ }
+
+ namespace {
++#if defined(OS_WIN)
++HANDLE _process_heap;
++#endif
++
+ class ArrayBufferAllocator : public v8::ArrayBuffer::Allocator {
+  public:
+   ArrayBufferAllocator() : total_allocation_(0) {
+@@ -783,6 +801,18 @@ class ArrayBufferAllocator : public v8::ArrayBuffer::Allocator {
+     ArrayBufferContents::FreeMemory(data);
+   }
+
++  void Free(void* data, size_t length, AllocationMode mode) override {
++    if (mode == AllocationMode::kNodeJS) {
++#if defined(OS_WIN)
++        ::HeapFree(_process_heap, 0, data);
++#else
++        free(data);
++#endif
++        return;
++    } else
++      Free(data, length);
++  }
++
+  private:
+   // Total memory allocated in bytes.
+   std::atomic_size_t total_allocation_;
+@@ -811,6 +841,9 @@ void V8Initializer::InitializeMainThread(
+   DCHECK(IsMainThread());
+
+   DEFINE_STATIC_LOCAL(ArrayBufferAllocator, array_buffer_allocator, ());
++#if defined(OS_WIN)
++  _process_heap = ::GetProcessHeap();
++#endif
+   gin::IsolateHolder::Initialize(gin::IsolateHolder::kNonStrictMode,
+                                  &array_buffer_allocator, reference_table,
+                                  js_command_line_flags, ReportV8FatalError,

@@ -1,0 +1,13 @@
+diff --git a/content/common/content_switches_internal.cc b/content/common/content_switches_internal.cc
+index 373f532bd3..cde3cd04ce 100644
+--- a/content/common/content_switches_internal.cc
++++ b/content/common/content_switches_internal.cc
+@@ -98,7 +98,7 @@ void WaitForDebugger(const std::string& label) {
+ #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
+   std::string title = "Google Chrome";
+ #else   // BUILDFLAG(CHROMIUM_BRANDING)
+-  std::string title = "Chromium";
++  std::string title = "NW.js";
+ #endif  // BUILDFLAG(CHROMIUM_BRANDING)
+   title += " ";
+   title += label;  // makes attaching to process easier

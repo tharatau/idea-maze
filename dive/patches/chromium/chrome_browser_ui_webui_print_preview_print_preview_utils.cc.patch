@@ -1,0 +1,73 @@
+diff --git a/chrome/browser/ui/webui/print_preview/print_preview_utils.cc b/chrome/browser/ui/webui/print_preview/print_preview_utils.cc
+index 1dab6c77d7..39b666e0a6 100644
+--- a/chrome/browser/ui/webui/print_preview/print_preview_utils.cc
++++ b/chrome/browser/ui/webui/print_preview/print_preview_utils.cc
+@@ -49,16 +49,17 @@ const char kVerticalDpi[] = "vertical_dpi";
+ // The dictionary key for the CDD item containing custom vendor capabilities.
+ const char kVendorCapabilityKey[] = "vendor_capability";
+
+-namespace {
++}
+
+-base::Value::List PrintersToValues(const PrinterList& printer_list) {
++namespace chrome {
++base::Value::List PrintersToValues(const printing::PrinterList& printer_list) {
+   base::Value::List results;
+-  for (const PrinterBasicInfo& printer : printer_list) {
++  for (const printing::PrinterBasicInfo& printer : printer_list) {
+     base::Value::Dict printer_info;
+-    printer_info.Set(kSettingDeviceName, printer.printer_name);
++    printer_info.Set(printing::kSettingDeviceName, printer.printer_name);
+
+-    printer_info.Set(kSettingPrinterName, printer.display_name);
+-    printer_info.Set(kSettingPrinterDescription, printer.printer_description);
++    printer_info.Set(printing::kSettingPrinterName, printer.display_name);
++    printer_info.Set(printing::kSettingPrinterDescription, printer.printer_description);
+
+     base::Value::Dict options;
+     for (const auto& opt_it : printer.options)
+@@ -71,7 +72,7 @@ base::Value::List PrintersToValues(const PrinterList& printer_list) {
+             printer.options.at(kCUPSEnterprisePrinter) == kValueTrue);
+ #endif  // BUILDFLAG(IS_CHROMEOS_ASH)
+
+-    printer_info.Set(kSettingPrinterOptions, std::move(options));
++    printer_info.Set(printing::kSettingPrinterOptions, std::move(options));
+
+     results.Append(std::move(printer_info));
+
+@@ -81,6 +82,9 @@ base::Value::List PrintersToValues(const PrinterList& printer_list) {
+   return results;
+ }
+
++}  // namespace chrome
++
++namespace printing {
+ template <typename Predicate>
+ base::Value GetFilteredList(const base::Value* list, Predicate pred) {
+   auto out_list = list->Clone();
+@@ -131,7 +135,6 @@ void SystemDialogDone(const base::Value& error) {
+   // intentional no-op
+ }
+
+-}  // namespace
+
+ base::Value::Dict ValidateCddForPrintPreview(base::Value::Dict cdd) {
+   base::Value::Dict* caps = cdd.FindDict(kPrinter);
+@@ -222,7 +225,7 @@ void ConvertPrinterListForCallback(
+     PrinterHandler::AddedPrintersCallback callback,
+     PrinterHandler::GetPrintersDoneCallback done_callback,
+     const PrinterList& printer_list) {
+-  base::Value::List printers = PrintersToValues(printer_list);
++  base::Value::List printers = chrome::PrintersToValues(printer_list);
+
+   VLOG(1) << "Enumerate printers finished, found " << printers.size()
+           << " printers";
+@@ -253,7 +256,7 @@ void StartLocalPrint(base::Value::Dict job_settings,
+     // Run the callback early, or the modal dialogs will prevent the preview
+     // from closing until they do.
+     std::move(callback).Run(base::Value());
+-    callback = base::BindOnce(&SystemDialogDone);
++    callback = base::BindOnce(&printing::SystemDialogDone);
+   }
+   print_view_manager->PrintForPrintPreview(
+       std::move(job_settings), std::move(print_data),

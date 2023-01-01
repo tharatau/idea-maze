@@ -1,0 +1,17 @@
+diff --git a/chrome/browser/extensions/api/preference/preference_api.cc b/chrome/browser/extensions/api/preference/preference_api.cc
+index 81b405f26a..61aaa2ad08 100644
+--- a/chrome/browser/extensions/api/preference/preference_api.cc
++++ b/chrome/browser/extensions/api/preference/preference_api.cc
+@@ -938,7 +938,11 @@ ExtensionFunction::ResponseAction GetPreferenceFunction::Run() {
+   CHECK(pref);
+
+   // Retrieve level of control.
+-  std::string level_of_control =
++  std::string level_of_control;
++  if (extension()->is_nwjs_app())
++    level_of_control = "controllable_by_this_extension";
++  else
++    level_of_control =
+       extensions::preference_helpers::GetLevelOfControl(
+           profile, extension_id(), browser_pref, incognito);
+

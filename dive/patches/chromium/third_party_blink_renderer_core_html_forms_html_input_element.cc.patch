@@ -1,0 +1,31 @@
+diff --git a/third_party/blink/renderer/core/html/forms/html_input_element.cc b/third_party/blink/renderer/core/html/forms/html_input_element.cc
+index 5c7d3875f9..fcc8433cc3 100644
+--- a/third_party/blink/renderer/core/html/forms/html_input_element.cc
++++ b/third_party/blink/renderer/core/html/forms/html_input_element.cc
+@@ -1990,6 +1990,26 @@ HTMLInputElement::SupportsPopupTriggering() const {
+   return input_type_->SupportsPopupTriggering();
+ }
+
++const AtomicString& HTMLInputElement::nwworkingdir() const
++{
++  return FastGetAttribute(html_names::kNwworkingdirAttr);
++}
++
++void HTMLInputElement::setNwworkingdir(const AtomicString& value)
++{
++  setAttribute(html_names::kNwworkingdirAttr, value);
++}
++
++String HTMLInputElement::nwsaveas() const
++{
++  return FastGetAttribute(html_names::kNwsaveasAttr);
++}
++
++void HTMLInputElement::setNwsaveas(const String& value)
++{
++  setAttribute(html_names::kNwsaveasAttr, AtomicString(value));
++}
++
+ RadioButtonGroupScope* HTMLInputElement::GetRadioButtonGroupScope() const {
+   // FIXME: Remove type check.
+   if (type() != input_type_names::kRadio)

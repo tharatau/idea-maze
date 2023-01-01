@@ -1,0 +1,13 @@
+diff --git a/extensions/browser/content_script_tracker.cc b/extensions/browser/content_script_tracker.cc
+index aab594a178..7c6602fb31 100644
+--- a/extensions/browser/content_script_tracker.cc
++++ b/extensions/browser/content_script_tracker.cc
+@@ -361,7 +361,7 @@ bool DoContentScriptsMatch(const Extension& extension,
+   }
+
+   if (!guest || PermissionsData::CanExecuteScriptEverywhere(
+-                    extension.id(), extension.location())) {
++                                                            extension.id(), extension.location(), extension.GetType())) {
+     // Return true if manifest-declared content scripts match.
+     const UserScriptList& manifest_scripts =
+         ContentScriptsInfo::GetContentScripts(&extension);

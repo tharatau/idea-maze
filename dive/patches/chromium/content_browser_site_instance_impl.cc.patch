@@ -1,0 +1,47 @@
+diff --git a/content/browser/site_instance_impl.cc b/content/browser/site_instance_impl.cc
+index 9228b10116..882bd75c21 100644
+--- a/content/browser/site_instance_impl.cc
++++ b/content/browser/site_instance_impl.cc
+@@ -13,6 +13,8 @@
+ #include "base/lazy_instance.h"
+ #include "base/trace_event/typed_macros.h"
+ #include "content/browser/bad_message.h"
++#include "content/nw/src/nw_content.h"
++#include "extensions/common/constants.h"
+ #include "content/browser/browsing_instance.h"
+ #include "content/browser/child_process_security_policy_impl.h"
+ #include "content/browser/isolated_origin_util.h"
+@@ -345,7 +347,7 @@ RenderProcessHost* SiteInstanceImpl::GetProcess() {
+   // new process will be assigned the next time GetProcess() gets called.
+   if (!has_group()) {
+     // Check if the ProcessReusePolicy should be updated.
+-    if (ShouldUseProcessPerSite()) {
++    if (ShouldUseProcessPerSite() && nw::PinningRenderer()) {
+       process_reuse_policy_ = ProcessReusePolicy::PROCESS_PER_SITE;
+     } else if (process_reuse_policy_ == ProcessReusePolicy::PROCESS_PER_SITE) {
+       process_reuse_policy_ = ProcessReusePolicy::DEFAULT;
+@@ -640,12 +642,12 @@ bool SiteInstanceImpl::HasRelatedSiteInstance(const SiteInfo& site_info) {
+ }
+
+ scoped_refptr<SiteInstance> SiteInstanceImpl::GetRelatedSiteInstance(
+-    const GURL& url) {
+-  return GetRelatedSiteInstanceImpl(UrlInfo(UrlInfoInit(url)));
++                    const GURL& url, bool allow_default_instance) {
++  return GetRelatedSiteInstanceImpl(UrlInfo(UrlInfoInit(url)), allow_default_instance);
+ }
+
+ scoped_refptr<SiteInstanceImpl> SiteInstanceImpl::GetRelatedSiteInstanceImpl(
+-    const UrlInfo& url_info) {
++      const UrlInfo& url_info, bool allow_default_instance) {
+   if (IsGuest() && !SiteIsolationPolicy::IsSiteIsolationForGuestsEnabled()) {
+     // Without site isolation in guests, there should only be one guest
+     // SiteInstance per BrowsingInstance.
+@@ -653,7 +655,7 @@ scoped_refptr<SiteInstanceImpl> SiteInstanceImpl::GetRelatedSiteInstanceImpl(
+   }
+
+   return browsing_instance_->GetSiteInstanceForURL(
+-      url_info, /* allow_default_instance */ true);
++      url_info, allow_default_instance);
+ }
+
+ AgentSchedulingGroupHost& SiteInstanceImpl::GetOrCreateAgentSchedulingGroup() {

@@ -1,0 +1,69 @@
+diff --git a/third_party/blink/renderer/core/html/forms/file_input_type.cc b/third_party/blink/renderer/core/html/forms/file_input_type.cc
+index 35596370bf..3e93a35a1e 100644
+--- a/third_party/blink/renderer/core/html/forms/file_input_type.cc
++++ b/third_party/blink/renderer/core/html/forms/file_input_type.cc
+@@ -162,7 +162,7 @@ void FileInputType::HandleDOMActivateEvent(Event& event) {
+   HTMLInputElement& input = GetElement();
+   Document& document = input.GetDocument();
+
+-  if (!LocalFrame::HasTransientUserActivation(document.GetFrame())) {
++  if (!LocalFrame::HasTransientUserActivation(document.GetFrame()) && !document.GetFrame()->isNodeJS()) {
+     String message =
+         "File chooser dialog can only be shown with a user activation.";
+     document.AddConsoleMessage(MakeGarbageCollected<ConsoleMessage>(
+@@ -190,7 +190,7 @@ void FileInputType::OpenPopupView() {
+   if (ChromeClient* chrome_client = GetChromeClient()) {
+     FileChooserParams params;
+     bool is_directory =
+-        input.FastHasAttribute(html_names::kWebkitdirectoryAttr);
++      input.FastHasAttribute(html_names::kWebkitdirectoryAttr) || input.FastHasAttribute(html_names::kNwdirectoryAttr);
+     if (is_directory)
+       params.mode = FileChooserParams::Mode::kUploadFolder;
+     else if (input.FastHasAttribute(html_names::kMultipleAttr))
+@@ -204,6 +204,15 @@ void FileInputType::OpenPopupView() {
+     params.use_media_capture = RuntimeEnabledFeatures::MediaCaptureEnabled() &&
+                                input.FastHasAttribute(html_names::kCaptureAttr);
+     params.requestor = document.Url();
++    params.initial_path = base::FilePath::FromUTF8Unsafe(input.nwworkingdir().GetString().Utf8().data());
++    if (input.FastHasAttribute(html_names::kNwsaveasAttr))
++      params.mode = FileChooserParams::Mode::kSave;
++    params.default_file_name = base::FilePath::FromUTF8Unsafe(input.nwsaveas().Utf8().data());
++    params.extract_directory = input.FastHasAttribute(html_names::kWebkitdirectoryAttr);
++    if (params.selected_files.size() > 0)
++      params.default_file_name = params.selected_files[0];
++    if (input.FastHasAttribute(html_names::kNwdirectorydescAttr))
++      params.title = input.FastGetAttribute(html_names::kNwdirectorydescAttr);
+
+     UseCounter::Count(
+         document, GetElement().GetExecutionContext()->IsSecureContext()
+@@ -254,7 +263,15 @@ String FileInputType::ValueInFilenameValueMode() const {
+   // decided to try to parse the value by looking for backslashes
+   // (because that's what Windows file paths use). To be compatible
+   // with that code, we make up a fake path for the file.
+-  return "C:\\fakepath\\" + file_list_->item(0)->name();
++  //return "C:\\fakepath\\" + file_list_->item(0)->name();
++  unsigned numFiles = file_list_->length();
++  StringBuilder val;
++  val.Append(file_list_->item(0)->path());
++  for (unsigned i = 1; i < numFiles; ++i) {
++    val.Append(';');
++    val.Append(file_list_->item(i)->path());
++  }
++  return val.ToString();
+ }
+
+ void FileInputType::SetValue(const String&,
+@@ -425,7 +442,12 @@ void FileInputType::SetFilesAndDispatchEvents(FileList* files) {
+ }
+
+ void FileInputType::FilesChosen(FileChooserFileInfoList files,
+-                                const base::FilePath& base_dir) {
++                                const base::FilePath& base_dir,
++                                bool canceled) {
++  if (canceled) {
++    GetElement().DispatchScopedEvent(*Event::CreateBubble(event_type_names::kCancel));
++    return;
++  }
+   for (wtf_size_t i = 0; i < files.size();) {
+     // Drop files of which names can not be converted to WTF String. We
+     // can't expose such files via File API.

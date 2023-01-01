@@ -1,0 +1,22 @@
+diff --git a/extensions/browser/extension_navigation_ui_data.h b/extensions/browser/extension_navigation_ui_data.h
+index 638b93b796..7a239e6456 100644
+--- a/extensions/browser/extension_navigation_ui_data.h
++++ b/extensions/browser/extension_navigation_ui_data.h
+@@ -51,6 +51,9 @@ class ExtensionNavigationUIData {
+     return parent_routing_id_;
+   }
+
++  int web_view_embedder_process_id() const {
++    return web_view_embedder_process_id_;
++  }
+  private:
+   ExtensionNavigationUIData(
+       content::WebContents* web_contents,
+@@ -69,6 +72,7 @@ class ExtensionNavigationUIData {
+   // These are only valid iff is_web_view_.
+   int web_view_instance_id_;
+   int web_view_rules_registry_id_;
++  int web_view_embedder_process_id_;
+
+   // ID for the parent RenderFrameHost of this navigation. Will only have a
+   // valid value for sub-frame navigations.

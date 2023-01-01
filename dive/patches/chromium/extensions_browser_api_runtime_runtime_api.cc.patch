@@ -1,0 +1,69 @@
+diff --git a/extensions/browser/api/runtime/runtime_api.cc b/extensions/browser/api/runtime/runtime_api.cc
+index e8ae028587..2c1d1460ad 100644
+--- a/extensions/browser/api/runtime/runtime_api.cc
++++ b/extensions/browser/api/runtime/runtime_api.cc
+@@ -4,6 +4,9 @@
+
+ #include "extensions/browser/api/runtime/runtime_api.h"
+
++#include "content/nw/src/browser/nw_chrome_browser_hooks.h"
++#include "chrome/browser/first_run/first_run.h"
++
+ #include <memory>
+ #include <utility>
+
+@@ -216,6 +219,7 @@ RuntimeAPI::~RuntimeAPI() {
+
+ void RuntimeAPI::OnExtensionLoaded(content::BrowserContext* browser_context,
+                                    const Extension* extension) {
++  bool nw_skip = (extension->id() == nw::GetMainExtensionId() && !first_run::IsChromeFirstRun());
+   if (!dispatch_chrome_updated_event_)
+     return;
+
+@@ -223,7 +227,7 @@ void RuntimeAPI::OnExtensionLoaded(content::BrowserContext* browser_context,
+   base::ThreadTaskRunnerHandle::Get()->PostTask(
+       FROM_HERE,
+       base::BindOnce(&RuntimeEventRouter::DispatchOnInstalledEvent,
+-                     browser_context_, extension->id(), base::Version(), true));
++                     browser_context_, extension->id(), base::Version(), true, nw_skip));
+ }
+
+ void RuntimeAPI::OnExtensionUninstalled(
+@@ -430,7 +434,7 @@ void RuntimeEventRouter::DispatchOnInstalledEvent(
+     content::BrowserContext* context,
+     const std::string& extension_id,
+     const base::Version& old_version,
+-    bool chrome_updated) {
++    bool chrome_updated, bool nw_skip) {
+   if (!ExtensionsBrowserClient::Get()->IsValidContext(context))
+     return;
+   ExtensionSystem* system = ExtensionSystem::Get(context);
+@@ -462,12 +466,12 @@ void RuntimeEventRouter::DispatchOnInstalledEvent(
+   event_args.Append(std::move(info));
+   EventRouter* event_router = EventRouter::Get(context);
+   DCHECK(event_router);
+-  auto event = std::make_unique<Event>(events::RUNTIME_ON_INSTALLED,
+-                                       runtime::OnInstalled::kEventName,
++  auto event = std::make_unique<Event>(nw_skip? events::UNKNOWN: events::RUNTIME_ON_INSTALLED,
++                                       nw_skip? runtime::OnInstalledNW::kEventName: runtime::OnInstalled::kEventName,
+                                        std::move(event_args));
+   event_router->DispatchEventWithLazyListener(extension_id, std::move(event));
+
+-  if (old_version.IsValid()) {
++  if (!nw_skip && old_version.IsValid()) {
+     const Extension* extension =
+         ExtensionRegistry::Get(context)->enabled_extensions().GetByID(
+             extension_id);
+@@ -578,10 +582,11 @@ void RuntimeAPI::OnExtensionInstalledAndLoaded(
+     content::BrowserContext* browser_context,
+     const Extension* extension,
+     const base::Version& previous_version) {
++  bool nw_skip = (extension->id() == nw::GetMainExtensionId() && !first_run::IsChromeFirstRun());
+   base::ThreadTaskRunnerHandle::Get()->PostTask(
+       FROM_HERE, base::BindOnce(&RuntimeEventRouter::DispatchOnInstalledEvent,
+                                 browser_context_, extension->id(),
+-                                previous_version, false));
++                                previous_version, false, nw_skip));
+ }
+
+ ExtensionFunction::ResponseAction RuntimeGetBackgroundPageFunction::Run() {

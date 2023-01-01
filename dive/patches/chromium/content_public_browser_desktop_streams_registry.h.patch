@@ -1,0 +1,13 @@
+diff --git a/content/public/browser/desktop_streams_registry.h b/content/public/browser/desktop_streams_registry.h
+index 600009c69e..40357e2aa2 100644
+--- a/content/public/browser/desktop_streams_registry.h
++++ b/content/public/browser/desktop_streams_registry.h
+@@ -52,7 +52,7 @@ class CONTENT_EXPORT DesktopStreamsRegistry {
+       int render_frame_id,
+       const url::Origin& origin,
+       std::string* extension_name,
+-      const DesktopStreamRegistryType type) = 0;
++      const DesktopStreamRegistryType type, bool nodejs = false) = 0;
+ };
+
+ }  // namespace content

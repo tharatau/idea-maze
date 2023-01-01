@@ -1,0 +1,12 @@
+diff --git a/third_party/blink/renderer/platform/wtf/BUILD.gn b/third_party/blink/renderer/platform/wtf/BUILD.gn
+index 076cf7b831..9839dc3d47 100644
+--- a/third_party/blink/renderer/platform/wtf/BUILD.gn
++++ b/third_party/blink/renderer/platform/wtf/BUILD.gn
+@@ -15,6 +15,7 @@ visibility = [
+   "//:gn_all",
+   "//mojo/public/cpp/bindings/*",
+   "//third_party/blink/*",
++  "//content/nw/*",
+ ]
+
+ config("wtf_config") {

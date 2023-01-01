@@ -1,0 +1,21 @@
+diff --git a/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h b/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h
+index 0aae49ec83..0572e63cc9 100644
+--- a/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h
++++ b/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h
+@@ -169,6 +169,7 @@ class VIEWS_EXPORT DesktopWindowTreeHostWin
+   gfx::Rect GetBoundsInPixels() const override;
+   void SetBoundsInPixels(const gfx::Rect& bounds) override;
+   gfx::Rect GetBoundsInAcceleratedWidgetPixelCoordinates() override;
++  void SetPositionInPixels(const gfx::Point& pos) override;
+   gfx::Point GetLocationOnScreenInPixels() const override;
+   void SetCapture() override;
+   void ReleaseCapture() override;
+@@ -194,6 +195,8 @@ class VIEWS_EXPORT DesktopWindowTreeHostWin
+
+   // Overridden from HWNDMessageHandlerDelegate:
+   ui::InputMethod* GetHWNDMessageDelegateInputMethod() override;
++  bool ShouldHandleOnSize() const override;
++  bool HandleSize(UINT param, const gfx::Size& new_size) override;
+   bool HasNonClientView() const override;
+   FrameMode GetFrameMode() const override;
+   bool HasFrame() const override;

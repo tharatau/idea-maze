@@ -1,0 +1,23 @@
+diff --git a/third_party/blink/public/web/blink.h b/third_party/blink/public/web/blink.h
+index a7aac13ab9..93419924c5 100644
+--- a/third_party/blink/public/web/blink.h
++++ b/third_party/blink/public/web/blink.h
+@@ -47,6 +47,7 @@ class WebThreadScheduler;
+
+ class Platform;
+
++class WebLocalFrame;
+ // Initialize the entire Blink (wtf, platform, core, modules and web).
+ // If you just need wtf and platform, use Platform::Initialize instead.
+ //
+@@ -79,6 +80,10 @@ BLINK_EXPORT bool WebTestMode();
+ // Alters whether the browser can handle focus events while running web tests.
+ BLINK_EXPORT void SetBrowserCanHandleFocusForWebTest(bool);
+
++BLINK_EXPORT void set_web_worker_hooks(void*);
++
++BLINK_EXPORT void fix_gamepad_nw(WebLocalFrame*);
++
+ // Alters the rendering of fonts for web tests.
+ BLINK_EXPORT void SetFontAntialiasingEnabledForTest(bool);
+ BLINK_EXPORT bool FontAntialiasingEnabledForTest();

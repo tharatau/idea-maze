@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/background/background_contents_service.cc b/chrome/browser/background/background_contents_service.cc
+index f30a7c01f2..9a5c696f9d 100644
+--- a/chrome/browser/background/background_contents_service.cc
++++ b/chrome/browser/background/background_contents_service.cc
+@@ -782,6 +782,7 @@ void BackgroundContentsService::Shutdown() {
+
+ void BackgroundContentsService::HandleExtensionCrashed(
+     const extensions::Extension* extension) {
++#if 0
+   // When the extensions crash, notify the user about it and restart the crashed
+   // contents.
+   if (!extension)
+@@ -796,6 +797,7 @@ void BackgroundContentsService::HandleExtensionCrashed(
+     // Restart the extension.
+     RestartForceInstalledExtensionOnCrash(extension);
+   }
++#endif
+ }
+
+ BackgroundContentsService::BackgroundContentsInfo::BackgroundContentsInfo() =

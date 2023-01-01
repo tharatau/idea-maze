@@ -1,0 +1,28 @@
+diff --git a/third_party/blink/renderer/core/script/module_map.cc b/third_party/blink/renderer/core/script/module_map.cc
+index 55737d7be2..2413f6044f 100644
+--- a/third_party/blink/renderer/core/script/module_map.cc
++++ b/third_party/blink/renderer/core/script/module_map.cc
+@@ -34,6 +34,8 @@ class ModuleMap::Entry final : public GarbageCollected<Entry>,
+   ModuleScript* GetModuleScript() const;
+
+  private:
++  friend class ModuleMap;
++
+   void DispatchFinishedNotificationAsync(SingleModuleClient*);
+
+   // Implements ModuleScriptLoaderClient
+@@ -52,6 +54,14 @@ ModuleMap::Entry::Entry(ModuleMap* map) : map_(map) {
+   DCHECK(map_);
+ }
+
++void ModuleMap::AddToMap(const KURL& url, ModuleScript* script) {
++  MapImpl::AddResult result = map_.insert(std::make_pair(url, ModuleType::kJavaScript), nullptr);
++  Member<Entry>& entry = result.stored_value->value;
++  entry = MakeGarbageCollected<Entry>(this);
++  entry->module_script_ = script;
++  entry->is_fetching_ = false;
++}
++
+ void ModuleMap::Entry::Trace(Visitor* visitor) const {
+   visitor->Trace(module_script_);
+   visitor->Trace(map_);

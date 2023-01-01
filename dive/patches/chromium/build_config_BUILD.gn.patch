@@ -1,0 +1,15 @@
+diff --git a/build/config/BUILD.gn b/build/config/BUILD.gn
+index 2aa326b70a..68f0b7685b 100644
+--- a/build/config/BUILD.gn
++++ b/build/config/BUILD.gn
+@@ -93,6 +93,10 @@ config("feature_flags") {
+     defines += [ "OFFICIAL_BUILD" ]
+   }
+
++  if (nwjs_sdk) {
++    defines += [ "NWJS_SDK" ]
++  }
++
+   # ==============================================
+   #   PLEASE DO NOT ADD MORE THINGS TO THIS LIST
+   # ==============================================

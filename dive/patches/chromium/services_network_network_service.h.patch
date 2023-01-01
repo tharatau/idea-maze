@@ -1,0 +1,12 @@
+diff --git a/services/network/network_service.h b/services/network/network_service.h
+index a26101bccb..208475bbbc 100644
+--- a/services/network/network_service.h
++++ b/services/network/network_service.h
+@@ -138,6 +138,7 @@ class COMPONENT_EXPORT(NETWORK_SERVICE) NetworkService
+
+   // mojom::NetworkService implementation:
+   void SetParams(mojom::NetworkServiceParamsPtr params) override;
++  void SetAdditionalTrustAnchors(const net::CertificateList& anchors) override;
+ #if BUILDFLAG(IS_CHROMEOS_ASH)
+   void ReinitializeLogging(mojom::LoggingSettingsPtr settings) override;
+ #endif

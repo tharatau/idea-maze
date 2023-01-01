@@ -1,0 +1,15 @@
+diff --git a/content/public/test/mock_render_thread.cc b/content/public/test/mock_render_thread.cc
+index 2777b606b3..e0febe5529 100644
+--- a/content/public/test/mock_render_thread.cc
++++ b/content/public/test/mock_render_thread.cc
+@@ -195,6 +195,10 @@ int MockRenderThread::PostTaskToAllWebWorkers(base::RepeatingClosure closure) {
+   return 0;
+ }
+
++bool MockRenderThread::ResolveProxy(const GURL& url, std::string* proxy_list) {
++  return false;
++}
++
+ base::WaitableEvent* MockRenderThread::GetShutdownEvent() {
+   return nullptr;
+ }

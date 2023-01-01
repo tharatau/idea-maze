@@ -1,0 +1,15 @@
+diff --git a/src/codegen/compiler.cc b/src/codegen/compiler.cc
+index 4d574661be..c006d832f3 100644
+--- a/src/codegen/compiler.cc
++++ b/src/codegen/compiler.cc
+@@ -3497,7 +3497,9 @@ MaybeHandle<SharedFunctionInfo> GetSharedFunctionInfoForScriptImpl(
+     maybe_script = lookup_result.script();
+     maybe_result = lookup_result.toplevel_sfi();
+     is_compiled_scope = lookup_result.is_compiled_scope();
+-    if (!maybe_result.is_null()) {
++    //NWJS#5168: will hit previous cache, use 0 source_length trick to
++    //bypass and try to consume cache
++    if (!maybe_result.is_null() && source->length()) {
+       compile_timer.set_hit_isolate_cache();
+     } else if (can_consume_code_cache) {
+       compile_timer.set_consuming_code_cache();

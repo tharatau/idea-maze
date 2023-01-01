@@ -1,0 +1,12 @@
+diff --git a/extensions/renderer/object_backed_native_handler.h b/extensions/renderer/object_backed_native_handler.h
+index 3c7e63ed73..c68d58edad 100644
+--- a/extensions/renderer/object_backed_native_handler.h
++++ b/extensions/renderer/object_backed_native_handler.h
+@@ -79,6 +79,7 @@ class ObjectBackedNativeHandler : public NativeHandler {
+                                      const v8::Local<v8::Object>& object,
+                                      bool allow_null_context);
+
++ public:
+   // The following methods are convenience wrappers for methods on v8::Object
+   // with the corresponding names.
+   // Returns whether or not setting privates was successful.

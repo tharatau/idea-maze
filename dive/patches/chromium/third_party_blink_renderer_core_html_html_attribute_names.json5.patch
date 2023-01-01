@@ -1,0 +1,17 @@
+diff --git a/third_party/blink/renderer/core/html/html_attribute_names.json5 b/third_party/blink/renderer/core/html/html_attribute_names.json5
+index 303440c306..d3b2a786e4 100644
+--- a/third_party/blink/renderer/core/html/html_attribute_names.json5
++++ b/third_party/blink/renderer/core/html/html_attribute_names.json5
+@@ -349,5 +349,12 @@
+     "webkitdirectory",
+     "width",
+     "wrap",
++    "nwworkingdir",
++    "nwdisable",
++    "nwfaketop",
++    "nwdirectory",
++    "nwdirectorydesc",
++    "nwsaveas",
++    "nwuseragent",
+   ],
+ }

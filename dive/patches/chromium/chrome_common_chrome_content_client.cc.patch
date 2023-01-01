@@ -1,0 +1,49 @@
+diff --git a/chrome/common/chrome_content_client.cc b/chrome/common/chrome_content_client.cc
+index bdd746c1c3..74617bb778 100644
+--- a/chrome/common/chrome_content_client.cc
++++ b/chrome/common/chrome_content_client.cc
+@@ -2,8 +2,10 @@
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+
++#include "content/nw/src/browser/nw_extensions_browser_hooks.h"
+ #include "chrome/common/chrome_content_client.h"
+
++#include "components/crash/core/app/crash_reporter_client.h"
+ #include <stdint.h>
+
+ #include <map>
+@@ -98,6 +100,8 @@
+ #include "chrome/common/media/chrome_media_drm_bridge_client.h"
+ #endif
+
++#include "content/nw/src/common/nw_content_common_hooks.h"
++
+ namespace {
+
+ #if BUILDFLAG(ENABLE_PPAPI)
+@@ -168,6 +172,12 @@ ChromeContentClient::ChromeContentClient() {
+ ChromeContentClient::~ChromeContentClient() {
+ }
+
++void ChromeContentClient::LoadNWAppAsExtension(base::DictionaryValue* manifest,
++                                               const base::FilePath& path,
++                                               std::string* error) {
++  nw::LoadNWAppAsExtensionHook(manifest, path, error);
++}
++
+ #if BUILDFLAG(ENABLE_NACL)
+ void ChromeContentClient::SetNaClEntryFunctions(
+     content::PepperPluginInfo::GetInterfaceFunc get_interface,
+@@ -189,6 +199,11 @@ void ChromeContentClient::SetActiveURL(const GURL& url,
+   top_origin_key.Set(top_origin);
+ }
+
++void ChromeContentClient::SetNWReportURL(const GURL& url) {
++  static crash_reporter::CrashKeyString<1024> nwjs_url("url-nwjs");
++  nwjs_url.Set(url.possibly_invalid_spec());
++}
++
+ void ChromeContentClient::SetGpuInfo(const gpu::GPUInfo& gpu_info) {
+   gpu::SetKeysForCrashLogging(gpu_info);
+ }

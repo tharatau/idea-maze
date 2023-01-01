@@ -1,0 +1,15 @@
+diff --git a/ui/base/models/simple_menu_model.cc b/ui/base/models/simple_menu_model.cc
+index 6e1ed6b05b..e0e176489c 100644
+--- a/ui/base/models/simple_menu_model.cc
++++ b/ui/base/models/simple_menu_model.cc
+@@ -60,6 +60,10 @@ ImageModel SimpleMenuModel::Delegate::GetIconForCommandId(
+
+ void SimpleMenuModel::Delegate::OnMenuWillShow(SimpleMenuModel* /*source*/) {}
+
++bool SimpleMenuModel::Delegate::HasIcon(int command_id) {
++  return false;
++}
++
+ void SimpleMenuModel::Delegate::MenuClosed(SimpleMenuModel* /*source*/) {
+ }
+

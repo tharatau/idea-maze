@@ -1,0 +1,22 @@
+diff --git a/chrome/browser/extensions/extension_service.h b/chrome/browser/extensions/extension_service.h
+index 6a40db14d2..6686284169 100644
+--- a/chrome/browser/extensions/extension_service.h
++++ b/chrome/browser/extensions/extension_service.h
+@@ -169,7 +169,7 @@ class ExtensionServiceInterface
+ class ExtensionService : public ExtensionServiceInterface,
+                          public ExternalProviderInterface::VisitorInterface,
+                          public content::NotificationObserver,
+-                         public Blocklist::Observer,
++                         //public Blocklist::Observer,
+                          public ExtensionManagement::Observer,
+                          public UpgradeObserver,
+                          public ExtensionRegistrar::Delegate,
+@@ -510,7 +510,7 @@ class ExtensionService : public ExtensionServiceInterface,
+                const content::NotificationDetails& details) override;
+
+   // Blocklist::Observer implementation.
+-  void OnBlocklistUpdated() override;
++  //void OnBlocklistUpdated() override;
+
+   // UpgradeObserver implementation.
+   void OnUpgradeRecommended() override;

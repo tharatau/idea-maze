@@ -1,0 +1,42 @@
+diff --git a/chrome/browser/ui/tab_helpers.cc b/chrome/browser/ui/tab_helpers.cc
+index fdcb0ebb3c..2a6829261f 100644
+--- a/chrome/browser/ui/tab_helpers.cc
++++ b/chrome/browser/ui/tab_helpers.cc
+@@ -323,7 +323,7 @@ void TabHelpers::AttachTabHelpers(WebContents* web_contents) {
+       web_contents,
+       autofill::ChromeAutofillClient::FromWebContents(web_contents));
+   CreateSubresourceFilterWebContentsHelper(web_contents);
+-  ChromeTranslateClient::CreateForWebContents(web_contents);
++  //ChromeTranslateClient::CreateForWebContents(web_contents);
+   commerce::CommerceTabHelper::CreateForWebContents(
+       web_contents, profile->IsOffTheRecord(),
+       commerce::ShoppingServiceFactory::GetForBrowserContext(profile),
+@@ -403,6 +403,7 @@ void TabHelpers::AttachTabHelpers(WebContents* web_contents) {
+   //     See https://crbug.com/910288.
+   resource_coordinator::ResourceCoordinatorTabHelper::CreateForWebContents(
+       web_contents);
++#if 0
+   safe_browsing::SafeBrowsingNavigationObserver::MaybeCreateForWebContents(
+       web_contents, HostContentSettingsMapFactory::GetForProfile(profile),
+       safe_browsing::SafeBrowsingNavigationObserverManagerFactory::
+@@ -420,6 +421,7 @@ void TabHelpers::AttachTabHelpers(WebContents* web_contents) {
+   safe_browsing::TriggerCreator::MaybeCreateTriggersForWebContents(
+       profile, web_contents);
+   ReputationWebContentsObserver::CreateForWebContents(web_contents);
++#endif
+   SearchEngineTabHelper::CreateForWebContents(web_contents);
+   SecurityStateTabHelper::CreateForWebContents(web_contents);
+   segmentation_platform::SegmentationPlatformTabHelper::CreateForWebContents(
+@@ -434,10 +436,12 @@ void TabHelpers::AttachTabHelpers(WebContents* web_contents) {
+   }
+   SoundContentSettingObserver::CreateForWebContents(web_contents);
+   SyncEncryptionKeysTabHelper::CreateForWebContents(web_contents);
++#if 0
+   sync_sessions::SyncSessionsRouterTabHelper::CreateForWebContents(
+       web_contents,
+       sync_sessions::SyncSessionsWebContentsRouterFactory::GetForProfile(
+           profile));
++#endif
+   content_settings::PageSpecificContentSettings::CreateForWebContents(
+       web_contents,
+       std::make_unique<chrome::PageSpecificContentSettingsDelegate>(

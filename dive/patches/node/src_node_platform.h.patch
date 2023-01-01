@@ -1,0 +1,13 @@
+diff --git a/src/node_platform.h b/src/node_platform.h
+index 4a05f3bb..1062f3b1 100644
+--- a/src/node_platform.h
++++ b/src/node_platform.h
+@@ -155,7 +155,7 @@ class NodePlatform : public MultiIsolatePlatform {
+   double CurrentClockTimeMillis() override;
+   v8::TracingController* GetTracingController() override;
+   bool FlushForegroundTasks(v8::Isolate* isolate) override;
+-  std::unique_ptr<v8::JobHandle> PostJob(
++  std::unique_ptr<v8::JobHandle> CreateJob(
+       v8::TaskPriority priority,
+       std::unique_ptr<v8::JobTask> job_task) override;
+ 

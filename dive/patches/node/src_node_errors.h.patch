@@ -1,0 +1,13 @@
+diff --git a/src/node_errors.h b/src/node_errors.h
+index 5587c234..6dbba328 100644
+--- a/src/node_errors.h
++++ b/src/node_errors.h
+@@ -21,7 +21,7 @@ void AppendExceptionLine(Environment* env,
+ 
+ [[noreturn]] void FatalError(const char* location, const char* message);
+ void OnFatalError(const char* location, const char* message);
+-void OOMErrorHandler(const char* location, bool is_heap_oom);
++void OOMErrorHandler(const char* location, const v8::OOMDetails& details);
+ 
+ // Helpers to construct errors similar to the ones provided by
+ // lib/internal/errors.js.

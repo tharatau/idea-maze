@@ -1,0 +1,21 @@
+diff --git a/third_party/blink/renderer/core/workers/global_scope_creation_params.h b/third_party/blink/renderer/core/workers/global_scope_creation_params.h
+index 267985f2de..2d42e6846d 100644
+--- a/third_party/blink/renderer/core/workers/global_scope_creation_params.h
++++ b/third_party/blink/renderer/core/workers/global_scope_creation_params.h
+@@ -43,6 +43,7 @@ struct CORE_EXPORT GlobalScopeCreationParams final {
+
+  public:
+   GlobalScopeCreationParams(
++      bool isNodeJS, const std::string& main_script,
+       const KURL& script_url,
+       mojom::blink::ScriptType script_type,
+       const String& global_scope_name,
+@@ -102,6 +103,8 @@ struct CORE_EXPORT GlobalScopeCreationParams final {
+   mojom::blink::ScriptType script_type;
+
+   String global_scope_name;
++  bool nodejs_;
++  std::string main_script_;
+   String user_agent;
+   UserAgentMetadata ua_metadata;
+

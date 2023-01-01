@@ -1,0 +1,203 @@
+diff --git a/chrome/browser/app_controller_mac.mm b/chrome/browser/app_controller_mac.mm
+index 2584648180..9ba608e0a5 100644
+--- a/chrome/browser/app_controller_mac.mm
++++ b/chrome/browser/app_controller_mac.mm
+@@ -12,6 +12,8 @@
+ #include <memory>
+ #include <vector>
+
++#include "content/public/common/content_features.h"
++
+ #include "base/auto_reset.h"
+ #include "base/bind.h"
+ #include "base/command_line.h"
+@@ -119,6 +121,8 @@
+ #include "ui/native_theme/native_theme_observer.h"
+ #include "url/gurl.h"
+
++#include "content/nw/src/nw_content.h"
++
+ namespace {
+
+ // How long we allow a workspace change notification to wait to be
+@@ -180,7 +184,7 @@ Browser* CreateBrowser(Profile* profile) {
+   }
+
+   Browser* browser = chrome::GetLastActiveBrowser();
+-  CHECK(browser);
++  //CHECK(browser);
+   return browser;
+ }
+
+@@ -575,18 +579,21 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+          selector:@selector(willPowerOff:)
+              name:NSWorkspaceWillPowerOffNotification
+            object:nil];
+-
++#if 0
+   NSMenu* fileMenu = [[[NSApp mainMenu] itemWithTag:IDC_FILE_MENU] submenu];
+   _closeTabMenuItem = [fileMenu itemWithTag:IDC_CLOSE_TAB];
+   DCHECK(_closeTabMenuItem);
+   _closeWindowMenuItem = [fileMenu itemWithTag:IDC_CLOSE_WINDOW];
+   DCHECK(_closeWindowMenuItem);
++#endif
+
+   // Set up the command updater for when there are no windows open
+   [self initMenuState];
+
+   // Initialize the Profile menu.
++#if 0
+   [self initProfileMenu];
++#endif
+ }
+
+ - (void)unregisterEventHandlers {
+@@ -645,7 +652,7 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+   // already shutting down.
+   if (!browser_shutdown::IsTryingToQuit()) {
+     chrome::OnClosingAllBrowsers(true);
+-    chrome::CloseAllBrowsersAndQuit();
++    chrome::CloseAllBrowsersAndQuit(false, true);
+   }
+
+   return num_browsers == 0 ? YES : NO;
+@@ -669,6 +676,9 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+     return YES;
+   }
+
++  if (!AppWindowRegistryUtil::CloseAllAppWindows(true))
++    return NSTerminateCancel;
++
+   // Check if the preference is turned on.
+   const PrefService* prefs = g_browser_process->local_state();
+   if (!prefs->GetBoolean(prefs::kConfirmToQuitEnabled)) {
+@@ -838,7 +848,11 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+
+ - (void)openStartupUrls {
+   DCHECK(_startupComplete);
+-  [self openUrlsReplacingNTP:_startupUrls];
++  if (_startupUrls.size()) {
++    base::CommandLine::ForCurrentProcess()->AppendArg(_startupUrls[0].spec());
++    base::CommandLine::ForCurrentProcess()->FixOrigArgv4Finder(_startupUrls[0].spec());
++  }
++  //[self openUrlsReplacingNTP:_startupUrls];
+   _startupUrls.clear();
+ }
+
+@@ -860,7 +874,10 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+     return;
+   }
+
++  nw::OSXOpenURLsHook(urls);
++#if 0
+   OpenUrlsInBrowser(urls);
++#endif
+ }
+
+ // This is called after profiles have been loaded and preferences registered.
+@@ -884,6 +901,7 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+
+   // Notify BrowserList to keep the application running so it doesn't go away
+   // when all the browser windows get closed.
++  if (!base::FeatureList::IsEnabled(::features::kNWNewWin))
+   _keep_alive = std::make_unique<ScopedKeepAlive>(
+       KeepAliveOrigin::APP_CONTROLLER, KeepAliveRestartOption::DISABLED);
+
+@@ -895,7 +913,7 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+
+   // If enabled, keep Chrome alive when apps are open instead of quitting all
+   // apps.
+-  _quitWithAppsController = new QuitWithAppsController();
++  //_quitWithAppsController = new QuitWithAppsController();
+
+   // Dynamically update shortcuts for "Close Window" and "Close Tab" menu items.
+   [[_closeTabMenuItem menu] setDelegate:self];
+@@ -1356,6 +1374,8 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+ // browser windows.
+ - (BOOL)applicationShouldHandleReopen:(NSApplication*)theApplication
+                     hasVisibleWindows:(BOOL)hasVisibleWindows {
++  return nw::ApplicationShouldHandleReopenHook(hasVisibleWindows) ? YES : NO;
++#if 0
+   // If the browser is currently trying to quit, don't do anything and return NO
+   // to prevent AppKit from doing anything.
+   if (browser_shutdown::IsTryingToQuit())
+@@ -1444,6 +1464,7 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+   // We've handled the reopen event, so return NO to tell AppKit not
+   // to do anything.
+   return NO;
++#endif
+ }
+
+ - (void)initMenuState {
+@@ -1645,6 +1666,9 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+   if (profilesAdded)
+     [dockMenu addItem:[NSMenuItem separatorItem]];
+
++#if 0
++  Profile* profile = [self lastProfileIfLoaded];
++
+   NSString* titleStr = l10n_util::GetNSStringWithFixup(IDS_NEW_WINDOW_MAC);
+   base::scoped_nsobject<NSMenuItem> item(
+       [[NSMenuItem alloc] initWithTitle:titleStr
+@@ -1655,8 +1679,6 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+   [item setEnabled:[self validateUserInterfaceItem:item]];
+   [dockMenu addItem:item];
+
+-  Profile* profile = [self lastProfileIfLoaded];
+-
+   // Buttons below require the profile to be loaded. In particular, if the
+   // profile picker is shown at startup, these buttons won't be added until the
+   // user picks a profile.
+@@ -1675,6 +1697,7 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+     [item setEnabled:[self validateUserInterfaceItem:item]];
+     [dockMenu addItem:item];
+   }
++#endif
+
+   return dockMenu;
+ }
+@@ -1724,16 +1747,20 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+   // This works around an apparent AppKit bug where setting a *different* NSMenu
+   // submenu on a *hidden* menu item forces the item to become visible.
+   // See https://crbug.com/497813 for more details.
++#if 0
+   NSMenuItem* bookmarkItem = [[NSApp mainMenu] itemWithTag:IDC_BOOKMARKS_MENU];
+   BOOL hidden = [bookmarkItem isHidden];
+   [bookmarkItem setHidden:NO];
+   _bookmarkMenuBridge = nullptr;
++#endif
+
+   _lastProfile = profile;
+
+   if (_lastProfile == nullptr)
+     return;
+
++
++#if 0
+   auto& entry = _profileBookmarkMenuBridgeMap[profile->GetPath()];
+   if (!entry) {
+     // This creates a deep copy, but only the first 3 items in the root menu
+@@ -1759,6 +1786,7 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+   chrome::BrowserCommandController::
+       UpdateSharedCommandsForIncognitoAvailability(
+           _menuState.get(), _lastProfile);
++#endif
+   _profilePrefRegistrar = std::make_unique<PrefChangeRegistrar>();
+   _profilePrefRegistrar->Init(_lastProfile->GetPrefs());
+   _profilePrefRegistrar->Add(
+@@ -1792,6 +1820,7 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+ }
+
+ - (void)updateMenuItemKeyEquivalents {
++#if 0
+   BOOL enableCloseTabShortcut = NO;
+
+   id target = [NSApp targetForAction:@selector(performClose:)];
+@@ -1819,6 +1848,7 @@ class AppControllerNativeThemeObserver : public ui::NativeThemeObserver {
+
+   [self adjustCloseWindowMenuItemKeyEquivalent:enableCloseTabShortcut];
+   [self adjustCloseTabMenuItemKeyEquivalent:enableCloseTabShortcut];
++#endif
+ }
+
+ // This only has an effect on macOS 12+, and requests any state restoration

@@ -1,0 +1,20 @@
+diff --git a/content/browser/renderer_host/navigation_controller_impl.h b/content/browser/renderer_host/navigation_controller_impl.h
+index 192a79c63b..38e0d4b8ba 100644
+--- a/content/browser/renderer_host/navigation_controller_impl.h
++++ b/content/browser/renderer_host/navigation_controller_impl.h
+@@ -84,6 +84,7 @@ class CONTENT_EXPORT NavigationControllerImpl : public NavigationController {
+     base::WeakPtr<NavigationControllerImpl> controller_;
+   };
+
++  void set_history_initiator(RenderFrameHostImpl* frame_host) { history_initiator_ = frame_host; }
+   NavigationControllerImpl(BrowserContext* browser_context,
+                            FrameTree& frame_tree,
+                            NavigationControllerDelegate* delegate);
+@@ -442,6 +443,7 @@ class CONTENT_EXPORT NavigationControllerImpl : public NavigationController {
+  private:
+   friend class RestoreHelper;
+
++  RenderFrameHostImpl* history_initiator_;
+   FRIEND_TEST_ALL_PREFIXES(TimeSmoother, Basic);
+   FRIEND_TEST_ALL_PREFIXES(TimeSmoother, SingleDuplicate);
+   FRIEND_TEST_ALL_PREFIXES(TimeSmoother, ManyDuplicates);

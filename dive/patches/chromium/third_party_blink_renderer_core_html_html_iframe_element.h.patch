@@ -1,0 +1,23 @@
+diff --git a/third_party/blink/renderer/core/html/html_iframe_element.h b/third_party/blink/renderer/core/html/html_iframe_element.h
+index 2bc1a7b8bc..eb666efb5a 100644
+--- a/third_party/blink/renderer/core/html/html_iframe_element.h
++++ b/third_party/blink/renderer/core/html/html_iframe_element.h
+@@ -93,7 +93,10 @@ class CORE_EXPORT HTMLIFrameElement : public HTMLFrameElementBase,
+   // browser changed, such as 'id' and 'src'. This will send an IPC to the
+   // browser about the updates.
+   void DidChangeAttributes() override;
++  AtomicString nwuseragent() const override { return nwuseragent_; }
++  bool nwfaketop() const override { return nwfaketop_; }
+
++  AtomicString nwuseragent_;
+   AtomicString name_;
+   AtomicString required_csp_;
+   AtomicString allow_;
+@@ -105,6 +108,7 @@ class CORE_EXPORT HTMLIFrameElement : public HTMLFrameElementBase,
+   // API). If present, this is parsed in ConstructTrustTokenParams.
+   AtomicString trust_token_;
+   bool allow_fullscreen_;
++  bool nwfaketop_;
+   bool allow_payment_request_;
+   bool collapsed_by_client_;
+   bool anonymous_ = false;

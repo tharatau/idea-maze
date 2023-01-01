@@ -1,0 +1,23 @@
+diff --git a/chrome/app/chrome_crash_reporter_client.h b/chrome/app/chrome_crash_reporter_client.h
+index 25295e3fb3..cbeaa7ab5b 100644
+--- a/chrome/app/chrome_crash_reporter_client.h
++++ b/chrome/app/chrome_crash_reporter_client.h
+@@ -36,15 +36,17 @@ class ChromeCrashReporterClient : public crash_reporter::CrashReporterClient {
+       const std::string& client_guid) override;
+ #endif
+
+-#if BUILDFLAG(IS_POSIX) && !BUILDFLAG(IS_MAC)
++#if BUILDFLAG(IS_POSIX) //&& !BUILDFLAG(IS_MAC)
+   void GetProductNameAndVersion(const char** product_name,
+                                 const char** version) override;
+   void GetProductNameAndVersion(std::string* product_name,
+                                 std::string* version,
+                                 std::string* channel) override;
++#if !BUILDFLAG(IS_MAC)
+   base::FilePath GetReporterLogFilename() override;
+
+   bool GetShouldDumpLargerDumps() override;
++#endif
+ #endif
+
+   bool GetCrashDumpLocation(base::FilePath* crash_dir) override;

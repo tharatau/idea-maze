@@ -1,0 +1,23 @@
+diff --git a/chrome/browser/extensions/api/gcm/gcm_api.cc b/chrome/browser/extensions/api/gcm/gcm_api.cc
+index e1363a2244..2eabe5468b 100644
+--- a/chrome/browser/extensions/api/gcm/gcm_api.cc
++++ b/chrome/browser/extensions/api/gcm/gcm_api.cc
+@@ -2,6 +2,7 @@
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+
++#include "components/prefs/pref_service.h"
+ #include "chrome/browser/extensions/api/gcm/gcm_api.h"
+
+ #include <stddef.h>
+@@ -96,6 +97,10 @@ bool GcmApiFunction::IsGcmApiEnabled(std::string* error) const {
+     return false;
+   }
+
++  if (!profile->GetPrefs()->GetBoolean("gcm.channel_status")) {
++    *error = "GCM is turned off.";
++    return false;
++  }
+   return true;
+ }
+

@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/exported/web_view_test.cc b/third_party/blink/renderer/core/exported/web_view_test.cc
+index a41f1c5208..e9d1409340 100644
+--- a/third_party/blink/renderer/core/exported/web_view_test.cc
++++ b/third_party/blink/renderer/core/exported/web_view_test.cc
+@@ -3824,7 +3824,7 @@ class ViewCreatingWebFrameClient
+       const SessionStorageNamespaceId&,
+       bool& consumed_user_gesture,
+       const absl::optional<Impression>&,
+-      const absl::optional<WebPictureInPictureWindowOptions>&) override {
++      const absl::optional<WebPictureInPictureWindowOptions>&, WebString*) override {
+     return web_view_helper_.InitializeWithOpener(Frame());
+   }
+   WebView* CreatedWebView() const { return web_view_helper_.GetWebView(); }

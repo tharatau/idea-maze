@@ -1,0 +1,12 @@
+diff --git a/extensions/extensions_resources.grd b/extensions/extensions_resources.grd
+index f65e452d44..5a3a6491d0 100644
+--- a/extensions/extensions_resources.grd
++++ b/extensions/extensions_resources.grd
+@@ -9,6 +9,7 @@
+   <release seq="1">
+     <includes>
+       <include name="IDR_EXTENSION_API_FEATURES" file="common\api\_api_features.json" type="BINDATA" />
++      <include name="IDR_NW_EXTENSION_API_FEATURES" file="..\content\nw\src\api\_api_features.json" type="BINDATA" />
+     </includes>
+   </release>
+ </grit>

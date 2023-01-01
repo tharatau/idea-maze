@@ -1,0 +1,21 @@
+diff --git a/content/public/browser/content_browser_client.h b/content/public/browser/content_browser_client.h
+index bac29d867e..3b5342d70d 100644
+--- a/content/public/browser/content_browser_client.h
++++ b/content/public/browser/content_browser_client.h
+@@ -399,6 +399,8 @@ class CONTENT_EXPORT ContentBrowserClient {
+   // assume it runs only on the UI thread.
+   virtual bool DoesWebUISchemeRequireProcessLock(base::StringPiece scheme);
+
++  virtual bool IsNWOrigin(const url::Origin& origin, BrowserContext* context);
++
+   // Returns true if everything embedded inside a document with given scheme
+   // should be treated as first-party content. |scheme| will be in canonical
+   // (lowercased) form. |is_embedded_origin_secure| refers to whether the origin
+@@ -781,6 +783,7 @@ class CONTENT_EXPORT ContentBrowserClient {
+       const std::vector<GlobalRenderFrameHostId>& render_frames,
+       base::OnceCallback<void(bool)> callback);
+
++  virtual base::FilePath GetRootPath();
+   // Allow the embedder to control if access to IndexedDB by a shared worker
+   // is allowed.
+   virtual bool AllowWorkerIndexedDB(

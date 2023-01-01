@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/ui/exclusive_access/fullscreen_controller.cc b/chrome/browser/ui/exclusive_access/fullscreen_controller.cc
+index 8106b5ceec..6b426c13dd 100644
+--- a/chrome/browser/ui/exclusive_access/fullscreen_controller.cc
++++ b/chrome/browser/ui/exclusive_access/fullscreen_controller.cc
+@@ -1,6 +1,7 @@
+ // Copyright (c) 2012 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
++#pragma clang diagnostic ignored "-Wunreachable-code"
+
+ #include "chrome/browser/ui/exclusive_access/fullscreen_controller.h"
+
+@@ -377,6 +378,7 @@ void FullscreenController::RunOrDeferUntilTransitionIsComplete(
+ }
+
+ bool FullscreenController::HandleUserPressedEscape() {
++  return false;
+   WebContents* const active_web_contents =
+       exclusive_access_manager()->context()->GetActiveWebContents();
+   if (IsFullscreenWithinTab(active_web_contents)) {

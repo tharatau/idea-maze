@@ -1,0 +1,29 @@
+diff --git a/chrome/browser/ui/webui/settings/settings_ui.cc b/chrome/browser/ui/webui/settings/settings_ui.cc
+index 304c914ed5..669ec16b7c 100644
+--- a/chrome/browser/ui/webui/settings/settings_ui.cc
++++ b/chrome/browser/ui/webui/settings/settings_ui.cc
+@@ -1,7 +1,7 @@
+ // Copyright 2015 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+-
++#pragma clang diagnostic ignored "-Wunused-const-variable"
+ #include "chrome/browser/ui/webui/settings/settings_ui.h"
+
+ #include <stddef.h>
+@@ -172,6 +172,7 @@ SettingsUI::SettingsUI(content::WebUI* web_ui)
+   Profile* profile = Profile::FromWebUI(web_ui);
+   content::WebUIDataSource* html_source =
+       content::WebUIDataSource::Create(chrome::kChromeUISettingsHost);
++#if 0
+   html_source->OverrideContentSecurityPolicy(
+       network::mojom::CSPDirectiveName::WorkerSrc, "worker-src blob: 'self';");
+
+@@ -384,6 +385,7 @@ SettingsUI::SettingsUI(content::WebUI* web_ui)
+
+   content::WebUIDataSource::Add(web_ui->GetWebContents()->GetBrowserContext(),
+                                 html_source);
++#endif
+
+   content::URLDataSource::Add(
+       profile, std::make_unique<FaviconSource>(

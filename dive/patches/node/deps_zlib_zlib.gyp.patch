@@ -1,0 +1,34 @@
+diff --git a/deps/zlib/zlib.gyp b/deps/zlib/zlib.gyp
+index b6bebb6c..1a54e551 100644
+--- a/deps/zlib/zlib.gyp
++++ b/deps/zlib/zlib.gyp
+@@ -6,7 +6,7 @@
+   'variables': {
+     'use_system_zlib%': 0,
+     'arm_fpu%': '',
+-    'llvm_version%': '0.0',
++    'llvm_version': '10.0',
+   },
+   'conditions': [
+     ['use_system_zlib==0', {
+@@ -92,6 +92,17 @@
+                 'x86.c',
+               ],
+               'conditions': [
++                ['OS=="win"', {
++                  'msvs_settings': {
++                    'VCCLCompilerTool': {
++                      'AdditionalOptions': [
++                        '-mssse3',
++                        '-msse4.2',
++                        '-mpclmul',
++                      ],
++                    },
++                  },
++                }],
+                 ['target_arch=="x64"', {
+                   'defines': [ 'INFLATE_CHUNK_READ_64LE' ],
+                 }],
+diff --git a/lib/dummystream.js b/lib/dummystream.js
+new file mode 100644
+index 00000000..9d886831

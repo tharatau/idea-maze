@@ -1,0 +1,102 @@
+diff --git a/testing/variations/fieldtrial_testing_config.json b/testing/variations/fieldtrial_testing_config.json
+index 1e2e826061..33d36bd587 100644
+--- a/testing/variations/fieldtrial_testing_config.json
++++ b/testing/variations/fieldtrial_testing_config.json
+@@ -3714,23 +3714,6 @@
+             ]
+         }
+     ],
+-    "DestroySystemProfiles": [
+-        {
+-            "platforms": [
+-                "windows",
+-                "linux",
+-                "mac"
+-            ],
+-            "experiments": [
+-                {
+-                    "name": "DestroySystemProfiles",
+-                    "enable_features": [
+-                        "DestroySystemProfiles"
+-                    ]
+-                }
+-            ]
+-        }
+-    ],
+     "DexFixer": [
+         {
+             "platforms": [
+@@ -4521,26 +4504,6 @@
+             ]
+         }
+     ],
+-    "FirstPartySetsInitLatencyExperiment": [
+-        {
+-            "platforms": [
+-                "android",
+-                "chromeos",
+-                "chromeos_lacros",
+-                "linux",
+-                "mac",
+-                "windows"
+-            ],
+-            "experiments": [
+-                {
+-                    "name": "Enabled",
+-                    "enable_features": [
+-                        "FirstPartySets"
+-                    ]
+-                }
+-            ]
+-        }
+-    ],
+     "ForceGpuMainThreadToNormalPriorityDrDc": [
+         {
+             "platforms": [
+@@ -5858,6 +5821,20 @@
+             ]
+         }
+     ],
++    "InstanceID": [
++        {
++	  "platforms": [
++	    "linux",
++	    "mac",
++	    "windows"
++	  ],
++          "experiments": [
++	    {
++	      "name": "Enabled"
++	    }
++	  ]
++	}
++    ],
+     "KeyboardAccessoryAddressIPH": [
+         {
+             "platforms": [
+@@ -8983,25 +8960,6 @@
+             ]
+         }
+     ],
+-    "SiteIsolationForWebViewTags": [
+-        {
+-            "platforms": [
+-                "chromeos",
+-                "chromeos_lacros",
+-                "linux",
+-                "mac",
+-                "windows"
+-            ],
+-            "experiments": [
+-                {
+-                    "name": "Enabled",
+-                    "enable_features": [
+-                        "SiteIsolationForGuests"
+-                    ]
+-                }
+-            ]
+-        }
+-    ],
+     "SmallerFontCache": [
+         {
+             "platforms": [

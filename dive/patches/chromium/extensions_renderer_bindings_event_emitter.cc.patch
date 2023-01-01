@@ -1,0 +1,64 @@
+diff --git a/extensions/renderer/bindings/event_emitter.cc b/extensions/renderer/bindings/event_emitter.cc
+index 75d99c112f..f14406a4c1 100644
+--- a/extensions/renderer/bindings/event_emitter.cc
++++ b/extensions/renderer/bindings/event_emitter.cc
+@@ -44,10 +44,12 @@ gin::ObjectTemplateBuilder EventEmitter::GetObjectTemplateBuilder(
+       .SetMethod("removeListener", &EventEmitter::RemoveListener)
+       .SetMethod("hasListener", &EventEmitter::HasListener)
+       .SetMethod("hasListeners", &EventEmitter::HasListeners)
++      .SetMethod("getListeners", &EventEmitter::GetListeners)
+       // The following methods aren't part of the public API, but are used
+       // by our custom bindings and exposed on the public event object. :(
+       // TODO(devlin): Once we convert all custom bindings that use these,
+       // they can be removed.
++      .SetMethod("dispatchNW", &EventEmitter::DispatchNW)
+       .SetMethod("dispatch", &EventEmitter::Dispatch);
+ }
+
+@@ -75,6 +77,15 @@ void EventEmitter::Invalidate(v8::Local<v8::Context> context) {
+   listeners_->Invalidate(context);
+ }
+
++void EventEmitter::GetListeners(gin::Arguments* arguments) {
++  v8::Local<v8::Context> context = arguments->GetHolderCreationContext();
++  std::vector<v8::Local<v8::Function>> listeners =
++      listeners_->GetListeners(nullptr, context);
++  v8::Isolate* isolate = context->GetIsolate();
++  v8::Local<v8::Value> results = gin::ConvertToV8(isolate, listeners);
++  arguments->Return(results);
++}
++
+ size_t EventEmitter::GetNumListeners() const {
+   return listeners_->GetNumListeners();
+ }
+@@ -137,6 +148,30 @@ bool EventEmitter::HasListeners() {
+   return listeners_->GetNumListeners() != 0;
+ }
+
++void EventEmitter::DispatchNW(gin::Arguments* arguments) {
++  if (!valid_)
++    return;
++
++  if (listeners_->GetNumListeners() == 0)
++    return;
++
++  v8::Isolate* isolate = arguments->isolate();
++  v8::HandleScope handle_scope(isolate);
++  v8::Local<v8::Context> context = isolate->GetCurrentContext();
++  std::vector<v8::Local<v8::Value>> v8_args;
++  v8::Local<v8::Object> filter;
++  if (!arguments->PeekNext().IsEmpty() && !arguments->GetNext(&filter)) {
++    arguments->ThrowTypeError("Invalid invocation");
++    return;
++  }
++  arguments->GetRemaining(&v8_args);
++  mojom::EventFilteringInfoPtr info = mojom::EventFilteringInfo::New();
++  info->instance_id = filter->Get(context, gin::StringToSymbol(isolate, "instanceId")).ToLocalChecked().As<v8::Int32>()->Value();
++  // Since this is directly from JS, we know it should be safe to call
++  // synchronously and use the return result, so we don't use Fire().
++  arguments->Return(DispatchSync(context, &v8_args, std::move(info)));
++}
++
+ void EventEmitter::Dispatch(gin::Arguments* arguments) {
+   if (!valid_)
+     return;

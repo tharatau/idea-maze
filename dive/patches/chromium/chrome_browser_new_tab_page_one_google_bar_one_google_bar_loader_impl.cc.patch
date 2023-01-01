@@ -1,0 +1,31 @@
+diff --git a/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.cc b/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.cc
+index 48aa6fe6b5..c41967e4ef 100644
+--- a/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.cc
++++ b/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.cc
+@@ -280,14 +280,15 @@ OneGoogleBarLoaderImpl::OneGoogleBarLoaderImpl(
+     const std::string& application_locale,
+     bool account_consistency_mirror_required)
+     : url_loader_factory_(url_loader_factory),
+-      application_locale_(application_locale),
+-      account_consistency_mirror_required_(
+-          account_consistency_mirror_required) {}
++      application_locale_(application_locale)
++      /* account_consistency_mirror_required_(
++         account_consistency_mirror_required)*/ {}
+
+ OneGoogleBarLoaderImpl::~OneGoogleBarLoaderImpl() = default;
+
+ void OneGoogleBarLoaderImpl::Load(OneGoogleCallback callback) {
+   callbacks_.push_back(std::move(callback));
++#if 0
+
+   // Note: If there is an ongoing request, abandon it. It's possible that
+   // something has changed in the meantime (e.g. signin state) that would make
+@@ -297,6 +298,7 @@ void OneGoogleBarLoaderImpl::Load(OneGoogleCallback callback) {
+       base::BindOnce(&OneGoogleBarLoaderImpl::LoadDone,
+                      base::Unretained(this)));
+   pending_request_->Start();
++#endif
+ }
+
+ GURL OneGoogleBarLoaderImpl::GetLoadURLForTesting() const {

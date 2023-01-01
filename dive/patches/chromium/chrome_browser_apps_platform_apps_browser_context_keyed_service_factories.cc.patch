@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/apps/platform_apps/browser_context_keyed_service_factories.cc b/chrome/browser/apps/platform_apps/browser_context_keyed_service_factories.cc
+index af34e57224..7e648a24e8 100644
+--- a/chrome/browser/apps/platform_apps/browser_context_keyed_service_factories.cc
++++ b/chrome/browser/apps/platform_apps/browser_context_keyed_service_factories.cc
+@@ -12,7 +12,7 @@ namespace chrome_apps {
+
+ void EnsureBrowserContextKeyedServiceFactoriesBuilt() {
+   apps::AppLoadServiceFactory::GetInstance();
+-  AppShortcutManagerFactory::GetInstance();
++  //AppShortcutManagerFactory::GetInstance();
+   AppTerminationObserver::GetFactoryInstance();
+ }
+

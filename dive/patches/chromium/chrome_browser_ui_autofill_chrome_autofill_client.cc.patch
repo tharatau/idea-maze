@@ -1,0 +1,45 @@
+diff --git a/chrome/browser/ui/autofill/chrome_autofill_client.cc b/chrome/browser/ui/autofill/chrome_autofill_client.cc
+index 30b82dca85..e1f97a83f7 100644
+--- a/chrome/browser/ui/autofill/chrome_autofill_client.cc
++++ b/chrome/browser/ui/autofill/chrome_autofill_client.cc
+@@ -257,22 +257,26 @@ ChromeAutofillClient::GetSecurityLevelForUmaHistograms() {
+ }
+
+ const translate::LanguageState* ChromeAutofillClient::GetLanguageState() {
++#if 0
+   // TODO(crbug.com/912597): iOS vs other platforms extracts the language from
+   // the top level frame vs whatever frame directly holds the form.
+   auto* translate_manager =
+       ChromeTranslateClient::GetManagerFromWebContents(web_contents());
+   if (translate_manager)
+     return translate_manager->GetLanguageState();
++#endif
+   return nullptr;
+ }
+
+ translate::TranslateDriver* ChromeAutofillClient::GetTranslateDriver() {
++#if 0
+   // TODO(crbug.com/912597): iOS vs other platforms extracts the language from
+   // the top level frame vs whatever frame directly holds the form.
+   auto* translate_client =
+       ChromeTranslateClient::FromWebContents(web_contents());
+   if (translate_client)
+     return translate_client->translate_driver();
++#endif
+   return nullptr;
+ }
+
+@@ -954,6 +958,13 @@ void ChromeAutofillClient::DidFillOrPreviewField(
+ }
+
+ bool ChromeAutofillClient::IsContextSecure() const {
++
++  content::NavigationEntry* navigation_entry =
++      web_contents()->GetController().GetLastCommittedEntry();
++
++  if (navigation_entry && navigation_entry->GetURL().SchemeIs("chrome-extension"))
++    return true;
++
+   SecurityStateTabHelper* helper =
+       SecurityStateTabHelper::FromWebContents(web_contents());
+   if (!helper)

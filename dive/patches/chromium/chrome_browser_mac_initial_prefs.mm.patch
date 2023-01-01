@@ -1,0 +1,17 @@
+diff --git a/chrome/browser/mac/initial_prefs.mm b/chrome/browser/mac/initial_prefs.mm
+index 7751f080fa..88cd39a0fb 100644
+--- a/chrome/browser/mac/initial_prefs.mm
++++ b/chrome/browser/mac/initial_prefs.mm
+@@ -28,9 +28,9 @@ const char kLegacyInitialPreferencesFileName[] =
+     "Google Chrome Master Preferences";
+ #else
+ const NSSearchPathDirectory kSearchPath = NSApplicationSupportDirectory;
+-const char kInitialPreferencesDirectory[] = "Chromium";
+-const char kInitialPreferencesFileName[] = "Chromium Initial Preferences";
+-const char kLegacyInitialPreferencesFileName[] = "Chromium Master Preferences";
++const char kInitialPreferencesDirectory[] = "NWJS";
++const char kInitialPreferencesFileName[] = "NWJS Initial Preferences";
++const char kLegacyInitialPreferencesFileName[] = "NWJS Master Preferences";
+ #endif  // BUILDFLAG(GOOGLE_CHROME_BRANDING)
+
+ }  // namespace

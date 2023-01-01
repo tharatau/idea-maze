@@ -1,0 +1,25 @@
+diff --git a/lib/internal/process/execution.js b/lib/internal/process/execution.js
+index 44d73164..3133f1e9 100644
+--- a/lib/internal/process/execution.js
++++ b/lib/internal/process/execution.js
+@@ -147,18 +147,8 @@ function createOnGlobalUncaughtException() {
+     if (exceptionHandlerState.captureFn !== null) {
+       exceptionHandlerState.captureFn(er);
+     } else if (!process.emit('uncaughtException', er, type)) {
+-      // If someone handled it, then great. Otherwise, die in C++ land
+-      // since that means that we'll exit the process, emit the 'exit' event.
+-      try {
+-        if (!process._exiting) {
+-          process._exiting = true;
+-          process.exitCode = 1;
+-          process.emit('exit', 1);
+-        }
+-      } catch {
+-        // Nothing to be done about it at this point.
+-      }
+-      return false;
++      // NWJS#6153: prevent the crash
++      // return true;
+     }
+ 
+     // If we handled an error, then make sure any ticks get processed

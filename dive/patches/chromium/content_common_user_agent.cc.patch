@@ -1,0 +1,31 @@
+diff --git a/content/common/user_agent.cc b/content/common/user_agent.cc
+index cdfbe98a2c..c3a7929789 100644
+--- a/content/common/user_agent.cc
++++ b/content/common/user_agent.cc
+@@ -333,7 +333,17 @@ std::string BuildModelInfo() {
+   return model;
+ }
+
+-#if BUILDFLAG(IS_ANDROID)
++std::string BuildOSInfo() {
++  std::string os_info;
++  base::StringAppendF(
++      &os_info,
++      "%s%s",
++      GetUserAgentPlatform().c_str(),
++      BuildOSCpuInfo(IncludeAndroidBuildNumber::Exclude,
++                     IncludeAndroidModel::Exclude).c_str());
++  return os_info;
++}
++
+ std::string BuildUserAgentFromProductAndExtraOSInfo(
+     const std::string& product,
+     const std::string& extra_os_info,
+@@ -346,6 +356,7 @@ std::string BuildUserAgentFromProductAndExtraOSInfo(
+   return BuildUserAgentFromOSAndProduct(os_info, product);
+ }
+
++#if 0
+ std::string GetAndroidOSInfo(
+     IncludeAndroidBuildNumber include_android_build_number,
+     IncludeAndroidModel include_android_model) {

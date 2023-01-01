@@ -1,0 +1,12 @@
+diff --git a/chrome/common/extensions/api/web_navigation.json b/chrome/common/extensions/api/web_navigation.json
+index 00bb14458c..89c9a501e6 100644
+--- a/chrome/common/extensions/api/web_navigation.json
++++ b/chrome/common/extensions/api/web_navigation.json
+@@ -244,6 +244,7 @@
+               "processId": {"type": "integer", "description": "The ID of the process that runs the renderer for this frame."},
+               "frameId": {"type": "integer", "description": "0 indicates the navigation happens in the tab content window; a positive value indicates navigation in a subframe. Frame IDs are unique within a tab."},
+               "parentFrameId": {"type": "integer", "description": "The ID of the parent frame, or <code>-1</code> if this is the main frame."},
++              "routingId": {"type": "integer", "description": ""},
+               "timeStamp": {"type": "number", "description": "The time when the page's DOM was fully constructed, in milliseconds since the epoch."},
+               "documentId": {"type": "string", "description": "A UUID of the document loaded."},
+               "parentDocumentId": {"type": "string", "optional": true, "description": "A UUID of the parent document owning this frame. This is not set if there is no parent."},

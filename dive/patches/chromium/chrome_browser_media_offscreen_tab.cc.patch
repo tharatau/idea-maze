@@ -1,0 +1,31 @@
+diff --git a/chrome/browser/media/offscreen_tab.cc b/chrome/browser/media/offscreen_tab.cc
+index 3289268d3d..d8ff1e3584 100644
+--- a/chrome/browser/media/offscreen_tab.cc
++++ b/chrome/browser/media/offscreen_tab.cc
+@@ -7,6 +7,10 @@
+ #include <algorithm>
+ #include <utility>
+
++#include "chrome/browser/profiles/profile_manager.h"
++#include "extensions/browser/app_window/app_window_registry.h"
++#include "extensions/browser/app_window/app_window.h"
++
+ #include "base/bind.h"
+ #include "base/memory/raw_ptr.h"
+ #include "chrome/browser/profiles/profile.h"
+@@ -104,8 +108,14 @@ class OffscreenTab::WindowAdoptionAgent final : protected aura::WindowObserver {
+         browsers ? browsers->GetLastActive() : nullptr;
+     BrowserWindow* const active_window =
+         active_browser ? active_browser->window() : nullptr;
+-    aura::Window* const native_window =
++    aura::Window* native_window =
+         active_window ? active_window->GetNativeWindow() : nullptr;
++    if (!native_window) {
++      Profile* profile = ProfileManager::GetActiveUserProfile();
++      const extensions::AppWindowRegistry::AppWindowList& app_windows =
++        extensions::AppWindowRegistry::Get(profile)->app_windows();
++      native_window = (*app_windows.begin())->GetNativeWindow();
++    }
+     aura::Window* const root_window =
+         native_window ? native_window->GetRootWindow() : nullptr;
+     if (root_window) {

@@ -1,0 +1,177 @@
+diff --git a/BUILD.gn b/BUILD.gn
+index 83082271b8..7ededa542d 100644
+--- a/BUILD.gn
++++ b/BUILD.gn
+@@ -59,7 +59,7 @@ declare_args() {
+   v8_deprecation_warnings = true
+ 
+   # Enable compiler warnings when using V8_DEPRECATE_SOON apis.
+-  v8_imminent_deprecation_warnings = true
++  v8_imminent_deprecation_warnings = false
+ 
+   # Embeds the given script into the snapshot.
+   v8_embed_script = ""
+@@ -305,7 +305,7 @@ declare_args() {
+ 
+   # Enable the experimental V8 sandbox.
+   # Sets -DV8_ENABLE_SANDBOX.
+-  v8_enable_sandbox = ""
++  v8_enable_sandbox = false
+ 
+   # Enable sandboxing for all external pointers. Requires v8_enable_sandbox.
+   # Sets -DV8_SANDBOXED_EXTERNAL_POINTERS.
+@@ -345,7 +345,7 @@ declare_args() {
+   v8_enable_map_packing = false
+ 
+   # Allow for JS promise hooks (instead of just C++).
+-  v8_enable_javascript_promise_hooks = false
++  v8_enable_javascript_promise_hooks = true
+ 
+   # Enable allocation folding globally (sets -dV8_ALLOCATION_FOLDING).
+   # When it's disabled, the --turbo-allocation-folding runtime flag will be ignored.
+@@ -361,7 +361,7 @@ declare_args() {
+   # Enable legacy mode for ScriptOrModule's lifetime. By default it's a
+   # temporary object, if enabled it will be kept alive by the parent Script.
+   # This is only used by nodejs.
+-  v8_scriptormodule_legacy_lifetime = false
++  v8_scriptormodule_legacy_lifetime = true
+ 
+   # Change code emission and runtime features to be CET shadow-stack compliant
+   # (incomplete and experimental).
+@@ -538,7 +538,7 @@ if (v8_enable_sandbox == "") {
+ 
+ # Enable sandboxed pointers when the sandbox is enabled.
+ if (v8_enable_sandbox) {
+-  v8_enable_sandboxed_pointers = true
++  v8_enable_sandboxed_pointers = false
+ }
+ 
+ # Enable all available sandbox features if sandbox future is enabled.
+@@ -652,7 +652,7 @@ config("internal_config_base") {
+ 
+ config("internal_config") {
+   defines = []
+-
++  cflags = []
+   # Only targets in this file and its subdirs can depend on this.
+   visibility = [ "./*" ]
+ 
+@@ -663,13 +663,17 @@ config("internal_config") {
+     ":cppgc_header_features",
+   ]
+ 
+-  if (is_component_build) {
++  if (true) {
+     defines += [ "BUILDING_V8_SHARED" ]
+   }
+ 
+   if (v8_current_cpu == "riscv64" || v8_current_cpu == "riscv32") {
+     libs = [ "atomic" ]
+   }
++
++  if (is_win) {
++    cflags += [ "/Zc:dllexportInlines-" ]
++  }
+ }
+ 
+ # Should be applied to all targets that write trace events.
+@@ -686,14 +690,14 @@ config("v8_tracing_config") {
+ # This config should be applied to code using the libplatform.
+ config("libplatform_config") {
+   include_dirs = [ "include" ]
+-  if (is_component_build) {
++  if (false) {
+     defines = [ "USING_V8_PLATFORM_SHARED" ]
+   }
+ }
+ 
+ # This config should be applied to code using the libbase.
+ config("libbase_config") {
+-  if (is_component_build) {
++  if (false) {
+     defines = [ "USING_V8_BASE_SHARED" ]
+   }
+   libs = []
+@@ -736,7 +740,9 @@ config("external_config") {
+   configs = [ ":headers_config" ]
+   defines = []
+   if (is_component_build) {
+-    defines += [ "USING_V8_SHARED" ]
++    defines += [ "USING_V8_SHARED", "V8_SHARED", "USING_V8_PLATFORM_SHARED" ]
++  } else {
++    defines += [ "V8_SHARED" ]
+   }
+ 
+   if (current_cpu == "riscv64" || current_cpu == "riscv32") {
+@@ -2431,6 +2437,8 @@ v8_source_set("v8_initializers") {
+   visibility = [
+     ":*",
+     "test/cctest:*",
++    "//tools/v8_context_snapshot:*",
++    "//chrome:*",
+   ]
+ 
+   allow_circular_includes_from = [ ":torque_generated_initializers" ]
+@@ -5426,7 +5434,8 @@ v8_source_set("torque_ls_base") {
+   }
+ }
+ 
+-v8_component("v8_libbase") {
++v8_static_lib("v8_libbase") {
++
+   sources = [
+     "src/base/address-region.h",
+     "src/base/atomic-utils.h",
+@@ -5554,7 +5563,7 @@ v8_component("v8_libbase") {
+ 
+   defines = []
+ 
+-  if (is_component_build) {
++  if (false) {
+     defines = [ "BUILDING_V8_BASE_SHARED" ]
+   }
+ 
+@@ -5687,7 +5696,7 @@ v8_component("v8_libbase") {
+   # TODO(infra): Add support for qnx, freebsd, openbsd, netbsd, and solaris.
+ }
+ 
+-v8_component("v8_libplatform") {
++v8_static_lib("v8_libplatform") {
+   sources = [
+     "//base/trace_event/common/trace_event_common.h",
+     "include/libplatform/libplatform-export.h",
+@@ -5718,7 +5727,7 @@ v8_component("v8_libplatform") {
+ 
+   configs = [ ":internal_config_base" ]
+ 
+-  if (is_component_build) {
++  if (true) {
+     defines = [ "BUILDING_V8_PLATFORM_SHARED" ]
+   }
+ 
+@@ -6150,6 +6159,25 @@ if (v8_enable_webassembly) {
+ ###############################################################################
+ # Executables
+ #
++v8_executable("nwjc") {
++
++    sources = [
++      "src/nwjc.cc",
++    ]
++
++    configs = [
++      ":internal_config",
++    ]
++
++    deps = [
++      ":v8_base",
++      ":v8_libplatform",
++      ":v8_libbase",
++      ":v8_snapshot",
++      ":v8_initializers",
++      "//build/win:default_exe_manifest",
++    ]
++}
+ 
+ if (current_toolchain == v8_generator_toolchain) {
+   v8_executable("bytecode_builtins_list_generator") {

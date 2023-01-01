@@ -1,0 +1,59 @@
+diff --git a/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc b/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc
+index b6d2439834..cf5fa480f7 100644
+--- a/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc
++++ b/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc
+@@ -499,7 +499,7 @@ bool DesktopWindowTreeHostWin::ShouldWindowContentsBeTransparent() const {
+   // but merely of the content Chrome draws, so even when the system titlebars
+   // appear opaque (Win 8+), the content above them needs to be transparent, or
+   // they'll be covered by a black (undrawn) region.
+-  return ShouldUseNativeFrame() && !IsFullscreen();
++  return ShouldUseNativeFrame() && (content::g_support_transparency || !IsFullscreen());
+ }
+
+ void DesktopWindowTreeHostWin::FrameTypeChanged() {
+@@ -611,6 +611,10 @@ gfx::Rect DesktopWindowTreeHostWin::GetBoundsInPixels() const {
+   return without_expansion;
+ }
+
++void DesktopWindowTreeHostWin::SetPositionInPixels(const gfx::Point& pos) {
++  message_handler_->SetPosition(pos);
++}
++
+ void DesktopWindowTreeHostWin::SetBoundsInPixels(const gfx::Rect& bounds) {
+   // If the window bounds have to be expanded we need to subtract the
+   // window_expansion_top_left_delta_ from the origin and add the
+@@ -873,6 +877,15 @@ gfx::NativeViewAccessible DesktopWindowTreeHostWin::GetNativeViewAccessible() {
+              : nullptr;
+ }
+
++bool DesktopWindowTreeHostWin::ShouldHandleOnSize() const {
++  return GetWidget()->widget_delegate()->ShouldHandleOnSize();
++}
++
++bool DesktopWindowTreeHostWin::HandleSize(UINT param, const gfx::Size& new_size) {
++  return GetWidget()->widget_delegate() &&
++      GetWidget()->widget_delegate()->HandleSize(param, new_size);
++}
++
+ void DesktopWindowTreeHostWin::HandleActivationChanged(bool active) {
+   // This can be invoked from HWNDMessageHandler::Init(), at which point we're
+   // not in a good state and need to ignore it.
+@@ -887,7 +900,7 @@ bool DesktopWindowTreeHostWin::HandleAppCommand(int command) {
+   // We treat APPCOMMAND ids as an extension of our command namespace, and just
+   // let the delegate figure out what to do...
+   return GetWidget()->widget_delegate() &&
+-         GetWidget()->widget_delegate()->ExecuteWindowsCommand(command);
++      GetWidget()->widget_delegate()->ExecuteAppCommand(command);
+ }
+
+ void DesktopWindowTreeHostWin::HandleCancelMode() {
+@@ -900,6 +913,9 @@ void DesktopWindowTreeHostWin::HandleCaptureLost() {
+
+ void DesktopWindowTreeHostWin::HandleClose() {
+   GetWidget()->Close();
++  //bugfix where transparent window size is getting smaller during closing
++  if (content::g_support_transparency && message_handler_->is_translucent())
++    window_enlargement_ = gfx::Vector2d(0, 0);
+ }
+
+ bool DesktopWindowTreeHostWin::HandleCommand(int command) {

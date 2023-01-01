@@ -1,0 +1,30 @@
+diff --git a/third_party/blink/renderer/core/dom/document.cc b/third_party/blink/renderer/core/dom/document.cc
+index 89bcf662fd..64ecf83d24 100644
+--- a/third_party/blink/renderer/core/dom/document.cc
++++ b/third_party/blink/renderer/core/dom/document.cc
+@@ -5975,14 +5975,14 @@ scoped_refptr<const SecurityOrigin> Document::TopFrameOrigin() const {
+   if (!GetFrame())
+     return scoped_refptr<const SecurityOrigin>();
+
+-  return GetFrame()->Tree().Top().GetSecurityContext()->GetSecurityOrigin();
++  return GetFrame()->Tree().FindFrameByName("_top", true)->GetSecurityContext()->GetSecurityOrigin();
+ }
+
+ net::SiteForCookies Document::SiteForCookies() const {
+   if (!GetFrame())
+     return net::SiteForCookies();
+
+-  Frame& top = GetFrame()->Tree().Top();
++  Frame& top = *GetFrame()->Tree().FindFrameByName("_top", true);
+   const SecurityOrigin* origin = top.GetSecurityContext()->GetSecurityOrigin();
+   // TODO(yhirano): Ideally |origin| should not be null here.
+   if (!origin)
+@@ -6006,6 +6006,8 @@ net::SiteForCookies Document::SiteForCookies() const {
+   }
+
+   while (current_frame) {
++    if (current_frame->isNwFakeTop())
++      break;
+     const url::Origin cur_security_origin =
+         current_frame->GetSecurityContext()->GetSecurityOrigin()->ToUrlOrigin();
+     if (!candidate.CompareWithFrameTreeOriginAndRevise(cur_security_origin))

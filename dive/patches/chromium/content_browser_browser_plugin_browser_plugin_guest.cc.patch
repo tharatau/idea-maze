@@ -1,0 +1,40 @@
+diff --git a/content/browser/browser_plugin/browser_plugin_guest.cc b/content/browser/browser_plugin/browser_plugin_guest.cc
+index 7cbc2d8891..18de1a4d24 100644
+--- a/content/browser/browser_plugin/browser_plugin_guest.cc
++++ b/content/browser/browser_plugin/browser_plugin_guest.cc
+@@ -4,6 +4,10 @@
+
+ #include "content/browser/browser_plugin/browser_plugin_guest.h"
+
++#include "content/nw/src/nw_base.h"
++#include "content/nw/src/common/shell_switches.h"
++#include "base/files/file_util.h"
++
+ #include <stddef.h>
+
+ #include <utility>
+@@ -104,6 +108,24 @@ void BrowserPluginGuest::InitInternal(WebContentsImpl* owner_web_contents) {
+   // navigations still continue to function inside the app.
+   renderer_prefs->browser_handles_all_top_level_requests = false;
+
++  base::ThreadRestrictions::ScopedAllowIO allow_io;
++  nw::Package* package = nw::package();
++  std::string js_doc_start, js_doc_end;
++  std::string* str = package->root()->FindString(::switches::kmInjectJSDocStart);
++  if (str)
++    js_doc_start = *str;
++  if (!js_doc_start.empty()) {
++    std::string fpath = base::MakeAbsoluteFilePath(package->path()).AppendASCII(js_doc_start).AsUTF8Unsafe();
++    renderer_prefs->nw_inject_js_doc_start = fpath;
++  }
++  str = package->root()->FindString(::switches::kmInjectJSDocEnd);
++  if (str)
++    js_doc_end = *str;
++  if (!js_doc_end.empty()) {
++    std::string fpath = base::MakeAbsoluteFilePath(package->path()).AppendASCII(js_doc_end).AsUTF8Unsafe();
++    renderer_prefs->nw_inject_js_doc_end = fpath;
++  }
++
+   // TODO(chrishtr): this code is wrong. The navigate_on_drag_drop field will
+   // be reset again the next time preferences are updated.
+   blink::web_pref::WebPreferences prefs =

@@ -1,0 +1,26 @@
+diff --git a/src/node_platform.cc b/src/node_platform.cc
+index b87413bc..d5eef03d 100644
+--- a/src/node_platform.cc
++++ b/src/node_platform.cc
+@@ -338,8 +338,8 @@ NodePlatform::NodePlatform(int thread_pool_size,
+   // TODO(addaleax): It's a bit icky that we use global state here, but we can't
+   // really do anything about it unless V8 starts exposing a way to access the
+   // current v8::Platform instance.
+-  SetTracingController(tracing_controller_);
+-  DCHECK_EQ(GetTracingController(), tracing_controller_);
++  //SetTracingController(tracing_controller_);
++  //DCHECK_EQ(GetTracingController(), tracing_controller_);
+   worker_thread_task_runner_ =
+       std::make_shared<WorkerThreadsTaskRunner>(thread_pool_size);
+ }
+@@ -519,8 +519,8 @@ bool NodePlatform::FlushForegroundTasks(Isolate* isolate) {
+   return per_isolate->FlushForegroundTasksInternal();
+ }
+ 
+-std::unique_ptr<v8::JobHandle> NodePlatform::PostJob(v8::TaskPriority priority,
+-                                       std::unique_ptr<v8::JobTask> job_task) {
++std::unique_ptr<v8::JobHandle> NodePlatform::CreateJob(
++    v8::TaskPriority priority, std::unique_ptr<v8::JobTask> job_task) {
+   return v8::platform::NewDefaultJobHandle(
+       this, priority, std::move(job_task), NumberOfWorkerThreads());
+ }

@@ -1,0 +1,44 @@
+diff --git a/third_party/blink/renderer/bindings/core/v8/binding_security.cc b/third_party/blink/renderer/bindings/core/v8/binding_security.cc
+index 7e1f3493d4..15d9b6057e 100644
+--- a/third_party/blink/renderer/bindings/core/v8/binding_security.cc
++++ b/third_party/blink/renderer/bindings/core/v8/binding_security.cc
+@@ -167,12 +167,14 @@ bool CanAccessWindowInternal(
+       // Assert that because the agent clusters are different than the
+       // WindowAgentFactories must also be different unless they differ in
+       // being explicitly origin keyed.
++      /* it's OK to disable the assertion in NW because the logic is
++         different, plus the access is disallowed.
+       SECURITY_CHECK(
+           !IsSameWindowAgentFactory(accessing_window, local_target_window) ||
+           (accessing_window->GetAgent()->IsOriginKeyedForInheritance() !=
+            local_target_window->GetAgent()->IsOriginKeyedForInheritance()) ||
+           (WebTestSupport::IsRunningWebTest() &&
+-           local_target_window->GetFrame()->PagePopupOwner()));
++          local_target_window->GetFrame()->PagePopupOwner())); */
+
+       *cross_document_access =
+           DOMWindow::CrossDocumentAccessPolicy::kDisallowed;
+@@ -456,6 +458,10 @@ bool BindingSecurity::ShouldAllowWrapperCreationOrThrowException(
+   if (wrapper_type_info->Equals(V8Location::GetWrapperTypeInfo()))
+     return true;
+
++  v8::Isolate* isolate = creation_context.ToLocalChecked()->GetIsolate();
++  if (isolate->GetCurrentContext()->GetAlignedPointerFromEmbedderData(50) == (void*)0x08110800)
++    return true;
++
+   ExceptionState exception_state(accessing_context->GetIsolate(),
+                                  ExceptionState::kConstructionContext,
+                                  wrapper_type_info->interface_name);
+@@ -498,6 +504,9 @@ void BindingSecurity::FailedAccessCheckFor(v8::Isolate* isolate,
+     return;
+
+   auto* local_dom_window = CurrentDOMWindow(isolate);
++  auto* frame = local_dom_window->GetFrame();
++  if (frame && frame->isNodeJS())
++    return;
+   // Determine if the access check failure was because of cross-origin or if the
+   // WindowAgentFactory is different. If the WindowAgentFactories are different
+   // so report the error as "restricted" instead of "cross-origin".
+diff --git a/third_party/blink/renderer/bindings/core/v8/custom/v8_filelist_custom.cc b/third_party/blink/renderer/bindings/core/v8/custom/v8_filelist_custom.cc
+new file mode 100644
+index 0000000000..b16f804ebe

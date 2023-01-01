@@ -1,0 +1,23 @@
+diff --git a/chrome/common/BUILD.gn b/chrome/common/BUILD.gn
+index 0a12b557d7..548a6f10ce 100644
+--- a/chrome/common/BUILD.gn
++++ b/chrome/common/BUILD.gn
+@@ -222,8 +222,8 @@ static_library("common_lib") {
+     "//components/services/app_service/public/cpp:app_types",
+     "//components/services/heap_profiling/public/cpp",
+     "//components/strings",
+-    "//components/translate/content/common",
+-    "//components/translate/core/common",
++    #"//components/translate/content/common",
++    #"//components/translate/core/common",
+     "//components/url_formatter",
+     "//components/variations",
+     "//components/variations/net",
+@@ -335,6 +335,7 @@ static_library("common_lib") {
+       "//components/services/app_service/public/mojom",
+     ]
+     public_deps += [
++      "//content/nw/src/api:nw_api",
+       "//chrome/common/extensions/api",
+       "//chrome/common/extensions/api:extensions_features",
+       "//extensions:extensions_resources",

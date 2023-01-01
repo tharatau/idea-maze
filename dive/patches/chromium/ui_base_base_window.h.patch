@@ -1,0 +1,12 @@
+diff --git a/ui/base/base_window.h b/ui/base/base_window.h
+index 0d4fb25fb0..11b4d40cf0 100644
+--- a/ui/base/base_window.h
++++ b/ui/base/base_window.h
+@@ -67,6 +67,7 @@ class COMPONENT_EXPORT(UI_BASE) BaseWindow {
+   // Closes the window as soon as possible. The close action may be delayed
+   // if an operation is in progress (e.g. a drag operation).
+   virtual void Close() = 0;
++  virtual void ForceClose();
+
+   // Activates (brings to front) the window. Restores the window from minimized
+   // state if necessary.

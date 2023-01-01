@@ -1,0 +1,12 @@
+diff --git a/extensions/renderer/programmatic_script_injector.h b/extensions/renderer/programmatic_script_injector.h
+index cda569165d..4b07fd0944 100644
+--- a/extensions/renderer/programmatic_script_injector.h
++++ b/extensions/renderer/programmatic_script_injector.h
+@@ -35,6 +35,7 @@ class ProgrammaticScriptInjector : public ScriptInjector {
+   // ScriptInjector implementation.
+   mojom::InjectionType script_type() const override;
+   blink::mojom::UserActivationOption IsUserGesture() const override;
++  bool ShouldExecuteInMainWorld() const override;
+   mojom::ExecutionWorld GetExecutionWorld() const override;
+   mojom::CSSOrigin GetCssOrigin() const override;
+   mojom::CSSInjection::Operation GetCSSInjectionOperation() const override;

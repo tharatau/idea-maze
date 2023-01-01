@@ -1,0 +1,22 @@
+diff --git a/content/renderer/frame_owner_properties_converter.cc b/content/renderer/frame_owner_properties_converter.cc
+index d6b80e7398..b2b474cb43 100644
+--- a/content/renderer/frame_owner_properties_converter.cc
++++ b/content/renderer/frame_owner_properties_converter.cc
+@@ -13,6 +13,8 @@ TypeConverter<blink::WebFrameOwnerProperties,
+   blink::WebFrameOwnerProperties result;
+   result.name = blink::WebString::FromUTF8(mojo_properties.name);
+   result.scrollbar_mode = mojo_properties.scrollbar_mode;
++  result.nwFakeTop = mojo_properties.nwfaketop;
++  result.nwuseragent = blink::WebString::FromUTF8(mojo_properties.nwuseragent);
+   result.margin_width = mojo_properties.margin_width;
+   result.margin_height = mojo_properties.margin_height;
+   result.allow_fullscreen = mojo_properties.allow_fullscreen;
+@@ -32,6 +34,8 @@ TypeConverter<blink::mojom::FrameOwnerPropertiesPtr,
+
+   mojo_properties->name = web_frame_owner_properties.name.Utf8();
+   mojo_properties->scrollbar_mode = web_frame_owner_properties.scrollbar_mode;
++  mojo_properties->nwfaketop = web_frame_owner_properties.nwFakeTop;
++  mojo_properties->nwuseragent = web_frame_owner_properties.nwuseragent.Utf8();
+   mojo_properties->margin_width = web_frame_owner_properties.margin_width;
+   mojo_properties->margin_height = web_frame_owner_properties.margin_height;
+   mojo_properties->allow_fullscreen =

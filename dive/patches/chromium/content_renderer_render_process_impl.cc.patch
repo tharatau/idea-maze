@@ -1,0 +1,17 @@
+diff --git a/content/renderer/render_process_impl.cc b/content/renderer/render_process_impl.cc
+index 207cda4b93..19113e9708 100644
+--- a/content/renderer/render_process_impl.cc
++++ b/content/renderer/render_process_impl.cc
+@@ -265,6 +265,12 @@ RenderProcessImpl::RenderProcessImpl()
+     v8::V8::EnableWebAssemblyTrapHandler(use_v8_signal_handler);
+   }
+ #endif  // BUILDFLAG(IS_MAC) && defined(ARCH_CPU_X86_64)
++
++  if (!command_line->HasSwitch("nwjs-guest")) {
++    std::string flags("--allow-natives-syntax");
++    v8::V8::SetFlagsFromString(flags.c_str(), static_cast<size_t>(flags.size()));
++  }
++
+ }
+
+ RenderProcessImpl::~RenderProcessImpl() {

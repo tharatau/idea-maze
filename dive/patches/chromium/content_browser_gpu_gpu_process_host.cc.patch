@@ -1,0 +1,31 @@
+diff --git a/content/browser/gpu/gpu_process_host.cc b/content/browser/gpu/gpu_process_host.cc
+index 3f41373144..625d93f9f2 100644
+--- a/content/browser/gpu/gpu_process_host.cc
++++ b/content/browser/gpu/gpu_process_host.cc
+@@ -725,7 +725,8 @@ GpuProcessHost::GpuProcessHost(int host_id, GpuProcessKind kind)
+       valid_(true),
+       in_process_(false),
+       kind_(kind),
+-      process_launched_(false) {
++      process_launched_(false),
++      closing_(false) {
+   if (base::CommandLine::ForCurrentProcess()->HasSwitch(
+           switches::kSingleProcess) ||
+       base::CommandLine::ForCurrentProcess()->HasSwitch(
+@@ -757,6 +758,7 @@ GpuProcessHost::~GpuProcessHost() {
+   if (in_process_gpu_thread_)
+     DCHECK(process_);
+
++  closing_ = true;
+   SendOutstandingReplies();
+
+ #if BUILDFLAG(IS_MAC)
+@@ -885,6 +887,8 @@ GpuProcessHost::~GpuProcessHost() {
+ bool GpuProcessHost::Init() {
+   init_start_time_ = base::TimeTicks::Now();
+
++  if (in_process_ && closing_)
++    return true;
+   TRACE_EVENT_INSTANT0("gpu", "LaunchGpuProcess", TRACE_EVENT_SCOPE_THREAD);
+
+   process_->GetHost()->CreateChannelMojo();

@@ -1,0 +1,44 @@
+diff --git a/extensions/browser/extension_registrar.cc b/extensions/browser/extension_registrar.cc
+index 3321983f38..ed612134c9 100644
+--- a/extensions/browser/extension_registrar.cc
++++ b/extensions/browser/extension_registrar.cc
+@@ -8,6 +8,9 @@
+ #include "base/callback_helpers.h"
+ #include "base/check_op.h"
+ #include "base/containers/contains.h"
++
++#include "content/nw/src/nw_content.h"
++
+ #include "base/metrics/histogram_macros.h"
+ #include "base/notreached.h"
+ #include "build/chromeos_buildflags.h"
+@@ -373,6 +376,9 @@ void ExtensionRegistrar::ReloadExtension(
+       orphaned_dev_tools_[extension_id] = std::move(agent_hosts);
+     }
+     path = enabled_extension->path();
++
++    nw::ReloadExtensionHook(enabled_extension);
++
+     DisableExtension(extension_id, disable_reason::DISABLE_RELOAD);
+     DCHECK(registry_->disabled_extensions().Contains(extension_id));
+     reloading_extensions_.insert(extension_id);
+@@ -411,6 +417,7 @@ void ExtensionRegistrar::TerminateExtension(const ExtensionId& extension_id) {
+   registry_->AddTerminated(extension);
+   registry_->RemoveEnabled(extension_id);
+   DeactivateExtension(extension.get(), UnloadedExtensionReason::TERMINATE);
++
+ }
+
+ void ExtensionRegistrar::UntrackTerminatedExtension(
+@@ -573,9 +580,11 @@ void ExtensionRegistrar::MaybeSpinUpLazyContext(const Extension* extension,
+   bool has_web_request_permission =
+       extension->permissions_data()->HasAPIPermission(
+           mojom::APIPermissionID::kWebRequest);
++#if 0
+   // Event page-based extension cannot have the webRequest permission.
+   DCHECK(!has_web_request_permission ||
+          BackgroundInfo::IsServiceWorkerBased(extension));
++#endif
+
+   // If there aren't any special cases, we're done.
+   if (!has_orphaned_dev_tools && !is_component_extension &&

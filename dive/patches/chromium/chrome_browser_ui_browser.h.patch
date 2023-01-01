@@ -1,0 +1,189 @@
+diff --git a/chrome/browser/ui/browser.h b/chrome/browser/ui/browser.h
+index 38ee0d8480..47acb67896 100644
+--- a/chrome/browser/ui/browser.h
++++ b/chrome/browser/ui/browser.h
+@@ -13,6 +13,8 @@
+ #include <vector>
+
+ #include "base/callback.h"
++#include "ui/gfx/image/image.h"
++
+ #include "base/gtest_prod_util.h"
+ #include "base/memory/raw_ptr.h"
+ #include "base/memory/scoped_refptr.h"
+@@ -75,6 +77,9 @@ namespace screen_ai {
+ class AXScreenAIAnnotator;
+ }
+ #endif
++namespace extensions {
++class Extension;
++}
+
+ namespace blink {
+ enum class ProtocolHandlerSecurityLevel;
+@@ -101,6 +106,10 @@ namespace ui {
+ struct SelectedFileInfo;
+ }
+
++namespace nw {
++  class Menu;
++}
++
+ namespace web_app {
+ class AppBrowserController;
+ }
+@@ -120,6 +129,13 @@ class Browser : public TabStripModelObserver,
+                 public translate::ContentTranslateDriver::TranslationObserver,
+                 public ui::SelectFileDialog::Listener {
+  public:
++  using DidFinishFirstNavigationCallback =
++                      base::OnceCallback<void(bool did_finish)>;
++  void AddOnDidFinishFirstNavigationCallback(
++                      DidFinishFirstNavigationCallback callback);
++  bool DidFinishFirstNavigation() { return did_finish_first_navigation_; }
++  // Called when first navigation was completed.
++  void OnDidFinishFirstNavigation();
+   // SessionService::WindowType mirrors these values.  If you add to this
+   // enum, look at SessionService::WindowType to see if it needs to be
+   // updated.
+@@ -166,6 +182,7 @@ class Browser : public TabStripModelObserver,
+     FEATURE_TOOLBAR = 1 << 2,
+     FEATURE_LOCATIONBAR = 1 << 3,
+     FEATURE_BOOKMARKBAR = 1 << 4,
++    FEATURE_NW_FRAMELESS = 1 << 5
+     // TODO(crbug.com/992834): Add FEATURE_PAGECONTROLS to describe the presence
+     // of per-page controls such as Content Settings Icons, which should be
+     // decoupled from FEATURE_LOCATIONBAR as they have independent presence in
+@@ -222,6 +239,7 @@ class Browser : public TabStripModelObserver,
+
+   struct CreateParams {
+     explicit CreateParams(Profile* profile, bool user_gesture);
++    explicit CreateParams(Profile* profile, bool user_gesture, const gfx::Rect& bounds);
+     CreateParams(Type type, Profile* profile, bool user_gesture);
+     CreateParams(const CreateParams& other);
+     CreateParams& operator=(const CreateParams& other);
+@@ -241,6 +259,16 @@ class Browser : public TabStripModelObserver,
+
+     static CreateParams CreateForDevTools(Profile* profile);
+
++    std::string extension_id;
++    bool frameless = false;
++    bool alpha_enabled = false;
++    bool always_on_top = false;
++    bool all_visible = false;
++    bool resizable = true;
++    bool show_in_taskbar = true;
++    std::string title;
++    std::string position;
++    gfx::Image icon;
+     // The browser type.
+     Type type;
+
+@@ -249,6 +277,7 @@ class Browser : public TabStripModelObserver,
+
+     // Specifies the browser `is_trusted_source_` value.
+     bool trusted_source = false;
++    std::string windows_key;
+
+     // Specifies the browser `omit_from_session_restore_` value, whether the new
+     // Browser should be omitted from being saved/restored by session restore.
+@@ -362,8 +391,15 @@ class Browser : public TabStripModelObserver,
+   Browser(const Browser&) = delete;
+   Browser& operator=(const Browser&) = delete;
+
++  nw::Menu* nw_menu_;
++
++  std::string extension_id_;
++
+   ~Browser() override;
+
++  const extensions::Extension* GetExtension() const;
++  bool NWCanClose(bool user_force = false);
++
+   // Set overrides for the initial window bounds and maximized state.
+   void set_override_bounds(const gfx::Rect& bounds) {
+     override_bounds_ = bounds;
+@@ -372,6 +408,16 @@ class Browser : public TabStripModelObserver,
+   void set_initial_show_state(ui::WindowShowState initial_show_state) {
+     initial_show_state_ = initial_show_state;
+   }
++
++  void set_title_override(const std::string& title) { title_override_ = title; }
++
++  bool initial_ontop() const { return initial_ontop_; }
++  bool initial_allvisible() const { return initial_allvisible_; }
++  bool initial_resizable() const { return initial_resizable_; }
++  bool initial_showintaskbar() const { return initial_showintaskbar_; }
++  const std::string& initial_position() const { return initial_position_; }
++  gfx::Image icon_override() const { return icon_override_; }
++
+   // Return true if the initial window bounds have been overridden.
+   bool bounds_overridden() const { return !override_bounds_.IsEmpty(); }
+   // Set indicator that this browser is being created via session restore.
+@@ -398,7 +444,12 @@ class Browser : public TabStripModelObserver,
+   Type type() const { return type_; }
+   const std::string& app_name() const { return app_name_; }
+   const std::string& user_title() const { return user_title_; }
++  const std::string& windows_key() const { return windows_key_; }
+   bool is_trusted_source() const { return is_trusted_source_; }
++  bool is_frameless() const { return frameless_; }
++  bool is_transparent() const {
++    return alpha_enabled_;
++  }
+   Profile* profile() const { return profile_; }
+   gfx::Rect override_bounds() const { return override_bounds_; }
+   const std::string& initial_workspace() const { return initial_workspace_; }
+@@ -763,6 +814,11 @@ class Browser : public TabStripModelObserver,
+ #endif
+
+  private:
++  int last_to_different_document_ = -1;
++  std::vector<DidFinishFirstNavigationCallback> on_did_finish_first_navigation_callbacks_;
++  // Whether the first navigation was completed in both browser and renderer
++  // processes.
++  bool did_finish_first_navigation_ = false;
+   friend class BrowserTest;
+   friend class ExclusiveAccessTest;
+   friend class FullscreenControllerInteractiveTest;
+@@ -868,7 +924,7 @@ class Browser : public TabStripModelObserver,
+                           int opener_render_frame_id,
+                           const std::string& frame_name,
+                           const GURL& target_url,
+-                          content::WebContents* new_contents) override;
++                          content::WebContents* new_contents, const std::u16string& nw_window_manifest) override;
+   void PortalWebContentsCreated(
+       content::WebContents* portal_web_contents) override;
+   void WebContentsBecamePortal(
+@@ -1160,6 +1216,10 @@ class Browser : public TabStripModelObserver,
+   // This Browser's create params.
+   const CreateParams create_params_;
+
++  bool frameless_;
++
++  bool alpha_enabled_;
++
+   // This Browser's type.
+   const Type type_;
+
+@@ -1185,6 +1245,7 @@ class Browser : public TabStripModelObserver,
+   // 1) we launch an application via an application shortcut or extension API.
+   // 2) we launch an undocked devtool window.
+   const std::string app_name_;
++  const std::string windows_key_;
+
+   // True if the source is trusted (i.e. we do not need to show the URL in a
+   // a popup window). Also used to determine which app windows to save and
+@@ -1245,6 +1306,13 @@ class Browser : public TabStripModelObserver,
+   bool initial_visible_on_all_workspaces_state_;
+
+   CreationSource creation_source_ = CreationSource::kUnknown;
++  bool initial_ontop_;
++  bool initial_allvisible_;
++  bool initial_resizable_;
++  bool initial_showintaskbar_;
++  std::string initial_position_;
++  std::string title_override_;
++  gfx::Image icon_override_;
+
+   UnloadController unload_controller_;
+

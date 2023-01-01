@@ -1,0 +1,28 @@
+diff --git a/content/public/common/user_agent.h b/content/public/common/user_agent.h
+index ead4bc4f4f..68f05d245b 100644
+--- a/content/public/common/user_agent.h
++++ b/content/public/common/user_agent.h
+@@ -54,6 +54,7 @@ CONTENT_EXPORT std::string GetOSVersion(
+     IncludeAndroidBuildNumber include_android_build_number,
+     IncludeAndroidModel include_android_model);
+
++CONTENT_EXPORT std::string BuildOSInfo();
+ // Returns the reduced User-agent string for
+ // https://github.com/WICG/ua-client-hints.
+ CONTENT_EXPORT std::string GetReducedUserAgent(bool mobile,
+@@ -78,7 +79,6 @@ CONTENT_EXPORT std::string BuildUnifiedPlatformUserAgentFromProduct(
+ // if on a codenamed (i.e. not a release) build of an Android.
+ CONTENT_EXPORT std::string BuildModelInfo();
+
+-#if BUILDFLAG(IS_ANDROID)
+ // Helper function to generate a full user agent string given a short
+ // product name and some extra text to be added to the OS info.
+ // This is currently only used for Android Web View.
+@@ -91,7 +91,6 @@ CONTENT_EXPORT std::string BuildUserAgentFromProductAndExtraOSInfo(
+ CONTENT_EXPORT std::string GetAndroidOSInfo(
+     IncludeAndroidBuildNumber include_android_build_number,
+     IncludeAndroidModel include_android_model);
+-#endif
+
+ // Builds a full user agent string given a string describing the OS and a
+ // product name.

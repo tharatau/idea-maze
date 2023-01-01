@@ -1,0 +1,21 @@
+diff --git a/components/search_provider_logos/logo_service_impl.cc b/components/search_provider_logos/logo_service_impl.cc
+index 24a04e9d95..dd2847e2cb 100644
+--- a/components/search_provider_logos/logo_service_impl.cc
++++ b/components/search_provider_logos/logo_service_impl.cc
+@@ -1,6 +1,7 @@
+ // Copyright 2017 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
++#pragma clang diagnostic ignored "-Wunreachable-code"
+
+ #include "components/search_provider_logos/logo_service_impl.h"
+
+@@ -267,7 +268,7 @@ void LogoServiceImpl::GetLogo(LogoCallbacks callbacks, bool for_webui_ntp) {
+     base_url = doodle_url.DeprecatedGetOriginAsURL();
+   }
+
+-  if (!logo_url.is_valid() && !doodle_url.is_valid()) {
++  if (true) { //!logo_url.is_valid() && !doodle_url.is_valid()) {
+     RunCallbacksWithDisabled(std::move(callbacks));
+     return;
+   }

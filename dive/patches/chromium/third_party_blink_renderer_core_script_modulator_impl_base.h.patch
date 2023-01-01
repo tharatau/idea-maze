@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/script/modulator_impl_base.h b/third_party/blink/renderer/core/script/modulator_impl_base.h
+index a1b4024e43..95f54ee73a 100644
+--- a/third_party/blink/renderer/core/script/modulator_impl_base.h
++++ b/third_party/blink/renderer/core/script/modulator_impl_base.h
+@@ -45,6 +45,8 @@ class ModulatorImplBase : public Modulator {
+
+   bool IsScriptingDisabled() const override;
+
++  void AddToMap(const KURL& url, ModuleScript* script) override;
++
+   mojom::blink::V8CacheOptions GetV8CacheOptions() const final;
+
+   ModuleRecordResolver* GetModuleRecordResolver() override {

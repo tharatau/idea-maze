@@ -1,0 +1,12 @@
+diff --git a/extensions/common/api/_manifest_features.json b/extensions/common/api/_manifest_features.json
+index e7a58d927f..33c6e5acca 100644
+--- a/extensions/common/api/_manifest_features.json
++++ b/extensions/common/api/_manifest_features.json
+@@ -396,6 +396,6 @@
+   ],
+   "webview": {
+     "channel": "stable",
+-    "extension_types": ["platform_app"]
++    "extension_types": "all"
+   }
+ }

@@ -1,0 +1,13 @@
+diff --git a/content/browser/renderer_host/render_frame_host_delegate.h b/content/browser/renderer_host/render_frame_host_delegate.h
+index 009580f72b..e9bd44c0fd 100644
+--- a/content/browser/renderer_host/render_frame_host_delegate.h
++++ b/content/browser/renderer_host/render_frame_host_delegate.h
+@@ -422,7 +422,7 @@ class CONTENT_EXPORT RenderFrameHostDelegate {
+                                  int main_frame_widget_route_id,
+                                  WindowOpenDisposition disposition,
+                                  const gfx::Rect& initial_rect,
+-                                 bool user_gesture) {}
++                                 bool user_gesture, std::string manifest) {}
+
+   // The main frame document element is ready. This happens when the document
+   // has finished parsing.

@@ -1,0 +1,38 @@
+diff --git a/content/browser/zygote_host/zygote_host_impl_linux.cc b/content/browser/zygote_host/zygote_host_impl_linux.cc
+index 8e0ec36fcd..25f7d54bdb 100644
+--- a/content/browser/zygote_host/zygote_host_impl_linux.cc
++++ b/content/browser/zygote_host/zygote_host_impl_linux.cc
+@@ -1,6 +1,7 @@
+ // Copyright (c) 2012 The Chromium Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
++#pragma clang diagnostic ignored "-Wunreachable-code"
+
+ #include "content/browser/zygote_host/zygote_host_impl_linux.h"
+
+@@ -24,6 +25,7 @@
+ #include "sandbox/policy/linux/sandbox_linux.h"
+ #include "sandbox/policy/switches.h"
+
++#include "content/nw/src/common/shell_switches.h"
+ namespace content {
+
+ namespace {
+@@ -73,7 +75,7 @@ ZygoteHostImpl* ZygoteHostImpl::GetInstance() {
+ }
+
+ void ZygoteHostImpl::Init(const base::CommandLine& command_line) {
+-  if (command_line.HasSwitch(sandbox::policy::switches::kNoSandbox)) {
++  if (true || command_line.HasSwitch(sandbox::policy::switches::kNoSandbox)) {
+     return;
+   }
+
+@@ -106,7 +108,7 @@ void ZygoteHostImpl::Init(const base::CommandLine& command_line) {
+   } else if (!command_line.HasSwitch(
+                  sandbox::policy::switches::kDisableSetuidSandbox) &&
+              !sandbox_binary_.empty()) {
+-    use_suid_sandbox_ = true;
++    use_suid_sandbox_ = false;
+
+     // Use the SUID sandbox for adjusting OOM scores when we are using
+     // the setuid sandbox. This is needed beacuse the processes are

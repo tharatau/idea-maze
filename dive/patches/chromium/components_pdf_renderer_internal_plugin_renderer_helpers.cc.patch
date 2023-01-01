@@ -1,0 +1,22 @@
+diff --git a/components/pdf/renderer/internal_plugin_renderer_helpers.cc b/components/pdf/renderer/internal_plugin_renderer_helpers.cc
+index e4823e7fff..9ac27124eb 100644
+--- a/components/pdf/renderer/internal_plugin_renderer_helpers.cc
++++ b/components/pdf/renderer/internal_plugin_renderer_helpers.cc
+@@ -57,7 +57,7 @@ blink::WebPlugin* CreateInternalPlugin(
+   }
+
+   // Only create the in-process plugin within a PDF renderer.
+-  CHECK(IsPdfRenderer());
++  //CHECK(IsPdfRenderer());
+
+   // Origins allowed to embed the internal plugin are trusted (the PDF viewer
+   // and Print Preview), and should never directly create the in-process plugin.
+@@ -65,7 +65,7 @@ blink::WebPlugin* CreateInternalPlugin(
+   //
+   // See crbug.com/1259635 and crbug.com/1261758 for examples of previous bugs.
+   CHECK(!delegate->IsAllowedOrigin(frame->GetSecurityOrigin()));
+-  CHECK(parent_frame->IsWebRemoteFrame());
++  //CHECK(parent_frame->IsWebRemoteFrame());
+
+   mojo::AssociatedRemote<pdf::mojom::PdfService> pdf_service;
+   render_frame->GetRemoteAssociatedInterfaces()->GetInterface(

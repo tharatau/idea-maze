@@ -1,0 +1,13 @@
+diff --git a/deps/zlib/contrib/optimizations/inffast_chunk.c b/deps/zlib/contrib/optimizations/inffast_chunk.c
+index 4099edf3..4bacbc46 100644
+--- a/deps/zlib/contrib/optimizations/inffast_chunk.c
++++ b/deps/zlib/contrib/optimizations/inffast_chunk.c
+@@ -276,7 +276,7 @@ unsigned start;         /* inflate()'s starting value for strm->avail_out */
+                            the main copy is near the end.
+                           */
+                         out = chunkunroll_relaxed(out, &dist, &len);
+-                        out = chunkcopy_safe(out, out - dist, len, limit);
++                        out = chunkcopy_safe_ugly(out, dist, len, limit);
+                     } else {
+                         /* from points to window, so there is no risk of
+                            overlapping pointers requiring memset-like behaviour

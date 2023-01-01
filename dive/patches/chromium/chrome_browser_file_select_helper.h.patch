@@ -1,0 +1,12 @@
+diff --git a/chrome/browser/file_select_helper.h b/chrome/browser/file_select_helper.h
+index 8c86774e6d..34853b2b63 100644
+--- a/chrome/browser/file_select_helper.h
++++ b/chrome/browser/file_select_helper.h
+@@ -291,6 +291,7 @@ class FileSelectHelper : public base::RefCountedThreadSafe<
+   // Profile used to set/retrieve the last used directory.
+   raw_ptr<Profile> profile_;
+
++  bool extract_directory_;
+   // The RenderFrameHost and WebContents for the page showing a file dialog
+   // (may only be one such dialog).
+   raw_ptr<content::RenderFrameHost> render_frame_host_;

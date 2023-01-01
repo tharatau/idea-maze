@@ -1,0 +1,14 @@
+diff --git a/chrome/browser/resources/BUILD.gn b/chrome/browser/resources/BUILD.gn
+index 09a8c1edd4..721f2540f8 100644
+--- a/chrome/browser/resources/BUILD.gn
++++ b/chrome/browser/resources/BUILD.gn
+@@ -165,6 +165,9 @@ if (!is_android) {
+     if (enable_hangout_services_extension) {
+       defines += [ "enable_hangout_services_extension" ]
+     }
++    if (nwjs_sdk) {
++      defines += [ "nwjs_sdk" ]
++    }
+
+     # Some resources within component_extension_resources.grd are generated at
+     # build time so we include them as explicit dependencies here

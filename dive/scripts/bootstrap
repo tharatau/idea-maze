@@ -1,0 +1,92 @@
+#!/bin/bash
+
+echo "[ INFO ] Starting NW bootstrap script..."
+echo "[ WARN ] Please note this script has only been tested on Ubuntu 18."
+echo "[ INFO ] Setting up depot_tools..."
+if [ ! -d "depot_tools" ]; then
+    echo "[ WARN ] depot_tools does not exist."
+    echo "[ INFO ] Downloading depot_tools..."
+    git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git depot_tools
+else
+    echo "[ INFO ] depot_tools already exists."
+    echo "[ INFO ] Adding depot_tools to end of PATH..."
+    export PATH="$PATH:${PWD}/depot_tools"
+fi
+
+if [[ ! -d "./chromium" ]]; then
+    mkdir chromium
+else
+    cd chromium
+fi
+
+if [ ! -f ".gclient" ]; then
+    echo "[ INFO ] Setting up .gclient file..."
+    gclient config --name=src https://github.com/nwjs/chromium.src.git
+    echo "[ INFO ] Downloading Chromium..."
+    gclient sync --with_branch_heads --nohooks --no-history
+    bash ./src/build/install-build-deps.sh
+else
+    echo "[ INFO ] .gclient file already exists."
+    echo "[ INFO ] Skipping .gclient config step."
+    echo "[ INFO ] Syncing repo instead..."
+    # Comment out below command if you justed synced the repo
+    gclient sync
+fi
+
+cd src
+
+if [[ ! -d "./build/linux/debian_bullseye_amd64-sysroot" ]]; then
+    bash ./build/linux/sysroot_scripts/install-sysroot.py --arch=amd64
+else
+    echo "[ INFO ] sysroot already exists."
+    echo "[ INFO ] Skipping sysroot download step."
+fi
+
+# TODO send patch for this upstream
+echo "[ INFO ] Apply hack for LASTCHANGE since we downlaod chromium source with no history."
+cat <<CONFIG > "./build/util/LASTCHANGE"
+LASTCHANGE=0000000000000000000000000000000000000000-0000000000000000000000000000000000000000
+LASTCHANGE_YEAR=1970
+CONFIG
+
+if [[ ! -d "./content/nw" ]]; then
+    echo "[ INFO ] Downloading NW..."
+    git clone https://github.com/nwjs/nw.js.git ./content/nw --depth=1
+else
+    echo "[ INFO ] NW already exists."
+fi
+
+if [[ ! -d "./third_party/node-nw" ]]; then
+    echo "[ INFO ] Downloading Node..."
+    git clone https://github.com/nwjs/node.git ./third_party/node-nw --depth=1
+else
+    echo "[ INFO ] Node already exists."
+fi
+
+if [[ ! -d "./v8" ]]; then
+    echo "[ INFO ] Downloading V8..."
+    git clone https://github.com/nwjs/v8.git ./v8 --depth=1
+else
+    echo "[ INFO ] V8 already exists."
+fi
+
+echo "[ INFO ] Generate ninja files for Chromium"
+# Comment out command below to prevent fresh build for component builds
+gn gen out/nw '--args=is_debug=false target_os="linux" target_cpu="x64" is_clang=true is_component_build=true'
+echo "[ INFO ] Start Chromium build..."
+ninja -C out/nw nwjs
+
+echo "[ INFO ] Setup environment variables for Node"
+export GYP_CHROMIUM_NO_ACTION=0
+export GYP_DEFINES="target_arch=x64 building_nw=1 clang=1 nwjs_sdk=1 disable_nacl=0 buildtype=Official"
+export GYP_GENERATORS=ninja
+export GYP_GENERATOR_FLAGS=output_dir=out
+export C_INCLUDE_PATH=$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu:$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include
+export CPLUS_INCLUDE_PATH=$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu:$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include
+export LIBRARY_PATH=$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/lib/x86_64-linux-gnu
+
+echo "[ INFO ] Generate ninja files for Node"
+python3 ./third_party/node-nw/tools/gyp/gyp_main.py -I ./third_party/node-nw/common.gypi -D build_type=Release ./third_party/node-nw/node.gyp
+echo "[ INFO ] Starting Node build..."
+ninja -C out/Release node
+ninja -C out/nw copy_node

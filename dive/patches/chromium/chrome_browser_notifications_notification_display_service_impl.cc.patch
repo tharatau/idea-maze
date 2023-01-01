@@ -1,0 +1,14 @@
+diff --git a/chrome/browser/notifications/notification_display_service_impl.cc b/chrome/browser/notifications/notification_display_service_impl.cc
+index 7fc0e1138c..f272586391 100644
+--- a/chrome/browser/notifications/notification_display_service_impl.cc
++++ b/chrome/browser/notifications/notification_display_service_impl.cc
+@@ -88,8 +88,7 @@ NotificationDisplayServiceImpl::NotificationDisplayServiceImpl(Profile* profile)
+             profile_));
+ #endif
+
+-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS) || BUILDFLAG(IS_MAC) || \
+-    BUILDFLAG(IS_WIN)
++#if 0
+     AddNotificationHandler(
+         NotificationHandler::Type::TAILORED_SECURITY,
+         std::make_unique<safe_browsing::TailoredSecurityNotificationHandler>());

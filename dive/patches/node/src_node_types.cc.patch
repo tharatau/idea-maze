@@ -1,0 +1,12 @@
+diff --git a/src/node_types.cc b/src/node_types.cc
+index 87550a14..616fc658 100644
+--- a/src/node_types.cc
++++ b/src/node_types.cc
+@@ -38,7 +38,6 @@ namespace {
+   V(Proxy)                                                                    \
+   V(ModuleNamespaceObject)                                                    \
+ 
+-
+ #define V(type) \
+   static void Is##type(const FunctionCallbackInfo<Value>& args) {             \
+     args.GetReturnValue().Set(args[0]->Is##type());                           \

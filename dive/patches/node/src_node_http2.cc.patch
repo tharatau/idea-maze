@@ -1,0 +1,32 @@
+diff --git a/src/node_http2.cc b/src/node_http2.cc
+index 7a1e7519..e0313144 100644
+--- a/src/node_http2.cc
++++ b/src/node_http2.cc
+@@ -631,6 +631,7 @@ MaybeLocal<Object> Http2SessionPerformanceEntryTraits::GetDetails(
+ 
+ void Http2Stream::EmitStatistics() {
+   CHECK_NOT_NULL(session());
++#if 0
+   if (LIKELY(!HasHttp2Observer(env())))
+     return;
+ 
+@@ -648,9 +649,11 @@ void Http2Stream::EmitStatistics() {
+     if (HasHttp2Observer(env))
+       entry->Notify(env);
+   });
++#endif
+ }
+ 
+ void Http2Session::EmitStatistics() {
++#if 0
+   if (LIKELY(!HasHttp2Observer(env())))
+     return;
+ 
+@@ -668,6 +671,7 @@ void Http2Session::EmitStatistics() {
+     if (HasHttp2Observer(env))
+       entry->Notify(env);
+   });
++#endif
+ }
+ 
+ // Closes the session and frees the associated resources

@@ -1,0 +1,15 @@
+diff --git a/third_party/blink/renderer/core/fileapi/file.idl b/third_party/blink/renderer/core/fileapi/file.idl
+index 4339a27e87..640acd0180 100644
+--- a/third_party/blink/renderer/core/fileapi/file.idl
++++ b/third_party/blink/renderer/core/fileapi/file.idl
+@@ -30,8 +30,10 @@
+     Serializable
+ ] interface File : Blob {
+     [CallWith=ExecutionContext] constructor(sequence<BlobPart> fileBits, USVString fileName, optional FilePropertyBag options = {});
++    [CallWith=ExecutionContext] constructor(DOMString path, DOMString name);
+     readonly attribute DOMString name;
+     readonly attribute long long lastModified;
++    readonly attribute DOMString path;
+
+     // Non-standard APIs
+     [MeasureAs=FileGetLastModifiedDate, CallWith=ScriptState] readonly attribute object lastModifiedDate;

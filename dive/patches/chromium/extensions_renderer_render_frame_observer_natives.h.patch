@@ -1,0 +1,19 @@
+diff --git a/extensions/renderer/render_frame_observer_natives.h b/extensions/renderer/render_frame_observer_natives.h
+index 8f80ce3894..a6edfe4a3d 100644
+--- a/extensions/renderer/render_frame_observer_natives.h
++++ b/extensions/renderer/render_frame_observer_natives.h
+@@ -35,9 +35,13 @@ class RenderFrameObserverNatives : public ObjectBackedNativeHandler {
+   void OnDocumentElementCreated(
+       const v8::FunctionCallbackInfo<v8::Value>& args);
+
+-  void InvokeCallback(v8::Global<v8::Function> callback, bool succeeded);
++  void InvokeCallback(v8::Global<v8::Function> callback, bool succeeded, int frame_id);
+
+   base::WeakPtrFactory<RenderFrameObserverNatives> weak_ptr_factory_{this};
++
++  void OnDestruct(
++      const v8::FunctionCallbackInfo<v8::Value>& args);
++
+ };
+
+ }  // namespace extensions

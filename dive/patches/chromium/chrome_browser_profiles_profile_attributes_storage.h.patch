@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/profiles/profile_attributes_storage.h b/chrome/browser/profiles/profile_attributes_storage.h
+index d98579b9c8..52d14d6f6c 100644
+--- a/chrome/browser/profiles/profile_attributes_storage.h
++++ b/chrome/browser/profiles/profile_attributes_storage.h
+@@ -284,7 +284,7 @@ class ProfileAttributesStorage
+
+   // Determines of the ProfileAvatarDownloader should be created and executed
+   // or not. Only set to true for tests.
+-  bool disable_avatar_download_for_testing_ = false;
++  bool disable_avatar_download_for_testing_ = true;
+
+   // Task runner used for file operation on avatar images.
+   scoped_refptr<base::SequencedTaskRunner> file_task_runner_;

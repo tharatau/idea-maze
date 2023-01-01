@@ -1,0 +1,81 @@
+diff --git a/src/async_wrap.cc b/src/async_wrap.cc
+index 9e76ad63..ff9830ce 100644
+--- a/src/async_wrap.cc
++++ b/src/async_wrap.cc
+@@ -107,6 +107,7 @@ void AsyncWrap::EmitPromiseResolve(Environment* env, double async_id) {
+ 
+ 
+ void AsyncWrap::EmitTraceEventBefore() {
++#if 0
+   switch (provider_type()) {
+ #define V(PROVIDER)                                                           \
+     case PROVIDER_ ## PROVIDER:                                               \
+@@ -119,6 +120,7 @@ void AsyncWrap::EmitTraceEventBefore() {
+     default:
+       UNREACHABLE();
+   }
++#endif
+ }
+ 
+ 
+@@ -129,6 +131,7 @@ void AsyncWrap::EmitBefore(Environment* env, double async_id) {
+ 
+ 
+ void AsyncWrap::EmitTraceEventAfter(ProviderType type, double async_id) {
++#if 0
+   switch (type) {
+ #define V(PROVIDER)                                                           \
+     case PROVIDER_ ## PROVIDER:                                               \
+@@ -141,6 +144,7 @@ void AsyncWrap::EmitTraceEventAfter(ProviderType type, double async_id) {
+     default:
+       UNREACHABLE();
+   }
++#endif
+ }
+ 
+ 
+@@ -180,6 +184,11 @@ static void SetupHooks(const FunctionCallbackInfo<Value>& args) {
+   SET_HOOK_FN(destroy);
+   SET_HOOK_FN(promise_resolve);
+ #undef SET_HOOK_FN
++
++  {
++    Local<v8::Private> priv = v8::Private::New(env->isolate());
++    env->set_promise_wrap_private(priv);
++  }
+ }
+ 
+ static void SetPromiseHooks(const FunctionCallbackInfo<Value>& args) {
+@@ -527,6 +536,7 @@ AsyncWrap::~AsyncWrap() {
+ }
+ 
+ void AsyncWrap::EmitTraceEventDestroy() {
++#if 0
+   switch (provider_type()) {
+   #define V(PROVIDER)                                                         \
+     case PROVIDER_ ## PROVIDER:                                               \
+@@ -539,6 +549,7 @@ void AsyncWrap::EmitTraceEventDestroy() {
+     default:
+       UNREACHABLE();
+   }
++#endif
+ }
+ 
+ void AsyncWrap::EmitDestroy(Environment* env, double async_id) {
+@@ -595,6 +606,7 @@ void AsyncWrap::AsyncReset(Local<Object> resource, double execution_async_id,
+     }
+   }
+ 
++#if 0
+   switch (provider_type()) {
+ #define V(PROVIDER)                                                           \
+     case PROVIDER_ ## PROVIDER:                                               \
+@@ -616,7 +628,7 @@ void AsyncWrap::AsyncReset(Local<Object> resource, double execution_async_id,
+     default:
+       UNREACHABLE();
+   }
+-
++#endif
+   if (silent) return;
+ 
+   EmitAsyncInit(env(), resource,

@@ -1,0 +1,20 @@
+diff --git a/chrome/test/chromedriver/chrome/console_logger.cc b/chrome/test/chromedriver/chrome/console_logger.cc
+index 11a9e50857..c12cd50648 100644
+--- a/chrome/test/chromedriver/chrome/console_logger.cc
++++ b/chrome/test/chromedriver/chrome/console_logger.cc
+@@ -123,11 +123,11 @@ Status ConsoleLogger::OnRuntimeConsoleApiCalled(
+       if (!url.empty())
+         origin = url;
+       int line = call_frame.FindIntKey("lineNumber").value_or(-1);
+-      if (line < 0)
+-        return Status(kUnknownError, "missing or invalid lineNumber");
++      //if (line < 0)
++      //  return Status(kUnknownError, "missing or invalid lineNumber");
+       int column = call_frame.FindIntKey("columnNumber").value_or(-1);
+-      if (column < 0)
+-        return Status(kUnknownError, "missing or invalid columnNumber");
++      //if (column < 0)
++      //  return Status(kUnknownError, "missing or invalid columnNumber");
+       line_column = base::StringPrintf("%d:%d", line, column);
+     }
+   }

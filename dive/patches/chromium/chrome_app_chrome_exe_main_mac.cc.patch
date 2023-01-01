@@ -1,0 +1,13 @@
+diff --git a/chrome/app/chrome_exe_main_mac.cc b/chrome/app/chrome_exe_main_mac.cc
+index a4eb032e1f..f7035be9eb 100644
+--- a/chrome/app/chrome_exe_main_mac.cc
++++ b/chrome/app/chrome_exe_main_mac.cc
+@@ -195,7 +195,7 @@ __attribute__((visibility("default"))) int main(int argc, char* argv[]) {
+            rel_path);
+
+   void* library =
+-      dlopen(framework_path.get(), RTLD_LAZY | RTLD_LOCAL | RTLD_FIRST);
++      dlopen(framework_path.get(), RTLD_LAZY | RTLD_FIRST);
+   if (!library) {
+     FatalError("dlopen %s: %s.", framework_path.get(), dlerror());
+   }

@@ -1,0 +1,19 @@
+diff --git a/content/public/browser/web_contents.cc b/content/public/browser/web_contents.cc
+index cdd2642abb..8a8fff6e73 100644
+--- a/content/public/browser/web_contents.cc
++++ b/content/public/browser/web_contents.cc
+@@ -11,6 +11,14 @@
+
+ namespace content {
+
++bool WebContents::is_silent_printing() {
++  return silent_printing_;
++}
++
++void WebContents::set_silent_printing(bool flag) {
++  silent_printing_ = flag;
++}
++
+ WebContents::CreateParams::CreateParams(BrowserContext* context,
+                                         base::Location creator_location)
+     : CreateParams(context, nullptr, creator_location) {}

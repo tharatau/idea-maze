@@ -1,0 +1,17 @@
+diff --git a/components/nacl/loader/BUILD.gn b/components/nacl/loader/BUILD.gn
+index 622e78d1bb..fd527ff1ab 100644
+--- a/components/nacl/loader/BUILD.gn
++++ b/components/nacl/loader/BUILD.gn
+@@ -152,6 +152,12 @@ if ((is_linux || is_chromeos) && current_cpu != "arm64") {
+     if (!export_libcxxabi_from_executables) {
+       configs -= [ "//build/config/compiler:export_dynamic" ]
+     }
++    if (is_linux) {
++      if (!is_component_build) {
++        # Set rpath to find our own libfreetype even in a non-component build.
++        configs += [ "//build/config/gcc:rpath_for_built_shared_libraries" ]
++      }
++    }
+
+     data_deps =
+         [ "//native_client/src/trusted/service_runtime/linux:bootstrap" ]

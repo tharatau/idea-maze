@@ -1,0 +1,28 @@
+diff --git a/extensions/renderer/resources/guest_view/web_view/web_view_api_methods.js b/extensions/renderer/resources/guest_view/web_view/web_view_api_methods.js
+index e30b6002e3..6101d0a2a9 100644
+--- a/extensions/renderer/resources/guest_view/web_view/web_view_api_methods.js
++++ b/extensions/renderer/resources/guest_view/web_view/web_view_api_methods.js
+@@ -34,11 +34,13 @@ var WEB_VIEW_API_METHODS = [
+
+   // Returns audio state.
+   'getAudioState',
++  // Return storeId which can be used in chrome.cookies API
++  'getCookieStoreId',
+
+   // Returns Chrome's internal process ID for the guest web page's current
+   // process.
+   'getProcessId',
+-
++  'getGuestId',
+   // Returns the user agent string used by the webview for guest page requests.
+   'getUserAgent',
+
+@@ -70,6 +72,8 @@ var WEB_VIEW_API_METHODS = [
+   // of the data URL.
+   'loadDataWithBaseUrl',
+
++  'showDevTools',
++  'inspectElementAt',
+   // Prints the contents of the webview.
+   'print',
+

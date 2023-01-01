@@ -1,0 +1,34 @@
+diff --git a/buildtools/third_party/libc++/BUILD.gn b/buildtools/third_party/libc++/BUILD.gn
+index 01f5a1713c..68855ea491 100644
+--- a/buildtools/third_party/libc++/BUILD.gn
++++ b/buildtools/third_party/libc++/BUILD.gn
+@@ -44,7 +44,11 @@ config("winver") {
+ if (libcxx_is_shared) {
+   _libcxx_target_type = "shared_library"
+ } else {
+-  _libcxx_target_type = "source_set"
++  if (is_linux) {
++    _libcxx_target_type = "static_library"
++  } else {
++    _libcxx_target_type = "source_set"
++  }
+ }
+ target(_libcxx_target_type, "libc++") {
+   # Most things that need to depend on libc++ should do so via the implicit
+@@ -53,6 +57,7 @@ target(_libcxx_target_type, "libc++") {
+   visibility = [
+     "//build/config:common_deps",
+     "//third_party/catapult/devil:devil",
++    ":*",
+   ]
+   if (is_linux) {
+     # This target packages libc++.so, so must have an explicit dependency on
+@@ -205,3 +210,8 @@ target(_libcxx_target_type, "libc++") {
+     }
+   }
+ }
++
++static_library("libcpp") {
++   complete_static_lib = true
++   deps = [":libc++"]
++}

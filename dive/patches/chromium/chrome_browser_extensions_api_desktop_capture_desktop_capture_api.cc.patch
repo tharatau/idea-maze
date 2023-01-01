@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/extensions/api/desktop_capture/desktop_capture_api.cc b/chrome/browser/extensions/api/desktop_capture/desktop_capture_api.cc
+index 264398347f..d039dc231d 100644
+--- a/chrome/browser/extensions/api/desktop_capture/desktop_capture_api.cc
++++ b/chrome/browser/extensions/api/desktop_capture/desktop_capture_api.cc
+@@ -94,9 +94,14 @@ DesktopCaptureChooseDesktopMediaFunction::Run() {
+     // was requested for capture.
+     target_render_frame_host = web_contents->GetPrimaryMainFrame();
+   } else {
+-    origin = extension()->url();
+     target_name = base::UTF8ToUTF16(GetExtensionTargetName());
+     target_render_frame_host = render_frame_host();
++    // NWJS fix for nwjs/nw.js#4579
++    // NWJS app allows running on origins other than `chrome-extension://*/*`.
++    // The origin should then be from the senders URL, in order not to fail
++    // the origin checking in `DesktopStreamsRegistry::RequestMediaForStreamId`.
++    origin = extension()->is_nwjs_app() ? target_render_frame_host->GetLastCommittedURL().
++      DeprecatedGetOriginAsURL() : extension()->url();
+   }
+
+   if (!target_render_frame_host)

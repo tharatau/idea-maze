@@ -1,0 +1,61 @@
+diff --git a/content/app_shim_remote_cocoa/render_widget_host_view_cocoa.mm b/content/app_shim_remote_cocoa/render_widget_host_view_cocoa.mm
+index e26ed62d25..ace71ae540 100644
+--- a/content/app_shim_remote_cocoa/render_widget_host_view_cocoa.mm
++++ b/content/app_shim_remote_cocoa/render_widget_host_view_cocoa.mm
+@@ -59,6 +59,10 @@ using blink::WebTouchEvent;
+ using remote_cocoa::mojom::RenderWidgetHostNSViewHost;
+ using remote_cocoa::RenderWidgetHostNSViewHostHelper;
+
++namespace content {
++  extern bool g_force_cpu_draw;
++}
++
+ namespace {
+
+ constexpr NSString* WebAutomaticQuoteSubstitutionEnabled =
+@@ -78,6 +82,7 @@ class DummyHostHelper : public RenderWidgetHostNSViewHostHelper {
+   DummyHostHelper& operator=(const DummyHostHelper&) = delete;
+
+  private:
++  content::RenderWidgetHostViewMac* GetRenderWidgetHostViewMac() override { return nullptr; }
+   // RenderWidgetHostNSViewHostHelper implementation.
+   id GetRootBrowserAccessibilityElement() override { return nil; }
+   id GetFocusedBrowserAccessibilityElement() override { return nil; }
+@@ -586,6 +591,19 @@ void ExtractUnderlines(NSAttributedString* string,
+   return [super forwardingTargetForSelector:selector];
+ }
+
++- (void)drawRect:(NSRect)dirty {
++  if (content::g_force_cpu_draw) {
++    CGContextRef ctx = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
++    CGContextClipToRect(ctx, NSRectToCGRect(dirty));
++    //High Sierra 10.13 fix, previously we use [self layer],
++    //since we have set the layer to nil in AcceleratedWidgetMac::GotSoftwareFrame,
++    //we access the layer "directly" which is the "background_layer()" (see RenderWidgetHostViewMac constructor)
++    [_hostHelper->GetRenderWidgetHostViewMac()->background_layer() renderInContext:ctx];
++  } else {
++    [super drawRect:dirty];
++  }
++}
++
+ - (void)setCanBeKeyView:(BOOL)can {
+   _canBeKeyView = can;
+ }
+@@ -1500,8 +1518,17 @@ void ExtractUnderlines(NSAttributedString* string,
+ }
+
+ - (void)setFrameSize:(NSSize)newSize {
++  //High Sierra 10.13 fix, RenderWidgetHostViewCocoa CALayer must be nil
++  //so we can do drawRect "manually"
++  //here, we temporarily assign back the layer during resize, so the background_layer() can be resized properly
++  if (content::g_force_cpu_draw)
++    [self setLayer:_hostHelper->GetRenderWidgetHostViewMac()->background_layer()];
++
+   [super setFrameSize:newSize];
+   [self sendViewBoundsInWindowToHost];
++
++  if (content::g_force_cpu_draw)
++    [self setLayer:nil];
+ }
+
+ - (BOOL)canBecomeKeyView {

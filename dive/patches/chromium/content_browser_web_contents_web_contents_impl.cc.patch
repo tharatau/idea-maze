@@ -1,0 +1,74 @@
+diff --git a/content/browser/web_contents/web_contents_impl.cc b/content/browser/web_contents/web_contents_impl.cc
+index 8e1c0feede..5a667526f7 100644
+--- a/content/browser/web_contents/web_contents_impl.cc
++++ b/content/browser/web_contents/web_contents_impl.cc
+@@ -17,6 +17,8 @@
+ #include "base/allocator/partition_allocator/starscan/pcscan.h"
+ #include "base/bind.h"
+ #include "base/check_op.h"
++#include "content/nw/src/nw_base.h"
++
+ #include "base/command_line.h"
+ #include "base/containers/contains.h"
+ #include "base/containers/cxx20_erase.h"
+@@ -4056,10 +4058,12 @@ FrameTree* WebContentsImpl::CreateNewWindow(
+     AddWebContentsDestructionObserver(new_contents_impl);
+   }
+
++  nw::SetCurrentNewWinManifest(params.nw_window_manifest);
++
+   if (delegate_) {
+     delegate_->WebContentsCreated(this, render_process_id,
+                                   opener->GetRoutingID(), params.frame_name,
+-                                  params.target_url, new_contents_impl);
++                                  params.target_url, new_contents_impl, params.nw_window_manifest);
+   }
+
+   observers_.NotifyObservers(&WebContentsObserver::DidOpenRequestedURL,
+@@ -4088,9 +4092,12 @@ FrameTree* WebContentsImpl::CreateNewWindow(
+       if (params.features->has_y)
+         initial_rect.set_y(params.features->y);
+
++      std::string manifest = base::UTF16ToUTF8(params.nw_window_manifest);
++      delegate_->set_tmp_manifest(manifest);
+       delegate_->AddNewContents(this, std::move(new_contents),
+                                 params.target_url, params.disposition,
+                                 initial_rect, has_user_gesture, &was_blocked);
++      delegate_->set_tmp_manifest(std::string());
+       // The delegate may delete |new_contents_impl| during AddNewContents().
+       if (!weak_new_contents)
+         return nullptr;
+@@ -4177,7 +4184,7 @@ void WebContentsImpl::ShowCreatedWindow(RenderFrameHostImpl* opener,
+                                         int main_frame_widget_route_id,
+                                         WindowOpenDisposition disposition,
+                                         const gfx::Rect& initial_rect,
+-                                        bool user_gesture) {
++                                        bool user_gesture, std::string manifest) {
+   OPTIONAL_TRACE_EVENT2("content", "WebContentsImpl::ShowCreatedWindow",
+                         "opener", opener, "main_frame_widget_route_id",
+                         main_frame_widget_route_id);
+@@ -4228,9 +4235,11 @@ void WebContentsImpl::ShowCreatedWindow(RenderFrameHostImpl* opener,
+     if (delegate->ShouldResumeRequestsForCreatedWindow())
+       created->ResumeLoadingCreatedWebContents();
+
++    delegate->set_tmp_manifest(manifest);
+     delegate->AddNewContents(this, std::move(owned_created->contents),
+                              std::move(owned_created->target_url), disposition,
+                              adjusted_rect, user_gesture, nullptr);
++    delegate->set_tmp_manifest(std::string());
+   }
+ }
+
+@@ -9111,8 +9120,10 @@ void WebContentsImpl::UpdateWebContentsVisibility(Visibility visibility) {
+   // the command line (to avoid flakiness in browser tests).
+   const bool occlusion_is_disabled =
+       base::CommandLine::ForCurrentProcess()->HasSwitch(
+-          switches::kDisableBackgroundingOccludedWindowsForTesting);
+-  if (occlusion_is_disabled && visibility == Visibility::OCCLUDED)
++          switches::kDisableBackgroundingOccludedWindowsForTesting) ||
++      base::CommandLine::ForCurrentProcess()->HasSwitch(
++          switches::kDisableRAFThrottling);
++  if (occlusion_is_disabled) // && visibility == Visibility::OCCLUDED)
+     visibility = Visibility::VISIBLE;
+
+   if (!did_first_set_visible_) {

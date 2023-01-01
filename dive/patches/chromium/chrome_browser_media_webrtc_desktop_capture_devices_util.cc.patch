@@ -1,0 +1,36 @@
+diff --git a/chrome/browser/media/webrtc/desktop_capture_devices_util.cc b/chrome/browser/media/webrtc/desktop_capture_devices_util.cc
+index 7333be5cad..129172c2b9 100644
+--- a/chrome/browser/media/webrtc/desktop_capture_devices_util.cc
++++ b/chrome/browser/media/webrtc/desktop_capture_devices_util.cc
+@@ -129,6 +129,7 @@ DesktopMediaIDToDisplayMediaInformation(
+       display_surface, logical_surface, cursor, std::move(capture_handle));
+ }
+
++#if 0
+ std::u16string GetNotificationText(const std::u16string& application_title,
+                                    bool capture_audio,
+                                    content::DesktopMediaID::Type capture_type) {
+@@ -163,6 +164,7 @@ std::u16string GetNotificationText(const std::u16string& application_title,
+   }
+   return std::u16string();
+ }
++#endif
+
+ std::string DeviceNamePrefix(
+     content::WebContents* web_contents,
+@@ -249,6 +251,7 @@ std::unique_ptr<content::MediaStreamUI> GetDevicesForDesktopCapture(
+     }
+   }
+
++#if 0
+   // If required, register to display the notification for stream capture.
+   std::unique_ptr<MediaStreamUI> notification_ui;
+   if (display_notification) {
+@@ -270,4 +273,7 @@ std::unique_ptr<content::MediaStreamUI> GetDevicesForDesktopCapture(
+       ->GetMediaStreamCaptureIndicator()
+       ->RegisterMediaStream(web_contents, out_devices,
+                             std::move(notification_ui), application_title);
++#endif
++  std::unique_ptr<content::MediaStreamUI> ui;
++  return ui;
+ }

@@ -1,0 +1,12 @@
+diff --git a/ui/gfx/BUILD.gn b/ui/gfx/BUILD.gn
+index a32cc340d4..c7a7e785ce 100644
+--- a/ui/gfx/BUILD.gn
++++ b/ui/gfx/BUILD.gn
+@@ -390,6 +390,7 @@ component("gfx") {
+
+   if (is_mac) {
+     frameworks = [
++      "ApplicationServices.framework",
+       "AppKit.framework",
+       "CoreFoundation.framework",
+       "CoreGraphics.framework",

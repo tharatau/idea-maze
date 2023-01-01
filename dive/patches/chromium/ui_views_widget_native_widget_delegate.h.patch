@@ -1,0 +1,12 @@
+diff --git a/ui/views/widget/native_widget_delegate.h b/ui/views/widget/native_widget_delegate.h
+index effdec1bfc..c239a64a76 100644
+--- a/ui/views/widget/native_widget_delegate.h
++++ b/ui/views/widget/native_widget_delegate.h
+@@ -40,6 +40,7 @@ class VIEWS_EXPORT NativeWidgetDelegate {
+  public:
+   virtual ~NativeWidgetDelegate() = default;
+
++  virtual bool NWCanClose(bool user_force = false) const = 0;
+   // Returns true if the window is modal.
+   virtual bool IsModal() const = 0;
+

@@ -1,0 +1,12 @@
+diff --git a/chrome/chrome_elf/BUILD.gn b/chrome/chrome_elf/BUILD.gn
+index 9d96774f5f..006168630a 100644
+--- a/chrome/chrome_elf/BUILD.gn
++++ b/chrome/chrome_elf/BUILD.gn
+@@ -51,6 +51,7 @@ static_library("test_stubs") {
+ # We should move chrome_result_codes.h to another target which does not bring
+ # in the world.
+ shared_library("chrome_elf") {
++  output_name = "nw_elf"
+   sources = [
+     "chrome_elf_main.cc",
+     "chrome_elf_main.h",

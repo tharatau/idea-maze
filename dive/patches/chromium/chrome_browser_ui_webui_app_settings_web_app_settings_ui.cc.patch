@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/ui/webui/app_settings/web_app_settings_ui.cc b/chrome/browser/ui/webui/app_settings/web_app_settings_ui.cc
+index 5c8a5e83c8..c5a2237e31 100644
+--- a/chrome/browser/ui/webui/app_settings/web_app_settings_ui.cc
++++ b/chrome/browser/ui/webui/app_settings/web_app_settings_ui.cc
+@@ -99,6 +99,7 @@ WebAppSettingsUI::WebAppSettingsUI(content::WebUI* web_ui)
+
+ void WebAppSettingsUI::BindInterface(
+     mojo::PendingReceiver<app_management::mojom::PageHandlerFactory> receiver) {
++#if 0
+   if (!app_management_page_handler_factory_) {
+     auto window_delegate = std::make_unique<WebAppSettingsWindowDelegate>(
+         Profile::FromWebUI(web_ui()));
+@@ -108,6 +109,7 @@ void WebAppSettingsUI::BindInterface(
+             Profile::FromWebUI(web_ui()), std::move(window_delegate));
+   }
+   app_management_page_handler_factory_->Bind(std::move(receiver));
++#endif
+ }
+
+ void WebAppSettingsUI::OnWebAppUninstalled(const web_app::AppId& app_id) {

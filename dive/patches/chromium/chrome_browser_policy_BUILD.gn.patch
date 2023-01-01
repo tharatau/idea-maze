@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/policy/BUILD.gn b/chrome/browser/policy/BUILD.gn
+index 94d4df6406..0744da4603 100644
+--- a/chrome/browser/policy/BUILD.gn
++++ b/chrome/browser/policy/BUILD.gn
+@@ -277,7 +277,7 @@ source_set("browser_tests") {
+   ]
+
+   deps = [
+-    ":policy_specific_browser_tests",
++    #":policy_specific_browser_tests",
+     ":test_support",
+     "//base",
+     "//build:branding_buildflags",

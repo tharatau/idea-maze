@@ -1,0 +1,12 @@
+diff --git a/chrome/browser/ui/apps/chrome_app_delegate.h b/chrome/browser/ui/apps/chrome_app_delegate.h
+index 5791abbdd3..1ba37c5c92 100644
+--- a/chrome/browser/ui/apps/chrome_app_delegate.h
++++ b/chrome/browser/ui/apps/chrome_app_delegate.h
+@@ -93,6 +93,7 @@ class ChromeAppDelegate : public extensions::AppDelegate {
+   std::unique_ptr<NewWindowContentsDelegate> new_window_contents_delegate_;
+   base::OnceClosure terminating_callback_;
+   base::CallbackListSubscription subscription_;
++  content::WebContents* web_contents_;
+   base::WeakPtrFactory<ChromeAppDelegate> weak_factory_{this};
+ };
+

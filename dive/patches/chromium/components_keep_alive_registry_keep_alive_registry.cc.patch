@@ -1,0 +1,14 @@
+diff --git a/components/keep_alive_registry/keep_alive_registry.cc b/components/keep_alive_registry/keep_alive_registry.cc
+index 9fcf6a7a8d..4cf9e99372 100644
+--- a/components/keep_alive_registry/keep_alive_registry.cc
++++ b/components/keep_alive_registry/keep_alive_registry.cc
+@@ -118,7 +118,8 @@ KeepAliveRegistry::~KeepAliveRegistry() {
+
+ void KeepAliveRegistry::Register(KeepAliveOrigin origin,
+                                  KeepAliveRestartOption restart) {
+-  CHECK(!is_shutting_down_);
++  //nw1 crash when quit from dock
++//  CHECK(!is_shutting_down_);
+
+   bool old_keeping_alive = IsKeepingAlive();
+   bool old_restart_allowed = IsRestartAllowed();

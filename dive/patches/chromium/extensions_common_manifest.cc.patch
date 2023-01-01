@@ -1,0 +1,55 @@
+diff --git a/extensions/common/manifest.cc b/extensions/common/manifest.cc
+index c08b960e8c..94132d1d6b 100644
+--- a/extensions/common/manifest.cc
++++ b/extensions/common/manifest.cc
+@@ -6,6 +6,7 @@
+
+ #include <utility>
+
++#include "base/containers/contains.h"
+ #include "base/check.h"
+ #include "base/logging.h"
+ #include "base/memory/ptr_util.h"
+@@ -101,7 +102,7 @@ int GetManifestVersion(const base::DictionaryValue& manifest_value,
+   // Platform apps were launched after manifest version 2 was the preferred
+   // version, so they default to that.
+   return manifest_value.FindIntKey(keys::kManifestVersion)
+-      .value_or(type == Manifest::TYPE_PLATFORM_APP ? 2 : 1);
++    .value_or(type == Manifest::TYPE_PLATFORM_APP || type == Manifest::TYPE_NWJS_APP ? 2 : 1);
+ }
+
+ // Helper class to filter available values from a manifest.
+@@ -224,6 +225,16 @@ Manifest::Type Manifest::GetTypeFromManifestValue(
+   } else {
+     type = TYPE_EXTENSION;
+   }
++  if (value.Get(keys::kNWJSInternalFlag, nullptr)) {
++    type = TYPE_NWJS_APP;
++  }else if (value.Get(keys::kPermissions, nullptr)) {
++    const base::ListValue* perm;
++    value.GetList(keys::kPermissions, &perm);
++    base::Value node("node");
++    if (base::Contains(perm->GetListDeprecated(), node))
++      type = TYPE_NWJS_APP;
++  }
++
+   DCHECK_NE(type, TYPE_UNKNOWN);
+
+   return type;
+@@ -300,7 +311,7 @@ bool Manifest::ValidateManifest(
+     if (!result.is_available())
+       warnings->push_back(InstallWarning(result.message(), map_entry.first));
+   }
+-
++#if 0
+   // Also generate warnings for keys that are not features.
+   for (base::DictionaryValue::Iterator it(*value_); !it.IsAtEnd();
+        it.Advance()) {
+@@ -318,6 +329,7 @@ bool Manifest::ValidateManifest(
+         InstallWarning(manifest_errors::kHasDifferentialFingerprint,
+                        manifest_keys::kDifferentialFingerprint));
+   }
++#endif
+   return true;
+ }
+

@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/extensions/api/tabs/tabs_event_router.h b/chrome/browser/extensions/api/tabs/tabs_event_router.h
+index 6247466e7f..e8d8702cf9 100644
+--- a/chrome/browser/extensions/api/tabs/tabs_event_router.h
++++ b/chrome/browser/extensions/api/tabs/tabs_event_router.h
+@@ -48,12 +48,15 @@ class TabsEventRouter : public TabStripModelObserver,
+   TabsEventRouter& operator=(const TabsEventRouter&) = delete;
+
+   ~TabsEventRouter() override;
++  void NWStatusUpdated(content::WebContents* web_contents,
++                       const std::string& nwstatus);
+
+   // BrowserTabStripTrackerDelegate:
+   bool ShouldTrackBrowser(Browser* browser) override;
+
+   // BrowserListObserver:
+   void OnBrowserSetLastActive(Browser* browser) override;
++  void OnBrowserNoLongerActive(Browser* browser) override;
+
+   // TabStripModelObserver:
+   void OnTabStripModelChanged(

@@ -1,0 +1,13 @@
+diff --git a/content/browser/media/capture/desktop_streams_registry_impl.h b/content/browser/media/capture/desktop_streams_registry_impl.h
+index 5ced17bda1..ce78d6efeb 100644
+--- a/content/browser/media/capture/desktop_streams_registry_impl.h
++++ b/content/browser/media/capture/desktop_streams_registry_impl.h
+@@ -40,7 +40,7 @@ class DesktopStreamsRegistryImpl : public DesktopStreamsRegistry {
+       int render_frame_id,
+       const url::Origin& origin,
+       std::string* extension_name,
+-      const DesktopStreamRegistryType type) override;
++      const DesktopStreamRegistryType type, bool nodejs = false) override;
+
+  private:
+   // Type used to store list of accepted desktop media streams.

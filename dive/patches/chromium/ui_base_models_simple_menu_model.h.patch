@@ -1,0 +1,13 @@
+diff --git a/ui/base/models/simple_menu_model.h b/ui/base/models/simple_menu_model.h
+index 7ecb2f6cae..6eac16aa53 100644
+--- a/ui/base/models/simple_menu_model.h
++++ b/ui/base/models/simple_menu_model.h
+@@ -72,6 +72,8 @@ class COMPONENT_EXPORT(UI_BASE) SimpleMenuModel : public MenuModel {
+     bool GetAcceleratorForCommandId(
+         int command_id,
+         ui::Accelerator* accelerator) const override;
++
++    virtual bool HasIcon(int command_id);
+   };
+
+   // The Delegate can be NULL, though if it is items can't be checked or

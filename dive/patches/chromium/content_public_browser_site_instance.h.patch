@@ -1,0 +1,13 @@
+diff --git a/content/public/browser/site_instance.h b/content/public/browser/site_instance.h
+index 408a076533..772a21a5b2 100644
+--- a/content/public/browser/site_instance.h
++++ b/content/public/browser/site_instance.h
+@@ -154,7 +154,7 @@ class CONTENT_EXPORT SiteInstance : public base::RefCounted<SiteInstance> {
+   // that a BrowsingInstance only has one SiteInstance per site, so that pages
+   // in a BrowsingInstance have the ability to script each other.
+   virtual scoped_refptr<SiteInstance> GetRelatedSiteInstance(
+-      const GURL& url) = 0;
++                                                             const GURL& url, bool allow_default_instance = true) = 0;
+
+   // Returns whether the given SiteInstance is in the same BrowsingInstance as
+   // this one.  If so, JavaScript interactions that are permitted across

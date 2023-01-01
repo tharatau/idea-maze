@@ -1,0 +1,21 @@
+diff --git a/chrome/browser/ui/views/frame/contents_web_view.h b/chrome/browser/ui/views/frame/contents_web_view.h
+index fcf20ea151..d2384292d5 100644
+--- a/chrome/browser/ui/views/frame/contents_web_view.h
++++ b/chrome/browser/ui/views/frame/contents_web_view.h
+@@ -25,7 +25,7 @@ class ContentsWebView
+       public WebContentsCloseHandlerDelegate {
+  public:
+   METADATA_HEADER(ContentsWebView);
+-  explicit ContentsWebView(content::BrowserContext* browser_context);
++  explicit ContentsWebView(content::BrowserContext* browser_context, bool transparent);
+   ContentsWebView(const ContentsWebView&) = delete;
+   ContentsWebView& operator=(const ContentsWebView&) = delete;
+   ~ContentsWebView() override;
+@@ -55,6 +55,7 @@ class ContentsWebView
+  private:
+   void UpdateBackgroundColor();
+   StatusBubbleViews* status_bubble_;
++  bool transparent_;
+
+   bool background_visible_ = true;
+

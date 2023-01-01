@@ -1,0 +1,23 @@
+diff --git a/chrome/browser/extensions/global_shortcut_listener_ozone.cc b/chrome/browser/extensions/global_shortcut_listener_ozone.cc
+index ed2ac20679..4d8fd2703e 100644
+--- a/chrome/browser/extensions/global_shortcut_listener_ozone.cc
++++ b/chrome/browser/extensions/global_shortcut_listener_ozone.cc
+@@ -58,7 +58,8 @@ bool GlobalShortcutListenerOzone::RegisterAcceleratorImpl(
+   const bool registered =
+       platform_global_shortcut_listener_->RegisterAccelerator(
+           accelerator.key_code(), accelerator.IsAltDown(),
+-          accelerator.IsCtrlDown(), accelerator.IsShiftDown());
++          accelerator.IsCtrlDown(), accelerator.IsShiftDown(),
++          accelerator.IsCmdDown());
+   if (registered)
+     registered_hot_keys_.insert(accelerator);
+   return registered;
+@@ -72,7 +73,7 @@ void GlobalShortcutListenerOzone::UnregisterAcceleratorImpl(
+
+   platform_global_shortcut_listener_->UnregisterAccelerator(
+       accelerator.key_code(), accelerator.IsAltDown(), accelerator.IsCtrlDown(),
+-      accelerator.IsShiftDown());
++      accelerator.IsShiftDown(), accelerator.IsCmdDown());
+   registered_hot_keys_.erase(accelerator);
+ }
+

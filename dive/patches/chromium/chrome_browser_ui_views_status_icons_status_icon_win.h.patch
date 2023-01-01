@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/ui/views/status_icons/status_icon_win.h b/chrome/browser/ui/views/status_icons/status_icon_win.h
+index eb94459bda..773b7ced9a 100644
+--- a/chrome/browser/ui/views/status_icons/status_icon_win.h
++++ b/chrome/browser/ui/views/status_icons/status_icon_win.h
+@@ -60,7 +60,7 @@ class StatusIconWin : public StatusIcon {
+
+  protected:
+   // Overridden from StatusIcon:
+-  void UpdatePlatformContextMenu(StatusIconMenuModel* menu) override;
++  void UpdatePlatformContextMenu(ui::MenuModel* menu) override;
+
+  private:
+   void InitIconData(NOTIFYICONDATA* icon_data);

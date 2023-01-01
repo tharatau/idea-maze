@@ -1,0 +1,56 @@
+diff --git a/chrome/test/chromedriver/chrome/chrome_finder.cc b/chrome/test/chromedriver/chrome/chrome_finder.cc
+index 83d2773c15..1edb640f6f 100644
+--- a/chrome/test/chromedriver/chrome/chrome_finder.cc
++++ b/chrome/test/chromedriver/chrome/chrome_finder.cc
+@@ -30,7 +30,7 @@
+
+ namespace {
+
+-#if BUILDFLAG(IS_WIN)
++#if 0
+ void GetApplicationDirs(std::vector<base::FilePath>* locations) {
+   std::vector<base::FilePath> installation_locations;
+   base::FilePath local_app_data, program_files, program_files_x86,
+@@ -53,7 +53,7 @@ void GetApplicationDirs(std::vector<base::FilePath>* locations) {
+         installation_locations[i].Append(L"Chromium\\Application"));
+   }
+ }
+-#elif BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
++#elif 0
+ void GetApplicationDirs(std::vector<base::FilePath>* locations) {
+   // TODO: Respect users' PATH variables.
+   // Until then, we use an approximation of the most common defaults.
+@@ -130,7 +130,7 @@ bool FindExe(
+
+ }  // namespace internal
+
+-#if BUILDFLAG(IS_MAC)
++#if 0
+ void GetApplicationDirs(std::vector<base::FilePath>* locations);
+ #endif
+
+@@ -139,10 +139,8 @@ bool FindChrome(base::FilePath* browser_exe) {
+ #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC)
+     base::FilePath(chrome::kBrowserProcessExecutablePath),
+ #elif BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
+-    base::FilePath("google-chrome"),
+     base::FilePath(chrome::kBrowserProcessExecutablePath),
+-    base::FilePath("chromium"),
+-    base::FilePath("chromium-browser")
++    base::FilePath("nw")
+ #else
+     // it will compile but won't work on other OSes
+     base::FilePath()
+@@ -172,8 +170,11 @@ bool FindChrome(base::FilePath* browser_exe) {
+   }
+
+   std::vector<base::FilePath> locations;
+-  GetApplicationDirs(&locations);
+   GetPathsFromEnvironment(&locations);
++  base::FilePath exe_path;
++  base::PathService::Get(base::DIR_EXE, &exe_path);
++  locations.push_back(exe_path);
++
+   return internal::FindExe(base::BindRepeating(&base::PathExists), browser_exes,
+                            locations, browser_exe);
+ }

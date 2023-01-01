@@ -1,0 +1,13 @@
+diff --git a/extensions/browser/extension_util.cc b/extensions/browser/extension_util.cc
+index 3b1583ee0f..0326720a75 100644
+--- a/extensions/browser/extension_util.cc
++++ b/extensions/browser/extension_util.cc
+@@ -196,7 +196,7 @@ bool CanWithholdPermissionsFromExtension(const ExtensionId& extension_id,
+   return ui_util::ShouldDisplayInExtensionSettings(type, location) &&
+          !Manifest::IsPolicyLocation(location) &&
+          !Manifest::IsComponentLocation(location) &&
+-         !PermissionsData::CanExecuteScriptEverywhere(extension_id, location);
++    !PermissionsData::CanExecuteScriptEverywhere(extension_id, location, type);
+ }
+
+ // The below functionality maps a context to a unique id by increasing a static

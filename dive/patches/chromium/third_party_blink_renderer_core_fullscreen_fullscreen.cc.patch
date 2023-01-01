@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/fullscreen/fullscreen.cc b/third_party/blink/renderer/core/fullscreen/fullscreen.cc
+index b7f75d4f29..8c304cad86 100644
+--- a/third_party/blink/renderer/core/fullscreen/fullscreen.cc
++++ b/third_party/blink/renderer/core/fullscreen/fullscreen.cc
+@@ -329,7 +329,7 @@ bool AllowedToRequestFullscreen(Document& document) {
+   // true:
+
+   // The algorithm is triggered by a user activation.
+-  if (LocalFrame::HasTransientUserActivation(document.GetFrame()))
++  if (LocalFrame::HasTransientUserActivation(document.GetFrame()) || document.GetFrame()->isNodeJS())
+     return true;
+
+   // The algorithm is triggered by a fullscreen request capability delegation.

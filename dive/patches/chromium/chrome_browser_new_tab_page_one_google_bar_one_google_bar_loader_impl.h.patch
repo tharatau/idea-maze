@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.h b/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.h
+index 9ae628f2c2..9c717dfc0e 100644
+--- a/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.h
++++ b/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.h
+@@ -53,7 +53,7 @@ class OneGoogleBarLoaderImpl : public OneGoogleBarLoader {
+
+   scoped_refptr<network::SharedURLLoaderFactory> url_loader_factory_;
+   const std::string application_locale_;
+-  const bool account_consistency_mirror_required_;
++  //const bool account_consistency_mirror_required_;
+
+   std::vector<OneGoogleCallback> callbacks_;
+   std::unique_ptr<AuthenticatedURLLoader> pending_request_;

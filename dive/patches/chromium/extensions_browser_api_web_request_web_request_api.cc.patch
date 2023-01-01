@@ -1,0 +1,13 @@
+diff --git a/extensions/browser/api/web_request/web_request_api.cc b/extensions/browser/api/web_request/web_request_api.cc
+index c1c48c2b7f..b08c3ee1af 100644
+--- a/extensions/browser/api/web_request/web_request_api.cc
++++ b/extensions/browser/api/web_request/web_request_api.cc
+@@ -1963,7 +1963,7 @@ void ExtensionWebRequestEventRouter::GetMatchingListenersImpl(
+     if (request->is_web_view) {
+       // If this is a navigation request, then we can skip this check. IDs will
+       // be -1 and the request is trusted.
+-      if (!request->is_navigation_request &&
++      if (//!request->is_navigation_request &&
+           (listener->id.render_process_id !=
+            request->web_view_embedder_process_id)) {
+         continue;

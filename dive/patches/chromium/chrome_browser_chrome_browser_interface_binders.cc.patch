@@ -1,0 +1,59 @@
+diff --git a/chrome/browser/chrome_browser_interface_binders.cc b/chrome/browser/chrome_browser_interface_binders.cc
+index 7fd024f85a..18c86cb56b 100644
+--- a/chrome/browser/chrome_browser_interface_binders.cc
++++ b/chrome/browser/chrome_browser_interface_binders.cc
+@@ -694,10 +694,10 @@ void PopulateChromeFrameBinders(
+         base::BindRepeating(
+             &performance_manager::BindDocumentCoordinationUnit));
+   }
+-
++#if 0
+   map->Add<translate::mojom::ContentTranslateDriver>(
+       base::BindRepeating(&translate::BindContentTranslateDriver));
+-
++#endif
+   map->Add<blink::mojom::CredentialManager>(
+       base::BindRepeating(&ChromePasswordManagerClient::BindCredentialManager));
+
+@@ -813,6 +813,7 @@ void PopulateChromeWebUIFrameBinders(
+   RegisterWebUIControllerInterfaceBinder<
+       media::mojom::MediaEngagementScoreDetailsProvider, MediaEngagementUI>(
+       map);
++#if 0
+
+   RegisterWebUIControllerInterfaceBinder<browsing_topics::mojom::PageHandler,
+                                          BrowsingTopicsInternalsUI>(map);
+@@ -829,6 +830,7 @@ void PopulateChromeWebUIFrameBinders(
+
+   RegisterWebUIControllerInterfaceBinder<::mojom::UsbInternalsPageHandler,
+                                          UsbInternalsUI>(map);
++#endif
+
+   RegisterWebUIControllerInterfaceBinder<
+       history_clusters_internals::mojom::PageHandlerFactory,
+@@ -874,6 +876,7 @@ void PopulateChromeWebUIFrameBinders(
+       most_visited::mojom::MostVisitedPageHandlerFactory, NewTabPageUI,
+       NewTabPageThirdPartyUI>(map);
+
++#if 0
+   auto* history_clusters_service =
+       HistoryClustersServiceFactory::GetForBrowserContext(
+           render_frame_host->GetProcess()->GetBrowserContext());
+@@ -889,6 +892,7 @@ void PopulateChromeWebUIFrameBinders(
+           history_clusters::mojom::PageHandler, HistoryUI>(map);
+     }
+   }
++#endif
+
+   RegisterWebUIControllerInterfaceBinder<
+       browser_command::mojom::CommandHandlerFactory, NewTabPageUI, WhatsNewUI>(
+@@ -1234,8 +1238,7 @@ void PopulateChromeWebUIFrameBinders(
+
+ #endif  // BUILDFLAG(IS_CHROMEOS_ASH)
+
+-#if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
+-    BUILDFLAG(IS_CHROMEOS)
++#if 0
+   RegisterWebUIControllerInterfaceBinder<discards::mojom::DetailsProvider,
+                                          DiscardsUI>(map);
+

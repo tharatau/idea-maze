@@ -1,0 +1,25 @@
+diff --git a/extensions/browser/script_executor.h b/extensions/browser/script_executor.h
+index 2b384f99ab..576a88d982 100644
+--- a/extensions/browser/script_executor.h
++++ b/extensions/browser/script_executor.h
+@@ -65,6 +65,12 @@ class ScriptExecutor {
+     MATCH_ABOUT_BLANK,
+   };
+
++  // The type of world to inject into (main world, or its own isolated world).
++  enum WorldType {
++    MAIN_WORLD,
++    ISOLATED_WORLD,
++  };
++
+   // The type of process the target is.
+   enum ProcessType {
+     DEFAULT_PROCESS,
+@@ -127,6 +133,7 @@ class ScriptExecutor {
+                      const std::set<int>& frame_ids,
+                      MatchAboutBlank match_about_blank,
+                      mojom::RunLocation run_at,
++                     WorldType world_type,
+                      ProcessType process_type,
+                      const GURL& webview_src,
+                      ScriptFinishedCallback callback);

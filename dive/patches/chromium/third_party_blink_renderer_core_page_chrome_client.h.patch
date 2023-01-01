@@ -1,0 +1,31 @@
+diff --git a/third_party/blink/renderer/core/page/chrome_client.h b/third_party/blink/renderer/core/page/chrome_client.h
+index a7fe72c2bc..5af20d42cd 100644
+--- a/third_party/blink/renderer/core/page/chrome_client.h
++++ b/third_party/blink/renderer/core/page/chrome_client.h
+@@ -238,7 +238,7 @@ class CORE_EXPORT ChromeClient : public GarbageCollected<ChromeClient> {
+                      const WebWindowFeatures&,
+                      network::mojom::blink::WebSandboxFlags,
+                      const SessionStorageNamespaceId&,
+-                     bool& consumed_user_gesture);
++                     bool& consumed_user_gesture, WebString* manifest = nullptr);
+
+   // Show a previously created Page that was created via CreateWindow. This
+   // should only be called once the newly created window when it is ready to be
+@@ -249,7 +249,7 @@ class CORE_EXPORT ChromeClient : public GarbageCollected<ChromeClient> {
+                     LocalFrame& opener_frame,
+                     NavigationPolicy navigation_policy,
+                     const gfx::Rect& initial_rect,
+-                    bool consumed_user_gesture) = 0;
++                    bool consumed_user_gesture, WebString* manifest = nullptr) = 0;
+
+   // All the parameters should be in viewport space. That is, if an event
+   // scrolls by 10 px, but due to a 2X page scale we apply a 5px scroll to the
+@@ -590,7 +590,7 @@ class CORE_EXPORT ChromeClient : public GarbageCollected<ChromeClient> {
+                                      const WebWindowFeatures&,
+                                      network::mojom::blink::WebSandboxFlags,
+                                      const SessionStorageNamespaceId&,
+-                                     bool& consumed_user_gesture) = 0;
++                                     bool& consumed_user_gesture, WebString*) = 0;
+
+  private:
+   bool CanOpenUIElementIfDuringPageDismissal(Frame& main_frame,

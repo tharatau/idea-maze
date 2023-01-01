@@ -1,0 +1,12 @@
+diff --git a/third_party/blink/renderer/core/frame/platform_event_controller.h b/third_party/blink/renderer/core/frame/platform_event_controller.h
+index e8d3affb46..366194df7e 100644
+--- a/third_party/blink/renderer/core/frame/platform_event_controller.h
++++ b/third_party/blink/renderer/core/frame/platform_event_controller.h
+@@ -30,6 +30,7 @@ class CORE_EXPORT PlatformEventController : public PageVisibilityObserver {
+
+   void Trace(Visitor*) const override;
+   LocalDOMWindow& GetWindow() const { return *window_; }
++  void SetWindow(LocalDOMWindow* win) { window_ = win; }
+
+  protected:
+   explicit PlatformEventController(LocalDOMWindow&);

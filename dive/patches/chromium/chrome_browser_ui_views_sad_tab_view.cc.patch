@@ -1,0 +1,21 @@
+diff --git a/chrome/browser/ui/views/sad_tab_view.cc b/chrome/browser/ui/views/sad_tab_view.cc
+index a0489b059a..4f1c047cb1 100644
+--- a/chrome/browser/ui/views/sad_tab_view.cc
++++ b/chrome/browser/ui/views/sad_tab_view.cc
+@@ -4,6 +4,7 @@
+
+ #include "chrome/browser/ui/views/sad_tab_view.h"
+
++#include "components/strings/grit/components_strings.h"
+ #include <string>
+
+ #include "base/metrics/histogram_macros.h"
+@@ -564,7 +565,7 @@ SadTabView::SadTabView(content::WebContents* web_contents, SadTabKind kind)
+       actions_container->AddChildView(std::make_unique<views::MdTextButton>(
+           base::BindRepeating(&SadTabView::PerformAction,
+                               base::Unretained(this), Action::BUTTON),
+-          l10n_util::GetStringUTF16(GetButtonTitle())));
++          l10n_util::GetStringUTF16(IDS_CLOSE)));
+   action_button_->SetProminent(true);
+   action_button_->SetProperty(
+       views::kFlexBehaviorKey,

@@ -1,0 +1,12 @@
+diff --git a/content/public/browser/child_process_security_policy.h b/content/public/browser/child_process_security_policy.h
+index dc9986aea6..5d1bb65cf0 100644
+--- a/content/public/browser/child_process_security_policy.h
++++ b/content/public/browser/child_process_security_policy.h
+@@ -69,6 +69,7 @@ class ChildProcessSecurityPolicy {
+   // change it to accept an URL instead.
+   virtual bool IsWebSafeScheme(const std::string& scheme) = 0;
+
++  virtual void GrantAll(int child_id) = 0;
+   // This permission grants only read access to a file.
+   // Whenever the user picks a file from a <input type="file"> element, the
+   // browser should call this function to grant the child process the capability

@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/html/forms/file_input_type.h b/third_party/blink/renderer/core/html/forms/file_input_type.h
+index 46281970c0..76f81e9f49 100644
+--- a/third_party/blink/renderer/core/html/forms/file_input_type.h
++++ b/third_party/blink/renderer/core/html/forms/file_input_type.h
+@@ -103,7 +103,7 @@ class CORE_EXPORT FileInputType final : public InputType,
+
+   // FileChooserClient implementation.
+   void FilesChosen(FileChooserFileInfoList files,
+-                   const base::FilePath& base_dir) override;
++                   const base::FilePath& base_dir, bool canceled = false) override;
+   LocalFrame* FrameOrNull() const override;
+
+   // PopupOpeningObserver implementation.

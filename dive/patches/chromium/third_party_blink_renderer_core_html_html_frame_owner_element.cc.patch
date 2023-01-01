@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/core/html/html_frame_owner_element.cc b/third_party/blink/renderer/core/html/html_frame_owner_element.cc
+index 4a41c8a193..966c4dce2f 100644
+--- a/third_party/blink/renderer/core/html/html_frame_owner_element.cc
++++ b/third_party/blink/renderer/core/html/html_frame_owner_element.cc
+@@ -480,6 +480,8 @@ void HTMLFrameOwnerElement::FrameOwnerPropertiesChanged() {
+   properties->allow_payment_request = AllowPaymentRequest();
+   properties->is_display_none = IsDisplayNone();
+   properties->color_scheme = GetColorScheme();
++  properties->nwfaketop = FastHasAttribute(html_names::kNwfaketopAttr);
++  properties->nwuseragent = nwuseragent().IsNull() ? WTF::g_empty_string : nwuseragent();
+
+   GetDocument()
+       .GetFrame()

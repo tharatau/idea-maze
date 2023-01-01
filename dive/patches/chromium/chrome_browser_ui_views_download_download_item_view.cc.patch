@@ -1,0 +1,47 @@
+diff --git a/chrome/browser/ui/views/download/download_item_view.cc b/chrome/browser/ui/views/download/download_item_view.cc
+index 463da2bd0a..2c9ed34968 100644
+--- a/chrome/browser/ui/views/download/download_item_view.cc
++++ b/chrome/browser/ui/views/download/download_item_view.cc
+@@ -834,6 +834,7 @@ void DownloadItemView::UpdateLabels() {
+     StyleFilename(*warning_label_, filename_offset, filename.length());
+     warning_label_->SizeToFit(GetLabelWidth(*warning_label_));
+   }
++#if 0
+
+   deep_scanning_label_->SetVisible(mode_ ==
+                                    download::DownloadItemMode::kDeepScanning);
+@@ -850,6 +851,7 @@ void DownloadItemView::UpdateLabels() {
+     StyleFilename(*deep_scanning_label_, filename_offset, filename.length());
+     deep_scanning_label_->SizeToFit(GetLabelWidth(*deep_scanning_label_));
+   }
++#endif
+ }
+
+ void DownloadItemView::UpdateButtons() {
+@@ -1306,6 +1308,9 @@ void DownloadItemView::ReviewButtonPressed() {
+ }
+
+ void DownloadItemView::ShowOpenDialog(content::WebContents* web_contents) {
++#if 1
++  ExecuteCommand(DownloadCommands::BYPASS_DEEP_SCANNING);
++#else
+   if (mode_ == download::DownloadItemMode::kDeepScanning) {
+     TabModalConfirmDialog::Create(
+         std::make_unique<safe_browsing::DeepScanningModalDialog>(
+@@ -1323,6 +1328,7 @@ void DownloadItemView::ShowOpenDialog(content::WebContents* web_contents) {
+                        weak_ptr_factory_.GetWeakPtr(),
+                        DownloadCommands::BYPASS_DEEP_SCANNING));
+   }
++#endif
+ }
+
+ void DownloadItemView::ShowContextMenuImpl(const gfx::Rect& rect,
+@@ -1366,7 +1372,7 @@ void DownloadItemView::ShowContextMenuImpl(const gfx::Rect& rect,
+ }
+
+ void DownloadItemView::OpenDownloadDuringAsyncScanning() {
+-  model_->CompleteSafeBrowsingScan();
++  //model_->CompleteSafeBrowsingScan();
+   model_->SetOpenWhenComplete(true);
+ }
+

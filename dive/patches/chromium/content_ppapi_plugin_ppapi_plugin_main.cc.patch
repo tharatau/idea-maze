@@ -1,0 +1,13 @@
+diff --git a/content/ppapi_plugin/ppapi_plugin_main.cc b/content/ppapi_plugin/ppapi_plugin_main.cc
+index 051f559c24..c35e08e664 100644
+--- a/content/ppapi_plugin/ppapi_plugin_main.cc
++++ b/content/ppapi_plugin/ppapi_plugin_main.cc
+@@ -136,7 +136,7 @@ int PpapiPluginMain(MainFunctionParams parameters) {
+   gin::V8Initializer::LoadV8Snapshot();
+ #endif
+
+-#if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
++#if 0 //BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
+   sandbox::policy::SandboxLinux::GetInstance()->InitializeSandbox(
+       sandbox::policy::SandboxTypeFromCommandLine(command_line),
+       sandbox::policy::SandboxLinux::PreSandboxHook(),

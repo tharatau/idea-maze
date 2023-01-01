@@ -1,0 +1,14 @@
+diff --git a/ui/message_center/public/cpp/notification.h b/ui/message_center/public/cpp/notification.h
+index 9e9ebd4d99..2dafc2dc37 100644
+--- a/ui/message_center/public/cpp/notification.h
++++ b/ui/message_center/public/cpp/notification.h
+@@ -455,8 +455,7 @@ class MESSAGE_CENTER_PUBLIC_EXPORT Notification {
+   }
+
+   bool should_show_settings_button() const {
+-    return optional_fields_.settings_button_handler !=
+-           SettingsButtonHandler::NONE;
++    return false;
+   }
+
+   void set_settings_button_handler(SettingsButtonHandler handler) {

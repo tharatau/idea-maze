@@ -1,0 +1,14 @@
+diff --git a/chrome/browser/ui/media_router/media_router_ui_service.h b/chrome/browser/ui/media_router/media_router_ui_service.h
+index 0da9a050b4..54c269c34c 100644
+--- a/chrome/browser/ui/media_router/media_router_ui_service.h
++++ b/chrome/browser/ui/media_router/media_router_ui_service.h
+@@ -53,7 +53,9 @@ class MediaRouterUIService : public KeyedService {
+   void DisableService();
+
+   raw_ptr<Profile> profile_;
++#if defined(NWJS_SDK)
+   std::unique_ptr<MediaRouterActionController> action_controller_;
++#endif
+   std::unique_ptr<PrefChangeRegistrar> profile_pref_registrar_;
+
+   base::ObserverList<Observer>::Unchecked observers_;

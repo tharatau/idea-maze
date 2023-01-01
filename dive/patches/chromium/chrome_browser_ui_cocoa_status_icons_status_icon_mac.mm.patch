@@ -1,0 +1,13 @@
+diff --git a/chrome/browser/ui/cocoa/status_icons/status_icon_mac.mm b/chrome/browser/ui/cocoa/status_icons/status_icon_mac.mm
+index 7b07024035..2b64645b77 100644
+--- a/chrome/browser/ui/cocoa/status_icons/status_icon_mac.mm
++++ b/chrome/browser/ui/cocoa/status_icons/status_icon_mac.mm
+@@ -100,7 +100,7 @@ bool StatusIconMac::HasStatusIconMenu() {
+   return menu_.get() != nil;
+ }
+
+-void StatusIconMac::UpdatePlatformContextMenu(StatusIconMenuModel* model) {
++void StatusIconMac::UpdatePlatformContextMenu(ui::MenuModel* model) {
+   if (!model) {
+     menu_.reset();
+   } else {

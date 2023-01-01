@@ -1,0 +1,23 @@
+diff --git a/third_party/blink/public/web/web_local_frame_client.h b/third_party/blink/public/web/web_local_frame_client.h
+index 4ef7353157..4376c672e8 100644
+--- a/third_party/blink/public/web/web_local_frame_client.h
++++ b/third_party/blink/public/web/web_local_frame_client.h
+@@ -156,6 +156,8 @@ class BLINK_EXPORT WebLocalFrameClient {
+   virtual void BindToFrame(WebNavigationControl*) {}
+
+   // Factory methods -----------------------------------------------------
++  virtual void willHandleNavigationPolicy(
++                                          WebFrame*, const WebURLRequest&, WebNavigationPolicy*, WebString* manifest = NULL, bool new_win = true) { }
+
+   // May return null.
+   virtual WebPlugin* CreatePlugin(const WebPluginParams&) { return nullptr; }
+@@ -783,7 +785,8 @@ class BLINK_EXPORT WebLocalFrameClient {
+       const SessionStorageNamespaceId& session_storage_namespace_id,
+       bool& consumed_user_gesture,
+       const absl::optional<Impression>&,
+-      const absl::optional<WebPictureInPictureWindowOptions>& pip_options) {
++      const absl::optional<WebPictureInPictureWindowOptions>& pip_options,
++				   WebString* manifest) {
+     return nullptr;
+   }
+ };

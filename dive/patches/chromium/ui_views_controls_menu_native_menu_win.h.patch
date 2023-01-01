@@ -1,0 +1,24 @@
+diff --git a/ui/views/controls/menu/native_menu_win.h b/ui/views/controls/menu/native_menu_win.h
+index 89f78b8f3a..a6f9e5f67c 100644
+--- a/ui/views/controls/menu/native_menu_win.h
++++ b/ui/views/controls/menu/native_menu_win.h
+@@ -37,6 +37,9 @@ class VIEWS_EXPORT NativeMenuWin {
+   void Rebuild(MenuInsertionDelegateWin* delegate);
+   void UpdateStates();
+
++  void set_is_popup_menu(bool flag) { is_popup_menu_ = flag; }
++  HMENU menu() const { return menu_; }
++
+  private:
+   // IMPORTANT: Note about indices.
+   //            Functions in this class deal in two index spaces:
+@@ -103,6 +106,9 @@ class VIEWS_EXPORT NativeMenuWin {
+
+   // If we're a submenu, this is our parent.
+   raw_ptr<NativeMenuWin> parent_;
++
++  // A flag to indicate whether to create a menubar or popupmenu.
++  bool is_popup_menu_;
+ };
+
+ }  // namespace views

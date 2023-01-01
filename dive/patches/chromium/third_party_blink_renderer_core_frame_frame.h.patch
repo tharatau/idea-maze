@@ -1,0 +1,44 @@
+diff --git a/third_party/blink/renderer/core/frame/frame.h b/third_party/blink/renderer/core/frame/frame.h
+index 8e9d56fe8b..32e4af55d3 100644
+--- a/third_party/blink/renderer/core/frame/frame.h
++++ b/third_party/blink/renderer/core/frame/frame.h
+@@ -105,6 +105,10 @@ class CORE_EXPORT Frame : public GarbageCollected<Frame> {
+   static Frame* ResolveFrame(const FrameToken& frame_token);
+
+   virtual ~Frame();
++  void setNodeJS(bool node) { nodejs_ = node; }
++  bool isNodeJS() const { return nodejs_; }
++  bool isNwDisabledChildFrame() const;
++  bool isNwFakeTop() const;
+
+   virtual void Trace(Visitor*) const;
+
+@@ -127,6 +131,10 @@ class CORE_EXPORT Frame : public GarbageCollected<Frame> {
+   // on successful completion (e.g. `Detach()` runs all the way through to the
+   // end), returns true.
+   bool Detach(FrameDetachType);
++
++  void setDevtoolsJail(Frame* iframe);
++  Frame* getDevtoolsJail() { return devtools_jail_; }
++
+   void DisconnectOwnerElement();
+   virtual bool ShouldClose() = 0;
+   virtual void HookBackForwardCacheEviction() = 0;
+@@ -230,6 +238,7 @@ class CORE_EXPORT Frame : public GarbageCollected<Frame> {
+   }
+   WindowProxy* GetWindowProxy(DOMWrapperWorld&);
+   WindowProxy* GetWindowProxyMaybeUninitialized(DOMWrapperWorld&);
++  bool ContextNotReady(DOMWrapperWorld& world) const;
+
+   virtual void DidChangeVisibilityState();
+
+@@ -552,6 +561,9 @@ class CORE_EXPORT Frame : public GarbageCollected<Frame> {
+   Member<WindowAgentFactory> window_agent_factory_;
+
+   // TODO(sashab): Investigate if this can be represented with m_lifecycle.
++  Member<Frame> devtools_jail_;
++  Member<Frame> dev_jail_owner_;
++  bool nodejs_;
+   bool is_loading_;
+   // Contains token to be used as a frame id in the devtools protocol.
+   base::UnguessableToken devtools_frame_token_;

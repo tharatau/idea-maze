@@ -1,0 +1,63 @@
+diff --git a/extensions/common/api/web_view_internal.json b/extensions/common/api/web_view_internal.json
+index bfbf21d273..bcd146eaa7 100644
+--- a/extensions/common/api/web_view_internal.json
++++ b/extensions/common/api/web_view_internal.json
+@@ -586,6 +586,58 @@
+           }
+         ]
+       },
++      {
++	"name": "showDevTools",
++	"type": "function",
++	"description": "Open or close devtools for this webview.",
++        "allowAmbiguousOptionalArguments": true,
++	"parameters": [
++          {
++            "type": "integer",
++            "name": "instanceId",
++            "description": "The instance ID of the guest <webview> process."
++          },
++          {
++            "type": "boolean",
++            "name": "show",
++            "description" : "show or close."
++          },
++          {
++            "type": "integer",
++            "name": "procId",
++            "description" : "enable headless mode.",
++            "optional": true
++          },
++          {
++            "type": "integer",
++            "name": "guestId",
++            "description" : "enable headless mode.",
++            "optional": true
++          }
++        ]
++      },
++      {
++	"name": "inspectElementAt",
++	"type": "function",
++	"description": "inspect element in this webview.",
++        "allowAmbiguousOptionalArguments": true,
++	"parameters": [
++          {
++            "type": "integer",
++            "name": "instanceId"
++          },
++          {
++            "type": "integer",
++            "name": "x",
++            "description": "x coordinate of the element"
++          },
++          {
++            "type": "integer",
++            "name": "y",
++            "description": "y coordinate of the element"
++          }
++        ]
++      },
+       {
+         "name": "go",
+         "type": "function",

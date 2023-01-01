@@ -1,0 +1,57 @@
+diff --git a/third_party/blink/renderer/modules/storage/cached_storage_area.cc b/third_party/blink/renderer/modules/storage/cached_storage_area.cc
+index e341e25d58..389010ffe7 100644
+--- a/third_party/blink/renderer/modules/storage/cached_storage_area.cc
++++ b/third_party/blink/renderer/modules/storage/cached_storage_area.cc
+@@ -24,6 +24,8 @@
+ #include "third_party/blink/renderer/platform/wtf/text/unicode.h"
+ #include "third_party/blink/renderer/platform/wtf/text/utf8.h"
+
++BLINK_EXPORT int g_nw_dom_storage_quota = 10485760;
++
+ namespace blink {
+
+ namespace {
+@@ -85,11 +87,13 @@ bool CachedStorageArea::SetItem(const String& key,
+
+   // A quick check to reject obviously overbudget items to avoid priming the
+   // cache.
++#if 0
+   if ((key.length() + value.length()) * 2 >
+       mojom::blink::StorageArea::kPerStorageAreaQuota) {
+     return false;
+   }
+
++#endif
+   EnsureLoaded();
+   String old_value;
+   if (!map_->SetItem(key, value, &old_value))
+@@ -163,8 +167,7 @@ void CachedStorageArea::Clear(Source* source) {
+     new_observer = receiver_.BindNewPipeAndPassRemote();
+   }
+
+-  map_ = std::make_unique<StorageAreaMap>(
+-      mojom::blink::StorageArea::kPerStorageAreaQuota);
++  map_ = std::make_unique<StorageAreaMap>(g_nw_dom_storage_quota);
+
+   KURL page_url = source->GetPageUrl();
+   String source_id = areas_->at(source);
+@@ -448,8 +451,7 @@ void CachedStorageArea::AllDeleted(bool was_nonempty, const String& source) {
+   // that case because we needed to know whether the StorageArea was actually
+   // non-empty prior to the call.
+   if (!local_mutation) {
+-    map_ = std::make_unique<StorageAreaMap>(
+-        mojom::blink::StorageArea::kPerStorageAreaQuota);
++    map_ = std::make_unique<StorageAreaMap>(g_nw_dom_storage_quota);
+
+     // Re-apply the most recent local mutations for each key. These must have
+     // occurred after the deletion, because we haven't observed events for them
+@@ -612,8 +614,7 @@ void CachedStorageArea::EnsureLoaded() {
+   const FormatOption key_format = GetKeyFormat();
+   const FormatOption value_format = GetValueFormat();
+
+-  map_ = std::make_unique<StorageAreaMap>(
+-      mojom::blink::StorageArea::kPerStorageAreaQuota);
++  map_ = std::make_unique<StorageAreaMap>(g_nw_dom_storage_quota);
+   for (const auto& item : data) {
+     map_->SetItemIgnoringQuota(Uint8VectorToString(item->key, key_format),
+                                Uint8VectorToString(item->value, value_format));

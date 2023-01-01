@@ -1,0 +1,14 @@
+--- /dev/null
++++ b/chrome/app/nw.dll.manifest
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
++<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
++  <dependency>
++    <dependentAssembly>
++      <assemblyIdentity type="Win32" name="Microsoft.Windows.Common-Controls" version="6.0.0.0" processorArchitecture="*" publicKeyToken="6595b64144ccf1df" language="*"></assemblyIdentity>
++    </dependentAssembly>
++  </dependency>
++</assembly>
+diff --git a/chrome/app/nw.exe.manifest b/chrome/app/nw.exe.manifest
+new file mode 100644
+index 0000000000..d36f084b65

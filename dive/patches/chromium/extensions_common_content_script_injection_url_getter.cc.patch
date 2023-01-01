@@ -1,0 +1,23 @@
+diff --git a/extensions/common/content_script_injection_url_getter.cc b/extensions/common/content_script_injection_url_getter.cc
+index a197636f84..7381414a84 100644
+--- a/extensions/common/content_script_injection_url_getter.cc
++++ b/extensions/common/content_script_injection_url_getter.cc
+@@ -53,7 +53,8 @@ GURL ContentScriptInjectionUrlGetter::Get(
+         TRACE_EVENT_INSTANT("extensions",
+                             "ContentScriptInjectionUrlGetter::Get/"
+                             "should_consider_origin: origin-climb");
+-        result = document_url.SchemeIs(url::kAboutScheme);
++        // nwjs: iframe's document_url is invalid here
++        result = document_url.SchemeIs(url::kAboutScheme) || !document_url.is_valid();
+         break;
+       }
+       case MatchOriginAsFallbackBehavior::kAlways: {
+@@ -61,7 +62,7 @@ GURL ContentScriptInjectionUrlGetter::Get(
+                             "ContentScriptInjectionUrlGetter::Get/"
+                             "should_consider_origin: origin-always");
+         result = base::Contains(kAllowedSchemesToMatchOriginAsFallback,
+-                                document_url.scheme());
++                                document_url.scheme()) || !document_url.is_valid();
+         break;
+       }
+     }

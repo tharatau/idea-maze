@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/modules/csspaint/paint_worklet_global_scope_proxy.cc b/third_party/blink/renderer/modules/csspaint/paint_worklet_global_scope_proxy.cc
+index 7e43d92a5f..e970ddf8fb 100644
+--- a/third_party/blink/renderer/modules/csspaint/paint_worklet_global_scope_proxy.cc
++++ b/third_party/blink/renderer/modules/csspaint/paint_worklet_global_scope_proxy.cc
+@@ -44,7 +44,7 @@ PaintWorkletGlobalScopeProxy::PaintWorkletGlobalScopeProxy(
+                 ? frame_client->ReducedUserAgent()
+                 : frame_client->UserAgent();
+
+-  auto creation_params = std::make_unique<GlobalScopeCreationParams>(
++  auto creation_params = std::make_unique<GlobalScopeCreationParams>(false, std::string(),
+       window->Url(), mojom::blink::ScriptType::kModule, global_scope_name,
+       user_agent, frame_client->UserAgentMetadata(),
+       frame_client->CreateWorkerFetchContext(),

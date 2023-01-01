@@ -1,0 +1,13 @@
+diff --git a/extensions/browser/verified_contents.h b/extensions/browser/verified_contents.h
+index 6367667ed5..3274ad2b72 100644
+--- a/extensions/browser/verified_contents.h
++++ b/extensions/browser/verified_contents.h
+@@ -71,7 +71,7 @@ class VerifiedContents {
+
+   // Returns the base64url-decoded "payload" field from the |contents|, if
+   // the signature was valid.
+-  bool GetPayload(base::StringPiece contents, std::string* payload);
++  bool GetPayload(base::StringPiece contents, std::string* payload, const char* manifest = nullptr);
+
+   // The |protected_value| and |payload| arguments should be base64url encoded
+   // strings, and |signature_bytes| should be a byte array. See comments in the

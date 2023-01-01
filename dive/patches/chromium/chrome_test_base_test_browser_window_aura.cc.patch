@@ -1,0 +1,19 @@
+diff --git a/chrome/test/base/test_browser_window_aura.cc b/chrome/test/base/test_browser_window_aura.cc
+index 1ce3f70dd3..bc1efda07f 100644
+--- a/chrome/test/base/test_browser_window_aura.cc
++++ b/chrome/test/base/test_browser_window_aura.cc
+@@ -51,6 +51,14 @@ gfx::NativeWindow TestBrowserWindowAura::GetNativeWindow() const {
+   return native_window_.get();
+ }
+
++void TestBrowserWindowAura::UpdateDraggableRegions(
++    const std::vector<extensions::DraggableRegion>& regions) {
++}
++
++SkRegion* TestBrowserWindowAura::GetDraggableRegion() {
++  return nullptr;
++}
++
+ void TestBrowserWindowAura::Show() {
+   native_window_->Show();
+ }

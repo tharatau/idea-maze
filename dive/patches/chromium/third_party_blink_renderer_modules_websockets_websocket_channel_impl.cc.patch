@@ -1,0 +1,13 @@
+diff --git a/third_party/blink/renderer/modules/websockets/websocket_channel_impl.cc b/third_party/blink/renderer/modules/websockets/websocket_channel_impl.cc
+index 8bb6ff3364..8fd3a2e959 100644
+--- a/third_party/blink/renderer/modules/websockets/websocket_channel_impl.cc
++++ b/third_party/blink/renderer/modules/websockets/websocket_channel_impl.cc
+@@ -1007,7 +1007,7 @@ void WebSocketChannelImpl::ConsumePendingDataFrames() {
+     uint32_t readable_size;
+     const MojoResult begin_result = readable_->BeginReadData(
+         &buffer, &readable_size, MOJO_READ_DATA_FLAG_NONE);
+-    if (begin_result == MOJO_RESULT_SHOULD_WAIT) {
++    if (begin_result == MOJO_RESULT_SHOULD_WAIT || begin_result == MOJO_RESULT_BUSY) {
+       readable_watcher_.ArmOrNotify();
+       return;
+     }

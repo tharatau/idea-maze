@@ -1,0 +1,12 @@
+diff --git a/third_party/blink/renderer/platform/weborigin/security_origin.h b/third_party/blink/renderer/platform/weborigin/security_origin.h
+index 3fa93aead9..903d05407d 100644
+--- a/third_party/blink/renderer/platform/weborigin/security_origin.h
++++ b/third_party/blink/renderer/platform/weborigin/security_origin.h
+@@ -135,6 +135,7 @@ class PLATFORM_EXPORT SecurityOrigin : public RefCounted<SecurityOrigin> {
+   String Protocol() const { return protocol_; }
+   String Host() const { return host_; }
+   String Domain() const { return domain_; }
++  bool hasUniversalAccess() const { return universal_access_; }
+
+   // Returns the registrable domain if available.
+   // For non-tuple origin, IP address URL, and public suffixes, this returns a

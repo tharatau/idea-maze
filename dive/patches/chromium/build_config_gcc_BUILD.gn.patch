@@ -1,0 +1,39 @@
+diff --git a/build/config/gcc/BUILD.gn b/build/config/gcc/BUILD.gn
+index 0222d54b24..57e6f36461 100644
+--- a/build/config/gcc/BUILD.gn
++++ b/build/config/gcc/BUILD.gn
+@@ -67,10 +67,10 @@ config("rpath_for_built_shared_libraries") {
+     # Note: Android, Aix don't support rpath. Chromecast has its own logic for
+     # setting the rpath in //build/config/chromecast.
+     if (current_toolchain != default_toolchain || gcc_target_rpath == "") {
+-      ldflags = [
++      #ldflags = [
+         # Want to pass "\$". GN will re-escape as required for ninja.
+-        "-Wl,-rpath=\$ORIGIN",
+-      ]
++        #"-Wl,-rpath=\$ORIGIN/${rpath_link}",
++      #]
+     } else {
+       ldflags = [ "-Wl,-rpath=${gcc_target_rpath}" ]
+     }
+@@ -92,7 +92,12 @@ if (is_component_build && !is_android) {
+ # Settings for executables.
+ config("executable_config") {
+   configs = executable_and_shared_library_configs_
+-  ldflags = [ "-pie" ]
++  if (shlib_subdir != ".") {
++      rpath_link = "${shlib_subdir}/"
++  } else {
++      rpath_link = "."
++  }
++  ldflags = [ "-pie", "-Wl,-rpath=\$ORIGIN/${rpath_link}" ]
+   if (is_android) {
+     ldflags += [
+       "-Bdynamic",
+@@ -113,5 +118,5 @@ config("executable_config") {
+
+ # Settings for shared libraries.
+ config("shared_library_config") {
+-  configs = executable_and_shared_library_configs_
++  #configs = executable_and_shared_library_configs_
+ }

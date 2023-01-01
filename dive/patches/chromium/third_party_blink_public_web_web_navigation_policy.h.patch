@@ -1,0 +1,12 @@
+diff --git a/third_party/blink/public/web/web_navigation_policy.h b/third_party/blink/public/web/web_navigation_policy.h
+index d4b3e0e651..e51293cb25 100644
+--- a/third_party/blink/public/web/web_navigation_policy.h
++++ b/third_party/blink/public/web/web_navigation_policy.h
+@@ -34,6 +34,7 @@
+ namespace blink {
+
+ enum WebNavigationPolicy {
++  kWebNavigationPolicyIgnore,
+   kWebNavigationPolicyDownload,
+   kWebNavigationPolicyCurrentTab,
+   kWebNavigationPolicyNewBackgroundTab,

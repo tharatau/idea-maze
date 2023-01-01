@@ -1,0 +1,52 @@
+diff --git a/content/browser/renderer_host/render_frame_host_impl.h b/content/browser/renderer_host/render_frame_host_impl.h
+index 6aff64db8c..a8d47056f6 100644
+--- a/content/browser/renderer_host/render_frame_host_impl.h
++++ b/content/browser/renderer_host/render_frame_host_impl.h
+@@ -339,6 +339,8 @@ class CONTENT_EXPORT RenderFrameHostImpl
+                              size_t max_nodes,
+                              const base::TimeDelta& timeout) override;
+   void RequestDistilledAXTree(AXTreeDistillerCallback callback) override;
++  bool nodejs() override;
++  bool context_created() override;
+   SiteInstanceImpl* GetSiteInstance() const override;
+   RenderProcessHost* GetProcess() const override;
+   GlobalRenderFrameHostId GetGlobalId() const override;
+@@ -2220,6 +2222,7 @@ class CONTENT_EXPORT RenderFrameHostImpl
+                          WindowOpenDisposition disposition,
+                          const gfx::Rect& initial_rect,
+                          bool user_gesture,
++                         const std::u16string& manifest,
+                          ShowCreatedWindowCallback callback) override;
+   void SetWindowRect(const gfx::Rect& bounds,
+                      SetWindowRectCallback callback) override;
+@@ -2763,8 +2766,9 @@ class CONTENT_EXPORT RenderFrameHostImpl
+   // itself.
+   // This does not consider inner frame trees (i.e. not accounting for fenced
+   // frames, portals or GuestView).
++ public:
+   bool IsDescendantOfWithinFrameTree(RenderFrameHostImpl* ancestor);
+-
++ private:
+   // mojom::FrameHost:
+   void CreateNewWindow(mojom::CreateNewWindowParamsPtr params,
+                        CreateNewWindowCallback callback) override;
+@@ -2839,6 +2843,8 @@ class CONTENT_EXPORT RenderFrameHostImpl
+   void HandleAXLocationChanges(
+       const ui::AXTreeID& tree_id,
+       std::vector<blink::mojom::LocationChangesPtr> changes);
++  void SetNodeJS(bool node) override;
++  void SetContextCreated(bool created) override;
+
+   // mojom::DomAutomationControllerHost:
+   void DomOperationResponse(const std::string& json_string) override;
+@@ -3627,6 +3633,10 @@ class CONTENT_EXPORT RenderFrameHostImpl
+   };
+   RenderFrameState render_frame_state_ = RenderFrameState::kNeverCreated;
+
++  bool nodejs_;
++
++  bool context_created_;
++
+   // When the last BeforeUnload message was sent.
+   base::TimeTicks send_before_unload_start_time_;
+

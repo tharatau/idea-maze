@@ -1,0 +1,34 @@
+diff --git a/chrome/browser/extensions/tab_helper.h b/chrome/browser/extensions/tab_helper.h
+index 9e4fa41d7d..df6cb80370 100644
+--- a/chrome/browser/extensions/tab_helper.h
++++ b/chrome/browser/extensions/tab_helper.h
+@@ -10,6 +10,8 @@
+ #include <string>
+
+ #include "base/memory/raw_ptr.h"
++#include "extensions/common/draggable_region.h"
++
+ #include "base/memory/ref_counted.h"
+ #include "base/memory/weak_ptr.h"
+ #include "base/scoped_observation.h"
+@@ -51,6 +53,9 @@ class TabHelper : public content::WebContentsObserver,
+
+   ~TabHelper() override;
+
++  void UpdateDraggableRegions(content::RenderFrameHost* sender,
++                              const std::vector<DraggableRegion>& regions);
++
+   // Sets the extension denoting this as an app. If |extension| is non-null this
+   // tab becomes an app-tab. WebContents does not listen for unload events for
+   // the extension. It's up to consumers of WebContents to do that.
+@@ -79,9 +84,7 @@ class TabHelper : public content::WebContentsObserver,
+   // extension_misc::EXTENSION_ICON_SMALLISH).
+   SkBitmap* GetExtensionAppIcon();
+
+-  ScriptExecutor* script_executor() {
+-    return script_executor_.get();
+-  }
++  ScriptExecutor* script_executor() { return script_executor_.get(); }
+
+   ExtensionActionRunner* extension_action_runner() {
+     return extension_action_runner_.get();

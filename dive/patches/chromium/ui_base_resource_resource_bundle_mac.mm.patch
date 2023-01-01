@@ -1,0 +1,20 @@
+diff --git a/ui/base/resource/resource_bundle_mac.mm b/ui/base/resource/resource_bundle_mac.mm
+index 5bf89a07a6..2ff9c9980c 100644
+--- a/ui/base/resource/resource_bundle_mac.mm
++++ b/ui/base/resource/resource_bundle_mac.mm
+@@ -50,13 +50,13 @@ base::FilePath GetResourcesPakFilePath(NSString* name, NSString* mac_locale) {
+ }  // namespace
+
+ void ResourceBundle::LoadCommonResources() {
+-  AddDataPackFromPath(GetResourcesPakFilePath(@"chrome_100_percent", nil),
++  AddDataPackFromPath(GetResourcesPakFilePath(@"nw_100_percent", nil),
+                       k100Percent);
+
+   // On Mac we load 1x and 2x resources and we let the UI framework decide
+   // which one to use.
+   if (IsScaleFactorSupported(k200Percent)) {
+-    AddDataPackFromPath(GetResourcesPakFilePath(@"chrome_200_percent", nil),
++    AddDataPackFromPath(GetResourcesPakFilePath(@"nw_200_percent", nil),
+                         k200Percent);
+   }
+ }

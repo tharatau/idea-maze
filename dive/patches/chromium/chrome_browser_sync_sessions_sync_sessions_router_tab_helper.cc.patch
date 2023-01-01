@@ -1,0 +1,20 @@
+diff --git a/chrome/browser/sync/sessions/sync_sessions_router_tab_helper.cc b/chrome/browser/sync/sessions/sync_sessions_router_tab_helper.cc
+index 20ef01d269..2a3e6c67a4 100644
+--- a/chrome/browser/sync/sessions/sync_sessions_router_tab_helper.cc
++++ b/chrome/browser/sync/sessions/sync_sessions_router_tab_helper.cc
+@@ -25,6 +25,7 @@ SyncSessionsRouterTabHelper::SyncSessionsRouterTabHelper(
+     : content::WebContentsUserData<SyncSessionsRouterTabHelper>(*web_contents),
+       content::WebContentsObserver(web_contents),
+       router_(router) {
++#if 0
+   chrome_translate_client_ =
+       ChromeTranslateClient::FromWebContents(web_contents);
+   // A translate client is not always attached to web contents (e.g. tests).
+@@ -38,6 +39,7 @@ SyncSessionsRouterTabHelper::SyncSessionsRouterTabHelper(
+   if (favicon_driver_) {
+     favicon_driver_->AddObserver(this);
+   }
++#endif
+ }
+
+ SyncSessionsRouterTabHelper::~SyncSessionsRouterTabHelper() = default;

@@ -1,0 +1,12 @@
+diff --git a/content/public/common/content_features.h b/content/public/common/content_features.h
+index 95586c2934..a27da1c7f8 100644
+--- a/content/public/common/content_features.h
++++ b/content/public/common/content_features.h
+@@ -17,6 +17,7 @@
+
+ namespace features {
+
++CONTENT_EXPORT extern const base::Feature kNWNewWin;
+ // All features in alphabetical order. The features should be documented
+ // alongside the definition of their values in the .cc file.
+ CONTENT_EXPORT extern const base::Feature
