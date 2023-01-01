@@ -1,0 +1,12 @@
+diff --git a/src/profiler/tracing-cpu-profiler.cc b/src/profiler/tracing-cpu-profiler.cc
+index d18ae09fb1..33ef136af5 100644
+--- a/src/profiler/tracing-cpu-profiler.cc
++++ b/src/profiler/tracing-cpu-profiler.cc
+@@ -19,6 +19,7 @@ TracingCpuProfilerImpl::TracingCpuProfilerImpl(Isolate* isolate)
+ 
+ TracingCpuProfilerImpl::~TracingCpuProfilerImpl() {
+   StopProfiling();
++  if (V8::GetCurrentPlatform())
+   V8::GetCurrentPlatform()->GetTracingController()->RemoveTraceStateObserver(
+       this);
+ }

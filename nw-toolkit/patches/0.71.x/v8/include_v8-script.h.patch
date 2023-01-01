@@ -1,0 +1,22 @@
+diff --git a/include/v8-script.h b/include/v8-script.h
+index e2ba845268..addc8717af 100644
+--- a/include/v8-script.h
++++ b/include/v8-script.h
+@@ -621,6 +621,7 @@ class V8_EXPORT ScriptCompiler {
+       CompileOptions options = kNoCompileOptions,
+       NoCacheReason no_cache_reason = kNoCacheNoReason);
+ 
++  static MaybeLocal<Module> CompileModuleWithCache(Isolate* isolate, Source* source);
+   /**
+    * Returns a task which streams script data into V8, or NULL if the script
+    * cannot be streamed. The user is responsible for running the task on a
+@@ -798,6 +799,9 @@ Module* Module::Cast(Data* data) {
+   return reinterpret_cast<Module*>(data);
+ }
+ 
++void V8_EXPORT FixSourceNWBin(Isolate* v8_isolate, Local<UnboundScript> script);
++void V8_EXPORT FixSourceNWBin(Isolate* v8_isolate, Local<Module> module);
++
+ }  // namespace v8
+ 
+ #endif  // INCLUDE_V8_SCRIPT_H_
