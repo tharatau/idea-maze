@@ -1,6 +1,6 @@
-# Sprite
+# Piskel
 
-A fork of [Piskel](https://github.com/piskelapp/piskel/commit/21b8bdd0f3602c455e89f25fb337068fd9ea3a35).
+A fork of [Piskel](https://github.com/piskelapp/piskel/tree/21b8bdd0f3602c455e89f25fb337068fd9ea3a35).
 
 ## License
 

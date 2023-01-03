@@ -65,32 +65,7 @@ module.exports = function(grunt) {
     clean: {
       all: ['dest', 'src/img/icons.png', 'src/css/icons.css'],
       prod: ['dest/prod', 'dest/tmp'],
-      desktop: ['dest/desktop', 'dest/tmp'],
       dev: ['dest/dev', 'dest/tmp']
-    },
-
-    /**
-     * STYLE CHECKS
-     */
-
-    leadingIndent : {
-      options: {
-        indentation : "spaces"
-      },
-      css : ['src/css/**/*.css']
-    },
-
-    eslint: {
-      files: [
-        // Includes
-        'src/js/**/*.js',
-        // Exludes
-        // TODO: remove this (for now we still get warnings from the lib folder)
-        '!src/js/**/lib/**/*.js'
-      ],
-      options: {
-        fix: grunt.option('fix') // this will get params from the flags
-      }
     },
 
     /**
@@ -264,52 +239,9 @@ module.exports = function(grunt) {
         }
       }
     },
-
-    /**
-     * DESKTOP BUILDS
-     */
-
-    nwjs: {
-      windows : {
-        options: {
-          downloadUrl: 'https://dl.nwjs.io/',
-          version : "0.19.4",
-          build_dir: './dest/desktop/', // destination folder of releases.
-          win: true,
-          linux32: true,
-          linux64: true,
-          flavor: "normal",
-        },
-        src: ['./dest/prod/**/*', "./package.json", "!./dest/desktop/"]
-      },
-      macos : {
-        options: {
-          downloadUrl: 'https://dl.nwjs.io/',
-          osx64: true,
-          version : "0.19.4",
-          build_dir: './dest/desktop/',
-          flavor: "normal",
-        },
-        src: ['./dest/prod/**/*', "./package.json", "!./dest/desktop/"]
-      },
-      macos_old : {
-        options: {
-          downloadUrl: 'https://dl.nwjs.io/',
-          osx64: true,
-          version : "0.12.3",
-          build_dir: './dest/desktop/old',
-          flavor: "normal",
-        },
-        src: ['./dest/prod/**/*', "./package.json", "!./dest/desktop/"]
-      }
-    }
   });
 
   // TEST TASKS
-  // Run linting
-  grunt.registerTask('lint', ['eslint', 'leadingIndent:css']);
-  // Run unit-tests
-  grunt.registerTask('unit-test', ['karma']);
   // Run integration tests
   grunt.registerTask('integration-test', ['build-dev', 'connect:test', 'casperjs:integration']);
   // Run drawing tests
@@ -317,32 +249,17 @@ module.exports = function(grunt) {
   // Run linting, unit tests, drawing tests and integration tests
   grunt.registerTask('test', ['lint', 'unit-test', 'build-dev', 'connect:test', 'casperjs:drawing', 'casperjs:integration']);
 
-  // Run the tests, even if the linting fails
-  grunt.registerTask('test-nolint', ['unit-test', 'build-dev', 'connect:test', 'casperjs:drawing', 'casperjs:integration']);
-
-  // Used by optional precommit hook
-  grunt.registerTask('precommit', ['test']);
-
   // BUILD TASKS
   grunt.registerTask('build-index.html', ['includereplace']);
   grunt.registerTask('merge-statics', ['concat:js', 'concat:css', 'uglify']);
   grunt.registerTask('build',  ['clean:prod', 'sprite', 'merge-statics', 'build-index.html', 'replace:mainPartial', 'replace:css', 'copy:prod']);
   grunt.registerTask('build-dev',  ['clean:dev', 'sprite', 'build-index.html', 'copy:dev']);
-  grunt.registerTask('desktop', ['clean:desktop', 'default', 'nwjs:windows']);
-  grunt.registerTask('desktop-mac', ['clean:desktop', 'default', 'nwjs:macos']);
-  grunt.registerTask('desktop-mac-old', ['clean:desktop', 'default', 'replace:desktop', 'nwjs:macos_old']);
 
   // SERVER TASKS
   // Start webserver and watch for changes
   grunt.registerTask('serve', ['build', 'connect:prod', 'watch:prod']);
   // Start webserver on src folder, in debug mode
   grunt.registerTask('play', ['build-dev', 'connect:dev', 'watch:dev']);
-
-  // ALIASES, kept for backward compatibility
-  grunt.registerTask('serve-debug', ['play']);
-  grunt.registerTask('serve-dev', ['play']);
-  grunt.registerTask('test-travis', ['test']);
-  grunt.registerTask('test-local', ['test']);
 
   // Default task
   grunt.registerTask('default', ['lint', 'build']);

@@ -15,15 +15,13 @@
   },
   "main": "./dest/prod/index.html",
   "scripts": {
+    "lint": "eslint --fix ./src/**/*.js",
+    "test:unit": "karma start",
+    "test:casper": "grunt integration-test",
+    "test:drawing": "grunt drawing-test",
     "test": "grunt test",
     "dev": "grunt play",
-    "start": "grunt build && nw",
-    "preversion": "grunt test build",
-    "postversion": "git push && git push --tags && npm publish",
-    "release": "grunt && node ./bin/copy-to-piskel-website",
-    "build": "grunt desktop",
-    "build:mac": "grunt desktop-mac",
-    "format": "grunt eslint --fix"
+    "build": "grunt build"
   },
   "devDependencies": {
     "date-fns": "2.29.3",
