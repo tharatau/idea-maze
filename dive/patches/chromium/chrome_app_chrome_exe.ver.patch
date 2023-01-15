@@ -1,9 +1,0 @@
-diff --git a/chrome/app/chrome_exe.ver b/chrome/app/chrome_exe.ver
-index a2d39013f5..17bb91f180 100644
---- a/chrome/app/chrome_exe.ver
-+++ b/chrome/app/chrome_exe.ver
-@@ -1,2 +1,2 @@
--INTERNAL_NAME=chrome_exe
--ORIGINAL_FILENAME=chrome.exe
-+INTERNAL_NAME=nw_exe
-+ORIGINAL_FILENAME=nw.exe

@@ -1,9 +1,0 @@
-diff --git a/chrome/app/chrome_dll.ver b/chrome/app/chrome_dll.ver
-index 910fca21d1..fccabec864 100644
---- a/chrome/app/chrome_dll.ver
-+++ b/chrome/app/chrome_dll.ver
-@@ -1,2 +1,2 @@
--INTERNAL_NAME=chrome_dll
--ORIGINAL_FILENAME=chrome.dll
-+INTERNAL_NAME=nw_dll
-+ORIGINAL_FILENAME=nw.dll
