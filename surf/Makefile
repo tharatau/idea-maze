@@ -1,15 +1,10 @@
-.PHONY: all update
+.PHONY: clean
 
-all: service_http.o surf.o
-	clang service_http.o surf.o -o surf -lcurl
+surf: ./src/surf.cc
+	clang++ -std=c++20 ./src/surf.cc -o ./out/surf.exe
 
-update:
-	rm -f surf *.o
-	chmod 755 ./deps.sh
-	bash ./deps.sh
+exe: ./out/surf.exe
+	./out/surf.exe
 
-service_http: service_http.c
-	clang service_http.c -c
-
-surf: surf.c
-	clang surf.c -c
+clean:
+	rm -rf ./out/surf.exe

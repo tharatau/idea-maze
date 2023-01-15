@@ -4,7 +4,7 @@ Experimental application to surf the internet with the goal of inversion of cont
 
 ## Getting Started
 
-Clone the repo
+Setup `depot_tools`
 ```shell
 git clone git@github.com:ayushmxn/surf.git
 ```
