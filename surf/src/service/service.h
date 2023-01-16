@@ -1,5 +1,0 @@
-namespace surf {
-    namespace service {
-
-    }
-}
