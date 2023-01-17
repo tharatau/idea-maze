@@ -1,0 +1,35 @@
+#!/bin/bash
+
+DEPOT_TOOLS_DIR="depot_tools"
+DEPOT_TOOLS_URI="https://chromium.googlesource.com/chromium/tools/depot_tools.git"
+
+CHROMIUM_DIR="chromium"
+CHROMIUM_URI="https://github.com/tharatau/nw-chromium"
+
+if [[ ! -d $DEPOT_TOOLS_DIR ]]; then
+    git clone $DEPOT_TOOLS_URI $DEPOT_TOOLS_DIR
+fi
+
+export PATH="$PATH:${PWD}/depot_tools"
+
+if [[ ! -d $CHROMIUM_DIR ]]; then
+    mkdir $CHROMIUM_DIR
+fi
+
+cd $CHROMIUM_DIR
+
+if [[ ! -f ".gclient" ]]; then
+    gclient config --name=src $CHROMIUM_URI
+    gclient sync --no-history
+fi
+
+cd src
+
+# ./build/install-build-deps.sh
+
+cat <<CONFIG > "./build/util/LASTCHANGE"
+LASTCHANGE=0000000000000000000000000000000000000000-0000000000000000000000000000000000000000
+LASTCHANGE_YEAR=1970
+CONFIG
+
+gclient sync
