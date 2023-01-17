@@ -1,0 +1,9 @@
+{
+    "name": "font-loader",
+    "scripts": {
+        "start": "node build.mjs"
+    },
+    "dependencies": {
+        "esbuild": "^0.16.13"
+    }
+}
