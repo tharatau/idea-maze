@@ -1,0 +1,12 @@
+diff --git a/src/objects/js-array-buffer.h b/src/objects/js-array-buffer.h
+index ad6bc4fbf6..752d116a0b 100644
+--- a/src/objects/js-array-buffer.h
++++ b/src/objects/js-array-buffer.h
+@@ -70,6 +70,7 @@ class JSArrayBuffer
+ 
+   // [was_detached]: true => the buffer was previously detached.
+   DECL_BOOLEAN_ACCESSORS(was_detached)
++  DECL_BOOLEAN_ACCESSORS(is_node_js)
+ 
+   // [is_asmjs_memory]: true => this buffer was once used as asm.js memory.
+   DECL_BOOLEAN_ACCESSORS(is_asmjs_memory)

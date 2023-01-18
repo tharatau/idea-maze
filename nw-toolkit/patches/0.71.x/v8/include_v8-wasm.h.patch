@@ -1,0 +1,14 @@
+diff --git a/include/v8-wasm.h b/include/v8-wasm.h
+index 05acd2e86d..ed93ffceb3 100644
+--- a/include/v8-wasm.h
++++ b/include/v8-wasm.h
+@@ -121,6 +121,9 @@ class V8_EXPORT WasmModuleObject : public Object {
+   static void CheckCast(Value* obj);
+ };
+ 
++V8_DEPRECATED("Use WasmModuleObject")
++              typedef WasmModuleObject WasmCompiledModule;
++
+ /**
+  * The V8 interface for WebAssembly streaming compilation. When streaming
+  * compilation is initiated, V8 passes a {WasmStreaming} object to the embedder

@@ -1,0 +1,12 @@
+diff --git a/src/init/v8.h b/src/init/v8.h
+index dd58a0c8e9..597b5c6c5f 100644
+--- a/src/init/v8.h
++++ b/src/init/v8.h
+@@ -42,6 +42,7 @@ class V8 : public AllStatic {
+   [[noreturn]] V8_EXPORT_PRIVATE static void FatalProcessOutOfMemory(
+       Isolate* isolate, const char* location, const char* detail);
+ 
++  static void SetTLSPlatform(v8::Platform* platform);
+   static void InitializePlatform(v8::Platform* platform);
+   static void DisposePlatform();
+   V8_EXPORT_PRIVATE static v8::Platform* GetCurrentPlatform();

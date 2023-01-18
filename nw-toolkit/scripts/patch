@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# TODO: 
+
+cd v8-nw
+
+git remote set-url origin git@github.com:tharatau/v8.git
+git push
+
+cd ..
+
+git clone git@github.com:tharatau/v8.git v8
+
+cd v8
+
+git checkout nw71
+git checkout v10.8.168.21
+git checkout main
+
+git diff v10.8.168.21..nw71 > ../patches/0.71.x/_v8.patch
+
+cd ../patches/0.71.x/
+
+splitdiff -a -d -p 1 -D ./v8 ./_v8.patch
