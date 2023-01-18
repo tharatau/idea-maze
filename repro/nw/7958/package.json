@@ -1,0 +1,10 @@
+{
+    "name": "dom-input-type-file",
+    "main": "index.html",
+    "node-main": "node-main.js",
+    "node-remote": [
+        "http://localhost:3000",
+        "file://*"
+      ],
+    "nodejs": true
+}
