@@ -53,7 +53,7 @@ LASTCHANGE=0000000000000000000000000000000000000000-0000000000000000000000000000
 LASTCHANGE_YEAR=1970
 CONFIG
 
-gclient sync --verbose
+# gclient sync --verbose
 
 # gn gen out/nw --args='is_component_build=true symbol_level=0 enable_nacl=false blink_symbol_level=0 v8_symbol_level=0'
 
@@ -61,12 +61,12 @@ gclient sync --verbose
 
 # TODO: change to component build
 export GYP_CHROMIUM_NO_ACTION=0
-export GYP_DEFINES=target_arch=x64 building_nw=1 clang=1 nwjs_sdk=1 disable_nacl=0 buildtype=Official
+export GYP_DEFINES=target_arch=x64 building_nw=1 clang=1 nwjs_sdk=1 disable_nacl=0
 export GYP_GENERATORS=ninja
 export GYP_GENERATOR_FLAGS=output_dir=out
-# export C_INCLUDE_PATH=$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu:$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include
-# export CPLUS_INCLUDE_PATH=$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu:$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include
+export C_INCLUDE_PATH=$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu:$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include
+export CPLUS_INCLUDE_PATH=$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu:$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include
 
-python3 third_party/node-nw/tools/gyp/gyp_main.py -I third_party/node-nw/common.gypi -D build_type=Release third_party/node-nw/node.gyp
+python3 third_party/node-nw/tools/gyp/gyp_main.py -I third_party/node-nw/common.gypi -D component=shared_library third_party/node-nw/node.gyp
 
 ninja -C out/Release node
