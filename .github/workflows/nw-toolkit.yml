@@ -13,6 +13,7 @@ jobs:
     steps:
       - run: make patch
   commit:
+    needs: patch
     runs-on: ubuntu-latest
     defaults:
       run:
