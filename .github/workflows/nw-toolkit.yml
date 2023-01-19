@@ -34,5 +34,3 @@ jobs:
 
       - name: Commit patches
         uses: GuillaumeFalourd/git-commit-push@v1.3
-        with:
-          files: nw-toolkit/patches
