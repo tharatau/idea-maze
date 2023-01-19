@@ -7,8 +7,11 @@ on:
 jobs:
   patch:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./nw-toolkit
     steps:
       - run: |
-          echo $PWD
+          make patch
       - uses: actions/checkout@v3.3.0
       - uses: GuillaumeFalourd/git-commit-push@v1.3
