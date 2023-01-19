@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Make patches
-    - run: |
+      run: |
         make patch
 
     - name: Commit patches
-    - uses: actions/checkout@v3.3.0
-    - uses: GuillaumeFalourd/git-commit-push@v1.3
+      uses: actions/checkout@v3.3.0
+      uses: GuillaumeFalourd/git-commit-push@v1.3
 
   defaults:
   run:
