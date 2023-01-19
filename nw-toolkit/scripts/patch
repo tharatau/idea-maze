@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo $PWD
+
 NW_DIR="nw"
 NW_URI=https://github.com/nwjs
 NW_VER=72
