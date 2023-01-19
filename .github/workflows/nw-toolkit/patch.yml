@@ -4,6 +4,10 @@ name: patch
       branches:
       - main
 
+defaults:
+  run:
+    working-directory: ./nw-toolkit
+
 jobs:
   patch:
     runs-on: ubuntu-latest
