@@ -33,5 +33,4 @@ jobs:
           key: ${{ runner.os }}-patches
 
       - name: Commit patches
-        if: steps.cache-patches.outputs.cache-hit != 'true'
         uses: GuillaumeFalourd/git-commit-push@v1.3
