@@ -19,16 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.3.0
+      - uses: actions/cache@v3
+        with:
+          path: patches
+          key: ${{ runner.os }}-patches
       - run: make patch
-  cache:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/cache@v3
-      with:
-        path: patches
-        key: ${{ runner.os }}-patches
   commit:
-    needs: [patch, cache]
+    needs: [patch]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3.3.0
