@@ -24,10 +24,5 @@ jobs:
         with:
           path: patches
           key: ${{ runner.os }}-patches
+      - uses: GuillaumeFalourd/git-commit-push@v1.3
       - run: make patch
-  commit:
-    needs: [patch]
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3.3.0
-    - uses: GuillaumeFalourd/git-commit-push@v1.3
