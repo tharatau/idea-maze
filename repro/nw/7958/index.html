@@ -4,6 +4,9 @@
 <script type="module">
     const file = new File(["foor"], 'foo.txt', { type: "text/plain" });
     const files = new FileList();
+    // This will fail since the FileList is read-only.
+    // See https://developer.mozilla.org/en-US/docs/Web/API/FileList for updated API
+    // See https://stackoverflow.com/questions/74630989/why-use-domstringlist-rather-than-an-array/74641156#74641156 for why FileList is read-only
     files.append(file);
     document.getElementById('file-input').files = files;
 </script>
