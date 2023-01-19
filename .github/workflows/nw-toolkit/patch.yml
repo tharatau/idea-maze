@@ -1,0 +1,21 @@
+name: patch
+  on:
+    pull_request:
+      branches:
+      - main
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Make patches
+    - run: |
+        make patch
+
+    - name: Commit patches
+    - uses: actions/checkout@v3.3.0
+    - uses: GuillaumeFalourd/git-commit-push@v1.3
+
+  defaults:
+  run:
+    working-directory: ./nw-toolkit
