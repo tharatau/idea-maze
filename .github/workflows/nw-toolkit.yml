@@ -29,9 +29,8 @@ jobs:
         id: cache-patches
         uses: actions/cache@v3
         with:
-          path: patches
+          path: nw-toolkit/patches
           key: ${{ runner.os }}-patches
-          run: echo $PWD
 
       - name: Commit patches
         if: steps.cache-patches.outputs.cache-hit == 'true'
