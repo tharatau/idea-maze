@@ -16,8 +16,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3.3.0
       - run: make patch
+  cache:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/cache@v3
+      with:
+        path: patches
+        key: ${{ runner.os }}-patches
   commit:
-    needs: patch
+    needs: [patch, cache]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3.3.0
