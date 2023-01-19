@@ -12,6 +12,7 @@ concurrency:
 
 defaults:
   run:
+    shell: bash
     working-directory: nw-toolkit
 
 jobs:
