@@ -11,8 +11,7 @@ jobs:
       run:
         working-directory: nw-toolkit
     steps:
-      - run: |
-          make patch
+      - run: make patch
   commit:
     runs-on: ubuntu-latest
     defaults:
