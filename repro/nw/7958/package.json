@@ -1,0 +1,9 @@
+{
+    "name": "dom-input-type-file",
+    "main": "http://localhost:3000",
+    "node-main": "./node-main.js",
+    "node-remote": [
+        "http://localhost:3000",
+        "file://*"
+      ]
+}

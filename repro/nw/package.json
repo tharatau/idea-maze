@@ -1,0 +1,13 @@
+{
+    "name": "nw-repro",
+    "scripts": {
+        "7958": "nw ./7958"
+    },
+    "devDependencies": {
+        "express": "^4.18.2",
+        "nw": "^0.72.0-sdk"
+    },
+    "engines": {
+        "node": ">=19.3.0"
+    }
+}
