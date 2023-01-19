@@ -20,9 +20,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.3.0
-      - uses: actions/cache@v3
+
+      - name: Cache patches
+        id: cache-patches
+        uses: actions/cache@v3
         with:
           path: patches
           key: ${{ runner.os }}-patches
-      - uses: GuillaumeFalourd/git-commit-push@v1.3
-      - run: make patch
+
+      - name: Make patches
+        if: steps.cache-patches.outputs.cache-hit != 'true'
+        run: make patch
+
+      - name: Commit patches
+        if: steps.cache-patches.outputs.cache-hit == 'true'
+        uses: GuillaumeFalourd/git-commit-push@v1.3
