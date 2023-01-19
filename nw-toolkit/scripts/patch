@@ -60,6 +60,10 @@ if [[ ! -d "0.$NW_VER.x" ]]; then
     mkdir 0.$NW_VER.x
 fi
 
-diff -r -u --color up/v8 nw/v8 > 0.$NW_VER.x/v8.patch
+diff -r -u --color $UP_DIR/chromium $NW_DIR/chromium > 0.$NW_VER.x/chromium.patch
+
+diff -r -u --color $UP_DIR/node $NW_DIR/node > 0.$NW_VER.x/node.patch
+
+diff -r -u --color $UP_DIR/v8 $NW_DIR/v8 > 0.$NW_VER.x/v8.patch
 
 rm -rf nw up
