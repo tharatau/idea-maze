@@ -34,11 +34,3 @@ jobs:
 
       - name: Commit patches
         uses: GuillaumeFalourd/git-commit-push@v1.3
-        with:
-          email: ${{ github.actor }}[bot]@users.noreply.github.com
-          name: ${{ github.actor }}
-          commit_message: Update patches
-          remote_repository: origin
-          force: true
-          empty: true
-          tags: true
