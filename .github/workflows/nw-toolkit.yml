@@ -33,4 +33,6 @@ jobs:
           key: ${{ runner.os }}-patches
 
       - name: Commit patches
-        uses: GuillaumeFalourd/git-commit-push@main
+        uses: GuillaumeFalourd/git-commit-push@1.3
+        with:
+          force: true
