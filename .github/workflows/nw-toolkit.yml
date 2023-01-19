@@ -31,6 +31,7 @@ jobs:
         with:
           path: patches
           key: ${{ runner.os }}-patches
+          run: echo $PWD
 
       - name: Commit patches
         if: steps.cache-patches.outputs.cache-hit == 'true'
