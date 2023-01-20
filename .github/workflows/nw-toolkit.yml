@@ -1,21 +1,36 @@
-name: nw-toolkit jobs
-  on:
-    pull_request:
-      branches:
+name: nw-toolkit
+on:
+  push:
+    branches:
       - main
+    paths:
+      - nw-toolkit/scripts/patch
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+    working-directory: nw-toolkit
 
 jobs:
   patch:
     runs-on: ubuntu-latest
     steps:
-    - name: Make patches
-    - run: |
-        make patch
+      - uses: actions/checkout@v3.3.0
 
-    - name: Commit patches
-    - uses: actions/checkout@v3.3.0
-    - uses: GuillaumeFalourd/git-commit-push@v1.3
+      - name: Make patches
+        if: steps.cache-patches.outputs.cache-hit != 'true'
+        run: make patch
 
-  defaults:
-  run:
-    working-directory: ./nw-toolkit
+      - name: Cache patches
+        id: cache-patches
+        uses: actions/cache@v3
+        with:
+          path: nw-toolkit/patches
+          key: ${{ runner.os }}-patches
+
+      - name: Commit patches
+        uses: GuillaumeFalourd/git-commit-push@v1.3
