@@ -1,8 +1,11 @@
 # NW Toolkit
 
-- [ ] Diff NW with Chromium, Node and V8 to understand how upstream behaviour is changed
+- [x] Diff NW against Chromium, Node and V8 to understand how NW changes upstream behaviour
 - [ ] Simplify development environment using bootstrap script
-- [ ] Release (Linux/MacOS/Windows)-(AMD/ARM)-(32/64) versions
-- [ ] Experiment with Android and iOS support
+- [ ] Release (Linux/MacOS/Windows/Android/iOS)-(AMD/ARM)-(32/64) versions
 
-https://stackoverflow.com/questions/71892811/share-cache-between-distinct-jobs
+## Updating patches
+
+1. Verify that the new versions are in sync with the [`manifest`](https://nwjs.io/version).
+1. Open a PR and update the versions (`*_VER` variables) in `scripts/patch`. You can find the V8 version in `include/v8-version.h`.
+1. The patches will be after the PR is merged!

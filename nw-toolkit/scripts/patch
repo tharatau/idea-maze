@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo $PWD
-
 NW_DIR="nw"
 NW_URI=https://github.com/nwjs
 NW_VER=72
@@ -49,7 +47,7 @@ if [[ ! -d "$UP_DIR/chromium" ]]; then
 fi
 
 if [[ ! -d "$UP_DIR/node" ]]; then
-    curl -L $NODE_URI/archive/refs/tags/$NODE_VER.tar.gz | tar -xz -C $UP_DIR
+    curl -L $NODE_URI/archive/refs/tags/v$NODE_VER.tar.gz | tar -xz -C $UP_DIR
     mv $UP_DIR/node-$NODE_VER $UP_DIR/node
 fi
 
