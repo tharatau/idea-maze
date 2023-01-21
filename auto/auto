@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Install System dependencies
+# TODO: Add support for other OSs
+PKGS=(
+    "jq"
+    "wget"
+    "unzip"
+)
+
+sudo apt update
+for pkg in "${PKGS[@]}"; do
+    sudo apt install $pkg
+done
+
+# Convert JSON array to Bash array
+readarray -t DEPS < <( jq -c ".deps[]" auto.json)
+
+# TODO: Extract properties from each dep
+for dep in "${DEPS[@]}"; do
+    echo $dep
+done
+
+exit
+
+# Download Python
+# TODO: Genaralise this script to download any git repo
+DEP_NAME="python"
+DEP_DIR="third_party"
+DEP_URI="https://github.com/python/cpython"
+DEP_REV="3325f054e33b318aa56b74472f76a56b8afc0510"
+
+if [[ ! -d $DEP_DIR ]]; then
+    mkdir -p $DEP_DIR
+fi
+
+wget $DEP_URI/archive/$DEP_REV.zip -O $DEP_DIR/$DEP_NAME.zip
+unzip $DEP_DIR/$DEP_NAME.zip -d $DEP_DIR/$DEP_NAME
+rm -rf $DEP_DIR/$DEP_NAME.zip
