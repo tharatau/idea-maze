@@ -1,0 +1,3 @@
+Architecture
+
+The application is broken into chrome, render and service "plugins". Plugins are third party libraries which are dynamically linked to the executable.
