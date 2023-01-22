@@ -1,5 +1,6 @@
 {
   "name": "auto",
+  "version": "2023-01-21",
   "pkgs": [
     "ninja-build"
   ],
@@ -14,8 +15,8 @@
   "hooks": [
     {
       "dir": "third_party/python",
-      "bld": [
-        "./configure",
+      "run": [
+        "bash ./configure",
         "make",
         "make test",
         "sudo make install"
