@@ -1,11 +1,25 @@
 {
   "name": "auto",
+  "pkgs": [
+    "ninja-build"
+  ],
   "deps": [
     {
       "name": "python",
       "dir": "third_party",
       "uri": "https://github.com/python/cpython",
       "rev": "3325f054e33b318aa56b74472f76a56b8afc0510"
+    }
+  ],
+  "hooks": [
+    {
+      "dir": "third_party/python",
+      "bld": [
+        "./configure",
+        "make",
+        "make test",
+        "sudo make install"
+      ]
     }
   ]
 }

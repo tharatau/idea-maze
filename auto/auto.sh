@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Copyright 2023 Auto Authors
+
 # Install System dependencies
 # TODO: Add support for other OSs
 PKGS=(
@@ -10,6 +12,12 @@ PKGS=(
 
 sudo apt update
 for pkg in "${PKGS[@]}"; do
+    sudo apt install $pkg
+done
+
+USR_PKGS=$(jq -r ".pkgs[]" auto.json)
+
+for pkg in "${USR_PKGS[@]}"; do
     sudo apt install $pkg
 done
 
