@@ -5,11 +5,11 @@
 # TODO: Add support for other OSs
 
 if [ -z $1 ]; then
-    echo "Usage: ./auto.sh [all|pkg|dep|hook] [--force]"
+    echo "Usage: ./auto.sh [all|meta|dep|pkg|hook] [--force]"
     exit 1
 fi
 
-# Get latest version of auto.json
+# Get latest version of auto.sh
 if [ ! -z $1 ] && [ $1 == "all" ] || [ $1 == "meta" ]; then
     wget https://raw.githubusercontent.com/tharatau/idea-maze/main/auto/auto.sh -O ${HOME}/auto.sh
 fi

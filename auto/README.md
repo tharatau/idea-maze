@@ -20,6 +20,12 @@ Install platform specific packages.
 
 > Currently only `apt` package manager is supported.
 
+Auto update `auto.sh`.
+
+```shell
+auto meta
+```
+
 ```shell
 auto pkg
 ```
@@ -36,12 +42,6 @@ Run hooks to build dependencies.
 
 ```shell
 auto hook
-```
-
-Auto update `auto.sh`.
-
-```shell
-auto meta
 ```
 
 Run all the above commands in order.
