@@ -9,6 +9,11 @@ if [ -z $1 ]; then
     exit 1
 fi
 
+# Get latest version of auto.json
+if [ ! -z $1 ] && [ $1 == "all" ] || [ $1 == "meta" ]; then
+    wget https://raw.githubusercontent.com/tharatau/idea-maze/main/auto/auto.sh -O ${HOME}/auto.sh
+fi
+
 if [ ! -z $1 ] && [ $1 == "all" ] || [ $1 == "pkg" ]; then
     # Install packages required by auto.sh
     PKGS=(
@@ -73,8 +78,7 @@ if [ ! -z $1 ] && [ $1 == "all" ] || [ $1 == "hook" ]; then
         cd $HOOK_DIR
 
         for run in "${HOOK_RUN[@]}"; do
-            # TODO: fix this
-            $run
+            eval "$run"
         done
 
         cd -

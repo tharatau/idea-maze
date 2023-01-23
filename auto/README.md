@@ -11,7 +11,7 @@ wget https://github.com/tharatau/idea-maze/blob/main/auto/auto.sh -O $HOME/auto.
 
 Add to `PATH`:
 ```shell
-export PATH="$PATH:${HOME}/auto.sh"
+export PATH="${PATH}:${HOME}/auto.sh"
 ```
 
 ## Usage
@@ -36,6 +36,12 @@ Run hooks to build dependencies.
 
 ```shell
 auto hook
+```
+
+Auto update `auto.sh`.
+
+```shell
+auto meta
 ```
 
 Run all the above commands in order.
