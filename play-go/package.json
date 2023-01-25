@@ -1,0 +1,60 @@
+{
+    "name": "play-go",
+    "version": "0.0.0",
+    "private": true,
+    "main": "http://localhost:4175",
+    "node-remote": "http://localhost:4175",
+    "node-main": "",
+    "type": "module",
+    "scripts": {
+        "start": "concurrently pnpm:dev:web pnpm:dev:ntv",
+        "dev:web": "vite --port 4175",
+        "dev:ntv": "wait-on -c waitOnConfig.json http-get://localhost:4175 && nw ."
+    },
+    "engines": {
+        "node": ">= 19.3.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^3.0.1",
+        "concurrently": "^7.6.0",
+        "eslint": "^8.32.0",
+        "eslint-config-tjw-jsdoc": "^1.0.3",
+        "express": "^4.18.2",
+        "jsdoc": "^4.0.0",
+        "nw": "0.72.0-sdk",
+        "prettier": "^2.8.3",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "selenium-webdriver": "^4.8.0",
+        "vite": "^4.0.4",
+        "wait-on": "^7.0.1"
+    },
+    "prettier": {
+        "printWidth": 80,
+        "tabWidth": 2,
+        "useTabs": false,
+        "semi": true,
+        "singleQuote": false,
+        "quoteProps": "consistent",
+        "trailingComma": "all",
+        "bracketSpacing": true,
+        "bracketSameLine": false,
+        "arrowParens": "always",
+        "proseWrap": "preserve",
+        "htmlWhitespaceSensitivity": "strict",
+        "endOfLine": "lf",
+        "singleAttributePerLine": true
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "parserOptions": {
+            "ecmaVersion": 2023,
+            "sourceType": "module"
+        },
+        "env": {
+            "browser": true,
+            "es6": true,
+            "node": true
+        }
+    }
+}
