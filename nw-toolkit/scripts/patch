@@ -84,4 +84,4 @@ fi
 
 splitdiff -a -d -p 2 -D 0.$NW_VER.x/v8 0.$NW_VER.x/v8.patch
 
-rm -rf nw up
+# rm -rf nw up
