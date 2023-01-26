@@ -21,9 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3.3.0
 
-      - name: Install dependencies
-        run: make deps
-
       - name: Make patches
         if: steps.cache-patches.outputs.cache-hit != 'true'
         run: make patch
