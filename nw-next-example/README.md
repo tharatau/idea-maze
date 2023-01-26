@@ -4,19 +4,19 @@ Extremely minimal unopiniated NW NExt.js application.
 
 ## Getting Started
 
-1. Install node modules
+Install node modules
 
 ```shell
 npm i
 ```
 
-1. Run application
+Run application
 
 ```shell
 npm run dev
 ```
 
-1. TODO: Build application
+TODO: Build application
 
 > Using `nw-builder`
 
