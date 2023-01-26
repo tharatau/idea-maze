@@ -7,7 +7,9 @@
     "scripts": {
         "dev": "concurrently npm:dev:web npm:dev:ntv",
         "dev:web": "next dev -p 4000",
-        "dev:ntv": "wait-on http-get://localhost:4000 && nw ."
+        "dev:ntv": "wait-on http-get://localhost:4000 && nw .",
+        "bld": "concurrently npm:bld:web",
+        "bld:web": "next build"
     },
     "engines": {
         "node": ">= 19.3.0"
