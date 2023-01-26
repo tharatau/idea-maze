@@ -66,22 +66,16 @@ fi
 #     mkdir 0.$NW_VER.x/chromium
 # fi
 
-# splitdiff -a -d -p 2 -D 0.$NW_VER.x/chromium 0.$NW_VER.x/chromium.patch
-
 # diff -r -u --color $UP_DIR/node $NW_DIR/node > 0.$NW_VER.x/node.patch
 
 # if [[ ! -d "0.$NW_VER.x/node" ]]; then
 #     mkdir 0.$NW_VER.x/node
 # fi
 
-# splitdiff -a -d -p 2 -D 0.$NW_VER.x/node 0.$NW_VER.x/node.patch
-
 # diff -r -u --color $UP_DIR/v8 $NW_DIR/v8 > 0.$NW_VER.x/v8.patch
 
 if [[ ! -d "0.$NW_VER.x/v8" ]]; then
     mkdir 0.$NW_VER.x/v8
 fi
-
-splitdiff -a -d -p 2 -D 0.$NW_VER.x/v8 0.$NW_VER.x/v8.patch
 
 # rm -rf nw up
