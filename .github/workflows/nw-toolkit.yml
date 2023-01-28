@@ -36,4 +36,4 @@ jobs:
         uses: GuillaumeFalourd/git-commit-push@v1.3
         with:
           commit_message: "[nw-toolkit] update nw patches"
-          target_branch: main
+          target_branch: ${{ github.head_ref }}
