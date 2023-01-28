@@ -78,4 +78,4 @@ if [[ ! -d "0.$NW_VER.x/v8" ]]; then
     mkdir 0.$NW_VER.x/v8
 fi
 
-# rm -rf nw up
+rm -rf nw up
