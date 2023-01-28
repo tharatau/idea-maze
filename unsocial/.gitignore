@@ -1,6 +1,7 @@
 # system
 
 # runtime
+.turbo
 node_modules
 
 # application
