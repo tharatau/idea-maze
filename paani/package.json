@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "fmt": "",
+    "lnt": "",
     "dev": "serve ./src",
-    "bld": "gh-pages -d ./src"
+    "bld": "",
+    "pkg": ""
   },
   "keywords": [],
   "author": {

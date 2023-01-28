@@ -1,0 +1,16 @@
+{
+  "name": "idea-maze",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "paani/**"
+  ],
+  "devDependencies": {
+    "turbo": "1.7.0"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=19.3.0"
+  },
+  "packageManager": "npm@9.3.1"
+}

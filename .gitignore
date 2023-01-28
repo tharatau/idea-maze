@@ -1,0 +1,9 @@
+# system
+.DS_Store
+
+# runtime
+.turbo
+node_modules
+
+# application
+out
