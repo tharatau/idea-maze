@@ -1,0 +1,11 @@
+# system
+.DS_Store
+
+# runtime
+node_modules
+
+# application
+out
+/test-results/
+/playwright-report/
+/playwright/.cache/

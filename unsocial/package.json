@@ -1,5 +1,73 @@
 {
-    "name": "unsocial",
-    "version": "0.0.0",
-    "private": true
+  "name": "unsocial",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "http://localhost:4175",
+  "node-main": "",
+  "node-remote": "http://localhost:4175",
+  "scripts": {
+    "fmt": "prettier --write ./",
+    "lnt": "eslint ./**/*.ts ",
+    "doc": "",
+    "e2e": "node --test test",
+    "dev": "concurrently npm:dev:website npm:dev:desktop",
+    "dev:website": "vite --port 4175",
+    "dev:desktop": "wait-on -c waitOnConfig.json http-get://localhost:4175 && nw .",
+    "bld": "",
+    "pkg": ""
+  },
+  "engines": {
+    "node": " >= 19.3.0",
+    "npm": ">= 9.4.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.211",
+    "@types/node": "^18.11.18",
+    "@types/nw.js": "^0.13.16",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@typescript-eslint/parser": "^5.50.0",
+    "@vitejs/plugin-react": "^3.0.1",
+    "concurrently": "^7.6.0",
+    "eslint": "^8.33.0",
+    "nw": "^0.72.0-sdk",
+    "nw-builder": "^4.0.8",
+    "prettier": "^2.8.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "selenium-webdriver": "^4.8.0",
+    "typedoc": "^0.23.24",
+    "typescript": "^4.9.5",
+    "vite": "^4.0.4",
+    "wait-on": "^7.0.1"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": false,
+    "quoteProps": "consistent",
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "bracketSameLine": false,
+    "arrowParens": "always",
+    "proseWrap": "preserve",
+    "htmlWhitespaceSensitivity": "strict",
+    "endOfLine": "lf",
+    "singleAttributePerLine": true
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 2023,
+      "sourceType": "module"
+    },
+    "env": {
+      "es6": true,
+      "browser": true
+    },
+    "parser": "@typescript-eslint/parser"
+  }
 }
