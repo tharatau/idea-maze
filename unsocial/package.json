@@ -14,10 +14,12 @@
     "dev": "concurrently npm:dev:website npm:dev:desktop",
     "dev:website": "vite --port 4175",
     "dev:desktop": "wait-on -c waitOnConfig.json http-get://localhost:4175 && nw .",
-    "dev:mobile" : "cd unsocial && ns device",
-    "bld": "",
-    "pkg": "",
-    "tmp": "ns create unsocial --react --ts"
+    "dev:mobile": "",
+    "bld": "npm run bld:website && npm run bld:desktop",
+    "bld:website": "vite build --outDir out/website",
+    "bld:desktop": "cp package.bld.json ./out/website/package.json && nwbuild ./out/website/**/* --mode=build --version=0.72.0 --flavor=sdk --platform=linux --arch=x64 --outDir=./out/desktop",
+    "bld:mobile": "",
+    "pkg": "cd out/website && nw ."
   },
   "engines": {
     "node": " >= 19.3.0",
@@ -33,9 +35,8 @@
     "@vitejs/plugin-react": "^3.0.1",
     "concurrently": "^7.6.0",
     "eslint": "^8.33.0",
-    "nativescript": "^8.4.0",
     "nw": "^0.72.0-sdk",
-    "nw-builder": "^4.0.8",
+    "nw-builder": "^4.0.9",
     "prettier": "^2.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
