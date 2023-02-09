@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "fmt": "",
+    "fmt": "prettier --write ./**/*.{css,html,json,md,ts,tsx}",
     "lnt": "",
     "doc": "",
     "dev": "vite",

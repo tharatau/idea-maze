@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-const ip4 = `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
+const ip4 = `${Math.floor(Math.random() * 255)}.${Math.floor(
+  Math.random() * 255
+)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
 
 export function App(): JSX.Element {
   const pseudo = "ayush";
   const [pwd, setPwd] = useState("/");
   const [input, setInput] = useState("");
-
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
 
   const handleInput = (event: any) => {
@@ -15,17 +16,33 @@ export function App(): JSX.Element {
 
   const handleCommand = (event: any) => {
     if (event.key === "Enter") {
-      setCommandHistory([...commandHistory, `${pseudo}@${ip4}:${pwd}$ ${input}`]);
+      if (event.target.value === "clear") {
+        setCommandHistory([]);
+      } else if (event.target.value === "pwd") {
+        setCommandHistory([
+          ...commandHistory,
+          `${pseudo}@${ip4}:${pwd}$ ${input}`,
+          pwd,
+        ]);
+      } else {
+        setCommandHistory([
+          ...commandHistory,
+          `${pseudo}@${ip4}:${pwd}$ ${input}`,
+          `${input}: command not found`,
+          `if you don't know what to do, type 'help'`,
+        ]);
+      }
+      setInput("");
     }
-  }
+  };
 
   return (
     <div>
-      {commandHistory.map((command) => (
-        <>
-        <span>{command}</span>
-        <br />
-        </>
+      {commandHistory.map((command, idx) => (
+        <div key={idx}>
+          <span>{command}</span>
+          <br />
+        </div>
       ))}
       {`${pseudo}@${ip4}:${pwd}$ `}
       <input
