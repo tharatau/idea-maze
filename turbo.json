@@ -3,8 +3,19 @@
   "pipeline": {
     "fmt": {},
     "lnt": {},
+    "doc": {},
     "dev": {},
-    "bld": {},
-    "pkg": {}
+    "bld": {
+      "dependsOn": [
+        "fmt",
+        "lnt",
+        "doc"
+      ]
+    },
+    "pkg": {
+      "dependsOn": [
+        "bld"
+      ]
+    }
   }
 }
