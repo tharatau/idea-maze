@@ -5,17 +5,7 @@
     "lnt": {},
     "doc": {},
     "dev": {},
-    "bld": {
-      "dependsOn": [
-        "fmt",
-        "lnt",
-        "doc"
-      ]
-    },
-    "pkg": {
-      "dependsOn": [
-        "bld"
-      ]
-    }
+    "bld": {},
+    "pkg": {}
   }
 }
