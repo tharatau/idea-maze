@@ -6,7 +6,7 @@
     "paani/**"
   ],
   "devDependencies": {
-    "turbo": "1.7.0"
+    "turbo": "1.7.4"
   },
   "dependencies": {},
   "engines": {
