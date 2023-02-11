@@ -18,6 +18,8 @@ export function App(): JSX.Element {
     if (event.key === "Enter") {
       if (event.target.value === "clear") {
         setCommandHistory([]);
+      } else if (event.target.value === "exit") {
+        window.close();
       } else if (event.target.value === "help") {
         setCommandHistory([...commandHistory,
         `${pseudo}@${ip4}:${pwd}$ ${input}`,
@@ -26,6 +28,7 @@ export function App(): JSX.Element {
         `I have a few commands that you can use to navigate around the site:`,
         ``,
         `clear: clear the terminal`,
+        `exit: close the terminal`,
         `help: list of valid commands in this terminal emulator`,
         `pwd: print the current working directory`,
       ]);
