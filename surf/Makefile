@@ -1,8 +1,17 @@
-utility: utility_cli.cc
-	clang++ -std=c++20 -c utility_cli.cc
+CC = clang
+CFLAGS = -std=c17
 
-surf: surf.cc utility_cli.o
-	clang++ -std=c++20 surf.cc utility_cli.o -o surf.exe
+all:
+	make clean
+	make surf
+	make utility_math
 
-exe: surf.exe
-	./surf.exe
+clean:
+	rm -f *.o *.exe *.so
+
+surf:
+	${CC} ${CFLAGS} surf.c -o surf.exe
+
+utility_math:
+	${CC} ${CFLAGS} -c utility_math.c -o utility_math.o -fPIC
+	${CC} ${CFLAGS} -shared utility_math.o -o utility_math.so

@@ -1,3 +1,7 @@
 surf
 
 Experimental application to surf the internet with the goal of inversion of control.
+
+Architecture:
+
+The application is broken into chrome, render, service and utility "plugins". Plugins are third party libraries which are dynamically linked to the executable.
