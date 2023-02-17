@@ -7,7 +7,7 @@ int main() {
   char *error;
   void *math;
 
-  math = dlopen("utility_math.so", RTLD_LAZY);
+  math = dlopen("./libsurf.so", RTLD_LAZY);
 
   if (!math) {
     fprintf(stderr, "%s\n", dlerror());

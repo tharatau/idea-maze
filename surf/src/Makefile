@@ -1,21 +1,27 @@
 CC := clang
-CFLAGS := -std=c17
+CFLAGS := -std=c17 -fPIC
+SOFLAGS := -shared
 
-.PHONY: all fmt lnt e2e rmf dev bld pkg
+SRC=$(wildcard utility_*.c)
+OBJ=$(SRC:.c=.o)
 
-everything:
-	make utility_math.so
+.PHONY: all dep fmt lnt e2e doc rmf
+
+all:
+	make libsurf.so
 	make surf.exe
 
-fmt:
-	clang-format -i *.c *.h
+dep:
+	echo "Installing..."
 
 rmf:
 	rm -rf *.exe *.o *.so
 
-utility_math.so: utility_math.c
-	${CC} ${CFLAGS} -c -o utility_math.o utility_math.c -fPIC
-	${CC} ${CFLAGS} -shared -o utility_math.so utility_math.o
-
 surf.exe: surf.c
-	${CC} ${CFLAGS} $< -o $@
+	$(CC) -o $@ $<
+
+libsurf.so: $(OBJ)
+	$(CC) $(SOFLAGS) -o $@ $<
+
+$(OBJ): $(SRC)
+	$(CC) $(CFLAGS) -c $<
