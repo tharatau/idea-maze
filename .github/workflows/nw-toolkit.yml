@@ -13,7 +13,7 @@ concurrency:
 defaults:
   run:
     shell: bash
-    working-directory: nw-toolkit
+    working-directory: lib/nw
 
 jobs:
   patch:
@@ -35,4 +35,4 @@ jobs:
       - name: Commit patches
         uses: GuillaumeFalourd/git-commit-push@v1.3
         with:
-          commit_message: "[nw-toolkit] update nw patches"
+          commit_message: "nw: update patches"
