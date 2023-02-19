@@ -4,18 +4,18 @@ echo $PWD
 
 NW_DIR="nw"
 NW_URI=https://github.com/nwjs
-NW_VER=72
+NW_VER=73
 
 UP_DIR="up"
 
 CHROMIUM_URI="https://github.com/chromium/chromium"
-CHROMIUM_VER="109.0.5414.87"
+CHROMIUM_VER="110.0.5481.97"
 
 NODE_URI="https://github.com/nodejs/node"
 NODE_VER="19.5.0"
 
 V8_URI="https://github.com/v8/v8"
-V8_VER="10.8.168.21"
+V8_VER="11.0.226.16"
 
 if [[ ! -d "patches" ]]; then
     mkdir patches
