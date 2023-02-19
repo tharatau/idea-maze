@@ -36,3 +36,4 @@ jobs:
         uses: GuillaumeFalourd/git-commit-push@v1.3
         with:
           commit_message: "nw: update patches"
+          files: lib/nw
