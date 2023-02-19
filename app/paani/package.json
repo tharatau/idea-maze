@@ -8,7 +8,7 @@
     "lnt": "",
     "dev": "serve ./src",
     "bld": "",
-    "pkg": ""
+    "pkg": "gh-pages -d src -e paani"
   },
   "keywords": [],
   "author": {
