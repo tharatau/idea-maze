@@ -3,6 +3,7 @@
   "pipeline": {
     "fmt": {},
     "lnt": {},
+    "doc": {},
     "dev": {},
     "bld": {},
     "pkg": {}

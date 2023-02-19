@@ -1,0 +1,14 @@
+{
+  "name": "site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "fmt": "prettier --write ./**/*.{css,html,json,md,ts,tsx}",
+    "lnt": "",
+    "doc": "",
+    "dev": "vite",
+    "bld": "tsc && vite build --outDir ./out",
+    "pkg": ""
+  }
+}
