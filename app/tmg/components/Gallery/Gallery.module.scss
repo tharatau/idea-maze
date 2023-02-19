@@ -1,0 +1,17 @@
+.gallery {
+    height: 100%;
+    width: 100%;
+
+    &_title {
+        text-align: center;
+        margin: 20px 0px 20px 0px;
+        font-weight: 700;
+    }
+
+    &_image {
+        height: auto;
+        max-width: 100%;
+
+        border-radius: 25px;
+    }
+}

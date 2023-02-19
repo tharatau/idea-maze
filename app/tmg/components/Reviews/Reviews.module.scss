@@ -1,0 +1,14 @@
+.reviews {
+    height: 100%;
+    width: 100%;
+
+    &_review {
+        border-radius: 25px;
+    }
+
+    &_title {
+        text-align: center;
+        margin: 20px 0px 20px 0px;
+        font-weight: 700;
+    }
+}
