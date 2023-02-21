@@ -2,7 +2,9 @@
   "name": "vsx",
   "version": "0.6.0",
   "description": "Write reactive vanilla JavaScript in JSX.",
-  "author": "Ayushman Chhabra <ayushmxn@outlook.com>",
+  "author": {
+    "url": "https://github.com/tharatau"
+  },
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
@@ -20,11 +22,13 @@
     "url": "https://github.com/ayushmxn/vsx.git"
   },
   "scripts": {
-    "fmt": "prettier --write ./src ./test",
+    "fmt": "prettier --write ./src ./e2e",
     "lnt": "eslint ./src/**/*.ts",
     "e2e": "jest",
+    "doc": "",
+    "dev": "",
     "bld": "tsup src/index.ts --minify --format cjs,esm --dts --clean",
-    "demo": "pnpm build && esbuild ./test/demo/index.tsx --bundle --platform=node --outfile=./test/demo/index.js && serve ./test/demo"
+    "pkg": ""
   },
   "keywords": [
     "JSX",

@@ -6,8 +6,10 @@
     "fmt": "prettier ./**/*.tsx",
     "lnt": "next lint",
     "e2e": "jest",
+    "doc": "",
     "dev": "next dev",
-    "bld": "next build"
+    "bld": "next build",
+    "pkg": ""
   },
   "jest": {
     "preset": "ts-jest",
