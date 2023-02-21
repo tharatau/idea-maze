@@ -20,11 +20,11 @@
     "url": "https://github.com/ayushmxn/vsx.git"
   },
   "scripts": {
-    "format": "prettier --write ./src ./test",
-    "lint": "eslint ./src/**/*.ts",
-    "build": "tsup src/index.ts --minify --format cjs,esm --dts --clean",
-    "demo": "pnpm build && esbuild ./test/demo/index.tsx --bundle --platform=node --outfile=./test/demo/index.js && serve ./test/demo",
-    "test": "jest"
+    "fmt": "prettier --write ./src ./test",
+    "lnt": "eslint ./src/**/*.ts",
+    "e2e": "jest",
+    "bld": "tsup src/index.ts --minify --format cjs,esm --dts --clean",
+    "demo": "pnpm build && esbuild ./test/demo/index.tsx --bundle --platform=node --outfile=./test/demo/index.js && serve ./test/demo"
   },
   "keywords": [
     "JSX",
@@ -32,21 +32,6 @@
   ],
   "dependencies": {
     "uniqid": "5.4.0"
-  },
-  "devDependencies": {
-    "@types/jest": "29.2.5",
-    "@types/node": "18.11.18",
-    "@typescript-eslint/parser": "5.47.1",
-    "esbuild": "0.16.12",
-    "eslint": "8.31.0",
-    "jest": "29.3.1",
-    "jest-environment-jsdom": "29.3.1",
-    "jsdom": "20.0.3",
-    "prettier": "2.8.1",
-    "serve": "14.1.2",
-    "ts-jest": "29.0.3",
-    "tsup": "6.5.0",
-    "typescript": "4.9.4"
   },
   "jest": {
     "preset": "ts-jest",

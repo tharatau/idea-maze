@@ -1,4 +1,4 @@
-name: ci
+name: vsx
 on:
   pull_request:
     branches:
