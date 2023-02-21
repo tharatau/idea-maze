@@ -16,9 +16,5 @@
     "email": "ayushmxn@outlook.com",
     "url": "https://github.com/tharatau"
   },
-  "license": "ISC",
-  "devDependencies": {
-    "gh-pages": "^4.0.0",
-    "serve": "^14.0.1"
-  }
+  "license": "MIT"
 }
