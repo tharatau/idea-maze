@@ -21,8 +21,5 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3.3.0
-      - run: npm i -g turbo
       - run: npm ci
-      - run: turbo fmt
-      - run: turbo lnt
-      - run: turbo e2e
+      - run: npm run ci

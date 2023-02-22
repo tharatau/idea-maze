@@ -7,6 +7,9 @@
     "lib/*",
     "pkg/*"
   ],
+  "scripts": {
+    "ci": "turbo fmt lnt e2e"
+  },
   "devDependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
