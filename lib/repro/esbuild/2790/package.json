@@ -4,6 +4,6 @@
         "start": "node build.mjs"
     },
     "dependencies": {
-        "esbuild": "^0.16.13"
+        "esbuild": "^0.17.0"
     }
 }
