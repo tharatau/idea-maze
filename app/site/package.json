@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "fmt": "prettier --write ./**/*.{css,html,json,md,ts,tsx}",
+    "fmt": "prettier --write ./**/*.{css,html,json,ts,tsx}",
     "lnt": "",
     "e2e": "",
     "doc": "",
