@@ -1,0 +1,60 @@
+# Tau Lang
+
+# Specification
+
+## Variable
+
+```
+var v: int8 = 7;
+```
+
+## Pointer
+
+```
+ptr v: int8* = &a;
+```
+
+## Function
+
+```
+fun f(x: int8): int8 {
+    return x;
+};
+```
+
+## For
+
+## Iff
+
+```
+iff (A != B) {
+    return 0;
+}
+```
+
+## Structure
+
+```
+str s {
+    v1: int8,
+    v2: flt8
+};
+```
+
+## Module resolution
+
+Define a module:
+```
+mod m;
+
+fun f(x: int8): int8 {
+    return x;
+}
+
+y = f(3);
+```
+
+Require a module:
+```
+req r;
+```
