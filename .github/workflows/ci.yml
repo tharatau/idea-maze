@@ -1,0 +1,25 @@
+name: ci
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [macos-12, ubuntu-22.04, windows-2022]
+        node-version: ["19.6.1"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - run: npm ci
+      - run: npm run ci

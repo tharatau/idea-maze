@@ -21,17 +21,18 @@ export function App(): JSX.Element {
       } else if (event.target.value === "exit") {
         window.close();
       } else if (event.target.value === "help") {
-        setCommandHistory([...commandHistory,
-        `${pseudo}@${ip4}:${pwd}$ ${input}`,
-        `My name is ${pseudo} and this is my blog.`,
-        `As you might have guessed, the theme is a terminal emulator.`,
-        `I have a few commands that you can use to navigate around the site:`,
-        ``,
-        `clear: clear the terminal`,
-        `exit: close the terminal`,
-        `help: list of valid commands in this terminal emulator`,
-        `pwd: print the current working directory`,
-      ]);
+        setCommandHistory([
+          ...commandHistory,
+          `${pseudo}@${ip4}:${pwd}$ ${input}`,
+          `My name is ${pseudo} and this is my blog.`,
+          `As you might have guessed, the theme is a terminal emulator.`,
+          `I have a few commands that you can use to navigate around the site:`,
+          ``,
+          `clear: clear the terminal`,
+          `exit: close the terminal`,
+          `help: list of valid commands in this terminal emulator`,
+          `pwd: print the current working directory`,
+        ]);
       } else if (event.target.value === "pwd") {
         setCommandHistory([
           ...commandHistory,

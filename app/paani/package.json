@@ -1,24 +1,14 @@
 {
   "name": "paani",
-  "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
   "scripts": {
     "fmt": "",
     "lnt": "",
+    "e2e": "",
+    "doc": "",
     "dev": "serve ./src",
     "bld": "",
     "pkg": "gh-pages -d src -e paani"
-  },
-  "keywords": [],
-  "author": {
-    "name": "Ayushman Chhabra",
-    "email": "ayushmxn@outlook.com",
-    "url": "https://github.com/tharatau"
-  },
-  "license": "ISC",
-  "devDependencies": {
-    "gh-pages": "^5.0.0",
-    "serve": "^14.0.1"
   }
 }
