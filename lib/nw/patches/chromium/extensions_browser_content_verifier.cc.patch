@@ -1,0 +1,127 @@
+diff -r -u --color up/chromium/extensions/browser/content_verifier.cc nw/chromium/extensions/browser/content_verifier.cc
+--- up/chromium/extensions/browser/content_verifier.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/browser/content_verifier.cc	2023-02-19 17:36:36.819467460 +0000
+@@ -17,6 +17,7 @@
+ #include "base/memory/weak_ptr.h"
+ #include "base/metrics/histogram_macros.h"
+ #include "base/strings/string_util.h"
++#include "base/task/thread_pool.h"
+ #include "base/threading/thread_restrictions.h"
+ #include "base/timer/elapsed_timer.h"
+ #include "content/public/browser/browser_context.h"
+@@ -37,6 +38,9 @@
+ #include "mojo/public/cpp/bindings/pending_remote.h"
+ #include "services/network/public/mojom/network_context.mojom.h"
+ 
++#include "base/files/file_util.h"
++#include "base/threading/thread_restrictions.h"
++
+ namespace extensions {
+ 
+ namespace {
+@@ -472,7 +476,7 @@
+   // a cache of ContentHashReader's that we hold onto past the end of each job.
+   scoped_refptr<ContentVerifyJob> job = base::MakeRefCounted<ContentVerifyJob>(
+       extension_id, data->version, extension_root, normalized_unix_path,
+-      base::BindOnce(&ContentVerifier::VerifyFailed, this, extension_id));
++      base::BindOnce(&ContentVerifier::VerifyFailed, this, extension_id, relative_path));
+   job->Start(this);
+   return job;
+ }
+@@ -526,21 +530,74 @@
+          ContentVerifierDelegate::VerifierSourceType::UNSIGNED_HASHES;
+ }
+ 
++void ContentVerifier::OnHashReady(const std::string& extension_id,
++                                  const base::FilePath& extension_root,
++                                  const base::FilePath& relative_path,
++                                  scoped_refptr<ContentVerifyJob> verify_job) {
++  base::ThreadPool::PostTaskAndReplyWithResult(
++                                   FROM_HERE, {base::MayBlock(), base::TaskShutdownBehavior::CONTINUE_ON_SHUTDOWN},
++      base::BindOnce(&ContentVerifier::OpenFile, this, extension_root, relative_path, verify_job),
++      base::BindOnce(&ContentVerifier::OnFileReady, this, extension_root, relative_path, verify_job));
++}
++
++bool ContentVerifier::OpenFile(const base::FilePath& extension_root,
++                               const base::FilePath& relative_path,
++                               scoped_refptr<ContentVerifyJob> job) {
++  job->file_.Initialize(extension_root.Append(relative_path), base::File::FLAG_OPEN | base::File::FLAG_READ);
++  return true;
++}
++
++void ContentVerifier::OnFileReady(const base::FilePath& extension_root,
++                                  const base::FilePath& relative_path,
++                                  scoped_refptr<ContentVerifyJob> job, bool result) {
++  if (!job->file_.IsValid())
++    job->Done();
++
++  base::ThreadPool::PostTaskAndReplyWithResult(
++                                   FROM_HERE, {base::MayBlock(), base::TaskShutdownBehavior::CONTINUE_ON_SHUTDOWN},
++      base::BindOnce(&ContentVerifier::ReadFile, this, extension_root, relative_path, job),
++     base::BindOnce(&ContentVerifier::BytesRead, this, extension_root, relative_path, job));
++}
++bool ContentVerifier::ReadFile(const base::FilePath& extension_root,
++                               const base::FilePath& relative_path,
++                               scoped_refptr<ContentVerifyJob> job) {
++  job->len_ = job->file_.ReadAtCurrentPos(job->buf_, 32768);
++  if (job->len_ <= 0)
++    job->file_.Close();
++  return true;
++}
++
++void ContentVerifier::BytesRead(const base::FilePath& extension_root,
++                                const base::FilePath& relative_path,
++                                scoped_refptr<ContentVerifyJob> job, bool result) {
++  if (job->len_ <= 0) {
++    job->Done();
++  } else {
++    job->Read(job->buf_, job->len_, base::File::FILE_OK);
++    base::ThreadPool::PostTaskAndReplyWithResult(
++      FROM_HERE, {base::MayBlock(), base::TaskShutdownBehavior::CONTINUE_ON_SHUTDOWN},
++      base::BindOnce(&ContentVerifier::ReadFile, this, extension_root, relative_path, job),
++      base::BindOnce(&ContentVerifier::BytesRead, this, extension_root, relative_path, job));
++  }
++}
++
+ void ContentVerifier::VerifyFailed(const ExtensionId& extension_id,
+-                                   ContentVerifyJob::FailureReason reason) {
++                                   const base::FilePath& relative_path,
++                                   ContentVerifyJob::FailureReason reason,
++                                   scoped_refptr<ContentVerifyJob> verify_job) {
+   if (!content::BrowserThread::CurrentlyOn(content::BrowserThread::UI)) {
+     content::GetUIThreadTaskRunner({})->PostTask(
+         FROM_HERE, base::BindOnce(&ContentVerifier::VerifyFailed, this,
+-                                  extension_id, reason));
++                                  extension_id, relative_path, reason, verify_job));
+     return;
+   }
+   if (shutdown_on_ui_)
+     return;
+ 
+-  VLOG(1) << "VerifyFailed " << extension_id << " reason:" << reason;
++  VLOG(1) << "VerifyFailed " << extension_id << " reason:" << reason << " " << relative_path.AsUTF8Unsafe();
+   DCHECK_NE(ContentVerifyJob::NONE, reason);
+ 
+-  delegate_->VerifyFailed(extension_id, reason);
++  delegate_->VerifyFailed(extension_id, relative_path, reason, verify_job);
+ }
+ 
+ void ContentVerifier::OnExtensionLoaded(
+@@ -599,7 +656,7 @@
+ void ContentVerifier::VerifyFailedForTest(
+     const ExtensionId& extension_id,
+     ContentVerifyJob::FailureReason reason) {
+-  VerifyFailed(extension_id, reason);
++  VerifyFailed(extension_id, base::FilePath(), reason, nullptr);
+ }
+ 
+ void ContentVerifier::ClearCacheForTesting() {
+@@ -641,7 +698,7 @@
+   if (!did_hash_mismatch)
+     return;
+ 
+-  VerifyFailed(extension_id, ContentVerifyJob::HASH_MISMATCH);
++  VerifyFailed(extension_id, base::FilePath(), ContentVerifyJob::HASH_MISMATCH, nullptr);
+ }
+ 
+ ContentHash::FetchKey ContentVerifier::GetFetchKey(

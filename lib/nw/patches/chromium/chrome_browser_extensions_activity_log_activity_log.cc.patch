@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/chrome/browser/extensions/activity_log/activity_log.cc nw/chromium/chrome/browser/extensions/activity_log/activity_log.cc
+--- up/chromium/chrome/browser/extensions/activity_log/activity_log.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/activity_log/activity_log.cc	2023-02-19 17:36:27.675444342 +0000
+@@ -222,7 +222,7 @@
+ 
+   if (found) {
+     *url = contents->GetURL();
+-    *is_incognito = browser->profile()->IsOffTheRecord();
++    *is_incognito = false; //browser->profile()->IsOffTheRecord();
+     return true;
+   } else {
+     return false;

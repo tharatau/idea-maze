@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/chrome/browser/browser_features.cc nw/chromium/chrome/browser/browser_features.cc
+--- up/chromium/chrome/browser/browser_features.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/browser_features.cc	2023-02-19 17:36:27.475443835 +0000
+@@ -31,7 +31,7 @@
+ BASE_FEATURE(kDestroyProfileOnBrowserClose,
+              "DestroyProfileOnBrowserClose",
+ #if BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_WIN)
+-             base::FEATURE_ENABLED_BY_DEFAULT);
++             base::FEATURE_DISABLED_BY_DEFAULT);
+ #else
+              base::FEATURE_DISABLED_BY_DEFAULT);
+ #endif

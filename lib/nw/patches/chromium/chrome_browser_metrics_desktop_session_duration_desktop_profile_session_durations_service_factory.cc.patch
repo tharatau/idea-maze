@@ -1,0 +1,20 @@
+diff -r -u --color up/chromium/chrome/browser/metrics/desktop_session_duration/desktop_profile_session_durations_service_factory.cc nw/chromium/chrome/browser/metrics/desktop_session_duration/desktop_profile_session_durations_service_factory.cc
+--- up/chromium/chrome/browser/metrics/desktop_session_duration/desktop_profile_session_durations_service_factory.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/metrics/desktop_session_duration/desktop_profile_session_durations_service_factory.cc	2023-02-19 17:36:27.995445152 +0000
+@@ -53,6 +53,8 @@
+ KeyedService*
+ DesktopProfileSessionDurationsServiceFactory::BuildServiceInstanceFor(
+     content::BrowserContext* context) const {
++  return nullptr;
++#if 0
+   Profile* profile = Profile::FromBrowserContext(context);
+ 
+ // On Ash and Lacros IsGuestSession and IsRegularProfile() are not mutually
+@@ -73,6 +75,7 @@
+       IdentityManagerFactory::GetForProfile(profile);
+   return new DesktopProfileSessionDurationsService(
+       profile->GetPrefs(), sync_service, identity_manager, tracker);
++#endif
+ }
+ 
+ }  // namespace metrics

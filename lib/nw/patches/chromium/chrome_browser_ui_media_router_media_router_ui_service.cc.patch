@@ -1,0 +1,48 @@
+diff -r -u --color up/chromium/chrome/browser/ui/media_router/media_router_ui_service.cc nw/chromium/chrome/browser/ui/media_router/media_router_ui_service.cc
+--- up/chromium/chrome/browser/ui/media_router/media_router_ui_service.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/media_router/media_router_ui_service.cc	2023-02-19 17:36:29.435448796 +0000
+@@ -22,7 +22,9 @@
+     Profile* profile,
+     std::unique_ptr<MediaRouterActionController> action_controller)
+     : profile_(profile),
++#if defined(NWJS_SDK)
+       action_controller_(std::move(action_controller)),
++#endif
+       profile_pref_registrar_(std::make_unique<PrefChangeRegistrar>()) {
+   profile_pref_registrar_->Init(profile->GetPrefs());
+   profile_pref_registrar_->Add(
+@@ -44,7 +46,11 @@
+ }
+ 
+ MediaRouterActionController* MediaRouterUIService::action_controller() {
++#if defined(NWJS_SDK)
+   return action_controller_.get();
++#else
++  return nullptr;
++#endif
+ }
+ 
+ void MediaRouterUIService::AddObserver(Observer* observer) {
+@@ -58,16 +64,21 @@
+ void MediaRouterUIService::ConfigureService() {
+   if (!MediaRouterEnabled(profile_)) {
+     DisableService();
+-  } else if (!action_controller_ && MediaRouterEnabled(profile_)) {
++  }
++#if defined(NWJS_SDK)
++  else if (!action_controller_ && MediaRouterEnabled(profile_)) {
+     action_controller_ =
+         std::make_unique<MediaRouterActionController>(profile_);
+   }
++#endif
+ }
+ 
+ void MediaRouterUIService::DisableService() {
+   for (auto& observer : observers_)
+     observer.OnServiceDisabled();
++#if defined(NWJS_SDK)
+   action_controller_.reset();
++#endif
+ }
+ 
+ }  // namespace media_router

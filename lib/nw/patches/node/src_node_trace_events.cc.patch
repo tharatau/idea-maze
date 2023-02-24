@@ -1,0 +1,54 @@
+diff -r -u --color up/node/src/node_trace_events.cc nw/node/src/node_trace_events.cc
+--- up/node/src/node_trace_events.cc	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/src/node_trace_events.cc	2023-02-19 17:37:33.303599295 +0000
+@@ -76,6 +76,7 @@
+ }
+ 
+ void NodeCategorySet::Enable(const FunctionCallbackInfo<Value>& args) {
++#if 0
+   NodeCategorySet* category_set;
+   ASSIGN_OR_RETURN_UNWRAP(&category_set, args.Holder());
+   CHECK_NOT_NULL(category_set);
+@@ -87,9 +88,14 @@
+     GetTracingAgentWriter()->Enable(categories);
+     category_set->enabled_ = true;
+   }
++#endif
++}
++
++void Dummy(const FunctionCallbackInfo<Value>& args) {
+ }
+ 
+ void NodeCategorySet::Disable(const FunctionCallbackInfo<Value>& args) {
++#if 0
+   NodeCategorySet* category_set;
+   ASSIGN_OR_RETURN_UNWRAP(&category_set, args.Holder());
+   CHECK_NOT_NULL(category_set);
+@@ -98,9 +104,11 @@
+     GetTracingAgentWriter()->Disable(categories);
+     category_set->enabled_ = false;
+   }
++#endif
+ }
+ 
+ void GetEnabledCategories(const FunctionCallbackInfo<Value>& args) {
++#if 0
+   Environment* env = Environment::GetCurrent(args);
+   std::string categories =
+       GetTracingAgentWriter()->agent()->GetEnabledCategories();
+@@ -111,6 +119,7 @@
+                           NewStringType::kNormal,
+                           categories.size()).ToLocalChecked());
+   }
++#endif
+ }
+ 
+ static void SetTraceCategoryStateUpdateHandler(
+@@ -155,6 +164,7 @@
+                   .Check();
+   target->Set(context, trace,
+               binding->Get(context, trace).ToLocalChecked()).Check();
++  SetMethod(context, target, "trace", Dummy);
+ }
+ 
+ void NodeCategorySet::RegisterExternalReferences(

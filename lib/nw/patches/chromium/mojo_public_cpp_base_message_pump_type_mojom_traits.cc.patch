@@ -1,0 +1,22 @@
+diff -r -u --color up/chromium/mojo/public/cpp/base/message_pump_type_mojom_traits.cc nw/chromium/mojo/public/cpp/base/message_pump_type_mojom_traits.cc
+--- up/chromium/mojo/public/cpp/base/message_pump_type_mojom_traits.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/mojo/public/cpp/base/message_pump_type_mojom_traits.cc	2023-02-19 17:36:39.519474276 +0000
+@@ -20,6 +20,8 @@
+       return mojo_base::mojom::MessagePumpType::kCustom;
+     case base::MessagePumpType::IO:
+       return mojo_base::mojom::MessagePumpType::kIo;
++    case base::MessagePumpType::NODE:
++      return mojo_base::mojom::MessagePumpType::kNode;
+ #if BUILDFLAG(IS_ANDROID)
+     case base::MessagePumpType::JAVA:
+       return mojo_base::mojom::MessagePumpType::kJava;
+@@ -50,6 +52,9 @@
+     case mojo_base::mojom::MessagePumpType::kIo:
+       *output = base::MessagePumpType::IO;
+       return true;
++    case mojo_base::mojom::MessagePumpType::kNode:
++      *output = base::MessagePumpType::NODE;
++      return true;
+ #if BUILDFLAG(IS_ANDROID)
+     case mojo_base::mojom::MessagePumpType::kJava:
+       *output = base::MessagePumpType::JAVA;

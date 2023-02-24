@@ -1,0 +1,58 @@
+diff -r -u --color up/chromium/chrome/browser/chrome_browser_interface_binders.cc nw/chromium/chrome/browser/chrome_browser_interface_binders.cc
+--- up/chromium/chrome/browser/chrome_browser_interface_binders.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/chrome_browser_interface_binders.cc	2023-02-19 17:36:27.499443896 +0000
+@@ -722,10 +722,10 @@
+         base::BindRepeating(
+             &performance_manager::BindDocumentCoordinationUnit));
+   }
+-
++#if 0
+   map->Add<translate::mojom::ContentTranslateDriver>(
+       base::BindRepeating(&translate::BindContentTranslateDriver));
+-
++#endif
+   map->Add<blink::mojom::CredentialManager>(
+       base::BindRepeating(&ChromePasswordManagerClient::BindCredentialManager));
+ 
+@@ -855,6 +855,7 @@
+   RegisterWebUIControllerInterfaceBinder<
+       media::mojom::MediaEngagementScoreDetailsProvider, MediaEngagementUI>(
+       map);
++#if 0
+ 
+   RegisterWebUIControllerInterfaceBinder<browsing_topics::mojom::PageHandler,
+                                          BrowsingTopicsInternalsUI>(map);
+@@ -871,6 +872,7 @@
+ 
+   RegisterWebUIControllerInterfaceBinder<::mojom::UsbInternalsPageHandler,
+                                          UsbInternalsUI>(map);
++#endif
+ 
+   RegisterWebUIControllerInterfaceBinder<
+       history_clusters_internals::mojom::PageHandlerFactory,
+@@ -926,6 +928,7 @@
+       most_visited::mojom::MostVisitedPageHandlerFactory, NewTabPageUI,
+       NewTabPageThirdPartyUI>(map);
+ 
++#if 0
+   auto* history_clusters_service =
+       HistoryClustersServiceFactory::GetForBrowserContext(
+           render_frame_host->GetProcess()->GetBrowserContext());
+@@ -941,6 +944,7 @@
+           history_clusters::mojom::PageHandler, HistoryUI>(map);
+     }
+   }
++#endif
+ 
+   RegisterWebUIControllerInterfaceBinder<
+       browser_command::mojom::CommandHandlerFactory, NewTabPageUI, WhatsNewUI>(
+@@ -1302,8 +1306,7 @@
+   }
+ #endif  // BUILDFLAG(IS_CHROMEOS_ASH)
+ 
+-#if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_MAC) || BUILDFLAG(IS_LINUX) || \
+-    BUILDFLAG(IS_CHROMEOS)
++#if 0
+   RegisterWebUIControllerInterfaceBinder<discards::mojom::DetailsProvider,
+                                          DiscardsUI>(map);
+ 

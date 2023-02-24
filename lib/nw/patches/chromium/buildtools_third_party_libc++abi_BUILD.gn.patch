@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/buildtools/third_party/libc++abi/BUILD.gn nw/chromium/buildtools/third_party/libc++abi/BUILD.gn
+--- up/chromium/buildtools/third_party/libc++abi/BUILD.gn	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/buildtools/third_party/libc++abi/BUILD.gn	2023-02-19 17:36:25.247438196 +0000
+@@ -4,7 +4,7 @@
+ 
+ import("//build/config/c++/c++.gni")
+ 
+-source_set("libc++abi") {
++static_library("libc++abi") {
+   if (export_libcxxabi_from_executables) {
+     visibility = [ "//build/config:executable_deps" ]
+   } else {

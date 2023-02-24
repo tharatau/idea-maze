@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/extensions/renderer/bindings/api_signature.cc nw/chromium/extensions/renderer/bindings/api_signature.cc
+--- up/chromium/extensions/renderer/bindings/api_signature.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/renderer/bindings/api_signature.cc	2023-02-19 17:36:36.903467673 +0000
+@@ -30,6 +30,7 @@
+     "test.callbackFail",
+     "automation.addTreeChangeObserver",
+     "automation.removeTreeChangeObserver",
++    "nw.App.on",
+ };
+ 
+ std::vector<std::unique_ptr<ArgumentSpec>> ValueListToArgumentSpecs(

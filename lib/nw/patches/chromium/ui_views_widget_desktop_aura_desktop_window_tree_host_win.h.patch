@@ -1,0 +1,20 @@
+diff -r -u --color up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h
+--- up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h	2023-02-19 17:37:08.959544099 +0000
+@@ -171,6 +171,7 @@
+   gfx::Rect GetBoundsInPixels() const override;
+   void SetBoundsInPixels(const gfx::Rect& bounds) override;
+   gfx::Rect GetBoundsInAcceleratedWidgetPixelCoordinates() override;
++  void SetPositionInPixels(const gfx::Point& pos) override;
+   gfx::Point GetLocationOnScreenInPixels() const override;
+   void SetCapture() override;
+   void ReleaseCapture() override;
+@@ -196,6 +197,8 @@
+ 
+   // Overridden from HWNDMessageHandlerDelegate:
+   ui::InputMethod* GetHWNDMessageDelegateInputMethod() override;
++  bool ShouldHandleOnSize() const override;
++  bool HandleSize(UINT param, const gfx::Size& new_size) override;
+   bool HasNonClientView() const override;
+   FrameMode GetFrameMode() const override;
+   bool HasFrame() const override;

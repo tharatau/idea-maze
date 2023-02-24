@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/ui/base/clipboard/clipboard.h nw/chromium/ui/base/clipboard/clipboard.h
+--- up/chromium/ui/base/clipboard/clipboard.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/base/clipboard/clipboard.h	2023-02-19 17:37:08.051541916 +0000
+@@ -273,7 +273,7 @@
+       ClipboardBuffer buffer,
+       const DataTransferEndpoint* data_dst) const;
+ 
+- protected:
++ public:
+   // PortableFormat designates the type of data to be stored in the clipboard.
+   // This designation is shared across all OSes. The system-specific designation
+   // is defined by ClipboardFormatType. A single PortableFormat might be

@@ -1,0 +1,19 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/workers/worker_global_scope.h nw/chromium/third_party/blink/renderer/core/workers/worker_global_scope.h
+--- up/chromium/third_party/blink/renderer/core/workers/worker_global_scope.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/workers/worker_global_scope.h	2023-02-19 17:36:43.007483018 +0000
+@@ -57,6 +57,7 @@
+ 
+ struct BlinkTransferableMessage;
+ struct GlobalScopeCreationParams;
++class DOMArrayBuffer;
+ class ConsoleMessage;
+ class FetchClientSettingsObjectSnapshot;
+ class FontFaceSet;
+@@ -119,6 +120,7 @@
+   // This doesn't take an ExceptionState argument, but actually can throw
+   // exceptions directly to V8 (crbug/1114610).
+   virtual void importScripts(const Vector<String>& urls);
++  ScriptValue importNWBin(ScriptState* state, DOMArrayBuffer* buffer);
+ 
+   // ExecutionContext
+   const KURL& Url() const final;

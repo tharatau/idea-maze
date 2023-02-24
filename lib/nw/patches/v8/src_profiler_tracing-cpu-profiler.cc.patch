@@ -1,0 +1,11 @@
+diff -r -u --color up/v8/src/profiler/tracing-cpu-profiler.cc nw/v8/src/profiler/tracing-cpu-profiler.cc
+--- up/v8/src/profiler/tracing-cpu-profiler.cc	2023-02-10 19:02:29.000000000 +0000
++++ nw/v8/src/profiler/tracing-cpu-profiler.cc	2023-02-19 17:37:43.615623158 +0000
+@@ -28,6 +28,7 @@
+ #if defined(V8_USE_PERFETTO)
+   TrackEvent::RemoveSessionObserver(this);
+ #else
++  if (V8::GetCurrentPlatform())
+   V8::GetCurrentPlatform()->GetTracingController()->RemoveTraceStateObserver(
+       this);
+ #endif

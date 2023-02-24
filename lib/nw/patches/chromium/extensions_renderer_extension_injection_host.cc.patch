@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/extensions/renderer/extension_injection_host.cc nw/chromium/extensions/renderer/extension_injection_host.cc
+--- up/chromium/extensions/renderer/extension_injection_host.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/renderer/extension_injection_host.cc	2023-02-19 17:36:36.907467683 +0000
+@@ -64,7 +64,7 @@
+   if (outermost_origin->scheme() == kExtensionScheme &&
+       outermost_origin->host() != extension_->id() &&
+       !PermissionsData::CanExecuteScriptEverywhere(extension_->id(),
+-                                                   extension_->location())) {
++                                                   extension_->location(), extension_->GetType())) {
+     return PermissionsData::PageAccess::kDenied;
+   }
+ 

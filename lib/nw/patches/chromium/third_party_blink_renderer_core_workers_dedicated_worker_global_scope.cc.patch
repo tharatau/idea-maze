@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/workers/dedicated_worker_global_scope.cc nw/chromium/third_party/blink/renderer/core/workers/dedicated_worker_global_scope.cc
+--- up/chromium/third_party/blink/renderer/core/workers/dedicated_worker_global_scope.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/workers/dedicated_worker_global_scope.cc	2023-02-19 17:36:43.003483008 +0000
+@@ -390,6 +390,7 @@
+       WorkerThreadDebugger::From(script_state->GetIsolate());
+   transferable_message.sender_stack_trace_id =
+       debugger->StoreCurrentStackTrace("postMessage");
++  if (GetThread())
+   WorkerObjectProxy().PostMessageToWorkerObject(
+       std::move(transferable_message));
+ }

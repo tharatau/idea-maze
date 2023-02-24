@@ -1,0 +1,80 @@
+diff -r -u --color up/node/src/async_wrap.cc nw/node/src/async_wrap.cc
+--- up/node/src/async_wrap.cc	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/src/async_wrap.cc	2023-02-19 17:37:33.275599241 +0000
+@@ -107,6 +107,7 @@
+ 
+ 
+ void AsyncWrap::EmitTraceEventBefore() {
++#if 0
+   switch (provider_type()) {
+ #define V(PROVIDER)                                                           \
+     case PROVIDER_ ## PROVIDER:                                               \
+@@ -119,6 +120,7 @@
+     default:
+       UNREACHABLE();
+   }
++#endif
+ }
+ 
+ 
+@@ -129,6 +131,7 @@
+ 
+ 
+ void AsyncWrap::EmitTraceEventAfter(ProviderType type, double async_id) {
++#if 0
+   switch (type) {
+ #define V(PROVIDER)                                                           \
+     case PROVIDER_ ## PROVIDER:                                               \
+@@ -141,6 +144,7 @@
+     default:
+       UNREACHABLE();
+   }
++#endif
+ }
+ 
+ 
+@@ -180,6 +184,11 @@
+   SET_HOOK_FN(destroy);
+   SET_HOOK_FN(promise_resolve);
+ #undef SET_HOOK_FN
++
++  {
++    Local<v8::Private> priv = v8::Private::New(env->isolate());
++    env->set_promise_wrap_private(priv);
++  }
+ }
+ 
+ static void SetPromiseHooks(const FunctionCallbackInfo<Value>& args) {
+@@ -529,6 +538,7 @@
+ }
+ 
+ void AsyncWrap::EmitTraceEventDestroy() {
++#if 0
+   switch (provider_type()) {
+   #define V(PROVIDER)                                                         \
+     case PROVIDER_ ## PROVIDER:                                               \
+@@ -541,6 +551,7 @@
+     default:
+       UNREACHABLE();
+   }
++#endif
+ }
+ 
+ void AsyncWrap::EmitDestroy(Environment* env, double async_id) {
+@@ -597,6 +608,7 @@
+     }
+   }
+ 
++#if 0
+   switch (provider_type()) {
+ #define V(PROVIDER)                                                           \
+     case PROVIDER_ ## PROVIDER:                                               \
+@@ -618,7 +630,7 @@
+     default:
+       UNREACHABLE();
+   }
+-
++#endif
+   if (silent) return;
+ 
+   EmitAsyncInit(env(), resource,

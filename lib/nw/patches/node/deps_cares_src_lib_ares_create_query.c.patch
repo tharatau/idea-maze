@@ -1,0 +1,23 @@
+diff -r -u --color up/node/deps/cares/src/lib/ares_create_query.c nw/node/deps/cares/src/lib/ares_create_query.c
+--- up/node/deps/cares/src/lib/ares_create_query.c	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/deps/cares/src/lib/ares_create_query.c	2023-02-19 17:37:30.235593400 +0000
+@@ -16,6 +16,11 @@
+ 
+ #include "ares_setup.h"
+ 
++#ifndef _WIN32
++#pragma clang diagnostic push
++#pragma clang diagnostic ignored "-Warray-bounds"
++#endif
++
+ #ifdef HAVE_NETINET_IN_H
+ #  include <netinet/in.h>
+ #endif
+@@ -195,3 +200,7 @@
+ 
+   return ARES_SUCCESS;
+ }
++
++#ifndef _WIN32
++#pragma clang diagnostic pop
++#endif

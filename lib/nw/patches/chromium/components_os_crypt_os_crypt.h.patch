@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/components/os_crypt/os_crypt.h nw/chromium/components/os_crypt/os_crypt.h
+--- up/chromium/components/os_crypt/os_crypt.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/components/os_crypt/os_crypt.h	2023-02-19 17:36:33.271458496 +0000
+@@ -278,7 +278,7 @@
+   // The cached AES encryption key.
+   std::unique_ptr<crypto::SymmetricKey> cached_encryption_key_;
+   // TODO(dhollowa): Refactor to allow dependency injection of Keychain.
+-  bool use_mock_keychain_ = false;
++  bool use_mock_keychain_ = true;
+   // This flag is used to make the GetEncryptionKey method return NULL if used
+   // along with mock Keychain.
+   bool use_locked_mock_keychain_ = false;

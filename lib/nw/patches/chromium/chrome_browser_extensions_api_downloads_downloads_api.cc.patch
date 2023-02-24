@@ -1,0 +1,20 @@
+diff -r -u --color up/chromium/chrome/browser/extensions/api/downloads/downloads_api.cc nw/chromium/chrome/browser/extensions/api/downloads/downloads_api.cc
+--- up/chromium/chrome/browser/extensions/api/downloads/downloads_api.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/api/downloads/downloads_api.cc	2023-02-19 17:36:27.699444402 +0000
+@@ -1400,6 +1400,7 @@
+     return;
+   }
+   RecordApiFunctions(DOWNLOADS_FUNCTION_ACCEPT_DANGER);
++#if 0
+   // DownloadDangerPrompt displays a modal dialog using native widgets that the
+   // user must either accept or cancel. It cannot be scripted.
+   DownloadDangerPrompt* prompt = DownloadDangerPrompt::Create(
+@@ -1410,6 +1411,8 @@
+   if (on_prompt_created_ && !on_prompt_created_->is_null())
+     std::move(*on_prompt_created_).Run(prompt);
+   // Function finishes in DangerPromptCallback().
++#endif
++  DangerPromptCallback(download_id, DownloadDangerPrompt::ACCEPT);
+ }
+ 
+ void DownloadsAcceptDangerFunction::DangerPromptCallback(

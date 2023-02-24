@@ -1,0 +1,31 @@
+diff -r -u --color up/v8/include/v8-array-buffer.h nw/v8/include/v8-array-buffer.h
+--- up/v8/include/v8-array-buffer.h	2023-02-10 19:02:29.000000000 +0000
++++ nw/v8/include/v8-array-buffer.h	2023-02-19 17:37:43.239622249 +0000
+@@ -186,7 +186,8 @@
+      * while kReservation is for larger allocations with the ability to set
+      * access permissions.
+      */
+-    enum class AllocationMode { kNormal, kReservation };
++    enum class AllocationMode { kNormal, kReservation, kNodeJS };
++    virtual void Free(void* data, size_t length, AllocationMode mode);
+ 
+     /**
+      * Convenience allocator.
+@@ -232,6 +233,8 @@
+    */
+   static Local<ArrayBuffer> New(Isolate* isolate,
+                                 std::shared_ptr<BackingStore> backing_store);
++  static Local<ArrayBuffer> NewNode(Isolate* isolate,
++                                std::shared_ptr<BackingStore> backing_store);
+ 
+   /**
+    * Returns a new standalone BackingStore that is allocated using the array
+@@ -292,6 +295,8 @@
+       "ok).")
+   void Detach();
+ 
++  void set_nodejs(bool);
++
+   /**
+    * Detaches this ArrayBuffer and all its views (typed arrays).
+    * Detaching sets the byte length of the buffer and all typed arrays to zero,

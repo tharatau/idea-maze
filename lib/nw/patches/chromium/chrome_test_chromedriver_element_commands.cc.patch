@@ -1,0 +1,82 @@
+diff -r -u --color up/chromium/chrome/test/chromedriver/element_commands.cc nw/chromium/chrome/test/chromedriver/element_commands.cc
+--- up/chromium/chrome/test/chromedriver/element_commands.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/test/chromedriver/element_commands.cc	2023-02-19 17:36:30.223450791 +0000
+@@ -45,54 +45,6 @@
+ 
+ const std::set<std::string> kNontypeableControlTypes = {"color"};
+ 
+-const std::unordered_set<std::string> kBooleanAttributes = {
+-    "allowfullscreen",
+-    "allowpaymentrequest",
+-    "allowusermedia",
+-    "async",
+-    "autofocus",
+-    "autoplay",
+-    "checked",
+-    "compact",
+-    "complete",
+-    "controls",
+-    "declare",
+-    "default",
+-    "defaultchecked",
+-    "defaultselected",
+-    "defer",
+-    "disabled",
+-    "ended",
+-    "formnovalidate",
+-    "hidden",
+-    "indeterminate",
+-    "iscontenteditable",
+-    "ismap",
+-    "itemscope",
+-    "loop",
+-    "multiple",
+-    "muted",
+-    "nohref",
+-    "nomodule",
+-    "noresize",
+-    "noshade",
+-    "novalidate",
+-    "nowrap",
+-    "open",
+-    "paused",
+-    "playsinline",
+-    "pubdate",
+-    "readonly",
+-    "required",
+-    "reversed",
+-    "scoped",
+-    "seamless",
+-    "seeking",
+-    "selected",
+-    "truespeed",
+-    "typemustmatch",
+-    "willvalidate"};
+-
+ namespace {
+ 
+ Status FocusToElement(
+@@ -1046,11 +998,11 @@
+     return Status(kInvalidArgument, "missing 'name'");
+ 
+   // In legacy mode, use old behavior for backward compatibility.
+-  if (!session->w3c_compliant) {
+-    return GetElementAttribute(session, web_view, element_id, *attribute_name,
++  //if (!session->w3c_compliant) {
++  return GetElementAttribute(session, web_view, element_id, *attribute_name,
+                                value);
+-  }
+-
++    //}
++#if 0
+   Status status = CheckElement(element_id);
+   if (status.IsError())
+     return status;
+@@ -1063,6 +1015,7 @@
+           ? "(elem, attribute) => elem.hasAttribute(attribute) ? 'true' : null"
+           : "(elem, attribute) => elem.getAttribute(attribute)",
+       args, value);
++#endif
+ }
+ 
+ Status ExecuteGetElementValueOfCSSProperty(

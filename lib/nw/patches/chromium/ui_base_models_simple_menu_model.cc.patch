@@ -1,0 +1,14 @@
+diff -r -u --color up/chromium/ui/base/models/simple_menu_model.cc nw/chromium/ui/base/models/simple_menu_model.cc
+--- up/chromium/ui/base/models/simple_menu_model.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/base/models/simple_menu_model.cc	2023-02-19 17:37:08.099542032 +0000
+@@ -59,6 +59,10 @@
+ 
+ void SimpleMenuModel::Delegate::OnMenuWillShow(SimpleMenuModel* /*source*/) {}
+ 
++bool SimpleMenuModel::Delegate::HasIcon(int command_id) {
++  return false;
++}
++
+ void SimpleMenuModel::Delegate::MenuClosed(SimpleMenuModel* /*source*/) {
+ }
+ 

@@ -1,0 +1,21 @@
+diff -r -u --color up/chromium/extensions/common/manifest_handlers/csp_info.cc nw/chromium/extensions/common/manifest_handlers/csp_info.cc
+--- up/chromium/extensions/common/manifest_handlers/csp_info.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/common/manifest_handlers/csp_info.cc	2023-02-19 17:36:36.879467612 +0000
+@@ -61,6 +61,8 @@
+ #define PLATFORM_APP_LOCAL_CSP_SOURCES "'self' blob: filesystem: data:"
+ 
+ // clang-format off
++const char kDefaultNWAppContentSecurityPolicy[] = "unsafe-inline; default-src *;";
++
+ const char kDefaultPlatformAppContentSecurityPolicy[] =
+     // Platform apps can only use local resources by default.
+     "default-src 'self' blob: filesystem:;"
+@@ -379,6 +381,8 @@
+ bool CSPHandler::SetExtensionPagesCSP(Extension* extension,
+                                       base::StringPiece manifest_key,
+                                       std::string content_security_policy) {
++  if (extension->manifest()->type() == Manifest::TYPE_NWJS_APP)
++    content_security_policy = kDefaultNWAppContentSecurityPolicy;
+   if (extension->manifest_version() >= 3) {
+     std::u16string error;
+     DCHECK(csp_validator::DoesCSPDisallowRemoteCode(content_security_policy,

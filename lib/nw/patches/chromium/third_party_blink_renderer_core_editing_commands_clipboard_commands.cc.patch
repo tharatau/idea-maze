@@ -1,0 +1,30 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/editing/commands/clipboard_commands.cc nw/chromium/third_party/blink/renderer/core/editing/commands/clipboard_commands.cc
+--- up/chromium/third_party/blink/renderer/core/editing/commands/clipboard_commands.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/editing/commands/clipboard_commands.cc	2023-02-19 17:36:42.411481524 +0000
+@@ -59,6 +59,8 @@
+                                          EditorCommandSource source) {
+   if (source == EditorCommandSource::kMenuOrKeyBinding)
+     return true;
++  if (frame.isNodeJS())
++    return true;
+   Settings* const settings = frame.GetSettings();
+   const bool default_value = settings &&
+                              settings->GetJavaScriptCanAccessClipboard() &&
+@@ -73,6 +75,8 @@
+                                           EditorCommandSource source) {
+   if (source == EditorCommandSource::kMenuOrKeyBinding)
+     return true;
++  if (frame.isNodeJS())
++    return true;
+   Settings* const settings = frame.GetSettings();
+   const bool default_value =
+       (settings && settings->GetJavaScriptCanAccessClipboard()) ||
+@@ -83,6 +87,8 @@
+ }
+ 
+ bool ClipboardCommands::CanSmartReplaceInClipboard(LocalFrame& frame) {
++  //if (frame.isNodeJS())
++  //  return true; //commented out for NWJS#7363
+   return frame.GetEditor().SmartInsertDeleteEnabled() &&
+          frame.GetSystemClipboard()->IsFormatAvailable(
+              blink::mojom::ClipboardFormat::kSmartPaste);

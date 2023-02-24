@@ -1,0 +1,14 @@
+diff -r -u --color up/chromium/content/public/test/mock_render_thread.cc nw/chromium/content/public/test/mock_render_thread.cc
+--- up/chromium/content/public/test/mock_render_thread.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/public/test/mock_render_thread.cc	2023-02-19 17:36:35.815464924 +0000
+@@ -200,6 +200,10 @@
+   return 0;
+ }
+ 
++bool MockRenderThread::ResolveProxy(const GURL& url, std::string* proxy_list) {
++  return false;
++}
++
+ base::WaitableEvent* MockRenderThread::GetShutdownEvent() {
+   return nullptr;
+ }

@@ -1,0 +1,21 @@
+diff -r -u --color up/node/src/node_process_object.cc nw/node/src/node_process_object.cc
+--- up/node/src/node_process_object.cc	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/src/node_process_object.cc	2023-02-19 17:37:33.299599287 +0000
+@@ -78,7 +78,7 @@
+   info.GetReturnValue().Set(uv_os_getppid());
+ }
+ 
+-MaybeLocal<Object> CreateProcessObject(Realm* realm) {
++MaybeLocal<Object> CreateProcessObject(Realm* realm, bool node_is_nwjs) {
+   Isolate* isolate = realm->isolate();
+   EscapableHandleScope scope(isolate);
+   Local<Context> context = realm->context();
+@@ -92,6 +92,8 @@
+     return MaybeLocal<Object>();
+   }
+ 
++  if (node_is_nwjs)
++    READONLY_PROPERTY(process, "__nwjs", Integer::New(realm->env()->isolate(), 1));
+   // process[exiting_aliased_Uint32Array]
+   if (process
+           ->SetPrivate(context,

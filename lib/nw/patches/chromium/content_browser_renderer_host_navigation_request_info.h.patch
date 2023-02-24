@@ -1,0 +1,22 @@
+diff -r -u --color up/chromium/content/browser/renderer_host/navigation_request_info.h nw/chromium/content/browser/renderer_host/navigation_request_info.h
+--- up/chromium/content/browser/renderer_host/navigation_request_info.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/browser/renderer_host/navigation_request_info.h	2023-02-19 17:36:35.531464206 +0000
+@@ -47,7 +47,8 @@
+           devtools_accepted_stream_types,
+       bool is_pdf,
+       WeakDocumentPtr initiator_document,
+-      bool allow_cookies_from_browser);
++      bool allow_cookies_from_browser,
++      bool nw_trust = false);
+   NavigationRequestInfo(const NavigationRequestInfo& other) = delete;
+   ~NavigationRequestInfo();
+ 
+@@ -134,6 +135,8 @@
+   // Whether a Cookie header added to this request should not be overwritten by
+   // the network service.
+   const bool allow_cookies_from_browser;
++
++  bool nw_trusted;
+ };
+ 
+ }  // namespace content

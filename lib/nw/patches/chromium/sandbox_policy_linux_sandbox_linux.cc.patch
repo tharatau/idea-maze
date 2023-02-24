@@ -1,0 +1,15 @@
+diff -r -u --color up/chromium/sandbox/policy/linux/sandbox_linux.cc nw/chromium/sandbox/policy/linux/sandbox_linux.cc
+--- up/chromium/sandbox/policy/linux/sandbox_linux.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/sandbox/policy/linux/sandbox_linux.cc	2023-02-19 17:36:40.967477905 +0000
+@@ -159,9 +159,11 @@
+ }
+ 
+ SandboxLinux::~SandboxLinux() {
++#if 0
+   if (pre_initialized_) {
+     CHECK(initialize_sandbox_ran_);
+   }
++#endif
+ }
+ 
+ SandboxLinux* SandboxLinux::GetInstance() {

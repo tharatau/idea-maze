@@ -1,0 +1,16 @@
+diff -r -u --color up/chromium/chrome/browser/extensions/api/preference/preference_helpers.cc nw/chromium/chrome/browser/extensions/api/preference/preference_helpers.cc
+--- up/chromium/chrome/browser/extensions/api/preference/preference_helpers.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/api/preference/preference_helpers.cc	2023-02-19 17:36:27.731444483 +0000
+@@ -101,7 +101,11 @@
+       DCHECK(!args.empty());
+       DCHECK(args[0].is_dict());
+ 
+-      std::string level_of_control =
++      std::string level_of_control;
++      if (extension->is_nwjs_app())
++        level_of_control = kControlledByThisExtension;
++      else
++        level_of_control =
+           level_getter.Run(profile, extension->id(), browser_pref, incognito);
+ 
+       args[0].SetStringKey(kLevelOfControlKey, level_of_control);

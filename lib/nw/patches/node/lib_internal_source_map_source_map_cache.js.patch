@@ -1,0 +1,12 @@
+diff -r -u --color up/node/lib/internal/source_map/source_map_cache.js nw/node/lib/internal/source_map/source_map_cache.js
+--- up/node/lib/internal/source_map/source_map_cache.js	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/lib/internal/source_map/source_map_cache.js	2023-02-19 17:37:33.259599210 +0000
+@@ -50,6 +50,8 @@
+ }
+ 
+ function setSourceMapsEnabled(val) {
++  if (val === undefined)
++    val = false;
+   validateBoolean(val, 'val');
+ 
+   const {

@@ -1,0 +1,60 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.cc nw/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.cc
+--- up/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.cc	2023-02-19 17:36:43.587484472 +0000
+@@ -24,6 +24,18 @@
+ #include "third_party/blink/renderer/platform/scheduler/worker/worker_scheduler_proxy.h"
+ #include "third_party/blink/renderer/platform/scheduler/worker/worker_thread_scheduler.h"
+ 
++#include "v8.h"
++
++#include "third_party/node-nw/src/node_webkit.h"
++#define PLATFORM_HOOK_MAP(type, sym, fn) PLATFORM_EXPORT type fn = nullptr;
++#if defined(COMPONENT_BUILD) && defined(WIN32)
++#define NW_HOOK_MAP(type, sym, fn) BASE_EXPORT type fn;
++#else
++#define NW_HOOK_MAP(type, sym, fn) extern type fn;
++#endif
++#include "content/nw/src/common/node_hooks.h"
++#undef NW_HOOK_MAP
++
+ namespace blink {
+ 
+ std::unique_ptr<NonMainThread> NonMainThread::CreateThread(
+@@ -45,10 +57,13 @@
+                                         params.frame_or_worker_scheduler)
+                                   : nullptr),
+       supports_gc_(params.supports_gc) {
++  bool is_node = false;
++  if (g_web_worker_thread_new_fn)
++    (*g_web_worker_thread_new_fn)((void*)params.name, &is_node);
+   base::SimpleThread::Options options;
+   options.thread_type = params.base_thread_type;
+   thread_ = std::make_unique<SimpleThreadImpl>(
+-      params.name ? params.name : String(), options, supports_gc_,
++      params.name ? params.name : String(), options, is_node, supports_gc_,
+       const_cast<scheduler::NonMainThreadImpl*>(this));
+   if (supports_gc_) {
+     MemoryPressureListenerRegistry::Instance().RegisterThread(
+@@ -96,10 +111,12 @@
+ NonMainThreadImpl::SimpleThreadImpl::SimpleThreadImpl(
+     const WTF::String& name_prefix,
+     const base::SimpleThread ::Options& options,
++    bool is_node,
+     bool supports_gc,
+     NonMainThreadImpl* worker_thread)
+     : SimpleThread(name_prefix.Utf8(), options),
+       thread_(worker_thread),
++      nodejs_(is_node),
+       supports_gc_(supports_gc) {
+   // TODO(alexclarke): Do we need to unify virtual time for workers and the main
+   // thread?
+@@ -156,8 +173,7 @@
+   auto scoped_sequence_manager = std::move(sequence_manager_);
+   auto scoped_internal_task_queue = std::move(internal_task_queue_);
+   scoped_sequence_manager->BindToMessagePump(
+-      base::MessagePump::Create(base::MessagePumpType::DEFAULT));
+-
++       base::MessagePump::Create(nodejs_ ? base::MessagePumpType::NODE : base::MessagePumpType::DEFAULT));
+   base::RunLoop run_loop;
+   run_loop_ = &run_loop;
+   Thread::UpdateThreadTLS(thread_);

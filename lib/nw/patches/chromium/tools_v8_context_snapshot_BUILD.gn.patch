@@ -1,0 +1,50 @@
+diff -r -u --color up/chromium/tools/v8_context_snapshot/BUILD.gn nw/chromium/tools/v8_context_snapshot/BUILD.gn
+--- up/chromium/tools/v8_context_snapshot/BUILD.gn	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/tools/v8_context_snapshot/BUILD.gn	2023-02-19 17:37:07.827541378 +0000
+@@ -52,7 +52,7 @@
+ 
+   if (v8_snapshot_toolchain == current_toolchain) {
+     action("generate_v8_context_snapshot") {
+-      script = "//build/gn_run_binary.py"
++      script = "run.py"
+ 
+       # When cross compiling this target runs in a toolchain other than the
+       # default_toolchain. Code depending on this expect the snapshot to be
+@@ -84,10 +84,10 @@
+         # that it's possible that some of the shared libraries are updated
+         # without having the executable updated.
+         inputs = [
+-          "$root_out_dir/${shlib_prefix}blink_core${shlib_extension}",
+-          "$root_out_dir/${shlib_prefix}blink_modules${shlib_extension}",
+-          "$root_out_dir/${shlib_prefix}blink_platform${shlib_extension}",
+-          "$root_out_dir/${shlib_prefix}v8${shlib_extension}",
++          "$root_out_dir/${shlib_subdir}/${shlib_prefix}blink_core${shlib_extension}",
++          "$root_out_dir/${shlib_subdir}/${shlib_prefix}blink_modules${shlib_extension}",
++          "$root_out_dir/${shlib_subdir}/${shlib_prefix}blink_platform${shlib_extension}",
++          "$root_out_dir/${shlib_subdir}/${shlib_prefix}v8${shlib_extension}",
+         ]
+ 
+         deps += [
+@@ -110,6 +110,21 @@
+         "//v8",
+       ]
+ 
++      if ((is_win || is_linux) && is_component_build) {
++      } else {
++        deps += [
++          "//v8:v8_initializers",
++        ]
++      }
++
++      if (is_linux && !is_component_build) {
++        configs += [ "//build/config/gcc:rpath_for_built_shared_libraries" ]
++      }
++      if (is_mac && !is_component_build) {
++        # linking with ffmpeg lib
++        ldflags = [ "-rpath", "@executable_path/." ]
++      }
++
+       configs += [
+         "//v8:external_startup_data",
+         ":disable_icf",
+Only in nw/chromium/tools/v8_context_snapshot: run.py

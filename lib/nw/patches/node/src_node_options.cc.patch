@@ -1,0 +1,21 @@
+diff -r -u --color up/node/src/node_options.cc nw/node/src/node_options.cc
+--- up/node/src/node_options.cc	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/src/node_options.cc	2023-02-19 17:37:33.295599279 +0000
+@@ -945,14 +945,15 @@
+             &PerProcessOptions::trace_sigint,
+             kAllowedInEnvvar);
+ 
+-  Insert(iop, &PerProcessOptions::get_per_isolate_options);
+-
++  //Insert(iop, &PerProcessOptions::get_per_isolate_options);
++#if 0
+   AddOption("--node-memory-debug",
+             "Run with extra debug checks for memory leaks in Node.js itself",
+             NoOp{},
+             kAllowedInEnvvar);
+   Implies("--node-memory-debug", "--debug-arraybuffer-allocations");
+   Implies("--node-memory-debug", "--verify-base-objects");
++#endif
+ }
+ 
+ inline std::string RemoveBrackets(const std::string& host) {

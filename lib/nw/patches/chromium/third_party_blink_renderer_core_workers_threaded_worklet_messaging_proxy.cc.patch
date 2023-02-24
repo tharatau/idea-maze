@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc nw/chromium/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc
+--- up/chromium/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc	2023-02-19 17:36:43.003483008 +0000
+@@ -72,7 +72,7 @@
+                  : frame_client->UserAgent());
+ 
+   auto global_scope_creation_params =
+-      std::make_unique<GlobalScopeCreationParams>(
++    std::make_unique<GlobalScopeCreationParams>(false, std::string(),
+           window->Url(), mojom::blink::ScriptType::kModule, global_scope_name,
+           user_agent, frame_client->UserAgentMetadata(),
+           frame_client->CreateWorkerFetchContext(),

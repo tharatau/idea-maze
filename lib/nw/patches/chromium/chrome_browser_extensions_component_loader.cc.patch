@@ -1,0 +1,108 @@
+diff -r -u --color up/chromium/chrome/browser/extensions/component_loader.cc nw/chromium/chrome/browser/extensions/component_loader.cc
+--- up/chromium/chrome/browser/extensions/component_loader.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/component_loader.cc	2023-02-19 17:36:27.771444585 +0000
+@@ -5,6 +5,8 @@
+ #include "chrome/browser/extensions/component_loader.h"
+ 
+ #include <string>
++#include "content/public/common/content_features.h"
++#include "base/strings/utf_string_conversions.h"
+ 
+ #include "base/bind.h"
+ #include "base/callback.h"
+@@ -303,6 +305,18 @@
+   }
+ }
+ 
++std::string ComponentLoader::GetExtensionID(
++                                            int manifest_resource_id,
++                                            const base::FilePath& root_directory) {
++  absl::optional<base::Value::Dict> manifest =
++    ParseManifest(ui::ResourceBundle::GetSharedInstance().GetRawDataResource(
++                                                                         manifest_resource_id));
++  if (!manifest)
++    return std::string();
++
++  return GenerateId(manifest.value(), root_directory);
++}
++
+ bool ComponentLoader::Exists(const std::string& id) const {
+   for (const auto& component_extension : component_extensions_) {
+     if (component_extension.extension_id == id)
+@@ -413,6 +427,7 @@
+ 
+ void ComponentLoader::AddDefaultComponentExtensions(
+     bool skip_session_components) {
++#if 0
+   // Do not add component extensions that have background pages here -- add them
+   // to AddDefaultComponentExtensionsWithBackgroundPages.
+ #if BUILDFLAG(IS_CHROMEOS_ASH)
+@@ -435,13 +450,49 @@
+     if (crosapi::browser_util::IsAshWebBrowserEnabled())
+       AddChromeApp();
+ #endif  // BUILDFLAG(IS_CHROMEOS_ASH)
++  }
++
++#endif
++
++  AddDefaultComponentExtensionsWithBackgroundPages(skip_session_components);
+ #if BUILDFLAG(ENABLE_PDF)
+     Add(pdf_extension_util::GetManifest(),
+         base::FilePath(FILE_PATH_LITERAL("pdf")));
+ #endif  // BUILDFLAG(ENABLE_PDF)
+-  }
+ 
+-  AddDefaultComponentExtensionsWithBackgroundPages(skip_session_components);
++  base::CommandLine& command_line(*base::CommandLine::ForCurrentProcess());
++
++  //match the condition in startup_browser_creator.cc
++  if (command_line.HasSwitch("nwapp") || command_line.GetArgs().size() > 0)
++    return;
++
++  std::string url;
++  if (command_line.HasSwitch("url")) {
++      url = command_line.GetSwitchValueASCII("url");
++  }
++  std::string manifest_contents;
++  std::string default_path("nwjs_default_app");
++  if (base::FeatureList::IsEnabled(::features::kNWNewWin)) {
++    manifest_contents = 
++      std::string(ui::ResourceBundle::GetSharedInstance().GetRawDataResource(IDR_NWJS_DEFAPP_MANIFEST_NEWWIN));
++    default_path = "nwjs_newwin_app";
++  }
++  else
++    manifest_contents =
++      std::string(ui::ResourceBundle::GetSharedInstance().GetRawDataResource(IDR_NWJS_DEFAPP_MANIFEST));
++  absl::optional<base::Value::Dict> manifest
++    = ParseManifest(manifest_contents);
++  if (manifest) {
++    if (!url.empty())
++      manifest->Set("cmdlineUrl", url);
++    manifest->Set(extensions::manifest_keys::kNWJSMixedContext,
++		  command_line.HasSwitch("mixed-context"));
++#if defined(OS_WIN)
++    Add(std::move(*manifest), base::FilePath::FromUTF8Unsafe(default_path), true);
++#else
++    Add(std::move(*manifest), base::FilePath(default_path), true);
++#endif
++  }
+ }
+ 
+ void ComponentLoader::AddDefaultComponentExtensionsForKioskMode(
+@@ -468,6 +519,7 @@
+ 
+ void ComponentLoader::AddDefaultComponentExtensionsWithBackgroundPages(
+     bool skip_session_components) {
++#if 0 //nwjs
+   const base::CommandLine* command_line =
+       base::CommandLine::ForCurrentProcess();
+ 
+@@ -534,6 +586,8 @@
+ #endif
+ 
+ #endif  // BUILDFLAG(GOOGLE_CHROME_BRANDING)
++
++#endif //nwjs
+ }
+ 
+ void ComponentLoader::

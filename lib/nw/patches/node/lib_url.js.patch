@@ -1,0 +1,11 @@
+diff -r -u --color up/node/lib/url.js nw/node/lib/url.js
+--- up/node/lib/url.js	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/lib/url.js	2023-02-19 17:37:33.271599233 +0000
+@@ -30,6 +30,7 @@
+ } = primordials;
+ 
+ const { toASCII } = require('internal/idna');
++
+ const { encodeStr, hexTable } = require('internal/querystring');
+ const querystring = require('querystring');
+ 

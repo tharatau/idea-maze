@@ -1,0 +1,11 @@
+diff -r -u --color up/node/deps/uv/src/uv-common.h nw/node/deps/uv/src/uv-common.h
+--- up/node/deps/uv/src/uv-common.h	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/deps/uv/src/uv-common.h	2023-02-19 17:37:31.687596189 +0000
+@@ -323,6 +323,7 @@
+ # define UV_REQ_INIT(req, typ)                                                \
+   do {                                                                        \
+     (req)->type = (typ);                                                      \
++    (req)->next_req = NULL;                                                   \
+     (req)->u.io.overlapped.Internal = 0;  /* SET_REQ_SUCCESS() */             \
+   }                                                                           \
+   while (0)

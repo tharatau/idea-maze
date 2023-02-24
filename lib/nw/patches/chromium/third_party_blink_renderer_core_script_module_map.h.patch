@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/script/module_map.h nw/chromium/third_party/blink/renderer/core/script/module_map.h
+--- up/chromium/third_party/blink/renderer/core/script/module_map.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/script/module_map.h	2023-02-19 17:36:42.851482627 +0000
+@@ -51,6 +51,7 @@
+   // If the URL wasn't fetched, or is currently being fetched, this returns a
+   // nullptr.
+   ModuleScript* GetFetchedModuleScript(const KURL&, ModuleType) const;
++  void AddToMap(const KURL&, ModuleScript*);
+ 
+   Modulator* GetModulator() { return modulator_; }
+ 

@@ -1,0 +1,36 @@
+diff -r -u --color up/chromium/chrome/browser/browsing_data/chrome_browsing_data_remover_delegate.cc nw/chromium/chrome/browser/browsing_data/chrome_browsing_data_remover_delegate.cc
+--- up/chromium/chrome/browser/browsing_data/chrome_browsing_data_remover_delegate.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/browsing_data/chrome_browsing_data_remover_delegate.cc	2023-02-19 17:36:27.487443866 +0000
+@@ -4,6 +4,9 @@
+ 
+ #include "chrome/browser/browsing_data/chrome_browsing_data_remover_delegate.h"
+ 
++#include "components/password_manager/core/browser/smart_bubble_stats_store.h"
++#include "components/password_manager/core/browser/field_info_store.h"
++
+ #include <stdint.h>
+ 
+ #include <set>
+@@ -650,8 +653,10 @@
+           base::BindOnce(
+               &ChromeBrowsingDataRemoverDelegate::CreateTaskCompletionClosure,
+               base::Unretained(this), TracingDataType::kCookies));
++#if 0
+       safe_browsing::VerdictCacheManagerFactory::GetForProfile(profile_)
+           ->OnCookiesDeleted();
++#endif
+     }
+ 
+     if (filter_builder->GetMode() ==
+@@ -704,9 +709,10 @@
+         ProtocolHandlerRegistryFactory::GetForBrowserContext(profile_);
+     if (handler_registry)
+       handler_registry->ClearUserDefinedHandlers(delete_begin_, delete_end_);
+-
++#if 0
+     ChromeTranslateClient::CreateTranslatePrefs(prefs)
+         ->DeleteNeverPromptSitesBetween(delete_begin_, delete_end_);
++#endif
+ 
+     host_content_settings_map_->ClearSettingsForOneTypeWithPredicate(
+         ContentSettingsType::PERMISSION_AUTOREVOCATION_DATA, delete_begin,
