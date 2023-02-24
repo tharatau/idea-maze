@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/extension_injection_host.cc nw/chromium/extensions/renderer/extension_injection_host.cc
---- up/chromium/extensions/renderer/extension_injection_host.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/renderer/extension_injection_host.cc	2023-02-24 06:16:29.112547720 +0000
+--- up/chromium/extensions/renderer/extension_injection_host.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/renderer/extension_injection_host.cc	2023-02-24 20:12:10.308873228 +0000
 @@ -64,7 +64,7 @@
    if (outermost_origin->scheme() == kExtensionScheme &&
        outermost_origin->host() != extension_->id() &&

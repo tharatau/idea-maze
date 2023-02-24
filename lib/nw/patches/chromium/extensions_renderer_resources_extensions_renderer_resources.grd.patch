@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/resources/extensions_renderer_resources.grd nw/chromium/extensions/renderer/resources/extensions_renderer_resources.grd
---- up/chromium/extensions/renderer/resources/extensions_renderer_resources.grd	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/renderer/resources/extensions_renderer_resources.grd	2023-02-24 06:16:29.120548193 +0000
+--- up/chromium/extensions/renderer/resources/extensions_renderer_resources.grd	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/renderer/resources/extensions_renderer_resources.grd	2023-02-24 20:12:10.316873295 +0000
 @@ -73,6 +73,21 @@
  
        <!-- Extension styles. -->

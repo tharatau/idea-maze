@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/file_select_helper.h nw/chromium/chrome/browser/file_select_helper.h
---- up/chromium/chrome/browser/file_select_helper.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/file_select_helper.h	2023-02-24 06:16:21.068071642 +0000
+--- up/chromium/chrome/browser/file_select_helper.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/file_select_helper.h	2023-02-24 20:12:03.352812132 +0000
 @@ -321,6 +321,7 @@
    // Profile used to set/retrieve the last used directory.
    raw_ptr<Profile> profile_;

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/process_singleton_win.cc nw/chromium/chrome/browser/process_singleton_win.cc
---- up/chromium/chrome/browser/process_singleton_win.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/process_singleton_win.cc	2023-02-24 06:16:21.444093909 +0000
+--- up/chromium/chrome/browser/process_singleton_win.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/process_singleton_win.cc	2023-02-24 20:12:03.660815268 +0000
 @@ -429,6 +429,7 @@
                                                      notification_callback_),
                                  user_data_dir_.value());

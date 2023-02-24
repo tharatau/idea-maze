@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/content_verifier_delegate.h nw/chromium/extensions/browser/content_verifier_delegate.h
---- up/chromium/extensions/browser/content_verifier_delegate.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/browser/content_verifier_delegate.h	2023-02-24 06:16:29.032542986 +0000
+--- up/chromium/extensions/browser/content_verifier_delegate.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/browser/content_verifier_delegate.h	2023-02-24 20:12:10.236872626 +0000
 @@ -61,7 +61,9 @@
    // Called when the content verifier detects that a read of a file inside an
    // extension did not match its expected hash.

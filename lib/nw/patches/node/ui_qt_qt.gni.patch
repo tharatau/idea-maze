@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/qt/qt.gni nw/chromium/ui/qt/qt.gni
---- up/chromium/ui/qt/qt.gni	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/qt/qt.gni	2023-02-24 06:16:56.150102689 +0000
+--- up/chromium/ui/qt/qt.gni	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/qt/qt.gni	2023-02-24 20:12:33.961072855 +0000
 @@ -5,5 +5,5 @@
  import("//build/config/chromecast_build.gni")
  

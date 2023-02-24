@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/BUILD.gn nw/chromium/content/browser/BUILD.gn
---- up/chromium/content/browser/BUILD.gn	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/browser/BUILD.gn	2023-02-24 06:16:27.696463939 +0000
+--- up/chromium/content/browser/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/browser/BUILD.gn	2023-02-24 20:12:09.088863021 +0000
 @@ -1872,6 +1872,8 @@
      "renderer_host/view_transition_commit_deferring_condition.h",
      "renderer_host/visible_time_request_trigger.cc",

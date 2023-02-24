@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/site_info.cc nw/chromium/content/browser/site_info.cc
---- up/chromium/content/browser/site_info.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/browser/site_info.cc	2023-02-24 06:16:28.016482873 +0000
+--- up/chromium/content/browser/site_info.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/browser/site_info.cc	2023-02-24 20:12:09.364865330 +0000
 @@ -605,9 +605,11 @@
    DCHECK_CURRENTLY_ON(BrowserThread::UI);
    DCHECK(isolation_context.browser_or_resource_context());

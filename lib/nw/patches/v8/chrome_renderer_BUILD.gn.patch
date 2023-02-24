@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/renderer/BUILD.gn nw/chromium/chrome/renderer/BUILD.gn
---- up/chromium/chrome/renderer/BUILD.gn	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/renderer/BUILD.gn	2023-02-24 06:16:22.968184163 +0000
+--- up/chromium/chrome/renderer/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/renderer/BUILD.gn	2023-02-24 20:12:04.948828383 +0000
 @@ -122,6 +122,7 @@
    deps = [
      "//base/allocator:buildflags",

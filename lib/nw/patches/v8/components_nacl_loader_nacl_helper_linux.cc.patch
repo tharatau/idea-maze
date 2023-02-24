@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/nacl/loader/nacl_helper_linux.cc nw/chromium/components/nacl/loader/nacl_helper_linux.cc
---- up/chromium/components/nacl/loader/nacl_helper_linux.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/components/nacl/loader/nacl_helper_linux.cc	2023-02-24 06:16:25.904357912 +0000
+--- up/chromium/components/nacl/loader/nacl_helper_linux.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/components/nacl/loader/nacl_helper_linux.cc	2023-02-24 20:12:07.548850136 +0000
 @@ -331,7 +331,7 @@
    }
    if (!have_to_reply)

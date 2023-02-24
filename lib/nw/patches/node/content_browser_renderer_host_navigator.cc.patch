@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/renderer_host/navigator.cc nw/chromium/content/browser/renderer_host/navigator.cc
---- up/chromium/content/browser/renderer_host/navigator.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/browser/renderer_host/navigator.cc	2023-02-24 06:16:27.948478849 +0000
+--- up/chromium/content/browser/renderer_host/navigator.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/browser/renderer_host/navigator.cc	2023-02-24 20:12:09.304864828 +0000
 @@ -58,6 +58,11 @@
  #include "url/gurl.h"
  #include "url/url_util.h"

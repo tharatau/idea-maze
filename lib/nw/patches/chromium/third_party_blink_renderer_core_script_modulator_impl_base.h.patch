@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/script/modulator_impl_base.h nw/chromium/third_party/blink/renderer/core/script/modulator_impl_base.h
---- up/chromium/third_party/blink/renderer/core/script/modulator_impl_base.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/script/modulator_impl_base.h	2023-02-24 06:16:33.828826548 +0000
+--- up/chromium/third_party/blink/renderer/core/script/modulator_impl_base.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/script/modulator_impl_base.h	2023-02-24 20:12:14.452901832 +0000
 @@ -45,6 +45,8 @@
  
    bool IsScriptingDisabled() const override;

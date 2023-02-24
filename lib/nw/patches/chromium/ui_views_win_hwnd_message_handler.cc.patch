@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/win/hwnd_message_handler.cc nw/chromium/ui/views/win/hwnd_message_handler.cc
---- up/chromium/ui/views/win/hwnd_message_handler.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/views/win/hwnd_message_handler.cc	2023-02-24 06:16:56.326113114 +0000
+--- up/chromium/ui/views/win/hwnd_message_handler.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/views/win/hwnd_message_handler.cc	2023-02-24 20:12:34.113074266 +0000
 @@ -409,6 +409,8 @@
  LONG HWNDMessageHandler::last_touch_or_pen_message_time_ = 0;
  bool HWNDMessageHandler::is_pen_active_in_client_area_ = false;

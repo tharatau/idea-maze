@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/app/framework.order nw/chromium/chrome/app/framework.order
---- up/chromium/chrome/app/framework.order	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/app/framework.order	2023-02-24 06:16:19.303967175 +0000
+--- up/chromium/chrome/app/framework.order	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/app/framework.order	2023-02-24 20:12:01.920797551 +0000
 @@ -18,6 +18,267 @@
  # Provided by build/sanitizers/sanitizer_options.cc in ASan builds.
  ___asan_default_options

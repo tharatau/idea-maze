@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/renderer_host/input/touch_emulator.cc nw/chromium/content/browser/renderer_host/input/touch_emulator.cc
---- up/chromium/content/browser/renderer_host/input/touch_emulator.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/browser/renderer_host/input/touch_emulator.cc	2023-02-24 06:16:27.920477193 +0000
+--- up/chromium/content/browser/renderer_host/input/touch_emulator.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/browser/renderer_host/input/touch_emulator.cc	2023-02-24 20:12:09.284864661 +0000
 @@ -5,6 +5,8 @@
  #include "content/browser/renderer_host/input/touch_emulator.h"
  

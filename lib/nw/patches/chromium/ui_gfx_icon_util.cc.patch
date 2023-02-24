@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/gfx/icon_util.cc nw/chromium/ui/gfx/icon_util.cc
---- up/chromium/ui/gfx/icon_util.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/gfx/icon_util.cc	2023-02-24 06:16:56.006094160 +0000
+--- up/chromium/ui/gfx/icon_util.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/gfx/icon_util.cc	2023-02-24 20:12:33.845071779 +0000
 @@ -226,6 +226,21 @@
    return icon;
  }

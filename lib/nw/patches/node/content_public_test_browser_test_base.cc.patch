@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/test/browser_test_base.cc nw/chromium/content/public/test/browser_test_base.cc
---- up/chromium/content/public/test/browser_test_base.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/public/test/browser_test_base.cc	2023-02-24 06:16:28.176492340 +0000
+--- up/chromium/content/public/test/browser_test_base.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/public/test/browser_test_base.cc	2023-02-24 20:12:09.508866535 +0000
 @@ -316,6 +316,8 @@
        switches::kIPCConnectionTimeout,
        base::NumberToString(TestTimeouts::action_max_timeout().InSeconds()));

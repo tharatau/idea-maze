@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/api/language_settings_private/language_settings_private_api.cc nw/chromium/chrome/browser/extensions/api/language_settings_private/language_settings_private_api.cc
---- up/chromium/chrome/browser/extensions/api/language_settings_private/language_settings_private_api.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/api/language_settings_private/language_settings_private_api.cc	2023-02-24 06:16:20.956065009 +0000
+--- up/chromium/chrome/browser/extensions/api/language_settings_private/language_settings_private_api.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/api/language_settings_private/language_settings_private_api.cc	2023-02-24 20:12:03.256811154 +0000
 @@ -212,6 +212,10 @@
  
  ExtensionFunction::ResponseAction

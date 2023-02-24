@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/base/command_line.cc nw/chromium/base/command_line.cc
---- up/chromium/base/command_line.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/base/command_line.cc	2023-02-24 06:16:18.539921929 +0000
+--- up/chromium/base/command_line.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/base/command_line.cc	2023-02-24 20:12:01.276790993 +0000
 @@ -157,7 +157,51 @@
  
    return out;

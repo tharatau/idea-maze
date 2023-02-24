@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/object_backed_native_handler.cc nw/chromium/extensions/renderer/object_backed_native_handler.cc
---- up/chromium/extensions/renderer/object_backed_native_handler.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/renderer/object_backed_native_handler.cc	2023-02-24 06:16:29.120548193 +0000
+--- up/chromium/extensions/renderer/object_backed_native_handler.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/renderer/object_backed_native_handler.cc	2023-02-24 20:12:10.312873262 +0000
 @@ -107,7 +107,11 @@
          *v8::String::Utf8Value(isolate, feature_name_string);
      // TODO(devlin): Eventually, we should fail if either script_context is null

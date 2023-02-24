@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/cocoa/native_widget_mac_ns_window_host.h nw/chromium/ui/views/cocoa/native_widget_mac_ns_window_host.h
---- up/chromium/ui/views/cocoa/native_widget_mac_ns_window_host.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/views/cocoa/native_widget_mac_ns_window_host.h	2023-02-24 06:16:56.254108850 +0000
+--- up/chromium/ui/views/cocoa/native_widget_mac_ns_window_host.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/views/cocoa/native_widget_mac_ns_window_host.h	2023-02-24 20:12:34.049073672 +0000
 @@ -237,6 +237,7 @@
    std::unique_ptr<NativeWidgetMacEventMonitor> AddEventMonitor(
        NativeWidgetMacEventMonitor::Client* client);

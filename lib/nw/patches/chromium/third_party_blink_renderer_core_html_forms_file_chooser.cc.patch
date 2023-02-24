@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/html/forms/file_chooser.cc nw/chromium/third_party/blink/renderer/core/html/forms/file_chooser.cc
---- up/chromium/third_party/blink/renderer/core/html/forms/file_chooser.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/html/forms/file_chooser.cc	2023-02-24 06:16:33.564810952 +0000
+--- up/chromium/third_party/blink/renderer/core/html/forms/file_chooser.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/html/forms/file_chooser.cc	2023-02-24 20:12:14.220900947 +0000
 @@ -110,6 +110,7 @@
  }
  

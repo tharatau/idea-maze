@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/browser/web_contents.cc nw/chromium/content/public/browser/web_contents.cc
---- up/chromium/content/public/browser/web_contents.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/public/browser/web_contents.cc	2023-02-24 06:16:28.160491393 +0000
+--- up/chromium/content/public/browser/web_contents.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/public/browser/web_contents.cc	2023-02-24 20:12:09.480866301 +0000
 @@ -11,6 +11,14 @@
  
  namespace content {

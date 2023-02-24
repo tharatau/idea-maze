@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/chrome_browser_main_win.cc nw/chromium/chrome/browser/chrome_browser_main_win.cc
---- up/chromium/chrome/browser/chrome_browser_main_win.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/chrome_browser_main_win.cc	2023-02-24 06:16:20.772054112 +0000
+--- up/chromium/chrome/browser/chrome_browser_main_win.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/chrome_browser_main_win.cc	2023-02-24 20:12:03.100809566 +0000
 @@ -394,6 +394,7 @@
        l10n_util::GetStringUTF16(IDS_UNINSTALL_CLOSE_APP));
  }

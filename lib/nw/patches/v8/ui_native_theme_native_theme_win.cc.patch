@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/native_theme/native_theme_win.cc nw/chromium/ui/native_theme/native_theme_win.cc
---- up/chromium/ui/native_theme/native_theme_win.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/native_theme/native_theme_win.cc	2023-02-24 06:16:56.094099373 +0000
+--- up/chromium/ui/native_theme/native_theme_win.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/native_theme/native_theme_win.cc	2023-02-24 20:12:33.913072410 +0000
 @@ -57,7 +57,7 @@
  // Windows system color IDs cached and updated by the native theme.
  const int kSysColors[] = {

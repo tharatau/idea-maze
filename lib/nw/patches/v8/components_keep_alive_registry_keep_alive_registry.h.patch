@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/keep_alive_registry/keep_alive_registry.h nw/chromium/components/keep_alive_registry/keep_alive_registry.h
---- up/chromium/components/keep_alive_registry/keep_alive_registry.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/components/keep_alive_registry/keep_alive_registry.h	2023-02-24 06:16:25.624341346 +0000
+--- up/chromium/components/keep_alive_registry/keep_alive_registry.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/components/keep_alive_registry/keep_alive_registry.h	2023-02-24 20:12:07.464849433 +0000
 @@ -76,10 +76,12 @@
    KeepAliveRegistry();
    ~KeepAliveRegistry();

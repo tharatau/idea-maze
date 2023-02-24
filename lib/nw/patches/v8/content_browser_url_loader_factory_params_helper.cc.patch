@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/url_loader_factory_params_helper.cc nw/chromium/content/browser/url_loader_factory_params_helper.cc
---- up/chromium/content/browser/url_loader_factory_params_helper.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/browser/url_loader_factory_params_helper.cc	2023-02-24 06:16:28.040484293 +0000
+--- up/chromium/content/browser/url_loader_factory_params_helper.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/browser/url_loader_factory_params_helper.cc	2023-02-24 20:12:09.380865464 +0000
 @@ -96,6 +96,11 @@
  
    params->trust_token_redemption_policy = trust_token_redemption_policy;

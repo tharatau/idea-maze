@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/install_static/chromium_install_modes.cc nw/chromium/chrome/install_static/chromium_install_modes.cc
---- up/chromium/chrome/install_static/chromium_install_modes.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/install_static/chromium_install_modes.cc	2023-02-24 06:16:22.932182031 +0000
+--- up/chromium/chrome/install_static/chromium_install_modes.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/install_static/chromium_install_modes.cc	2023-02-24 20:12:04.916828057 +0000
 @@ -16,7 +16,7 @@
  
  const wchar_t kCompanyPathName[] = L"";

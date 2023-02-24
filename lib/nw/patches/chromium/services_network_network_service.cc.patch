@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/services/network/network_service.cc nw/chromium/services/network/network_service.cc
---- up/chromium/services/network/network_service.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/services/network/network_service.cc	2023-02-24 06:16:32.240732737 +0000
+--- up/chromium/services/network/network_service.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/services/network/network_service.cc	2023-02-24 20:12:13.088896626 +0000
 @@ -8,6 +8,7 @@
  #include <utility>
  #include <vector>

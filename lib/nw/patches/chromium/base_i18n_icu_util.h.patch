@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/base/i18n/icu_util.h nw/chromium/base/i18n/icu_util.h
---- up/chromium/base/i18n/icu_util.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/base/i18n/icu_util.h	2023-02-24 06:16:18.563923351 +0000
+--- up/chromium/base/i18n/icu_util.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/base/i18n/icu_util.h	2023-02-24 20:12:01.300791238 +0000
 @@ -49,6 +49,25 @@
      PlatformFile data_fd,
      const MemoryMappedFile::Region& data_region);

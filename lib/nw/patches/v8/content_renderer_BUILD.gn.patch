@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/renderer/BUILD.gn nw/chromium/content/renderer/BUILD.gn
---- up/chromium/content/renderer/BUILD.gn	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/renderer/BUILD.gn	2023-02-24 06:16:28.192493286 +0000
+--- up/chromium/content/renderer/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/renderer/BUILD.gn	2023-02-24 20:12:09.524866669 +0000
 @@ -46,6 +46,8 @@
      "accessibility/ax_tree_snapshotter_impl.h",
      "accessibility/blink_ax_action_target.cc",

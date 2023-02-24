@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/gtk/select_file_dialog_linux_gtk.cc nw/chromium/ui/gtk/select_file_dialog_linux_gtk.cc
---- up/chromium/ui/gtk/select_file_dialog_linux_gtk.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/gtk/select_file_dialog_linux_gtk.cc	2023-02-24 06:16:56.078098425 +0000
+--- up/chromium/ui/gtk/select_file_dialog_linux_gtk.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/gtk/select_file_dialog_linux_gtk.cc	2023-02-24 20:12:33.901072299 +0000
 @@ -421,12 +421,12 @@
    std::string title_string = title;
    if (title_string.empty()) {

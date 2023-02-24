@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/display/display.cc nw/chromium/ui/display/display.cc
---- up/chromium/ui/display/display.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/display/display.cc	2023-02-24 06:16:55.866085868 +0000
+--- up/chromium/ui/display/display.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/display/display.cc	2023-02-24 20:12:33.725070666 +0000
 @@ -21,6 +21,16 @@
  #include "ui/gfx/geometry/transform.h"
  #include "ui/gfx/icc_profile.h"

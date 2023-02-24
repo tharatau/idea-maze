@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/html/forms/html_input_element.h nw/chromium/third_party/blink/renderer/core/html/forms/html_input_element.h
---- up/chromium/third_party/blink/renderer/core/html/forms/html_input_element.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/html/forms/html_input_element.h	2023-02-24 06:16:33.568811188 +0000
+--- up/chromium/third_party/blink/renderer/core/html/forms/html_input_element.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/html/forms/html_input_element.h	2023-02-24 20:12:14.224900962 +0000
 @@ -310,6 +310,11 @@
    static Vector<String> FilesFromFileInputFormControlState(
        const FormControlState&);

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/app/main_dll_loader_win.cc nw/chromium/chrome/app/main_dll_loader_win.cc
---- up/chromium/chrome/app/main_dll_loader_win.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/app/main_dll_loader_win.cc	2023-02-24 06:16:19.391972386 +0000
+--- up/chromium/chrome/app/main_dll_loader_win.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/app/main_dll_loader_win.cc	2023-02-24 20:12:01.964797999 +0000
 @@ -51,6 +51,8 @@
  
  typedef void (*RelaunchChromeBrowserWithNewCommandLineIfNeededFunc)();

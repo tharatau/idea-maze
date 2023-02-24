@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/profiles/profile_attributes_storage.cc nw/chromium/chrome/browser/profiles/profile_attributes_storage.cc
---- up/chromium/chrome/browser/profiles/profile_attributes_storage.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/profiles/profile_attributes_storage.cc	2023-02-24 06:16:21.452094383 +0000
+--- up/chromium/chrome/browser/profiles/profile_attributes_storage.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/profiles/profile_attributes_storage.cc	2023-02-24 20:12:03.664815309 +0000
 @@ -771,7 +771,7 @@
  void ProfileAttributesStorage::DownloadHighResAvatarIfNeeded(
      size_t icon_index,

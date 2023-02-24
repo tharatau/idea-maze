@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/utility/chrome_content_utility_client.cc nw/chromium/chrome/utility/chrome_content_utility_client.cc
---- up/chromium/chrome/utility/chrome_content_utility_client.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/utility/chrome_content_utility_client.cc	2023-02-24 06:16:24.520276026 +0000
+--- up/chromium/chrome/utility/chrome_content_utility_client.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/utility/chrome_content_utility_client.cc	2023-02-24 20:12:06.428840765 +0000
 @@ -24,6 +24,10 @@
  #include "sandbox/policy/mojom/sandbox.mojom.h"
  #include "sandbox/policy/sandbox_type.h"

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/content_settings/core/browser/content_settings_registry.cc nw/chromium/components/content_settings/core/browser/content_settings_registry.cc
---- up/chromium/components/content_settings/core/browser/content_settings_registry.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/components/content_settings/core/browser/content_settings_registry.cc	2023-02-24 06:16:25.344324779 +0000
+--- up/chromium/components/content_settings/core/browser/content_settings_registry.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/components/content_settings/core/browser/content_settings_registry.cc	2023-02-24 20:12:07.096846354 +0000
 @@ -146,7 +146,7 @@
             ContentSettingsInfo::EXCEPTIONS_ON_SECURE_ORIGINS_ONLY);
  

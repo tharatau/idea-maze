@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/api/app_current_window_internal.idl nw/chromium/extensions/common/api/app_current_window_internal.idl
---- up/chromium/extensions/common/api/app_current_window_internal.idl	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/common/api/app_current_window_internal.idl	2023-02-24 06:16:29.068545116 +0000
+--- up/chromium/extensions/common/api/app_current_window_internal.idl	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/common/api/app_current_window_internal.idl	2023-02-24 20:12:10.272872927 +0000
 @@ -47,6 +47,7 @@
      static void setBounds(DOMString boundsType, Bounds bounds);
      static void setSizeConstraints(DOMString boundsType,

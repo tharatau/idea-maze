@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/api/app_window_custom_bindings.h nw/chromium/extensions/renderer/api/app_window_custom_bindings.h
---- up/chromium/extensions/renderer/api/app_window_custom_bindings.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/renderer/api/app_window_custom_bindings.h	2023-02-24 06:16:29.100547010 +0000
+--- up/chromium/extensions/renderer/api/app_window_custom_bindings.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/renderer/api/app_window_custom_bindings.h	2023-02-24 20:12:10.300873161 +0000
 @@ -24,6 +24,8 @@
   private:
    void GetFrame(const v8::FunctionCallbackInfo<v8::Value>& args);

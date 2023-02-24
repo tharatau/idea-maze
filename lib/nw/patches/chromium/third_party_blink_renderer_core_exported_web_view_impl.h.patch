@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/exported/web_view_impl.h nw/chromium/third_party/blink/renderer/core/exported/web_view_impl.h
---- up/chromium/third_party/blink/renderer/core/exported/web_view_impl.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/exported/web_view_impl.h	2023-02-24 06:16:33.496806935 +0000
+--- up/chromium/third_party/blink/renderer/core/exported/web_view_impl.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/exported/web_view_impl.h	2023-02-24 20:12:14.168900748 +0000
 @@ -580,7 +580,7 @@
              NavigationPolicy policy,
              const gfx::Rect& requested_rect,

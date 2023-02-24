@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/download/download_prefs.cc nw/chromium/chrome/browser/download/download_prefs.cc
---- up/chromium/chrome/browser/download/download_prefs.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/download/download_prefs.cc	2023-02-24 06:16:20.868059797 +0000
+--- up/chromium/chrome/browser/download/download_prefs.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/download/download_prefs.cc	2023-02-24 20:12:03.180810381 +0000
 @@ -267,10 +267,12 @@
      // automatically can change in the future. When the list is tightened, it is
      // expected that some entries in the users' auto open list will get dropped

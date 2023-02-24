@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/tools/licenses/licenses.py nw/chromium/tools/licenses/licenses.py
---- up/chromium/tools/licenses/licenses.py	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/tools/licenses/licenses.py	2023-02-24 06:16:53.801974500 +0000
+--- up/chromium/tools/licenses/licenses.py	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/tools/licenses/licenses.py	2023-02-24 20:12:33.009064023 +0000
 @@ -129,6 +129,7 @@
  #   - Directories that contain example code, or build tooling.
  #   - Nested third_party code inside other third_party libraries.

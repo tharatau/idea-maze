@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/widget/native_widget_private.cc nw/chromium/ui/views/widget/native_widget_private.cc
---- up/chromium/ui/views/widget/native_widget_private.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/views/widget/native_widget_private.cc	2023-02-24 06:16:56.322112877 +0000
+--- up/chromium/ui/views/widget/native_widget_private.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/views/widget/native_widget_private.cc	2023-02-24 20:12:34.105074191 +0000
 @@ -10,6 +10,11 @@
  
  namespace views::internal {

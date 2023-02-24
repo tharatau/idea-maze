@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/features/simple_feature.cc nw/chromium/extensions/common/features/simple_feature.cc
---- up/chromium/extensions/common/features/simple_feature.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/common/features/simple_feature.cc	2023-02-24 06:16:29.084546063 +0000
+--- up/chromium/extensions/common/features/simple_feature.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/common/features/simple_feature.cc	2023-02-24 20:12:10.284873027 +0000
 @@ -98,6 +98,8 @@
        return "login screen extension";
      case Manifest::TYPE_CHROMEOS_SYSTEM_EXTENSION:

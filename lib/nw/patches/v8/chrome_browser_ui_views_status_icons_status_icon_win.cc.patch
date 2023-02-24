@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/status_icons/status_icon_win.cc nw/chromium/chrome/browser/ui/views/status_icons/status_icon_win.cc
---- up/chromium/chrome/browser/ui/views/status_icons/status_icon_win.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/status_icons/status_icon_win.cc	2023-02-24 06:16:22.548159290 +0000
+--- up/chromium/chrome/browser/ui/views/status_icons/status_icon_win.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/ui/views/status_icons/status_icon_win.cc	2023-02-24 20:12:04.592824758 +0000
 @@ -42,6 +42,8 @@
    NOTIFYICONDATA icon_data;
    InitIconData(&icon_data);

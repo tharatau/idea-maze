@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/DEPS nw/chromium/DEPS
---- up/chromium/DEPS	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/DEPS	2023-02-24 06:16:17.647869104 +0000
+--- up/chromium/DEPS	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/DEPS	2023-02-24 20:12:00.532783418 +0000
 @@ -291,6 +291,7 @@
    'boringssl_git': 'https://boringssl.googlesource.com',
    'chromium_git': 'https://chromium.googlesource.com',
@@ -29,7 +29,7 @@ diff -r -u --color up/chromium/DEPS nw/chromium/DEPS
 +  #  Var('chromium_git') + '/v8/v8.git' + '@' +  Var('v8_revision'),
  
    'src-internal': {
-     'url': 'https://chrome-internal.googlesource.com/chrome/src-internal.git@f1fa2045c35184d65934fa03f2cfd581794fb6d0',
+     'url': 'https://chrome-internal.googlesource.com/chrome/src-internal.git@580782b14a38ec206c8dcf6fffc5cf902c36b4fd',
 @@ -4369,7 +4373,15 @@
                  '--no_auth',
                  '--bucket', 'chromium-nodejs/16.13.0',

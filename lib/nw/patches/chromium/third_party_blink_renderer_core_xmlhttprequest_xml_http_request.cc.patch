@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/xmlhttprequest/xml_http_request.cc nw/chromium/third_party/blink/renderer/core/xmlhttprequest/xml_http_request.cc
---- up/chromium/third_party/blink/renderer/core/xmlhttprequest/xml_http_request.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/xmlhttprequest/xml_http_request.cc	2023-02-24 06:16:33.948833637 +0000
+--- up/chromium/third_party/blink/renderer/core/xmlhttprequest/xml_http_request.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/xmlhttprequest/xml_http_request.cc	2023-02-24 20:12:14.552902214 +0000
 @@ -685,11 +685,13 @@
      // exception thrown.
      // Refer : https://xhr.spec.whatwg.org/#sync-warning

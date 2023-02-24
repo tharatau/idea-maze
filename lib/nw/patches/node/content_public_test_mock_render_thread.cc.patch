@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/test/mock_render_thread.cc nw/chromium/content/public/test/mock_render_thread.cc
---- up/chromium/content/public/test/mock_render_thread.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/public/test/mock_render_thread.cc	2023-02-24 06:16:28.180492576 +0000
+--- up/chromium/content/public/test/mock_render_thread.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/public/test/mock_render_thread.cc	2023-02-24 20:12:09.516866602 +0000
 @@ -200,6 +200,10 @@
    return 0;
  }

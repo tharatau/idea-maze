@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.h nw/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.h
---- up/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.h	2023-02-24 06:16:34.032838599 +0000
+--- up/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.h	2023-02-24 20:12:14.620902474 +0000
 @@ -47,6 +47,9 @@
  class GamepadDispatcher;
  class GamepadHapticActuator;

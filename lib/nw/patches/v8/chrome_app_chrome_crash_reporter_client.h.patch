@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/app/chrome_crash_reporter_client.h nw/chromium/chrome/app/chrome_crash_reporter_client.h
---- up/chromium/chrome/app/chrome_crash_reporter_client.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/app/chrome_crash_reporter_client.h	2023-02-24 06:16:19.263964806 +0000
+--- up/chromium/chrome/app/chrome_crash_reporter_client.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/app/chrome_crash_reporter_client.h	2023-02-24 20:12:01.884797184 +0000
 @@ -36,16 +36,18 @@
        const std::string& client_guid) override;
  #endif

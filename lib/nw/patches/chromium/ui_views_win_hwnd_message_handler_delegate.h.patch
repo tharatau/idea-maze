@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/win/hwnd_message_handler_delegate.h nw/chromium/ui/views/win/hwnd_message_handler_delegate.h
---- up/chromium/ui/views/win/hwnd_message_handler_delegate.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/views/win/hwnd_message_handler_delegate.h	2023-02-24 06:16:56.326113114 +0000
+--- up/chromium/ui/views/win/hwnd_message_handler_delegate.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/views/win/hwnd_message_handler_delegate.h	2023-02-24 20:12:34.113074266 +0000
 @@ -113,6 +113,10 @@
  
    virtual gfx::NativeViewAccessible GetNativeViewAccessible() = 0;

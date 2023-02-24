@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/test/data/webui/print_preview/print_preview_app_test.ts nw/chromium/chrome/test/data/webui/print_preview/print_preview_app_test.ts
---- up/chromium/chrome/test/data/webui/print_preview/print_preview_app_test.ts	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/test/data/webui/print_preview/print_preview_app_test.ts	2023-02-24 06:16:24.380267742 +0000
+--- up/chromium/chrome/test/data/webui/print_preview/print_preview_app_test.ts	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/test/data/webui/print_preview/print_preview_app_test.ts	2023-02-24 20:12:06.336839996 +0000
 @@ -35,6 +35,7 @@
    let pluginProxy: TestPluginProxy;
  

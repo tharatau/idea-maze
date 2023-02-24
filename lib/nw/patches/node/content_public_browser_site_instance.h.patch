@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/browser/site_instance.h nw/chromium/content/public/browser/site_instance.h
---- up/chromium/content/public/browser/site_instance.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/public/browser/site_instance.h	2023-02-24 06:16:28.160491393 +0000
+--- up/chromium/content/public/browser/site_instance.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/public/browser/site_instance.h	2023-02-24 20:12:09.480866301 +0000
 @@ -154,7 +154,7 @@
    // that a BrowsingInstance only has one SiteInstance per site, so that pages
    // in a BrowsingInstance have the ability to script each other.

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/ipc_message_sender.h nw/chromium/extensions/renderer/ipc_message_sender.h
---- up/chromium/extensions/renderer/ipc_message_sender.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/renderer/ipc_message_sender.h	2023-02-24 06:16:29.116547956 +0000
+--- up/chromium/extensions/renderer/ipc_message_sender.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/renderer/ipc_message_sender.h	2023-02-24 20:12:10.312873262 +0000
 @@ -15,6 +15,10 @@
  
  struct ExtensionHostMsg_APIActionOrEvent_Params;

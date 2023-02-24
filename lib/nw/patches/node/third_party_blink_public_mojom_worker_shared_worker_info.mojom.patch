@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/public/mojom/worker/shared_worker_info.mojom nw/chromium/third_party/blink/public/mojom/worker/shared_worker_info.mojom
---- up/chromium/third_party/blink/public/mojom/worker/shared_worker_info.mojom	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/public/mojom/worker/shared_worker_info.mojom	2023-02-24 06:16:33.172787795 +0000
+--- up/chromium/third_party/blink/public/mojom/worker/shared_worker_info.mojom	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/public/mojom/worker/shared_worker_info.mojom	2023-02-24 20:12:13.920899802 +0000
 @@ -8,12 +8,15 @@
  import "third_party/blink/public/mojom/loader/fetch_client_settings_object.mojom";
  import "third_party/blink/public/mojom/worker/worker_options.mojom";

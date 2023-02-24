@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/manifest_handlers/webview_info.cc nw/chromium/extensions/common/manifest_handlers/webview_info.cc
---- up/chromium/extensions/common/manifest_handlers/webview_info.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/common/manifest_handlers/webview_info.cc	2023-02-24 06:16:29.092546536 +0000
+--- up/chromium/extensions/common/manifest_handlers/webview_info.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/common/manifest_handlers/webview_info.cc	2023-02-24 20:12:10.288873061 +0000
 @@ -101,6 +101,34 @@
    }
    return false;

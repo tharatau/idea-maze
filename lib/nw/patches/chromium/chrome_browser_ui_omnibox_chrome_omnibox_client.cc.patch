@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/omnibox/chrome_omnibox_client.cc nw/chromium/chrome/browser/ui/omnibox/chrome_omnibox_client.cc
---- up/chromium/chrome/browser/ui/omnibox/chrome_omnibox_client.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/omnibox/chrome_omnibox_client.cc	2023-02-24 06:16:22.372148867 +0000
+--- up/chromium/chrome/browser/ui/omnibox/chrome_omnibox_client.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/ui/omnibox/chrome_omnibox_client.cc	2023-02-24 20:12:04.444823251 +0000
 @@ -253,20 +253,24 @@
  void ChromeOmniboxClient::OnInputStateChanged() {
    if (!controller_->GetWebContents())

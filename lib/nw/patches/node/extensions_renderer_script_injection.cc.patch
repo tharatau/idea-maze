@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/script_injection.cc nw/chromium/extensions/renderer/script_injection.cc
---- up/chromium/extensions/renderer/script_injection.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/renderer/script_injection.cc	2023-02-24 06:16:29.124548430 +0000
+--- up/chromium/extensions/renderer/script_injection.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/renderer/script_injection.cc	2023-02-24 20:12:10.320873329 +0000
 @@ -326,6 +326,8 @@
        world_id = blink::kMainDOMWorldId;
        break;

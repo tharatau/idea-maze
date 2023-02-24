@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/html/forms/chooser_only_temporal_input_type_view.cc nw/chromium/third_party/blink/renderer/core/html/forms/chooser_only_temporal_input_type_view.cc
---- up/chromium/third_party/blink/renderer/core/html/forms/chooser_only_temporal_input_type_view.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/html/forms/chooser_only_temporal_input_type_view.cc	2023-02-24 06:16:33.560810716 +0000
+--- up/chromium/third_party/blink/renderer/core/html/forms/chooser_only_temporal_input_type_view.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/html/forms/chooser_only_temporal_input_type_view.cc	2023-02-24 20:12:14.220900947 +0000
 @@ -24,6 +24,7 @@
   */
  

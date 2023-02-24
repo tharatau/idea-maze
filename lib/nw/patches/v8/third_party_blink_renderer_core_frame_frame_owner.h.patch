@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/frame/frame_owner.h nw/chromium/third_party/blink/renderer/core/frame/frame_owner.h
---- up/chromium/third_party/blink/renderer/core/frame/frame_owner.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/frame/frame_owner.h	2023-02-24 06:16:33.520808353 +0000
+--- up/chromium/third_party/blink/renderer/core/frame/frame_owner.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/frame/frame_owner.h	2023-02-24 20:12:14.188900825 +0000
 @@ -51,6 +51,9 @@
    // child frame is occluded or has visual effects applied.
    virtual void SetNeedsOcclusionTracking(bool) = 0;

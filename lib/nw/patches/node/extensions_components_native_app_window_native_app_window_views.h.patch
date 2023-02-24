@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/components/native_app_window/native_app_window_views.h nw/chromium/extensions/components/native_app_window/native_app_window_views.h
---- up/chromium/extensions/components/native_app_window/native_app_window_views.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/components/native_app_window/native_app_window_views.h	2023-02-24 06:16:29.100547010 +0000
+--- up/chromium/extensions/components/native_app_window/native_app_window_views.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/components/native_app_window/native_app_window_views.h	2023-02-24 20:12:10.296873128 +0000
 @@ -58,6 +58,7 @@
    void set_window_for_testing(views::Widget* window) { widget_ = window; }
    void set_web_view_for_testing(views::WebView* view) { web_view_ = view; }

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/platform/weborigin/security_origin.h nw/chromium/third_party/blink/renderer/platform/weborigin/security_origin.h
---- up/chromium/third_party/blink/renderer/platform/weborigin/security_origin.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/platform/weborigin/security_origin.h	2023-02-24 06:16:34.508866718 +0000
+--- up/chromium/third_party/blink/renderer/platform/weborigin/security_origin.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/platform/weborigin/security_origin.h	2023-02-24 20:12:14.992903893 +0000
 @@ -135,6 +135,7 @@
    String Protocol() const { return protocol_; }
    String Host() const { return host_; }

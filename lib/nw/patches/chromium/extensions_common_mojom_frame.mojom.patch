@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/mojom/frame.mojom nw/chromium/extensions/common/mojom/frame.mojom
---- up/chromium/extensions/common/mojom/frame.mojom	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/common/mojom/frame.mojom	2023-02-24 06:16:29.092546536 +0000
+--- up/chromium/extensions/common/mojom/frame.mojom	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/common/mojom/frame.mojom	2023-02-24 20:12:10.292873094 +0000
 @@ -30,6 +30,7 @@
    bool match_about_blank;
    // When to inject the code.

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/html/canvas/html_canvas_element.cc nw/chromium/third_party/blink/renderer/core/html/canvas/html_canvas_element.cc
---- up/chromium/third_party/blink/renderer/core/html/canvas/html_canvas_element.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/html/canvas/html_canvas_element.cc	2023-02-24 06:16:33.552810243 +0000
+--- up/chromium/third_party/blink/renderer/core/html/canvas/html_canvas_element.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/html/canvas/html_canvas_element.cc	2023-02-24 20:12:14.212900916 +0000
 @@ -1102,7 +1102,7 @@
  String HTMLCanvasElement::toDataURL(const String& mime_type,
                                      const ScriptValue& quality_argument,

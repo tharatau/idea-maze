@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/chrome_paks.gni nw/chromium/chrome/chrome_paks.gni
---- up/chromium/chrome/chrome_paks.gni	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/chrome_paks.gni	2023-02-24 06:16:22.864178004 +0000
+--- up/chromium/chrome/chrome_paks.gni	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/chrome_paks.gni	2023-02-24 20:12:04.860827487 +0000
 @@ -77,7 +77,7 @@
        deps += [ "//extensions:extensions_browser_resources" ]
      }

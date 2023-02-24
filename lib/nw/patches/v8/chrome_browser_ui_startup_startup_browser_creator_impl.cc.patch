@@ -1,7 +1,7 @@
 diff -r -u --color up/chromium/chrome/browser/ui/startup/startup_browser_creator_impl.cc nw/chromium/chrome/browser/ui/startup/startup_browser_creator_impl.cc
---- up/chromium/chrome/browser/ui/startup/startup_browser_creator_impl.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/startup/startup_browser_creator_impl.cc	2023-02-24 06:16:22.400150525 +0000
-@@ -383,7 +383,7 @@
+--- up/chromium/chrome/browser/ui/startup/startup_browser_creator_impl.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/ui/startup/startup_browser_creator_impl.cc	2023-02-24 20:12:04.468823496 +0000
+@@ -370,7 +370,7 @@
          IncompatibleApplicationsUpdater::HasCachedApplications();
    }
  #endif
@@ -10,7 +10,7 @@ diff -r -u --color up/chromium/chrome/browser/ui/startup/startup_browser_creator
  #endif
  
    // Presentation of promotional and/or educational tabs may be controlled via
-@@ -407,10 +407,11 @@
+@@ -394,10 +394,11 @@
    // TODO(https://crbug.com/1276034): Cleanup this code, in particular on Ash
    // where the welcome flow is never shown.
    bool welcome_enabled = true;

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/extension_function_dispatcher.h nw/chromium/extensions/browser/extension_function_dispatcher.h
---- up/chromium/extensions/browser/extension_function_dispatcher.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/browser/extension_function_dispatcher.h	2023-02-24 06:16:29.040543460 +0000
+--- up/chromium/extensions/browser/extension_function_dispatcher.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/browser/extension_function_dispatcher.h	2023-02-24 20:12:10.240872659 +0000
 @@ -72,6 +72,12 @@
        content::BrowserContext* browser_context);
    ~ExtensionFunctionDispatcher();

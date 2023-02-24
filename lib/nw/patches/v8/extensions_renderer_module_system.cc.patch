@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/module_system.cc nw/chromium/extensions/renderer/module_system.cc
---- up/chromium/extensions/renderer/module_system.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/renderer/module_system.cc	2023-02-24 06:16:29.116547956 +0000
+--- up/chromium/extensions/renderer/module_system.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/renderer/module_system.cc	2023-02-24 20:12:10.312873262 +0000
 @@ -528,11 +528,11 @@
    CHECK(v8_helpers::IsTrue(maybe));
  }

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/scoped_tabbed_browser_displayer.cc nw/chromium/chrome/browser/ui/scoped_tabbed_browser_displayer.cc
---- up/chromium/chrome/browser/ui/scoped_tabbed_browser_displayer.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/scoped_tabbed_browser_displayer.cc	2023-02-24 06:16:22.388149814 +0000
+--- up/chromium/chrome/browser/ui/scoped_tabbed_browser_displayer.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/ui/scoped_tabbed_browser_displayer.cc	2023-02-24 20:12:04.460823414 +0000
 @@ -14,7 +14,7 @@
    browser_ = FindTabbedBrowser(profile, false);
    if (!browser_ && Browser::GetCreationStatusForProfile(profile) ==

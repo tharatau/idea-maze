@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/content_verifier_browsertest.cc nw/chromium/chrome/browser/extensions/content_verifier_browsertest.cc
---- up/chromium/chrome/browser/extensions/content_verifier_browsertest.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/content_verifier_browsertest.cc	2023-02-24 06:16:21.000067615 +0000
+--- up/chromium/chrome/browser/extensions/content_verifier_browsertest.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/content_verifier_browsertest.cc	2023-02-24 20:12:03.296811562 +0000
 @@ -394,7 +394,7 @@
    TestExtensionRegistryObserver registry_observer(
        ExtensionRegistry::Get(profile()), kExtensionId);

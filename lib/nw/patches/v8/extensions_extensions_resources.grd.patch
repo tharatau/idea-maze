@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/extensions_resources.grd nw/chromium/extensions/extensions_resources.grd
---- up/chromium/extensions/extensions_resources.grd	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/extensions_resources.grd	2023-02-24 06:16:29.100547010 +0000
+--- up/chromium/extensions/extensions_resources.grd	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/extensions_resources.grd	2023-02-24 20:12:10.296873128 +0000
 @@ -9,6 +9,7 @@
    <release seq="1">
      <includes>

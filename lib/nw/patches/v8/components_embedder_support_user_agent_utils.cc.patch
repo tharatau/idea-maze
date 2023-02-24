@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/embedder_support/user_agent_utils.cc nw/chromium/components/embedder_support/user_agent_utils.cc
---- up/chromium/components/embedder_support/user_agent_utils.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/components/embedder_support/user_agent_utils.cc	2023-02-24 06:16:25.468332116 +0000
+--- up/chromium/components/embedder_support/user_agent_utils.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/components/embedder_support/user_agent_utils.cc	2023-02-24 20:12:07.200847224 +0000
 @@ -4,6 +4,8 @@
  
  #include "components/embedder_support/user_agent_utils.h"

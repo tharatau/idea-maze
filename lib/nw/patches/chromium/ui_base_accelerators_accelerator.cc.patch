@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/base/accelerators/accelerator.cc nw/chromium/ui/base/accelerators/accelerator.cc
---- up/chromium/ui/base/accelerators/accelerator.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/base/accelerators/accelerator.cc	2023-02-24 06:16:54.762025809 +0000
+--- up/chromium/ui/base/accelerators/accelerator.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/base/accelerators/accelerator.cc	2023-02-24 20:12:33.493068513 +0000
 @@ -6,6 +6,7 @@
  
  #include <stdint.h>

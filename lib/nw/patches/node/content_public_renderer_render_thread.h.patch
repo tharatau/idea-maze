@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/renderer/render_thread.h nw/chromium/content/public/renderer/render_thread.h
---- up/chromium/content/public/renderer/render_thread.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/public/renderer/render_thread.h	2023-02-24 06:16:28.172492103 +0000
+--- up/chromium/content/public/renderer/render_thread.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/public/renderer/render_thread.h	2023-02-24 20:12:09.488866368 +0000
 @@ -19,6 +19,8 @@
  #include "third_party/blink/public/platform/web_string.h"
  #include "third_party/perfetto/include/perfetto/tracing/traced_proto.h"

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/apps/app_shim/app_shim_termination_manager.cc nw/chromium/chrome/browser/apps/app_shim/app_shim_termination_manager.cc
---- up/chromium/chrome/browser/apps/app_shim/app_shim_termination_manager.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/apps/app_shim/app_shim_termination_manager.cc	2023-02-24 06:16:20.276024738 +0000
+--- up/chromium/chrome/browser/apps/app_shim/app_shim_termination_manager.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/apps/app_shim/app_shim_termination_manager.cc	2023-02-24 20:12:02.696805452 +0000
 @@ -59,12 +59,15 @@
  
    // BrowserListObserver:

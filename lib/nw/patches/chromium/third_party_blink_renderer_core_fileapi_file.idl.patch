@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/fileapi/file.idl nw/chromium/third_party/blink/renderer/core/fileapi/file.idl
---- up/chromium/third_party/blink/renderer/core/fileapi/file.idl	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/fileapi/file.idl	2023-02-24 06:16:33.504807408 +0000
+--- up/chromium/third_party/blink/renderer/core/fileapi/file.idl	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/fileapi/file.idl	2023-02-24 20:12:14.176900779 +0000
 @@ -30,8 +30,10 @@
      Serializable
  ] interface File : Blob {

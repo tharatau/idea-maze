@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/media/webrtc/webrtc_event_log_manager.cc nw/chromium/chrome/browser/media/webrtc/webrtc_event_log_manager.cc
---- up/chromium/chrome/browser/media/webrtc/webrtc_event_log_manager.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/media/webrtc/webrtc_event_log_manager.cc	2023-02-24 06:16:21.180078274 +0000
+--- up/chromium/chrome/browser/media/webrtc/webrtc_event_log_manager.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/media/webrtc/webrtc_event_log_manager.cc	2023-02-24 20:12:03.436812987 +0000
 @@ -145,7 +145,7 @@
  
  WebRtcEventLogManager::WebRtcEventLogManager()

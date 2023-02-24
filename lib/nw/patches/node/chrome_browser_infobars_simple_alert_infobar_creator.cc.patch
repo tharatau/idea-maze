@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/infobars/simple_alert_infobar_creator.cc nw/chromium/chrome/browser/infobars/simple_alert_infobar_creator.cc
---- up/chromium/chrome/browser/infobars/simple_alert_infobar_creator.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/infobars/simple_alert_infobar_creator.cc	2023-02-24 06:16:21.108074011 +0000
+--- up/chromium/chrome/browser/infobars/simple_alert_infobar_creator.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/infobars/simple_alert_infobar_creator.cc	2023-02-24 20:12:03.380812417 +0000
 @@ -19,6 +19,7 @@
      const std::u16string& message,
      bool auto_expire,

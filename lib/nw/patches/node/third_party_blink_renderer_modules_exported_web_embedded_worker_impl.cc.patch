@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/modules/exported/web_embedded_worker_impl.cc nw/chromium/third_party/blink/renderer/modules/exported/web_embedded_worker_impl.cc
---- up/chromium/third_party/blink/renderer/modules/exported/web_embedded_worker_impl.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/modules/exported/web_embedded_worker_impl.cc	2023-02-24 06:16:34.020837890 +0000
+--- up/chromium/third_party/blink/renderer/modules/exported/web_embedded_worker_impl.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/modules/exported/web_embedded_worker_impl.cc	2023-02-24 20:12:14.612902443 +0000
 @@ -42,6 +42,20 @@
  #include "third_party/blink/public/platform/modules/service_worker/web_service_worker_network_provider.h"
  #include "third_party/blink/public/platform/modules/service_worker/web_service_worker_provider.h"

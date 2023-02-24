@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/lifetime/application_lifetime_desktop.cc nw/chromium/chrome/browser/lifetime/application_lifetime_desktop.cc
---- up/chromium/chrome/browser/lifetime/application_lifetime_desktop.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/lifetime/application_lifetime_desktop.cc	2023-02-24 06:16:21.132075432 +0000
+--- up/chromium/chrome/browser/lifetime/application_lifetime_desktop.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/lifetime/application_lifetime_desktop.cc	2023-02-24 20:12:03.400812621 +0000
 @@ -1,6 +1,8 @@
  // Copyright 2022 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be

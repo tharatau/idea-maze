@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/app_window/app_window_contents.h nw/chromium/extensions/browser/app_window/app_window_contents.h
---- up/chromium/extensions/browser/app_window/app_window_contents.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/browser/app_window/app_window_contents.h	2023-02-24 06:16:29.028542750 +0000
+--- up/chromium/extensions/browser/app_window/app_window_contents.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/browser/app_window/app_window_contents.h	2023-02-24 20:12:10.236872626 +0000
 @@ -17,6 +17,7 @@
  namespace content {
  class BrowserContext;

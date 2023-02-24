@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/strings/ui_strings.grd nw/chromium/ui/strings/ui_strings.grd
---- up/chromium/ui/strings/ui_strings.grd	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/strings/ui_strings.grd	2023-02-24 06:16:56.230107428 +0000
+--- up/chromium/ui/strings/ui_strings.grd	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/strings/ui_strings.grd	2023-02-24 20:12:34.033073523 +0000
 @@ -735,6 +735,12 @@
        <message name="IDS_APP_ACCELERATOR_WITH_MODIFIER" desc="Accelerator with a modifier key">
          <ph name="KEY_MODIFIER_NAME">$1<ex>Ctrl</ex></ph>+<ph name="KEY_COMBO_NAME">$2<ex>C</ex></ph>

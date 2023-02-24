@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc nw/chromium/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc
---- up/chromium/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc	2023-02-24 06:16:22.624163790 +0000
+--- up/chromium/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/ui/webui/chrome_web_ui_controller_factory.cc	2023-02-24 20:12:04.656825410 +0000
 @@ -447,7 +447,7 @@
    return new WEB_UI_CONTROLLER(web_ui, std::move(delegate));
  }

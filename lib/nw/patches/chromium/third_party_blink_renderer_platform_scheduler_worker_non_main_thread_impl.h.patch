@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.h nw/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.h
---- up/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.h	2023-02-24 06:16:34.464864119 +0000
+--- up/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.h	2023-02-24 20:12:14.960903771 +0000
 @@ -71,6 +71,7 @@
  
      explicit SimpleThreadImpl(const WTF::String& name_prefix,

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/loader/empty_clients.h nw/chromium/third_party/blink/renderer/core/loader/empty_clients.h
---- up/chromium/third_party/blink/renderer/core/loader/empty_clients.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/loader/empty_clients.h	2023-02-24 06:16:33.756822294 +0000
+--- up/chromium/third_party/blink/renderer/core/loader/empty_clients.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/loader/empty_clients.h	2023-02-24 20:12:14.368901512 +0000
 @@ -106,7 +106,7 @@
              LocalFrame& opener_frame,
              NavigationPolicy navigation_policy,

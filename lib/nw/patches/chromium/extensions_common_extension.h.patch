@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/extension.h nw/chromium/extensions/common/extension.h
---- up/chromium/extensions/common/extension.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/common/extension.h	2023-02-24 06:16:29.080545826 +0000
+--- up/chromium/extensions/common/extension.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/common/extension.h	2023-02-24 20:12:10.280872994 +0000
 @@ -331,6 +331,7 @@
    // The differences between the types of Extension are documented here:
    // https://chromium.googlesource.com/chromium/src/+/HEAD/extensions/docs/extension_and_app_types.md

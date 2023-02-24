@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/common/features.gni nw/chromium/chrome/common/features.gni
---- up/chromium/chrome/common/features.gni	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/common/features.gni	2023-02-24 06:16:22.892179662 +0000
+--- up/chromium/chrome/common/features.gni	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/common/features.gni	2023-02-24 20:12:04.880827691 +0000
 @@ -95,6 +95,7 @@
  # Every grit target in //chrome should apply these defines so that the
  # proper build flags can be set.

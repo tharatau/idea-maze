@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/tools/grit/grit_args.gni nw/chromium/tools/grit/grit_args.gni
---- up/chromium/tools/grit/grit_args.gni	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/tools/grit/grit_args.gni	2023-02-24 06:16:53.781973431 +0000
+--- up/chromium/tools/grit/grit_args.gni	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/tools/grit/grit_args.gni	2023-02-24 20:12:32.997063912 +0000
 @@ -37,6 +37,7 @@
  
    # Mac and iOS want Title Case strings.

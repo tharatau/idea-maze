@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/native_extension_bindings_system.cc nw/chromium/extensions/renderer/native_extension_bindings_system.cc
---- up/chromium/extensions/renderer/native_extension_bindings_system.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/renderer/native_extension_bindings_system.cc	2023-02-24 06:16:29.116547956 +0000
+--- up/chromium/extensions/renderer/native_extension_bindings_system.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/renderer/native_extension_bindings_system.cc	2023-02-24 20:12:10.312873262 +0000
 @@ -5,6 +5,7 @@
  #include "extensions/renderer/native_extension_bindings_system.h"
  

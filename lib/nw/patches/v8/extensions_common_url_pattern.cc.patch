@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/url_pattern.cc nw/chromium/extensions/common/url_pattern.cc
---- up/chromium/extensions/common/url_pattern.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/common/url_pattern.cc	2023-02-24 06:16:29.096546773 +0000
+--- up/chromium/extensions/common/url_pattern.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/common/url_pattern.cc	2023-02-24 20:12:10.296873128 +0000
 @@ -377,7 +377,7 @@
    spec_.clear();
    scheme_.assign(scheme.data(), scheme.size());

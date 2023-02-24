@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/startup/startup_tab_provider.cc nw/chromium/chrome/browser/ui/startup/startup_tab_provider.cc
---- up/chromium/chrome/browser/ui/startup/startup_tab_provider.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/startup/startup_tab_provider.cc	2023-02-24 06:16:22.400150525 +0000
+--- up/chromium/chrome/browser/ui/startup/startup_tab_provider.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/ui/startup/startup_tab_provider.cc	2023-02-24 20:12:04.468823496 +0000
 @@ -98,7 +98,7 @@
    const GURL reset_settings_url =
        settings_url.Resolve(chrome::kResetProfileSettingsSubPage);

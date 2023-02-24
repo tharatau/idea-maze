@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/webshare/share_service_impl.cc nw/chromium/chrome/browser/webshare/share_service_impl.cc
---- up/chromium/chrome/browser/webshare/share_service_impl.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/webshare/share_service_impl.cc	2023-02-24 06:16:22.812174924 +0000
+--- up/chromium/chrome/browser/webshare/share_service_impl.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/webshare/share_service_impl.cc	2023-02-24 20:12:04.800826876 +0000
 @@ -206,14 +206,6 @@
        return;
      }

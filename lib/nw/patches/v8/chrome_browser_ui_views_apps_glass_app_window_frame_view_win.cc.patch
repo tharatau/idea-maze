@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/apps/glass_app_window_frame_view_win.cc nw/chromium/chrome/browser/ui/views/apps/glass_app_window_frame_view_win.cc
---- up/chromium/chrome/browser/ui/views/apps/glass_app_window_frame_view_win.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/apps/glass_app_window_frame_view_win.cc	2023-02-24 06:16:22.428152183 +0000
+--- up/chromium/chrome/browser/ui/views/apps/glass_app_window_frame_view_win.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/ui/views/apps/glass_app_window_frame_view_win.cc	2023-02-24 20:12:04.492823740 +0000
 @@ -63,6 +63,9 @@
  }
  

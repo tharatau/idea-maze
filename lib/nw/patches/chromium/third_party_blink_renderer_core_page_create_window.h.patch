@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/page/create_window.h nw/chromium/third_party/blink/renderer/core/page/create_window.h
---- up/chromium/third_party/blink/renderer/core/page/create_window.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/page/create_window.h	2023-02-24 06:16:33.780823712 +0000
+--- up/chromium/third_party/blink/renderer/core/page/create_window.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/page/create_window.h	2023-02-24 20:12:14.404901649 +0000
 @@ -36,11 +36,12 @@
  class KURL;
  class LocalDOMWindow;

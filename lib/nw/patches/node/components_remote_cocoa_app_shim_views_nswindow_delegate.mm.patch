@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.mm nw/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.mm
---- up/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.mm	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.mm	2023-02-24 06:16:26.540395543 +0000
+--- up/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.mm	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.mm	2023-02-24 20:12:08.080854587 +0000
 @@ -75,6 +75,10 @@
    _parent->OnVisibilityChanged();
  }

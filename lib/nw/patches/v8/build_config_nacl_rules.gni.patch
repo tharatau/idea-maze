@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/build/config/nacl/rules.gni nw/chromium/build/config/nacl/rules.gni
---- up/chromium/build/config/nacl/rules.gni	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/build/config/nacl/rules.gni	2023-02-24 06:16:18.763935195 +0000
+--- up/chromium/build/config/nacl/rules.gni	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/build/config/nacl/rules.gni	2023-02-24 20:12:01.472792989 +0000
 @@ -69,8 +69,13 @@
        # Starts empty so the code below can use += everywhere.
        data = []

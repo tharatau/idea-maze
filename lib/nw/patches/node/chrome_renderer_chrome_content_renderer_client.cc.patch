@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/renderer/chrome_content_renderer_client.cc nw/chromium/chrome/renderer/chrome_content_renderer_client.cc
---- up/chromium/chrome/renderer/chrome_content_renderer_client.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/renderer/chrome_content_renderer_client.cc	2023-02-24 06:16:22.976184637 +0000
+--- up/chromium/chrome/renderer/chrome_content_renderer_client.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/renderer/chrome_content_renderer_client.cc	2023-02-24 20:12:04.952828416 +0000
 @@ -247,6 +247,9 @@
  #include "chrome/renderer/supervised_user/supervised_user_error_page_controller_delegate_impl.h"
  #endif

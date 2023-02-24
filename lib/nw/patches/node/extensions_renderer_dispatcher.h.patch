@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/dispatcher.h nw/chromium/extensions/renderer/dispatcher.h
---- up/chromium/extensions/renderer/dispatcher.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/renderer/dispatcher.h	2023-02-24 06:16:29.112547720 +0000
+--- up/chromium/extensions/renderer/dispatcher.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/renderer/dispatcher.h	2023-02-24 20:12:10.308873228 +0000
 @@ -164,6 +164,7 @@
  
    // This method is not allowed to run JavaScript code in the frame.

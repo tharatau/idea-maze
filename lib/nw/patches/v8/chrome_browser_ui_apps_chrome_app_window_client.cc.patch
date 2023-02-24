@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/apps/chrome_app_window_client.cc nw/chromium/chrome/browser/ui/apps/chrome_app_window_client.cc
---- up/chromium/chrome/browser/ui/apps/chrome_app_window_client.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/apps/chrome_app_window_client.cc	2023-02-24 06:16:22.272142944 +0000
+--- up/chromium/chrome/browser/ui/apps/chrome_app_window_client.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/ui/apps/chrome_app_window_client.cc	2023-02-24 20:12:04.360822396 +0000
 @@ -22,6 +22,7 @@
  #if BUILDFLAG(IS_CHROMEOS_ASH)
  #include "chrome/browser/ash/lock_screen_apps/state_controller.h"

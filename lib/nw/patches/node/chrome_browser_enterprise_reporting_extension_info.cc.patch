@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/enterprise/reporting/extension_info.cc nw/chromium/chrome/browser/enterprise/reporting/extension_info.cc
---- up/chromium/chrome/browser/enterprise/reporting/extension_info.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/enterprise/reporting/extension_info.cc	2023-02-24 06:16:20.908062166 +0000
+--- up/chromium/chrome/browser/enterprise/reporting/extension_info.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/enterprise/reporting/extension_info.cc	2023-02-24 20:12:03.220810788 +0000
 @@ -109,6 +109,8 @@
        return em::Extension_ExtensionType_TYPE_LEGACY_PACKAGED_APP;
      case extensions::Manifest::TYPE_PLATFORM_APP:

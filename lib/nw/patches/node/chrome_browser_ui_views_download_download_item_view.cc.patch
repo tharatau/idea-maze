@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/download/download_item_view.cc nw/chromium/chrome/browser/ui/views/download/download_item_view.cc
---- up/chromium/chrome/browser/ui/views/download/download_item_view.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/download/download_item_view.cc	2023-02-24 06:16:22.460154078 +0000
+--- up/chromium/chrome/browser/ui/views/download/download_item_view.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/ui/views/download/download_item_view.cc	2023-02-24 20:12:04.512823944 +0000
 @@ -811,6 +811,7 @@
      StyleFilename(*warning_label_, filename_offset, filename.length());
      warning_label_->SizeToFit(GetLabelWidth(*warning_label_));

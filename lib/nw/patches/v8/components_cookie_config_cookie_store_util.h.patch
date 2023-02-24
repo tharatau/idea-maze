@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/cookie_config/cookie_store_util.h nw/chromium/components/cookie_config/cookie_store_util.h
---- up/chromium/components/cookie_config/cookie_store_util.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/components/cookie_config/cookie_store_util.h	2023-02-24 06:16:25.352325252 +0000
+--- up/chromium/components/cookie_config/cookie_store_util.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/components/cookie_config/cookie_store_util.h	2023-02-24 20:12:07.100846388 +0000
 @@ -15,7 +15,7 @@
  // this platform. The object returned is a LazyInstance. Ownership is not
  // transferred.

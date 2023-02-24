@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/download/download_danger_prompt.cc nw/chromium/chrome/browser/download/download_danger_prompt.cc
---- up/chromium/chrome/browser/download/download_danger_prompt.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/download/download_danger_prompt.cc	2023-02-24 06:16:20.864059560 +0000
+--- up/chromium/chrome/browser/download/download_danger_prompt.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/download/download_danger_prompt.cc	2023-02-24 20:12:03.180810381 +0000
 @@ -24,13 +24,15 @@
  using safe_browsing::ClientSafeBrowsingReportRequest;
  

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/public/mojom/renderer_preferences.mojom nw/chromium/third_party/blink/public/mojom/renderer_preferences.mojom
---- up/chromium/third_party/blink/public/mojom/renderer_preferences.mojom	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/public/mojom/renderer_preferences.mojom	2023-02-24 06:16:33.164787322 +0000
+--- up/chromium/third_party/blink/public/mojom/renderer_preferences.mojom	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/public/mojom/renderer_preferences.mojom	2023-02-24 20:12:13.912899771 +0000
 @@ -107,6 +107,9 @@
    // Whether or not caret browsing is enabled.
    bool caret_browsing_enabled = false;

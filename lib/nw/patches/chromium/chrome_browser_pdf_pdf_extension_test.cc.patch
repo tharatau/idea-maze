@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/pdf/pdf_extension_test.cc nw/chromium/chrome/browser/pdf/pdf_extension_test.cc
---- up/chromium/chrome/browser/pdf/pdf_extension_test.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/pdf/pdf_extension_test.cc	2023-02-24 06:16:21.352088461 +0000
+--- up/chromium/chrome/browser/pdf/pdf_extension_test.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/pdf/pdf_extension_test.cc	2023-02-24 20:12:03.580814454 +0000
 @@ -2727,6 +2727,28 @@
    EXPECT_EQ("http://www.example.com/", url.spec());
  }

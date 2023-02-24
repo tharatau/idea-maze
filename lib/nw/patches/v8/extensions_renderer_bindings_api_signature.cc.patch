@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/bindings/api_signature.cc nw/chromium/extensions/renderer/bindings/api_signature.cc
---- up/chromium/extensions/renderer/bindings/api_signature.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/renderer/bindings/api_signature.cc	2023-02-24 06:16:29.108547483 +0000
+--- up/chromium/extensions/renderer/bindings/api_signature.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/renderer/bindings/api_signature.cc	2023-02-24 20:12:10.304873195 +0000
 @@ -30,6 +30,7 @@
      "test.callbackFail",
      "automation.addTreeChangeObserver",

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/headless/BUILD.gn nw/chromium/headless/BUILD.gn
---- up/chromium/headless/BUILD.gn	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/headless/BUILD.gn	2023-02-24 06:16:29.324560263 +0000
+--- up/chromium/headless/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/headless/BUILD.gn	2023-02-24 20:12:10.492874768 +0000
 @@ -647,8 +647,8 @@
    static_library("headless_renderer") {
      defines = []

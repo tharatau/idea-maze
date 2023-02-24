@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/page/chrome_client.cc nw/chromium/third_party/blink/renderer/core/page/chrome_client.cc
---- up/chromium/third_party/blink/renderer/core/page/chrome_client.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/page/chrome_client.cc	2023-02-24 06:16:33.780823712 +0000
+--- up/chromium/third_party/blink/renderer/core/page/chrome_client.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/page/chrome_client.cc	2023-02-24 20:12:14.404901649 +0000
 @@ -79,15 +79,17 @@
      const WebWindowFeatures& features,
      network::mojom::blink::WebSandboxFlags sandbox_flags,

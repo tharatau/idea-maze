@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/bindings/scripts/bind_gen/interface.py nw/chromium/third_party/blink/renderer/bindings/scripts/bind_gen/interface.py
---- up/chromium/third_party/blink/renderer/bindings/scripts/bind_gen/interface.py	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/bindings/scripts/bind_gen/interface.py	2023-02-24 06:16:33.252792521 +0000
+--- up/chromium/third_party/blink/renderer/bindings/scripts/bind_gen/interface.py	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/bindings/scripts/bind_gen/interface.py	2023-02-24 20:12:13.984900046 +0000
 @@ -2138,7 +2138,12 @@
          EmptyNode(),
      ])

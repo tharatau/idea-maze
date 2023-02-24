@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/upgrade_detector/upgrade_detector_impl.cc nw/chromium/chrome/browser/upgrade_detector/upgrade_detector_impl.cc
---- up/chromium/chrome/browser/upgrade_detector/upgrade_detector_impl.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/upgrade_detector/upgrade_detector_impl.cc	2023-02-24 06:16:22.720169476 +0000
+--- up/chromium/chrome/browser/upgrade_detector/upgrade_detector_impl.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/upgrade_detector/upgrade_detector_impl.cc	2023-02-24 20:12:04.728826143 +0000
 @@ -1,6 +1,7 @@
  // Copyright 2012 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be

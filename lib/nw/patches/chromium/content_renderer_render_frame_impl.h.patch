@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/renderer/render_frame_impl.h nw/chromium/content/renderer/render_frame_impl.h
---- up/chromium/content/renderer/render_frame_impl.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/renderer/render_frame_impl.h	2023-02-24 06:16:28.216494706 +0000
+--- up/chromium/content/renderer/render_frame_impl.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/renderer/render_frame_impl.h	2023-02-24 20:12:09.540866803 +0000
 @@ -177,6 +177,8 @@
    // is used to create a RenderFrame that is immediately attached as the main
    // frame of the `web_view`. Meanwhile, `CreateFrame()` is used to create

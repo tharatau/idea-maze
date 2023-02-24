@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/permissions/permission_manager.cc nw/chromium/components/permissions/permission_manager.cc
---- up/chromium/components/permissions/permission_manager.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/components/permissions/permission_manager.cc	2023-02-24 06:16:26.176374006 +0000
+--- up/chromium/components/permissions/permission_manager.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/components/permissions/permission_manager.cc	2023-02-24 20:12:07.796852211 +0000
 @@ -4,6 +4,8 @@
  
  #include "components/permissions/permission_manager.h"

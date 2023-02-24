@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/api/runtime/runtime_api.cc nw/chromium/extensions/browser/api/runtime/runtime_api.cc
---- up/chromium/extensions/browser/api/runtime/runtime_api.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/browser/api/runtime/runtime_api.cc	2023-02-24 06:16:29.012541803 +0000
+--- up/chromium/extensions/browser/api/runtime/runtime_api.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/browser/api/runtime/runtime_api.cc	2023-02-24 20:12:10.220872492 +0000
 @@ -4,6 +4,9 @@
  
  #include "extensions/browser/api/runtime/runtime_api.h"

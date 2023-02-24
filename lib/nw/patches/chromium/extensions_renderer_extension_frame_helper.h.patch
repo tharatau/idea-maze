@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/extension_frame_helper.h nw/chromium/extensions/renderer/extension_frame_helper.h
---- up/chromium/extensions/renderer/extension_frame_helper.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/renderer/extension_frame_helper.h	2023-02-24 06:16:29.112547720 +0000
+--- up/chromium/extensions/renderer/extension_frame_helper.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/renderer/extension_frame_helper.h	2023-02-24 20:12:10.308873228 +0000
 @@ -160,6 +160,7 @@
    void ReadyToCommitNavigation(
        blink::WebDocumentLoader* document_loader) override;

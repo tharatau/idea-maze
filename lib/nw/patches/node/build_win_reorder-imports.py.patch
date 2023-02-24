@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/build/win/reorder-imports.py nw/chromium/build/win/reorder-imports.py
---- up/chromium/build/win/reorder-imports.py	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/build/win/reorder-imports.py	2023-02-24 06:16:18.791936853 +0000
+--- up/chromium/build/win/reorder-imports.py	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/build/win/reorder-imports.py	2023-02-24 20:12:01.496793233 +0000
 @@ -25,8 +25,8 @@
    # correct executable in the first place, so that this script
    # only needs to verify that and not write a whole new exe.

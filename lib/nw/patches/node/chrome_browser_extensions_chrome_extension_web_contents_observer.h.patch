@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/chrome_extension_web_contents_observer.h nw/chromium/chrome/browser/extensions/chrome_extension_web_contents_observer.h
---- up/chromium/chrome/browser/extensions/chrome_extension_web_contents_observer.h	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/chrome_extension_web_contents_observer.h	2023-02-24 06:16:20.996067378 +0000
+--- up/chromium/chrome/browser/extensions/chrome_extension_web_contents_observer.h	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/chrome_extension_web_contents_observer.h	2023-02-24 20:12:03.292811521 +0000
 @@ -13,6 +13,8 @@
  #include "extensions/browser/extension_web_contents_observer.h"
  #include "extensions/common/stack_frame.h"

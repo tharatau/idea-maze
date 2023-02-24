@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/net/proxy_resolution/configured_proxy_resolution_service.cc nw/chromium/net/proxy_resolution/configured_proxy_resolution_service.cc
---- up/chromium/net/proxy_resolution/configured_proxy_resolution_service.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/net/proxy_resolution/configured_proxy_resolution_service.cc	2023-02-24 06:16:31.684699892 +0000
+--- up/chromium/net/proxy_resolution/configured_proxy_resolution_service.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/net/proxy_resolution/configured_proxy_resolution_service.cc	2023-02-24 20:12:12.652893000 +0000
 @@ -1298,6 +1298,23 @@
    return previous_state;
  }

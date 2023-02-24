@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/crash/core/app/breakpad_linux.cc nw/chromium/components/crash/core/app/breakpad_linux.cc
---- up/chromium/components/crash/core/app/breakpad_linux.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/components/crash/core/app/breakpad_linux.cc	2023-02-24 06:16:25.356325489 +0000
+--- up/chromium/components/crash/core/app/breakpad_linux.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/components/crash/core/app/breakpad_linux.cc	2023-02-24 20:12:07.108846455 +0000
 @@ -832,7 +832,6 @@
      minidump_descriptor.set_size_limit(kMaxMinidumpFileSize);
    }

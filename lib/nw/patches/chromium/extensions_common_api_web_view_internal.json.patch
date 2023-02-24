@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/api/web_view_internal.json nw/chromium/extensions/common/api/web_view_internal.json
---- up/chromium/extensions/common/api/web_view_internal.json	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/extensions/common/api/web_view_internal.json	2023-02-24 06:16:29.080545826 +0000
+--- up/chromium/extensions/common/api/web_view_internal.json	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/extensions/common/api/web_view_internal.json	2023-02-24 20:12:10.280872994 +0000
 @@ -587,6 +587,58 @@
          ]
        },

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host.cc nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host.cc
---- up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host.cc	2023-02-24 06:16:56.314112403 +0000
+--- up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host.cc	2023-02-24 20:12:34.101074154 +0000
 @@ -5,6 +5,10 @@
  #include "ui/views/widget/desktop_aura/desktop_window_tree_host.h"
  

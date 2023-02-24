@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/web_modal/web_contents_modal_dialog_manager.cc nw/chromium/components/web_modal/web_contents_modal_dialog_manager.cc
---- up/chromium/components/web_modal/web_contents_modal_dialog_manager.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/components/web_modal/web_contents_modal_dialog_manager.cc	2023-02-24 06:16:27.648461099 +0000
+--- up/chromium/components/web_modal/web_contents_modal_dialog_manager.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/components/web_modal/web_contents_modal_dialog_manager.cc	2023-02-24 20:12:09.044862653 +0000
 @@ -44,7 +44,7 @@
  
    if (child_dialogs_.size() == 1) {

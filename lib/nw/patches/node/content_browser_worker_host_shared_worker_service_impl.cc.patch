@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/worker_host/shared_worker_service_impl.cc nw/chromium/content/browser/worker_host/shared_worker_service_impl.cc
---- up/chromium/content/browser/worker_host/shared_worker_service_impl.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/content/browser/worker_host/shared_worker_service_impl.cc	2023-02-24 06:16:28.080486659 +0000
+--- up/chromium/content/browser/worker_host/shared_worker_service_impl.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/content/browser/worker_host/shared_worker_service_impl.cc	2023-02-24 20:12:09.412865732 +0000
 @@ -191,7 +191,9 @@
      return;
    }

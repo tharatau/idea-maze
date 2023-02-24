@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/BUILD.gn nw/chromium/chrome/BUILD.gn
---- up/chromium/chrome/BUILD.gn	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/BUILD.gn	2023-02-24 06:16:18.891942775 +0000
+--- up/chromium/chrome/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/BUILD.gn	2023-02-24 20:12:01.580794089 +0000
 @@ -77,10 +77,10 @@
  
      # See comment in chrome_dll.gypi in the hardlink_to_output

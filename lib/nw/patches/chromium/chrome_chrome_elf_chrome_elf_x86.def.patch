@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/chrome_elf/chrome_elf_x86.def nw/chromium/chrome/chrome_elf/chrome_elf_x86.def
---- up/chromium/chrome/chrome_elf/chrome_elf_x86.def	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/chrome_elf/chrome_elf_x86.def	2023-02-24 06:16:22.860177767 +0000
+--- up/chromium/chrome/chrome_elf/chrome_elf_x86.def	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/chrome_elf/chrome_elf_x86.def	2023-02-24 20:12:04.856827446 +0000
 @@ -1,7 +1,8 @@
  ; Copyright 2013 The Chromium Authors
  ; Use of this source code is governed by a BSD-style license that can be

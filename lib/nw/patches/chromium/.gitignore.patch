@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/.gitignore nw/chromium/.gitignore
---- up/chromium/.gitignore	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/.gitignore	2023-02-24 06:16:17.643868867 +0000
+--- up/chromium/.gitignore	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/.gitignore	2023-02-24 20:12:00.528783377 +0000
 @@ -1,4 +1,5 @@
  /client-py/
 +/content/nw

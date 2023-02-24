@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/renderer/extensions/resource_request_policy.cc nw/chromium/chrome/renderer/extensions/resource_request_policy.cc
---- up/chromium/chrome/renderer/extensions/resource_request_policy.cc	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/chrome/renderer/extensions/resource_request_policy.cc	2023-02-24 06:16:22.976184637 +0000
+--- up/chromium/chrome/renderer/extensions/resource_request_policy.cc	2023-02-21 19:03:23.000000000 +0000
++++ nw/chromium/chrome/renderer/extensions/resource_request_policy.cc	2023-02-24 20:12:04.956828449 +0000
 @@ -99,7 +99,10 @@
    // resources:
  
