@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/base/files/file_util_posix.cc nw/chromium/base/files/file_util_posix.cc
+--- up/chromium/base/files/file_util_posix.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/base/files/file_util_posix.cc	2023-02-19 17:36:24.943437426 +0000
+@@ -638,7 +638,7 @@
+ #elif BUILDFLAG(GOOGLE_CHROME_BRANDING)
+   StringPiece prefix = "com.google.Chrome";
+ #else
+-  StringPiece prefix = "org.chromium.Chromium";
++  StringPiece prefix = "io.nwjs";
+ #endif
+   return FilePath(StrCat({".", prefix, ".", identifier}));
+ }

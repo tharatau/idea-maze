@@ -1,0 +1,29 @@
+diff -r -u --color up/chromium/components/remote_cocoa/app_shim/bridged_content_view.mm nw/chromium/components/remote_cocoa/app_shim/bridged_content_view.mm
+--- up/chromium/components/remote_cocoa/app_shim/bridged_content_view.mm	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/components/remote_cocoa/app_shim/bridged_content_view.mm	2023-02-19 17:36:33.919460134 +0000
+@@ -201,6 +201,7 @@
+ @synthesize bridge = _bridge;
+ @synthesize drawMenuBackgroundForBlur = _drawMenuBackgroundForBlur;
+ @synthesize keyDownEventForTesting = _keyDownEvent;
++@synthesize forceCPUDrawLayer = forceCPUDrawLayer_;
+ 
+ - (instancetype)initWithBridge:(remote_cocoa::NativeWidgetNSWindowBridge*)bridge
+                         bounds:(gfx::Rect)bounds {
+@@ -301,6 +302,17 @@
+   return [super hitTest:point];
+ }
+ 
++- (void)drawRect:(NSRect)dirty {
++  if (content::g_force_cpu_draw) {
++    CGContextRef ctx = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
++    CGContextClipToRect(ctx, NSRectToCGRect(dirty));
++    //get the flipped layer from forceCPUDrawLayer_ and do renderInContext
++    [forceCPUDrawLayer_ renderInContext:ctx];
++  } else {
++    [super drawRect:dirty];
++  }
++}
++
+ - (void)processCapturedMouseEvent:(NSEvent*)theEvent {
+   if (!_bridge)
+     return;

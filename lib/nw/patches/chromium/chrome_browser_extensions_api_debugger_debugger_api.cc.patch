@@ -1,0 +1,16 @@
+diff -r -u --color up/chromium/chrome/browser/extensions/api/debugger/debugger_api.cc nw/chromium/chrome/browser/extensions/api/debugger/debugger_api.cc
+--- up/chromium/chrome/browser/extensions/api/debugger/debugger_api.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/api/debugger/debugger_api.cc	2023-02-19 17:36:27.687444372 +0000
+@@ -362,10 +362,12 @@
+   if (Manifest::IsPolicyLocation(extension_->location()))
+     return true;
+ 
++#if 0
+   subscription_ = ExtensionDevToolsInfoBarDelegate::Create(
+       extension_id(), extension_->name(),
+       base::BindOnce(&ExtensionDevToolsClientHost::InfoBarDestroyed,
+                      base::Unretained(this)));
++#endif
+   return true;
+ }
+ 

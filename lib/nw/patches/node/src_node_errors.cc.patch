@@ -1,0 +1,75 @@
+diff -r -u --color up/node/src/node_errors.cc nw/node/src/node_errors.cc
+--- up/node/src/node_errors.cc	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/src/node_errors.cc	2023-02-19 17:37:33.291599271 +0000
+@@ -34,6 +34,8 @@
+ using v8::Undefined;
+ using v8::Value;
+ 
++extern bool node_is_nwjs;
++
+ bool IsExceptionDecorated(Environment* env, Local<Value> er) {
+   if (!er.IsEmpty() && er->IsObject()) {
+     Local<Object> err_obj = er.As<Object>();
+@@ -1087,8 +1089,9 @@
+     // error is supposed to be thrown at this point.
+     // Since we don't have access to Environment here, there is not
+     // much we can do, so we just print whatever is useful and crash.
+-    PrintException(isolate, context, error, message);
+-    Abort();
++    //PrintException(isolate, context, error, message);
++    //Abort();
++    return;
+   }
+ 
+   // Invoke process._fatalException() to give user a chance to handle it.
+@@ -1096,16 +1099,17 @@
+   // monkey-patchable.
+   Local<Object> process_object = env->process_object();
+   Local<String> fatal_exception_string = env->fatal_exception_string();
+-  Local<Value> fatal_exception_function =
++  Local<Value> fatal_exception_function_value =
+       process_object->Get(env->context(),
+                           fatal_exception_string).ToLocalChecked();
+   // If the exception happens before process._fatalException is attached
+   // during bootstrap, or if the user has patched it incorrectly, exit
+   // the current Node.js instance.
+-  if (!fatal_exception_function->IsFunction()) {
++  int exit_code = 0;
++  if (!fatal_exception_function_value->IsFunction()) {
+     ReportFatalException(
+         env, error, message, EnhanceFatalException::kDontEnhance);
+-    env->Exit(ExitCode::kInvalidFatalExceptionMonkeyPatching);
++    exit_code = (int)ExitCode::kInvalidFatalExceptionMonkeyPatching;
+     return;
+   }
+ 
+@@ -1123,7 +1127,7 @@
+     Local<Value> argv[2] = { error,
+                              Boolean::New(env->isolate(), from_promise) };
+ 
+-    maybe_handled = fatal_exception_function.As<Function>()->Call(
++    maybe_handled = fatal_exception_function_value.As<Function>()->Call(
+         env->context(), process_object, arraysize(argv), argv);
+   }
+ 
+@@ -1152,13 +1156,16 @@
+ 
+   // If the global uncaught exception handler sets process.exitCode,
+   // exit with that code. Otherwise, exit with 1.
+-  Local<String> exit_code = env->exit_code_string();
++  Local<String> exit_code_val = env->exit_code_string();
+   Local<Value> code;
+-  if (process_object->Get(env->context(), exit_code).ToLocal(&code) &&
++  if (process_object->Get(env->context(), exit_code_val).ToLocal(&code) &&
+       code->IsInt32()) {
+-    env->Exit(static_cast<ExitCode>(code.As<Int32>()->Value()));
++    exit_code = (code.As<Int32>()->Value());
+   } else {
+-    env->Exit(ExitCode::kGenericUserError);
++    exit_code = (int)ExitCode::kGenericUserError;
++  }
++  if (!node_is_nwjs && exit_code) {
++    exit(exit_code);
+   }
+ }
+ 

@@ -2,24 +2,24 @@
 
 NW_DIR="nw"
 NW_URI=https://github.com/nwjs
-NW_VER=14
+NW_VER=73
 
 UP_DIR="up"
 
 CHROMIUM_URI="https://github.com/chromium/chromium"
-CHROMIUM_VER="50.0.2661.102"
+CHROMIUM_VER="110.0.5481.104"
 
 NODE_URI="https://github.com/nodejs/node"
-NODE_VER="5.11.1"
+NODE_VER="19.6.1"
 
 V8_URI="https://github.com/v8/v8"
-V8_VER="5.0.71.0"
+V8_VER="11.0.226.16"
 
-if [[ ! -d "patches" ]]; then
-    mkdir patches
+if [[ ! -d "diff" ]]; then
+    mkdir diff
 fi
 
-cd patches
+cd diff
 
 if [[ ! -d $NW_DIR ]]; then
     mkdir $NW_DIR

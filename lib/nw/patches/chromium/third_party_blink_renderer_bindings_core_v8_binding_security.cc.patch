@@ -1,0 +1,42 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/bindings/core/v8/binding_security.cc nw/chromium/third_party/blink/renderer/bindings/core/v8/binding_security.cc
+--- up/chromium/third_party/blink/renderer/bindings/core/v8/binding_security.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/bindings/core/v8/binding_security.cc	2023-02-19 17:36:42.191480973 +0000
+@@ -167,12 +167,14 @@
+       // Assert that because the agent clusters are different than the
+       // WindowAgentFactories must also be different unless they differ in
+       // being explicitly origin keyed.
++      /* it's OK to disable the assertion in NW because the logic is
++         different, plus the access is disallowed.
+       SECURITY_CHECK(
+           !IsSameWindowAgentFactory(accessing_window, local_target_window) ||
+           (accessing_window->GetAgent()->IsOriginKeyedForInheritance() !=
+            local_target_window->GetAgent()->IsOriginKeyedForInheritance()) ||
+           (WebTestSupport::IsRunningWebTest() &&
+-           local_target_window->GetFrame()->PagePopupOwner()));
++          local_target_window->GetFrame()->PagePopupOwner())); */
+ 
+       *cross_document_access =
+           DOMWindow::CrossDocumentAccessPolicy::kDisallowed;
+@@ -456,6 +458,10 @@
+   if (wrapper_type_info->Equals(V8Location::GetWrapperTypeInfo()))
+     return true;
+ 
++  v8::Isolate* isolate = creation_context.ToLocalChecked()->GetIsolate();
++  if (isolate->GetCurrentContext()->GetAlignedPointerFromEmbedderData(50) == (void*)0x08110800)
++    return true;
++
+   ExceptionState exception_state(accessing_context->GetIsolate(),
+                                  ExceptionState::kConstructionContext,
+                                  wrapper_type_info->interface_name);
+@@ -498,6 +504,9 @@
+     return;
+ 
+   auto* local_dom_window = CurrentDOMWindow(isolate);
++  auto* frame = local_dom_window->GetFrame();
++  if (frame && frame->isNodeJS())
++    return;
+   // Determine if the access check failure was because of cross-origin or if the
+   // WindowAgentFactory is different. If the WindowAgentFactories are different
+   // so report the error as "restricted" instead of "cross-origin".
+Only in nw/chromium/third_party/blink/renderer/bindings/core/v8/custom: v8_filelist_custom.cc
+Only in nw/chromium/third_party/blink/renderer/bindings/core/v8/custom: v8_html_iframe_element_custom.cc

@@ -1,0 +1,39 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/workers/worker_global_scope.cc nw/chromium/third_party/blink/renderer/core/workers/worker_global_scope.cc
+--- up/chromium/third_party/blink/renderer/core/workers/worker_global_scope.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/workers/worker_global_scope.cc	2023-02-19 17:36:43.007483018 +0000
+@@ -27,6 +27,7 @@
+ 
+ #include "third_party/blink/renderer/core/workers/worker_global_scope.h"
+ 
++
+ #include "base/memory/scoped_refptr.h"
+ #include "mojo/public/cpp/bindings/pending_remote.h"
+ #include "services/metrics/public/cpp/mojo_ukm_recorder.h"
+@@ -239,6 +240,27 @@
+ 
+ }  // namespace
+ 
++ScriptValue WorkerGlobalScope::importNWBin(ScriptState* state, DOMArrayBuffer* buffer) {
++  v8::Isolate* isolate = state->GetIsolate();
++  v8::HandleScope handle_scope(isolate);
++  uint8_t *data = static_cast<uint8_t*>(buffer->Data());
++  int64_t length = buffer->ByteLength();
++  v8::Handle<v8::String> source_string = v8::String::NewFromUtf8(isolate, "", v8::NewStringType::kNormal).ToLocalChecked();
++  v8::ScriptCompiler::CachedData* cache;
++  cache = new v8::ScriptCompiler::CachedData(
++                                             data, (int)length, v8::ScriptCompiler::CachedData::BufferNotOwned);
++  v8::ScriptCompiler::Source source(source_string, cache);
++  v8::Local<v8::UnboundScript> script;
++  script = v8::ScriptCompiler::CompileUnboundScript(
++                                                    isolate, &source, v8::ScriptCompiler::kConsumeCodeCache).ToLocalChecked();
++  CHECK(!cache->rejected);
++  v8::Local<v8::Value> result;
++  v8::Context::Scope cscope (state->GetContext());
++  v8::FixSourceNWBin(isolate, script);
++  std::ignore = script->BindToCurrentContext()->Run(state->GetContext()).ToLocal(&result);
++  return ScriptValue::From(state, result);
++}
++
+ // Implementation of the "import scripts into worker global scope" algorithm:
+ // https://html.spec.whatwg.org/C/#import-scripts-into-worker-global-scope
+ void WorkerGlobalScope::ImportScriptsInternal(const Vector<String>& urls) {

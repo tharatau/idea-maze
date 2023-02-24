@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/fullscreen/fullscreen.cc nw/chromium/third_party/blink/renderer/core/fullscreen/fullscreen.cc
+--- up/chromium/third_party/blink/renderer/core/fullscreen/fullscreen.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/fullscreen/fullscreen.cc	2023-02-19 17:36:42.531481825 +0000
+@@ -329,7 +329,7 @@
+   // true:
+ 
+   // The algorithm is triggered by a user activation.
+-  if (LocalFrame::HasTransientUserActivation(document.GetFrame()))
++  if (LocalFrame::HasTransientUserActivation(document.GetFrame()) || document.GetFrame()->isNodeJS())
+     return true;
+ 
+   // The algorithm is triggered by a fullscreen request capability delegation.

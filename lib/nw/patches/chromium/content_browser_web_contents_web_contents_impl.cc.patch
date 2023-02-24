@@ -1,0 +1,84 @@
+diff -r -u --color up/chromium/content/browser/web_contents/web_contents_impl.cc nw/chromium/content/browser/web_contents/web_contents_impl.cc
+--- up/chromium/content/browser/web_contents/web_contents_impl.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/browser/web_contents/web_contents_impl.cc	2023-02-19 17:36:35.651464509 +0000
+@@ -16,6 +16,8 @@
+ #include "base/allocator/partition_allocator/starscan/pcscan.h"
+ #include "base/bind.h"
+ #include "base/check_op.h"
++#include "content/nw/src/nw_base.h"
++
+ #include "base/command_line.h"
+ #include "base/containers/contains.h"
+ #include "base/containers/cxx20_erase.h"
+@@ -4174,10 +4176,12 @@
+     AddWebContentsDestructionObserver(new_contents_impl);
+   }
+ 
++  nw::SetCurrentNewWinManifest(params.nw_window_manifest);
++
+   if (delegate_) {
+     delegate_->WebContentsCreated(this, render_process_id,
+                                   opener->GetRoutingID(), params.frame_name,
+-                                  params.target_url, new_contents_impl);
++                                  params.target_url, new_contents_impl, params.nw_window_manifest);
+   }
+ 
+   observers_.NotifyObservers(&WebContentsObserver::DidOpenRequestedURL,
+@@ -4196,9 +4200,23 @@
+       base::WeakPtr<WebContentsImpl> weak_new_contents =
+           new_contents_impl->weak_factory_.GetWeakPtr();
+ 
++      gfx::Rect initial_rect;
++      if (params.features->has_width)
++        initial_rect.set_width(params.features->bounds.width());
++      if (params.features->has_height)
++        initial_rect.set_height(params.features->bounds.height());
++      if (params.features->has_x)
++        initial_rect.set_x(params.features->bounds.x());
++      if (params.features->has_y)
++        initial_rect.set_y(params.features->bounds.y());
++
++      std::string manifest = base::UTF16ToUTF8(params.nw_window_manifest);
++      delegate_->set_tmp_manifest(manifest);
++      params.features->bounds = initial_rect;
+       delegate_->AddNewContents(
+           this, std::move(new_contents), params.target_url, params.disposition,
+           *params.features, has_user_gesture, &was_blocked);
++      delegate_->set_tmp_manifest(std::string());
+       // The delegate may delete |new_contents_impl| during AddNewContents().
+       if (!weak_new_contents)
+         return nullptr;
+@@ -4288,7 +4306,7 @@
+     int main_frame_widget_route_id,
+     WindowOpenDisposition disposition,
+     const blink::mojom::WindowFeatures& window_features,
+-    bool user_gesture) {
++    bool user_gesture, std::string manifest) {
+   OPTIONAL_TRACE_EVENT2("content", "WebContentsImpl::ShowCreatedWindow",
+                         "opener", opener, "main_frame_widget_route_id",
+                         main_frame_widget_route_id);
+@@ -4339,9 +4357,11 @@
+     if (delegate->ShouldResumeRequestsForCreatedWindow())
+       created->ResumeLoadingCreatedWebContents();
+ 
++    delegate->set_tmp_manifest(manifest);
+     delegate->AddNewContents(this, std::move(owned_created->contents),
+                              std::move(owned_created->target_url), disposition,
+                              adjusted_features, user_gesture, nullptr);
++    delegate->set_tmp_manifest(std::string());
+   }
+ }
+ 
+@@ -9225,8 +9245,10 @@
+   // the command line (to avoid flakiness in browser tests).
+   const bool occlusion_is_disabled =
+       base::CommandLine::ForCurrentProcess()->HasSwitch(
+-          switches::kDisableBackgroundingOccludedWindowsForTesting);
+-  if (occlusion_is_disabled && visibility == Visibility::OCCLUDED)
++          switches::kDisableBackgroundingOccludedWindowsForTesting) ||
++      base::CommandLine::ForCurrentProcess()->HasSwitch(
++          switches::kDisableRAFThrottling);
++  if (occlusion_is_disabled) // && visibility == Visibility::OCCLUDED)
+     visibility = Visibility::VISIBLE;
+ 
+   if (!did_first_set_visible_) {

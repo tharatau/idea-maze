@@ -1,0 +1,13 @@
+diff -r -u --color up/chromium/ui/base/base_window.cc nw/chromium/ui/base/base_window.cc
+--- up/chromium/ui/base/base_window.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/base/base_window.cc	2023-02-19 17:37:08.047541907 +0000
+@@ -12,5 +12,9 @@
+      !window.IsFullscreen();
+ }
+ 
++void BaseWindow::ForceClose() {
++  Close();
++}
++
+ }  // namespace ui
+ 

@@ -1,0 +1,84 @@
+diff -r -u --color up/chromium/ui/views/widget/widget.cc nw/chromium/ui/views/widget/widget.cc
+--- up/chromium/ui/views/widget/widget.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/views/widget/widget.cc	2023-02-19 17:37:08.963544109 +0000
+@@ -469,6 +469,8 @@
+     } else if (show_state == ui::SHOW_STATE_MINIMIZED) {
+       Minimize();
+       saved_show_state_ = ui::SHOW_STATE_MINIMIZED;
++    } else if (show_state == ui::SHOW_STATE_FULLSCREEN) {
++      SetFullscreen(true);
+     }
+   } else if (delegate) {
+     SetContentsView(delegate->TransferOwnershipOfContentsView());
+@@ -648,6 +650,12 @@
+     native_widget_->SetBounds(bounds);
+ }
+ 
++#if defined(OS_WIN)
++void Widget::SetPosition(const gfx::Point& pos) {
++  native_widget_->SetPosition(pos);
++}
++#endif
++
+ void Widget::SetSize(const gfx::Size& size) {
+   if (native_widget_)
+     native_widget_->SetSize(size);
+@@ -721,13 +729,18 @@
+     native_widget_->SetShape(std::move(shape));
+ }
+ 
+-void Widget::CloseWithReason(ClosedReason closed_reason) {
++void Widget::CloseWithReason(ClosedReason closed_reason, bool force) {
+   if (widget_closed_) {
+     // It appears we can hit this code path if you close a modal dialog then
+     // close the last browser before the destructor is hit, which triggers
+     // invoking Close again.
+     return;
+   }
++  if (!force && !force_closing_ && !NWCanClose())
++    return;
++  if (force)
++    force_closing_ = true; //for reentering this function after force close
++
+   if (block_close_) {
+     return;
+   }
+@@ -735,6 +748,7 @@
+                               CloseRequestResult::kCannotClose) {
+     return;
+   }
++
+   // This is the last chance to cancel closing.
+   if (widget_delegate_ && !widget_delegate_->OnCloseRequested(closed_reason))
+     return;
+@@ -768,8 +782,8 @@
+     native_widget_->Close();
+ }
+ 
+-void Widget::Close() {
+-  CloseWithReason(ClosedReason::kUnspecified);
++void Widget::Close(bool force) {
++  CloseWithReason(ClosedReason::kUnspecified, force);
+ }
+ 
+ void Widget::CloseNow() {
+@@ -1467,6 +1481,10 @@
+   return native_widget_initialized_;
+ }
+ 
++bool Widget::NWCanClose(bool user_force) const {
++  return widget_delegate_->NWCanClose(user_force);
++}
++
+ bool Widget::OnNativeWidgetActivationChanged(bool active) {
+   if (!ShouldHandleNativeWidgetActivationChanged(active))
+     return false;
+@@ -1620,6 +1638,8 @@
+   NotifyCaretBoundsChanged(GetInputMethod());
+   SaveWindowPlacementIfInitialized();
+ 
++  widget_delegate_->OnWidgetResize();
++
+   for (WidgetObserver& observer : observers_)
+     observer.OnWidgetBoundsChanged(this, GetWindowBoundsInScreen());
+ }

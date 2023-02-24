@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/ipc/ipc_logging.cc nw/chromium/ipc/ipc_logging.cc
+--- up/chromium/ipc/ipc_logging.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ipc/ipc_logging.cc	2023-02-19 17:36:38.791472443 +0000
+@@ -242,7 +242,7 @@
+       }
+     }
+   }
+-  if (enabled_on_stderr_) {
++  if (enabled_on_stderr_ && !sender_) {
+     std::string message_name;
+     if (data.message_name.empty()) {
+       message_name = base::StringPrintf("[unknown type %d]", data.type);

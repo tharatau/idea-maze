@@ -1,0 +1,29 @@
+diff -r -u --color up/v8/src/objects/js-function.cc nw/v8/src/objects/js-function.cc
+--- up/v8/src/objects/js-function.cc	2023-02-10 19:02:29.000000000 +0000
++++ nw/v8/src/objects/js-function.cc	2023-02-19 17:37:43.559623022 +0000
+@@ -1243,6 +1243,13 @@
+     return NativeCodeFunctionSourceString(shared_info);
+   }
+ 
++  //NWJS#6061: moved here or it will crash when trying to print
++  //function as a class
++  // Check if we have source code for the {function}.
++  if (!shared_info->HasSourceCode()) {
++    return NativeCodeFunctionSourceString(shared_info);
++  }
++
+   // Check if we should print {function} as a class.
+   Handle<Object> maybe_class_positions = JSReceiver::GetDataProperty(
+       isolate, function, isolate->factory()->class_positions_symbol());
+@@ -1257,11 +1264,6 @@
+                                             end_position);
+   }
+ 
+-  // Check if we have source code for the {function}.
+-  if (!shared_info->HasSourceCode()) {
+-    return NativeCodeFunctionSourceString(shared_info);
+-  }
+-
+   // If this function was compiled from asm.js, use the recorded offset
+   // information.
+ #if V8_ENABLE_WEBASSEMBLY

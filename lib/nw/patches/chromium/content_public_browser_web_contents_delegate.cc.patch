@@ -1,0 +1,14 @@
+diff -r -u --color up/chromium/content/public/browser/web_contents_delegate.cc nw/chromium/content/public/browser/web_contents_delegate.cc
+--- up/chromium/content/public/browser/web_contents_delegate.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/public/browser/web_contents_delegate.cc	2023-02-19 17:36:35.787464853 +0000
+@@ -32,6 +32,10 @@
+   return nullptr;
+ }
+ 
++bool WebContentsDelegate::CanLoadFileSubresource(const GURL& url) {
++  return false;
++}
++
+ bool WebContentsDelegate::ShouldAllowRendererInitiatedCrossProcessNavigation(
+     bool is_outermost_main_frame_navigation) {
+   return true;

@@ -1,0 +1,20 @@
+diff -r -u --color up/chromium/components/gcm_driver/gcm_internals_helper.cc nw/chromium/components/gcm_driver/gcm_internals_helper.cc
+--- up/chromium/components/gcm_driver/gcm_internals_helper.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/components/gcm_driver/gcm_internals_helper.cc	2023-02-19 17:36:32.883457516 +0000
+@@ -4,6 +4,7 @@
+ 
+ #include "components/gcm_driver/gcm_internals_helper.h"
+ 
++#include "content/nw/src/nw_base.h"
+ #include <memory>
+ #include <utility>
+ 
+@@ -121,7 +122,7 @@
+ 
+     base::Value::Dict device_info;
+     device_info.Set(kProfileServiceCreated, profile_service != nullptr);
+-    device_info.Set(kGcmEnabled, true);
++    device_info.Set(kGcmEnabled, nw::gcm_enabled());
+     device_info.Set(kGcmClientCreated, stats->gcm_client_created);
+     device_info.Set(kGcmClientState, stats->gcm_client_state);
+     device_info.Set(kConnectionClientCreated, stats->connection_client_created);

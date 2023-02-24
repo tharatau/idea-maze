@@ -1,0 +1,37 @@
+diff -r -u --color up/chromium/chrome/browser/ui/views/frame/contents_web_view.cc nw/chromium/chrome/browser/ui/views/frame/contents_web_view.cc
+--- up/chromium/chrome/browser/ui/views/frame/contents_web_view.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/contents_web_view.cc	2023-02-19 17:36:29.559449110 +0000
+@@ -23,10 +23,11 @@
+ #include "ui/wm/core/window_util.h"
+ #endif
+ 
+-ContentsWebView::ContentsWebView(content::BrowserContext* browser_context)
++ContentsWebView::ContentsWebView(content::BrowserContext* browser_context,
++                                 bool transparent)
+     : views::WebView(browser_context),
+-      status_bubble_(nullptr) {
+-}
++      status_bubble_(nullptr),
++      transparent_(transparent) {}
+ 
+ ContentsWebView::~ContentsWebView() {
+ }
+@@ -72,14 +73,16 @@
+   SkColor color = GetColorProvider()->GetColor(
+       is_letterboxing() ? kColorWebContentsBackgroundLetterboxing
+                         : kColorWebContentsBackground);
++  if (transparent_)
++    SetBackground(views::CreateSolidBackground(SK_ColorTRANSPARENT));
++  else
+   SetBackground(background_visible_ ? views::CreateSolidBackground(color)
+                                     : nullptr);
+-
+   if (web_contents()) {
+     content::RenderWidgetHostView* rwhv =
+         web_contents()->GetRenderWidgetHostView();
+     if (rwhv) {
+-      rwhv->SetBackgroundColor(background_visible_ ? color
++      rwhv->SetBackgroundColor(background_visible_ && !transparent_ ? color
+                                                    : SK_ColorTRANSPARENT);
+     }
+   }

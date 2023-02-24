@@ -1,0 +1,13 @@
+diff -r -u --color up/chromium/extensions/browser/app_window/test_app_window_contents.cc nw/chromium/extensions/browser/app_window/test_app_window_contents.cc
+--- up/chromium/extensions/browser/app_window/test_app_window_contents.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/browser/app_window/test_app_window_contents.cc	2023-02-19 17:36:36.819467460 +0000
+@@ -17,7 +17,8 @@
+ 
+ void TestAppWindowContents::Initialize(content::BrowserContext* context,
+                                        content::RenderFrameHost* creator_frame,
+-                                       const GURL& url) {}
++                                       const GURL& url,
++                                       const Extension* extension, bool skip_blocking_parser) {}
+ 
+ void TestAppWindowContents::LoadContents(int32_t creator_process_id) {}
+ 

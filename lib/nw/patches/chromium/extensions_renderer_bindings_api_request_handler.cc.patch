@@ -1,0 +1,38 @@
+diff -r -u --color up/chromium/extensions/renderer/bindings/api_request_handler.cc nw/chromium/extensions/renderer/bindings/api_request_handler.cc
+--- up/chromium/extensions/renderer/bindings/api_request_handler.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/renderer/bindings/api_request_handler.cc	2023-02-19 17:36:36.903467673 +0000
+@@ -447,7 +447,11 @@
+     binding::AsyncResponseType async_type,
+     v8::Local<v8::Function> callback,
+     v8::Local<v8::Function> custom_callback,
+-    binding::ResultModifierFunction result_modifier) {
++    binding::ResultModifierFunction result_modifier,
++    bool sync,
++    bool* success,
++    base::Value::List* response,
++    std::string* error) {
+   v8::Isolate* isolate = context->GetIsolate();
+ 
+   v8::Local<v8::Promise> promise;
+@@ -467,6 +471,7 @@
+     request->has_async_response_handler = true;
+   }
+ 
++  if (!sync)
+   pending_requests_.emplace(
+       request_id,
+       PendingRequest(isolate, context, method, std::move(async_handler),
+@@ -478,6 +483,13 @@
+   request->method_name = method;
+ 
+   last_sent_request_id_ = request_id;
++  request->sync = sync;
++  if (sync) {
++    request->response = response;
++    request->success = success;
++    request->error = error;
++  }
++
+   send_request_.Run(std::move(request), context);
+ 
+   return promise;

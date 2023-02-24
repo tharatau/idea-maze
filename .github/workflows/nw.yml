@@ -1,4 +1,4 @@
-name: nw-toolkit
+name: nw
 on:
   push:
     branches:
@@ -20,10 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.3.0
-
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: "19.5.0"
       - name: Make patches
         if: steps.cache-patches.outputs.cache-hit != 'true'
-        run: make patch
+        run: npm run patch
 
       - name: Cache patches
         id: cache-patches

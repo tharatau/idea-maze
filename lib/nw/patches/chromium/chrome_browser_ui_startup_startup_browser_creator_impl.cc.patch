@@ -1,0 +1,25 @@
+diff -r -u --color up/chromium/chrome/browser/ui/startup/startup_browser_creator_impl.cc nw/chromium/chrome/browser/ui/startup/startup_browser_creator_impl.cc
+--- up/chromium/chrome/browser/ui/startup/startup_browser_creator_impl.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/startup/startup_browser_creator_impl.cc	2023-02-19 17:36:29.475448898 +0000
+@@ -383,7 +383,7 @@
+         IncompatibleApplicationsUpdater::HasCachedApplications();
+   }
+ #endif
+-  welcome::JoinOnboardingGroup(profile_);
++  //welcome::JoinOnboardingGroup(profile_);
+ #endif
+ 
+   // Presentation of promotional and/or educational tabs may be controlled via
+@@ -407,10 +407,11 @@
+   // TODO(https://crbug.com/1276034): Cleanup this code, in particular on Ash
+   // where the welcome flow is never shown.
+   bool welcome_enabled = true;
++
+ #if BUILDFLAG(IS_CHROMEOS_LACROS)
+   if (AccountConsistencyModeManager::IsMirrorEnabledForProfile(profile_))
+     welcome_enabled = false;
+-#elif !BUILDFLAG(IS_CHROMEOS_ASH)
++#elif 0 //!BUILDFLAG(IS_CHROMEOS_ASH)
+   welcome_enabled =
+       welcome::IsEnabled(profile_) && welcome::HasModulesToShow(profile_);
+ #endif  // !BUILDFLAG(IS_CHROMEOS_ASH)

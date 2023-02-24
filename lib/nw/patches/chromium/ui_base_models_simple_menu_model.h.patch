@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/ui/base/models/simple_menu_model.h nw/chromium/ui/base/models/simple_menu_model.h
+--- up/chromium/ui/base/models/simple_menu_model.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/base/models/simple_menu_model.h	2023-02-19 17:37:08.099542032 +0000
+@@ -72,6 +72,8 @@
+     bool GetAcceleratorForCommandId(
+         int command_id,
+         ui::Accelerator* accelerator) const override;
++
++    virtual bool HasIcon(int command_id);
+   };
+ 
+   // The Delegate can be NULL, though if it is items can't be checked or

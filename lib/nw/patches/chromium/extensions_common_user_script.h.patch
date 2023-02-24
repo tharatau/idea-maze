@@ -1,0 +1,22 @@
+diff -r -u --color up/chromium/extensions/common/user_script.h nw/chromium/extensions/common/user_script.h
+--- up/chromium/extensions/common/user_script.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/common/user_script.h	2023-02-19 17:36:36.891467642 +0000
+@@ -148,6 +148,9 @@
+   bool emulate_greasemonkey() const { return emulate_greasemonkey_; }
+   void set_emulate_greasemonkey(bool val) { emulate_greasemonkey_ = val; }
+ 
++  bool in_main_world() const { return in_main_world_; }
++  void set_in_main_world(bool val) { in_main_world_ = val; }
++
+   // Whether to match all frames, or only the top one.
+   bool match_all_frames() const { return match_all_frames_; }
+   void set_match_all_frames(bool val) { match_all_frames_ = val; }
+@@ -312,6 +315,8 @@
+   // script.
+   bool emulate_greasemonkey_ = false;
+ 
++  bool in_main_world_ = false;
++
+   // Whether the user script should run in all frames, or only just the top one.
+   bool match_all_frames_ = false;
+ 

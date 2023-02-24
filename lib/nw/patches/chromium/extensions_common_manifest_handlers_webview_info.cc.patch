@@ -1,0 +1,57 @@
+diff -r -u --color up/chromium/extensions/common/manifest_handlers/webview_info.cc nw/chromium/extensions/common/manifest_handlers/webview_info.cc
+--- up/chromium/extensions/common/manifest_handlers/webview_info.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/common/manifest_handlers/webview_info.cc	2023-02-19 17:36:36.883467622 +0000
+@@ -101,6 +101,34 @@
+   }
+   return false;
+ }
++  
++bool WebviewInfo::IsURLWebviewAccessible(const Extension* extension,
++                                         const std::string& partition_id,
++                                         const GURL& url,
++                                         bool* file_scheme) {
++  if (!extension)
++    return false;
++
++  const WebviewInfo* webview_info = static_cast<const WebviewInfo*>(
++      extension->GetManifestData(keys::kWebviewAccessibleResources));
++  if (!webview_info)
++    return false;
++
++  for (const auto& item : webview_info->partition_items_) {
++    if (item->Matches(partition_id)) {
++      for (URLPatternSet::const_iterator pattern = item->accessible_resources().begin();
++           pattern != item->accessible_resources().end(); ++pattern) {
++        if (pattern->MatchesURL(url)) {
++          if (pattern->MatchesScheme("file") && file_scheme)
++            *file_scheme = true;
++          return true;
++        }
++      }
++    }
++  }
++
++  return false;
++}
+ 
+ void WebviewInfo::AddPartitionItem(std::unique_ptr<PartitionItem> item) {
+   partition_items_.push_back(std::move(item));
+@@ -168,6 +196,10 @@
+             errors::kInvalidWebviewAccessibleResource, base::NumberToString(i));
+         return false;
+       }
++      URLPattern try_pattern(URLPattern::SCHEME_ALL);
++      if (try_pattern.Parse(item.GetString()) == URLPattern::ParseResult::kSuccess) {
++        partition_item->AddPattern(try_pattern);
++      } else {
+ 
+       GURL pattern_url =
+           Extension::GetResourceURL(extension->url(), item.GetString());
+@@ -199,6 +231,7 @@
+       }
+ 
+       partition_item->AddPattern(std::move(pattern));
++      } //nwjs
+     }
+     info->AddPartitionItem(std::move(partition_item));
+   }

@@ -1,0 +1,64 @@
+diff -r -u --color up/chromium/extensions/browser/content_verify_job.h nw/chromium/extensions/browser/content_verify_job.h
+--- up/chromium/extensions/browser/content_verify_job.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/browser/content_verify_job.h	2023-02-19 17:36:36.823467470 +0000
+@@ -9,6 +9,7 @@
+ 
+ #include <memory>
+ #include <string>
++#include "base/files/file.h"
+ 
+ #include "base/callback.h"
+ #include "base/files/file_path.h"
+@@ -59,7 +60,9 @@
+ 
+     FAILURE_REASON_MAX
+   };
+-  using FailureCallback = base::OnceCallback<void(FailureReason)>;
++  using FailureCallback = base::OnceCallback<void(FailureReason, scoped_refptr<ContentVerifyJob>)>;
++  using ReadyCallback = base::OnceCallback<void(scoped_refptr<ContentVerifyJob>)>;
++  using SuccessCallback = base::OnceCallback<void(void)>;
+ 
+   // The |failure_callback| will be called at most once if there was a failure.
+   ContentVerifyJob(const ExtensionId& extension_id,
+@@ -71,6 +74,11 @@
+   ContentVerifyJob(const ContentVerifyJob&) = delete;
+   ContentVerifyJob& operator=(const ContentVerifyJob&) = delete;
+ 
++  ContentVerifyJob(ContentHashReader* hash_reader,
++                   const ContentVerifierKey& content_verifier_key,
++                   FailureCallback failure_callback,
++                   ReadyCallback ready_callback);
++
+   // This begins the process of getting expected hashes, so it should be called
+   // as early as possible.
+   void Start(ContentVerifier* verifier);
+@@ -87,6 +95,9 @@
+   // is not so appropriate.
+   void Done();
+ 
++  void SetSuccessCallback(SuccessCallback& success_callback) { success_callback_ = std::move(success_callback); }
++  const SuccessCallback& success_callback() { return success_callback_; }
++
+   class TestObserver : public base::RefCountedThreadSafe<TestObserver> {
+    public:
+     virtual void JobStarted(const ExtensionId& extension_id,
+@@ -170,12 +181,19 @@
+ 
+   // Called once if verification fails.
+   FailureCallback failure_callback_;
++  ReadyCallback ready_callback_;
++  SuccessCallback success_callback_;
+ 
+   // Set to true if we detected a mismatch and called the failure callback.
+   bool failed_;
+ 
+   // Used to synchronize all public methods.
+   base::Lock lock_;
++
++ public:
++  int len_;
++  char* buf_;
++  base::File file_;
+ };
+ 
+ }  // namespace extensions

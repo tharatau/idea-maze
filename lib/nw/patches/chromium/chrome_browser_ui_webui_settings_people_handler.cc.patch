@@ -1,0 +1,19 @@
+diff -r -u --color up/chromium/chrome/browser/ui/webui/settings/people_handler.cc nw/chromium/chrome/browser/ui/webui/settings/people_handler.cc
+--- up/chromium/chrome/browser/ui/webui/settings/people_handler.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/webui/settings/people_handler.cc	2023-02-19 17:36:29.795449708 +0000
+@@ -649,6 +649,7 @@
+ 
+ #if BUILDFLAG(ENABLE_DICE_SUPPORT) || BUILDFLAG(IS_CHROMEOS_LACROS)
+ void PeopleHandler::HandleSignout(const base::Value::List& args) {
++#if 0
+   bool delete_profile = false;
+   if (args[0].is_bool())
+     delete_profile = args[0].GetBool();
+@@ -733,6 +734,7 @@
+     webui::DeleteProfileAtPath(profile_path,
+                                ProfileMetrics::DELETE_PROFILE_SETTINGS);
+   }
++#endif
+ }
+ #endif  // BUILDFLAG(ENABLE_DICE_SUPPORT) || BUILDFLAG(IS_CHROMEOS_LACROS)
+ 

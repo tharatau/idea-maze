@@ -1,0 +1,10 @@
+diff -r -u --color up/chromium/remoting/remoting_enable.gni nw/chromium/remoting/remoting_enable.gni
+--- up/chromium/remoting/remoting_enable.gni	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/remoting/remoting_enable.gni	2023-02-19 17:36:40.915477775 +0000
+@@ -9,5 +9,5 @@
+ }
+ 
+ declare_args() {
+-  enable_remoting = !is_castos && !is_cast_android && !is_fuchsia
++  enable_remoting = false
+ }

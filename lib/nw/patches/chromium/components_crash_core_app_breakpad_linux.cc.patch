@@ -1,0 +1,55 @@
+diff -r -u --color up/chromium/components/crash/core/app/breakpad_linux.cc nw/chromium/components/crash/core/app/breakpad_linux.cc
+--- up/chromium/components/crash/core/app/breakpad_linux.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/components/crash/core/app/breakpad_linux.cc	2023-02-19 17:36:32.575456738 +0000
+@@ -832,7 +832,6 @@
+     minidump_descriptor.set_size_limit(kMaxMinidumpFileSize);
+   }
+ #if BUILDFLAG(IS_ANDROID)
+-  unattended = true;  // Android never uploads directly.
+   SetMinidumpSanitizationFields(&minidump_descriptor, sanitization_info);
+ #endif
+   if (unattended) {
+@@ -1392,17 +1391,33 @@
+       StringFromPrefixAndUint("/dev/fd/", upload_status_fd, allocator);
+ 
+   static const char kWgetBinary[] = "/usr/bin/wget";
++  char* const upload_url = reinterpret_cast<char*>(allocator->Alloc(1024));
++  *upload_url='\0';
++  int i = 1;
++  do {
++    char key_name[17];
++    my_strlcpy(key_name, "url-nwjs__", sizeof(key_name));
++    my_uitos(key_name + 10, i, my_uint_len(i));
++    key_name[10 + my_uint_len(i)] = '\0';
++    const char* chunk = crash_reporter::internal::GetCrashKeyStorage()->GetValueForKey(key_name);
++    if (!chunk)
++      break;
++    my_strlcat(upload_url, chunk, 1024);
++    i++;
++  } while(true);
++  //WriteLog("UPLOAD_URL", 10);
++  //WriteLog(upload_url, my_strlen(upload_url));
+   const char* args[] = {
+-      kWgetBinary,
+-      header_content_encoding,
+-      header_content_type,
+-      post_file,
+-      g_upload_url,
+-      "--timeout=10",  // Set a timeout so we don't hang forever.
+-      "--tries=1",     // Don't retry if the upload fails.
+-      "-O",            // Output reply to the file descriptor path.
+-      status_fd_path,
+-      nullptr,
++    kWgetBinary,
++    header_content_encoding,
++    header_content_type,
++    post_file,
++    upload_url,
++    "--timeout=10",  // Set a timeout so we don't hang forever.
++    "--tries=1",     // Don't retry if the upload fails.
++    "-O",  // Output reply to the file descriptor path.
++    status_fd_path,
++    nullptr,
+   };
+   static const char msg[] = "Cannot upload crash dump: cannot exec "
+                             "/usr/bin/wget\n";

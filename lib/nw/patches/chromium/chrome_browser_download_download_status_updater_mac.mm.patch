@@ -1,0 +1,17 @@
+diff -r -u --color up/chromium/chrome/browser/download/download_status_updater_mac.mm nw/chromium/chrome/browser/download/download_status_updater_mac.mm
+--- up/chromium/chrome/browser/download/download_status_updater_mac.mm	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/download/download_status_updater_mac.mm	2023-02-19 17:36:27.619444200 +0000
+@@ -115,8 +115,12 @@
+ 
+ void DownloadStatusUpdater::UpdateAppIconDownloadProgress(
+     download::DownloadItem* download) {
+-  // Always update overall progress in the Dock icon.
+ 
++  NSDockTile *dockTile = [NSApp dockTile];
++  if (dockTile.contentView && [dockTile.contentView.subviews count] > 0)
++    return;
++
++  // Always update overall progress.
+   float progress = 0;
+   int download_count = 0;
+   bool progress_known = GetProgress(&progress, &download_count);

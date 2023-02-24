@@ -1,0 +1,23 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/loader/frame_load_request.h nw/chromium/third_party/blink/renderer/core/loader/frame_load_request.h
+--- up/chromium/third_party/blink/renderer/core/loader/frame_load_request.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/loader/frame_load_request.h	2023-02-19 17:36:42.755482386 +0000
+@@ -32,6 +32,7 @@
+ #include "services/network/public/mojom/referrer_policy.mojom-blink.h"
+ #include "third_party/abseil-cpp/absl/types/optional.h"
+ #include "third_party/blink/public/common/navigation/impression.h"
++#include "third_party/blink/public/platform/web_string.h"
+ #include "third_party/blink/public/mojom/blob/blob_url_store.mojom-blink.h"
+ #include "third_party/blink/public/mojom/frame/policy_container.mojom-blink.h"
+ #include "third_party/blink/public/mojom/frame/triggering_event_info.mojom-blink.h"
+@@ -194,8 +195,11 @@
+   void SetIsUnfencedTopNavigation(bool is_unfenced_top_navigation) {
+     is_unfenced_top_navigation_ = is_unfenced_top_navigation;
+   }
++  void SetManifest(const WebString& manifest) { manifest_ = manifest; }
++  const WebString& GetManifest() const { return manifest_; }
+ 
+  private:
++  WebString manifest_;
+   LocalDOMWindow* origin_window_;
+   ResourceRequest resource_request_;
+   AtomicString href_translate_;

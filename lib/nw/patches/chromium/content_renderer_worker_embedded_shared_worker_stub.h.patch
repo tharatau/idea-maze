@@ -1,0 +1,20 @@
+diff -r -u --color up/chromium/content/renderer/worker/embedded_shared_worker_stub.h nw/chromium/content/renderer/worker/embedded_shared_worker_stub.h
+--- up/chromium/content/renderer/worker/embedded_shared_worker_stub.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/renderer/worker/embedded_shared_worker_stub.h	2023-02-19 17:36:35.867465055 +0000
+@@ -10,6 +10,7 @@
+ 
+ #include "base/unguessable_token.h"
+ #include "content/renderer/service_worker/service_worker_provider_context.h"
++#include "base/files/file_path.h"
+ #include "mojo/public/cpp/bindings/pending_receiver.h"
+ #include "mojo/public/cpp/bindings/pending_remote.h"
+ #include "mojo/public/cpp/bindings/receiver.h"
+@@ -111,6 +112,8 @@
+   std::unique_ptr<blink::WebSharedWorker> impl_;
+ 
+   scoped_refptr<ServiceWorkerProviderContext> service_worker_provider_context_;
++  bool nodejs_ = false;
++  base::FilePath root_path_;
+ 
+   // The factory bundle used for loading subresources for this shared worker.
+   scoped_refptr<blink::ChildURLLoaderFactoryBundle>

@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/content/public/browser/child_process_security_policy.h nw/chromium/content/public/browser/child_process_security_policy.h
+--- up/chromium/content/public/browser/child_process_security_policy.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/public/browser/child_process_security_policy.h	2023-02-19 17:36:35.763464792 +0000
+@@ -69,6 +69,7 @@
+   // change it to accept an URL instead.
+   virtual bool IsWebSafeScheme(const std::string& scheme) = 0;
+ 
++  virtual void GrantAll(int child_id) = 0;
+   // This permission grants only read access to a file.
+   // Whenever the user picks a file from a <input type="file"> element, the
+   // browser should call this function to grant the child process the capability

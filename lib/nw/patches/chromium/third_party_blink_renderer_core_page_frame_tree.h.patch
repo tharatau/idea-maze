@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/page/frame_tree.h nw/chromium/third_party/blink/renderer/core/page/frame_tree.h
+--- up/chromium/third_party/blink/renderer/core/page/frame_tree.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/page/frame_tree.h	2023-02-19 17:36:42.783482457 +0000
+@@ -68,7 +68,7 @@
+   Frame* TraverseNext(const Frame* stay_within = nullptr) const;
+ 
+   // For plugins and tests only.
+-  Frame* FindFrameByName(const AtomicString& name) const;
++  Frame* FindFrameByName(const AtomicString& name, bool nw = false) const;
+ 
+   // https://html.spec.whatwg.org/#the-rules-for-choosing-a-browsing-context-given-a-browsing-context-name
+   struct FindResult {

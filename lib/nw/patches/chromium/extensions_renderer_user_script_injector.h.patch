@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/extensions/renderer/user_script_injector.h nw/chromium/extensions/renderer/user_script_injector.h
+--- up/chromium/extensions/renderer/user_script_injector.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/renderer/user_script_injector.h	2023-02-19 17:36:36.923467723 +0000
+@@ -46,6 +46,7 @@
+   // ScriptInjector implementation.
+   mojom::InjectionType script_type() const override;
+   blink::mojom::UserActivationOption IsUserGesture() const override;
++  bool ShouldExecuteInMainWorld() const override;
+   mojom::ExecutionWorld GetExecutionWorld() const override;
+   mojom::CSSOrigin GetCssOrigin() const override;
+   mojom::CSSInjection::Operation GetCSSInjectionOperation() const override;

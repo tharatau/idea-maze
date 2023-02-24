@@ -1,0 +1,13 @@
+diff -r -u --color up/chromium/components/keep_alive_registry/keep_alive_registry.cc nw/chromium/components/keep_alive_registry/keep_alive_registry.cc
+--- up/chromium/components/keep_alive_registry/keep_alive_registry.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/components/keep_alive_registry/keep_alive_registry.cc	2023-02-19 17:36:33.011457840 +0000
+@@ -118,7 +118,8 @@
+ 
+ void KeepAliveRegistry::Register(KeepAliveOrigin origin,
+                                  KeepAliveRestartOption restart) {
+-  CHECK(!is_shutting_down_);
++  //nw1 crash when quit from dock
++//  CHECK(!is_shutting_down_);
+ 
+   bool old_keeping_alive = IsKeepingAlive();
+   bool old_restart_allowed = IsRestartAllowed();

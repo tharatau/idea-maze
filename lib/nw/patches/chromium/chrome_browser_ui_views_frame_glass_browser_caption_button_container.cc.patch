@@ -1,0 +1,28 @@
+diff -r -u --color up/chromium/chrome/browser/ui/views/frame/glass_browser_caption_button_container.cc nw/chromium/chrome/browser/ui/views/frame/glass_browser_caption_button_container.cc
+--- up/chromium/chrome/browser/ui/views/frame/glass_browser_caption_button_container.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/glass_browser_caption_button_container.cc	2023-02-19 17:36:29.559449110 +0000
+@@ -61,7 +61,7 @@
+       close_button_(AddChildView(CreateCaptionButton(
+           base::BindRepeating(&BrowserFrame::CloseWithReason,
+                               base::Unretained(frame_view_->frame()),
+-                              views::Widget::ClosedReason::kCloseButtonClicked),
++                              views::Widget::ClosedReason::kCloseButtonClicked, false),
+           frame_view_,
+           VIEW_ID_CLOSE_BUTTON,
+           IDS_APP_ACCNAME_CLOSE))) {
+@@ -154,8 +154,13 @@
+   if (tab_search_button_)
+     tab_search_button_->SetState(views::Button::STATE_NORMAL);
+   minimize_button_->SetState(views::Button::STATE_NORMAL);
+-  maximize_button_->SetState(views::Button::STATE_NORMAL);
+-  restore_button_->SetState(views::Button::STATE_NORMAL);
++  if (frame_view_->browser_view()->CanMaximize()) {
++    maximize_button_->SetState(views::Button::STATE_NORMAL);
++    restore_button_->SetState(views::Button::STATE_NORMAL);
++  } else {
++    maximize_button_->SetState(views::Button::STATE_DISABLED);
++    restore_button_->SetState(views::Button::STATE_DISABLED);
++  }
+   close_button_->SetState(views::Button::STATE_NORMAL);
+   InvalidateLayout();
+ }

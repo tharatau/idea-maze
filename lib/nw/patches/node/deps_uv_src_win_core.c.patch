@@ -1,0 +1,12 @@
+diff -r -u --color up/node/deps/uv/src/win/core.c nw/node/deps/uv/src/win/core.c
+--- up/node/deps/uv/src/win/core.c	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/deps/uv/src/win/core.c	2023-02-19 17:37:31.691596197 +0000
+@@ -193,7 +193,7 @@
+    * FDs even though they return the proper error code in the release build.
+    */
+ #if defined(_DEBUG) && (defined(_MSC_VER) || defined(__MINGW64_VERSION_MAJOR))
+-  _CrtSetReportHook(uv__crt_dbg_report_handler);
++  //_CrtSetReportHook(uv__crt_dbg_report_handler);
+ #endif
+ 
+   /* Initialize tracking of all uv loops */

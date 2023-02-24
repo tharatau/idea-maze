@@ -1,0 +1,14 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/platform/exported/web_security_origin.cc nw/chromium/third_party/blink/renderer/platform/exported/web_security_origin.cc
+--- up/chromium/third_party/blink/renderer/platform/exported/web_security_origin.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/platform/exported/web_security_origin.cc	2023-02-19 17:36:43.407484020 +0000
+@@ -141,4 +141,9 @@
+ }
+ #endif
+ 
+-}  // namespace blink
++void WebSecurityOrigin::grantUniversalAccess()
++{
++  const_cast<SecurityOrigin*>(private_.Get())->GrantUniversalAccess();
++}
++
++} // namespace blink

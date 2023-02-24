@@ -1,0 +1,13 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/bindings/core/v8/scheduled_action.cc nw/chromium/third_party/blink/renderer/bindings/core/v8/scheduled_action.cc
+--- up/chromium/third_party/blink/renderer/bindings/core/v8/scheduled_action.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/bindings/core/v8/scheduled_action.cc	2023-02-19 17:36:42.195480983 +0000
+@@ -56,7 +56,9 @@
+                                  const HeapVector<ScriptValue>& arguments)
+     : script_state_(
+           MakeGarbageCollected<ScriptStateProtectingContext>(script_state)) {
++  //NWJS#7554
+   if (script_state->World().IsWorkerWorld() ||
++      script_state->GetIsolate()->GetEnteredOrMicrotaskContext()->GetAlignedPointerFromEmbedderData(50) == (void*)0x08110800 ||
+       BindingSecurity::ShouldAllowAccessTo(
+           EnteredDOMWindow(script_state->GetIsolate()),
+           To<LocalDOMWindow>(target),

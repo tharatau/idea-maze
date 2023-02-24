@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/chrome/app/chrome_dll.rc nw/chromium/chrome/app/chrome_dll.rc
+--- up/chromium/chrome/app/chrome_dll.rc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/app/chrome_dll.rc	2023-02-19 17:36:25.811439623 +0000
+@@ -69,7 +69,6 @@
+     "T",            IDC_FOCUS_TOOLBAR,          VIRTKEY, SHIFT, ALT
+     VK_BACK,        IDC_FORWARD,                VIRTKEY, SHIFT
+     VK_RIGHT,       IDC_FORWARD,                VIRTKEY, ALT
+-    VK_F11,         IDC_FULLSCREEN,             VIRTKEY
+     VK_F1,          IDC_HELP_PAGE_VIA_KEYBOARD, VIRTKEY
+     VK_HOME,        IDC_HOME,                   VIRTKEY, ALT
+     "N",            IDC_NEW_INCOGNITO_WINDOW,   VIRTKEY, CONTROL, SHIFT

@@ -1,0 +1,37 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/exported/web_view_impl.cc nw/chromium/third_party/blink/renderer/core/exported/web_view_impl.cc
+--- up/chromium/third_party/blink/renderer/core/exported/web_view_impl.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/exported/web_view_impl.cc	2023-02-19 17:36:42.475481685 +0000
+@@ -398,6 +398,8 @@
+     case kNavigationPolicyPictureInPicture:
+       DCHECK(RuntimeEnabledFeatures::DocumentPictureInPictureAPIEnabled());
+       return ui::mojom::blink::WindowOpenDisposition::NEW_PICTURE_IN_PICTURE;
++    case kNavigationPolicyIgnore:
++      return ui::mojom::blink::WindowOpenDisposition::IGNORE_ACTION;
+   }
+   NOTREACHED() << "Unexpected NavigationPolicy";
+   return ui::mojom::blink::WindowOpenDisposition::IGNORE_ACTION;
+@@ -2979,17 +2981,23 @@
+                        NavigationPolicy policy,
+                        const gfx::Rect& requested_rect,
+                        const gfx::Rect& adjusted_rect,
+-                       bool opened_by_user_gesture) {
++                       bool opened_by_user_gesture, WebString* manifest) {
+   // This is only called on local main frames.
+   DCHECK(local_main_frame_host_remote_);
+   DCHECK(web_widget_);
+   web_widget_->SetPendingWindowRect(adjusted_rect);
++  WTF::String mnft;
++  if (!manifest || manifest->IsNull())
++    mnft = "";
++  else
++    mnft = *manifest;
+   mojom::blink::WindowFeaturesPtr window_features =
+       mojom::blink::WindowFeatures::New();
+   window_features->bounds = requested_rect;
+   local_main_frame_host_remote_->ShowCreatedWindow(
+       opener_frame_token, NavigationPolicyToDisposition(policy),
+       std::move(window_features), opened_by_user_gesture,
++      mnft,
+       WTF::BindOnce(&WebViewImpl::DidShowCreatedWindow, WTF::Unretained(this)));
+ 
+   MainFrameDevToolsAgentImpl()->DidShowNewWindow();

@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/chrome/common/extensions/api/api_sources.gni nw/chromium/chrome/common/extensions/api/api_sources.gni
+--- up/chromium/chrome/common/extensions/api/api_sources.gni	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/common/extensions/api/api_sources.gni	2023-02-19 17:36:30.007450244 +0000
+@@ -44,7 +44,6 @@
+   "passwords_private.idl",
+   "permissions.json",
+   "resources_private.idl",
+-  "safe_browsing_private.idl",
+   "scripting.idl",
+   "search.idl",
+   "sessions.json",

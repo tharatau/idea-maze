@@ -1,0 +1,19 @@
+diff -r -u --color up/chromium/chrome/test/chromedriver/chrome/console_logger.cc nw/chromium/chrome/test/chromedriver/chrome/console_logger.cc
+--- up/chromium/chrome/test/chromedriver/chrome/console_logger.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/test/chromedriver/chrome/console_logger.cc	2023-02-19 17:36:30.211450761 +0000
+@@ -120,11 +120,11 @@
+       if (!url->empty())
+         origin = *url;
+       int line = call_frame->FindInt("lineNumber").value_or(-1);
+-      if (line < 0)
+-        return Status(kUnknownError, "missing or invalid lineNumber");
++      //if (line < 0)
++      //  return Status(kUnknownError, "missing or invalid lineNumber");
+       int column = call_frame->FindInt("columnNumber").value_or(-1);
+-      if (column < 0)
+-        return Status(kUnknownError, "missing or invalid columnNumber");
++      //if (column < 0)
++      //  return Status(kUnknownError, "missing or invalid columnNumber");
+       line_column = base::StringPrintf("%d:%d", line, column);
+     }
+   }

@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/frame/local_frame_client.h nw/chromium/third_party/blink/renderer/core/frame/local_frame_client.h
+--- up/chromium/third_party/blink/renderer/core/frame/local_frame_client.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/frame/local_frame_client.h	2023-02-19 17:36:42.507481765 +0000
+@@ -127,6 +127,7 @@
+   virtual WebLocalFrame* GetWebFrame() const { return nullptr; }
+ 
+   virtual bool HasWebView() const = 0;  // mainly for assertions
++  virtual void willHandleNavigationPolicy(const ResourceRequest& request, NavigationPolicy* policy, WebString* manifest = NULL, bool new_win = true) {}
+ 
+   virtual base::UnguessableToken GetDevToolsFrameToken() const = 0;
+ 

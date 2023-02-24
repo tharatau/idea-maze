@@ -1,0 +1,15 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/bindings/core/v8/window_proxy_manager.h nw/chromium/third_party/blink/renderer/bindings/core/v8/window_proxy_manager.h
+--- up/chromium/third_party/blink/renderer/bindings/core/v8/window_proxy_manager.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/bindings/core/v8/window_proxy_manager.h	2023-02-19 17:36:42.215481033 +0000
+@@ -42,6 +42,11 @@
+   void ReleaseGlobalProxies(GlobalProxyVector&);
+   void SetGlobalProxies(const GlobalProxyVector&);
+ 
++  bool ContextNotReady(DOMWrapperWorld& world) {
++    WindowProxy* window_proxy = WindowProxyMaybeUninitialized(world);
++    return window_proxy->ContextNotReady();
++  }
++
+   WindowProxy* GetWindowProxy(DOMWrapperWorld& world) {
+     WindowProxy* window_proxy = WindowProxyMaybeUninitialized(world);
+     window_proxy->InitializeIfNeeded();

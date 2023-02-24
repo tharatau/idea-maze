@@ -1,0 +1,21 @@
+diff -r -u --color up/chromium/extensions/renderer/resources/guest_view/guest_view_container_element.js nw/chromium/extensions/renderer/resources/guest_view/guest_view_container_element.js
+--- up/chromium/extensions/renderer/resources/guest_view/guest_view_container_element.js	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/renderer/resources/guest_view/guest_view_container_element.js	2023-02-19 17:36:36.919467713 +0000
+@@ -64,12 +64,17 @@
+     GuestViewContainerElement.prototype.attributeChangedCallback =
+         customElementCallbacks.attributeChangedCallback;
+ 
++    try {
+     $CustomElementRegistry.define(
+         window.customElements, $String.toLowerCase(elementName),
+         containerElementType);
+     $Object.defineProperty(window, elementName, {
+       value: containerElementType,
+     });
++    } catch (e) {
++       // GuestView is being registered in isolated world in
++       // content script sometimes //NWJS#7087
++    }
+ 
+     delete GuestViewContainerElement.prototype.connectedCallback;
+     delete GuestViewContainerElement.prototype.disconnectedCallback;

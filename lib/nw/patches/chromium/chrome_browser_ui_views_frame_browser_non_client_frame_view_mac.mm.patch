@@ -1,0 +1,34 @@
+diff -r -u --color up/chromium/chrome/browser/ui/views/frame/browser_non_client_frame_view_mac.mm nw/chromium/chrome/browser/ui/views/frame/browser_non_client_frame_view_mac.mm
+--- up/chromium/chrome/browser/ui/views/frame/browser_non_client_frame_view_mac.mm	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/browser_non_client_frame_view_mac.mm	2023-02-19 17:36:29.555449100 +0000
+@@ -362,6 +362,9 @@
+   // BrowserView::NonClientHitTest will return HTNOWHERE for points that hit
+   // the native title bar. On Mac, we need to explicitly return HTCAPTION for
+   // those points.
++  SkRegion* draggable_region = browser_view()->GetDraggableRegion();
++  if (draggable_region && draggable_region->contains(point.x(), point.y()))
++    return HTCAPTION;
+   const int component = frame()->client_view()->NonClientHitTest(point);
+   return (component == HTNOWHERE && bounds().Contains(point)) ? HTCAPTION
+                                                               : component;
+@@ -425,7 +428,7 @@
+   // certain height, which empirically seems to be related to their *minimum*
+   // width rather than their current width. This 4:3 ratio was chosen
+   // empirically because it looks decent for both tabbed and untabbed browsers.
+-  client_size.SetToMax(gfx::Size(0, (client_size.width() * 3) / 4));
++  //client_size.SetToMax(gfx::Size(0, (client_size.width() * 3) / 4));
+ 
+   return client_size;
+ }
+@@ -449,6 +452,11 @@
+     BrowserNonClientFrameView::PaintChildren(info);
+ }
+ 
++gfx::Size BrowserNonClientFrameViewMac::GetMaximumSize() const {
++  gfx::Size client_size = frame()->client_view()->GetMaximumSize();
++  return client_size;
++}
++
+ ///////////////////////////////////////////////////////////////////////////////
+ // BrowserNonClientFrameViewMac, protected:
+ 

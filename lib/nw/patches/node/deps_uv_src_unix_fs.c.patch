@@ -1,0 +1,36 @@
+diff -r -u --color up/node/deps/uv/src/unix/fs.c nw/node/deps/uv/src/unix/fs.c
+--- up/node/deps/uv/src/unix/fs.c	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/deps/uv/src/unix/fs.c	2023-02-19 17:37:31.683596182 +0000
+@@ -25,6 +25,8 @@
+  * return -1 with errno set. The dispatcher in uv__fs_work() takes care of
+  * getting the errno to the right place (req->result or as the return value.)
+  */
++#pragma clang diagnostic push
++#pragma clang diagnostic ignored "-Warray-bounds"
+ 
+ #include "uv.h"
+ #include "internal.h"
+@@ -295,15 +297,13 @@
+   /* z/os doesn't have RTLD_DEFAULT but that's okay
+    * because it doesn't have mkostemp(O_CLOEXEC) either.
+    */
+-#ifdef RTLD_DEFAULT
+-  uv__mkostemp = (int (*)(char*, int)) dlsym(RTLD_DEFAULT, "mkostemp");
++  uv__mkostemp = (int (*)(char*, int)) dlsym(((void *) 0), "mkostemp");
+ 
+   /* We don't care about errors, but we do want to clean them up.
+    * If there has been no error, then dlerror() will just return
+    * NULL.
+    */
+   dlerror();
+-#endif  /* RTLD_DEFAULT */
+ }
+ 
+ 
+@@ -2257,3 +2257,6 @@
+ int uv_fs_get_system_error(const uv_fs_t* req) {
+   return -req->result;
+ }
++
++#pragma clang diagnostic pop
++

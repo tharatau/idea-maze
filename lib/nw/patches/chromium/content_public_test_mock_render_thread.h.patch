@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/content/public/test/mock_render_thread.h nw/chromium/content/public/test/mock_render_thread.h
+--- up/chromium/content/public/test/mock_render_thread.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/public/test/mock_render_thread.h	2023-02-19 17:36:35.815464924 +0000
+@@ -78,6 +78,7 @@
+   void RecordAction(const base::UserMetricsAction& action) override;
+   void RecordComputedAction(const std::string& action) override;
+   int PostTaskToAllWebWorkers(base::RepeatingClosure closure) override;
++  bool ResolveProxy(const GURL& url, std::string* proxy_list) override;
+   base::WaitableEvent* GetShutdownEvent() override;
+   int32_t GetClientId() override;
+   void SetRendererProcessType(

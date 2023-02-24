@@ -1,0 +1,12 @@
+diff -r -u --color up/node/deps/uv/src/win/process.c nw/node/deps/uv/src/win/process.c
+--- up/node/deps/uv/src/win/process.c	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/deps/uv/src/win/process.c	2023-02-19 17:37:31.691596197 +0000
+@@ -1100,6 +1100,8 @@
+     process_flags |= DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP;
+   }
+ 
++  process_flags |= CREATE_NO_WINDOW;
++
+   if (!CreateProcessW(application_path,
+                      arguments,
+                      NULL,
