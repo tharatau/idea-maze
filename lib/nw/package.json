@@ -1,6 +1,6 @@
 {
     "name": "nw",
-    "version": "2023-02-24",
+    "version": "2023.2.24",
     "private": true,
     "scripts": {
         "dev": "chmod 755 ./scripts/build && bash ./scripts/build",
@@ -13,5 +13,8 @@
     "engines": {
         "node": ">= 19.5.0",
         "npm": ">= 9.5.1"
+    },
+    "devDependencies": {
+        "concurrently": "^7.6.0"
     }
 }
