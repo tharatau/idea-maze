@@ -15,11 +15,11 @@ NODE_VER="19.6.1"
 V8_URI="https://github.com/v8/v8"
 V8_VER="11.0.226.16"
 
-if [[ ! -d "patch" ]]; then
-    mkdir patch
+if [[ ! -d "diff" ]]; then
+    mkdir diff
 fi
 
-cd patch
+cd diff
 
 if [[ ! -d $NW_DIR ]]; then
     mkdir $NW_DIR
