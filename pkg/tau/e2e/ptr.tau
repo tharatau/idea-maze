@@ -1,0 +1,2 @@
+var v: int8 = 7;
+ptr p: int8 = &v;
