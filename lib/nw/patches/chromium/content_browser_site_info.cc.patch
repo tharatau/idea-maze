@@ -1,0 +1,40 @@
+diff -r -u --color up/chromium/content/browser/site_info.cc nw/chromium/content/browser/site_info.cc
+--- up/chromium/content/browser/site_info.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/browser/site_info.cc	2023-02-19 17:36:35.623464439 +0000
+@@ -605,9 +605,11 @@
+   DCHECK_CURRENTLY_ON(BrowserThread::UI);
+   DCHECK(isolation_context.browser_or_resource_context());
+ 
++#if 0
+   // If --site-per-process is enabled, site isolation is enabled everywhere.
+   if (SiteIsolationPolicy::UseDedicatedProcessesForAllSites())
+     return true;
++#endif
+ 
+   // If there is a COOP header request to require a dedicated process for this
+   // SiteInfo, honor it.  Note that we have already checked other eligibility
+@@ -851,7 +853,7 @@
+       return origin.GetURL();
+     }
+ 
+-    site_url = GetSiteForOrigin(origin);
++    site_url = GetSiteForOrigin(origin, real_url);
+ 
+     // Isolated origins should use the full origin as their site URL. A
+     // subdomain of an isolated origin should also use that isolated origin's
+@@ -911,10 +913,14 @@
+ }
+ 
+ // static
+-GURL SiteInfo::GetSiteForOrigin(const url::Origin& origin) {
++GURL SiteInfo::GetSiteForOrigin(const url::Origin& origin, const GURL& real_url) {
+   // Only keep the scheme and registered domain of |origin|.
+   std::string domain = net::registry_controlled_domains::GetDomainAndRegistry(
+       origin, net::registry_controlled_domains::INCLUDE_PRIVATE_REGISTRIES);
++  //NWJS: chrome-extension://test.foo.com was changed to foo.com
++  //without this
++  if (!real_url.is_empty() && real_url.SchemeIs("chrome-extension"))
++    domain = origin.host();
+   return SchemeAndHostToSite(origin.scheme(),
+                              domain.empty() ? origin.host() : domain);
+ }

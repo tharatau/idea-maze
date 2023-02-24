@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/chrome/browser/web_applications/web_app_helpers.cc nw/chromium/chrome/browser/web_applications/web_app_helpers.cc
+--- up/chromium/chrome/browser/web_applications/web_app_helpers.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/web_applications/web_app_helpers.cc	2023-02-19 17:36:29.915450011 +0000
+@@ -33,7 +33,7 @@
+ // for the name of this directory.  Hosts can't include an underscore.
+ // By starting this string with an underscore, we ensure that there
+ // are no naming conflicts.
+-const char kCrxAppPrefix[] = "_crx_";
++const char kCrxAppPrefix[] = "_nwjs_";
+ 
+ std::string GenerateApplicationNameFromURL(const GURL& url) {
+   return base::StrCat({url.host_piece(), "_", url.path_piece()});

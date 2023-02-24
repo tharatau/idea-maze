@@ -1,0 +1,13 @@
+diff -r -u --color up/node/deps/nghttp2/nghttp2.gyp nw/node/deps/nghttp2/nghttp2.gyp
+--- up/node/deps/nghttp2/nghttp2.gyp	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/deps/nghttp2/nghttp2.gyp	2023-02-19 17:37:30.479593868 +0000
+@@ -26,7 +26,7 @@
+             },
+           },
+         }],
+-        ['debug_nghttp2 == 1', {
++        ['0 == 1', {
+           'defines': [ 'DEBUGBUILD=1' ]
+         }]
+       ],
+Only in up/node/deps: npm

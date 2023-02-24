@@ -1,0 +1,21 @@
+diff -r -u --color up/chromium/chrome/browser/extensions/extension_service.h nw/chromium/chrome/browser/extensions/extension_service.h
+--- up/chromium/chrome/browser/extensions/extension_service.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/extension_service.h	2023-02-19 17:36:27.787444625 +0000
+@@ -170,7 +170,7 @@
+ class ExtensionService : public ExtensionServiceInterface,
+                          public ExternalProviderInterface::VisitorInterface,
+                          public content::NotificationObserver,
+-                         public Blocklist::Observer,
++                         //public Blocklist::Observer,
+                          public ExtensionManagement::Observer,
+                          public UpgradeObserver,
+                          public ExtensionRegistrar::Delegate,
+@@ -514,7 +514,7 @@
+                const content::NotificationDetails& details) override;
+ 
+   // Blocklist::Observer implementation.
+-  void OnBlocklistUpdated() override;
++  //void OnBlocklistUpdated() override;
+ 
+   // UpgradeObserver implementation.
+   void OnUpgradeRecommended() override;

@@ -1,0 +1,39 @@
+diff -r -u --color up/chromium/content/browser/renderer_host/render_process_host_impl.h nw/chromium/content/browser/renderer_host/render_process_host_impl.h
+--- up/chromium/content/browser/renderer_host/render_process_host_impl.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/browser/renderer_host/render_process_host_impl.h	2023-02-19 17:36:35.559464277 +0000
+@@ -148,6 +148,7 @@
+ class RenderProcessHostPriorityClients;
+ class RenderProcessHostTest;
+ class RenderWidgetHelper;
++class ResolveProxyHelper;
+ class SiteInfo;
+ class SiteInstance;
+ class SiteInstanceImpl;
+@@ -205,6 +206,8 @@
+   RenderProcessHostImpl(const RenderProcessHostImpl& other) = delete;
+   RenderProcessHostImpl& operator=(const RenderProcessHostImpl& other) = delete;
+ 
++  void set_main_host();
++  static RenderProcessHostImpl* main_host();
+   // RenderProcessHost implementation (public portion).
+   bool Init() override;
+   void EnableSendQueue() override;
+@@ -831,6 +834,9 @@
+                            BrowserHistogramCallback callback) override;
+   void SuddenTerminationChanged(bool enabled) override;
+   void RecordUserMetricsAction(const std::string& action) override;
++  void ResolveProxy(
++      const GURL& url,
++      mojom::RendererHost::ResolveProxyCallback callback) override;
+ 
+   void CreateEmbeddedFrameSinkProvider(
+       mojo::PendingReceiver<blink::mojom::EmbeddedFrameSinkProvider> receiver);
+@@ -1077,6 +1083,8 @@
+   // IO thread.
+   scoped_refptr<RenderWidgetHelper> widget_helper_;
+ 
++  scoped_refptr<ResolveProxyHelper> resolve_proxy_helper_;
++
+   // Used in single-process mode.
+   std::unique_ptr<base::Thread> in_process_renderer_;
+ 

@@ -1,0 +1,12 @@
+diff -r -u --color up/node/deps/uv/src/unix/loop.c nw/node/deps/uv/src/unix/loop.c
+--- up/node/deps/uv/src/unix/loop.c	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/deps/uv/src/unix/loop.c	2023-02-19 17:37:31.687596189 +0000
+@@ -71,6 +71,8 @@
+   loop->backend_fd = -1;
+   loop->emfile_fd = -1;
+ 
++  loop->keventfunc = NULL;
++
+   loop->timer_counter = 0;
+   loop->stop_flag = 0;
+ 

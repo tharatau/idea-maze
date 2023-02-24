@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/chrome/test/data/webui/print_preview/destination_search_test.ts nw/chromium/chrome/test/data/webui/print_preview/destination_search_test.ts
+--- up/chromium/chrome/test/data/webui/print_preview/destination_search_test.ts	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/test/data/webui/print_preview/destination_search_test.ts	2023-02-19 17:36:31.455453908 +0000
+@@ -42,7 +42,7 @@
+         false /* pdfPrinterDisabled */, false /* isDriveMounted */,
+         'FooDevice' /* printerName */,
+         '' /* serializedDefaultDestinationSelectionRulesStr */,
+-        [] /* recentDestinations */);
++        [] /* recentDestinations */, false);
+ 
+     dialog = document.createElement('print-preview-destination-dialog');
+     dialog.destinationStore = destinationStore;

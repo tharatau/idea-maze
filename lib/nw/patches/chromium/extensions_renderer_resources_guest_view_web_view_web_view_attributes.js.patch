@@ -1,0 +1,31 @@
+diff -r -u --color up/chromium/extensions/renderer/resources/guest_view/web_view/web_view_attributes.js nw/chromium/extensions/renderer/resources/guest_view/web_view/web_view_attributes.js
+--- up/chromium/extensions/renderer/resources/guest_view/web_view/web_view_attributes.js	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/renderer/resources/guest_view/web_view/web_view_attributes.js	2023-02-19 17:36:36.919467713 +0000
+@@ -52,6 +52,19 @@
+                                        this.getValue());
+ };
+ 
++function AllowNWAttribute(view) {
++  $Function.call(
++    GuestViewAttributes.BooleanAttribute,
++    this, WebViewConstants.ATTRIBUTE_ALLOWNW, view);
++}
++
++AllowNWAttribute.prototype.__proto__ =
++    GuestViewAttributes.BooleanAttribute.prototype;
++
++AllowNWAttribute.prototype.handleMutation = function(oldValue,
++                                                               newValue) {
++};
++
+ // -----------------------------------------------------------------------------
+ // AutosizeDimensionAttribute object.
+ 
+@@ -257,6 +270,7 @@
+ };
+ 
+ var WebViewAttributes = {
++  AllowNWAttribute: AllowNWAttribute,
+   AllowScalingAttribute: AllowScalingAttribute,
+   AllowTransparencyAttribute: AllowTransparencyAttribute,
+   AutosizeDimensionAttribute: AutosizeDimensionAttribute,

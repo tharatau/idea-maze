@@ -1,0 +1,13 @@
+diff -r -u --color up/chromium/chrome/test/base/test_browser_window_aura.h nw/chromium/chrome/test/base/test_browser_window_aura.h
+--- up/chromium/chrome/test/base/test_browser_window_aura.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/test/base/test_browser_window_aura.h	2023-02-19 17:36:30.207450751 +0000
+@@ -27,6 +27,9 @@
+   ~TestBrowserWindowAura() override;
+ 
+   // TestBrowserWindow overrides:
++  void UpdateDraggableRegions(
++         const std::vector<extensions::DraggableRegion>& regions) override;
++  SkRegion* GetDraggableRegion() override;
+   gfx::NativeWindow GetNativeWindow() const override;
+   void Show() override;
+   void Hide() override;

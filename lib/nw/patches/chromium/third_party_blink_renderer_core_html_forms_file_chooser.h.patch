@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/html/forms/file_chooser.h nw/chromium/third_party/blink/renderer/core/html/forms/file_chooser.h
+--- up/chromium/third_party/blink/renderer/core/html/forms/file_chooser.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/html/forms/file_chooser.h	2023-02-19 17:36:42.547481865 +0000
+@@ -52,7 +52,7 @@
+ class CORE_EXPORT FileChooserClient : public PopupOpeningObserver {
+  public:
+   virtual void FilesChosen(FileChooserFileInfoList,
+-                           const base::FilePath& base_dir) = 0;
++                           const base::FilePath& base_dir, bool canceled = false) = 0;
+   virtual LocalFrame* FrameOrNull() const = 0;
+   ~FileChooserClient() override;
+ 

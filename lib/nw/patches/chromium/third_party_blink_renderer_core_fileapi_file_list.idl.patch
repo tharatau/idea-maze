@@ -1,0 +1,13 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/fileapi/file_list.idl nw/chromium/third_party/blink/renderer/core/fileapi/file_list.idl
+--- up/chromium/third_party/blink/renderer/core/fileapi/file_list.idl	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/fileapi/file_list.idl	2023-02-19 17:36:42.487481715 +0000
+@@ -29,6 +29,9 @@
+     Exposed=(Window,Worker),
+     Serializable
+ ] interface FileList {
++    [Custom] constructor();
+     getter File? item(unsigned long index);
+     readonly attribute unsigned long length;
++    void clear();
++    void append(File item);
+ };

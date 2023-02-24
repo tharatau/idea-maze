@@ -1,0 +1,16 @@
+diff -r -u --color up/chromium/chrome/installer/linux/common/installer.include nw/chromium/chrome/installer/linux/common/installer.include
+--- up/chromium/chrome/installer/linux/common/installer.include	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/installer/linux/common/installer.include	2023-02-19 17:36:30.075450416 +0000
+@@ -157,9 +157,9 @@
+   # we should flag all installer files in FILES.cfg and get them from there, so
+   # there's only one place people need to keep track of such things (and in
+   # only the public repository).
+-  if [ -r "${OUTPUTDIR}/chrome_100_percent.pak" ]; then
+-    install -m 644 "${OUTPUTDIR}/chrome_100_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"
+-    install -m 644 "${OUTPUTDIR}/chrome_200_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"
++  if [ -r "${OUTPUTDIR}/nw_100_percent.pak" ]; then
++    install -m 644 "${OUTPUTDIR}/nw_100_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"
++    install -m 644 "${OUTPUTDIR}/nw_200_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"
+   else
+     install -m 644 "${OUTPUTDIR}/theme_resources_100_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"
+     install -m 644 "${OUTPUTDIR}/ui_resources_100_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"

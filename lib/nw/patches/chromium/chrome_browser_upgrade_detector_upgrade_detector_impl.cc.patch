@@ -1,0 +1,20 @@
+diff -r -u --color up/chromium/chrome/browser/upgrade_detector/upgrade_detector_impl.cc nw/chromium/chrome/browser/upgrade_detector/upgrade_detector_impl.cc
+--- up/chromium/chrome/browser/upgrade_detector/upgrade_detector_impl.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/upgrade_detector/upgrade_detector_impl.cc	2023-02-19 17:36:29.835449809 +0000
+@@ -1,6 +1,7 @@
+ // Copyright 2012 The Chromium Authors
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
++#pragma clang diagnostic ignored "-Wunreachable-code"
+ 
+ #include "chrome/browser/upgrade_detector/upgrade_detector_impl.h"
+ 
+@@ -433,7 +434,7 @@
+   //   switch from being taken into account.
+   // - kSimulateOutdatedNoAU has precedence over kSimulateOutdated.
+   // - kSimulateOutdated[NoAu] can work on its own, or with a specified date.
+-  if (cmd_line.HasSwitch(switches::kDisableBackgroundNetworking))
++  if (true || cmd_line.HasSwitch(switches::kDisableBackgroundNetworking))
+     return;
+ 
+   if (simulating_outdated_) {

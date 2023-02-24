@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/content/app_shim_remote_cocoa/ns_view_bridge_factory_impl.mm nw/chromium/content/app_shim_remote_cocoa/ns_view_bridge_factory_impl.mm
+--- up/chromium/content/app_shim_remote_cocoa/ns_view_bridge_factory_impl.mm	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/app_shim_remote_cocoa/ns_view_bridge_factory_impl.mm	2023-02-19 17:36:35.219463418 +0000
+@@ -67,6 +67,8 @@
+  private:
+   void OnMojoDisconnect() { delete this; }
+ 
++  content::RenderWidgetHostViewMac* GetRenderWidgetHostViewMac() override { return nullptr; }
++
+   std::unique_ptr<blink::WebCoalescedInputEvent> TranslateEvent(
+       const blink::WebInputEvent& web_event) {
+     return std::make_unique<blink::WebCoalescedInputEvent>(

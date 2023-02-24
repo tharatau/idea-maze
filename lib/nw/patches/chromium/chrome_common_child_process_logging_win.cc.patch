@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/chrome/common/child_process_logging_win.cc nw/chromium/chrome/common/child_process_logging_win.cc
+--- up/chromium/chrome/common/child_process_logging_win.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/common/child_process_logging_win.cc	2023-02-19 17:36:29.999450224 +0000
+@@ -3,6 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include "chrome/common/child_process_logging.h"
++#include "chrome/chrome_elf/chrome_elf_main.h"
+ 
+ #include <windows.h>
+ 

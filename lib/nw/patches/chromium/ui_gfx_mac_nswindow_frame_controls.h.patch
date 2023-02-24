@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/ui/gfx/mac/nswindow_frame_controls.h nw/chromium/ui/gfx/mac/nswindow_frame_controls.h
+--- up/chromium/ui/gfx/mac/nswindow_frame_controls.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/gfx/mac/nswindow_frame_controls.h	2023-02-19 17:37:08.591543215 +0000
+@@ -29,6 +29,7 @@
+                                              const gfx::Size& max_size,
+                                              bool can_resize,
+                                              bool can_fullscreen);
++GFX_EXPORT void SetNSWindowShowInTaskbar(NSWindow* window, bool show);
+ 
+ }  // namespace gfx
+ 

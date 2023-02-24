@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/third_party/blink/public/platform/web_security_origin.h nw/chromium/third_party/blink/public/platform/web_security_origin.h
+--- up/chromium/third_party/blink/public/platform/web_security_origin.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/public/platform/web_security_origin.h	2023-02-19 17:36:42.143480853 +0000
+@@ -118,6 +118,8 @@
+   // https://html.spec.whatwg.org/#same-origin
+   bool IsSameOriginWith(const WebSecurityOrigin&) const;
+ 
++  BLINK_PLATFORM_EXPORT void grantUniversalAccess();
++
+ #if INSIDE_BLINK
+   WebSecurityOrigin(scoped_refptr<const SecurityOrigin>);
+   WebSecurityOrigin& operator=(scoped_refptr<const SecurityOrigin>);

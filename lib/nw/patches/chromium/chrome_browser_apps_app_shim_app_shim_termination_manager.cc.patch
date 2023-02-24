@@ -1,0 +1,21 @@
+diff -r -u --color up/chromium/chrome/browser/apps/app_shim/app_shim_termination_manager.cc nw/chromium/chrome/browser/apps/app_shim/app_shim_termination_manager.cc
+--- up/chromium/chrome/browser/apps/app_shim/app_shim_termination_manager.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/apps/app_shim/app_shim_termination_manager.cc	2023-02-19 17:36:26.923442438 +0000
+@@ -59,12 +59,15 @@
+ 
+   // BrowserListObserver:
+   void OnBrowserAdded(Browser* browser) override {
+-    browser_session_running_ = true;
++    // fix https://github.com/nwjs/nw.js/issues/7226 for nw1
++    // browser_session_running_ will set to true once devtool is opened
++    // hence the TerminateIfNoAppWindows function will never be called
++    //browser_session_running_ = true;
+   }
+ 
+  private:
+   void OnClosingAllBrowsersChanged(bool closing) {
+-    browser_session_running_ = !closing;
++    //browser_session_running_ = !closing;
+   }
+ 
+   base::CallbackListSubscription closing_all_browsers_subscription_;

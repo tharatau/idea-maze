@@ -1,0 +1,55 @@
+diff -r -u --color up/chromium/extensions/browser/extension_function.h nw/chromium/extensions/browser/extension_function.h
+--- up/chromium/extensions/browser/extension_function.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/browser/extension_function.h	2023-02-19 17:36:36.827467481 +0000
+@@ -209,6 +209,7 @@
+   //
+   // ExtensionFunction implementations are encouraged to just implement Run.
+   [[nodiscard]] virtual ResponseAction Run() = 0;
++  virtual bool RunNWSync(base::Value::List* response, std::string* error);
+ 
+   // Gets whether quota should be applied to this individual function
+   // invocation. This is different to GetQuotaLimitHeuristics which is only
+@@ -535,8 +536,11 @@
+ 
+   // Any detailed error from the API. This should be populated by the derived
+   // class before Run() returns.
++ protected:
+   std::string error_;
+ 
++ private:
++
+   // The callback to run once the function has done execution.
+   ResponseCallback response_callback_;
+ 
+@@ -598,6 +602,7 @@
+ 
+   // Whether this function has responded.
+   // TODO(devlin): Replace this with response_type_ != null.
++ public:
+   bool did_respond_ = false;
+ 
+   // If set to true, preserves |results_|, even after SendResponseImpl() was
+@@ -635,4 +640,23 @@
+   int worker_thread_id_ = -1;
+ };
+ 
++class NWSyncExtensionFunction : public ExtensionFunction {
++ public:
++  NWSyncExtensionFunction();
++  void SetError(const std::string& error);
++
++ protected:
++  ~NWSyncExtensionFunction() override;
++  static bool ValidationFailure(NWSyncExtensionFunction* function);
++
++  void SetResult(std::unique_ptr<base::Value> result);
++  void SetResultList(std::unique_ptr<base::ListValue> results);
++
++  std::unique_ptr<base::ListValue> results_;
++  std::string error_;
++ private:
++  ResponseAction Run() final;
++
++};
++
+ #endif  // EXTENSIONS_BROWSER_EXTENSION_FUNCTION_H_

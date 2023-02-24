@@ -1,0 +1,11 @@
+diff -r -u --color up/node/src/node_types.cc nw/node/src/node_types.cc
+--- up/node/src/node_types.cc	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/src/node_types.cc	2023-02-19 17:37:33.303599295 +0000
+@@ -38,7 +38,6 @@
+   V(Proxy)                                                                    \
+   V(ModuleNamespaceObject)                                                    \
+ 
+-
+ #define V(type) \
+   static void Is##type(const FunctionCallbackInfo<Value>& args) {             \
+     args.GetReturnValue().Set(args[0]->Is##type());                           \

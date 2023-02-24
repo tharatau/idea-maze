@@ -1,0 +1,98 @@
+diff -r -u --color up/chromium/chrome/browser/ui/startup/startup_browser_creator.cc nw/chromium/chrome/browser/ui/startup/startup_browser_creator.cc
+--- up/chromium/chrome/browser/ui/startup/startup_browser_creator.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/startup/startup_browser_creator.cc	2023-02-19 17:36:29.475448898 +0000
+@@ -3,6 +3,11 @@
+ // found in the LICENSE file.
+ 
+ #include "chrome/browser/ui/startup/startup_browser_creator.h"
++#include "chrome/browser/spellchecker/spellcheck_factory.h"
++#include "content/nw/src/common/shell_switches.h"
++#include "content/public/common/content_features.h"
++
++#include "extensions/browser/extension_registry.h"
+ 
+ #include <stddef.h>
+ 
+@@ -94,6 +99,15 @@
+ #include "printing/buildflags/buildflags.h"
+ #include "third_party/abseil-cpp/absl/types/optional.h"
+ 
++#include "extensions/browser/extension_system.h"
++#include "chrome/browser/extensions/component_loader.h"
++#include "chrome/browser/extensions/extension_service.h"
++#include "chrome/common/extensions/extension_constants.h"
++#include "chrome/grit/browser_resources.h"
++#include "extensions/common/constants.h"
++#include "chrome/browser/ui/extensions/app_launch_params.h"
++#include "chrome/browser/ui/extensions/application_launch.h"
++
+ #if BUILDFLAG(IS_CHROMEOS_ASH)
+ #include "ash/constants/ash_switches.h"
+ #include "chrome/browser/ash/app_mode/app_launch_utils.h"
+@@ -1105,8 +1119,8 @@
+     // chrome to shut down.
+     // TODO(jackhou): Do this properly once keep-alive is handled by the
+     // background page of apps. Tracked at http://crbug.com/175381
+-    if (chrome::GetBrowserCount(privacy_safe_profile) != 0)
+-      return true;
++    //if (chrome::GetBrowserCount(privacy_safe_profile) != 0)
++    return true;
+   }
+ 
+   // Check for --load-and-launch-app.
+@@ -1128,6 +1142,55 @@
+       return true;
+   }
+ 
++  if (process_startup != chrome::startup::IsProcessStartup::kYes)
++    return true;
++  if (command_line.HasSwitch(switches::kEnableSpellChecking))
++    SpellcheckServiceFactory::GetForContext(profile_info.profile);
++
++  const base::CommandLine::StringVector& params = command_line.GetArgs();
++  if (command_line.HasSwitch("nwapp")) {
++	  if (!apps::AppLoadService::Get(profile_info.profile)->LoadAndLaunch(
++		  base::FilePath(command_line.GetSwitchValueNative("nwapp")), command_line, cur_dir)) {
++		  return false;
++	  }
++	  return true;
++  }
++
++  if (!command_line.HasSwitch("nwjs-test-mode")) {
++    if (params.size() > 0) {
++      if (!apps::AppLoadService::Get(profile_info.profile)->LoadAndLaunch(
++                                                             base::FilePath(params[0]), command_line, cur_dir)) {
++        return false;
++      }
++      return true;
++    } else {
++      extensions::ExtensionService* extension_service =
++        extensions::ExtensionSystem::Get(profile_info.profile)->extension_service();
++      extensions::ExtensionRegistry* extension_registry =
++        extensions::ExtensionRegistry::Get(profile_info.profile);
++      extensions::ComponentLoader* component_loader = extension_service->component_loader();
++      std::string id;
++      if (base::FeatureList::IsEnabled(::features::kNWNewWin)) {
++        id = component_loader->GetExtensionID(IDR_NWJS_DEFAPP_MANIFEST_NEWWIN,
++                                                         base::FilePath(FILE_PATH_LITERAL("nwjs_newwin_app")));
++      } else {
++        id = component_loader->GetExtensionID(IDR_NWJS_DEFAPP_MANIFEST,
++                                                         base::FilePath(FILE_PATH_LITERAL("nwjs_default_app")));
++      }
++
++      LOG(INFO) << "loading default app: " << id;
++      const extensions::Extension* extension = extension_registry->GetExtensionById(id, extensions::ExtensionRegistry::EVERYTHING);
++      if (!extension) {
++        LOG(FATAL) << "Failed to load default app";
++        return false;
++      }
++      OpenApplication(profile_info.profile,
++                      apps::AppLaunchParams(extension->id(), apps::LaunchContainer::kLaunchContainerWindow,
++                                            WindowOpenDisposition::NEW_WINDOW, apps::LaunchSource::kFromChromeInternal));
++      return true;
++    }
++  }
++
+ #if BUILDFLAG(IS_WIN)
+   if (command_line.HasSwitch(switches::kWinJumplistAction)) {
+     // `switches::kWinJumplistAction` is expected to be set together with a

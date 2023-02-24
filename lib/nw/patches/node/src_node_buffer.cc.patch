@@ -1,0 +1,21 @@
+diff -r -u --color up/node/src/node_buffer.cc nw/node/src/node_buffer.cc
+--- up/node/src/node_buffer.cc	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/src/node_buffer.cc	2023-02-19 17:37:33.291599271 +0000
+@@ -121,7 +121,7 @@
+       ArrayBuffer::NewBackingStore(data, length, [](void*, size_t, void* arg) {
+         static_cast<CallbackInfo*>(arg)->OnBackingStoreFree();
+       }, self);
+-  Local<ArrayBuffer> ab = ArrayBuffer::New(env->isolate(), std::move(bs));
++  Local<ArrayBuffer> ab = ArrayBuffer::NewNode(env->isolate(), std::move(bs));
+ 
+   // V8 simply ignores the BackingStore deleter callback if data == nullptr,
+   // but our API contract requires it being called.
+@@ -1279,7 +1279,7 @@
+                                      sizeof(*zero_fill_field),
+                                      [](void*, size_t, void*) {},
+                                      nullptr);
+-    ab = ArrayBuffer::New(env->isolate(), std::move(backing));
++    ab = ArrayBuffer::NewNode(env->isolate(), std::move(backing));
+   }
+ 
+   ab->SetPrivate(

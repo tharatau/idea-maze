@@ -1,0 +1,12 @@
+diff -r -u --color up/v8/include/v8-primitive-object.h nw/v8/include/v8-primitive-object.h
+--- up/v8/include/v8-primitive-object.h	2023-02-10 19:02:29.000000000 +0000
++++ nw/v8/include/v8-primitive-object.h	2023-02-19 17:37:43.243622259 +0000
+@@ -78,6 +78,8 @@
+  */
+ class V8_EXPORT StringObject : public Object {
+  public:
++  V8_DEPRECATED("Use Isolate* version") static
++                       Local<Value> New(Local<String> value);
+   static Local<Value> New(Isolate* isolate, Local<String> value);
+ 
+   Local<String> ValueOf() const;

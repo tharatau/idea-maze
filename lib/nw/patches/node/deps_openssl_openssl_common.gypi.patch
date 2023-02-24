@@ -1,0 +1,21 @@
+diff -r -u --color up/node/deps/openssl/openssl_common.gypi nw/node/deps/openssl/openssl_common.gypi
+--- up/node/deps/openssl/openssl_common.gypi	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/deps/openssl/openssl_common.gypi	2023-02-19 17:37:31.643596105 +0000
+@@ -12,6 +12,8 @@
+     'config/',
+   ],
+   # build options specific to OS
++  'cflags!': ['-fvisibility=hidden'],
++  'cflags_cc!': ['-fvisibility-inlines-hidden'],
+   'conditions': [
+     [ 'OS=="aix"', {
+       # AIX is missing /usr/include/endian.h
+@@ -34,7 +36,7 @@
+       'cflags': [
+         '-W3', '-wd4090', '-Gs0', '-GF', '-Gy', '-nologo','/O2',
+       ],
+-      'msvs_disabled_warnings': [4090],
++      'msvs_disabled_warnings': [4090, 4311],
+       'link_settings': {
+         'libraries': [
+           '-lws2_32.lib',

@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/chrome/app/version_assembly/BUILD.gn nw/chromium/chrome/app/version_assembly/BUILD.gn
+--- up/chromium/chrome/app/version_assembly/BUILD.gn	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/app/version_assembly/BUILD.gn	2023-02-19 17:36:26.783442084 +0000
+@@ -25,7 +25,6 @@
+     as_invoker_manifest,
+     common_controls_manifest,
+     default_compatibility_manifest,
+-    version_assembly_output_file,
+   ]
+ 
+   if (enable_segment_heap) {

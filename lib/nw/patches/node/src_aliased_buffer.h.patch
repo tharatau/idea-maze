@@ -1,0 +1,13 @@
+diff -r -u --color up/node/src/aliased_buffer.h nw/node/src/aliased_buffer.h
+--- up/node/src/aliased_buffer.h	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/src/aliased_buffer.h	2023-02-19 17:37:33.275599241 +0000
+@@ -4,8 +4,8 @@
+ #if defined(NODE_WANT_INTERNALS) && NODE_WANT_INTERNALS
+ 
+ #include <cinttypes>
+-#include "util-inl.h"
+ #include "v8.h"
++#include "util-inl.h"
+ 
+ namespace node {
+ 

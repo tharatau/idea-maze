@@ -1,0 +1,99 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/loader/frame_loader.cc nw/chromium/third_party/blink/renderer/core/loader/frame_loader.cc
+--- up/chromium/third_party/blink/renderer/core/loader/frame_loader.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/loader/frame_loader.cc	2023-02-19 17:36:42.755482386 +0000
+@@ -232,11 +232,24 @@
+   // Ensure that the frame sees the correct page lifecycle state.
+   frame_->OnPageLifecycleStateUpdated();
+ 
++  if (HTMLFrameOwnerElement* ownerElement = frame_->DeprecatedLocalOwner()) {
++    setUserAgentOverride(ownerElement->FastGetAttribute(html_names::kNwuseragentAttr));
++  }
+   TakeObjectSnapshot();
+ 
+   state_ = State::kInitialized;
+ }
+ 
++void FrameLoader::setUserAgentOverride(const String& agent)
++{
++  user_agent_override_ = agent;
++}
++
++String FrameLoader::userAgentOverride() const
++{
++  return user_agent_override_;
++}
++
+ LocalFrameClient* FrameLoader::Client() const {
+   return frame_->Client();
+ }
+@@ -598,6 +611,7 @@
+   ResourceRequest& resource_request = request.GetResourceRequest();
+   const KURL& url = resource_request.Url();
+   LocalDOMWindow* origin_window = request.GetOriginWindow();
++  NavigationPolicy policy = request.GetNavigationPolicy();
+ 
+   TRACE_EVENT2("navigation", "FrameLoader::StartNavigation", "url",
+                url.GetString().Utf8(), "load_type",
+@@ -668,7 +682,7 @@
+   }
+ 
+   bool same_document_navigation =
+-      request.GetNavigationPolicy() == kNavigationPolicyCurrentTab &&
++      policy == kNavigationPolicyCurrentTab &&
+       ShouldPerformFragmentNavigation(
+           request.Form(), resource_request.HttpMethod(), frame_load_type, url);
+ 
+@@ -714,6 +728,18 @@
+                            ? mojom::RequestContextFrameType::kTopLevel
+                            : mojom::RequestContextFrameType::kNested);
+ 
++  bool policy_override = false;
++  NavigationPolicy policy0 = policy;
++  mojom::RequestContextType context = resource_request.GetRequestContext();
++  if (context ==  blink::mojom::RequestContextType::HYPERLINK ||
++      context ==  blink::mojom::RequestContextType::FORM) {
++    Client()->willHandleNavigationPolicy(resource_request, &policy0, NULL, false);
++    if (policy0 == kNavigationPolicyIgnore) {
++      policy = policy0;
++      policy_override = true;
++    }
++  }
++
+   // TODO(arthursonzogni): 'frame-src' check is disabled on the
+   // renderer side, but is enforced on the browser side.
+   // See http://crbug.com/692595 for understanding why it
+@@ -818,6 +844,7 @@
+     }
+   }
+ 
++  if (!policy_override)
+   Client()->BeginNavigation(
+       resource_request, request.GetFrameType(), origin_window,
+       nullptr /* document_loader */, navigation_type,
+@@ -1375,7 +1402,16 @@
+ String FrameLoader::ApplyUserAgentOverrideAndLog(
+     const String& user_agent) const {
+   String user_agent_override;
+-  probe::ApplyUserAgentOverride(probe::ToCoreProbeSink(frame_->GetDocument()),
++  LocalFrame* frame = frame_;
++  while (frame) {
++    if (!frame->Loader().user_agent_override_.empty())
++      return frame->Loader().user_agent_override_;
++    Frame* f = frame->Tree().Parent();
++    if (!f || !f->IsLocalFrame())
++      break;
++    frame = DynamicTo<LocalFrame>(f);
++  }
++  probe::ApplyUserAgentOverride(probe::ToCoreProbeSink(frame->GetDocument()),
+                                 &user_agent_override);
+ 
+   if (Client()->UserAgentOverride().empty() && user_agent_override.empty()) {
+@@ -1402,7 +1438,7 @@
+ 
+     if (document_loader_) {
+       document_loader_->GetUseCounter().CountUserAgentOverride(histogram,
+-                                                               frame_.Get());
++                                                               frame);
+     }
+   }
+ 

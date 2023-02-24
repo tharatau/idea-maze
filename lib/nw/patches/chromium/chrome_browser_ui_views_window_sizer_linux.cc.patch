@@ -1,0 +1,20 @@
+diff -r -u --color up/chromium/chrome/browser/ui/views/window_sizer_linux.cc nw/chromium/chrome/browser/ui/views/window_sizer_linux.cc
+--- up/chromium/chrome/browser/ui/views/window_sizer_linux.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/views/window_sizer_linux.cc	2023-02-19 17:36:29.683449424 +0000
+@@ -13,7 +13,7 @@
+ #include "ui/ozone/public/ozone_platform.h"
+ 
+ // static
+-void WindowSizer::GetBrowserWindowBoundsAndShowState(
++bool WindowSizer::GetBrowserWindowBoundsAndShowState(
+     std::unique_ptr<StateProvider> state_provider,
+     const gfx::Rect& specified_bounds,
+     const Browser* browser,
+@@ -26,6 +26,7 @@
+   *show_state = GetWindowDefaultShowState(browser);
+   *bounds = specified_bounds;
+   sizer.DetermineWindowBoundsAndShowState(specified_bounds, bounds, show_state);
++  return true;
+ }
+ 
+ WindowSizerLinux::WindowSizerLinux(

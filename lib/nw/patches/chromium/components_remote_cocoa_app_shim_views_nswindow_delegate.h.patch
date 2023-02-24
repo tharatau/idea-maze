@@ -1,0 +1,15 @@
+diff -r -u --color up/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.h nw/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.h
+--- up/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.h	2023-02-19 17:36:33.919460134 +0000
+@@ -54,10 +54,10 @@
+ // a backing store). |notification| is optional and can be set when redirecting
+ // a notification such as NSApplicationDidHideNotification.
+ - (void)onWindowOrderChanged:(NSNotification*)notification;
+-
+ // Notify that the system control tint changed.
+ - (void)onSystemControlTintChanged:(NSNotification*)notification;
+ 
++- (void)onWindowWillStartLiveResize:(NSNotification*)notification;
+ // Called on the delegate of a modal sheet when its modal session ends.
+ - (void)sheetDidEnd:(NSWindow*)sheet
+          returnCode:(NSInteger)returnCode

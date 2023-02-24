@@ -1,0 +1,21 @@
+diff -r -u --color up/chromium/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc nw/chromium/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc
+--- up/chromium/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc	2023-02-19 17:36:27.867444828 +0000
+@@ -13,6 +13,9 @@
+ #include "chrome/browser/ash/app_mode/kiosk_app_manager.h"
+ #endif
+ 
++#include "components/sessions/content/session_tab_helper.h"
++#include "chrome/browser/sessions/session_tab_helper_factory.h"
++
+ namespace extensions {
+ 
+ ChromeGuestViewManagerDelegate::ChromeGuestViewManagerDelegate(
+@@ -31,6 +34,7 @@
+   // |guest_web_contents| so that their corresponding tasks show up in the task
+   // manager.
+   task_manager::WebContentsTags::CreateForGuestContents(guest_web_contents);
++  CreateSessionServiceTabHelper(guest_web_contents);
+ 
+ #if BUILDFLAG(IS_CHROMEOS_ASH)
+   // Notifies kiosk session about the added guest.

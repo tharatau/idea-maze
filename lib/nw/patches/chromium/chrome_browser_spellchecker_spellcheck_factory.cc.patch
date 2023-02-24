@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/chrome/browser/spellchecker/spellcheck_factory.cc nw/chromium/chrome/browser/spellchecker/spellcheck_factory.cc
+--- up/chromium/chrome/browser/spellchecker/spellcheck_factory.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/spellchecker/spellcheck_factory.cc	2023-02-19 17:36:28.919447490 +0000
+@@ -58,7 +58,7 @@
+       spellcheck::prefs::kSpellCheckDictionary,
+       l10n_util::GetStringUTF8(IDS_SPELLCHECK_DICTIONARY));
+   user_prefs->RegisterBooleanPref(
+-      spellcheck::prefs::kSpellCheckUseSpellingService, false);
++      spellcheck::prefs::kSpellCheckUseSpellingService, true);
+ #if BUILDFLAG(IS_ANDROID)
+   uint32_t flags = PrefRegistry::NO_REGISTRATION_FLAGS;
+ #else

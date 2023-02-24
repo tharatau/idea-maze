@@ -1,0 +1,13 @@
+diff -r -u --color up/chromium/components/remote_cocoa/app_shim/bridged_content_view.h nw/chromium/components/remote_cocoa/app_shim/bridged_content_view.h
+--- up/chromium/components/remote_cocoa/app_shim/bridged_content_view.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/components/remote_cocoa/app_shim/bridged_content_view.h	2023-02-19 17:36:33.915460123 +0000
+@@ -55,6 +55,9 @@
+ @property(assign, nonatomic) BOOL drawMenuBackgroundForBlur;
+ @property(assign, nonatomic) NSEvent* keyDownEventForTesting;
+ 
++// Used by g_force_cpu_draw
++@property(assign, nonatomic) CALayer* forceCPUDrawLayer;
++
+ // Initialize the NSView -> views::View bridge. |viewToHost| must be non-NULL.
+ - (instancetype)initWithBridge:(remote_cocoa::NativeWidgetNSWindowBridge*)bridge
+                         bounds:(gfx::Rect)rect;

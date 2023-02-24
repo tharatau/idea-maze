@@ -1,0 +1,13 @@
+diff -r -u --color up/chromium/chrome/browser/ui/media_router/media_router_ui_service.h nw/chromium/chrome/browser/ui/media_router/media_router_ui_service.h
+--- up/chromium/chrome/browser/ui/media_router/media_router_ui_service.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/media_router/media_router_ui_service.h	2023-02-19 17:36:29.435448796 +0000
+@@ -53,7 +53,9 @@
+   void DisableService();
+ 
+   raw_ptr<Profile> profile_;
++#if defined(NWJS_SDK)
+   std::unique_ptr<MediaRouterActionController> action_controller_;
++#endif
+   std::unique_ptr<PrefChangeRegistrar> profile_pref_registrar_;
+ 
+   base::ObserverList<Observer>::Unchecked observers_;

@@ -1,0 +1,15 @@
+diff -r -u --color up/node/tools/js2c.py nw/node/tools/js2c.py
+--- up/node/tools/js2c.py	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/tools/js2c.py	2023-02-19 17:37:33.919600478 +0000
+@@ -130,7 +130,10 @@
+   initializers.append(initializer)
+ 
+ def NormalizeFileName(filename):
+-  split = filename.split('/')
++  if '/' in filename:
++    split = filename.split('/')
++  else:
++    split = filename.split(os.path.sep)
+   if split[0] == 'deps':
+     split = ['internal'] + split
+   else:  # `lib/**/*.js` so drop the 'lib' part

@@ -1,0 +1,13 @@
+diff -r -u --color up/chromium/content/public/browser/render_frame_host.h nw/chromium/content/public/browser/render_frame_host.h
+--- up/chromium/content/public/browser/render_frame_host.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/public/browser/render_frame_host.h	2023-02-19 17:36:35.779464833 +0000
+@@ -213,6 +213,9 @@
+   // node IDs identified.
+   virtual void RequestDistilledAXTree(AXTreeDistillerCallback callback) = 0;
+ 
++
++  virtual bool nodejs() = 0;
++  virtual bool context_created() = 0;
+   // Returns the SiteInstance grouping all RenderFrameHosts that have script
+   // access to this RenderFrameHost, and must therefore live in the same
+   // process.

@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/printing/buildflags/buildflags.gni nw/chromium/printing/buildflags/buildflags.gni
+--- up/chromium/printing/buildflags/buildflags.gni	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/printing/buildflags/buildflags.gni	2023-02-19 17:36:40.763477394 +0000
+@@ -44,7 +44,7 @@
+ 
+   # Enable snapshotting a page when printing for its content to be analyzed for
+   # sensitive content by enterprise users.
+-  enable_print_content_analysis = is_chromeos || is_win || is_linux || is_mac
++  enable_print_content_analysis = false #is_chromeos || is_win || is_linux || is_mac
+ }
+ 
+ declare_args() {

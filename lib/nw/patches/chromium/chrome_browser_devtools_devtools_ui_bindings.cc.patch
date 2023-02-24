@@ -1,0 +1,116 @@
+diff -r -u --color up/chromium/chrome/browser/devtools/devtools_ui_bindings.cc nw/chromium/chrome/browser/devtools/devtools_ui_bindings.cc
+--- up/chromium/chrome/browser/devtools/devtools_ui_bindings.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/devtools/devtools_ui_bindings.cc	2023-02-19 17:36:27.591444129 +0000
+@@ -2,6 +2,7 @@
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
+ 
++#include "extensions/browser/extension_protocols.h"
+ #include "chrome/browser/devtools/devtools_ui_bindings.h"
+ 
+ #include <stddef.h>
+@@ -581,7 +582,8 @@
+     return true;
+   }
+ 
+-  return SanitizeFrontendURL(url).spec() == url.spec();
++  //NW: webview.showDevTools in container; webview-localfile case; changed in c2db881506f
++  return SanitizeFrontendURL(url).spec() == url.spec() || url == GURL(url::kAboutBlankURL);
+ }
+ 
+ bool DevToolsUIBindings::IsValidRemoteFrontendURL(const GURL& url) {
+@@ -864,6 +866,15 @@
+   resource_request.headers.AddHeadersFromString(headers);
+ 
+   NetworkResourceLoader::URLLoaderFactoryHolder url_loader_factory;
++  if (gurl.SchemeIs("chrome-extension")) {
++    content::RenderFrameHost* frame_host = web_contents()->GetPrimaryMainFrame();
++    mojo::PendingRemote<network::mojom::URLLoaderFactory> pending_remote
++      = extensions::CreateExtensionURLLoaderFactory(frame_host->GetProcess()->GetID(),
++                                                    frame_host->GetRoutingID());
++    url_loader_factory = network::SharedURLLoaderFactory::Create(
++        std::make_unique<network::WrapperPendingSharedURLLoaderFactory>(
++            std::move(pending_remote)));
++  } else
+   if (gurl.SchemeIsFile()) {
+     mojo::PendingRemote<network::mojom::URLLoaderFactory> pending_remote =
+         content::CreateFileURLLoaderFactory(
+@@ -961,8 +972,8 @@
+ }
+ 
+ void DevToolsUIBindings::RequestFileSystems() {
+-  CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
+-        frontend_host_);
++  //CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
++  //      frontend_host_);
+   base::Value::List file_systems_value;
+   for (auto const& file_system : file_helper_->GetFileSystems())
+     file_systems_value.Append(CreateFileSystemValue(file_system));
+@@ -971,23 +982,23 @@
+ }
+ 
+ void DevToolsUIBindings::AddFileSystem(const std::string& type) {
+-  CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
+-        frontend_host_);
++  //CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
++  //      frontend_host_);
+   file_helper_->AddFileSystem(
+       type, base::BindRepeating(&DevToolsUIBindings::ShowDevToolsInfoBar,
+                                 weak_factory_.GetWeakPtr()));
+ }
+ 
+ void DevToolsUIBindings::RemoveFileSystem(const std::string& file_system_path) {
+-  CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
+-        frontend_host_);
++  //CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
++  //      frontend_host_);
+   file_helper_->RemoveFileSystem(file_system_path);
+ }
+ 
+ void DevToolsUIBindings::UpgradeDraggedFileSystemPermissions(
+     const std::string& file_system_url) {
+-  CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
+-        frontend_host_);
++  //CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
++  //      frontend_host_);
+   file_helper_->UpgradeDraggedFileSystemPermissions(
+       file_system_url,
+       base::BindRepeating(&DevToolsUIBindings::ShowDevToolsInfoBar,
+@@ -999,8 +1010,8 @@
+     const std::string& file_system_path,
+     const std::string& excluded_folders_message) {
+   DCHECK_CURRENTLY_ON(BrowserThread::UI);
+-  CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
+-        frontend_host_);
++  //CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
++  //      frontend_host_);
+   if (!file_helper_->IsFileSystemAdded(file_system_path)) {
+     IndexingDone(index_request_id, file_system_path);
+     return;
+@@ -1045,8 +1056,8 @@
+                                       const std::string& file_system_path,
+                                       const std::string& query) {
+   DCHECK_CURRENTLY_ON(BrowserThread::UI);
+-  CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
+-        frontend_host_);
++  //CHECK(IsValidFrontendURL(web_contents_->GetLastCommittedURL()) &&
++  //      frontend_host_);
+   if (!file_helper_->IsFileSystemAdded(file_system_path)) {
+     SearchCompleted(search_request_id,
+                     file_system_path,
+@@ -1502,11 +1513,15 @@
+ void DevToolsUIBindings::ShowDevToolsInfoBar(
+     const std::u16string& message,
+     DevToolsInfoBarDelegate::Callback callback) {
++#if 1
++  std::move(callback).Run(true); // #4602
++#else
+   if (!delegate_->GetInfoBarManager()) {
+     std::move(callback).Run(false);
+     return;
+   }
+   DevToolsInfoBarDelegate::Create(message, std::move(callback));
++#endif
+ }
+ 
+ void DevToolsUIBindings::AddDevToolsExtensionsToClient() {

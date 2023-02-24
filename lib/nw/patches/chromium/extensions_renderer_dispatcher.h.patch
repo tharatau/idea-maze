@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/extensions/renderer/dispatcher.h nw/chromium/extensions/renderer/dispatcher.h
+--- up/chromium/extensions/renderer/dispatcher.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/renderer/dispatcher.h	2023-02-19 17:36:36.907467683 +0000
+@@ -164,6 +164,7 @@
+ 
+   // This method is not allowed to run JavaScript code in the frame.
+   void DidCreateDocumentElement(blink::WebLocalFrame* frame);
++  void DidDispatchDOMContentLoadedEvent(blink::WebLocalFrame* frame);
+ 
+   // These methods may run (untrusted) JavaScript code in the frame, and
+   // cause |render_frame| to become invalid.

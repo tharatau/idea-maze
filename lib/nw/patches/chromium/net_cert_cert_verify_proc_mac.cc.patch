@@ -1,0 +1,54 @@
+diff -r -u --color up/chromium/net/cert/cert_verify_proc_mac.cc nw/chromium/net/cert/cert_verify_proc_mac.cc
+--- up/chromium/net/cert/cert_verify_proc_mac.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/net/cert/cert_verify_proc_mac.cc	2023-02-19 17:36:40.087475700 +0000
+@@ -5,6 +5,7 @@
+ #include "net/cert/cert_verify_proc_mac.h"
+ 
+ #include <CommonCrypto/CommonDigest.h>
++#include <CoreFoundation/CFArray.h>
+ #include <CoreServices/CoreServices.h>
+ #include <Security/Security.h>
+ 
+@@ -567,6 +568,7 @@
+                                 CFArrayRef sct_array_ref,
+                                 int flags,
+                                 CFArrayRef keychain_search_list,
++                                const CertificateList& additional_trust_anchors,
+                                 ScopedCFTypeRef<SecTrustRef>* trust_ref,
+                                 SecTrustResultType* trust_result,
+                                 ScopedCFTypeRef<CFArrayRef>* verified_chain,
+@@ -693,6 +695,7 @@
+                          bool rev_checking_soft_fail,
+                          CRLSet* crl_set,
+                          CertVerifyResult* verify_result,
++                         const CertificateList& additional_trust_anchors,
+                          CRLSetResult* completed_chain_crl_result) {
+   ScopedCFTypeRef<CFArrayRef> trust_policies;
+   OSStatus status = CreateTrustPolicies(flags, &trust_policies);
+@@ -851,7 +854,7 @@
+       int rv = BuildAndEvaluateSecTrustRef(
+           cert_array, trust_policies, ocsp_response_ref.get(),
+           sct_array_ref.get(), flags,
+-          scoped_alternate_keychain_search_list.get(), &temp_ref,
++          scoped_alternate_keychain_search_list.get(), additional_trust_anchors, &temp_ref,
+           &temp_trust_result, &temp_chain, &temp_chain_info);
+       if (rv != OK)
+         return rv;
+@@ -1091,7 +1094,7 @@
+ CertVerifyProcMac::~CertVerifyProcMac() = default;
+ 
+ bool CertVerifyProcMac::SupportsAdditionalTrustAnchors() const {
+-  return false;
++  return true;
+ }
+ 
+ int CertVerifyProcMac::VerifyInternal(
+@@ -1115,7 +1118,7 @@
+   CRLSetResult completed_chain_crl_result;
+   int rv = VerifyWithGivenFlags(cert, hostname, ocsp_response, sct_list, flags,
+                                 /*rev_checking_soft_fail=*/true, crl_set,
+-                                verify_result, &completed_chain_crl_result);
++                                verify_result, additional_trust_anchors, &completed_chain_crl_result);
+   if (rv != OK)
+     return rv;
+ 

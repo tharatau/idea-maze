@@ -1,0 +1,42 @@
+diff -r -u --color up/chromium/chrome/browser/download/download_ui_controller.cc nw/chromium/chrome/browser/download/download_ui_controller.cc
+--- up/chromium/chrome/browser/download/download_ui_controller.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/download/download_ui_controller.cc	2023-02-19 17:36:27.619444200 +0000
+@@ -23,6 +23,9 @@
+ #include "content/public/browser/download_item_utils.h"
+ #include "content/public/browser/web_contents.h"
+ #include "content/public/browser/web_contents_delegate.h"
++#include "extensions/browser/app_window/app_window.h"
++#include "extensions/browser/app_window/app_window_registry.h"
++#include "extensions/browser/app_window/native_app_window.h"
+ 
+ #if BUILDFLAG(IS_ANDROID)
+ #include "chrome/browser/download/android/download_controller.h"
+@@ -293,6 +296,20 @@
+ #if BUILDFLAG(IS_ANDROID)
+     DownloadController::CloseTabIfEmpty(web_contents, item);
+ #else
++    Profile* profile = Profile::FromBrowserContext(web_contents->GetBrowserContext());
++    extensions::AppWindowRegistry* registry = extensions::AppWindowRegistry::Get(profile);
++    if (!registry)
++      return;
++    extensions::AppWindow* app_window = registry->GetAppWindowForWebContents(web_contents);
++    if (!app_window)
++      return;
++    if (web_contents->GetController().IsInitialNavigation() &&
++        app_window->NWCanClose() &&
++        !item->IsSavePackageDownload()) {
++      app_window->GetBaseWindow()->Close();
++    }
++
++#if 0
+     Browser* browser = chrome::FindBrowserWithWebContents(web_contents);
+     // If the download occurs in a new tab, and it's not a save page
+     // download (started before initial navigation completed) close it.
+@@ -306,6 +323,7 @@
+         !item->IsSavePackageDownload()) {
+       web_contents->Close();
+     }
++#endif
+ #endif  // BUILDFLAG(IS_ANDROID)
+   }
+ 

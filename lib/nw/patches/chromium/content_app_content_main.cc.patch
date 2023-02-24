@@ -1,0 +1,51 @@
+diff -r -u --color up/chromium/content/app/content_main.cc nw/chromium/content/app/content_main.cc
+--- up/chromium/content/app/content_main.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/app/content_main.cc	2023-02-19 17:36:35.219463418 +0000
+@@ -4,6 +4,8 @@
+ 
+ #include "content/public/app/content_main.h"
+ 
++#include "content/nw/src/nw_base.h"
++
+ #include "base/allocator/buildflags.h"
+ #include "base/allocator/partition_alloc_support.h"
+ #include "base/at_exit.h"
+@@ -155,7 +157,7 @@
+   }
+ #endif
+ 
+-#if !defined(OFFICIAL_BUILD) && BUILDFLAG(IS_WIN)
++#if 0
+   base::RouteStdioToConsole(false);
+   LoadLibraryA("dbghelp.dll");
+ #endif
+@@ -266,7 +268,7 @@
+ 
+     base::EnableTerminationOnHeapCorruption();
+ 
+-    SetProcessTitleFromCommandLine(argv);
++    //SetProcessTitleFromCommandLine(argv);
+ #endif  // !BUILDFLAG(IS_ANDROID)
+ 
+     InitTimeTicksAtUnixEpoch();
+@@ -322,7 +324,7 @@
+       return exit_code;
+     }
+ 
+-#if BUILDFLAG(IS_WIN)
++#if 0 //BUILDFLAG(IS_WIN)
+     // Route stdio to parent console (if any) or create one.
+     if (base::CommandLine::ForCurrentProcess()->HasSwitch(
+             switches::kEnableLogging)) {
+@@ -343,6 +345,11 @@
+     CommonSubprocessInit();
+   exit_code = content_main_runner->Run();
+ 
++  std::string type_switch =
++    base::CommandLine::ForCurrentProcess()->GetSwitchValueASCII(switches::kProcessType);
++  if (type_switch == "renderer")
++    exit_code = nw::ExitCodeHook();
++
+   if (tracker) {
+     if (exit_code == 0) {
+       tracker->SetProcessPhaseIfEnabled(
