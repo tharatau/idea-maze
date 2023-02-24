@@ -1,9 +1,0 @@
-diff -r -u --color up/chromium/mojo/public/mojom/base/message_pump_type.mojom nw/chromium/mojo/public/mojom/base/message_pump_type.mojom
---- up/chromium/mojo/public/mojom/base/message_pump_type.mojom	2023-02-15 18:46:36.000000000 +0000
-+++ nw/chromium/mojo/public/mojom/base/message_pump_type.mojom	2023-02-19 17:36:39.615474517 +0000
-@@ -16,4 +16,5 @@
-   kNsRunloop,
-   [EnableIf=is_ios]
-   kNsRunloop,
-+  kNode,
- };
