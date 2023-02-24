@@ -2,7 +2,7 @@
 
 NW_DIR="nw"
 NW_URI=https://github.com/nwjs
-NW_VER=14
+NW_VER=73
 
 UP_DIR="up"
 
