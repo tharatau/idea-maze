@@ -1,0 +1,17 @@
+{
+    "name": "nw",
+    "version": "2023-02-24",
+    "private": true,
+    "scripts": {
+        "dev": "chmod 755 ./scripts/build && bash ./scripts/build",
+        "patch": "chmod 755 ./scripts/patch && bash ./scripts/patch",
+        "split": "concurrently npm:split:*",
+        "split:chromium": "splitdiff -a -p 2 -d -D ./patches/chromium ./diff/0.73.x/chromium.patch",
+        "split:node": "splitdiff -a -p 2 -d -D ./patches/node ./diff/0.73.x/chromium.patch",
+        "split:v8": "splitdiff -a -p 2 -d -D ./patches/v8 ./diff/0.73.x/chromium.patch"
+    },
+    "engines": {
+        "node": ">= 19.5.0",
+        "npm": ">= 9.5.1"
+    }
+}
