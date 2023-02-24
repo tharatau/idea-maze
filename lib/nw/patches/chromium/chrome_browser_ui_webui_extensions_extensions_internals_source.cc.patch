@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/webui/extensions/extensions_internals_source.cc nw/chromium/chrome/browser/ui/webui/extensions/extensions_internals_source.cc
 --- up/chromium/chrome/browser/ui/webui/extensions/extensions_internals_source.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/webui/extensions/extensions_internals_source.cc	2023-02-24 20:12:04.664825491 +0000
++++ nw/chromium/chrome/browser/ui/webui/extensions/extensions_internals_source.cc	2023-02-24 20:54:08.540513463 +0000
 @@ -51,6 +51,8 @@
        return "TYPE_LEGACY_PACKAGED_APP";
      case extensions::Manifest::TYPE_PLATFORM_APP:

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc
 --- up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc	2023-02-24 20:12:34.105074191 +0000
++++ nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc	2023-02-24 20:54:39.220345562 +0000
 @@ -542,7 +542,7 @@
    // but merely of the content Chrome draws, so even when the system titlebars
    // appear opaque (Win 8+), the content above them needs to be transparent, or

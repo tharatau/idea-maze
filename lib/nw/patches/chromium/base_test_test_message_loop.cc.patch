@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/base/test/test_message_loop.cc nw/chromium/base/test/test_message_loop.cc
 --- up/chromium/base/test/test_message_loop.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/base/test/test_message_loop.cc	2023-02-24 20:12:01.392792174 +0000
++++ nw/chromium/base/test/test_message_loop.cc	2023-02-24 20:54:05.272528318 +0000
 @@ -19,6 +19,7 @@
      MessagePumpType type) {
    switch (type) {

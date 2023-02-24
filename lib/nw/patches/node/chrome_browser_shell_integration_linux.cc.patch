@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/shell_integration_linux.cc nw/chromium/chrome/browser/shell_integration_linux.cc
 --- up/chromium/chrome/browser/shell_integration_linux.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/shell_integration_linux.cc	2023-02-24 20:12:04.084819585 +0000
++++ nw/chromium/chrome/browser/shell_integration_linux.cc	2023-02-24 20:54:07.980516045 +0000
 @@ -53,6 +53,8 @@
  #include "components/version_info/version_info.h"
  #include "third_party/libxml/chromium/xml_writer.h"

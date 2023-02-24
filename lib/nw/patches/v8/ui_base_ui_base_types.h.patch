@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/base/ui_base_types.h nw/chromium/ui/base/ui_base_types.h
 --- up/chromium/ui/base/ui_base_types.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/base/ui_base_types.h	2023-02-24 20:12:33.537068922 +0000
++++ nw/chromium/ui/base/ui_base_types.h	2023-02-24 20:54:37.260356861 +0000
 @@ -29,7 +29,8 @@
    SHOW_STATE_MAXIMIZED = 3,
    SHOW_STATE_INACTIVE = 4,  // Views only, not persisted.

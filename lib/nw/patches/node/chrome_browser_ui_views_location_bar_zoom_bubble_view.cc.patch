@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/location_bar/zoom_bubble_view.cc nw/chromium/chrome/browser/ui/views/location_bar/zoom_bubble_view.cc
 --- up/chromium/chrome/browser/ui/views/location_bar/zoom_bubble_view.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/location_bar/zoom_bubble_view.cc	2023-02-24 20:12:04.544824269 +0000
++++ nw/chromium/chrome/browser/ui/views/location_bar/zoom_bubble_view.cc	2023-02-24 20:54:08.424513998 +0000
 @@ -148,6 +148,7 @@
    return nullptr;
  }

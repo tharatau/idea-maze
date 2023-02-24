@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/permissions/permission_set.cc nw/chromium/extensions/common/permissions/permission_set.cc
 --- up/chromium/extensions/common/permissions/permission_set.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/permissions/permission_set.cc	2023-02-24 20:12:10.292873094 +0000
++++ nw/chromium/extensions/common/permissions/permission_set.cc	2023-02-24 20:54:13.752489429 +0000
 @@ -17,15 +17,16 @@
  
  namespace extensions {

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/permissions/permission_message.cc nw/chromium/extensions/common/permissions/permission_message.cc
 --- up/chromium/extensions/common/permissions/permission_message.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/permissions/permission_message.cc	2023-02-24 20:12:10.292873094 +0000
++++ nw/chromium/extensions/common/permissions/permission_message.cc	2023-02-24 20:54:13.752489429 +0000
 @@ -8,7 +8,7 @@
  
  PermissionMessage::PermissionMessage(const std::u16string& message,

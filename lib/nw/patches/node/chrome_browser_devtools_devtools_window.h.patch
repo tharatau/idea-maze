@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/devtools/devtools_window.h nw/chromium/chrome/browser/devtools/devtools_window.h
 --- up/chromium/chrome/browser/devtools/devtools_window.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/devtools/devtools_window.h	2023-02-24 20:12:03.160810177 +0000
++++ nw/chromium/chrome/browser/devtools/devtools_window.h	2023-02-24 20:54:07.084520177 +0000
 @@ -248,7 +248,10 @@
  
    content::WebContents* GetInspectedWebContents();

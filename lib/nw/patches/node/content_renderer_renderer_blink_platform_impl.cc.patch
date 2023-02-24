@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/renderer/renderer_blink_platform_impl.cc nw/chromium/content/renderer/renderer_blink_platform_impl.cc
 --- up/chromium/content/renderer/renderer_blink_platform_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/renderer/renderer_blink_platform_impl.cc	2023-02-24 20:12:09.544866836 +0000
++++ nw/chromium/content/renderer/renderer_blink_platform_impl.cc	2023-02-24 20:54:13.032492749 +0000
 @@ -6,6 +6,8 @@
  
  #include <algorithm>

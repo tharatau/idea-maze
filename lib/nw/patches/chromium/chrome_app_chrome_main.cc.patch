@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/app/chrome_main.cc nw/chromium/chrome/app/chrome_main.cc
 --- up/chromium/chrome/app/chrome_main.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/app/chrome_main.cc	2023-02-24 20:12:01.884797184 +0000
++++ nw/chromium/chrome/app/chrome_main.cc	2023-02-24 20:54:05.764526132 +0000
 @@ -106,7 +106,7 @@
    auto crash_on_detach_resetter = base::ScopedClosureRunner(
        base::BindOnce(&base::win::SetShouldCrashOnProcessDetach,

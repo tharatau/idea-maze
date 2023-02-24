@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/component_loader.cc nw/chromium/chrome/browser/extensions/component_loader.cc
 --- up/chromium/chrome/browser/extensions/component_loader.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/component_loader.cc	2023-02-24 20:12:03.292811521 +0000
++++ nw/chromium/chrome/browser/extensions/component_loader.cc	2023-02-24 20:54:07.212519586 +0000
 @@ -5,6 +5,8 @@
  #include "chrome/browser/extensions/component_loader.h"
  

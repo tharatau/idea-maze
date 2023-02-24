@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views_aura.cc nw/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views_aura.cc
 --- up/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views_aura.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views_aura.cc	2023-02-24 20:12:04.492823740 +0000
++++ nw/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views_aura.cc	2023-02-24 20:54:08.372514237 +0000
 @@ -39,6 +39,7 @@
      case ui::SHOW_STATE_NORMAL:
      case ui::SHOW_STATE_MAXIMIZED:

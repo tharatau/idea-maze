@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/cocoa/native_widget_mac_ns_window_host.mm nw/chromium/ui/views/cocoa/native_widget_mac_ns_window_host.mm
 --- up/chromium/ui/views/cocoa/native_widget_mac_ns_window_host.mm	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/views/cocoa/native_widget_mac_ns_window_host.mm	2023-02-24 20:12:34.049073672 +0000
++++ nw/chromium/ui/views/cocoa/native_widget_mac_ns_window_host.mm	2023-02-24 20:54:39.164345890 +0000
 @@ -537,6 +537,12 @@
      GetNSWindowMojo()->ExitFullscreen();
  }

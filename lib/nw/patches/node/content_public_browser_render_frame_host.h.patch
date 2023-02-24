@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/browser/render_frame_host.h nw/chromium/content/public/browser/render_frame_host.h
 --- up/chromium/content/public/browser/render_frame_host.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/public/browser/render_frame_host.h	2023-02-24 20:12:09.476866267 +0000
++++ nw/chromium/content/public/browser/render_frame_host.h	2023-02-24 20:54:12.980492989 +0000
 @@ -213,6 +213,9 @@
    // node IDs identified.
    virtual void RequestDistilledAXTree(AXTreeDistillerCallback callback) = 0;

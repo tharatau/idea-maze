@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/bindings/event_emitter.h nw/chromium/extensions/renderer/bindings/event_emitter.h
 --- up/chromium/extensions/renderer/bindings/event_emitter.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/renderer/bindings/event_emitter.h	2023-02-24 20:12:10.308873228 +0000
++++ nw/chromium/extensions/renderer/bindings/event_emitter.h	2023-02-24 20:54:13.768489356 +0000
 @@ -73,7 +73,9 @@
    void RemoveListener(gin::Arguments* arguments);
    bool HasListener(v8::Local<v8::Function> function);

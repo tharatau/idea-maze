@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/user_script_injector.cc nw/chromium/extensions/renderer/user_script_injector.cc
 --- up/chromium/extensions/renderer/user_script_injector.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/renderer/user_script_injector.cc	2023-02-24 20:12:10.320873329 +0000
++++ nw/chromium/extensions/renderer/user_script_injector.cc	2023-02-24 20:54:13.780489300 +0000
 @@ -138,6 +138,10 @@
    return mojom::InjectionType::kContentScript;
  }

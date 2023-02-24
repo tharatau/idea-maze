@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/win/app_icon.cc nw/chromium/chrome/browser/win/app_icon.cc
 --- up/chromium/chrome/browser/win/app_icon.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/win/app_icon.cc	2023-02-24 20:12:04.800826876 +0000
++++ nw/chromium/chrome/browser/win/app_icon.cc	2023-02-24 20:54:08.728512596 +0000
 @@ -4,6 +4,8 @@
  
  #include "chrome/browser/win/app_icon.h"

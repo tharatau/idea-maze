@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/renderer_host/ancestor_throttle.cc nw/chromium/content/browser/renderer_host/ancestor_throttle.cc
 --- up/chromium/content/browser/renderer_host/ancestor_throttle.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/renderer_host/ancestor_throttle.cc	2023-02-24 20:12:09.264864493 +0000
++++ nw/chromium/content/browser/renderer_host/ancestor_throttle.cc	2023-02-24 20:54:12.768493967 +0000
 @@ -214,6 +214,8 @@
    NavigationRequest* request = NavigationRequest::From(navigation_handle());
    network::mojom::XFrameOptionsValue disposition =

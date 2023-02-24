@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/test/base/test_browser_window.cc nw/chromium/chrome/test/base/test_browser_window.cc
 --- up/chromium/chrome/test/base/test_browser_window.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/test/base/test_browser_window.cc	2023-02-24 20:12:05.004828851 +0000
++++ nw/chromium/chrome/test/base/test_browser_window.cc	2023-02-24 20:54:08.904511784 +0000
 @@ -75,6 +75,13 @@
  
  // TestBrowserWindow ----------------------------------------------------------

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/ozone/platform/x11/x11_global_shortcut_listener_ozone.cc nw/chromium/ui/ozone/platform/x11/x11_global_shortcut_listener_ozone.cc
 --- up/chromium/ui/ozone/platform/x11/x11_global_shortcut_listener_ozone.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/ozone/platform/x11/x11_global_shortcut_listener_ozone.cc	2023-02-24 20:12:33.953072781 +0000
++++ nw/chromium/ui/ozone/platform/x11/x11_global_shortcut_listener_ozone.cc	2023-02-24 20:54:39.068346453 +0000
 @@ -26,18 +26,20 @@
  bool X11GlobalShortcutListenerOzone::RegisterAccelerator(KeyboardCode key_code,
                                                           bool is_alt_down,

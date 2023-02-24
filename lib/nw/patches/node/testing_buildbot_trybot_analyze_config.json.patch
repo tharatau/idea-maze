@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/testing/buildbot/trybot_analyze_config.json nw/chromium/testing/buildbot/trybot_analyze_config.json
 --- up/chromium/testing/buildbot/trybot_analyze_config.json	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/testing/buildbot/trybot_analyze_config.json	2023-02-24 20:12:13.268897313 +0000
++++ nw/chromium/testing/buildbot/trybot_analyze_config.json	2023-02-24 20:54:16.840472821 +0000
 @@ -12,6 +12,7 @@
        "build/check_gn_headers_whitelist.txt",
        "build/get_landmines.py",

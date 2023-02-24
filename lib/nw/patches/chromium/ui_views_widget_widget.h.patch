@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/widget/widget.h nw/chromium/ui/views/widget/widget.h
 --- up/chromium/ui/views/widget/widget.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/views/widget/widget.h	2023-02-24 20:12:34.109074229 +0000
++++ nw/chromium/ui/views/widget/widget.h	2023-02-24 20:54:39.224345539 +0000
 @@ -632,6 +632,9 @@
  
    // Sizes and/or places the widget to the specified bounds, size or position.

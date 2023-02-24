@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/ozone/common/egl_util.cc nw/chromium/ui/ozone/common/egl_util.cc
 --- up/chromium/ui/ozone/common/egl_util.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/ozone/common/egl_util.cc	2023-02-24 20:12:33.913072410 +0000
++++ nw/chromium/ui/ozone/common/egl_util.cc	2023-02-24 20:54:39.028346688 +0000
 @@ -130,7 +130,7 @@
      if (!base::PathService::Get(base::DIR_MODULE, &module_path))
        return false;

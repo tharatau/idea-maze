@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.h nw/chromium/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.h
 --- up/chromium/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.h	2023-02-24 20:12:03.496813598 +0000
++++ nw/chromium/chrome/browser/new_tab_page/one_google_bar/one_google_bar_loader_impl.h	2023-02-24 20:54:07.412518664 +0000
 @@ -53,7 +53,7 @@
  
    scoped_refptr<network::SharedURLLoaderFactory> url_loader_factory_;

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/permissions/permission_set.h nw/chromium/extensions/common/permissions/permission_set.h
 --- up/chromium/extensions/common/permissions/permission_set.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/permissions/permission_set.h	2023-02-24 20:12:10.292873094 +0000
++++ nw/chromium/extensions/common/permissions/permission_set.h	2023-02-24 20:54:13.752489429 +0000
 @@ -33,8 +33,8 @@
    PermissionSet(APIPermissionSet apis,
                  ManifestPermissionSet manifest_permissions,

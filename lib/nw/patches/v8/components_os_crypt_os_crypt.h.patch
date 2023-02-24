@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/os_crypt/os_crypt.h nw/chromium/components/os_crypt/os_crypt.h
 --- up/chromium/components/os_crypt/os_crypt.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/os_crypt/os_crypt.h	2023-02-24 20:12:07.664851107 +0000
++++ nw/chromium/components/os_crypt/os_crypt.h	2023-02-24 20:54:11.148501437 +0000
 @@ -278,7 +278,7 @@
    // The cached AES encryption key.
    std::unique_ptr<crypto::SymmetricKey> cached_encryption_key_;

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.cc nw/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.cc
 --- up/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.cc	2023-02-24 20:12:14.620902474 +0000
++++ nw/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.cc	2023-02-24 20:54:18.164465343 +0000
 @@ -45,7 +45,18 @@
  #include "third_party/blink/renderer/platform/privacy_budget/identifiability_digest_helpers.h"
  #include "third_party/blink/renderer/platform/wtf/text/atomic_string.h"

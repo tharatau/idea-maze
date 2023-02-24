@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/event_router.h nw/chromium/extensions/browser/event_router.h
 --- up/chromium/extensions/browser/event_router.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/event_router.h	2023-02-24 20:12:10.240872659 +0000
++++ nw/chromium/extensions/browser/event_router.h	2023-02-24 20:54:13.704489651 +0000
 @@ -281,7 +281,9 @@
    // Returns true if the extension is listening to the given event.
    // (virtual for testing only.)

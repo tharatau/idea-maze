@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/payments/content/payment_request.cc nw/chromium/components/payments/content/payment_request.cc
 --- up/chromium/components/payments/content/payment_request.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/payments/content/payment_request.cc	2023-02-24 20:12:07.744851776 +0000
++++ nw/chromium/components/payments/content/payment_request.cc	2023-02-24 20:54:11.232501050 +0000
 @@ -133,8 +133,9 @@
      return;
    }

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/app_window/test_app_window_contents.h nw/chromium/extensions/browser/app_window/test_app_window_contents.h
 --- up/chromium/extensions/browser/app_window/test_app_window_contents.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/app_window/test_app_window_contents.h	2023-02-24 20:12:10.236872626 +0000
++++ nw/chromium/extensions/browser/app_window/test_app_window_contents.h	2023-02-24 20:54:13.700489669 +0000
 @@ -31,7 +31,8 @@
    // apps:AppWindowContents:
    void Initialize(content::BrowserContext* context,

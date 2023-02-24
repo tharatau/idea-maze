@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/new_tab_page/modules/safe_browsing/safe_browsing_handler.cc nw/chromium/chrome/browser/new_tab_page/modules/safe_browsing/safe_browsing_handler.cc
 --- up/chromium/chrome/browser/new_tab_page/modules/safe_browsing/safe_browsing_handler.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/new_tab_page/modules/safe_browsing/safe_browsing_handler.cc	2023-02-24 20:12:03.496813598 +0000
++++ nw/chromium/chrome/browser/new_tab_page/modules/safe_browsing/safe_browsing_handler.cc	2023-02-24 20:54:07.412518664 +0000
 @@ -54,8 +54,8 @@
          handler,
      Profile* profile)

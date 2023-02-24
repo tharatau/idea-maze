@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/crash/core/app/crash_reporter_client.h nw/chromium/components/crash/core/app/crash_reporter_client.h
 --- up/chromium/components/crash/core/app/crash_reporter_client.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/crash/core/app/crash_reporter_client.h	2023-02-24 20:12:07.108846455 +0000
++++ nw/chromium/components/crash/core/app/crash_reporter_client.h	2023-02-24 20:54:10.604503945 +0000
 @@ -24,7 +24,7 @@
  // runtime.
  void SetCrashReporterClient(CrashReporterClient* client);

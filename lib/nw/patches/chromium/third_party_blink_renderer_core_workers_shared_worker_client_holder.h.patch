@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/workers/shared_worker_client_holder.h nw/chromium/third_party/blink/renderer/core/workers/shared_worker_client_holder.h
 --- up/chromium/third_party/blink/renderer/core/workers/shared_worker_client_holder.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/workers/shared_worker_client_holder.h	2023-02-24 20:12:14.544902184 +0000
++++ nw/chromium/third_party/blink/renderer/core/workers/shared_worker_client_holder.h	2023-02-24 20:54:18.084465795 +0000
 @@ -77,7 +77,7 @@
                 const KURL&,
                 mojo::PendingRemote<mojom::blink::BlobURLToken>,

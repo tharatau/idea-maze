@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/common/chrome_content_client.cc nw/chromium/chrome/common/chrome_content_client.cc
 --- up/chromium/chrome/common/chrome_content_client.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/common/chrome_content_client.cc	2023-02-24 20:12:04.860827487 +0000
++++ nw/chromium/chrome/common/chrome_content_client.cc	2023-02-24 20:54:08.772512393 +0000
 @@ -2,8 +2,10 @@
  // Use of this source code is governed by a BSD-style license that can be
  // found in the LICENSE file.

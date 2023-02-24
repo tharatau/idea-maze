@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/browser/desktop_streams_registry.h nw/chromium/content/public/browser/desktop_streams_registry.h
 --- up/chromium/content/public/browser/desktop_streams_registry.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/public/browser/desktop_streams_registry.h	2023-02-24 20:12:09.468866200 +0000
++++ nw/chromium/content/public/browser/desktop_streams_registry.h	2023-02-24 20:54:12.968493045 +0000
 @@ -52,7 +52,7 @@
        int render_frame_id,
        const url::Origin& origin,

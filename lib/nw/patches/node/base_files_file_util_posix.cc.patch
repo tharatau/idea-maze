@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/base/files/file_util_posix.cc nw/chromium/base/files/file_util_posix.cc
 --- up/chromium/base/files/file_util_posix.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/base/files/file_util_posix.cc	2023-02-24 20:12:01.292791156 +0000
++++ nw/chromium/base/files/file_util_posix.cc	2023-02-24 20:54:05.172528762 +0000
 @@ -638,7 +638,7 @@
  #elif BUILDFLAG(GOOGLE_CHROME_BRANDING)
    StringPiece prefix = "com.google.Chrome";

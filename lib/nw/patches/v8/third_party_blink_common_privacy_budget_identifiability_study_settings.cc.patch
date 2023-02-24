@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/common/privacy_budget/identifiability_study_settings.cc nw/chromium/third_party/blink/common/privacy_budget/identifiability_study_settings.cc
 --- up/chromium/third_party/blink/common/privacy_budget/identifiability_study_settings.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/common/privacy_budget/identifiability_study_settings.cc	2023-02-24 20:12:13.496898183 +0000
++++ nw/chromium/third_party/blink/common/privacy_budget/identifiability_study_settings.cc	2023-02-24 20:54:17.056471601 +0000
 @@ -71,7 +71,8 @@
    // Same restrictions as IdentifiabilityStudySettings::SetGlobalProvider().
    void SetProvider(

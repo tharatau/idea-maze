@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/apps/app_lifetime_monitor.cc nw/chromium/apps/app_lifetime_monitor.cc
 --- up/chromium/apps/app_lifetime_monitor.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/apps/app_lifetime_monitor.cc	2023-02-24 20:12:00.620784314 +0000
++++ nw/chromium/apps/app_lifetime_monitor.cc	2023-02-24 20:54:04.496531766 +0000
 @@ -65,8 +65,10 @@
  }
  

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/workers/dedicated_worker_global_scope.cc nw/chromium/third_party/blink/renderer/core/workers/dedicated_worker_global_scope.cc
 --- up/chromium/third_party/blink/renderer/core/workers/dedicated_worker_global_scope.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/workers/dedicated_worker_global_scope.cc	2023-02-24 20:12:14.540902168 +0000
++++ nw/chromium/third_party/blink/renderer/core/workers/dedicated_worker_global_scope.cc	2023-02-24 20:54:18.080465818 +0000
 @@ -390,6 +390,7 @@
        WorkerThreadDebugger::From(script_state->GetIsolate());
    transferable_message.sender_stack_trace_id =

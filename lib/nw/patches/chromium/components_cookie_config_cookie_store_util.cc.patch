@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/cookie_config/cookie_store_util.cc nw/chromium/components/cookie_config/cookie_store_util.cc
 --- up/chromium/components/cookie_config/cookie_store_util.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/cookie_config/cookie_store_util.cc	2023-02-24 20:12:07.100846388 +0000
++++ nw/chromium/components/cookie_config/cookie_store_util.cc	2023-02-24 20:54:10.600503964 +0000
 @@ -15,6 +15,8 @@
      BUILDFLAG(IS_CHROMEOS)
  namespace {

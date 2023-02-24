@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/child_process_security_policy_impl.h nw/chromium/content/browser/child_process_security_policy_impl.h
 --- up/chromium/content/browser/child_process_security_policy_impl.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/child_process_security_policy_impl.h	2023-02-24 20:12:09.148863523 +0000
++++ nw/chromium/content/browser/child_process_security_policy_impl.h	2023-02-24 20:54:12.640494557 +0000
 @@ -143,6 +143,7 @@
    static ChildProcessSecurityPolicyImpl* GetInstance();
  

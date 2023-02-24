@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/frame/window.idl nw/chromium/third_party/blink/renderer/core/frame/window.idl
 --- up/chromium/third_party/blink/renderer/core/frame/window.idl	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/frame/window.idl	2023-02-24 20:12:14.208900901 +0000
++++ nw/chromium/third_party/blink/renderer/core/frame/window.idl	2023-02-24 20:54:17.760467625 +0000
 @@ -59,10 +59,10 @@
      // other browsing contexts
      [Replaceable, CrossOrigin, CachedAccessor=kWindowProxy] readonly attribute Window frames;

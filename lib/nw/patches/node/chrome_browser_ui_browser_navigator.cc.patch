@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/browser_navigator.cc nw/chromium/chrome/browser/ui/browser_navigator.cc
 --- up/chromium/chrome/browser/ui/browser_navigator.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/browser_navigator.cc	2023-02-24 20:12:04.404822844 +0000
++++ nw/chromium/chrome/browser/ui/browser_navigator.cc	2023-02-24 20:54:08.292514606 +0000
 @@ -9,6 +9,10 @@
  #include <string>
  #include <utility>

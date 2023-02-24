@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/workers/worker_global_scope.cc nw/chromium/third_party/blink/renderer/core/workers/worker_global_scope.cc
 --- up/chromium/third_party/blink/renderer/core/workers/worker_global_scope.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/workers/worker_global_scope.cc	2023-02-24 20:12:14.544902184 +0000
++++ nw/chromium/third_party/blink/renderer/core/workers/worker_global_scope.cc	2023-02-24 20:54:18.084465795 +0000
 @@ -27,6 +27,7 @@
  
  #include "third_party/blink/renderer/core/workers/worker_global_scope.h"

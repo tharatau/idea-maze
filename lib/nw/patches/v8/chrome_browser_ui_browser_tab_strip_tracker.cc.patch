@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/browser_tab_strip_tracker.cc nw/chromium/chrome/browser/ui/browser_tab_strip_tracker.cc
 --- up/chromium/chrome/browser/ui/browser_tab_strip_tracker.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/browser_tab_strip_tracker.cc	2023-02-24 20:12:04.408822885 +0000
++++ nw/chromium/chrome/browser/ui/browser_tab_strip_tracker.cc	2023-02-24 20:54:08.292514606 +0000
 @@ -76,3 +76,4 @@
    // observer is not in the ObserverList (i.e. if |browser| is not tracked).
    browser->tab_strip_model()->RemoveObserver(tab_strip_model_observer_);

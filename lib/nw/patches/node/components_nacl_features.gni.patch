@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/nacl/features.gni nw/chromium/components/nacl/features.gni
 --- up/chromium/components/nacl/features.gni	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/nacl/features.gni	2023-02-24 20:12:07.548850136 +0000
++++ nw/chromium/components/nacl/features.gni	2023-02-24 20:54:11.044501916 +0000
 @@ -24,10 +24,8 @@
    # Enables Native Client support.
    #

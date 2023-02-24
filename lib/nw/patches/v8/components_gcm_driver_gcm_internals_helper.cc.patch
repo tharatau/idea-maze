@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/gcm_driver/gcm_internals_helper.cc nw/chromium/components/gcm_driver/gcm_internals_helper.cc
 --- up/chromium/components/gcm_driver/gcm_internals_helper.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/gcm_driver/gcm_internals_helper.cc	2023-02-24 20:12:07.276847860 +0000
++++ nw/chromium/components/gcm_driver/gcm_internals_helper.cc	2023-02-24 20:54:10.920502488 +0000
 @@ -4,6 +4,7 @@
  
  #include "components/gcm_driver/gcm_internals_helper.h"

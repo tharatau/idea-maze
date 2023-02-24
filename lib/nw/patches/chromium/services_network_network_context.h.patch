@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/services/network/network_context.h nw/chromium/services/network/network_context.h
 --- up/chromium/services/network/network_context.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/services/network/network_context.h	2023-02-24 20:12:13.084896611 +0000
++++ nw/chromium/services/network/network_context.h	2023-02-24 20:54:16.676473748 +0000
 @@ -73,11 +73,17 @@
  #include "net/reporting/reporting_report.h"
  #endif  // BUILDFLAG(ENABLE_REPORTING)

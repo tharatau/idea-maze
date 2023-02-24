@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/media/webrtc/desktop_capture_devices_util.cc nw/chromium/chrome/browser/media/webrtc/desktop_capture_devices_util.cc
 --- up/chromium/chrome/browser/media/webrtc/desktop_capture_devices_util.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/media/webrtc/desktop_capture_devices_util.cc	2023-02-24 20:12:03.432812947 +0000
++++ nw/chromium/chrome/browser/media/webrtc/desktop_capture_devices_util.cc	2023-02-24 20:54:07.348518959 +0000
 @@ -142,6 +142,7 @@
        display_surface, logical_surface, cursor, std::move(capture_handle));
  }

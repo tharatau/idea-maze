@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc nw/chromium/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc
 --- up/chromium/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc	2023-02-24 20:12:03.364812254 +0000
++++ nw/chromium/chrome/browser/guest_view/chrome_guest_view_manager_delegate.cc	2023-02-24 20:54:07.284519254 +0000
 @@ -13,6 +13,9 @@
  #include "chrome/browser/ash/app_mode/kiosk_app_manager.h"
  #endif

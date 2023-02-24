@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/app/version_assembly/BUILD.gn nw/chromium/chrome/app/version_assembly/BUILD.gn
 --- up/chromium/chrome/app/version_assembly/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/app/version_assembly/BUILD.gn	2023-02-24 20:12:02.592804393 +0000
++++ nw/chromium/chrome/app/version_assembly/BUILD.gn	2023-02-24 20:54:06.512522809 +0000
 @@ -25,7 +25,6 @@
      as_invoker_manifest,
      common_controls_manifest,

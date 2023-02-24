@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/browser/child_process_security_policy.h nw/chromium/content/public/browser/child_process_security_policy.h
 --- up/chromium/content/public/browser/child_process_security_policy.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/public/browser/child_process_security_policy.h	2023-02-24 20:12:09.464866167 +0000
++++ nw/chromium/content/public/browser/child_process_security_policy.h	2023-02-24 20:54:12.968493045 +0000
 @@ -69,6 +69,7 @@
    // change it to accept an URL instead.
    virtual bool IsWebSafeScheme(const std::string& scheme) = 0;

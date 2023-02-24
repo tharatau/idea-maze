@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/about_ui/resources/about_credits.css nw/chromium/components/about_ui/resources/about_credits.css
 --- up/chromium/components/about_ui/resources/about_credits.css	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/about_ui/resources/about_credits.css	2023-02-24 20:12:06.832844145 +0000
++++ nw/chromium/components/about_ui/resources/about_credits.css	2023-02-24 20:54:10.328505218 +0000
 @@ -77,7 +77,6 @@
  .licence {
    border-radius: 3px;

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/api/desktop_capture/desktop_capture_api.cc nw/chromium/chrome/browser/extensions/api/desktop_capture/desktop_capture_api.cc
 --- up/chromium/chrome/browser/extensions/api/desktop_capture/desktop_capture_api.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/api/desktop_capture/desktop_capture_api.cc	2023-02-24 20:12:03.240810992 +0000
++++ nw/chromium/chrome/browser/extensions/api/desktop_capture/desktop_capture_api.cc	2023-02-24 20:54:07.160519826 +0000
 @@ -94,9 +94,14 @@
      // was requested for capture.
      target_render_frame_host = web_contents->GetPrimaryMainFrame();

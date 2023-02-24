@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/base/base_window.h nw/chromium/ui/base/base_window.h
 --- up/chromium/ui/base/base_window.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/base/base_window.h	2023-02-24 20:12:33.493068513 +0000
++++ nw/chromium/ui/base/base_window.h	2023-02-24 20:54:37.216357112 +0000
 @@ -67,6 +67,7 @@
    // Closes the window as soon as possible. The close action may be delayed
    // if an operation is in progress (e.g. a drag operation).

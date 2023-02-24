@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/resources/app_window_custom_bindings.js nw/chromium/extensions/renderer/resources/app_window_custom_bindings.js
 --- up/chromium/extensions/renderer/resources/app_window_custom_bindings.js	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/renderer/resources/app_window_custom_bindings.js	2023-02-24 20:12:10.316873295 +0000
++++ nw/chromium/extensions/renderer/resources/app_window_custom_bindings.js	2023-02-24 20:54:13.772489337 +0000
 @@ -20,8 +20,23 @@
  var Bounds = function(boundsKey) {
    privates(this).boundsKey_ = boundsKey;

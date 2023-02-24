@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/translate/core/language_detection/BUILD.gn nw/chromium/components/translate/core/language_detection/BUILD.gn
 --- up/chromium/components/translate/core/language_detection/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/translate/core/language_detection/BUILD.gn	2023-02-24 20:12:08.760860277 +0000
++++ nw/chromium/components/translate/core/language_detection/BUILD.gn	2023-02-24 20:54:12.284496199 +0000
 @@ -40,7 +40,7 @@
      "//components/language/core/common",
      "//components/optimization_guide/core:features",

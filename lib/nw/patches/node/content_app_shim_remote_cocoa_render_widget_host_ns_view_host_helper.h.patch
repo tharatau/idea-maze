@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/app_shim_remote_cocoa/render_widget_host_ns_view_host_helper.h nw/chromium/content/app_shim_remote_cocoa/render_widget_host_ns_view_host_helper.h
 --- up/chromium/content/app_shim_remote_cocoa/render_widget_host_ns_view_host_helper.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/app_shim_remote_cocoa/render_widget_host_ns_view_host_helper.h	2023-02-24 20:12:09.088863021 +0000
++++ nw/chromium/content/app_shim_remote_cocoa/render_widget_host_ns_view_host_helper.h	2023-02-24 20:54:12.580494834 +0000
 @@ -22,6 +22,7 @@
  
  namespace content {

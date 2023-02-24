@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/widget/widget.cc nw/chromium/ui/views/widget/widget.cc
 --- up/chromium/ui/views/widget/widget.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/views/widget/widget.cc	2023-02-24 20:12:34.109074229 +0000
++++ nw/chromium/ui/views/widget/widget.cc	2023-02-24 20:54:39.224345539 +0000
 @@ -469,6 +469,8 @@
      } else if (show_state == ui::SHOW_STATE_MINIMIZED) {
        Minimize();

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/activity_log/activity_log.cc nw/chromium/chrome/browser/extensions/activity_log/activity_log.cc
 --- up/chromium/chrome/browser/extensions/activity_log/activity_log.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/activity_log/activity_log.cc	2023-02-24 20:12:03.224810829 +0000
++++ nw/chromium/chrome/browser/extensions/activity_log/activity_log.cc	2023-02-24 20:54:07.144519900 +0000
 @@ -222,7 +222,7 @@
  
    if (found) {

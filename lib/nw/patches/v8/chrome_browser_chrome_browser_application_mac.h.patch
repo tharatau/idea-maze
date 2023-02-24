@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/chrome_browser_application_mac.h nw/chromium/chrome/browser/chrome_browser_application_mac.h
 --- up/chromium/chrome/browser/chrome_browser_application_mac.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/chrome_browser_application_mac.h	2023-02-24 20:12:03.096809525 +0000
++++ nw/chromium/chrome/browser/chrome_browser_application_mac.h	2023-02-24 20:54:07.020520472 +0000
 @@ -23,6 +23,8 @@
  // application, i.e., begins a process which may lead to termination. This
  // method cancels that process.

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/frame/browser_view.cc nw/chromium/chrome/browser/ui/views/frame/browser_view.cc
 --- up/chromium/chrome/browser/ui/views/frame/browser_view.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/frame/browser_view.cc	2023-02-24 20:12:04.528824106 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/browser_view.cc	2023-02-24 20:54:08.408514071 +0000
 @@ -1,9 +1,34 @@
  // Copyright 2012 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/net/proxy_resolution/configured_proxy_resolution_service.h nw/chromium/net/proxy_resolution/configured_proxy_resolution_service.h
 --- up/chromium/net/proxy_resolution/configured_proxy_resolution_service.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/net/proxy_resolution/configured_proxy_resolution_service.h	2023-02-24 20:12:12.652893000 +0000
++++ nw/chromium/net/proxy_resolution/configured_proxy_resolution_service.h	2023-02-24 20:54:16.172476594 +0000
 @@ -153,6 +153,15 @@
    // ProxyResolutionService
    void OnShutdown() override;

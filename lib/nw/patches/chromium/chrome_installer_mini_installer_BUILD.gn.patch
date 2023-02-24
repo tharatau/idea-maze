@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/installer/mini_installer/BUILD.gn nw/chromium/chrome/installer/mini_installer/BUILD.gn
 --- up/chromium/chrome/installer/mini_installer/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/installer/mini_installer/BUILD.gn	2023-02-24 20:12:04.928828179 +0000
++++ nw/chromium/chrome/installer/mini_installer/BUILD.gn	2023-02-24 20:54:08.832512116 +0000
 @@ -122,8 +122,8 @@
    release_file = "chrome.release"
  

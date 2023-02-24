@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/window_sizer_linux.cc nw/chromium/chrome/browser/ui/views/window_sizer_linux.cc
 --- up/chromium/chrome/browser/ui/views/window_sizer_linux.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/window_sizer_linux.cc	2023-02-24 20:12:04.620825043 +0000
++++ nw/chromium/chrome/browser/ui/views/window_sizer_linux.cc	2023-02-24 20:54:08.500513647 +0000
 @@ -13,7 +13,7 @@
  #include "ui/ozone/public/ozone_platform.h"
  

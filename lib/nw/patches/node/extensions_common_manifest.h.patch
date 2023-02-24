@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/manifest.h nw/chromium/extensions/common/manifest.h
 --- up/chromium/extensions/common/manifest.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/manifest.h	2023-02-24 20:12:10.284873027 +0000
++++ nw/chromium/extensions/common/manifest.h	2023-02-24 20:54:13.744489466 +0000
 @@ -39,6 +39,7 @@
      TYPE_LOGIN_SCREEN_EXTENSION = 8,
      TYPE_CHROMEOS_SYSTEM_EXTENSION = 9,

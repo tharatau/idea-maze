@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/extension_protocols.cc nw/chromium/extensions/browser/extension_protocols.cc
 --- up/chromium/extensions/browser/extension_protocols.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/extension_protocols.cc	2023-02-24 20:12:10.244872693 +0000
++++ nw/chromium/extensions/browser/extension_protocols.cc	2023-02-24 20:54:13.708489632 +0000
 @@ -256,7 +256,7 @@
                                  const ProcessMap& process_map) {
    const bool is_main_frame =

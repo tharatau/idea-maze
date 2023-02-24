@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/loader/frame_load_request.h nw/chromium/third_party/blink/renderer/core/loader/frame_load_request.h
 --- up/chromium/third_party/blink/renderer/core/loader/frame_load_request.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/loader/frame_load_request.h	2023-02-24 20:12:14.368901512 +0000
++++ nw/chromium/third_party/blink/renderer/core/loader/frame_load_request.h	2023-02-24 20:54:17.936466631 +0000
 @@ -32,6 +32,7 @@
  #include "services/network/public/mojom/referrer_policy.mojom-blink.h"
  #include "third_party/abseil-cpp/absl/types/optional.h"

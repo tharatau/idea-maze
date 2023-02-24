@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/browser_process.h nw/chromium/chrome/browser/browser_process.h
 --- up/chromium/chrome/browser/browser_process.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/browser_process.h	2023-02-24 20:12:03.084809403 +0000
++++ nw/chromium/chrome/browser/browser_process.h	2023-02-24 20:54:07.004520545 +0000
 @@ -236,6 +236,7 @@
    virtual void StartAutoupdateTimer() = 0;
  #endif

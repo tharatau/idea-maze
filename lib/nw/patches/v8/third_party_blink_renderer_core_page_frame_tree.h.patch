@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/page/frame_tree.h nw/chromium/third_party/blink/renderer/core/page/frame_tree.h
 --- up/chromium/third_party/blink/renderer/core/page/frame_tree.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/page/frame_tree.h	2023-02-24 20:12:14.408901664 +0000
++++ nw/chromium/third_party/blink/renderer/core/page/frame_tree.h	2023-02-24 20:54:17.956466518 +0000
 @@ -68,7 +68,7 @@
    Frame* TraverseNext(const Frame* stay_within = nullptr) const;
  

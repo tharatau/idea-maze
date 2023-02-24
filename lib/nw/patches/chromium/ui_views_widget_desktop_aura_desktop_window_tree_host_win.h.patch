@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h
 --- up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h	2023-02-24 20:12:34.105074191 +0000
++++ nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.h	2023-02-24 20:54:39.220345562 +0000
 @@ -171,6 +171,7 @@
    gfx::Rect GetBoundsInPixels() const override;
    void SetBoundsInPixels(const gfx::Rect& bounds) override;

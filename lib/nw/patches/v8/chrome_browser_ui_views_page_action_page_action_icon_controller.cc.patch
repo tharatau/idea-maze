@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/page_action/page_action_icon_controller.cc nw/chromium/chrome/browser/ui/views/page_action/page_action_icon_controller.cc
 --- up/chromium/chrome/browser/ui/views/page_action/page_action_icon_controller.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/page_action/page_action_icon_controller.cc	2023-02-24 20:12:04.552824351 +0000
++++ nw/chromium/chrome/browser/ui/views/page_action/page_action_icon_controller.cc	2023-02-24 20:54:08.432513961 +0000
 @@ -229,11 +229,13 @@
                        params.page_action_icon_delegate, params.browser));
          break;

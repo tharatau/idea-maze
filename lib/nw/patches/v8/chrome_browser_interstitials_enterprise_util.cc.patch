@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/interstitials/enterprise_util.cc nw/chromium/chrome/browser/interstitials/enterprise_util.cc
 --- up/chromium/chrome/browser/interstitials/enterprise_util.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/interstitials/enterprise_util.cc	2023-02-24 20:12:03.384812458 +0000
++++ nw/chromium/chrome/browser/interstitials/enterprise_util.cc	2023-02-24 20:54:07.300519181 +0000
 @@ -13,7 +13,7 @@
  
  namespace {

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/user_script.h nw/chromium/extensions/common/user_script.h
 --- up/chromium/extensions/common/user_script.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/user_script.h	2023-02-24 20:12:10.296873128 +0000
++++ nw/chromium/extensions/common/user_script.h	2023-02-24 20:54:13.756489411 +0000
 @@ -148,6 +148,9 @@
    bool emulate_greasemonkey() const { return emulate_greasemonkey_; }
    void set_emulate_greasemonkey(bool val) { emulate_greasemonkey_ = val; }

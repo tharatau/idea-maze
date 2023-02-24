@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/common/common_param_traits_macros.h nw/chromium/content/public/common/common_param_traits_macros.h
 --- up/chromium/content/public/common/common_param_traits_macros.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/public/common/common_param_traits_macros.h	2023-02-24 20:12:09.484866334 +0000
++++ nw/chromium/content/public/common/common_param_traits_macros.h	2023-02-24 20:54:12.988492952 +0000
 @@ -135,6 +135,8 @@
  #if BUILDFLAG(IS_OZONE)
    IPC_STRUCT_TRAITS_MEMBER(selection_clipboard_buffer_available)

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/cocoa/main_menu_builder.mm nw/chromium/chrome/browser/ui/cocoa/main_menu_builder.mm
 --- up/chromium/chrome/browser/ui/cocoa/main_menu_builder.mm	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/cocoa/main_menu_builder.mm	2023-02-24 20:12:04.416822966 +0000
++++ nw/chromium/chrome/browser/ui/cocoa/main_menu_builder.mm	2023-02-24 20:54:08.300514569 +0000
 @@ -22,6 +22,8 @@
  #import "ui/base/l10n/l10n_util_mac.h"
  #include "ui/strings/grit/ui_strings.h"

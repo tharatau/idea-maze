@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/nacl/zygote/nacl_fork_delegate_linux.cc nw/chromium/components/nacl/zygote/nacl_fork_delegate_linux.cc
 --- up/chromium/components/nacl/zygote/nacl_fork_delegate_linux.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/nacl/zygote/nacl_fork_delegate_linux.cc	2023-02-24 20:12:07.552850170 +0000
++++ nw/chromium/components/nacl/zygote/nacl_fork_delegate_linux.cc	2023-02-24 20:54:11.052501880 +0000
 @@ -403,7 +403,7 @@
    write_pickle.WriteInt(pid);
    write_pickle.WriteBool(known_dead);

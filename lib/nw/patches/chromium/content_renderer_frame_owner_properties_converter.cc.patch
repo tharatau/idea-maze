@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/renderer/frame_owner_properties_converter.cc nw/chromium/content/renderer/frame_owner_properties_converter.cc
 --- up/chromium/content/renderer/frame_owner_properties_converter.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/renderer/frame_owner_properties_converter.cc	2023-02-24 20:12:09.524866669 +0000
++++ nw/chromium/content/renderer/frame_owner_properties_converter.cc	2023-02-24 20:54:13.012492842 +0000
 @@ -13,6 +13,8 @@
    blink::WebFrameOwnerProperties result;
    result.name = blink::WebString::FromUTF8(mojo_properties.name);

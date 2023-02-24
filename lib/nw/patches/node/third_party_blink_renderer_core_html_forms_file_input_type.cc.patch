@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/html/forms/file_input_type.cc nw/chromium/third_party/blink/renderer/core/html/forms/file_input_type.cc
 --- up/chromium/third_party/blink/renderer/core/html/forms/file_input_type.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/html/forms/file_input_type.cc	2023-02-24 20:12:14.220900947 +0000
++++ nw/chromium/third_party/blink/renderer/core/html/forms/file_input_type.cc	2023-02-24 20:54:17.776467535 +0000
 @@ -162,7 +162,7 @@
    HTMLInputElement& input = GetElement();
    Document& document = input.GetDocument();

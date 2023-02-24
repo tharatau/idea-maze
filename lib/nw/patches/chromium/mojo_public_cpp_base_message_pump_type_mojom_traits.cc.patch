@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/mojo/public/cpp/base/message_pump_type_mojom_traits.cc nw/chromium/mojo/public/cpp/base/message_pump_type_mojom_traits.cc
 --- up/chromium/mojo/public/cpp/base/message_pump_type_mojom_traits.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/mojo/public/cpp/base/message_pump_type_mojom_traits.cc	2023-02-24 20:12:12.032887653 +0000
++++ nw/chromium/mojo/public/cpp/base/message_pump_type_mojom_traits.cc	2023-02-24 20:54:15.504480367 +0000
 @@ -20,6 +20,8 @@
        return mojo_base::mojom::MessagePumpType::kCustom;
      case base::MessagePumpType::IO:

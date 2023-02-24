@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/renderer/media/render_media_client.cc nw/chromium/content/renderer/media/render_media_client.cc
 --- up/chromium/content/renderer/media/render_media_client.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/renderer/media/render_media_client.cc	2023-02-24 20:12:09.528866702 +0000
++++ nw/chromium/content/renderer/media/render_media_client.cc	2023-02-24 20:54:13.016492823 +0000
 @@ -25,7 +25,7 @@
       BUILDFLAG(IS_MAC))
  #define NEEDS_PROFILE_UPDATER 1

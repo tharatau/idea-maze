@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/accessibility/platform/inspect/ax_tree_formatter_auralinux.cc nw/chromium/ui/accessibility/platform/inspect/ax_tree_formatter_auralinux.cc
 --- up/chromium/ui/accessibility/platform/inspect/ax_tree_formatter_auralinux.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/accessibility/platform/inspect/ax_tree_formatter_auralinux.cc	2023-02-24 20:12:33.457068179 +0000
++++ nw/chromium/ui/accessibility/platform/inspect/ax_tree_formatter_auralinux.cc	2023-02-24 20:54:37.180357318 +0000
 @@ -239,6 +239,7 @@
        DCHECK_GE(index_in_parent, 0);
  #endif

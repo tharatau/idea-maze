@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/build_overrides/partition_alloc.gni nw/chromium/build_overrides/partition_alloc.gni
 --- up/chromium/build_overrides/partition_alloc.gni	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/build_overrides/partition_alloc.gni	2023-02-24 20:12:01.496793233 +0000
++++ nw/chromium/build_overrides/partition_alloc.gni	2023-02-24 20:54:05.376527856 +0000
 @@ -42,7 +42,7 @@
  
  # - NaCl: No plans to support it.

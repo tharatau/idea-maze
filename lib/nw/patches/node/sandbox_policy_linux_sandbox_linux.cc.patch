@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/sandbox/policy/linux/sandbox_linux.cc nw/chromium/sandbox/policy/linux/sandbox_linux.cc
 --- up/chromium/sandbox/policy/linux/sandbox_linux.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/sandbox/policy/linux/sandbox_linux.cc	2023-02-24 20:12:12.996896275 +0000
++++ nw/chromium/sandbox/policy/linux/sandbox_linux.cc	2023-02-24 20:54:16.512474674 +0000
 @@ -159,9 +159,11 @@
  }
  

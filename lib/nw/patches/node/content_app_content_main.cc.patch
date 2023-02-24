@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/app/content_main.cc nw/chromium/content/app/content_main.cc
 --- up/chromium/content/app/content_main.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/app/content_main.cc	2023-02-24 20:12:09.084862987 +0000
++++ nw/chromium/content/app/content_main.cc	2023-02-24 20:54:12.576494852 +0000
 @@ -4,6 +4,8 @@
  
  #include "content/public/app/content_main.h"

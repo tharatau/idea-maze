@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/test/chromedriver/chrome/devtools_http_client.cc nw/chromium/chrome/test/chromedriver/chrome/devtools_http_client.cc
 --- up/chromium/chrome/test/chromedriver/chrome/devtools_http_client.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/test/chromedriver/chrome/devtools_http_client.cc	2023-02-24 20:12:05.012828918 +0000
++++ nw/chromium/chrome/test/chromedriver/chrome/devtools_http_client.cc	2023-02-24 20:54:08.912511747 +0000
 @@ -109,7 +109,17 @@
  
  bool DevToolsHttpClient::IsBrowserWindow(const WebViewInfo& view) const {

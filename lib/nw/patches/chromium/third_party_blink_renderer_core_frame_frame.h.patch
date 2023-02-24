@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/frame/frame.h nw/chromium/third_party/blink/renderer/core/frame/frame.h
 --- up/chromium/third_party/blink/renderer/core/frame/frame.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/frame/frame.h	2023-02-24 20:12:14.184900809 +0000
++++ nw/chromium/third_party/blink/renderer/core/frame/frame.h	2023-02-24 20:54:17.740467738 +0000
 @@ -105,6 +105,10 @@
    static Frame* ResolveFrame(const FrameToken& frame_token);
  

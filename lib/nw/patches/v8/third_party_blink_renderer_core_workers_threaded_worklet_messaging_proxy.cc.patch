@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc nw/chromium/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc
 --- up/chromium/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc	2023-02-24 20:12:14.544902184 +0000
++++ nw/chromium/third_party/blink/renderer/core/workers/threaded_worklet_messaging_proxy.cc	2023-02-24 20:54:18.084465795 +0000
 @@ -72,7 +72,7 @@
                   : frame_client->UserAgent());
  

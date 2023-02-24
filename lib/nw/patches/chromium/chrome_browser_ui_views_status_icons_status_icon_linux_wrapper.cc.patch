@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/status_icons/status_icon_linux_wrapper.cc nw/chromium/chrome/browser/ui/views/status_icons/status_icon_linux_wrapper.cc
 --- up/chromium/chrome/browser/ui/views/status_icons/status_icon_linux_wrapper.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/status_icons/status_icon_linux_wrapper.cc	2023-02-24 20:12:04.592824758 +0000
++++ nw/chromium/chrome/browser/ui/views/status_icons/status_icon_linux_wrapper.cc	2023-02-24 20:54:08.468513795 +0000
 @@ -44,8 +44,7 @@
                                                 const std::u16string& tool_tip)
      : status_icon_type_(status_icon_type),

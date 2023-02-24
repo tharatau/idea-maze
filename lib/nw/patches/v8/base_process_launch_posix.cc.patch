@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/base/process/launch_posix.cc nw/chromium/base/process/launch_posix.cc
 --- up/chromium/base/process/launch_posix.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/base/process/launch_posix.cc	2023-02-24 20:12:01.332791563 +0000
++++ nw/chromium/base/process/launch_posix.cc	2023-02-24 20:54:05.212528585 +0000
 @@ -459,6 +459,7 @@
  #ifndef PR_SET_NO_NEW_PRIVS
  #define PR_SET_NO_NEW_PRIVS 38

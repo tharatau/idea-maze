@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/app/content_main_runner_impl.cc nw/chromium/content/app/content_main_runner_impl.cc
 --- up/chromium/content/app/content_main_runner_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/app/content_main_runner_impl.cc	2023-02-24 20:12:09.084862987 +0000
++++ nw/chromium/content/app/content_main_runner_impl.cc	2023-02-24 20:54:12.580494834 +0000
 @@ -1034,10 +1034,10 @@
    DCHECK(is_initialized_);
    DCHECK(content_main_params_);

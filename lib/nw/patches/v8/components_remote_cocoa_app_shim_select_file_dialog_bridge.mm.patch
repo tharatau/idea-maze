@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/remote_cocoa/app_shim/select_file_dialog_bridge.mm nw/chromium/components/remote_cocoa/app_shim/select_file_dialog_bridge.mm
 --- up/chromium/components/remote_cocoa/app_shim/select_file_dialog_bridge.mm	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/remote_cocoa/app_shim/select_file_dialog_bridge.mm	2023-02-24 20:12:08.080854587 +0000
++++ nw/chromium/components/remote_cocoa/app_shim/select_file_dialog_bridge.mm	2023-02-24 20:54:11.628499223 +0000
 @@ -1,7 +1,8 @@
  // Copyright 2019 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be

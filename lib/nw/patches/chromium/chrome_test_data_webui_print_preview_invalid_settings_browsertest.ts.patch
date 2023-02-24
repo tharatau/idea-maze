@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/test/data/webui/print_preview/invalid_settings_browsertest.ts nw/chromium/chrome/test/data/webui/print_preview/invalid_settings_browsertest.ts
 --- up/chromium/chrome/test/data/webui/print_preview/invalid_settings_browsertest.ts	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/test/data/webui/print_preview/invalid_settings_browsertest.ts	2023-02-24 20:12:06.332839962 +0000
++++ nw/chromium/chrome/test/data/webui/print_preview/invalid_settings_browsertest.ts	2023-02-24 20:54:09.820507560 +0000
 @@ -30,6 +30,7 @@
    let nativeLayer: NativeLayerStub;
  

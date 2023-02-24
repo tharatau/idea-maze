@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/frame/glass_browser_frame_view.h nw/chromium/chrome/browser/ui/views/frame/glass_browser_frame_view.h
 --- up/chromium/chrome/browser/ui/views/frame/glass_browser_frame_view.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/frame/glass_browser_frame_view.h	2023-02-24 20:12:04.532824147 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/glass_browser_frame_view.h	2023-02-24 20:54:08.412514053 +0000
 @@ -43,6 +43,7 @@
    gfx::Size GetMinimumSize() const override;
    void WindowControlsOverlayEnabledChanged() override;

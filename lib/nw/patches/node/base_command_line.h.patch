@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/base/command_line.h nw/chromium/base/command_line.h
 --- up/chromium/base/command_line.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/base/command_line.h	2023-02-24 20:12:01.276790993 +0000
++++ nw/chromium/base/command_line.h	2023-02-24 20:54:05.156528834 +0000
 @@ -145,6 +145,11 @@
  
    // Returns the original command line string as a vector of strings.

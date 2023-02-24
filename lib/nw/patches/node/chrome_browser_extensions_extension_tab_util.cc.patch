@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/extension_tab_util.cc nw/chromium/chrome/browser/extensions/extension_tab_util.cc
 --- up/chromium/chrome/browser/extensions/extension_tab_util.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/extension_tab_util.cc	2023-02-24 20:12:03.312811725 +0000
++++ nw/chromium/chrome/browser/extensions/extension_tab_util.cc	2023-02-24 20:54:07.232519494 +0000
 @@ -63,6 +63,10 @@
  #include "third_party/abseil-cpp/absl/types/optional.h"
  #include "url/gurl.h"

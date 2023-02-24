@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/component_updater/sw_reporter_installer_win.cc nw/chromium/chrome/browser/component_updater/sw_reporter_installer_win.cc
 --- up/chromium/chrome/browser/component_updater/sw_reporter_installer_win.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/component_updater/sw_reporter_installer_win.cc	2023-02-24 20:12:03.140809973 +0000
++++ nw/chromium/chrome/browser/component_updater/sw_reporter_installer_win.cc	2023-02-24 20:54:07.060520287 +0000
 @@ -105,12 +105,15 @@
    UMA_HISTOGRAM_BOOLEAN("SoftwareReporter.LastUploadResult", last_result);
  }

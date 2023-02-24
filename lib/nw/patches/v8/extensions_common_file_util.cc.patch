@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/file_util.cc nw/chromium/extensions/common/file_util.cc
 --- up/chromium/extensions/common/file_util.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/file_util.cc	2023-02-24 20:12:10.284873027 +0000
++++ nw/chromium/extensions/common/file_util.cc	2023-02-24 20:54:13.744489466 +0000
 @@ -44,6 +44,9 @@
  #include "ui/base/l10n/l10n_util.h"
  #include "url/gurl.h"

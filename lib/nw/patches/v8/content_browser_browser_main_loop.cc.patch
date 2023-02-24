@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/browser_main_loop.cc nw/chromium/content/browser/browser_main_loop.cc
 --- up/chromium/content/browser/browser_main_loop.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/browser_main_loop.cc	2023-02-24 20:12:09.136863422 +0000
++++ nw/chromium/content/browser/browser_main_loop.cc	2023-02-24 20:54:12.628494612 +0000
 @@ -437,6 +437,8 @@
  // The currently-running BrowserMainLoop.  There can be one or zero.
  BrowserMainLoop* g_current_browser_main_loop = nullptr;

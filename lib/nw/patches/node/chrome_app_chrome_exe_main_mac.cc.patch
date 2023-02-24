@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/app/chrome_exe_main_mac.cc nw/chromium/chrome/app/chrome_exe_main_mac.cc
 --- up/chromium/chrome/app/chrome_exe_main_mac.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/app/chrome_exe_main_mac.cc	2023-02-24 20:12:01.884797184 +0000
++++ nw/chromium/chrome/app/chrome_exe_main_mac.cc	2023-02-24 20:54:05.764526132 +0000
 @@ -203,7 +203,7 @@
             rel_path);
  

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/browser/web_contents_delegate.h nw/chromium/content/public/browser/web_contents_delegate.h
 --- up/chromium/content/public/browser/web_contents_delegate.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/public/browser/web_contents_delegate.h	2023-02-24 20:12:09.480866301 +0000
++++ nw/chromium/content/public/browser/web_contents_delegate.h	2023-02-24 20:54:12.984492971 +0000
 @@ -114,6 +114,8 @@
   public:
    WebContentsDelegate();

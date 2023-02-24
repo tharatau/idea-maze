@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/renderer/worker/embedded_shared_worker_stub.cc nw/chromium/content/renderer/worker/embedded_shared_worker_stub.cc
 --- up/chromium/content/renderer/worker/embedded_shared_worker_stub.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/renderer/worker/embedded_shared_worker_stub.cc	2023-02-24 20:12:09.548866870 +0000
++++ nw/chromium/content/renderer/worker/embedded_shared_worker_stub.cc	2023-02-24 20:54:13.036492731 +0000
 @@ -61,7 +61,8 @@
          browser_interface_broker,
      ukm::SourceId ukm_source_id,

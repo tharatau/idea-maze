@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/public/mojom/frame/frame_owner_properties.mojom nw/chromium/third_party/blink/public/mojom/frame/frame_owner_properties.mojom
 --- up/chromium/third_party/blink/public/mojom/frame/frame_owner_properties.mojom	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/public/mojom/frame/frame_owner_properties.mojom	2023-02-24 20:12:13.896899710 +0000
++++ nw/chromium/third_party/blink/public/mojom/frame/frame_owner_properties.mojom	2023-02-24 20:54:17.452469365 +0000
 @@ -18,8 +18,10 @@
    int32 margin_height;
    // True if the frame allows fullscreen.

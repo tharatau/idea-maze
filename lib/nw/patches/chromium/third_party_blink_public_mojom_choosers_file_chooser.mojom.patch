@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/public/mojom/choosers/file_chooser.mojom nw/chromium/third_party/blink/public/mojom/choosers/file_chooser.mojom
 --- up/chromium/third_party/blink/public/mojom/choosers/file_chooser.mojom	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/public/mojom/choosers/file_chooser.mojom	2023-02-24 20:12:13.888899680 +0000
++++ nw/chromium/third_party/blink/public/mojom/choosers/file_chooser.mojom	2023-02-24 20:54:17.448469387 +0000
 @@ -33,10 +33,14 @@
    // Title to be used for the dialog. This may be empty for the default title,
    // which will be either "Open" or "Save" depending on the mode.

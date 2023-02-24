@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/network_service_instance_impl.cc nw/chromium/content/browser/network_service_instance_impl.cc
 --- up/chromium/content/browser/network_service_instance_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/network_service_instance_impl.cc	2023-02-24 20:12:09.240864293 +0000
++++ nw/chromium/content/browser/network_service_instance_impl.cc	2023-02-24 20:54:12.732494133 +0000
 @@ -941,9 +941,11 @@
      if (!params->file_paths->unsandboxed_data_path)
        grant_result = SandboxGrantResult::kDidNotAttemptToGrantSandboxAccess;

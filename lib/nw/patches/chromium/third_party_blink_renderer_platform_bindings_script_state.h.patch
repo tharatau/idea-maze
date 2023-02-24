@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/platform/bindings/script_state.h nw/chromium/third_party/blink/renderer/platform/bindings/script_state.h
 --- up/chromium/third_party/blink/renderer/platform/bindings/script_state.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/platform/bindings/script_state.h	2023-02-24 20:12:14.820903237 +0000
++++ nw/chromium/third_party/blink/renderer/platform/bindings/script_state.h	2023-02-24 20:54:18.360464236 +0000
 @@ -176,7 +176,7 @@
      // ScriptState::from() must not be called for a context that does not have
      // valid embedder data in the embedder field.

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/installer/linux/common/installer.include nw/chromium/chrome/installer/linux/common/installer.include
 --- up/chromium/chrome/installer/linux/common/installer.include	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/installer/linux/common/installer.include	2023-02-24 20:12:04.920828098 +0000
++++ nw/chromium/chrome/installer/linux/common/installer.include	2023-02-24 20:54:08.824512153 +0000
 @@ -157,9 +157,9 @@
    # we should flag all installer files in FILES.cfg and get them from there, so
    # there's only one place people need to keep track of such things (and in

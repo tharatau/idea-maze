@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/installer/mini_installer/chrome.release nw/chromium/chrome/installer/mini_installer/chrome.release
 --- up/chromium/chrome/installer/mini_installer/chrome.release	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/installer/mini_installer/chrome.release	2023-02-24 20:12:04.928828179 +0000
++++ nw/chromium/chrome/installer/mini_installer/chrome.release	2023-02-24 20:54:08.832512116 +0000
 @@ -6,45 +6,46 @@
  #
  # Chrome Application dir entries, sorted alphabetically.

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/cc/metrics/compositor_frame_reporting_controller.cc nw/chromium/cc/metrics/compositor_frame_reporting_controller.cc
 --- up/chromium/cc/metrics/compositor_frame_reporting_controller.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/cc/metrics/compositor_frame_reporting_controller.cc	2023-02-24 20:12:01.524793518 +0000
++++ nw/chromium/cc/metrics/compositor_frame_reporting_controller.cc	2023-02-24 20:54:05.404527732 +0000
 @@ -136,10 +136,12 @@
    if (reporters_[PipelineStage::kBeginImplFrame]) {
      // We need to use .get() below because operator<< in std::unique_ptr is a

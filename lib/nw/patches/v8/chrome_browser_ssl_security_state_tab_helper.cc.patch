@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ssl/security_state_tab_helper.cc nw/chromium/chrome/browser/ssl/security_state_tab_helper.cc
 --- up/chromium/chrome/browser/ssl/security_state_tab_helper.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ssl/security_state_tab_helper.cc	2023-02-24 20:12:04.108819830 +0000
++++ nw/chromium/chrome/browser/ssl/security_state_tab_helper.cc	2023-02-24 20:54:08.004515934 +0000
 @@ -168,6 +168,7 @@
  
  security_state::MaliciousContentStatus

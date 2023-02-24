@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/mac/initial_prefs.mm nw/chromium/chrome/browser/mac/initial_prefs.mm
 --- up/chromium/chrome/browser/mac/initial_prefs.mm	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/mac/initial_prefs.mm	2023-02-24 20:12:03.408812702 +0000
++++ nw/chromium/chrome/browser/mac/initial_prefs.mm	2023-02-24 20:54:07.324519070 +0000
 @@ -28,9 +28,9 @@
      "Google Chrome Master Preferences";
  #else

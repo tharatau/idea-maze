@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/extension.cc nw/chromium/extensions/common/extension.cc
 --- up/chromium/extensions/common/extension.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/extension.cc	2023-02-24 20:12:10.280872994 +0000
++++ nw/chromium/extensions/common/extension.cc	2023-02-24 20:54:13.740489485 +0000
 @@ -202,7 +202,7 @@
  const char Extension::kMimeType[] = "application/x-chrome-extension";
  

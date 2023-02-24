@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/renderer/agent_scheduling_group.cc nw/chromium/content/renderer/agent_scheduling_group.cc
 --- up/chromium/content/renderer/agent_scheduling_group.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/renderer/agent_scheduling_group.cc	2023-02-24 20:12:09.524866669 +0000
++++ nw/chromium/content/renderer/agent_scheduling_group.cc	2023-02-24 20:54:13.012492842 +0000
 @@ -336,7 +336,7 @@
  
      if (!local_params->previous_frame_token) {

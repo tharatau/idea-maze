@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/component_updater/component_updater_service.h nw/chromium/components/component_updater/component_updater_service.h
 --- up/chromium/components/component_updater/component_updater_service.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/component_updater/component_updater_service.h	2023-02-24 20:12:07.080846220 +0000
++++ nw/chromium/components/component_updater/component_updater_service.h	2023-02-24 20:54:10.576504074 +0000
 @@ -24,6 +24,10 @@
  class ComponentsHandler;
  class PluginObserver;

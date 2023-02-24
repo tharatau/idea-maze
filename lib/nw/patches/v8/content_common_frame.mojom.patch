@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/common/frame.mojom nw/chromium/content/common/frame.mojom
 --- up/chromium/content/common/frame.mojom	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/common/frame.mojom	2023-02-24 20:12:09.424865832 +0000
++++ nw/chromium/content/common/frame.mojom	2023-02-24 20:54:12.928493229 +0000
 @@ -3,6 +3,7 @@
  // found in the LICENSE file.
  

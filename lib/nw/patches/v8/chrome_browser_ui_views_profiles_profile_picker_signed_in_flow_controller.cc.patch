@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/profiles/profile_picker_signed_in_flow_controller.cc nw/chromium/chrome/browser/ui/views/profiles/profile_picker_signed_in_flow_controller.cc
 --- up/chromium/chrome/browser/ui/views/profiles/profile_picker_signed_in_flow_controller.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/profiles/profile_picker_signed_in_flow_controller.cc	2023-02-24 20:12:04.576824595 +0000
++++ nw/chromium/chrome/browser/ui/views/profiles/profile_picker_signed_in_flow_controller.cc	2023-02-24 20:54:08.456513850 +0000
 @@ -150,12 +150,14 @@
  }
  

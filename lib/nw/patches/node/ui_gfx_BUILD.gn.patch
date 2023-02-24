@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/gfx/BUILD.gn nw/chromium/ui/gfx/BUILD.gn
 --- up/chromium/ui/gfx/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/gfx/BUILD.gn	2023-02-24 20:12:33.825071594 +0000
++++ nw/chromium/ui/gfx/BUILD.gn	2023-02-24 20:54:38.912347368 +0000
 @@ -393,6 +393,7 @@
  
    if (is_mac) {

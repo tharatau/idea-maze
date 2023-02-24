@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/javascript_dialogs/app_modal_dialog_manager.cc nw/chromium/components/javascript_dialogs/app_modal_dialog_manager.cc
 --- up/chromium/components/javascript_dialogs/app_modal_dialog_manager.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/javascript_dialogs/app_modal_dialog_manager.cc	2023-02-24 20:12:07.460849400 +0000
++++ nw/chromium/components/javascript_dialogs/app_modal_dialog_manager.cc	2023-02-24 20:54:10.972502248 +0000
 @@ -77,6 +77,8 @@
  std::u16string AppModalDialogManager::GetTitle(
      content::WebContents* web_contents,

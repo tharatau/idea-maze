@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/v8_context_native_handler.cc nw/chromium/extensions/renderer/v8_context_native_handler.cc
 --- up/chromium/extensions/renderer/v8_context_native_handler.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/renderer/v8_context_native_handler.cc	2023-02-24 20:12:10.320873329 +0000
++++ nw/chromium/extensions/renderer/v8_context_native_handler.cc	2023-02-24 20:54:13.780489300 +0000
 @@ -35,8 +35,21 @@
    v8::Isolate* isolate = args.GetIsolate();
    std::string api_name = *v8::String::Utf8Value(isolate, args[0]);

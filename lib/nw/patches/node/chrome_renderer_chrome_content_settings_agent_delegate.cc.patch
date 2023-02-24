@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/renderer/chrome_content_settings_agent_delegate.cc nw/chromium/chrome/renderer/chrome_content_settings_agent_delegate.cc
 --- up/chromium/chrome/renderer/chrome_content_settings_agent_delegate.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/renderer/chrome_content_settings_agent_delegate.cc	2023-02-24 20:12:04.952828416 +0000
++++ nw/chromium/chrome/renderer/chrome_content_settings_agent_delegate.cc	2023-02-24 20:54:08.856512006 +0000
 @@ -115,8 +115,10 @@
  }
  

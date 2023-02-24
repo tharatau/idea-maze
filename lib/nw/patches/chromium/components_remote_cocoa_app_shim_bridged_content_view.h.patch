@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/remote_cocoa/app_shim/bridged_content_view.h nw/chromium/components/remote_cocoa/app_shim/bridged_content_view.h
 --- up/chromium/components/remote_cocoa/app_shim/bridged_content_view.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/remote_cocoa/app_shim/bridged_content_view.h	2023-02-24 20:12:08.080854587 +0000
++++ nw/chromium/components/remote_cocoa/app_shim/bridged_content_view.h	2023-02-24 20:54:11.628499223 +0000
 @@ -55,6 +55,9 @@
  @property(assign, nonatomic) BOOL drawMenuBackgroundForBlur;
  @property(assign, nonatomic) NSEvent* keyDownEventForTesting;

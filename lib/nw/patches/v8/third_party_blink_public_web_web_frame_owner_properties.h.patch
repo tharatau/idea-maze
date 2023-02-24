@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/public/web/web_frame_owner_properties.h nw/chromium/third_party/blink/public/web/web_frame_owner_properties.h
 --- up/chromium/third_party/blink/public/web/web_frame_owner_properties.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/public/web/web_frame_owner_properties.h	2023-02-24 20:12:13.952899924 +0000
++++ nw/chromium/third_party/blink/public/web/web_frame_owner_properties.h	2023-02-24 20:54:17.504469071 +0000
 @@ -12,8 +12,10 @@
  namespace blink {
  

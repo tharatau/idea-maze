@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/build/config/win/BUILD.gn nw/chromium/build/config/win/BUILD.gn
 --- up/chromium/build/config/win/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/build/config/win/BUILD.gn	2023-02-24 20:12:01.472792989 +0000
++++ nw/chromium/build/config/win/BUILD.gn	2023-02-24 20:54:05.352527963 +0000
 @@ -72,7 +72,7 @@
  
    if (is_clang) {

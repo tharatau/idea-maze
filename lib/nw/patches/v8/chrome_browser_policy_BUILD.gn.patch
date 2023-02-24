@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/policy/BUILD.gn nw/chromium/chrome/browser/policy/BUILD.gn
 --- up/chromium/chrome/browser/policy/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/policy/BUILD.gn	2023-02-24 20:12:03.600814657 +0000
++++ nw/chromium/chrome/browser/policy/BUILD.gn	2023-02-24 20:54:07.512518203 +0000
 @@ -281,7 +281,7 @@
    ]
  

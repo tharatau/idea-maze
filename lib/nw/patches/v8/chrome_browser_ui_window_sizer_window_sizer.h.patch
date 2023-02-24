@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/window_sizer/window_sizer.h nw/chromium/chrome/browser/ui/window_sizer/window_sizer.h
 --- up/chromium/chrome/browser/ui/window_sizer/window_sizer.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/window_sizer/window_sizer.h	2023-02-24 20:12:04.724826102 +0000
++++ nw/chromium/chrome/browser/ui/window_sizer/window_sizer.h	2023-02-24 20:54:08.604513168 +0000
 @@ -72,14 +72,14 @@
    //
    // |show_state| will be overwritten and return the initial visual state of

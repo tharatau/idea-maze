@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/frame/remote_frame_owner.cc nw/chromium/third_party/blink/renderer/core/frame/remote_frame_owner.cc
 --- up/chromium/third_party/blink/renderer/core/frame/remote_frame_owner.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/frame/remote_frame_owner.cc	2023-02-24 20:12:14.196900855 +0000
++++ nw/chromium/third_party/blink/renderer/core/frame/remote_frame_owner.cc	2023-02-24 20:54:17.752467670 +0000
 @@ -26,6 +26,8 @@
        browsing_context_container_name_(
            static_cast<String>(frame_owner_properties.name)),

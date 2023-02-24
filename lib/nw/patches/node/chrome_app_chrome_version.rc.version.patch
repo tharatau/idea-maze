@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/app/chrome_version.rc.version nw/chromium/chrome/app/chrome_version.rc.version
 --- up/chromium/chrome/app/chrome_version.rc.version	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/app/chrome_version.rc.version	2023-02-24 20:12:01.884797184 +0000
++++ nw/chromium/chrome/app/chrome_version.rc.version	2023-02-24 20:54:05.764526132 +0000
 @@ -3,6 +3,7 @@
  // found in the LICENSE file.
  

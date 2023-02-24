@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/script_executor.cc nw/chromium/extensions/browser/script_executor.cc
 --- up/chromium/extensions/browser/script_executor.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/script_executor.cc	2023-02-24 20:12:10.264872860 +0000
++++ nw/chromium/extensions/browser/script_executor.cc	2023-02-24 20:54:13.724489559 +0000
 @@ -361,6 +361,7 @@
                                     const std::set<int>& frame_ids,
                                     ScriptExecutor::MatchAboutBlank about_blank,

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ppapi/native_client/src/untrusted/pnacl_support_extension/BUILD.gn nw/chromium/ppapi/native_client/src/untrusted/pnacl_support_extension/BUILD.gn
 --- up/chromium/ppapi/native_client/src/untrusted/pnacl_support_extension/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ppapi/native_client/src/untrusted/pnacl_support_extension/BUILD.gn	2023-02-24 20:12:12.808894583 +0000
++++ nw/chromium/ppapi/native_client/src/untrusted/pnacl_support_extension/BUILD.gn	2023-02-24 20:54:16.324475736 +0000
 @@ -35,7 +35,10 @@
    shim_cpu = nacl_target_cpu
  

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/safe_browsing/content/common/proto/BUILD.gn nw/chromium/components/safe_browsing/content/common/proto/BUILD.gn
 --- up/chromium/components/safe_browsing/content/common/proto/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/safe_browsing/content/common/proto/BUILD.gn	2023-02-24 20:12:08.108854821 +0000
++++ nw/chromium/components/safe_browsing/content/common/proto/BUILD.gn	2023-02-24 20:54:11.656499094 +0000
 @@ -5,7 +5,7 @@
  import("//components/safe_browsing/buildflags.gni")
  import("//third_party/protobuf/proto_library.gni")

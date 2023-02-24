@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/base/resource/resource_bundle_mac.mm nw/chromium/ui/base/resource/resource_bundle_mac.mm
 --- up/chromium/ui/base/resource/resource_bundle_mac.mm	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/base/resource/resource_bundle_mac.mm	2023-02-24 20:12:33.537068922 +0000
++++ nw/chromium/ui/base/resource/resource_bundle_mac.mm	2023-02-24 20:54:37.256356884 +0000
 @@ -51,13 +51,13 @@
  }  // namespace
  

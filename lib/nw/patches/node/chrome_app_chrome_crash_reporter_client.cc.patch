@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/app/chrome_crash_reporter_client.cc nw/chromium/chrome/app/chrome_crash_reporter_client.cc
 --- up/chromium/chrome/app/chrome_crash_reporter_client.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/app/chrome_crash_reporter_client.cc	2023-02-24 20:12:01.884797184 +0000
++++ nw/chromium/chrome/app/chrome_crash_reporter_client.cc	2023-02-24 20:54:05.764526132 +0000
 @@ -24,7 +24,7 @@
  #include "components/crash/core/common/crash_keys.h"
  #include "content/public/common/content_switches.h"

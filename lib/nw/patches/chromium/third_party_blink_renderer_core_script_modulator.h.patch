@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/script/modulator.h nw/chromium/third_party/blink/renderer/core/script/modulator.h
 --- up/chromium/third_party/blink/renderer/core/script/modulator.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/script/modulator.h	2023-02-24 20:12:14.452901832 +0000
++++ nw/chromium/third_party/blink/renderer/core/script/modulator.h	2023-02-24 20:54:17.996466292 +0000
 @@ -112,6 +112,7 @@
    const char* NameInHeapSnapshot() const override { return "Modulator"; }
  

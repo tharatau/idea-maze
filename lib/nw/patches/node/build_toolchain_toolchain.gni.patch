@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/build/toolchain/toolchain.gni nw/chromium/build/toolchain/toolchain.gni
 --- up/chromium/build/toolchain/toolchain.gni	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/build/toolchain/toolchain.gni	2023-02-24 20:12:01.492793193 +0000
++++ nw/chromium/build/toolchain/toolchain.gni	2023-02-24 20:54:05.372527874 +0000
 @@ -36,6 +36,22 @@
    clang_version = "16"
  }

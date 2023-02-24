@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/base/models/simple_menu_model.cc nw/chromium/ui/base/models/simple_menu_model.cc
 --- up/chromium/ui/base/models/simple_menu_model.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/base/models/simple_menu_model.cc	2023-02-24 20:12:33.525068810 +0000
++++ nw/chromium/ui/base/models/simple_menu_model.cc	2023-02-24 20:54:37.252356906 +0000
 @@ -59,6 +59,10 @@
  
  void SimpleMenuModel::Delegate::OnMenuWillShow(SimpleMenuModel* /*source*/) {}

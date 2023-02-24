@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/renderer_host/navigation_request_info.cc nw/chromium/content/browser/renderer_host/navigation_request_info.cc
 --- up/chromium/content/browser/renderer_host/navigation_request_info.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/renderer_host/navigation_request_info.cc	2023-02-24 20:12:09.304864828 +0000
++++ nw/chromium/content/browser/renderer_host/navigation_request_info.cc	2023-02-24 20:54:12.808493782 +0000
 @@ -31,7 +31,8 @@
          devtools_accepted_stream_types,
      bool is_pdf,

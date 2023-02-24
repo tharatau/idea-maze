@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/content_script_injection_url_getter.cc nw/chromium/extensions/common/content_script_injection_url_getter.cc
 --- up/chromium/extensions/common/content_script_injection_url_getter.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/content_script_injection_url_getter.cc	2023-02-24 20:12:10.280872994 +0000
++++ nw/chromium/extensions/common/content_script_injection_url_getter.cc	2023-02-24 20:54:13.740489485 +0000
 @@ -53,7 +53,8 @@
          TRACE_EVENT_INSTANT("extensions",
                              "ContentScriptInjectionUrlGetter::Get/"

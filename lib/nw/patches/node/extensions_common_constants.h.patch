@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/constants.h nw/chromium/extensions/common/constants.h
 --- up/chromium/extensions/common/constants.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/constants.h	2023-02-24 20:12:10.280872994 +0000
++++ nw/chromium/extensions/common/constants.h	2023-02-24 20:54:13.740489485 +0000
 @@ -17,6 +17,7 @@
  
  // The name of the manifest inside an extension.

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/build/config/BUILD.gn nw/chromium/build/config/BUILD.gn
 --- up/chromium/build/config/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/build/config/BUILD.gn	2023-02-24 20:12:01.460792867 +0000
++++ nw/chromium/build/config/BUILD.gn	2023-02-24 20:54:05.340528016 +0000
 @@ -93,6 +93,10 @@
      defines += [ "OFFICIAL_BUILD" ]
    }

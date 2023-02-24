@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/renderer_host/render_view_host_delegate.cc nw/chromium/content/browser/renderer_host/render_view_host_delegate.cc
 --- up/chromium/content/browser/renderer_host/render_view_host_delegate.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/renderer_host/render_view_host_delegate.cc	2023-02-24 20:12:09.324864995 +0000
++++ nw/chromium/content/browser/renderer_host/render_view_host_delegate.cc	2023-02-24 20:54:12.828493690 +0000
 @@ -6,6 +6,10 @@
  
  namespace content {

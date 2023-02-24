@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/native_extension_bindings_system.h nw/chromium/extensions/renderer/native_extension_bindings_system.h
 --- up/chromium/extensions/renderer/native_extension_bindings_system.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/renderer/native_extension_bindings_system.h	2023-02-24 20:12:10.312873262 +0000
++++ nw/chromium/extensions/renderer/native_extension_bindings_system.h	2023-02-24 20:54:13.772489337 +0000
 @@ -97,7 +97,7 @@
    // Returns the API with the given |name| for the given |context|. Used for
    // testing purposes.

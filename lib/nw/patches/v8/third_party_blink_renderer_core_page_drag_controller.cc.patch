@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/page/drag_controller.cc nw/chromium/third_party/blink/renderer/core/page/drag_controller.cc
 --- up/chromium/third_party/blink/renderer/core/page/drag_controller.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/page/drag_controller.cc	2023-02-24 20:12:14.404901649 +0000
++++ nw/chromium/third_party/blink/renderer/core/page/drag_controller.cc	2023-02-24 20:54:17.956466518 +0000
 @@ -231,7 +231,9 @@
  
    LocalFrameView* frame_view(local_root.View());

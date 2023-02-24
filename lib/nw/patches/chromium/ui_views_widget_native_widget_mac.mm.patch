@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/widget/native_widget_mac.mm nw/chromium/ui/views/widget/native_widget_mac.mm
 --- up/chromium/ui/views/widget/native_widget_mac.mm	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/views/widget/native_widget_mac.mm	2023-02-24 20:12:34.105074191 +0000
++++ nw/chromium/ui/views/widget/native_widget_mac.mm	2023-02-24 20:54:39.220345562 +0000
 @@ -47,6 +47,10 @@
  
  using remote_cocoa::mojom::WindowVisibilityState;

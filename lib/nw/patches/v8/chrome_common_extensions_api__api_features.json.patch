@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/common/extensions/api/_api_features.json nw/chromium/chrome/common/extensions/api/_api_features.json
 --- up/chromium/chrome/common/extensions/api/_api_features.json	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/common/extensions/api/_api_features.json	2023-02-24 20:12:04.864827528 +0000
++++ nw/chromium/chrome/common/extensions/api/_api_features.json	2023-02-24 20:54:08.776512375 +0000
 @@ -58,23 +58,6 @@
         "A9A9FC0228ADF541F0334F22BEFB8F9C245B21D7"   // http://crbug.com/839189
      ]

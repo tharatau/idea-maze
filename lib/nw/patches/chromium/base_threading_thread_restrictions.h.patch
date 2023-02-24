@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/base/threading/thread_restrictions.h nw/chromium/base/threading/thread_restrictions.h
 --- up/chromium/base/threading/thread_restrictions.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/base/threading/thread_restrictions.h	2023-02-24 20:12:01.408792337 +0000
++++ nw/chromium/base/threading/thread_restrictions.h	2023-02-24 20:54:05.288528247 +0000
 @@ -164,6 +164,7 @@
  namespace audio {
  class OutputDevice;

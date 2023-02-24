@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/accessibility/view_ax_platform_node_delegate_auralinux.cc nw/chromium/ui/views/accessibility/view_ax_platform_node_delegate_auralinux.cc
 --- up/chromium/ui/views/accessibility/view_ax_platform_node_delegate_auralinux.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/views/accessibility/view_ax_platform_node_delegate_auralinux.cc	2023-02-24 20:12:34.041073598 +0000
++++ nw/chromium/ui/views/accessibility/view_ax_platform_node_delegate_auralinux.cc	2023-02-24 20:54:39.156345937 +0000
 @@ -4,6 +4,8 @@
  
  #include "ui/views/accessibility/view_ax_platform_node_delegate_auralinux.h"

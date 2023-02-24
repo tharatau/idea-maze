@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/pdf/renderer/internal_plugin_renderer_helpers.cc nw/chromium/components/pdf/renderer/internal_plugin_renderer_helpers.cc
 --- up/chromium/components/pdf/renderer/internal_plugin_renderer_helpers.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/pdf/renderer/internal_plugin_renderer_helpers.cc	2023-02-24 20:12:07.760851910 +0000
++++ nw/chromium/components/pdf/renderer/internal_plugin_renderer_helpers.cc	2023-02-24 20:54:11.244500994 +0000
 @@ -57,7 +57,7 @@
    }
  

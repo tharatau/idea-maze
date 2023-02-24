@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/public/mojom/frame/frame.mojom nw/chromium/third_party/blink/public/mojom/frame/frame.mojom
 --- up/chromium/third_party/blink/public/mojom/frame/frame.mojom	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/public/mojom/frame/frame.mojom	2023-02-24 20:12:13.896899710 +0000
++++ nw/chromium/third_party/blink/public/mojom/frame/frame.mojom	2023-02-24 20:54:17.452469365 +0000
 @@ -1068,7 +1068,8 @@
    ShowCreatedWindow(blink.mojom.LocalFrameToken opener_frame_token,
                      ui.mojom.WindowOpenDisposition disposition,

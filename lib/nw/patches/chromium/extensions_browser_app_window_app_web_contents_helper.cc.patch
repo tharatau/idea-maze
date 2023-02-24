@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/app_window/app_web_contents_helper.cc nw/chromium/extensions/browser/app_window/app_web_contents_helper.cc
 --- up/chromium/extensions/browser/app_window/app_web_contents_helper.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/app_window/app_web_contents_helper.cc	2023-02-24 20:12:10.232872592 +0000
++++ nw/chromium/extensions/browser/app_window/app_web_contents_helper.cc	2023-02-24 20:54:13.700489669 +0000
 @@ -56,12 +56,28 @@
    // TODO(mihaip): Can we check for user gestures instead?
    WindowOpenDisposition disposition = params.disposition;

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/api/_api_features.json nw/chromium/extensions/common/api/_api_features.json
 --- up/chromium/extensions/common/api/_api_features.json	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/api/_api_features.json	2023-02-24 20:12:10.272872927 +0000
++++ nw/chromium/extensions/common/api/_api_features.json	2023-02-24 20:54:13.732489522 +0000
 @@ -52,7 +52,8 @@
      "noparent": true,
      "internal": true,

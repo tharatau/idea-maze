@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/chrome_browser_interface_binders.cc nw/chromium/chrome/browser/chrome_browser_interface_binders.cc
 --- up/chromium/chrome/browser/chrome_browser_interface_binders.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/chrome_browser_interface_binders.cc	2023-02-24 20:12:03.100809566 +0000
++++ nw/chromium/chrome/browser/chrome_browser_interface_binders.cc	2023-02-24 20:54:07.020520472 +0000
 @@ -722,10 +722,10 @@
          base::BindRepeating(
              &performance_manager::BindDocumentCoordinationUnit));

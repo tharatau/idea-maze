@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/BUILD.gn nw/chromium/chrome/browser/BUILD.gn
 --- up/chromium/chrome/browser/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/BUILD.gn	2023-02-24 20:12:02.592804393 +0000
++++ nw/chromium/chrome/browser/BUILD.gn	2023-02-24 20:54:06.512522809 +0000
 @@ -1029,8 +1029,8 @@
      "page_load_metrics/observers/tab_restore_page_load_metrics_observer.h",
      "page_load_metrics/observers/third_party_metrics_observer.cc",

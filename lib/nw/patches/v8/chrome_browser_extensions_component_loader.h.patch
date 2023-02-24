@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/component_loader.h nw/chromium/chrome/browser/extensions/component_loader.h
 --- up/chromium/chrome/browser/extensions/component_loader.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/component_loader.h	2023-02-24 20:12:03.296811562 +0000
++++ nw/chromium/chrome/browser/extensions/component_loader.h	2023-02-24 20:54:07.212519586 +0000
 @@ -43,6 +43,9 @@
      return component_extensions_.size();
    }

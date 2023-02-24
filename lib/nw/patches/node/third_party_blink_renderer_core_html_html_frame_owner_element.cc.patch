@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/html/html_frame_owner_element.cc nw/chromium/third_party/blink/renderer/core/html/html_frame_owner_element.cc
 --- up/chromium/third_party/blink/renderer/core/html/html_frame_owner_element.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/html/html_frame_owner_element.cc	2023-02-24 20:12:14.240901023 +0000
++++ nw/chromium/third_party/blink/renderer/core/html/html_frame_owner_element.cc	2023-02-24 20:54:17.792467444 +0000
 @@ -468,6 +468,8 @@
    properties->allow_payment_request = AllowPaymentRequest();
    properties->is_display_none = IsDisplayNone();

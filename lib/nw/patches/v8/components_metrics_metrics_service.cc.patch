@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/metrics/metrics_service.cc nw/chromium/components/metrics/metrics_service.cc
 --- up/chromium/components/metrics/metrics_service.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/metrics/metrics_service.cc	2023-02-24 20:12:07.528849969 +0000
++++ nw/chromium/components/metrics/metrics_service.cc	2023-02-24 20:54:11.028501990 +0000
 @@ -262,7 +262,7 @@
        client_(client),
        local_state_(local_state),

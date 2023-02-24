@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/apps/launcher.cc nw/chromium/apps/launcher.cc
 --- up/chromium/apps/launcher.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/apps/launcher.cc	2023-02-24 20:12:00.620784314 +0000
++++ nw/chromium/apps/launcher.cc	2023-02-24 20:54:04.500531748 +0000
 @@ -112,7 +112,10 @@
          extension_id(app->id()),
          entry_paths_(entry_paths),

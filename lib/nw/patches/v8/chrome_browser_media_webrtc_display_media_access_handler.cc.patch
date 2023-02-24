@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/media/webrtc/display_media_access_handler.cc nw/chromium/chrome/browser/media/webrtc/display_media_access_handler.cc
 --- up/chromium/chrome/browser/media/webrtc/display_media_access_handler.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/media/webrtc/display_media_access_handler.cc	2023-02-24 20:12:03.432812947 +0000
++++ nw/chromium/chrome/browser/media/webrtc/display_media_access_handler.cc	2023-02-24 20:54:07.352518941 +0000
 @@ -112,6 +112,7 @@
      return;
    }
