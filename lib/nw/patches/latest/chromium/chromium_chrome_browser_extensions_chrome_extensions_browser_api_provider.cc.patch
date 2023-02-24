@@ -1,0 +1,20 @@
+diff -r -u --color up/chromium/chrome/browser/extensions/chrome_extensions_browser_api_provider.cc nw/chromium/chrome/browser/extensions/chrome_extensions_browser_api_provider.cc
+--- up/chromium/chrome/browser/extensions/chrome_extensions_browser_api_provider.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/chrome_extensions_browser_api_provider.cc	2023-02-19 17:36:27.767444574 +0000
+@@ -8,6 +8,8 @@
+ #include "chrome/browser/extensions/api/preference/preference_api.h"
+ #include "extensions/browser/extension_function_registry.h"
+ 
++#include "content/nw/src/api/generated_api_registration.h"
++
+ namespace extensions {
+ 
+ ChromeExtensionsBrowserAPIProvider::ChromeExtensionsBrowserAPIProvider() =
+@@ -24,6 +26,7 @@
+ 
+   // Generated APIs from Chrome.
+   api::ChromeGeneratedFunctionRegistry::RegisterAll(registry);
++  nwapi::nwjsGeneratedFunctionRegistry::RegisterAll(registry);
+ }
+ 
+ }  // namespace extensions

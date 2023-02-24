@@ -1,0 +1,42 @@
+diff -r -u --color up/chromium/chrome/browser/policy/configuration_policy_handler_list_factory.cc nw/chromium/chrome/browser/policy/configuration_policy_handler_list_factory.cc
+--- up/chromium/chrome/browser/policy/configuration_policy_handler_list_factory.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/policy/configuration_policy_handler_list_factory.cc	2023-02-19 17:36:28.211445698 +0000
+@@ -1465,9 +1465,11 @@
+   { key::kDefaultBrowserSettingEnabled,
+     prefs::kDefaultBrowserSettingEnabled,
+     base::Value::Type::BOOLEAN },
++#if 0 //NWJS#6621
+   { key::kRoamingProfileSupportEnabled,
+     syncer::prefs::kEnableLocalSyncBackend,
+     base::Value::Type::BOOLEAN },
++#endif
+   { key::kDesktopSharingHubEnabled,
+     prefs::kDesktopSharingHubEnabled,
+     base::Value::Type::BOOLEAN },
+@@ -1888,8 +1890,10 @@
+   handlers->AddHandler(
+       std::make_unique<bookmarks::ManagedBookmarksPolicyHandler>(
+           chrome_schema));
++#if 0
+   handlers->AddHandler(
+       std::make_unique<safe_browsing::SafeBrowsingPolicyHandler>());
++#endif
+   handlers->AddHandler(std::make_unique<syncer::SyncPolicyHandler>());
+   handlers->AddHandler(
+       std::make_unique<URLBlocklistPolicyHandler>(key::kURLBlocklist));
+@@ -1947,6 +1951,7 @@
+           prefs::kSafeBrowsingEnterpriseRealTimeUrlCheckMode,
+           prefs::kSafeBrowsingEnterpriseRealTimeUrlCheckScope, chrome_schema));
+ 
++#if 0
+   handlers->AddHandler(std::make_unique<SimpleSchemaValidatingPolicyHandler>(
+       key::kExemptDomainFileTypePairsFromFileTypeDownloadWarnings,
+       safe_browsing::file_type::prefs::
+@@ -1954,6 +1959,7 @@
+       chrome_schema, SCHEMA_ALLOW_UNKNOWN,
+       SimpleSchemaValidatingPolicyHandler::RECOMMENDED_PROHIBITED,
+       SimpleSchemaValidatingPolicyHandler::MANDATORY_ALLOWED));
++#endif
+   handlers->AddHandler(
+       std::make_unique<ManagedAccountRestrictionsPolicyHandler>(chrome_schema));
+ 

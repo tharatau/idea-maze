@@ -1,0 +1,23 @@
+diff -r -u --color up/node/src/tracing/agent.h nw/node/src/tracing/agent.h
+--- up/node/src/tracing/agent.h	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/src/tracing/agent.h	2023-02-19 17:37:33.307599302 +0000
+@@ -84,7 +84,7 @@
+ class Agent {
+  public:
+   Agent();
+-  ~Agent();
++  ~Agent() {}
+ 
+   TracingController* GetTracingController() {
+     TracingController* controller = tracing_controller_.get();
+@@ -156,8 +156,8 @@
+ };
+ 
+ void AgentWriterHandle::reset() {
+-  if (agent_ != nullptr)
+-    agent_->Disconnect(id_);
++  //if (agent_ != nullptr)
++  //  agent_->Disconnect(id_);
+   agent_ = nullptr;
+ }
+ 

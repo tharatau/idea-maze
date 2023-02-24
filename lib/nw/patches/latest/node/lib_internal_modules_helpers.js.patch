@@ -1,0 +1,12 @@
+diff -r -u --color up/node/lib/internal/modules/helpers.js nw/node/lib/internal/modules/helpers.js
+--- up/node/lib/internal/modules/helpers.js	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/lib/internal/modules/helpers.js	2023-02-19 17:37:33.255599202 +0000
+@@ -45,8 +45,6 @@
+   cjsConditions = new SafeSet([
+     'require',
+     'node',
+-    ...addonConditions,
+-    ...userConditions,
+   ]);
+ }
+ 

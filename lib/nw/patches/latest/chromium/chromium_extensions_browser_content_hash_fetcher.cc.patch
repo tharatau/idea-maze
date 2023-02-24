@@ -1,0 +1,19 @@
+diff -r -u --color up/chromium/extensions/browser/content_hash_fetcher.cc nw/chromium/extensions/browser/content_hash_fetcher.cc
+--- up/chromium/extensions/browser/content_hash_fetcher.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/browser/content_hash_fetcher.cc	2023-02-19 17:36:36.819467460 +0000
+@@ -61,6 +61,7 @@
+ }
+ 
+ void ContentHashFetcher::Start(HashFetcherCallback hash_fetcher_callback) {
++#if 0
+   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+ 
+   hash_fetcher_callback_ = std::move(hash_fetcher_callback);
+@@ -107,6 +108,7 @@
+       url_loader_factory_remote.get(),
+       base::BindOnce(&ContentHashFetcher::OnSimpleLoaderComplete,
+                      base::Unretained(this)));
++#endif
+ }
+ 
+ ContentHashFetcher::~ContentHashFetcher() {

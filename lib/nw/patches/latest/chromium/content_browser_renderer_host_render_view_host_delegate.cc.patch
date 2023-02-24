@@ -1,0 +1,26 @@
+diff -r -u --color up/chromium/content/browser/renderer_host/render_view_host_delegate.cc nw/chromium/content/browser/renderer_host/render_view_host_delegate.cc
+--- up/chromium/content/browser/renderer_host/render_view_host_delegate.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/browser/renderer_host/render_view_host_delegate.cc	2023-02-19 17:36:35.559464277 +0000
+@@ -6,6 +6,10 @@
+ 
+ namespace content {
+ 
++RenderViewHostDelegate::RenderViewHostDelegate()
++  :skip_blocking_parser_(true) {
++}
++
+ RenderViewHostDelegateView* RenderViewHostDelegate::GetDelegateView() {
+   return nullptr;
+ }
+@@ -30,4 +34,11 @@
+   return absl::nullopt;
+ }
+ 
++bool RenderViewHostDelegate::GetSkipBlockingParser() {
++  return skip_blocking_parser_;
++}
++
++void RenderViewHostDelegate::SetSkipBlockingParser(bool value) {
++  skip_blocking_parser_ = value;
++}
+ }  // namespace content

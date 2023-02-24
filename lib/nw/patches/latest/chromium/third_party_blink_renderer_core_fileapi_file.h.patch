@@ -1,0 +1,23 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/fileapi/file.h nw/chromium/third_party/blink/renderer/core/fileapi/file.h
+--- up/chromium/third_party/blink/renderer/core/fileapi/file.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/fileapi/file.h	2023-02-19 17:36:42.487481715 +0000
+@@ -65,6 +65,10 @@
+                       const HeapVector<Member<V8BlobPart>>& file_bits,
+                       const String& file_name,
+                       const FilePropertyBag* options);
++  static File* Create(ExecutionContext*, const String& path, const String& name)
++   {
++     return CreateForUserProvidedFile(path, name);
++   }
+ 
+   // For deserialization.
+   static File* CreateFromSerialization(
+@@ -210,7 +214,7 @@
+     return path_;
+   }
+   const String& name() const { return name_; }
+-
++  const String& path() const { return path_; }
+   // Getter for the lastModified IDL attribute,
+   // http://dev.w3.org/2006/webapi/FileAPI/#file-attrs
+   int64_t lastModified() const;

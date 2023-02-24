@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/chrome/browser/extensions/browser_context_keyed_service_factories.cc nw/chromium/chrome/browser/extensions/browser_context_keyed_service_factories.cc
+--- up/chromium/chrome/browser/extensions/browser_context_keyed_service_factories.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/browser_context_keyed_service_factories.cc	2023-02-19 17:36:27.763444564 +0000
+@@ -7,6 +7,8 @@
+ #include "chrome/browser/extensions/api/api_browser_context_keyed_service_factories.h"
+ #include "chrome/browser/extensions/chrome_browser_context_keyed_service_factories.h"
+ 
++#include "content/nw/src/api/object_manager_factory.h"
++
+ namespace chrome_extensions {
+ 
+ void EnsureBrowserContextKeyedServiceFactoriesBuilt() {

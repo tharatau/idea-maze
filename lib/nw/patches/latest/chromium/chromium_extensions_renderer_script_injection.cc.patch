@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/extensions/renderer/script_injection.cc nw/chromium/extensions/renderer/script_injection.cc
+--- up/chromium/extensions/renderer/script_injection.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/renderer/script_injection.cc	2023-02-19 17:36:36.923467723 +0000
+@@ -326,6 +326,8 @@
+       world_id = blink::kMainDOMWorldId;
+       break;
+   }
++  if (injector_->ShouldExecuteInMainWorld())
++    world_id = blink::kMainDOMWorldId;
+   render_frame_->GetWebFrame()->RequestExecuteScript(
+       world_id, sources, injector_->IsUserGesture(), execution_option,
+       blink::mojom::LoadEventBlockingOption::kBlock,

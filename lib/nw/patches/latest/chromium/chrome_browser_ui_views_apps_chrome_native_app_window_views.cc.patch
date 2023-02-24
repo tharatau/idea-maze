@@ -1,0 +1,148 @@
+diff -r -u --color up/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views.cc nw/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views.cc
+--- up/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views.cc	2023-02-19 17:36:29.507448979 +0000
+@@ -31,14 +31,25 @@
+ #include "ui/views/controls/webview/webview.h"
+ #include "ui/views/widget/widget.h"
+ 
++#if defined(NWJS_SDK)
++#include "base/command_line.h"
++#include "chrome/browser/devtools/devtools_window.h"
++#include "content/nw/src/common/shell_switches.h"
++#endif
++
++#include "ui/display/screen.h"
++
+ using extensions::AppWindow;
+ 
+ namespace {
+ 
+ const AcceleratorMapping kAppWindowAcceleratorMap[] = {
+-  { ui::VKEY_W, ui::EF_CONTROL_DOWN, IDC_CLOSE_WINDOW },
+-  { ui::VKEY_W, ui::EF_SHIFT_DOWN | ui::EF_CONTROL_DOWN, IDC_CLOSE_WINDOW },
++  //  { ui::VKEY_W, ui::EF_CONTROL_DOWN, IDC_CLOSE_WINDOW },
++  //  { ui::VKEY_W, ui::EF_SHIFT_DOWN | ui::EF_CONTROL_DOWN, IDC_CLOSE_WINDOW },
+   { ui::VKEY_F4, ui::EF_ALT_DOWN, IDC_CLOSE_WINDOW },
++#if defined(NWJS_SDK)
++  { ui::VKEY_F12, ui::EF_NONE, IDC_DEV_TOOLS_TOGGLE },
++#endif
+ };
+ 
+ // These accelerators will only be available in kiosk mode. These allow the
+@@ -103,6 +114,10 @@
+     views::Widget* widget) {
+ }
+ 
++bool ChromeNativeAppWindowViews::NWCanClose(bool user_force) const {
++  return app_window()->NWCanClose(user_force);
++}
++
+ void ChromeNativeAppWindowViews::InitializeDefaultWindow(
+     const AppWindow::CreateParams& create_params) {
+   views::Widget::InitParams init_params(views::Widget::InitParams::TYPE_WINDOW);
+@@ -136,6 +151,15 @@
+       init_param_bounds.IsEmpty()
+           ? create_params.GetInitialWindowBounds(frame_insets)
+           : init_param_bounds;
++#if defined(OS_LINUX)
++  if (create_params.GetContentMinimumSize(frame_insets).IsEmpty() &&
++      create_params.GetContentMaximumSize(frame_insets).IsEmpty() &&
++      !create_params.resizable) { //NWJS#6592
++    gfx::Size size(create_params.content_spec.bounds.width(),
++                   create_params.content_spec.bounds.height());
++    SetContentSizeConstraints(size, size);
++  } else
++#endif
+   SetContentSizeConstraints(create_params.GetContentMinimumSize(frame_insets),
+                             create_params.GetContentMaximumSize(frame_insets));
+   if (!window_bounds.IsEmpty()) {
+@@ -143,6 +167,11 @@
+     bool position_specified =
+         window_bounds.x() != BoundsSpecification::kUnspecifiedPosition &&
+         window_bounds.y() != BoundsSpecification::kUnspecifiedPosition;
++    if (create_params.position == AppWindow::POS_MOUSE) {
++      gfx::Point cursor_pos(display::Screen::GetScreen()->GetCursorScreenPoint());
++      window_bounds.set_origin(cursor_pos);
++      widget()->SetBounds(window_bounds);
++    } else {
+     if (!position_specified) {
+ #if BUILDFLAG(IS_MAC)
+       // On Mac, this will call NativeWidgetMac's CenterWindow() which relies
+@@ -158,6 +187,15 @@
+     } else {
+       widget()->SetBounds(window_bounds);
+     }
++    }
++  } else {
++    if (create_params.position == AppWindow::POS_CENTER)
++      widget()->CenterWindow(gfx::Size(640, 480));
++    else if (create_params.position == extensions::AppWindow::POS_MOUSE) {
++      gfx::Point cursor_pos(display::Screen::GetScreen()->GetCursorScreenPoint());
++      gfx::Rect bounds(cursor_pos, gfx::Size(640, 480));
++      widget()->SetBounds(bounds);
++    }
+   }
+ 
+ #if BUILDFLAG(IS_CHROMEOS_ASH)
+@@ -229,6 +267,9 @@
+ // views::WidgetDelegate implementation.
+ 
+ ui::ImageModel ChromeNativeAppWindowViews::GetWindowAppIcon() {
++  gfx::Image icon_override = app_window()->icon_override();
++  if (!icon_override.IsEmpty())
++    return ui::ImageModel::FromImageSkia(*icon_override.ToImageSkia());
+   // Resulting icon is cached in aura::client::kAppIconKey window property.
+   const gfx::Image& custom_image = GetCustomImage();
+   if (app_window()->app_icon_url().is_valid() &&
+@@ -262,6 +303,9 @@
+ }
+ 
+ ui::ImageModel ChromeNativeAppWindowViews::GetWindowIcon() {
++  gfx::Image icon_override = app_window()->icon_override();
++  if (!icon_override.IsEmpty())
++    return ui::ImageModel::FromImageSkia(*icon_override.ToImageSkia());
+   // Resulting icon is cached in aura::client::kWindowIconKey window property.
+   content::WebContents* web_contents = app_window()->web_contents();
+   if (web_contents) {
+@@ -295,6 +339,14 @@
+   auto iter = accelerator_table.find(accelerator);
+   DCHECK(iter != accelerator_table.end());
+   int command_id = iter->second;
++#if defined(NWJS_SDK)
++  content::WebContents* web_contents;
++  bool enable_devtools = true;
++  const base::CommandLine* command_line =
++      base::CommandLine::ForCurrentProcess();
++  if (command_line->HasSwitch(switches::kDisableDevTools))
++    enable_devtools = false;
++#endif
+   switch (command_id) {
+     case IDC_CLOSE_WINDOW:
+       Close();
+@@ -310,7 +362,25 @@
+     case IDC_ZOOM_PLUS:
+       zoom::PageZoom::Zoom(web_view()->GetWebContents(), content::PAGE_ZOOM_IN);
+       return true;
+-    default:
++#if defined(NWJS_SDK)
++    case IDC_DEV_TOOLS:
++      if (!enable_devtools)
++        return true;
++      web_contents = app_window()->web_contents();
++      if (web_contents) {
++        DevToolsWindow::OpenDevToolsWindow(web_contents);
++      }
++      return true;
++    case IDC_DEV_TOOLS_TOGGLE:
++      if (!enable_devtools)
++        return true;
++      web_contents = app_window()->web_contents();
++      if (web_contents) {
++        DevToolsWindow::OpenDevToolsWindow(web_contents, DevToolsToggleAction::Toggle());
++      }
++      return true;
++#endif
++  default:
+       NOTREACHED() << "Unknown accelerator sent to app window.";
+   }
+   return NativeAppWindowViews::AcceleratorPressed(accelerator);

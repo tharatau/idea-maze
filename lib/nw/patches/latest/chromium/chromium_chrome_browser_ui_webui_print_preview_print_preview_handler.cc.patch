@@ -1,0 +1,182 @@
+diff -r -u --color up/chromium/chrome/browser/ui/webui/print_preview/print_preview_handler.cc nw/chromium/chrome/browser/ui/webui/print_preview/print_preview_handler.cc
+--- up/chromium/chrome/browser/ui/webui/print_preview/print_preview_handler.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/webui/print_preview/print_preview_handler.cc	2023-02-19 17:36:29.767449637 +0000
+@@ -4,6 +4,8 @@
+ 
+ #include "chrome/browser/ui/webui/print_preview/print_preview_handler.h"
+ 
++#include "base/no_destructor.h"
++#include "base/json/json_writer.h"
+ #include <ctype.h>
+ #include <stddef.h>
+ 
+@@ -86,6 +88,15 @@
+ using content::RenderFrameHost;
+ using content::WebContents;
+ 
++namespace {
++static base::NoDestructor<std::string> g_nw_printer_name;
++static base::NoDestructor<base::FilePath> g_nw_print_to_pdf_path;
++static base::NoDestructor<base::Value> g_nw_print_options;
++
++bool g_nw_custom_printing = false;
++
++}
++
+ namespace printing {
+ 
+ namespace {
+@@ -390,7 +401,38 @@
+ #endif  // BUILDFLAG(IS_CHROMEOS)
+ 
+ }  // namespace
++} // namespace printing
++
++namespace chrome {
++void NWPrintSetCustomPrinting(bool value) {
++  g_nw_custom_printing = value;
++}
+ 
++bool NWPrintGetCustomPrinting() {
++  return g_nw_custom_printing;
++}
++
++void NWPrintSetOptions(const base::DictionaryValue* dict, WebContents* web_contents) {
++  *g_nw_print_options = dict->Clone();
++  absl::optional<bool> silent_printing = (*g_nw_print_options).FindBoolKey("silent");
++  if (silent_printing && web_contents)
++    web_contents->set_silent_printing(*silent_printing);
++}
++
++void NWPrintSetPDFPath(const base::FilePath& path) {
++  *g_nw_print_to_pdf_path = path;
++}
++
++const base::FilePath& NWPrintGetPDFPath() {
++  return *g_nw_print_to_pdf_path;
++}
++
++void NWPrintSetDefaultPrinter(const std::string& printer_name) {
++  *g_nw_printer_name = printer_name;
++}
++}
++
++namespace printing {
+ PrintPreviewHandler::PrintPreviewHandler() {
+ #if BUILDFLAG(IS_CHROMEOS_ASH)
+   DCHECK(crosapi::CrosapiManager::IsInitialized());
+@@ -681,6 +723,40 @@
+   absl::optional<bool> display_header_footer_opt =
+       settings.FindBool(kSettingHeaderFooterEnabled);
+   DCHECK(display_header_footer_opt);
++  std::string footer_string, header_string;
++  base::Value::Dict* dict = (*g_nw_print_options).GetIfDict();
++  if (dict) {
++    base::Value::Dict* media_size_value = dict->FindDict(printing::kSettingMediaSize);
++    base::Value::Dict* custom_margins = dict->FindDict(printing::kSettingMarginsCustom);
++    absl::optional<bool> display_header_footer;
++
++    if (media_size_value && media_size_value->empty())
++      settings.Set(printing::kSettingMediaSize, media_size_value->Clone());
++    display_header_footer = (*g_nw_print_options).FindBoolKey(printing::kSettingHeaderFooterEnabled);
++    if (display_header_footer)
++      settings.Set(printing::kSettingHeaderFooterEnabled, *display_header_footer);
++    absl::optional<bool> landscape = (*g_nw_print_options).FindBoolKey(printing::kSettingLandscape);
++    if (landscape)
++      settings.Set(printing::kSettingLandscape, *landscape);
++    absl::optional<bool> backgrounds = (*g_nw_print_options).FindBoolKey(printing::kSettingShouldPrintBackgrounds);
++    if (backgrounds)
++      settings.Set(printing::kSettingShouldPrintBackgrounds, *backgrounds);
++    absl::optional<int> margins_type = dict->FindInt(printing::kSettingMarginsType);
++    if (margins_type)
++      settings.Set(printing::kSettingMarginsType, *margins_type);
++    if (custom_margins && !custom_margins->empty())
++      settings.Set(printing::kSettingMarginsCustom, custom_margins->Clone());
++    absl::optional<int> scale = dict->FindInt(printing::kSettingScaleFactor);
++    if (scale)
++      settings.Set(printing::kSettingScaleFactor, *scale);
++    std::string* str = dict->FindString("footerString");
++    if (str)
++      footer_string = *str;
++    str = dict->FindString("headerString");
++    if (str)
++      header_string = *str;
++  }
++
+   if (display_header_footer_opt.value_or(false)) {
+     settings.Set(kSettingHeaderFooterTitle, initiator->GetTitle());
+ 
+@@ -688,9 +764,14 @@
+     url_sanitizer.ClearUsername();
+     url_sanitizer.ClearPassword();
+     const GURL& initiator_url = initiator->GetLastCommittedURL();
++    if (footer_string.empty())
+     settings.Set(kSettingHeaderFooterURL,
+                  url_formatter::FormatUrl(
+                      initiator_url.ReplaceComponents(url_sanitizer)));
++    else
++      settings.Set(printing::kSettingHeaderFooterURL, footer_string);
++    if (!header_string.empty())
++      settings.Set(printing::kSettingHeaderFooterTitle, header_string);
+   }
+ 
+   VLOG(1) << "Print preview request start";
+@@ -711,10 +792,27 @@
+   const std::string& callback_id = args[0].GetString();
+   CHECK(!callback_id.empty());
+   CHECK(args[1].is_string());
+-  const std::string& json_str = args[1].GetString();
++  std::string json_str = args[1].GetString();
+ 
+   base::Value::Dict settings = GetSettingsDictionary(json_str);
+   const UserActionBuckets user_action = DetermineUserAction(settings);
++  base::Value::Dict* dict = (*g_nw_print_options).GetIfDict();
++  if (dict) {
++    base::Value::List* page_range_array = dict->FindList(printing::kSettingPageRange);
++    bool changed = false;
++
++    if (page_range_array && !page_range_array->empty()) {
++      changed = true;
++      settings.Set(printing::kSettingPageRange, page_range_array->Clone());
++    }
++    absl::optional<int> copies = dict->FindInt(printing::kSettingCopies);
++    if (copies) {
++      changed = true;
++      settings.Set(printing::kSettingCopies, *copies);
++    }
++    if (changed)
++      base::JSONWriter::Write(settings, &json_str);
++  }
+ 
+   int page_count = settings.FindInt(kSettingPreviewPageCount).value_or(-1);
+   if (page_count <= 0) {
+@@ -752,6 +850,7 @@
+                       std::move(settings), data,
+                       base::BindOnce(&PrintPreviewHandler::OnPrintResult,
+                                      weak_factory_.GetWeakPtr(), callback_id));
++  chrome::NWPrintSetCustomPrinting(false);
+ }
+ 
+ void PrintPreviewHandler::HandleHidePreview(const base::Value::List& /*args*/) {
+@@ -880,7 +979,7 @@
+   bool source_is_arc = false;
+ #endif
+   initial_settings.Set(kSettingPreviewIsFromArc, source_is_arc);
+-  initial_settings.Set(kSettingPrinterName, default_printer);
++  initial_settings.Set(kSettingPrinterName, (*g_nw_printer_name).empty() ? default_printer : *g_nw_printer_name);
+   initial_settings.Set(kDocumentHasSelection,
+                        print_preview_ui()->source_has_selection());
+   initial_settings.Set(kSettingShouldPrintSelectionOnly,
+@@ -909,8 +1008,11 @@
+ 
+   base::CommandLine* cmdline = base::CommandLine::ForCurrentProcess();
+   initial_settings.Set(kIsInKioskAutoPrintMode,
+-                       cmdline->HasSwitch(switches::kKioskModePrinting));
++                       cmdline->HasSwitch(switches::kKioskModePrinting) || g_nw_custom_printing);
+   initial_settings.Set(kIsInAppKioskMode, chrome::IsRunningInForcedAppMode());
++  initial_settings.Set("nwPrintMode", g_nw_custom_printing);
++  if (g_nw_custom_printing || !(*g_nw_printer_name).empty())
++    initial_settings.Set(kAppState, base::Value());
+   const std::string rules_str =
+       prefs->GetString(prefs::kPrintPreviewDefaultDestinationSelectionRules);
+   if (rules_str.empty()) {

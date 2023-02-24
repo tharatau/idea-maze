@@ -1,0 +1,193 @@
+diff -r -u --color up/chromium/content/browser/renderer_host/render_frame_host_impl.cc nw/chromium/content/browser/renderer_host/render_frame_host_impl.cc
+--- up/chromium/content/browser/renderer_host/render_frame_host_impl.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/browser/renderer_host/render_frame_host_impl.cc	2023-02-19 17:36:35.547464247 +0000
+@@ -1,6 +1,7 @@
+ // Copyright 2013 The Chromium Authors
+ // Use of this source code is governed by a BSD-style license that can be
+ // found in the LICENSE file.
++#pragma clang diagnostic ignored "-Wunreachable-code"
+ 
+ #include "content/browser/renderer_host/render_frame_host_impl.h"
+ 
+@@ -1434,6 +1435,14 @@
+   GetCodeCacheHostReceiverHandler() = handler;
+ }
+ 
++void RenderFrameHostImpl::SetNodeJS(bool node) {
++  nodejs_ = node;
++}
++
++void RenderFrameHostImpl::SetContextCreated(bool created) {
++  context_created_ = created;
++}
++
+ RenderFrameHostImpl::RenderFrameHostImpl(
+     SiteInstance* site_instance,
+     scoped_refptr<RenderViewHostImpl> render_view_host,
+@@ -1465,6 +1474,8 @@
+       depth_(parent_ ? parent_->GetFrameDepth() + 1 : 0),
+       last_committed_site_info_(site_instance_->GetBrowserContext()),
+       routing_id_(routing_id),
++      nodejs_(false),
++      context_created_(false),
+       beforeunload_timeout_delay_(RenderViewHostImpl::kUnloadTimeout),
+       frame_(std::move(frame_remote)),
+       waiting_for_init_(renderer_initiated_creation_of_main_frame),
+@@ -1781,6 +1792,14 @@
+   TRACE_EVENT_END("navigation", perfetto::Track::FromPointer(this));
+ }
+ 
++bool RenderFrameHostImpl::nodejs() {
++  return nodejs_;
++}
++
++bool RenderFrameHostImpl::context_created() {
++  return context_created_;
++}
++
+ int RenderFrameHostImpl::GetRoutingID() const {
+   return routing_id_;
+ }
+@@ -3833,7 +3852,8 @@
+ 
+ const url::Origin& RenderFrameHostImpl::ComputeTopFrameOrigin(
+     const url::Origin& frame_origin) const {
+-  if (is_main_frame()) {
++  if (is_main_frame()
++      || frame_tree_node_->frame_owner_properties().nwfaketop) {
+     return frame_origin;
+   }
+ 
+@@ -3865,8 +3885,9 @@
+     bool is_credentialless,
+     absl::optional<base::UnguessableToken> fenced_frame_nonce_for_navigation) {
+   net::IsolationInfo::RequestType request_type =
+-      is_main_frame() ? net::IsolationInfo::RequestType::kMainFrame
+-                      : net::IsolationInfo::RequestType::kSubFrame;
++    (is_main_frame() || frame_tree_node_->frame_owner_properties().nwfaketop)
++          ? net::IsolationInfo::RequestType::kMainFrame
++          : net::IsolationInfo::RequestType::kSubFrame;
+   return ComputeIsolationInfoInternal(url::Origin::Create(destination),
+                                       request_type, is_credentialless,
+                                       fenced_frame_nonce_for_navigation);
+@@ -3892,6 +3913,8 @@
+     bool is_credentialless,
+     absl::optional<base::UnguessableToken> fenced_frame_nonce_for_navigation) {
+   url::Origin top_frame_origin = ComputeTopFrameOrigin(frame_origin);
++  if (frame_tree_node_->frame_owner_properties().nwfaketop)
++    top_frame_origin = frame_tree_node_->current_frame_host()->GetLastCommittedOrigin();
+   net::SchemefulSite top_frame_site = net::SchemefulSite(top_frame_origin);
+ 
+   net::SiteForCookies candidate_site_for_cookies(top_frame_site);
+@@ -3913,6 +3936,8 @@
+     initial_rfh = this->parent_;
+ 
+   for (const RenderFrameHostImpl* rfh = initial_rfh; rfh; rfh = rfh->parent_) {
++    if (rfh->frame_tree_node_->frame_owner_properties().nwfaketop)
++      break;
+     const url::Origin& cur_origin =
+         rfh == this ? frame_origin : rfh->last_committed_origin_;
+     net::SchemefulSite cur_site = net::SchemefulSite(cur_origin);
+@@ -5342,9 +5367,11 @@
+     WindowOpenDisposition disposition,
+     blink::mojom::WindowFeaturesPtr window_features,
+     bool user_gesture,
++    const std::u16string& in_manifest,
+     ShowCreatedWindowCallback callback) {
+   // This needs to be sent to the opener frame's delegate since it stores
+   // the handle to this class's associated RenderWidgetHostView.
++  std::string manifest = base::UTF16ToUTF8(in_manifest);
+   RenderFrameHostImpl* opener_frame_host =
+       FromFrameToken(GetProcess()->GetID(), opener_frame_token);
+ 
+@@ -5358,7 +5385,7 @@
+   }
+   opener_frame_host->delegate()->ShowCreatedWindow(
+       opener_frame_host, GetRenderWidgetHost()->GetRoutingID(), disposition,
+-      *window_features, user_gesture);
++      *window_features, user_gesture, manifest);
+   std::move(callback).Run();
+ }
+ 
+@@ -5584,7 +5611,7 @@
+ 
+ void RenderFrameHostImpl::AllowBindings(int bindings_flags) {
+   // Never grant any bindings to browser plugin guests.
+-  if (GetProcess()->IsForGuestsOnly()) {
++  if (false && GetProcess()->IsForGuestsOnly()) {
+     NOTREACHED() << "Never grant bindings to a guest process.";
+     return;
+   }
+@@ -5672,6 +5699,8 @@
+ 
+ bool RenderFrameHostImpl::IsFeatureEnabled(
+     blink::mojom::PermissionsPolicyFeature feature) {
++  if (nodejs_)
++    return true; //NWJS#6696
+   return permissions_policy_ && permissions_policy_->IsFeatureEnabledForOrigin(
+                                     feature, GetLastCommittedOrigin());
+ }
+@@ -6156,8 +6185,10 @@
+ 
+   // All frames are allowed to navigate the global history.
+   if (delegate_->IsAllowedToGoToEntryAtOffset(offset)) {
++    frame_tree_->controller().set_history_initiator(this);
+     frame_tree_->controller().GoToOffsetFromRenderer(
+         offset, this, soft_navigation_heuristic_task_id);
++    frame_tree_->controller().set_history_initiator(nullptr);
+   }
+ }
+ 
+@@ -6486,10 +6517,10 @@
+   // CanEnterFullscreenWithoutUserActivation is only ever true in tests, to
+   // allow fullscreen when mocking screen orientation changes.
+   if (!delegate_->HasSeenRecentScreenOrientationChange() &&
+-      !WindowManagementAllowsFullscreen() && !HasSeenRecentXrOverlaySetup() &&
++      !WindowManagementAllowsFullscreen() && !HasSeenRecentXrOverlaySetup() && (!nodejs_ &&
+       !GetContentClient()
+            ->browser()
+-           ->CanEnterFullscreenWithoutUserActivation()) {
++           ->CanEnterFullscreenWithoutUserActivation())) {
+     // Consume any transient user activation and delegated fullscreen token.
+     // Reject requests made without transient user activation or a token.
+     // TODO(lanwei): Investigate whether we can terminate the renderer when
+@@ -9028,11 +9059,19 @@
+     subresource_loader_factories->pending_default_factory() =
+         std::move(pending_default_factory);
+ 
++    bool can_load_file_subresource = false;
++    WebContents* web_contents = WebContents::FromRenderFrameHost(this);
++    if (web_contents) {
++      auto* delegate = web_contents->GetDelegate();
++      if (delegate && delegate->CanLoadFileSubresource(common_params->url))
++        can_load_file_subresource = true;
++    }
++
+     // Only documents from a file precursor scheme can load file subresoruces.
+     //
+     // For loading Web Bundle files, we don't set FileURLLoaderFactory.
+     // Because loading local files from a Web Bundle file is prohibited.
+-    if (effective_scheme == url::kFileScheme && !navigation_to_web_bundle) {
++    if (can_load_file_subresource || (effective_scheme == url::kFileScheme && !navigation_to_web_bundle)) {
+       // USER_BLOCKING because this scenario is exactly one of the examples
+       // given by the doc comment for USER_BLOCKING: Loading and rendering a web
+       // page after the user clicks a link.
+@@ -9409,7 +9448,7 @@
+   }
+ 
+   // It is not expected for GuestView to be able to navigate to WebUI.
+-  DCHECK(!GetProcess()->IsForGuestsOnly());
++  //DCHECK(!GetProcess()->IsForGuestsOnly());
+ 
+   web_ui_type_ = new_web_ui_type;
+ 
+@@ -11164,7 +11203,8 @@
+   // Commits in the error page process must only be failures, otherwise
+   // successful navigations could commit documents from origins different
+   // than the chrome-error://chromewebdata/ one and violate expectations.
+-  if (should_commit_error_page &&
++  // NWJS: different process model where the pages are in the same process
++  if (false && should_commit_error_page &&
+       (navigation_request && !navigation_request->DidEncounterError())) {
+     DEBUG_ALIAS_FOR_ORIGIN(origin_debug_alias, params->origin);
+     bad_message::ReceivedBadMessage(

@@ -1,0 +1,147 @@
+diff -r -u --color up/chromium/chrome/test/BUILD.gn nw/chromium/chrome/test/BUILD.gn
+--- up/chromium/chrome/test/BUILD.gn	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/test/BUILD.gn	2023-02-19 17:36:30.179450680 +0000
+@@ -230,7 +230,7 @@
+     "//chrome:strings",
+     "//chrome/browser:browser_process",
+     "//chrome/browser:test_support",
+-    "//chrome/browser/safe_browsing",
++    #"//chrome/browser/safe_browsing",
+     "//chrome/child",
+     "//chrome/common:non_code_constants",
+     "//chrome/common:test_support",
+@@ -1299,8 +1299,8 @@
+       "//chrome/browser/sharing/proto",
+       "//chrome/browser/ui/color:color_headers",
+       "//chrome/browser/ui/tabs:tab_enums",
+-      "//chrome/browser/ui/web_applications:browser_tests",
+-      "//chrome/browser/web_applications:browser_tests",
++      #"//chrome/browser/ui/web_applications:browser_tests",
++      #"//chrome/browser/web_applications:browser_tests",
+       "//chrome/browser/web_applications:web_applications_test_support",
+       "//chrome/browser/web_applications/extensions",
+       "//chrome/browser/webaudio:browser_tests",
+@@ -1435,10 +1435,10 @@
+       "//components/resources",
+       "//components/safe_browsing:buildflags",
+       "//components/safe_browsing/content/browser",
+-      "//components/safe_browsing/content/browser:client_side_detection",
+-      "//components/safe_browsing/content/browser:safe_browsing_service",
+-      "//components/safe_browsing/content/browser/password_protection",
+-      "//components/safe_browsing/content/browser/password_protection:test_support",
++      #"//components/safe_browsing/content/browser:client_side_detection",
++      #"//components/safe_browsing/content/browser:safe_browsing_service",
++      #"//components/safe_browsing/content/browser/password_protection",
++      #"//components/safe_browsing/content/browser/password_protection:test_support",
+       "//components/safe_browsing/content/browser/web_ui",
+       "//components/safe_browsing/content/common:interfaces",
+       "//components/safe_browsing/content/common:interfaces_shared_cpp_sources",
+@@ -1523,7 +1523,7 @@
+       "//courgette:courgette_lib",
+       "//crypto:test_support",
+       "//device/bluetooth:mocks",
+-      "//device/fido:cablev2_test_util",
++      #"//device/fido:cablev2_test_util",
+       "//device/fido:test_support",
+       "//google_apis:test_support",
+       "//media:media_buildflags",
+@@ -2440,8 +2440,8 @@
+       ]
+ 
+       deps += [
+-        "//chrome/browser/ui/web_applications:app_service_browser_tests",
+-        "//chrome/browser/web_applications:app_service_browser_tests",
++        #"//chrome/browser/ui/web_applications:app_service_browser_tests",
++        #"//chrome/browser/web_applications:app_service_browser_tests",
+       ]
+     }
+ 
+@@ -3342,7 +3342,7 @@
+         # TODO(rockot) bug 505926: The chrome_extensions_browsertests_sources
+         # target should be deleted and this line removed. See the
+         # chrome_extensions_browsertests_sources target for more.
+-        "//extensions:chrome_extensions_browsertests_sources",
++        #"//extensions:chrome_extensions_browsertests_sources",
+         "//extensions/browser:test_support",
+         "//extensions/common:mojom",
+         "//extensions/common/api",
+@@ -4759,6 +4759,26 @@
+     }
+ 
+     sources += metric_integration_sources
++
++    sources = []
++    sources = [ 
++      "../../content/nw/src/nwjs_browsertest.cc",
++      "../browser/ui/test/test_browser_dialog.cc",
++      "../browser/ui/test/test_browser_dialog.h",
++      "../browser/ui/test/test_browser_ui.cc",
++      "../browser/ui/test/test_browser_ui.h",
++      "../browser/extensions/extension_apitest.cc",
++      "../browser/extensions/extension_browsertest.cc",
++      "../browser/extensions/extension_function_test_utils.cc",
++      "../browser/extensions/extension_function_test_utils.h",
++      "../browser/apps/platform_apps/app_browsertest_util.cc",
++      "../browser/apps/platform_apps/app_browsertest_util.h",
++      "../browser/pdf/pdf_extension_test.cc",
++      "../browser/renderer_context_menu/render_view_context_menu_browsertest_util.cc",
++      "../browser/renderer_context_menu/render_view_context_menu_browsertest_util.h",
++      "../browser/extensions/browsertest_util.cc",
++      "../browser/extensions/browsertest_util.h",
++    ]
+   }
+ }
+ 
+@@ -4938,8 +4958,8 @@
+       "//chrome/browser/chromeos/extensions/vpn_provider",
+       "//chrome/browser/chromeos/extensions/wm",
+       "//chrome/browser/metrics/structured",
+-      "//chrome/browser/ui/web_applications:app_service_browser_tests",
+-      "//chrome/browser/web_applications:app_service_browser_tests",
++      #"//chrome/browser/ui/web_applications:app_service_browser_tests",
++      #"//chrome/browser/web_applications:app_service_browser_tests",
+       "//chrome/browser/web_applications:web_applications_test_support",
+       "//chromeos/crosapi/cpp:cpp",
+       "//chromeos/crosapi/mojom",
+@@ -6041,7 +6061,7 @@
+     "//components/resources",
+     "//components/safe_browsing:buildflags",
+     "//components/safe_browsing/content/browser",
+-    "//components/safe_browsing/content/browser:client_side_detection",
++    #"//components/safe_browsing/content/browser:client_side_detection",
+     "//components/safe_browsing/content/browser/password_protection",
+     "//components/safe_browsing/content/browser/password_protection:mock_password_protection",
+     "//components/safe_browsing/content/browser/web_ui",
+@@ -6357,13 +6377,13 @@
+       "//chrome/browser/renderer_host:history_swiper",
+       "//chrome/browser/updater:browser_updater_client",
+       "//chrome/common/notifications",
+-      "//chrome/common/safe_browsing:archive_analyzer_results",
+-      "//chrome/common/safe_browsing:disk_image_type_sniffer_mac",
++      #"//chrome/common/safe_browsing:archive_analyzer_results",
++      #"//chrome/common/safe_browsing:disk_image_type_sniffer_mac",
+       "//chrome/services/mac_notifications:unit_tests",
+       "//chrome/services/mac_notifications/public/mojom",
+       "//chrome/updater:browser_sources",
+-      "//chrome/utility/safe_browsing/mac",
+-      "//chrome/utility/safe_browsing/mac:dmg_common",
++      #"//chrome/utility/safe_browsing/mac",
++      #"//chrome/utility/safe_browsing/mac:dmg_common",
+       "//components/power_metrics",
+ 
+       # The test fetches resources which means Mac need the app bundle to exist
+@@ -9191,10 +9211,10 @@
+       "../browser/ui/views/autofill/payments/offer_notification_bubble_views_test_base.h",
+       "../browser/ui/views/tabs/tab_hover_card_test_util.cc",
+       "../browser/ui/views/tabs/tab_hover_card_test_util.h",
+-      "../browser/ui/views/web_apps/web_app_integration_test_driver.cc",
+-      "../browser/ui/views/web_apps/web_app_integration_test_driver.h",
+-      "../browser/ui/web_applications/test/web_app_navigation_browsertest.cc",
+-      "../browser/ui/web_applications/test/web_app_navigation_browsertest.h",
++      #"../browser/ui/views/web_apps/web_app_integration_test_driver.cc",
++      #"../browser/ui/views/web_apps/web_app_integration_test_driver.h",
++      #"../browser/ui/web_applications/test/web_app_navigation_browsertest.cc",
++      #"../browser/ui/web_applications/test/web_app_navigation_browsertest.h",
+       "../browser/ui/webui/signin/login_ui_test_utils.cc",
+       "../browser/ui/webui/signin/login_ui_test_utils.h",
+       "../browser/web_applications/test/profile_test_helper.cc",

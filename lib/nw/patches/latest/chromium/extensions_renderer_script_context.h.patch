@@ -1,0 +1,14 @@
+diff -r -u --color up/chromium/extensions/renderer/script_context.h nw/chromium/extensions/renderer/script_context.h
+--- up/chromium/extensions/renderer/script_context.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/renderer/script_context.h	2023-02-19 17:36:36.919467713 +0000
+@@ -335,6 +335,10 @@
+   int32_t id_counter = 1;
+ 
+   base::ThreadChecker thread_checker_;
++
++ public:
++  base::WeakPtrFactory<ScriptContext> weak_factory_;
++
+ };
+ 
+ }  // namespace extensions

@@ -1,0 +1,16 @@
+diff -r -u --color up/chromium/chrome/browser/apps/platform_apps/app_window_registry_util.h nw/chromium/chrome/browser/apps/platform_apps/app_window_registry_util.h
+--- up/chromium/chrome/browser/apps/platform_apps/app_window_registry_util.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/apps/platform_apps/app_window_registry_util.h	2023-02-19 17:36:26.935442468 +0000
+@@ -21,10 +21,10 @@
+   // Returns true if the number of visible app windows registered across all
+   // browser contexts is non-zero. |window_type_mask| is a bitwise OR filter of
+   // AppWindow::WindowType, or 0 for any window type.
+-  static bool IsAppWindowVisibleInAnyProfile(int window_type_mask);
++  static bool IsAppWindowVisibleInAnyProfile(int window_type_mask, bool check_visible = true);
+ 
+   // Close all app windows in all profiles.
+-  static void CloseAllAppWindows();
++  static bool CloseAllAppWindows(bool user_force = false);
+ };
+ 
+ #endif  // CHROME_BROWSER_APPS_PLATFORM_APPS_APP_WINDOW_REGISTRY_UTIL_H_

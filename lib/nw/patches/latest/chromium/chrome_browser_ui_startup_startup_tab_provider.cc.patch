@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/chrome/browser/ui/startup/startup_tab_provider.cc nw/chromium/chrome/browser/ui/startup/startup_tab_provider.cc
+--- up/chromium/chrome/browser/ui/startup/startup_tab_provider.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/startup/startup_tab_provider.cc	2023-02-19 17:36:29.475448898 +0000
+@@ -98,7 +98,7 @@
+   const GURL reset_settings_url =
+       settings_url.Resolve(chrome::kResetProfileSettingsSubPage);
+   url_points_to_an_approved_settings_page = url == reset_settings_url;
+-#if BUILDFLAG(IS_WIN)
++#if 0 //BUILDFLAG(IS_WIN)
+   // On Windows, also allow a hash for the Chrome Cleanup Tool.
+   const GURL reset_settings_url_with_cct_hash = reset_settings_url.Resolve(
+       std::string("#") + settings::ResetSettingsHandler::kCctResetSettingsHash);

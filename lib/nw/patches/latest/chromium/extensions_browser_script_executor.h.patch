@@ -1,0 +1,24 @@
+diff -r -u --color up/chromium/extensions/browser/script_executor.h nw/chromium/extensions/browser/script_executor.h
+--- up/chromium/extensions/browser/script_executor.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/browser/script_executor.h	2023-02-19 17:36:36.847467531 +0000
+@@ -65,6 +65,12 @@
+     MATCH_ABOUT_BLANK,
+   };
+ 
++  // The type of world to inject into (main world, or its own isolated world).
++  enum WorldType {
++    MAIN_WORLD,
++    ISOLATED_WORLD,
++  };
++
+   // The type of process the target is.
+   enum ProcessType {
+     DEFAULT_PROCESS,
+@@ -127,6 +133,7 @@
+                      const std::set<int>& frame_ids,
+                      MatchAboutBlank match_about_blank,
+                      mojom::RunLocation run_at,
++                     WorldType world_type,
+                      ProcessType process_type,
+                      const GURL& webview_src,
+                      ScriptFinishedCallback callback);

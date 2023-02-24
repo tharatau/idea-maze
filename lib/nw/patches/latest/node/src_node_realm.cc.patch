@@ -1,0 +1,23 @@
+diff -r -u --color up/node/src/node_realm.cc nw/node/src/node_realm.cc
+--- up/node/src/node_realm.cc	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/src/node_realm.cc	2023-02-19 17:37:33.299599287 +0000
+@@ -21,8 +21,8 @@
+ 
+ Realm::Realm(Environment* env,
+              v8::Local<v8::Context> context,
+-             const RealmSerializeInfo* realm_info)
+-    : env_(env), isolate_(context->GetIsolate()) {
++             const RealmSerializeInfo* realm_info, bool nwjs)
++    : nwjs_(nwjs), env_(env), isolate_(context->GetIsolate()) {
+   context_.Reset(isolate_, context);
+ 
+   // Create properties if not deserializing from snapshot.
+@@ -95,7 +95,7 @@
+   // process. Distinguish them and create process object only in the principal
+   // realm.
+   Local<Object> process_object =
+-      node::CreateProcessObject(this).FromMaybe(Local<Object>());
++      node::CreateProcessObject(this, nwjs_).FromMaybe(Local<Object>());
+   set_process_object(process_object);
+ }
+ 

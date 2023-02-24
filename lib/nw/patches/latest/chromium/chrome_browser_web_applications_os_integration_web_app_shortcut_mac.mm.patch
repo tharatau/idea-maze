@@ -1,0 +1,18 @@
+diff -r -u --color up/chromium/chrome/browser/web_applications/os_integration/web_app_shortcut_mac.mm nw/chromium/chrome/browser/web_applications/os_integration/web_app_shortcut_mac.mm
+--- up/chromium/chrome/browser/web_applications/os_integration/web_app_shortcut_mac.mm	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/web_applications/os_integration/web_app_shortcut_mac.mm	2023-02-19 17:36:29.903449981 +0000
+@@ -215,11 +215,14 @@
+ }
+ 
+ bool AppShimCreationDisabledForTest() {
++  return true;
++#if 0
+   // Disable app shims in tests if the shortcut folder is not set.
+   // Because shims created in ~/Applications will not be cleaned up.
+   return base::CommandLine::ForCurrentProcess()->HasSwitch(
+              switches::kTestType) &&
+          !GetShortcutOverrideForTesting();
++#endif
+ }
+ 
+ bool AppShimRevealDisabledForTest() {

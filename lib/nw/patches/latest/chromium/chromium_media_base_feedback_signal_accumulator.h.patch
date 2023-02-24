@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/media/base/feedback_signal_accumulator.h nw/chromium/media/base/feedback_signal_accumulator.h
+--- up/chromium/media/base/feedback_signal_accumulator.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/media/base/feedback_signal_accumulator.h	2023-02-19 17:36:38.843472574 +0000
+@@ -10,6 +10,7 @@
+ #include <ostream>
+ 
+ #include "base/time/time.h"
++#include <algorithm>
+ 
+ namespace media {
+ 

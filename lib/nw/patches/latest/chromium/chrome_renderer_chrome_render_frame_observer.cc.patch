@@ -1,0 +1,53 @@
+diff -r -u --color up/chromium/chrome/renderer/chrome_render_frame_observer.cc nw/chromium/chrome/renderer/chrome_render_frame_observer.cc
+--- up/chromium/chrome/renderer/chrome_render_frame_observer.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/renderer/chrome_render_frame_observer.cc	2023-02-19 17:36:30.131450558 +0000
+@@ -195,11 +195,12 @@
+ #if BUILDFLAG(SAFE_BROWSING_AVAILABLE)
+   SetClientSidePhishingDetection();
+ #endif
+-
++#if 0
+   if (!translate::IsSubFrameTranslationEnabled()) {
+     translate_agent_ = new translate::TranslateAgent(
+         render_frame, ISOLATED_WORLD_ID_TRANSLATE);
+   }
++#endif
+ }
+ 
+ ChromeRenderFrameObserver::~ChromeRenderFrameObserver() {
+@@ -240,9 +241,10 @@
+   // Let translate_agent do any preparatory work for loading a URL.
+   if (!translate_agent_)
+     return;
+-
++#if 0
+   translate_agent_->PrepareForUrl(
+       render_frame()->GetWebFrame()->GetDocument().Url());
++#endif
+ }
+ 
+ void ChromeRenderFrameObserver::DidFinishLoad() {
+@@ -539,7 +541,7 @@
+ }
+ 
+ void ChromeRenderFrameObserver::SetClientSidePhishingDetection() {
+-#if BUILDFLAG(SAFE_BROWSING_AVAILABLE)
++#if 0 //BUILDFLAG(SAFE_BROWSING_AVAILABLE)
+   phishing_classifier_ = safe_browsing::PhishingClassifierDelegate::Create(
+       render_frame(), nullptr);
+ #endif
+@@ -637,12 +639,14 @@
+                    .Utf16();
+   }
+ 
++#if 0
+   // Language detection should run only once. Parsing finishes before the page
+   // loads, so let's pick that timing.
+   if (translate_agent_ &&
+       layout_type == blink::WebMeaningfulLayout::kFinishedParsing) {
+     translate_agent_->PageCaptured(contents);
+   }
++#endif
+ 
+   if (text_callback) {
+     std::move(text_callback).Run(contents);

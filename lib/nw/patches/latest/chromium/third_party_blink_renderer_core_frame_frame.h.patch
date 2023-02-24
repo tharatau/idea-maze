@@ -1,0 +1,43 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/frame/frame.h nw/chromium/third_party/blink/renderer/core/frame/frame.h
+--- up/chromium/third_party/blink/renderer/core/frame/frame.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/frame/frame.h	2023-02-19 17:36:42.503481755 +0000
+@@ -105,6 +105,10 @@
+   static Frame* ResolveFrame(const FrameToken& frame_token);
+ 
+   virtual ~Frame();
++  void setNodeJS(bool node) { nodejs_ = node; }
++  bool isNodeJS() const { return nodejs_; }
++  bool isNwDisabledChildFrame() const;
++  bool isNwFakeTop() const;
+ 
+   virtual void Trace(Visitor*) const;
+ 
+@@ -127,6 +131,10 @@
+   // on successful completion (e.g. `Detach()` runs all the way through to the
+   // end), returns true.
+   bool Detach(FrameDetachType);
++
++  void setDevtoolsJail(Frame* iframe);
++  Frame* getDevtoolsJail() { return devtools_jail_; }
++
+   void DisconnectOwnerElement();
+   virtual bool ShouldClose() = 0;
+   virtual void HookBackForwardCacheEviction() = 0;
+@@ -234,6 +242,7 @@
+   }
+   WindowProxy* GetWindowProxy(DOMWrapperWorld&);
+   WindowProxy* GetWindowProxyMaybeUninitialized(DOMWrapperWorld&);
++  bool ContextNotReady(DOMWrapperWorld& world) const;
+ 
+   virtual void DidChangeVisibilityState();
+ 
+@@ -543,6 +552,9 @@
+   Member<WindowAgentFactory> window_agent_factory_;
+ 
+   // TODO(sashab): Investigate if this can be represented with m_lifecycle.
++  Member<Frame> devtools_jail_;
++  Member<Frame> dev_jail_owner_;
++  bool nodejs_;
+   bool is_loading_;
+   // Contains token to be used as a frame id in the devtools protocol.
+   base::UnguessableToken devtools_frame_token_;

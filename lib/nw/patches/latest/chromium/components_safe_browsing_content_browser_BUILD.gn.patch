@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/components/safe_browsing/content/browser/BUILD.gn nw/chromium/components/safe_browsing/content/browser/BUILD.gn
+--- up/chromium/components/safe_browsing/content/browser/BUILD.gn	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/components/safe_browsing/content/browser/BUILD.gn	2023-02-19 17:36:33.951460214 +0000
+@@ -141,7 +141,7 @@
+   ]
+ 
+   deps = [
+-    ":client_side_detection",
++    #":client_side_detection",
+     "//base:base",
+     "//base/test:test_support",
+     "//components/safe_browsing:buildflags",

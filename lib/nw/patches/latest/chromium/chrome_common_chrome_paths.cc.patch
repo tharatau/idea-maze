@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/chrome/common/chrome_paths.cc nw/chromium/chrome/common/chrome_paths.cc
+--- up/chromium/chrome/common/chrome_paths.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/common/chrome_paths.cc	2023-02-19 17:36:29.999450224 +0000
+@@ -294,7 +294,7 @@
+     // was shipped along with chrome.  The value can be overridden
+     // if it is installed via component updater.
+     case chrome::DIR_PNACL_COMPONENT:
+-#if BUILDFLAG(IS_MAC)
++#if 0
+       // PNaCl really belongs in the InternalPluginsDirectory but actually
+       // copying it there would result in the files also being shipped, which
+       // we don't want yet. So for now, just find them in the directory where

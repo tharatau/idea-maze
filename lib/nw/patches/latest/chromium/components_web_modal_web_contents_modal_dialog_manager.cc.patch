@@ -1,0 +1,22 @@
+diff -r -u --color up/chromium/components/web_modal/web_contents_modal_dialog_manager.cc nw/chromium/components/web_modal/web_contents_modal_dialog_manager.cc
+--- up/chromium/components/web_modal/web_contents_modal_dialog_manager.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/components/web_modal/web_contents_modal_dialog_manager.cc	2023-02-19 17:36:35.159463266 +0000
+@@ -44,7 +44,7 @@
+ 
+   if (child_dialogs_.size() == 1) {
+     BlockWebContentsInteraction(true);
+-    if (delegate_ && delegate_->IsWebContentsVisible(web_contents()))
++    if (!web_contents()->is_silent_printing() && delegate_ && delegate_->IsWebContentsVisible(web_contents()))
+       child_dialogs_.back().manager->Show();
+   }
+ }
+@@ -109,7 +109,8 @@
+     // The WebContents has already disconnected.
+     return;
+   }
+-
++  if (!blocked && contents->is_silent_printing())
++    contents->set_silent_printing(false);
+   contents->SetIgnoreInputEvents(blocked);
+   if (delegate_)
+     delegate_->SetWebContentsBlocked(contents, blocked);

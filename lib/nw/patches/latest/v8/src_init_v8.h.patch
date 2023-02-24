@@ -1,0 +1,11 @@
+diff -r -u --color up/v8/src/init/v8.h nw/v8/src/init/v8.h
+--- up/v8/src/init/v8.h	2023-02-10 19:02:29.000000000 +0000
++++ nw/v8/src/init/v8.h	2023-02-19 17:37:43.507622897 +0000
+@@ -42,6 +42,7 @@
+   [[noreturn]] V8_EXPORT_PRIVATE static void FatalProcessOutOfMemory(
+       Isolate* isolate, const char* location, const char* detail);
+ 
++  static void SetTLSPlatform(v8::Platform* platform);
+   static void InitializePlatform(v8::Platform* platform);
+   static void DisposePlatform();
+   V8_EXPORT_PRIVATE static v8::Platform* GetCurrentPlatform();

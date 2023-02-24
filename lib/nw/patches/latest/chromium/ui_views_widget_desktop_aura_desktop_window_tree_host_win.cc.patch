@@ -1,0 +1,58 @@
+diff -r -u --color up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc
+--- up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host_win.cc	2023-02-19 17:37:08.959544099 +0000
+@@ -542,7 +542,7 @@
+   // but merely of the content Chrome draws, so even when the system titlebars
+   // appear opaque (Win 8+), the content above them needs to be transparent, or
+   // they'll be covered by a black (undrawn) region.
+-  return ShouldUseNativeFrame() && !IsFullscreen();
++  return ShouldUseNativeFrame() && (content::g_support_transparency || !IsFullscreen());
+ }
+ 
+ void DesktopWindowTreeHostWin::FrameTypeChanged() {
+@@ -655,6 +655,10 @@
+   return without_expansion;
+ }
+ 
++void DesktopWindowTreeHostWin::SetPositionInPixels(const gfx::Point& pos) {
++  message_handler_->SetPosition(pos);
++}
++
+ void DesktopWindowTreeHostWin::SetBoundsInPixels(const gfx::Rect& bounds) {
+   // If the window bounds have to be expanded we need to subtract the
+   // window_expansion_top_left_delta_ from the origin and add the
+@@ -922,6 +926,15 @@
+              : nullptr;
+ }
+ 
++bool DesktopWindowTreeHostWin::ShouldHandleOnSize() const {
++  return GetWidget()->widget_delegate()->ShouldHandleOnSize();
++}
++
++bool DesktopWindowTreeHostWin::HandleSize(UINT param, const gfx::Size& new_size) {
++  return GetWidget()->widget_delegate() &&
++      GetWidget()->widget_delegate()->HandleSize(param, new_size);
++}
++
+ void DesktopWindowTreeHostWin::HandleActivationChanged(bool active) {
+   // This can be invoked from HWNDMessageHandler::Init(), at which point we're
+   // not in a good state and need to ignore it.
+@@ -936,7 +949,7 @@
+   // We treat APPCOMMAND ids as an extension of our command namespace, and just
+   // let the delegate figure out what to do...
+   return GetWidget()->widget_delegate() &&
+-         GetWidget()->widget_delegate()->ExecuteWindowsCommand(command);
++      GetWidget()->widget_delegate()->ExecuteAppCommand(command);
+ }
+ 
+ void DesktopWindowTreeHostWin::HandleCancelMode() {
+@@ -949,6 +962,9 @@
+ 
+ void DesktopWindowTreeHostWin::HandleClose() {
+   GetWidget()->Close();
++  //bugfix where transparent window size is getting smaller during closing
++  if (content::g_support_transparency && message_handler_->is_translucent())
++    window_enlargement_ = gfx::Vector2d(0, 0);
+ }
+ 
+ bool DesktopWindowTreeHostWin::HandleCommand(int command) {

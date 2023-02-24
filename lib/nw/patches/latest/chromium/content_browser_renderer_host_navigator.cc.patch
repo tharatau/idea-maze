@@ -1,0 +1,15 @@
+diff -r -u --color up/chromium/content/browser/renderer_host/navigator.cc nw/chromium/content/browser/renderer_host/navigator.cc
+--- up/chromium/content/browser/renderer_host/navigator.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/browser/renderer_host/navigator.cc	2023-02-19 17:36:35.531464206 +0000
+@@ -58,6 +58,11 @@
+ #include "url/gurl.h"
+ #include "url/url_util.h"
+ 
++namespace nw {
++  typedef bool(*RphGuestFilterURLHookFn)(content::RenderProcessHost* rph, const GURL* url);
++  extern RphGuestFilterURLHookFn gRphGuestFilterURLHook;
++}
++
+ namespace content {
+ 
+ namespace {

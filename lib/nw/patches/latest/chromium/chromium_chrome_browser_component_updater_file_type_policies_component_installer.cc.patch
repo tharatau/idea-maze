@@ -1,0 +1,19 @@
+diff -r -u --color up/chromium/chrome/browser/component_updater/file_type_policies_component_installer.cc nw/chromium/chrome/browser/component_updater/file_type_policies_component_installer.cc
+--- up/chromium/chrome/browser/component_updater/file_type_policies_component_installer.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/component_updater/file_type_policies_component_installer.cc	2023-02-19 17:36:27.555444038 +0000
+@@ -39,6 +39,7 @@
+ const char kFileTypePoliciesManifestName[] = "File Type Policies";
+ 
+ void LoadFileTypesFromDisk(const base::FilePath& pb_path) {
++#if 0
+   if (pb_path.empty())
+     return;
+ 
+@@ -53,6 +54,7 @@
+ 
+   safe_browsing::FileTypePolicies::GetInstance()->PopulateFromDynamicUpdate(
+       binary_pb);
++#endif
+ }
+ 
+ }  // namespace

@@ -1,0 +1,100 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/frame/frame.cc nw/chromium/third_party/blink/renderer/core/frame/frame.cc
+--- up/chromium/third_party/blink/renderer/core/frame/frame.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/frame/frame.cc	2023-02-19 17:36:42.503481755 +0000
+@@ -100,6 +100,8 @@
+   visitor->Trace(navigation_rate_limiter_);
+   visitor->Trace(window_agent_factory_);
+   visitor->Trace(opened_frame_tracker_);
++  visitor->Trace(dev_jail_owner_);
++  visitor->Trace(devtools_jail_);
+ }
+ 
+ bool Frame::Detach(FrameDetachType type) {
+@@ -172,6 +174,11 @@
+   page_ = nullptr;
+   embedding_token_ = absl::nullopt;
+ 
++  if (dev_jail_owner_) {
++    dev_jail_owner_->setDevtoolsJail(nullptr);
++    dev_jail_owner_ = nullptr;
++  }
++
+   return true;
+ }
+ 
+@@ -276,6 +283,10 @@
+   return window_proxy_manager_->GetWindowProxyMaybeUninitialized(world);
+ }
+ 
++bool Frame::ContextNotReady(DOMWrapperWorld& world) const {
++  return window_proxy_manager_->ContextNotReady(world);
++}
++
+ void Frame::DidChangeVisibilityState() {
+   HeapVector<Member<Frame>> child_frames;
+   for (Frame* child = Tree().FirstChild(); child;
+@@ -462,7 +473,10 @@
+       window_agent_factory_(inheriting_agent_factory
+                                 ? inheriting_agent_factory
+                                 : MakeGarbageCollected<WindowAgentFactory>(
+-                                      page.GetAgentGroupScheduler())),
++									   page.GetAgentGroupScheduler())),
++      devtools_jail_(nullptr),
++      dev_jail_owner_(nullptr),
++      nodejs_(false),
+       is_loading_(false),
+       devtools_frame_token_(devtools_frame_token),
+       frame_token_(frame_token) {
+@@ -501,6 +515,8 @@
+   // for frames with a remote owner.
+   auto* owner = To<RemoteFrameOwner>(Owner());
+ 
++  owner->set_nwfaketop(properties->nwfaketop);
++  owner->set_nwuseragent(properties->nwuseragent);
+   owner->SetBrowsingContextContainerName(properties->name);
+   owner->SetScrollbarMode(properties->scrollbar_mode);
+   owner->SetMarginWidth(properties->margin_width);
+@@ -865,4 +881,42 @@
+   Parent()->RemoveChild(this);
+ }
+ 
+-}  // namespace blink
++bool Frame::isNwDisabledChildFrame() const
++{
++  const Frame* current_frame = this;
++  const Frame* ancestor_frame = Tree().Parent();
++  do {
++    if (current_frame->owner_) {
++      if (current_frame->owner_->IsLocal())
++        if (DynamicTo<HTMLFrameOwnerElement>(current_frame->Owner())->FastHasAttribute(html_names::kNwdisableAttr))
++          return true;
++    }
++    current_frame = ancestor_frame;
++    if (ancestor_frame)
++      ancestor_frame = ancestor_frame->Tree().Parent();
++  } while (current_frame);
++  return false;
++}
++
++void Frame::setDevtoolsJail(Frame* iframe)
++{
++  devtools_jail_ = iframe;
++  if (iframe)
++    iframe->dev_jail_owner_ = this;
++  else if (devtools_jail_)
++    devtools_jail_->dev_jail_owner_ = nullptr;
++}
++
++bool Frame::isNwFakeTop() const
++{
++  if (owner_) {
++    if (owner_->IsLocal())
++      if (DynamicTo<HTMLFrameOwnerElement>(Owner())->FastHasAttribute(html_names::kNwfaketopAttr))
++        return true;
++  }
++  return false;
++}
++
++
++} // namespace blink
++

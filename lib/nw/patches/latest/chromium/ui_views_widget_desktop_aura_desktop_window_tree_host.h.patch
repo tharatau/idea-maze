@@ -1,0 +1,15 @@
+diff -r -u --color up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host.h nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host.h
+--- up/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/views/widget/desktop_aura/desktop_window_tree_host.h	2023-02-19 17:37:08.955544090 +0000
+@@ -213,6 +213,11 @@
+   virtual void UpdateWindowShapeIfNeeded(const ui::PaintContext& context);
+ 
+   virtual DesktopNativeCursorManager* GetSingletonDesktopNativeCursorManager();
++
++#if defined(OS_WIN)
++  virtual void SetPositionInDIP(const gfx::Point& pos);
++#endif
++
+ };
+ 
+ }  // namespace views

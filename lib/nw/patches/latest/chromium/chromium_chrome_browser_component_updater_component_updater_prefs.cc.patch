@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/chrome/browser/component_updater/component_updater_prefs.cc nw/chromium/chrome/browser/component_updater/component_updater_prefs.cc
+--- up/chromium/chrome/browser/component_updater/component_updater_prefs.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/component_updater/component_updater_prefs.cc	2023-02-19 17:36:27.551444028 +0000
+@@ -20,7 +20,7 @@
+ void RegisterPrefs(PrefRegistrySimple* registry) {
+   RegisterComponentUpdateServicePrefs(registry);
+   RegisterPrefsForRecoveryComponent(registry);
+-  AutofillStatesComponentInstallerPolicy::RegisterPrefs(registry);
++  //AutofillStatesComponentInstallerPolicy::RegisterPrefs(registry);
+ }
+ 
+ }  // namespace component_updater

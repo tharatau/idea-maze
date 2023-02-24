@@ -1,0 +1,35 @@
+diff -r -u --color up/chromium/chrome/browser/ui/views/location_bar/zoom_bubble_view.cc nw/chromium/chrome/browser/ui/views/location_bar/zoom_bubble_view.cc
+--- up/chromium/chrome/browser/ui/views/location_bar/zoom_bubble_view.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/views/location_bar/zoom_bubble_view.cc	2023-02-19 17:36:29.579449161 +0000
+@@ -148,6 +148,7 @@
+   return nullptr;
+ }
+ 
++#if 0
+ ImmersiveModeController* GetImmersiveModeControllerForBrowser(
+     Browser* browser) {
+   BrowserView* browser_view = BrowserView::GetBrowserViewForBrowser(browser);
+@@ -173,6 +174,7 @@
+ 
+   views::BubbleDialogDelegateView::CreateBubble(zoom_bubble);
+ }
++#endif
+ 
+ // Find the extension that initiated the zoom change, if any.
+ const extensions::ExtensionZoomRequestClient* GetExtensionZoomRequestClient(
+@@ -191,6 +193,7 @@
+ // static
+ void ZoomBubbleView::ShowBubble(content::WebContents* web_contents,
+                                 DisplayReason reason) {
++#if 0
+   Browser* browser = chrome::FindBrowserWithWebContents(web_contents);
+   // |web_contents| could have been unloaded if a tab gets closed and a mouse
+   // event arrives before the zoom icon gets hidden.
+@@ -228,6 +231,7 @@
+   // disappears after a short timeout.
+   zoom_bubble_->ShowForReason(reason, /* allow_refocus_alert */ false);
+   zoom_bubble_->UpdateZoomIconVisibility();
++#endif
+ }
+ 
+ // static

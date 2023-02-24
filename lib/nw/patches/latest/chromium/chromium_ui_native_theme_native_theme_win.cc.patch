@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/ui/native_theme/native_theme_win.cc nw/chromium/ui/native_theme/native_theme_win.cc
+--- up/chromium/ui/native_theme/native_theme_win.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/native_theme/native_theme_win.cc	2023-02-19 17:37:08.683543436 +0000
+@@ -57,7 +57,7 @@
+ // Windows system color IDs cached and updated by the native theme.
+ const int kSysColors[] = {
+     COLOR_BTNFACE,       COLOR_BTNTEXT,    COLOR_GRAYTEXT,      COLOR_HIGHLIGHT,
+-    COLOR_HIGHLIGHTTEXT, COLOR_HOTLIGHT,   COLOR_MENUHIGHLIGHT, COLOR_SCROLLBAR,
++    COLOR_HIGHLIGHTTEXT, COLOR_HOTLIGHT,   COLOR_MENU, COLOR_MENUHIGHLIGHT, COLOR_SCROLLBAR,
+     COLOR_WINDOW,        COLOR_WINDOWTEXT,
+ };
+ 

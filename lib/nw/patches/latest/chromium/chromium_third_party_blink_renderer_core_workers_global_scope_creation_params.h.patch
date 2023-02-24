@@ -1,0 +1,20 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/workers/global_scope_creation_params.h nw/chromium/third_party/blink/renderer/core/workers/global_scope_creation_params.h
+--- up/chromium/third_party/blink/renderer/core/workers/global_scope_creation_params.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/workers/global_scope_creation_params.h	2023-02-19 17:36:43.003483008 +0000
+@@ -44,6 +44,7 @@
+ 
+  public:
+   GlobalScopeCreationParams(
++      bool isNodeJS, const std::string& main_script,
+       const KURL& script_url,
+       mojom::blink::ScriptType script_type,
+       const String& global_scope_name,
+@@ -105,6 +106,8 @@
+   mojom::blink::ScriptType script_type;
+ 
+   String global_scope_name;
++  bool nodejs_;
++  std::string main_script_;
+   String user_agent;
+   UserAgentMetadata ua_metadata;
+ 

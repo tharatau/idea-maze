@@ -1,0 +1,18 @@
+diff -r -u --color up/chromium/chrome/browser/ui/views/frame/browser_window_property_manager_win.cc nw/chromium/chrome/browser/ui/views/frame/browser_window_property_manager_win.cc
+--- up/chromium/chrome/browser/ui/views/frame/browser_window_property_manager_win.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/browser_window_property_manager_win.cc	2023-02-19 17:36:29.559449110 +0000
+@@ -54,12 +54,13 @@
+   std::wstring app_id =
+       browser->is_type_app() || browser->is_type_app_popup() ||
+               browser->is_type_devtools()
++       || true
+           ? shell_integration::win::GetAppUserModelIdForApp(
+                 base::UTF8ToWide(browser->app_name()), profile->GetPath())
+           : shell_integration::win::GetAppUserModelIdForBrowser(
+                 profile->GetPath());
+   // Apps set their relaunch details based on app's details.
+-  if (browser->is_type_app() || browser->is_type_app_popup()) {
++  if (browser->is_type_app() || browser->is_type_app_popup() || true) {
+     ExtensionRegistry* registry = ExtensionRegistry::Get(profile);
+     const extensions::Extension* extension = registry->GetExtensionById(
+         web_app::GetAppIdFromApplicationName(browser->app_name()),

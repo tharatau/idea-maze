@@ -1,0 +1,49 @@
+diff -r -u --color up/chromium/DEPS nw/chromium/DEPS
+--- up/chromium/DEPS	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/DEPS	2023-02-19 17:36:23.891434763 +0000
+@@ -291,6 +291,7 @@
+   'boringssl_git': 'https://boringssl.googlesource.com',
+   'chromium_git': 'https://chromium.googlesource.com',
+   'dawn_git': 'https://dawn.googlesource.com',
++  'nwjs_git': 'https://github.com/nwjs',
+   'pdfium_git': 'https://pdfium.googlesource.com',
+   'quiche_git': 'https://quiche.googlesource.com',
+   'skia_git': 'https://skia.googlesource.com',
+@@ -507,6 +508,9 @@
+ ]
+ 
+ deps = {
++  'src/tools/gyp':
++    Var('chromium_git') + '/external/gyp.git' + '@' + 'd61a9397e668fa9843c4aa7da9e79460fe590bfb',
++
+   'src/buildtools/clang_format/script':
+     Var('chromium_git') +
+     '/external/github.com/llvm/llvm-project/clang/tools/clang-format.git@' +
+@@ -1891,8 +1895,8 @@
+       'condition': 'checkout_mac',
+   },
+ 
+-  'src/v8':
+-    Var('chromium_git') + '/v8/v8.git' + '@' +  Var('v8_revision'),
++  #'src/v8':
++  #  Var('chromium_git') + '/v8/v8.git' + '@' +  Var('v8_revision'),
+ 
+   'src-internal': {
+     'url': 'https://chrome-internal.googlesource.com/chrome/src-internal.git@f1fa2045c35184d65934fa03f2cfd581794fb6d0',
+@@ -4369,7 +4373,15 @@
+                 '--no_auth',
+                 '--bucket', 'chromium-nodejs/16.13.0',
+                 '-s', 'src/third_party/node/linux/node-linux-x64.tar.gz.sha1',
+-    ],
++                ],
++  },
++  {
++    'name': 'nw_patch',
++    'pattern': '.',
++    'action': [
++      'python',
++      'src/content/nw/tools/patcher.py'
++      ],
+   },
+   # The Mac x64/arm64 binaries are downloaded regardless of host architecture
+   # since it's possible to cross-compile for the other architecture. This can

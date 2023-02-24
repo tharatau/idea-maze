@@ -1,0 +1,14 @@
+diff -r -u --color up/v8/src/codegen/compiler.cc nw/v8/src/codegen/compiler.cc
+--- up/v8/src/codegen/compiler.cc	2023-02-10 19:02:29.000000000 +0000
++++ nw/v8/src/codegen/compiler.cc	2023-02-19 17:37:43.327622461 +0000
+@@ -3474,7 +3474,9 @@
+     maybe_script = lookup_result.script();
+     maybe_result = lookup_result.toplevel_sfi();
+     is_compiled_scope = lookup_result.is_compiled_scope();
+-    if (!maybe_result.is_null()) {
++    //NWJS#5168: will hit previous cache, use 0 source_length trick to
++    //bypass and try to consume cache
++    if (!maybe_result.is_null() && source->length()) {
+       compile_timer.set_hit_isolate_cache();
+     } else if (can_consume_code_cache) {
+       compile_timer.set_consuming_code_cache();

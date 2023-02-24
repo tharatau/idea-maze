@@ -1,0 +1,29 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/workers/shared_worker.cc nw/chromium/third_party/blink/renderer/core/workers/shared_worker.cc
+--- up/chromium/third_party/blink/renderer/core/workers/shared_worker.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/workers/shared_worker.cc	2023-02-19 17:36:43.003483008 +0000
+@@ -30,6 +30,7 @@
+  */
+ 
+ #include "third_party/blink/renderer/core/workers/shared_worker.h"
++#include "base/command_line.h"
+ 
+ #include "mojo/public/cpp/bindings/pending_remote.h"
+ #include "third_party/abseil-cpp/absl/types/optional.h"
+@@ -118,6 +119,8 @@
+         script_url, blob_url_token.InitWithNewPipeAndPassReceiver());
+   }
+ 
++  const base::CommandLine& command_line = *base::CommandLine::ForCurrentProcess();
++  bool isNodeJS = window->GetFrame()->isNodeJS() && command_line.HasSwitch("enable-node-worker");
+   auto options = mojom::blink::WorkerOptions::New();
+   switch (name_or_options->GetContentType()) {
+     case V8UnionStringOrWorkerOptions::ContentType::kString:
+@@ -145,7 +148,7 @@
+ 
+   SharedWorkerClientHolder::From(*window)->Connect(
+       worker, std::move(remote_port), script_url, std::move(blob_url_token),
+-      std::move(options), context->UkmSourceID());
++      std::move(options), context->UkmSourceID(), isNodeJS);
+ 
+   return worker;
+ }

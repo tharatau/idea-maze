@@ -1,0 +1,23 @@
+diff -r -u --color up/chromium/chrome/app/chrome_crash_reporter_client.h nw/chromium/chrome/app/chrome_crash_reporter_client.h
+--- up/chromium/chrome/app/chrome_crash_reporter_client.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/app/chrome_crash_reporter_client.h	2023-02-19 17:36:25.811439623 +0000
+@@ -36,16 +36,18 @@
+       const std::string& client_guid) override;
+ #endif
+ 
+-#if BUILDFLAG(IS_POSIX) && !BUILDFLAG(IS_MAC)
++#if BUILDFLAG(IS_POSIX) //&& !BUILDFLAG(IS_MAC)
+   void GetProductNameAndVersion(const char** product_name,
+                                 const char** version) override;
+   void GetProductNameAndVersion(std::string* product_name,
+                                 std::string* version,
+                                 std::string* channel) override;
++#if !BUILDFLAG(IS_MAC)
+   base::FilePath GetReporterLogFilename() override;
+ 
+   bool GetShouldDumpLargerDumps() override;
+ #endif
++#endif
+ 
+   bool GetCrashDumpLocation(base::FilePath* crash_dir) override;
+ 

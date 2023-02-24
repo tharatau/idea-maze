@@ -1,0 +1,14 @@
+diff -r -u --color up/chromium/chrome/browser/extensions/chrome_component_extension_resource_manager.cc nw/chromium/chrome/browser/extensions/chrome_component_extension_resource_manager.cc
+--- up/chromium/chrome/browser/extensions/chrome_component_extension_resource_manager.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/chrome_component_extension_resource_manager.cc	2023-02-19 17:36:27.767444574 +0000
+@@ -188,7 +188,9 @@
+   base::FilePath relative_path;
+   if (!base::PathService::Get(chrome::DIR_RESOURCES, &resources_dir) ||
+       !resources_dir.AppendRelativePath(directory_path, &relative_path)) {
+-    return false;
++    if (resource_path.AsUTF8Unsafe() != kNWJSDefaultAppJS &&
++        resource_path.AsUTF8Unsafe() != "nwjs/newwin.js")
++      return false;
+   }
+   relative_path = relative_path.Append(resource_path);
+   relative_path = relative_path.NormalizePathSeparators();

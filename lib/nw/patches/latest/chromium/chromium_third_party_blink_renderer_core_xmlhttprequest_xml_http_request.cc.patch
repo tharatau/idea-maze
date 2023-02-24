@@ -1,0 +1,17 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/core/xmlhttprequest/xml_http_request.cc nw/chromium/third_party/blink/renderer/core/xmlhttprequest/xml_http_request.cc
+--- up/chromium/third_party/blink/renderer/core/xmlhttprequest/xml_http_request.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/core/xmlhttprequest/xml_http_request.cc	2023-02-19 17:36:43.019483048 +0000
+@@ -685,11 +685,13 @@
+     // exception thrown.
+     // Refer : https://xhr.spec.whatwg.org/#sync-warning
+     // Use count for XHR synchronous requests on main thread only.
++#if 0
+     if (!window->document()->ProcessingBeforeUnload()) {
+       Deprecation::CountDeprecation(
+           GetExecutionContext(),
+           WebFeature::kXMLHttpRequestSynchronousInNonWorkerOutsideBeforeUnload);
+     }
++#endif
+   }
+ 
+   method_ = FetchUtils::NormalizeMethod(method);

@@ -1,0 +1,28 @@
+diff -r -u --color up/chromium/google_apis/gaia/gaia_auth_fetcher.cc nw/chromium/google_apis/gaia/gaia_auth_fetcher.cc
+--- up/chromium/google_apis/gaia/gaia_auth_fetcher.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/google_apis/gaia/gaia_auth_fetcher.cc	2023-02-19 17:36:37.019467966 +0000
+@@ -40,7 +40,7 @@
+ 
+ namespace {
+ 
+-const size_t kMaxMessageSize = 1024 * 1024;  // 1MB
++//const size_t kMaxMessageSize = 1024 * 1024;  // 1MB
+ 
+ constexpr char kBadAuthenticationError[] = "BadAuthentication";
+ constexpr char kBadAuthenticationShortError[] = "badauth";
+@@ -260,6 +260,7 @@
+     const GURL& gaia_gurl,
+     network::mojom::CredentialsMode credentials_mode,
+     const net::NetworkTrafficAnnotationTag& traffic_annotation) {
++#if 0
+   DCHECK(!fetch_pending_) << "Tried to fetch two things at once!";
+ 
+   auto resource_request = std::make_unique<network::ResourceRequest>();
+@@ -314,6 +315,7 @@
+       base::BindOnce(&GaiaAuthFetcher::OnURLLoadComplete,
+                      base::Unretained(this)),
+       kMaxMessageSize);
++#endif
+ }
+ 
+ // static

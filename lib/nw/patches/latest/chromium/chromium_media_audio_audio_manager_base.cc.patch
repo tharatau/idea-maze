@@ -1,0 +1,16 @@
+diff -r -u --color up/chromium/media/audio/audio_manager_base.cc nw/chromium/media/audio/audio_manager_base.cc
+--- up/chromium/media/audio/audio_manager_base.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/media/audio/audio_manager_base.cc	2023-02-19 17:36:38.803472473 +0000
+@@ -111,9 +111,10 @@
+ 
+ AudioManagerBase::~AudioManagerBase() {
+   // All the output streams should have been deleted.
+-  CHECK_EQ(0, num_output_streams_);
++  //disable the check for NWJS#5318
++  //CHECK_EQ(0, num_output_streams_);
+   // All the input streams should have been deleted.
+-  CHECK(input_streams_.empty());
++  //CHECK(input_streams_.empty());
+ }
+ 
+ void AudioManagerBase::GetAudioInputDeviceDescriptions(

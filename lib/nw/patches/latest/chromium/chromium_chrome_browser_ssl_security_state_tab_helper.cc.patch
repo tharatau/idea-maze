@@ -1,0 +1,19 @@
+diff -r -u --color up/chromium/chrome/browser/ssl/security_state_tab_helper.cc nw/chromium/chrome/browser/ssl/security_state_tab_helper.cc
+--- up/chromium/chrome/browser/ssl/security_state_tab_helper.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ssl/security_state_tab_helper.cc	2023-02-19 17:36:28.923447500 +0000
+@@ -168,6 +168,7 @@
+ 
+ security_state::MaliciousContentStatus
+ SecurityStateTabHelper::GetMaliciousContentStatus() const {
++#if 0
+   content::NavigationEntry* entry =
+       web_contents()->GetController().GetVisibleEntry();
+   if (!entry)
+@@ -254,6 +255,7 @@
+         break;
+     }
+   }
++#endif
+   return security_state::MALICIOUS_CONTENT_STATUS_NONE;
+ }
+ 

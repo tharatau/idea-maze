@@ -1,0 +1,19 @@
+diff -r -u --color up/chromium/components/crx_file/id_util.cc nw/chromium/components/crx_file/id_util.cc
+--- up/chromium/components/crx_file/id_util.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/components/crx_file/id_util.cc	2023-02-19 17:36:32.619456849 +0000
+@@ -87,6 +87,7 @@
+ }
+ 
+ bool IdIsValid(base::StringPiece id) {
++#if 0
+   // Verify that the id is legal.
+   if (id.size() != (crx_file::id_util::kIdSize * 2))
+     return false;
+@@ -97,6 +98,7 @@
+       return false;
+   }
+ 
++#endif
+   return true;
+ }
+ 

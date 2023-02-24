@@ -1,0 +1,13 @@
+diff -r -u --color up/chromium/ui/message_center/public/cpp/notification.h nw/chromium/ui/message_center/public/cpp/notification.h
+--- up/chromium/ui/message_center/public/cpp/notification.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/message_center/public/cpp/notification.h	2023-02-19 17:37:08.675543416 +0000
+@@ -472,8 +472,7 @@
+   }
+ 
+   bool should_show_settings_button() const {
+-    return optional_fields_.settings_button_handler !=
+-           SettingsButtonHandler::NONE;
++    return false;
+   }
+ 
+   void set_settings_button_handler(SettingsButtonHandler handler) {

@@ -1,0 +1,86 @@
+diff -r -u --color up/node/src/node_v8_platform-inl.h nw/node/src/node_v8_platform-inl.h
+--- up/node/src/node_v8_platform-inl.h	2023-02-14 22:09:05.000000000 +0000
++++ nw/node/src/node_v8_platform-inl.h	2023-02-19 17:37:33.303599295 +0000
+@@ -17,6 +17,7 @@
+ 
+ namespace node {
+ 
++#if 0
+ // Ensures that __metadata trace events are only emitted
+ // when tracing is enabled.
+ class NodeTraceStateObserver
+@@ -79,6 +80,7 @@
+  private:
+   v8::TracingController* controller_;
+ };
++#endif
+ 
+ struct V8Platform {
+   bool initialized_ = false;
+@@ -87,6 +89,7 @@
+   inline void Initialize(int thread_pool_size) {
+     CHECK(!initialized_);
+     initialized_ = true;
++#if 0
+     tracing_agent_ = std::make_unique<tracing::Agent>();
+     node::tracing::TraceEventHelper::SetAgent(tracing_agent_.get());
+     node::tracing::TracingController* controller =
+@@ -102,6 +105,10 @@
+     // Tracing must be initialized before platform threads are created.
+     platform_ = new NodePlatform(thread_pool_size, controller);
+     v8::V8::InitializePlatform(platform_);
++#endif
++    tracing_agent_.reset(nullptr);
++    platform_ = new NodePlatform(thread_pool_size, new v8::TracingController());
++    v8::V8::InitializePlatform(platform_);
+   }
+   // Make sure V8Platform don not call into Libuv threadpool,
+   // see DefaultProcessExitHandlerInternal in environment.cc
+@@ -109,7 +116,7 @@
+     if (!initialized_)
+       return;
+     initialized_ = false;
+-    node::tracing::TraceEventHelper::SetAgent(nullptr);
++    //node::tracing::TraceEventHelper::SetAgent(nullptr);
+     StopTracingAgent();
+     platform_->Shutdown();
+     delete platform_;
+@@ -118,7 +125,7 @@
+     // stopped.
+     tracing_agent_.reset(nullptr);
+     // The observer remove itself in OnTraceEnabled
+-    trace_state_observer_.reset(nullptr);
++    //trace_state_observer_.reset(nullptr);
+   }
+ 
+   inline void DrainVMTasks(v8::Isolate* isolate) {
+@@ -126,6 +133,7 @@
+   }
+ 
+   inline void StartTracingAgent() {
++#if 0
+     // Attach a new NodeTraceWriter only if this function hasn't been called
+     // before.
+     if (tracing_file_writer_.IsDefaultHandle()) {
+@@ -140,9 +148,10 @@
+                   per_process::cli_options->trace_event_file_pattern)),
+           tracing::Agent::kUseDefaultCategories);
+     }
++#endif
+   }
+ 
+-  inline void StopTracingAgent() { tracing_file_writer_.reset(); }
++  inline void StopTracingAgent() {} // tracing_file_writer_.reset(); }
+ 
+   inline tracing::AgentWriterHandle* GetTracingAgentWriter() {
+     return &tracing_file_writer_;
+@@ -150,7 +159,7 @@
+ 
+   inline NodePlatform* Platform() { return platform_; }
+ 
+-  std::unique_ptr<NodeTraceStateObserver> trace_state_observer_;
++  //std::unique_ptr<NodeTraceStateObserver> trace_state_observer_;
+   std::unique_ptr<tracing::Agent> tracing_agent_;
+   tracing::AgentWriterHandle tracing_file_writer_;
+   NodePlatform* platform_;
+Only in nw/node/src: node_webkit.h

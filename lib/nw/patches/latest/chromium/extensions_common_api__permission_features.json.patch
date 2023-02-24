@@ -1,0 +1,17 @@
+diff -r -u --color up/chromium/extensions/common/api/_permission_features.json nw/chromium/extensions/common/api/_permission_features.json
+--- up/chromium/extensions/common/api/_permission_features.json	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/common/api/_permission_features.json	2023-02-19 17:36:36.859467561 +0000
+@@ -212,11 +212,13 @@
+   "diagnostics": [
+     {
+       "channel": "dev",
++      "platforms": ["chromeos"],
+       "extension_types": ["platform_app"]
+     },
+     {
+       "channel": "stable",
+       "extension_types": ["platform_app"],
++      "platforms": ["chromeos"],
+       "allowlist": [
+         "7AE714FFD394E073F0294CFA134C9F91DB5FBAA4",  // CCD Development
+         "C7DA3A55C2355F994D3FDDAD120B426A0DF63843",  // CCD Testing

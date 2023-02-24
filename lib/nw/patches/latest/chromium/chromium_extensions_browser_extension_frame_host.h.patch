@@ -1,0 +1,16 @@
+diff -r -u --color up/chromium/extensions/browser/extension_frame_host.h nw/chromium/extensions/browser/extension_frame_host.h
+--- up/chromium/extensions/browser/extension_frame_host.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/browser/extension_frame_host.h	2023-02-19 17:36:36.827467481 +0000
+@@ -46,6 +46,12 @@
+                           GetAppInstallStateCallback callback) override;
+   void Request(mojom::RequestParamsPtr params,
+                RequestCallback callback) override;
++  void RequestSync(mojom::RequestParamsPtr params,
++                   RequestSyncCallback callback) override;
++  bool RequestSync(mojom::RequestParamsPtr params,
++                   bool* success,
++                   base::Value::List* response,
++                   std::string* error) override;
+   void WatchedPageChange(
+       const std::vector<std::string>& css_selectors) override;
+   void DetailedConsoleMessageAdded(

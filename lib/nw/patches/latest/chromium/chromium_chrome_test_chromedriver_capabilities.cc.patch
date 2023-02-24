@@ -1,0 +1,32 @@
+diff -r -u --color up/chromium/chrome/test/chromedriver/capabilities.cc nw/chromium/chrome/test/chromedriver/capabilities.cc
+--- up/chromium/chrome/test/chromedriver/capabilities.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/test/chromedriver/capabilities.cc	2023-02-19 17:36:30.211450761 +0000
+@@ -280,6 +280,20 @@
+   return Status(kOk);
+ }
+ 
++Status ParseArguments(const base::Value& option,
++                     Capabilities* capabilities) {
++  if (!option.is_list())
++    return Status(kUnknownError, "must be a list");
++  for (auto& val: option.GetList()) {
++    std::string arg_string;
++    if (!val.is_string())
++      return Status(kUnknownError, "each argument must be a string");
++    arg_string = val.GetString();
++    capabilities->arguments.push_back(arg_string);
++  }
++  return Status(kOk);
++}
++
+ Status ParseExtensions(const base::Value& option, Capabilities* capabilities) {
+   if (!option.is_list())
+     return Status(kInvalidArgument, "must be a list");
+@@ -597,6 +611,7 @@
+         base::BindRepeating(&ParseNetAddress, &capabilities->debugger_address);
+   } else {
+     parser_map["args"] = base::BindRepeating(&ParseSwitches);
++    parser_map["nwargs"] = base::BindRepeating(&ParseArguments);
+     parser_map["binary"] =
+         base::BindRepeating(&ParseFilePath, &capabilities->binary);
+     parser_map["detach"] =

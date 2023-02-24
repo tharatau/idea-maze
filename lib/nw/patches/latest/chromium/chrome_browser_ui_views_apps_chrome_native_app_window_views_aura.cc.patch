@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views_aura.cc nw/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views_aura.cc
+--- up/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views_aura.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/views/apps/chrome_native_app_window_views_aura.cc	2023-02-19 17:36:29.507448979 +0000
+@@ -39,6 +39,7 @@
+     case ui::SHOW_STATE_NORMAL:
+     case ui::SHOW_STATE_MAXIMIZED:
+     case ui::SHOW_STATE_FULLSCREEN:
++    case ui::SHOW_STATE_HIDDEN:
+       return restore_state;
+ 
+     case ui::SHOW_STATE_DEFAULT:

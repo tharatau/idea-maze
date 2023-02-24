@@ -1,0 +1,16 @@
+diff -r -u --color up/chromium/media/ffmpeg/ffmpeg_common.cc nw/chromium/media/ffmpeg/ffmpeg_common.cc
+--- up/chromium/media/ffmpeg/ffmpeg_common.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/media/ffmpeg/ffmpeg_common.cc	2023-02-19 17:36:38.979472917 +0000
+@@ -131,6 +131,12 @@
+       return AV_CODEC_ID_AAC;
+     case AudioCodec::kALAC:
+       return AV_CODEC_ID_ALAC;
++#if BUILDFLAG(ENABLE_PLATFORM_AC3_EAC3_AUDIO)
++    case AudioCodec::kAC3:
++      return AV_CODEC_ID_AC3;
++    case AudioCodec::kEAC3:
++      return AV_CODEC_ID_EAC3;
++#endif
+     case AudioCodec::kMP3:
+       return AV_CODEC_ID_MP3;
+     case AudioCodec::kPCM:

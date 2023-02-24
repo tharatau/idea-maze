@@ -1,0 +1,18 @@
+diff -r -u --color up/chromium/content/browser/web_contents/file_chooser_impl.cc nw/chromium/content/browser/web_contents/file_chooser_impl.cc
+--- up/chromium/content/browser/web_contents/file_chooser_impl.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/browser/web_contents/file_chooser_impl.cc	2023-02-19 17:36:35.651464509 +0000
+@@ -164,12 +164,14 @@
+   // Do not allow messages with absolute paths in them as this can permit a
+   // renderer to coerce the browser to perform I/O on a renderer controlled
+   // path.
++  #if 0
+   if (params->default_file_name != params->default_file_name.BaseName()) {
+     mojo::ReportBadMessage(
+         "FileChooser: The default file name must not be an absolute path.");
+     listener->FileSelectionCanceled();
+     return;
+   }
++  #endif
+ 
+   // Don't allow page with open FileChooser to enter BackForwardCache to avoid
+   // any unexpected behaviour from BackForwardCache.

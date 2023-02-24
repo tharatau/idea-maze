@@ -1,0 +1,13 @@
+diff -r -u --color up/chromium/third_party/blink/public/web/web_node.h nw/chromium/third_party/blink/public/web/web_node.h
+--- up/chromium/third_party/blink/public/web/web_node.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/public/web/web_node.h	2023-02-19 17:36:42.183480953 +0000
+@@ -120,8 +120,8 @@
+   template <typename T>
+   T DynamicTo() const;
+ 
+-#if INSIDE_BLINK
+   WebNode(Node*);
++#if INSIDE_BLINK
+   WebNode& operator=(Node*);
+   operator Node*() const;
+ 

@@ -1,0 +1,36 @@
+diff -r -u --color up/chromium/content/renderer/render_frame_impl.h nw/chromium/content/renderer/render_frame_impl.h
+--- up/chromium/content/renderer/render_frame_impl.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/renderer/render_frame_impl.h	2023-02-19 17:36:35.859465035 +0000
+@@ -177,6 +177,8 @@
+   // is used to create a RenderFrame that is immediately attached as the main
+   // frame of the `web_view`. Meanwhile, `CreateFrame()` is used to create
+   // provisional main RenderFrames (and subframe creation cases).
++  bool skip_blocking_parser_;
++  void SetSkipBlockingParser(bool) override;
+   static RenderFrameImpl* CreateMainFrame(
+       AgentSchedulingGroup& agent_scheduling_group,
+       blink::WebView* web_view,
+@@ -631,7 +633,8 @@
+       bool& consumed_user_gesture,
+       const absl::optional<blink::Impression>& impression,
+       const absl::optional<blink::WebPictureInPictureWindowOptions>&
+-          pip_options) override;
++      pip_options,
++      blink::WebString* manifest) override;
+ 
+   // Dispatches the current state of selection on the webpage to the browser if
+   // it has changed or if the forced flag is passed. The forced flag is used
+@@ -678,6 +681,13 @@
+   // started media playback (i.e. played audio and video).
+   bool DeferMediaLoad(bool has_played_media_before, base::OnceClosure closure);
+ 
++  void willHandleNavigationPolicy(
++                                  blink::WebFrame*,
++                                  const blink::WebURLRequest&,
++                                  blink::WebNavigationPolicy*,
++                                  blink::WebString* manifest = NULL,
++                                  bool new_win = true) override;
++
+   // Binds to the MHTML file generation service in the browser.
+   void BindMhtmlFileWriter(
+       mojo::PendingAssociatedReceiver<mojom::MhtmlFileWriter> receiver);

@@ -1,0 +1,99 @@
+diff -r -u --color up/chromium/chrome/browser/component_updater/sw_reporter_installer_win.cc nw/chromium/chrome/browser/component_updater/sw_reporter_installer_win.cc
+--- up/chromium/chrome/browser/component_updater/sw_reporter_installer_win.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/component_updater/sw_reporter_installer_win.cc	2023-02-19 17:36:27.559444048 +0000
+@@ -105,12 +105,15 @@
+   UMA_HISTOGRAM_BOOLEAN("SoftwareReporter.LastUploadResult", last_result);
+ }
+ 
++#if 0
+ void ReportConfigurationError(SoftwareReporterConfigurationError error) {
+   UMA_HISTOGRAM_ENUMERATION("SoftwareReporter.ConfigurationErrors", error);
+ }
++#endif
+ 
+ // Ensures |str| contains only alphanumeric characters and characters from
+ // |extras|, and is not longer than |max_length|.
++#if 0
+ bool ValidateString(const std::string& str,
+                     const std::string& extras,
+                     size_t max_length) {
+@@ -120,6 +123,9 @@
+                   extras.find(c) != std::string::npos;
+          });
+ }
++#endif
++
++#if 0
+ 
+ std::string GenerateSessionId() {
+   std::string session_id;
+@@ -265,6 +271,8 @@
+   ready_callback.Run(*prompt_seed, std::move(invocations));
+ }
+ 
++#endif
++
+ void ReportOnDemandUpdateSucceededHistogram(bool value) {
+   UMA_HISTOGRAM_BOOLEAN("SoftwareReporter.OnDemandUpdateSucceeded", value);
+ }
+@@ -311,11 +319,13 @@
+     const base::Version& version,
+     const base::FilePath& install_dir,
+     base::Value::Dict manifest) {
++#if 0
+   ScheduleSoftwareReporterWithManifest(
+       install_dir.Append(kSwReporterExeName), version, std::move(manifest),
+       // Unless otherwise specified by a unit test, This will post
+       // |safe_browsing::OnSwReporterReady| to the UI thread.
+       on_component_ready_callback_);
++#endif
+ }
+ 
+ base::FilePath SwReporterInstallerPolicy::GetRelativeInstallDir() const {
+@@ -335,9 +345,11 @@
+ update_client::InstallerAttributes
+ SwReporterInstallerPolicy::GetInstallerAttributes() const {
+   update_client::InstallerAttributes attributes;
++#if 0
+   // Pass the tag parameter to the installer as the "tag" attribute; it will be
+   // used to choose which binary is downloaded.
+   attributes["tag"] = GetReporterCohortTag(prefs_);
++#endif
+   return attributes;
+ }
+ 
+@@ -345,6 +357,8 @@
+ // then assigning the tag randomly if it's not found in either.
+ std::string SwReporterInstallerPolicy::GetReporterCohortTag(
+     PrefService* prefs) const {
++  return "stable";
++#if 0
+   const std::string feature_tag =
+       safe_browsing::kReporterDistributionTagParam.Get();
+   if (!feature_tag.empty()) {
+@@ -392,6 +406,7 @@
+   prefs->SetString(prefs::kSwReporterCohort, selected_tag);
+   prefs->SetTime(prefs::kSwReporterCohortSelectionTime, base::Time::Now());
+   return selected_tag;
++#endif
+ }
+ 
+ SwReporterOnDemandFetcher::SwReporterOnDemandFetcher(
+@@ -425,6 +440,9 @@
+ 
+ void RegisterSwReporterComponent(ComponentUpdateService* cus,
+                                  PrefService* prefs) {
++#if 1
++  return;
++#else
+   base::ScopedClosureRunner runner(std::move(GetRegistrationCBForTesting()));
+ 
+   // Don't install the component if not allowed by policy.  This prevents
+@@ -457,6 +475,7 @@
+                                                   std::move(ready_callback)));
+ 
+   installer->Register(cus, runner.Release());
++#endif
+ }
+ 
+ void SetRegisterSwReporterComponentCallbackForTesting(

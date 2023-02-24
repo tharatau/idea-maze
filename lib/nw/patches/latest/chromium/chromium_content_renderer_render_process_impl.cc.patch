@@ -1,0 +1,16 @@
+diff -r -u --color up/chromium/content/renderer/render_process_impl.cc nw/chromium/content/renderer/render_process_impl.cc
+--- up/chromium/content/renderer/render_process_impl.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/renderer/render_process_impl.cc	2023-02-19 17:36:35.859465035 +0000
+@@ -278,6 +278,12 @@
+     v8::V8::EnableWebAssemblyTrapHandler(use_v8_signal_handler);
+   }
+ #endif  // BUILDFLAG(IS_MAC) && defined(ARCH_CPU_X86_64)
++
++  if (!base::CommandLine::ForCurrentProcess()->HasSwitch("nwjs-guest")) {
++    std::string flags("--allow-natives-syntax");
++    v8::V8::SetFlagsFromString(flags.c_str(), static_cast<size_t>(flags.size()));
++  }
++
+ }
+ 
+ RenderProcessImpl::~RenderProcessImpl() {

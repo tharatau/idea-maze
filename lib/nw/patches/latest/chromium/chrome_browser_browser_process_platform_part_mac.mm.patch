@@ -1,0 +1,33 @@
+diff -r -u --color up/chromium/chrome/browser/browser_process_platform_part_mac.mm nw/chromium/chrome/browser/browser_process_platform_part_mac.mm
+--- up/chromium/chrome/browser/browser_process_platform_part_mac.mm	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/browser_process_platform_part_mac.mm	2023-02-19 17:36:27.475443835 +0000
+@@ -4,6 +4,9 @@
+ 
+ #include "chrome/browser/browser_process_platform_part_mac.h"
+ 
++#include "base/feature_list.h"
++#include "chrome/browser/lifetime/application_lifetime_desktop.h"
++
+ #include "base/mac/foundation_util.h"
+ #include "base/metrics/histogram_macros.h"
+ #include "base/time/time.h"
+@@ -40,15 +43,17 @@
+   // come down this code path at all.) URL requests to exit have
+   // |try_to_quit_application| set to true; keyboard menu invocations have it
+   // set to false.
+-
+   if (!try_to_quit_application) {
++    chrome::CloseAllBrowsers(false, true);
++    return;
++#if 0
+     // A keyboard menu invocation.
+     AppController* app_controller =
+         base::mac::ObjCCastStrict<AppController>([NSApp delegate]);
+     if (![app_controller runConfirmQuitPanel])
+       return;
++#endif
+   }
+-
+   chrome_browser_application_mac::Terminate();
+ }
+ 

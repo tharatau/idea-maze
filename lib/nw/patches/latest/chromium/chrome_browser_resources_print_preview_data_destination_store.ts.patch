@@ -1,0 +1,40 @@
+diff -r -u --color up/chromium/chrome/browser/resources/print_preview/data/destination_store.ts nw/chromium/chrome/browser/resources/print_preview/data/destination_store.ts
+--- up/chromium/chrome/browser/resources/print_preview/data/destination_store.ts	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/resources/print_preview/data/destination_store.ts	2023-02-19 17:36:28.639446782 +0000
+@@ -200,6 +200,7 @@
+    * Kiosk mode or when PDF printing is disallowed by policy.
+    */
+   private pdfPrinterEnabled_: boolean = false;
++  private isInNWPrintMode_: boolean = false;
+ 
+   private recentDestinationKeys_: string[] = [];
+ 
+@@ -325,7 +326,8 @@
+       // </if>
+       systemDefaultDestinationId: string,
+       serializedDefaultDestinationSelectionRulesStr: string|null,
+-      recentDestinations: RecentDestination[]) {
++      recentDestinations: RecentDestination[],
++      isInNWPrintMode: boolean) {
+     if (systemDefaultDestinationId) {
+       const systemDefaultVirtual = isPdfPrinter(systemDefaultDestinationId);
+       const systemDefaultType = systemDefaultVirtual ?
+@@ -344,6 +346,7 @@
+       this.typesToSearch_.add(systemDefaultType);
+     }
+ 
++    if (!isInNWPrintMode) {
+     this.recentDestinationKeys_ = recentDestinations.map(
+         destination => createRecentDestinationKey(destination));
+     for (const recent of recentDestinations) {
+@@ -356,8 +359,10 @@
+       this.typesToSearch_.add(PrinterType.EXTENSION_PRINTER);
+       this.typesToSearch_.add(PrinterType.LOCAL_PRINTER);
+     }
++    }
+ 
+     this.pdfPrinterEnabled_ = !pdfPrinterDisabled;
++    this.isInNWPrintMode_ = isInNWPrintMode;
+     this.createLocalPdfPrintDestination_();
+     // <if expr="is_chromeos">
+     if (isDriveMounted) {

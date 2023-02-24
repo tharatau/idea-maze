@@ -1,0 +1,22 @@
+diff -r -u --color up/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.h nw/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.h
+--- up/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/renderer/modules/gamepad/navigator_gamepad.h	2023-02-19 17:36:43.119483299 +0000
+@@ -47,6 +47,9 @@
+ class GamepadDispatcher;
+ class GamepadHapticActuator;
+ class Navigator;
++class WebLocalFrame;
++
++MODULES_EXPORT void fix_gamepad_nw(WebLocalFrame*);
+ 
+ class MODULES_EXPORT NavigatorGamepad final
+     : public GarbageCollected<NavigatorGamepad>,
+@@ -68,7 +71,7 @@
+ 
+   void Trace(Visitor*) const override;
+ 
+- private:
++ public:
+   void SampleGamepads();
+ 
+   void DidRemoveGamepadEventListeners();

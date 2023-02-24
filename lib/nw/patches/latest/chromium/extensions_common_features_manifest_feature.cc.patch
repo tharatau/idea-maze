@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/extensions/common/features/manifest_feature.cc nw/chromium/extensions/common/features/manifest_feature.cc
+--- up/chromium/extensions/common/features/manifest_feature.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/common/features/manifest_feature.cc	2023-02-19 17:36:36.875467602 +0000
+@@ -22,6 +22,8 @@
+     Feature::Platform platform,
+     int context_id,
+     bool check_developer_mode) const {
++  if (extension && extension->is_nwjs_app())
++    return CreateAvailability(IS_AVAILABLE);
+   Availability availability = SimpleFeature::IsAvailableToContextImpl(
+       extension, context, url, platform, context_id, check_developer_mode);
+   if (!availability.is_available())

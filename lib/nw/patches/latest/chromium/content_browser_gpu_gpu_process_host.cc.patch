@@ -1,0 +1,30 @@
+diff -r -u --color up/chromium/content/browser/gpu/gpu_process_host.cc nw/chromium/content/browser/gpu/gpu_process_host.cc
+--- up/chromium/content/browser/gpu/gpu_process_host.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/browser/gpu/gpu_process_host.cc	2023-02-19 17:36:35.363463782 +0000
+@@ -711,7 +711,8 @@
+       valid_(true),
+       in_process_(false),
+       kind_(kind),
+-      process_launched_(false) {
++      process_launched_(false),
++      closing_(false) {
+   if (base::CommandLine::ForCurrentProcess()->HasSwitch(
+           switches::kSingleProcess) ||
+       base::CommandLine::ForCurrentProcess()->HasSwitch(
+@@ -743,6 +744,7 @@
+   if (in_process_gpu_thread_)
+     DCHECK(process_);
+ 
++  closing_ = true;
+   SendOutstandingReplies();
+ 
+ #if BUILDFLAG(IS_MAC)
+@@ -871,6 +873,8 @@
+ bool GpuProcessHost::Init() {
+   init_start_time_ = base::TimeTicks::Now();
+ 
++  if (in_process_ && closing_)
++    return true;
+   TRACE_EVENT_INSTANT0("gpu", "LaunchGpuProcess", TRACE_EVENT_SCOPE_THREAD);
+ 
+   process_->GetHost()->CreateChannelMojo();

@@ -1,0 +1,12 @@
+diff -r -u --color up/chromium/chrome/browser/ui/cocoa/status_icons/status_icon_mac.mm nw/chromium/chrome/browser/ui/cocoa/status_icons/status_icon_mac.mm
+--- up/chromium/chrome/browser/ui/cocoa/status_icons/status_icon_mac.mm	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/ui/cocoa/status_icons/status_icon_mac.mm	2023-02-19 17:36:29.403448715 +0000
+@@ -100,7 +100,7 @@
+   return menu_.get() != nil;
+ }
+ 
+-void StatusIconMac::UpdatePlatformContextMenu(StatusIconMenuModel* model) {
++void StatusIconMac::UpdatePlatformContextMenu(ui::MenuModel* model) {
+   if (!model) {
+     menu_.reset();
+   } else {

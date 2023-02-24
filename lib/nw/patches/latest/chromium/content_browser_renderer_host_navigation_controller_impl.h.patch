@@ -1,0 +1,19 @@
+diff -r -u --color up/chromium/content/browser/renderer_host/navigation_controller_impl.h nw/chromium/content/browser/renderer_host/navigation_controller_impl.h
+--- up/chromium/content/browser/renderer_host/navigation_controller_impl.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/browser/renderer_host/navigation_controller_impl.h	2023-02-19 17:36:35.503464136 +0000
+@@ -87,6 +87,7 @@
+     base::WeakPtr<NavigationControllerImpl> controller_;
+   };
+ 
++  void set_history_initiator(RenderFrameHostImpl* frame_host) { history_initiator_ = frame_host; }
+   NavigationControllerImpl(BrowserContext* browser_context,
+                            FrameTree& frame_tree,
+                            NavigationControllerDelegate* delegate);
+@@ -463,6 +464,7 @@
+  private:
+   friend class RestoreHelper;
+ 
++  RenderFrameHostImpl* history_initiator_;
+   FRIEND_TEST_ALL_PREFIXES(TimeSmoother, Basic);
+   FRIEND_TEST_ALL_PREFIXES(TimeSmoother, SingleDuplicate);
+   FRIEND_TEST_ALL_PREFIXES(TimeSmoother, ManyDuplicates);

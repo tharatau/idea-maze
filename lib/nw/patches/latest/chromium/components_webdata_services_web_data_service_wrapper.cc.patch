@@ -1,0 +1,19 @@
+diff -r -u --color up/chromium/components/webdata_services/web_data_service_wrapper.cc nw/chromium/components/webdata_services/web_data_service_wrapper.cc
+--- up/chromium/components/webdata_services/web_data_service_wrapper.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/components/webdata_services/web_data_service_wrapper.cc	2023-02-19 17:36:35.195463357 +0000
+@@ -47,6 +47,7 @@
+     autofill::AutofillWebDataBackend* autofill_backend) {
+   DCHECK(db_task_runner->RunsTasksInCurrentSequence());
+ 
++#if 0
+   autofill::AutocompleteSyncBridge::CreateForWebDataServiceAndBackend(
+       autofill_web_data.get(), autofill_backend);
+   autofill::AutofillProfileSyncBridge::CreateForWebDataServiceAndBackend(
+@@ -55,6 +56,7 @@
+     autofill::ContactInfoSyncBridge::CreateForWebDataServiceAndBackend(
+         autofill_backend, autofill_web_data.get());
+   }
++#endif
+ }
+ 
+ void InitWalletSyncBridgesOnDBSequence(

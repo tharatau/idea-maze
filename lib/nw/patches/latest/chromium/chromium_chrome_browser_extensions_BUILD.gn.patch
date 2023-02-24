@@ -1,0 +1,46 @@
+diff -r -u --color up/chromium/chrome/browser/extensions/BUILD.gn nw/chromium/chrome/browser/extensions/BUILD.gn
+--- up/chromium/chrome/browser/extensions/BUILD.gn	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/extensions/BUILD.gn	2023-02-19 17:36:27.675444342 +0000
+@@ -297,14 +297,14 @@
+     "api/resources_private/resources_private_api.h",
+     "api/runtime/chrome_runtime_api_delegate.cc",
+     "api/runtime/chrome_runtime_api_delegate.h",
+-    "api/safe_browsing_private/safe_browsing_private_api.cc",
+-    "api/safe_browsing_private/safe_browsing_private_api.h",
+-    "api/safe_browsing_private/safe_browsing_private_event_router.cc",
+-    "api/safe_browsing_private/safe_browsing_private_event_router.h",
+-    "api/safe_browsing_private/safe_browsing_private_event_router_factory.cc",
+-    "api/safe_browsing_private/safe_browsing_private_event_router_factory.h",
+-    "api/safe_browsing_private/safe_browsing_util.cc",
+-    "api/safe_browsing_private/safe_browsing_util.h",
++    #"api/safe_browsing_private/safe_browsing_private_api.cc",
++    #"api/safe_browsing_private/safe_browsing_private_api.h",
++    #"api/safe_browsing_private/safe_browsing_private_event_router.cc",
++    #"api/safe_browsing_private/safe_browsing_private_event_router.h",
++    #"api/safe_browsing_private/safe_browsing_private_event_router_factory.cc",
++    #"api/safe_browsing_private/safe_browsing_private_event_router_factory.h",
++    #"api/safe_browsing_private/safe_browsing_util.cc",
++    #"api/safe_browsing_private/safe_browsing_util.h",
+     "api/search/search_api.cc",
+     "api/search/search_api.h",
+     "api/sessions/session_id.cc",
+@@ -739,7 +739,7 @@
+     "//chrome/browser/web_applications/extensions",
+ 
+     # TODO(crbug/925153): Remove this circular dependency.
+-    "//chrome/browser/safe_browsing",
++    #"//chrome/browser/safe_browsing",
+   ]
+ 
+   # Since browser and browser_extensions actually depend on each other,
+@@ -790,8 +790,8 @@
+     "//chrome/browser/profiles:profile",
+     "//chrome/browser/resource_coordinator:intervention_policy_database_proto",
+     "//chrome/browser/resource_coordinator:mojo_bindings",
+-    "//chrome/browser/safe_browsing",
+-    "//chrome/browser/safe_browsing:metrics_collector",
++    #"//chrome/browser/safe_browsing",
++    #"//chrome/browser/safe_browsing:metrics_collector",
+     "//chrome/browser/ui/tabs:tab_enums",
+     "//chrome/browser/web_applications",
+     "//components/cbor:cbor",

@@ -1,0 +1,15 @@
+diff -r -u --color up/chromium/content/browser/url_loader_factory_params_helper.cc nw/chromium/content/browser/url_loader_factory_params_helper.cc
+--- up/chromium/content/browser/url_loader_factory_params_helper.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/content/browser/url_loader_factory_params_helper.cc	2023-02-19 17:36:35.647464499 +0000
+@@ -96,6 +96,11 @@
+ 
+   params->trust_token_redemption_policy = trust_token_redemption_policy;
+ 
++  if (GetContentClient()->browser()->IsNWOrigin(origin, process->GetBrowserContext())) {
++    params->is_corb_enabled = false;
++    params->disable_web_security = true;
++  }
++
+   GetContentClient()->browser()->OverrideURLLoaderFactoryParams(
+       process->GetBrowserContext(), origin, is_for_isolated_world,
+       params.get());

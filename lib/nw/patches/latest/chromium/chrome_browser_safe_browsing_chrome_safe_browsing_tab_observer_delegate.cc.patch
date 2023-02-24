@@ -1,0 +1,18 @@
+diff -r -u --color up/chromium/chrome/browser/safe_browsing/chrome_safe_browsing_tab_observer_delegate.cc nw/chromium/chrome/browser/safe_browsing/chrome_safe_browsing_tab_observer_delegate.cc
+--- up/chromium/chrome/browser/safe_browsing/chrome_safe_browsing_tab_observer_delegate.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/safe_browsing/chrome_safe_browsing_tab_observer_delegate.cc	2023-02-19 17:36:28.795447176 +0000
+@@ -43,6 +43,7 @@
+   return g_browser_process->safe_browsing_service();
+ }
+ 
++#if 0
+ std::unique_ptr<ClientSideDetectionHost>
+ ChromeSafeBrowsingTabObserverDelegate::CreateClientSideDetectionHost(
+     content::WebContents* web_contents) {
+@@ -52,5 +53,6 @@
+   return nullptr;
+ #endif
+ }
++#endif
+ 
+ }  // namespace safe_browsing

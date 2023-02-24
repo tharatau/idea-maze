@@ -1,0 +1,22 @@
+diff -r -u --color up/chromium/third_party/blink/public/web/web_frame_owner_properties.h nw/chromium/third_party/blink/public/web/web_frame_owner_properties.h
+--- up/chromium/third_party/blink/public/web/web_frame_owner_properties.h	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/third_party/blink/public/web/web_frame_owner_properties.h	2023-02-19 17:36:42.179480943 +0000
+@@ -12,8 +12,10 @@
+ namespace blink {
+ 
+ struct WebFrameOwnerProperties {
++  WebString nwuseragent;
+   WebString name;  // browsing context container's name
+   mojom::ScrollbarMode scrollbar_mode{mojom::ScrollbarMode::kAuto};
++  bool nwFakeTop{false};
+   int margin_width{-1};
+   int margin_height{-1};
+   bool allow_fullscreen{false};
+@@ -35,6 +37,7 @@
+                           mojom::ColorScheme color_scheme)
+       : name(name),
+         scrollbar_mode(scrollbar_mode),
++        nwFakeTop(false),
+         margin_width(margin_width),
+         margin_height(margin_height),
+         allow_fullscreen(allow_fullscreen),

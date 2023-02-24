@@ -1,0 +1,14 @@
+diff -r -u --color up/chromium/extensions/renderer/user_script_injector.cc nw/chromium/extensions/renderer/user_script_injector.cc
+--- up/chromium/extensions/renderer/user_script_injector.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/extensions/renderer/user_script_injector.cc	2023-02-19 17:36:36.923467723 +0000
+@@ -138,6 +138,10 @@
+   return mojom::InjectionType::kContentScript;
+ }
+ 
++bool UserScriptInjector::ShouldExecuteInMainWorld() const {
++  return script_->in_main_world();
++}
++
+ blink::mojom::UserActivationOption UserScriptInjector::IsUserGesture() const {
+   return blink::mojom::UserActivationOption::kDoNotActivate;
+ }

@@ -1,0 +1,11 @@
+diff -r -u --color up/chromium/storage/browser/file_system/isolated_context.cc nw/chromium/storage/browser/file_system/isolated_context.cc
+--- up/chromium/storage/browser/file_system/isolated_context.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/storage/browser/file_system/isolated_context.cc	2023-02-19 17:36:41.255478627 +0000
+@@ -206,6 +206,7 @@
+       filesystem_id_(filesystem_id),
+       file_info_(file_info),
+       path_type_(path_type),
++      files_(),
+       ref_counts_(0) {
+   DCHECK(IsSinglePathIsolatedFileSystem(type_));
+ }

@@ -1,0 +1,39 @@
+diff -r -u --color up/chromium/chrome/browser/interstitials/enterprise_util.cc nw/chromium/chrome/browser/interstitials/enterprise_util.cc
+--- up/chromium/chrome/browser/interstitials/enterprise_util.cc	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/chrome/browser/interstitials/enterprise_util.cc	2023-02-19 17:36:27.895444898 +0000
+@@ -13,7 +13,7 @@
+ 
+ namespace {
+ 
+-#if BUILDFLAG(ENABLE_EXTENSIONS)
++#if 0 //BUILDFLAG(ENABLE_EXTENSIONS)
+ extensions::SafeBrowsingPrivateEventRouter* GetEventRouter(
+     content::WebContents* web_contents) {
+   // |web_contents| can be null in tests.
+@@ -36,7 +36,7 @@
+     const GURL& page_url,
+     const std::string& reason,
+     int net_error_code) {
+-#if BUILDFLAG(ENABLE_EXTENSIONS)
++#if 0//BUILDFLAG(ENABLE_EXTENSIONS)
+   extensions::SafeBrowsingPrivateEventRouter* event_router =
+       GetEventRouter(web_contents);
+   if (!event_router)
+@@ -50,7 +50,7 @@
+     const GURL& page_url,
+     const std::string& reason,
+     int net_error_code) {
+-#if BUILDFLAG(ENABLE_EXTENSIONS)
++#if 0 //BUILDFLAG(ENABLE_EXTENSIONS)
+   extensions::SafeBrowsingPrivateEventRouter* event_router =
+       GetEventRouter(web_contents);
+   if (!event_router)
+@@ -66,7 +66,7 @@
+     const GURL& page_url,
+     const std::string& threat_type,
+     safe_browsing::RTLookupResponse rt_lookup_response) {
+-#if BUILDFLAG(ENABLE_EXTENSIONS)
++#if 0 //BUILDFLAG(ENABLE_EXTENSIONS)
+   extensions::SafeBrowsingPrivateEventRouter* event_router =
+       GetEventRouter(web_contents);
+   if (!event_router) {

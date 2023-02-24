@@ -1,0 +1,10 @@
+diff -r -u --color up/chromium/ui/qt/qt.gni nw/chromium/ui/qt/qt.gni
+--- up/chromium/ui/qt/qt.gni	2023-02-15 18:46:36.000000000 +0000
++++ nw/chromium/ui/qt/qt.gni	2023-02-19 17:37:08.759543618 +0000
+@@ -5,5 +5,5 @@
+ import("//build/config/chromecast_build.gni")
+ 
+ declare_args() {
+-  use_qt = is_linux && !is_castos
++  use_qt = false #is_linux && !is_castos
+ }
