@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/zygote_host/zygote_host_impl_linux.cc nw/chromium/content/browser/zygote_host/zygote_host_impl_linux.cc
 --- up/chromium/content/browser/zygote_host/zygote_host_impl_linux.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/zygote_host/zygote_host_impl_linux.cc	2023-02-24 20:54:12.920493266 +0000
++++ nw/chromium/content/browser/zygote_host/zygote_host_impl_linux.cc	2023-02-25 19:07:16.457820402 +0000
 @@ -1,6 +1,7 @@
  // Copyright 2012 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be

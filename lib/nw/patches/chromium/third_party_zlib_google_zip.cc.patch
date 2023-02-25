@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/zlib/google/zip.cc nw/chromium/third_party/zlib/google/zip.cc
 --- up/chromium/third_party/zlib/google/zip.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/zlib/google/zip.cc	2023-02-24 20:54:36.572360794 +0000
++++ nw/chromium/third_party/zlib/google/zip.cc	2023-02-25 19:07:47.837989314 +0000
 @@ -199,7 +199,7 @@
    reader.SetPassword(std::move(options.password));
  

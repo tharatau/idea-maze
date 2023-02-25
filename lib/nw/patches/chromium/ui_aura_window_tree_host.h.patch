@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/aura/window_tree_host.h nw/chromium/ui/aura/window_tree_host.h
 --- up/chromium/ui/aura/window_tree_host.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/aura/window_tree_host.h	2023-02-24 20:54:37.216357112 +0000
++++ nw/chromium/ui/aura/window_tree_host.h	2023-02-25 19:07:48.713994574 +0000
 @@ -223,6 +223,9 @@
    // depending on the platform. The |local_surface_id| takes effect when (and
    // if) the new size is confirmed (potentially asynchronously) by the platform.

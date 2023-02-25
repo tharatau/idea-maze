@@ -1,9 +1,8 @@
 solutions = [
   { "name"        : 'chromium_src',
-    "url"         : 'https://chromium.googlesource.com/chromium/src.git',
+    "url"         : 'https://github.com/nwjs/chromium.src',
     "deps_file"   : 'DEPS',
-    "custom_deps" : {
-    },
+    "custom_deps" : {},
     "custom_vars": {
       "checkout_configuration": "small"
     },

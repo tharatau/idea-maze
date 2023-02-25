@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/node_binding.h nw/node/src/node_binding.h
---- up/node/src/node_binding.h	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_binding.h	2023-02-19 17:37:33.291599271 +0000
+--- up/node/src/node_binding.h	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_binding.h	2023-02-25 19:08:13.830006776 +0000
 @@ -65,6 +65,22 @@
  // Globals per process
  // This is set by node::Init() which is used by embedders

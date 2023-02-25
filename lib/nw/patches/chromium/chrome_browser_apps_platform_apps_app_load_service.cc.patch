@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/apps/platform_apps/app_load_service.cc nw/chromium/chrome/browser/apps/platform_apps/app_load_service.cc
 --- up/chromium/chrome/browser/apps/platform_apps/app_load_service.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/apps/platform_apps/app_load_service.cc	2023-02-24 20:54:06.628522279 +0000
++++ nw/chromium/chrome/browser/apps/platform_apps/app_load_service.cc	2023-02-25 19:07:07.893769728 +0000
 @@ -4,6 +4,8 @@
  
  #include "chrome/browser/apps/platform_apps/app_load_service.h"

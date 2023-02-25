@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/renderer_host/navigation_request.cc nw/chromium/content/browser/renderer_host/navigation_request.cc
 --- up/chromium/content/browser/renderer_host/navigation_request.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/renderer_host/navigation_request.cc	2023-02-24 20:54:12.808493782 +0000
++++ nw/chromium/content/browser/renderer_host/navigation_request.cc	2023-02-25 19:07:16.301819551 +0000
 @@ -184,6 +184,11 @@
  #include "ui/android/window_android_compositor.h"
  #endif

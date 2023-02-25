@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/google_apis/gaia/gaia_auth_fetcher.cc nw/chromium/google_apis/gaia/gaia_auth_fetcher.cc
 --- up/chromium/google_apis/gaia/gaia_auth_fetcher.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/google_apis/gaia/gaia_auth_fetcher.cc	2023-02-24 20:54:13.840489024 +0000
++++ nw/chromium/google_apis/gaia/gaia_auth_fetcher.cc	2023-02-25 19:07:17.809827772 +0000
 @@ -40,7 +40,7 @@
  
  namespace {

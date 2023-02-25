@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/nacl/loader/sandbox_linux/nacl_sandbox_linux.cc nw/chromium/components/nacl/loader/sandbox_linux/nacl_sandbox_linux.cc
 --- up/chromium/components/nacl/loader/sandbox_linux/nacl_sandbox_linux.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/nacl/loader/sandbox_linux/nacl_sandbox_linux.cc	2023-02-24 20:54:11.048501898 +0000
++++ nw/chromium/components/nacl/loader/sandbox_linux/nacl_sandbox_linux.cc	2023-02-25 19:07:13.869806295 +0000
 @@ -183,7 +183,7 @@
    // have a single thread running here.
    DCHECK(!layer_one_sealed_);

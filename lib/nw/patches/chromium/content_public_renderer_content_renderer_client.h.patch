@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/renderer/content_renderer_client.h nw/chromium/content/public/renderer/content_renderer_client.h
 --- up/chromium/content/public/renderer/content_renderer_client.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/public/renderer/content_renderer_client.h	2023-02-24 20:54:12.992492934 +0000
++++ nw/chromium/content/public/renderer/content_renderer_client.h	2023-02-25 19:07:16.565820990 +0000
 @@ -12,6 +12,8 @@
  #include <string>
  #include <vector>

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/fileapi/file.h nw/chromium/third_party/blink/renderer/core/fileapi/file.h
 --- up/chromium/third_party/blink/renderer/core/fileapi/file.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/fileapi/file.h	2023-02-24 20:54:17.728467806 +0000
++++ nw/chromium/third_party/blink/renderer/core/fileapi/file.h	2023-02-25 19:07:22.965855928 +0000
 @@ -65,6 +65,10 @@
                        const HeapVector<Member<V8BlobPart>>& file_bits,
                        const String& file_name,

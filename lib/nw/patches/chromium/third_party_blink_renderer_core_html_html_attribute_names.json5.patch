@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/html/html_attribute_names.json5 nw/chromium/third_party/blink/renderer/core/html/html_attribute_names.json5
 --- up/chromium/third_party/blink/renderer/core/html/html_attribute_names.json5	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/html/html_attribute_names.json5	2023-02-24 20:54:17.788467467 +0000
++++ nw/chromium/third_party/blink/renderer/core/html/html_attribute_names.json5	2023-02-25 19:07:23.049856389 +0000
 @@ -350,5 +350,12 @@
      "webkitdirectory",
      "width",

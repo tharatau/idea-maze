@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/fullscreen/fullscreen.cc nw/chromium/third_party/blink/renderer/core/fullscreen/fullscreen.cc
 --- up/chromium/third_party/blink/renderer/core/fullscreen/fullscreen.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/fullscreen/fullscreen.cc	2023-02-24 20:54:17.764467603 +0000
++++ nw/chromium/third_party/blink/renderer/core/fullscreen/fullscreen.cc	2023-02-25 19:07:23.017856213 +0000
 @@ -329,7 +329,7 @@
    // true:
  

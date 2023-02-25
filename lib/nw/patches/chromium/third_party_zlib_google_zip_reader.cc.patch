@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/zlib/google/zip_reader.cc nw/chromium/third_party/zlib/google/zip_reader.cc
 --- up/chromium/third_party/zlib/google/zip_reader.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/zlib/google/zip_reader.cc	2023-02-24 20:54:36.572360794 +0000
++++ nw/chromium/third_party/zlib/google/zip_reader.cc	2023-02-25 19:07:47.837989314 +0000
 @@ -150,7 +150,7 @@
    zip_file_ = internal::OpenHandleForUnzipping(zip_fd);
  #endif

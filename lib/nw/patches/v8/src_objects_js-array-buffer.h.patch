@@ -1,6 +1,6 @@
 diff -r -u --color up/v8/src/objects/js-array-buffer.h nw/v8/src/objects/js-array-buffer.h
 --- up/v8/src/objects/js-array-buffer.h	2023-02-10 19:02:29.000000000 +0000
-+++ nw/v8/src/objects/js-array-buffer.h	2023-02-19 17:37:43.551623003 +0000
++++ nw/v8/src/objects/js-array-buffer.h	2023-02-25 19:08:24.070056065 +0000
 @@ -71,6 +71,7 @@
  
    // [was_detached]: true => the buffer was previously detached.

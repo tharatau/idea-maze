@@ -1,6 +1,6 @@
 diff -r -u --color up/node/deps/openssl/openssl/providers/implementations/rands/seeding/rand_unix.c nw/node/deps/openssl/openssl/providers/implementations/rands/seeding/rand_unix.c
---- up/node/deps/openssl/openssl/providers/implementations/rands/seeding/rand_unix.c	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/deps/openssl/openssl/providers/implementations/rands/seeding/rand_unix.c	2023-02-19 17:37:31.415595667 +0000
+--- up/node/deps/openssl/openssl/providers/implementations/rands/seeding/rand_unix.c	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/deps/openssl/openssl/providers/implementations/rands/seeding/rand_unix.c	2023-02-25 19:08:11.946001399 +0000
 @@ -357,7 +357,7 @@
       * internally. So we need to check errno for ENOSYS
       */

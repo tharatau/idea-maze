@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/permissions/permission_context_base.cc nw/chromium/components/permissions/permission_context_base.cc
 --- up/chromium/components/permissions/permission_context_base.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/permissions/permission_context_base.cc	2023-02-24 20:54:11.284500810 +0000
++++ nw/chromium/components/permissions/permission_context_base.cc	2023-02-25 19:07:14.273808497 +0000
 @@ -4,6 +4,9 @@
  
  #include "components/permissions/permission_context_base.h"

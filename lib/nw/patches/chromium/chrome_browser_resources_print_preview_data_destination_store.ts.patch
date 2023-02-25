@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/resources/print_preview/data/destination_store.ts nw/chromium/chrome/browser/resources/print_preview/data/destination_store.ts
 --- up/chromium/chrome/browser/resources/print_preview/data/destination_store.ts	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/resources/print_preview/data/destination_store.ts	2023-02-24 20:54:07.828516746 +0000
++++ nw/chromium/chrome/browser/resources/print_preview/data/destination_store.ts	2023-02-25 19:07:09.561779988 +0000
 @@ -200,6 +200,7 @@
     * Kiosk mode or when PDF printing is disallowed by policy.
     */

@@ -1,2 +1,6 @@
+chromium_src
+
 patches/nw
 patches/up
+
+.gclient_previous_custom_vars

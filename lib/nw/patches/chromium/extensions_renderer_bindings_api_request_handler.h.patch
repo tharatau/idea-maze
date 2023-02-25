@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/bindings/api_request_handler.h nw/chromium/extensions/renderer/bindings/api_request_handler.h
 --- up/chromium/extensions/renderer/bindings/api_request_handler.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/renderer/bindings/api_request_handler.h	2023-02-24 20:54:13.764489374 +0000
++++ nw/chromium/extensions/renderer/bindings/api_request_handler.h	2023-02-25 19:07:17.689827117 +0000
 @@ -37,6 +37,11 @@
  
      ~Request();

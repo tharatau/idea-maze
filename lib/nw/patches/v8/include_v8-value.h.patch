@@ -1,6 +1,6 @@
 diff -r -u --color up/v8/include/v8-value.h nw/v8/include/v8-value.h
 --- up/v8/include/v8-value.h	2023-02-10 19:02:29.000000000 +0000
-+++ nw/v8/include/v8-value.h	2023-02-19 17:37:43.243622259 +0000
++++ nw/v8/include/v8-value.h	2023-02-25 19:08:23.782054793 +0000
 @@ -402,6 +402,10 @@
     */
    Local<Boolean> ToBoolean(Isolate* isolate) const;

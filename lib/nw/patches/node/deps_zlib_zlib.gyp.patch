@@ -1,6 +1,6 @@
 diff -r -u --color up/node/deps/zlib/zlib.gyp nw/node/deps/zlib/zlib.gyp
---- up/node/deps/zlib/zlib.gyp	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/deps/zlib/zlib.gyp	2023-02-19 17:37:33.159599018 +0000
+--- up/node/deps/zlib/zlib.gyp	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/deps/zlib/zlib.gyp	2023-02-25 19:08:13.702006076 +0000
 @@ -7,7 +7,7 @@
      'ZLIB_ROOT': '.',
      'use_system_zlib%': 0,

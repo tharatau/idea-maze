@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/DEPS nw/chromium/DEPS
 --- up/chromium/DEPS	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/DEPS	2023-02-24 20:54:04.408532157 +0000
++++ nw/chromium/DEPS	2023-02-25 19:07:04.949752212 +0000
 @@ -291,6 +291,7 @@
    'boringssl_git': 'https://boringssl.googlesource.com',
    'chromium_git': 'https://chromium.googlesource.com',

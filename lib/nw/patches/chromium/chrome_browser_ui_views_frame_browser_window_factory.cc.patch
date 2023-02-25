@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/frame/browser_window_factory.cc nw/chromium/chrome/browser/ui/views/frame/browser_window_factory.cc
 --- up/chromium/chrome/browser/ui/views/frame/browser_window_factory.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/frame/browser_window_factory.cc	2023-02-24 20:54:08.412514053 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/browser_window_factory.cc	2023-02-25 19:07:10.429785327 +0000
 @@ -3,6 +3,7 @@
  // found in the LICENSE file.
  

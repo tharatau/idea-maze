@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/build/toolchain/gcc_toolchain.gni nw/chromium/build/toolchain/gcc_toolchain.gni
 --- up/chromium/build/toolchain/gcc_toolchain.gni	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/build/toolchain/gcc_toolchain.gni	2023-02-24 20:54:05.368527892 +0000
++++ nw/chromium/build/toolchain/gcc_toolchain.gni	2023-02-25 19:07:06.265759714 +0000
 @@ -511,6 +511,9 @@
        default_output_extension = default_shlib_extension
  

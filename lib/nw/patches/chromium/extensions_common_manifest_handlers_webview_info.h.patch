@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/manifest_handlers/webview_info.h nw/chromium/extensions/common/manifest_handlers/webview_info.h
 --- up/chromium/extensions/common/manifest_handlers/webview_info.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/manifest_handlers/webview_info.h	2023-02-24 20:54:13.748489448 +0000
++++ nw/chromium/extensions/common/manifest_handlers/webview_info.h	2023-02-25 19:07:17.665826987 +0000
 @@ -30,6 +30,10 @@
    // resources in the given |partition_id|.
    static bool HasWebviewAccessibleResources(const Extension& extension,

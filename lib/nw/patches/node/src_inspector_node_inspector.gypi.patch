@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/inspector/node_inspector.gypi nw/node/src/inspector/node_inspector.gypi
---- up/node/src/inspector/node_inspector.gypi	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/inspector/node_inspector.gypi	2023-02-19 17:37:33.283599256 +0000
+--- up/node/src/inspector/node_inspector.gypi	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/inspector/node_inspector.gypi	2023-02-25 19:08:13.822006732 +0000
 @@ -85,7 +85,7 @@
        ],
        'action': [

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/renderer_host/render_view_host_delegate.h nw/chromium/content/browser/renderer_host/render_view_host_delegate.h
 --- up/chromium/content/browser/renderer_host/render_view_host_delegate.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/renderer_host/render_view_host_delegate.h	2023-02-24 20:54:12.828493690 +0000
++++ nw/chromium/content/browser/renderer_host/render_view_host_delegate.h	2023-02-25 19:07:16.333819726 +0000
 @@ -46,6 +46,7 @@
  // WebContents type (see //renderer_host/DEPS).
  class RenderViewHostDelegate {

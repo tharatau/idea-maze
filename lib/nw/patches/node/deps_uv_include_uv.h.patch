@@ -1,6 +1,6 @@
 diff -r -u --color up/node/deps/uv/include/uv.h nw/node/deps/uv/include/uv.h
---- up/node/deps/uv/include/uv.h	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/deps/uv/include/uv.h	2023-02-19 17:37:31.679596174 +0000
+--- up/node/deps/uv/include/uv.h	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/deps/uv/include/uv.h	2023-02-25 19:08:12.213999644 +0000
 @@ -32,6 +32,8 @@
  #endif
  

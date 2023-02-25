@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/guest_view/browser/guest_view_manager.cc nw/chromium/components/guest_view/browser/guest_view_manager.cc
 --- up/chromium/components/guest_view/browser/guest_view_manager.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/guest_view/browser/guest_view_manager.cc	2023-02-24 20:54:10.928502451 +0000
++++ nw/chromium/components/guest_view/browser/guest_view_manager.cc	2023-02-25 19:07:13.693805335 +0000
 @@ -512,10 +512,9 @@
  
    // The embedder is trying to access a guest with a negative or zero

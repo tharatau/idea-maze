@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/download/download_ui_controller.cc nw/chromium/chrome/browser/download/download_ui_controller.cc
 --- up/chromium/chrome/browser/download/download_ui_controller.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/download/download_ui_controller.cc	2023-02-24 20:54:07.104520084 +0000
++++ nw/chromium/chrome/browser/download/download_ui_controller.cc	2023-02-25 19:07:08.557773812 +0000
 @@ -23,6 +23,9 @@
  #include "content/public/browser/download_item_utils.h"
  #include "content/public/browser/web_contents.h"

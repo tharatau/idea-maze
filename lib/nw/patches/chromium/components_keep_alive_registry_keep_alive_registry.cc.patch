@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/keep_alive_registry/keep_alive_registry.cc nw/chromium/components/keep_alive_registry/keep_alive_registry.cc
 --- up/chromium/components/keep_alive_registry/keep_alive_registry.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/keep_alive_registry/keep_alive_registry.cc	2023-02-24 20:54:10.972502248 +0000
++++ nw/chromium/components/keep_alive_registry/keep_alive_registry.cc	2023-02-25 19:07:13.765805728 +0000
 @@ -118,7 +118,8 @@
  
  void KeepAliveRegistry::Register(KeepAliveOrigin origin,

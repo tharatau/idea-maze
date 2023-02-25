@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/frame/glass_browser_caption_button_container.cc nw/chromium/chrome/browser/ui/views/frame/glass_browser_caption_button_container.cc
 --- up/chromium/chrome/browser/ui/views/frame/glass_browser_caption_button_container.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/frame/glass_browser_caption_button_container.cc	2023-02-24 20:54:08.412514053 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/glass_browser_caption_button_container.cc	2023-02-25 19:07:10.429785327 +0000
 @@ -61,7 +61,7 @@
        close_button_(AddChildView(CreateCaptionButton(
            base::BindRepeating(&BrowserFrame::CloseWithReason,

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/services/network/public/mojom/network_service.mojom nw/chromium/services/network/public/mojom/network_service.mojom
 --- up/chromium/services/network/public/mojom/network_service.mojom	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/services/network/public/mojom/network_service.mojom	2023-02-24 20:54:16.700473612 +0000
++++ nw/chromium/services/network/public/mojom/network_service.mojom	2023-02-25 19:07:21.525848028 +0000
 @@ -165,6 +165,8 @@
    // Sets the parameters and initializes the service.
    SetParams(NetworkServiceParams params);

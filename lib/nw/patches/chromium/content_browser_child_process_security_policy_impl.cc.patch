@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/child_process_security_policy_impl.cc nw/chromium/content/browser/child_process_security_policy_impl.cc
 --- up/chromium/content/browser/child_process_security_policy_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/child_process_security_policy_impl.cc	2023-02-24 20:54:12.640494557 +0000
++++ nw/chromium/content/browser/child_process_security_policy_impl.cc	2023-02-25 19:07:16.061818243 +0000
 @@ -306,7 +306,7 @@
  class ChildProcessSecurityPolicyImpl::SecurityState {
   public:

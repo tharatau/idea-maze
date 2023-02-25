@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/node_worker.cc nw/node/src/node_worker.cc
---- up/node/src/node_worker.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_worker.cc	2023-02-19 17:37:33.303599295 +0000
+--- up/node/src/node_worker.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_worker.cc	2023-02-25 19:08:13.842006841 +0000
 @@ -169,7 +169,7 @@
      isolate->AddNearHeapLimitCallback(Worker::NearHeapLimit, w);
  

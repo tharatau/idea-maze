@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/renderer/chrome_content_renderer_client.h nw/chromium/chrome/renderer/chrome_content_renderer_client.h
 --- up/chromium/chrome/renderer/chrome_content_renderer_client.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/renderer/chrome_content_renderer_client.h	2023-02-24 20:54:08.856512006 +0000
++++ nw/chromium/chrome/renderer/chrome_content_renderer_client.h	2023-02-25 19:07:10.993788796 +0000
 @@ -19,7 +19,7 @@
  #include "chrome/common/media/webrtc_logging.mojom.h"
  #include "chrome/services/speech/buildflags/buildflags.h"

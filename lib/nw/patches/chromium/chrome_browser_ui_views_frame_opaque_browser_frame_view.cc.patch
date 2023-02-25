@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/frame/opaque_browser_frame_view.cc nw/chromium/chrome/browser/ui/views/frame/opaque_browser_frame_view.cc
 --- up/chromium/chrome/browser/ui/views/frame/opaque_browser_frame_view.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/frame/opaque_browser_frame_view.cc	2023-02-24 20:54:08.412514053 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/opaque_browser_frame_view.cc	2023-02-25 19:07:10.433785351 +0000
 @@ -128,6 +128,7 @@
      BrowserView* browser_view,
      OpaqueBrowserFrameViewLayout* layout)

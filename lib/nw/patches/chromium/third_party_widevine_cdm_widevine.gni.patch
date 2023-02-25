@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/widevine/cdm/widevine.gni nw/chromium/third_party/widevine/cdm/widevine.gni
 --- up/chromium/third_party/widevine/cdm/widevine.gni	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/widevine/cdm/widevine.gni	2023-02-24 20:54:36.480361320 +0000
++++ nw/chromium/third_party/widevine/cdm/widevine.gni	2023-02-25 19:07:47.705988522 +0000
 @@ -12,7 +12,7 @@
    # on Android. For Fuchsia, see crbug.com/1354347.
    # Can be optionally enabled in Chromium on non-Android platforms. Please see

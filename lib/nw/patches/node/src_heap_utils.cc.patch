@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/heap_utils.cc nw/node/src/heap_utils.cc
---- up/node/src/heap_utils.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/heap_utils.cc	2023-02-19 17:37:33.283599256 +0000
+--- up/node/src/heap_utils.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/heap_utils.cc	2023-02-25 19:08:13.822006732 +0000
 @@ -345,9 +345,11 @@
  inline void TakeSnapshot(Environment* env,
                           v8::OutputStream* out,

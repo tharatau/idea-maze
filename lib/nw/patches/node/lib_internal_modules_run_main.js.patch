@@ -1,6 +1,6 @@
 diff -r -u --color up/node/lib/internal/modules/run_main.js nw/node/lib/internal/modules/run_main.js
---- up/node/lib/internal/modules/run_main.js	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/lib/internal/modules/run_main.js	2023-02-19 17:37:33.255599202 +0000
+--- up/node/lib/internal/modules/run_main.js	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/lib/internal/modules/run_main.js	2023-02-25 19:08:13.794006579 +0000
 @@ -34,7 +34,7 @@
     * (or an empty list when none have been registered).
     */

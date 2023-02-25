@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/node_perf.cc nw/node/src/node_perf.cc
---- up/node/src/node_perf.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_perf.cc	2023-02-19 17:37:33.299599287 +0000
+--- up/node/src/node_perf.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_perf.cc	2023-02-25 19:08:13.834006798 +0000
 @@ -88,10 +88,12 @@
  
  void PerformanceState::Mark(PerformanceMilestone milestone, uint64_t ts) {

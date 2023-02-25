@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/common/user_agent.h nw/chromium/content/public/common/user_agent.h
 --- up/chromium/content/public/common/user_agent.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/public/common/user_agent.h	2023-02-24 20:54:12.988492952 +0000
++++ nw/chromium/content/public/common/user_agent.h	2023-02-25 19:07:16.565820990 +0000
 @@ -54,6 +54,7 @@
      IncludeAndroidBuildNumber include_android_build_number,
      IncludeAndroidModel include_android_model);

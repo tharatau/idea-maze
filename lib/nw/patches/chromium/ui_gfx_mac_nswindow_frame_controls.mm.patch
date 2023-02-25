@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/gfx/mac/nswindow_frame_controls.mm nw/chromium/ui/gfx/mac/nswindow_frame_controls.mm
 --- up/chromium/ui/gfx/mac/nswindow_frame_controls.mm	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/gfx/mac/nswindow_frame_controls.mm	2023-02-24 20:54:38.964347063 +0000
++++ nw/chromium/ui/gfx/mac/nswindow_frame_controls.mm	2023-02-25 19:07:49.197997480 +0000
 @@ -37,6 +37,22 @@
    [window setCollectionBehavior:behavior];
  }

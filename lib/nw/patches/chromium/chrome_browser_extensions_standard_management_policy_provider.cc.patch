@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/standard_management_policy_provider.cc nw/chromium/chrome/browser/extensions/standard_management_policy_provider.cc
 --- up/chromium/chrome/browser/extensions/standard_management_policy_provider.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/standard_management_policy_provider.cc	2023-02-24 20:54:07.244519439 +0000
++++ nw/chromium/chrome/browser/extensions/standard_management_policy_provider.cc	2023-02-25 19:07:08.753775018 +0000
 @@ -109,6 +109,7 @@
      case Manifest::TYPE_HOSTED_APP:
      case Manifest::TYPE_LEGACY_PACKAGED_APP:

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/base/resource/resource_bundle.cc nw/chromium/ui/base/resource/resource_bundle.cc
 --- up/chromium/ui/base/resource/resource_bundle.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/base/resource/resource_bundle.cc	2023-02-24 20:54:37.256356884 +0000
++++ nw/chromium/ui/base/resource/resource_bundle.cc	2023-02-25 19:07:48.769994910 +0000
 @@ -4,6 +4,8 @@
  
  #include "ui/base/resource/resource_bundle.h"

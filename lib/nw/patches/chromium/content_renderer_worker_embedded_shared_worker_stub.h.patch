@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/renderer/worker/embedded_shared_worker_stub.h nw/chromium/content/renderer/worker/embedded_shared_worker_stub.h
 --- up/chromium/content/renderer/worker/embedded_shared_worker_stub.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/renderer/worker/embedded_shared_worker_stub.h	2023-02-24 20:54:13.036492731 +0000
++++ nw/chromium/content/renderer/worker/embedded_shared_worker_stub.h	2023-02-25 19:07:16.625821318 +0000
 @@ -10,6 +10,7 @@
  
  #include "base/unguessable_token.h"

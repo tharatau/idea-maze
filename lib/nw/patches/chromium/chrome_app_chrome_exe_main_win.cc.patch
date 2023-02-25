@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/app/chrome_exe_main_win.cc nw/chromium/chrome/app/chrome_exe_main_win.cc
 --- up/chromium/chrome/app/chrome_exe_main_win.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/app/chrome_exe_main_win.cc	2023-02-24 20:54:05.764526132 +0000
++++ nw/chromium/chrome/app/chrome_exe_main_win.cc	2023-02-25 19:07:06.813763085 +0000
 @@ -70,6 +70,7 @@
  // process) created before MainDllLoader changes the current working directory
  // to the browser's version directory.

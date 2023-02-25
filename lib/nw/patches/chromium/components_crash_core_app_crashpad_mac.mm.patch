@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/crash/core/app/crashpad_mac.mm nw/chromium/components/crash/core/app/crashpad_mac.mm
 --- up/chromium/components/crash/core/app/crashpad_mac.mm	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/crash/core/app/crashpad_mac.mm	2023-02-24 20:54:10.604503945 +0000
++++ nw/chromium/components/crash/core/app/crashpad_mac.mm	2023-02-25 19:07:13.453803927 +0000
 @@ -148,11 +148,20 @@
  
        // Is there a way to recover if this fails?

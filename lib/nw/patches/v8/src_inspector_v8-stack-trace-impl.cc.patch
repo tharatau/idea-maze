@@ -1,6 +1,6 @@
 diff -r -u --color up/v8/src/inspector/v8-stack-trace-impl.cc nw/v8/src/inspector/v8-stack-trace-impl.cc
 --- up/v8/src/inspector/v8-stack-trace-impl.cc	2023-02-10 19:02:29.000000000 +0000
-+++ nw/v8/src/inspector/v8-stack-trace-impl.cc	2023-02-19 17:37:43.511622906 +0000
++++ nw/v8/src/inspector/v8-stack-trace-impl.cc	2023-02-25 19:08:24.034055906 +0000
 @@ -181,8 +181,8 @@
        m_lineNumber(lineNumber),
        m_columnNumber(columnNumber),

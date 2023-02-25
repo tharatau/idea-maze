@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/manifest_constants.h nw/chromium/extensions/common/manifest_constants.h
 --- up/chromium/extensions/common/manifest_constants.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/manifest_constants.h	2023-02-24 20:54:13.744489466 +0000
++++ nw/chromium/extensions/common/manifest_constants.h	2023-02-25 19:07:17.653826921 +0000
 @@ -12,6 +12,14 @@
  
  // Keys used in JSON representation of extensions.

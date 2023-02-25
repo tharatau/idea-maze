@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/services/network/network_service.h nw/chromium/services/network/network_service.h
 --- up/chromium/services/network/network_service.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/services/network/network_service.h	2023-02-24 20:54:16.676473748 +0000
++++ nw/chromium/services/network/network_service.h	2023-02-25 19:07:21.489847831 +0000
 @@ -141,6 +141,7 @@
  
    // mojom::NetworkService implementation:

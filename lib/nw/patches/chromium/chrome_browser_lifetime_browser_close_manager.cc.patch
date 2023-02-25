@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/lifetime/browser_close_manager.cc nw/chromium/chrome/browser/lifetime/browser_close_manager.cc
 --- up/chromium/chrome/browser/lifetime/browser_close_manager.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/lifetime/browser_close_manager.cc	2023-02-24 20:54:07.316519107 +0000
++++ nw/chromium/chrome/browser/lifetime/browser_close_manager.cc	2023-02-25 19:07:08.861775682 +0000
 @@ -4,6 +4,8 @@
  
  #include "chrome/browser/lifetime/browser_close_manager.h"

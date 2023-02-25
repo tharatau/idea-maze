@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/build/config/compiler/BUILD.gn nw/chromium/build/config/compiler/BUILD.gn
 --- up/chromium/build/config/compiler/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/build/config/compiler/BUILD.gn	2023-02-24 20:54:05.344527998 +0000
++++ nw/chromium/build/config/compiler/BUILD.gn	2023-02-25 19:07:06.229759493 +0000
 @@ -485,7 +485,9 @@
      #}
    }

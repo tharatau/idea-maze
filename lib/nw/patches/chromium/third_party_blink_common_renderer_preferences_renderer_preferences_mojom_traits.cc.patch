@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/common/renderer_preferences/renderer_preferences_mojom_traits.cc nw/chromium/third_party/blink/common/renderer_preferences/renderer_preferences_mojom_traits.cc
 --- up/chromium/third_party/blink/common/renderer_preferences/renderer_preferences_mojom_traits.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/common/renderer_preferences/renderer_preferences_mojom_traits.cc	2023-02-24 20:54:17.056471601 +0000
++++ nw/chromium/third_party/blink/common/renderer_preferences/renderer_preferences_mojom_traits.cc	2023-02-25 19:07:22.033850813 +0000
 @@ -103,6 +103,11 @@
    out->selection_clipboard_buffer_available =
        data.selection_clipboard_buffer_available();

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/app/chromium_strings.grd nw/chromium/chrome/app/chromium_strings.grd
 --- up/chromium/chrome/app/chromium_strings.grd	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/app/chromium_strings.grd	2023-02-24 20:54:05.792526008 +0000
++++ nw/chromium/chrome/app/chromium_strings.grd	2023-02-25 19:07:06.853763331 +0000
 @@ -277,10 +277,10 @@
        </if>
  

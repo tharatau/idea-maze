@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/crash/core/app/crash_reporter_client.cc nw/chromium/components/crash/core/app/crash_reporter_client.cc
 --- up/chromium/components/crash/core/app/crash_reporter_client.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/crash/core/app/crash_reporter_client.cc	2023-02-24 20:54:10.604503945 +0000
++++ nw/chromium/components/crash/core/app/crash_reporter_client.cc	2023-02-25 19:07:13.453803927 +0000
 @@ -46,6 +46,10 @@
      const std::string& client_guid) {}
  #endif

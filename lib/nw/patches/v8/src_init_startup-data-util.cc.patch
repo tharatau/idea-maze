@@ -1,6 +1,6 @@
 diff -r -u --color up/v8/src/init/startup-data-util.cc nw/v8/src/init/startup-data-util.cc
 --- up/v8/src/init/startup-data-util.cc	2023-02-10 19:02:29.000000000 +0000
-+++ nw/v8/src/init/startup-data-util.cc	2023-02-19 17:37:43.507622897 +0000
++++ nw/v8/src/init/startup-data-util.cc	2023-02-25 19:08:24.030055888 +0000
 @@ -77,10 +77,23 @@
  
  void InitializeExternalStartupData(const char* directory_path) {

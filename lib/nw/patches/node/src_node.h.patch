@@ -1,7 +1,7 @@
 diff -r -u --color up/node/src/node.h nw/node/src/node.h
---- up/node/src/node.h	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node.h	2023-02-19 17:37:33.287599264 +0000
-@@ -498,7 +498,7 @@
+--- up/node/src/node.h	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node.h	2023-02-25 19:08:13.830006776 +0000
+@@ -593,7 +593,7 @@
  NODE_EXTERN v8::Local<v8::Context> NewContext(
      v8::Isolate* isolate,
      v8::Local<v8::ObjectTemplate> object_template =
@@ -10,7 +10,7 @@ diff -r -u --color up/node/src/node.h nw/node/src/node.h
  
  // Runs Node.js-specific tweaks on an already constructed context
  // Return value indicates success of operation
-@@ -1001,6 +1001,13 @@
+@@ -1170,6 +1170,13 @@
      }                                                                 \
    }
  
@@ -24,7 +24,7 @@ diff -r -u --color up/node/src/node.h nw/node/src/node.h
  #define NODE_MODULE_CONTEXT_AWARE_X(modname, regfunc, priv, flags)    \
    extern "C" {                                                        \
      static node::node_module _module =                                \
-@@ -1018,6 +1025,9 @@
+@@ -1187,6 +1194,9 @@
      NODE_C_CTOR(_register_ ## modname) {                              \
        node_module_register(&_module);                                 \
      }                                                                 \

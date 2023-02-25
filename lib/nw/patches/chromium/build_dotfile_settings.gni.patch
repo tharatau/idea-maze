@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/build/dotfile_settings.gni nw/chromium/build/dotfile_settings.gni
 --- up/chromium/build/dotfile_settings.gni	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/build/dotfile_settings.gni	2023-02-24 20:54:05.352527963 +0000
++++ nw/chromium/build/dotfile_settings.gni	2023-02-25 19:07:06.237759542 +0000
 @@ -7,6 +7,7 @@
  
  build_dotfile_settings = {

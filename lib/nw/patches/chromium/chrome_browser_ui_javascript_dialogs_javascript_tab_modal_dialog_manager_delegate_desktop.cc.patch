@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/javascript_dialogs/javascript_tab_modal_dialog_manager_delegate_desktop.cc nw/chromium/chrome/browser/ui/javascript_dialogs/javascript_tab_modal_dialog_manager_delegate_desktop.cc
 --- up/chromium/chrome/browser/ui/javascript_dialogs/javascript_tab_modal_dialog_manager_delegate_desktop.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/javascript_dialogs/javascript_tab_modal_dialog_manager_delegate_desktop.cc	2023-02-24 20:54:08.320514477 +0000
++++ nw/chromium/chrome/browser/ui/javascript_dialogs/javascript_tab_modal_dialog_manager_delegate_desktop.cc	2023-02-25 19:07:10.293784490 +0000
 @@ -39,12 +39,14 @@
    // warnings until user interaction. If the current page has a delayed warning,
    // it'll have a user interaction observer attached. Show the warning

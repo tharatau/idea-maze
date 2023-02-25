@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/ozone/public/platform_global_shortcut_listener.h nw/chromium/ui/ozone/public/platform_global_shortcut_listener.h
 --- up/chromium/ui/ozone/public/platform_global_shortcut_listener.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/ozone/public/platform_global_shortcut_listener.h	2023-02-24 20:54:39.068346453 +0000
++++ nw/chromium/ui/ozone/public/platform_global_shortcut_listener.h	2023-02-25 19:07:49.357998440 +0000
 @@ -52,11 +52,13 @@
    virtual bool RegisterAccelerator(KeyboardCode key_code,
                                     bool is_alt_down,

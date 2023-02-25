@@ -1,6 +1,6 @@
 diff -r -u --color up/v8/src/init/v8.cc nw/v8/src/init/v8.cc
 --- up/v8/src/init/v8.cc	2023-02-10 19:02:29.000000000 +0000
-+++ nw/v8/src/init/v8.cc	2023-02-19 17:37:43.507622897 +0000
++++ nw/v8/src/init/v8.cc	2023-02-25 19:08:24.030055888 +0000
 @@ -92,11 +92,20 @@
  V8_DECLARE_ONCE(init_snapshot_once);
  #endif

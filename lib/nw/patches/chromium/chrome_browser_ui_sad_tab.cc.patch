@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/sad_tab.cc nw/chromium/chrome/browser/ui/sad_tab.cc
 --- up/chromium/chrome/browser/ui/sad_tab.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/sad_tab.cc	2023-02-24 20:54:08.340514385 +0000
++++ nw/chromium/chrome/browser/ui/sad_tab.cc	2023-02-25 19:07:10.321784662 +0000
 @@ -4,6 +4,7 @@
  
  #include "chrome/browser/ui/sad_tab.h"

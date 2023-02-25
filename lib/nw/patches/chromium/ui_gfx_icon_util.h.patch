@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/gfx/icon_util.h nw/chromium/ui/gfx/icon_util.h
 --- up/chromium/ui/gfx/icon_util.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/gfx/icon_util.h	2023-02-24 20:54:38.956347110 +0000
++++ nw/chromium/ui/gfx/icon_util.h	2023-02-25 19:07:49.189997431 +0000
 @@ -87,6 +87,10 @@
    // icon and returns the corresponding HICON handle if conversion succeeds.
    static base::win::ScopedHICON CreateHICONFromSkBitmap(const SkBitmap& bitmap);

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/inspector/inspected_frames.h nw/chromium/third_party/blink/renderer/core/inspector/inspected_frames.h
 --- up/chromium/third_party/blink/renderer/core/inspector/inspected_frames.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/inspector/inspected_frames.h	2023-02-24 20:54:17.828467241 +0000
++++ nw/chromium/third_party/blink/renderer/core/inspector/inspected_frames.h	2023-02-25 19:07:23.105856696 +0000
 @@ -11,6 +11,8 @@
  #include "third_party/blink/renderer/platform/wtf/forward.h"
  #include "third_party/blink/renderer/platform/wtf/text/wtf_string.h"

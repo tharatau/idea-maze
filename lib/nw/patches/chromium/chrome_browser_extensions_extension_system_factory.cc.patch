@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/extension_system_factory.cc nw/chromium/chrome/browser/extensions/extension_system_factory.cc
 --- up/chromium/chrome/browser/extensions/extension_system_factory.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/extension_system_factory.cc	2023-02-24 20:54:07.232519494 +0000
++++ nw/chromium/chrome/browser/extensions/extension_system_factory.cc	2023-02-25 19:07:08.733774895 +0000
 @@ -50,7 +50,7 @@
    DependsOn(InstallVerifierFactory::GetInstance());
    DependsOn(ProcessManagerFactory::GetInstance());

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/frame/browser_frame.cc nw/chromium/chrome/browser/ui/views/frame/browser_frame.cc
 --- up/chromium/chrome/browser/ui/views/frame/browser_frame.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/frame/browser_frame.cc	2023-02-24 20:54:08.404514090 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/browser_frame.cc	2023-02-25 19:07:10.421785277 +0000
 @@ -5,6 +5,15 @@
  #include "chrome/browser/ui/views/frame/browser_frame.h"
  

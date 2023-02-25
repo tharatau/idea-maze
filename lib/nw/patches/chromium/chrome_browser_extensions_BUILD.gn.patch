@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/BUILD.gn nw/chromium/chrome/browser/extensions/BUILD.gn
 --- up/chromium/chrome/browser/extensions/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/BUILD.gn	2023-02-24 20:54:07.144519900 +0000
++++ nw/chromium/chrome/browser/extensions/BUILD.gn	2023-02-25 19:07:08.617774181 +0000
 @@ -297,14 +297,14 @@
      "api/resources_private/resources_private_api.h",
      "api/runtime/chrome_runtime_api_delegate.cc",

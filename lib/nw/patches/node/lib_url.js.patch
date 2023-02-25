@@ -1,6 +1,6 @@
 diff -r -u --color up/node/lib/url.js nw/node/lib/url.js
---- up/node/lib/url.js	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/lib/url.js	2023-02-19 17:37:33.271599233 +0000
+--- up/node/lib/url.js	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/lib/url.js	2023-02-25 19:08:13.810006667 +0000
 @@ -30,6 +30,7 @@
  } = primordials;
  

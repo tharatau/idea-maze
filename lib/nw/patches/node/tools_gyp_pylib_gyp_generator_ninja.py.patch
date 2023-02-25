@@ -1,6 +1,6 @@
 diff -r -u --color up/node/tools/gyp/pylib/gyp/generator/ninja.py nw/node/tools/gyp/pylib/gyp/generator/ninja.py
---- up/node/tools/gyp/pylib/gyp/generator/ninja.py	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/tools/gyp/pylib/gyp/generator/ninja.py	2023-02-19 17:37:33.907600455 +0000
+--- up/node/tools/gyp/pylib/gyp/generator/ninja.py	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/tools/gyp/pylib/gyp/generator/ninja.py	2023-02-25 19:08:14.462010230 +0000
 @@ -89,8 +89,12 @@
          # cl.exe replaces literal # characters with = in preprocessor definitions for
          # some reason. Octal-encode to work around that.

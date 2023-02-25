@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/gcm_driver/instance_id/instance_id_profile_service.h nw/chromium/components/gcm_driver/instance_id/instance_id_profile_service.h
 --- up/chromium/components/gcm_driver/instance_id/instance_id_profile_service.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/gcm_driver/instance_id/instance_id_profile_service.h	2023-02-24 20:54:10.924502470 +0000
++++ nw/chromium/components/gcm_driver/instance_id/instance_id_profile_service.h	2023-02-25 19:07:13.685805292 +0000
 @@ -20,6 +20,9 @@
  // Providing Instance ID support, via InstanceIDDriver, to a profile.
  class InstanceIDProfileService : public KeyedService {

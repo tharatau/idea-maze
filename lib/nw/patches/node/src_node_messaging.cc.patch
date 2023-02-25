@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/node_messaging.cc nw/node/src/node_messaging.cc
---- up/node/src/node_messaging.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_messaging.cc	2023-02-19 17:37:33.295599279 +0000
+--- up/node/src/node_messaging.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_messaging.cc	2023-02-25 19:08:13.834006798 +0000
 @@ -296,6 +296,14 @@
    SerializerDelegate(Environment* env, Local<Context> context, Message* m)
        : env_(env), context_(context), msg_(m) {}

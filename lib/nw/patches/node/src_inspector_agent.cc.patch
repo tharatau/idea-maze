@@ -1,7 +1,7 @@
 diff -r -u --color up/node/src/inspector_agent.cc nw/node/src/inspector_agent.cc
---- up/node/src/inspector_agent.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/inspector_agent.cc	2023-02-19 17:37:33.283599256 +0000
-@@ -769,13 +769,14 @@
+--- up/node/src/inspector_agent.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/inspector_agent.cc	2023-02-25 19:08:13.826006754 +0000
+@@ -770,13 +770,14 @@
  std::unique_ptr<InspectorSession> Agent::Connect(
      std::unique_ptr<InspectorSessionDelegate> delegate,
      bool prevent_shutdown) {

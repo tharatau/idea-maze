@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/content_verifier.cc nw/chromium/extensions/browser/content_verifier.cc
 --- up/chromium/extensions/browser/content_verifier.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/content_verifier.cc	2023-02-24 20:54:13.700489669 +0000
++++ nw/chromium/extensions/browser/content_verifier.cc	2023-02-25 19:07:17.593826594 +0000
 @@ -17,6 +17,7 @@
  #include "base/memory/weak_ptr.h"
  #include "base/metrics/histogram_macros.h"

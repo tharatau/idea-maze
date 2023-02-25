@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/frame/browser_non_client_frame_view_mac.mm nw/chromium/chrome/browser/ui/views/frame/browser_non_client_frame_view_mac.mm
 --- up/chromium/chrome/browser/ui/views/frame/browser_non_client_frame_view_mac.mm	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/frame/browser_non_client_frame_view_mac.mm	2023-02-24 20:54:08.408514071 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/browser_non_client_frame_view_mac.mm	2023-02-25 19:07:10.429785327 +0000
 @@ -362,6 +362,9 @@
    // BrowserView::NonClientHitTest will return HTNOWHERE for points that hit
    // the native title bar. On Mac, we need to explicitly return HTCAPTION for

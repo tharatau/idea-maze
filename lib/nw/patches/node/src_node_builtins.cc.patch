@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/node_builtins.cc nw/node/src/node_builtins.cc
---- up/node/src/node_builtins.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_builtins.cc	2023-02-19 17:37:33.291599271 +0000
+--- up/node/src/node_builtins.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_builtins.cc	2023-02-25 19:08:13.830006776 +0000
 @@ -292,11 +292,12 @@
      }
    }

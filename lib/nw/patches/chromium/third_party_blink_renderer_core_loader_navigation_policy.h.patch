@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/loader/navigation_policy.h nw/chromium/third_party/blink/renderer/core/loader/navigation_policy.h
 --- up/chromium/third_party/blink/renderer/core/loader/navigation_policy.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/loader/navigation_policy.h	2023-02-24 20:54:17.940466608 +0000
++++ nw/chromium/third_party/blink/renderer/core/loader/navigation_policy.h	2023-02-25 19:07:23.257857530 +0000
 @@ -39,6 +39,7 @@
  struct WebWindowFeatures;
  

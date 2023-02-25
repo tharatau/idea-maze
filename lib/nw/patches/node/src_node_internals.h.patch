@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/node_internals.h nw/node/src/node_internals.h
---- up/node/src/node_internals.h	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_internals.h	2023-02-19 17:37:33.295599279 +0000
+--- up/node/src/node_internals.h	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_internals.h	2023-02-25 19:08:13.834006798 +0000
 @@ -55,6 +55,8 @@
  // Forward declaration
  class Environment;

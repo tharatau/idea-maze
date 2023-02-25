@@ -1,6 +1,6 @@
 diff -r -u --color up/node/lib/internal/process/execution.js nw/node/lib/internal/process/execution.js
---- up/node/lib/internal/process/execution.js	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/lib/internal/process/execution.js	2023-02-19 17:37:33.259599210 +0000
+--- up/node/lib/internal/process/execution.js	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/lib/internal/process/execution.js	2023-02-25 19:08:13.798006601 +0000
 @@ -157,18 +157,8 @@
      if (exceptionHandlerState.captureFn !== null) {
        exceptionHandlerState.captureFn(er);

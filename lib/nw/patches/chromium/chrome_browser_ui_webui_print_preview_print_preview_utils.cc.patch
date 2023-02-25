@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/webui/print_preview/print_preview_utils.cc nw/chromium/chrome/browser/ui/webui/print_preview/print_preview_utils.cc
 --- up/chromium/chrome/browser/ui/webui/print_preview/print_preview_utils.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/webui/print_preview/print_preview_utils.cc	2023-02-24 20:54:08.560513371 +0000
++++ nw/chromium/chrome/browser/ui/webui/print_preview/print_preview_utils.cc	2023-02-25 19:07:10.641786631 +0000
 @@ -49,16 +49,17 @@
  // The dictionary key for the CDD item containing custom vendor capabilities.
  const char kVendorCapabilityKey[] = "vendor_capability";

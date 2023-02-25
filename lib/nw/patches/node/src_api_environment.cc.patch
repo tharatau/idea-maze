@@ -1,7 +1,7 @@
 diff -r -u --color up/node/src/api/environment.cc nw/node/src/api/environment.cc
---- up/node/src/api/environment.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/api/environment.cc	2023-02-19 17:37:33.275599241 +0000
-@@ -42,6 +42,8 @@
+--- up/node/src/api/environment.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/api/environment.cc	2023-02-25 19:08:13.814006688 +0000
+@@ -43,6 +43,8 @@
  using v8::String;
  using v8::Value;
  
@@ -10,7 +10,7 @@ diff -r -u --color up/node/src/api/environment.cc nw/node/src/api/environment.cc
  bool AllowWasmCodeGenerationCallback(Local<Context> context,
                                       Local<String>) {
    Local<Value> wasm_code_gen =
-@@ -115,10 +117,16 @@
+@@ -116,10 +118,16 @@
  }
  
  void NodeArrayBufferAllocator::Free(void* data, size_t size) {
@@ -27,7 +27,7 @@ diff -r -u --color up/node/src/api/environment.cc nw/node/src/api/environment.cc
  DebuggingArrayBufferAllocator::~DebuggingArrayBufferAllocator() {
    CHECK(allocations_.empty());
  }
-@@ -241,12 +249,12 @@
+@@ -242,12 +250,12 @@
              errors::PerIsolateMessageListener,
              Isolate::MessageErrorLevel::kMessageError |
                  Isolate::MessageErrorLevel::kMessageWarning);
@@ -42,7 +42,7 @@ diff -r -u --color up/node/src/api/environment.cc nw/node/src/api/environment.cc
    auto* fatal_error_cb = s.fatal_error_callback ?
        s.fatal_error_callback : OnFatalError;
    isolate->SetFatalErrorHandler(fatal_error_cb);
-@@ -281,14 +289,18 @@
+@@ -290,14 +298,18 @@
          shadow_realm::HostCreateShadowRealmContextCallback);
    }
  
@@ -61,7 +61,7 @@ diff -r -u --color up/node/src/api/environment.cc nw/node/src/api/environment.cc
  }
  
  void SetIsolateUpForNode(v8::Isolate* isolate,
-@@ -554,8 +566,8 @@
+@@ -640,8 +652,8 @@
  // InitializeContext, because embedders don't necessarily
  // call NewContext and so they will experience breakages.
  Local<Context> NewContext(Isolate* isolate,

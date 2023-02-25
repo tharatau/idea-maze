@@ -1,6 +1,6 @@
 diff -r -u --color up/node/deps/cares/cares.gyp nw/node/deps/cares/cares.gyp
---- up/node/deps/cares/cares.gyp	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/deps/cares/cares.gyp	2023-02-19 17:37:30.219593369 +0000
+--- up/node/deps/cares/cares.gyp	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/deps/cares/cares.gyp	2023-02-25 19:08:10.806008865 +0000
 @@ -1,4 +1,7 @@
  {
 +  'variables': {

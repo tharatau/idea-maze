@@ -1,6 +1,6 @@
 diff -r -u --color up/node/deps/nghttp2/lib/includes/nghttp2/nghttp2.h nw/node/deps/nghttp2/lib/includes/nghttp2/nghttp2.h
---- up/node/deps/nghttp2/lib/includes/nghttp2/nghttp2.h	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/deps/nghttp2/lib/includes/nghttp2/nghttp2.h	2023-02-19 17:37:30.471593853 +0000
+--- up/node/deps/nghttp2/lib/includes/nghttp2/nghttp2.h	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/deps/nghttp2/lib/includes/nghttp2/nghttp2.h	2023-02-25 19:08:11.066007163 +0000
 @@ -36,6 +36,10 @@
  #  define __has_declspec_attribute(x) 0
  #endif

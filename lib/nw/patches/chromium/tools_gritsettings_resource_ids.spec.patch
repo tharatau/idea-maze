@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/tools/gritsettings/resource_ids.spec nw/chromium/tools/gritsettings/resource_ids.spec
 --- up/chromium/tools/gritsettings/resource_ids.spec	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/tools/gritsettings/resource_ids.spec	2023-02-24 20:54:36.696360085 +0000
++++ nw/chromium/tools/gritsettings/resource_ids.spec	2023-02-25 19:07:48.017990395 +0000
 @@ -35,6 +35,7 @@
    #
    # chrome/ and ios/chrome/ must start at the same id.

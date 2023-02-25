@@ -1,6 +1,6 @@
 diff -r -u --color up/node/deps/openssl/openssl.gyp nw/node/deps/openssl/openssl.gyp
---- up/node/deps/openssl/openssl.gyp	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/deps/openssl/openssl.gyp	2023-02-19 17:37:31.067594998 +0000
+--- up/node/deps/openssl/openssl.gyp	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/deps/openssl/openssl.gyp	2023-02-25 19:08:11.634003443 +0000
 @@ -3,6 +3,10 @@
      'gas_version%': '0.0',
      'llvm_version%': '0.0',

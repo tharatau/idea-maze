@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/env.cc nw/node/src/env.cc
---- up/node/src/env.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/env.cc	2023-02-19 17:37:33.283599256 +0000
+--- up/node/src/env.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/env.cc	2023-02-25 19:08:13.822006732 +0000
 @@ -60,6 +60,8 @@
  using v8::Value;
  using worker::Worker;
@@ -10,7 +10,18 @@ diff -r -u --color up/node/src/env.cc nw/node/src/env.cc
  int const ContextEmbedderTag::kNodeContextTag = 0x6e6f64;
  void* const ContextEmbedderTag::kNodeContextTagPtr = const_cast<void*>(
      static_cast<const void*>(&ContextEmbedderTag::kNodeContextTag));
-@@ -718,16 +720,19 @@
+@@ -689,8 +691,8 @@
+         isolate_data->worker_context()->env()->builtin_loader());
+   } else if (isolate_data->snapshot_data() != nullptr) {
+     // ... otherwise, if a snapshot was provided, use its code cache.
+-    builtin_loader()->RefreshCodeCache(
+-        isolate_data->snapshot_data()->code_cache);
++    //builtin_loader()->RefreshCodeCache(
++    //    isolate_data->snapshot_data()->code_cache);
+   }
+ 
+   // We'll be creating new objects so make sure we've entered the context.
+@@ -728,16 +730,19 @@
    inspector_agent_ = std::make_unique<inspector::Agent>(this);
  #endif
  
@@ -30,15 +41,13 @@ diff -r -u --color up/node/src/env.cc nw/node/src/env.cc
  
    if (*TRACE_EVENT_API_GET_CATEGORY_GROUP_ENABLED(
            TRACING_CATEGORY_NODE1(environment)) != 0) {
-@@ -744,6 +749,7 @@
+@@ -754,12 +759,13 @@
                                        "args",
                                        std::move(traced_value));
    }
 +#endif
  }
  
- Environment::Environment(IsolateData* isolate_data,
-@@ -766,7 +772,7 @@
  void Environment::InitializeMainContext(Local<Context> context,
                                          const EnvSerializeInfo* env_info) {
    principal_realm_ = std::make_unique<Realm>(
@@ -47,7 +56,7 @@ diff -r -u --color up/node/src/env.cc nw/node/src/env.cc
    AssignToContext(context, principal_realm_.get(), ContextInfo(""));
    if (env_info != nullptr) {
      DeserializeProperties(env_info);
-@@ -867,6 +873,7 @@
+@@ -860,6 +866,7 @@
  void Environment::InitializeLibuv() {
    HandleScope handle_scope(isolate());
    Context::Scope context_scope(context());
@@ -55,7 +64,7 @@ diff -r -u --color up/node/src/env.cc nw/node/src/env.cc
  
    CHECK_EQ(0, uv_timer_init(event_loop(), timer_handle()));
    uv_unref(reinterpret_cast<uv_handle_t*>(timer_handle()));
-@@ -1269,7 +1276,7 @@
+@@ -1263,7 +1270,7 @@
  }
  
  void Environment::ToggleImmediateRef(bool ref) {

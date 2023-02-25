@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/tracing/trace_event_common.h nw/node/src/tracing/trace_event_common.h
---- up/node/src/tracing/trace_event_common.h	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/tracing/trace_event_common.h	2023-02-19 17:37:33.307599302 +0000
+--- up/node/src/tracing/trace_event_common.h	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/tracing/trace_event_common.h	2023-02-25 19:08:13.846006863 +0000
 @@ -382,10 +382,7 @@
    INTERNAL_TRACE_EVENT_ADD(TRACE_EVENT_PHASE_MARK, category_group, name, \
                             TRACE_EVENT_FLAG_COPY)

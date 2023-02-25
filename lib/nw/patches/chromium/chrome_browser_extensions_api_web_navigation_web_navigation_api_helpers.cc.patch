@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/api/web_navigation/web_navigation_api_helpers.cc nw/chromium/chrome/browser/extensions/api/web_navigation/web_navigation_api_helpers.cc
 --- up/chromium/chrome/browser/extensions/api/web_navigation/web_navigation_api_helpers.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/api/web_navigation/web_navigation_api_helpers.cc	2023-02-24 20:54:07.204519623 +0000
++++ nw/chromium/chrome/browser/extensions/api/web_navigation/web_navigation_api_helpers.cc	2023-02-25 19:07:08.697774673 +0000
 @@ -180,6 +180,7 @@
    details.tab_id = ExtensionTabUtil::GetTabId(web_contents);
    details.url = url.spec();

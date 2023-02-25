@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/exported/web_view_impl.cc nw/chromium/third_party/blink/renderer/core/exported/web_view_impl.cc
 --- up/chromium/third_party/blink/renderer/core/exported/web_view_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/exported/web_view_impl.cc	2023-02-24 20:54:17.724467828 +0000
++++ nw/chromium/third_party/blink/renderer/core/exported/web_view_impl.cc	2023-02-25 19:07:22.957855884 +0000
 @@ -398,6 +398,8 @@
      case kNavigationPolicyPictureInPicture:
        DCHECK(RuntimeEnabledFeatures::DocumentPictureInPictureAPIEnabled());

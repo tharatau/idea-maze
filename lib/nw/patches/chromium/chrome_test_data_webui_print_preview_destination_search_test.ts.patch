@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/test/data/webui/print_preview/destination_search_test.ts nw/chromium/chrome/test/data/webui/print_preview/destination_search_test.ts
 --- up/chromium/chrome/test/data/webui/print_preview/destination_search_test.ts	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/test/data/webui/print_preview/destination_search_test.ts	2023-02-24 20:54:09.820507560 +0000
++++ nw/chromium/chrome/test/data/webui/print_preview/destination_search_test.ts	2023-02-25 19:07:12.317796940 +0000
 @@ -42,7 +42,7 @@
          false /* pdfPrinterDisabled */, false /* isDriveMounted */,
          'FooDevice' /* printerName */,

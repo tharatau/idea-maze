@@ -1,12 +1,12 @@
 diff -r -u --color up/node/src/node_binding.cc nw/node/src/node_binding.cc
---- up/node/src/node_binding.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_binding.cc	2023-02-19 17:37:33.291599271 +0000
+--- up/node/src/node_binding.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_binding.cc	2023-02-25 19:08:13.830006776 +0000
 @@ -1,3 +1,4 @@
 +#include "uv.h"
  #include "node_binding.h"
  #include <atomic>
  #include "env-inl.h"
-@@ -251,21 +252,40 @@
+@@ -252,21 +253,40 @@
  static node_module* modlist_linked;
  static thread_local node_module* thread_local_modpending;
  
@@ -52,7 +52,7 @@ diff -r -u --color up/node/src/node_binding.cc nw/node/src/node_binding.cc
    } else {
      thread_local_modpending = mp;
    }
-@@ -428,6 +448,7 @@
+@@ -429,6 +449,7 @@
    auto context = env->context();
  
    CHECK_NULL(thread_local_modpending);
@@ -60,7 +60,7 @@ diff -r -u --color up/node/src/node_binding.cc nw/node/src/node_binding.cc
  
    if (args.Length() < 2) {
      return THROW_ERR_MISSING_ARGS(
-@@ -491,7 +512,9 @@
+@@ -492,7 +513,9 @@
          return true;
        } else {
          mp = dlib->GetSavedModuleFromGlobalHandleMap();
@@ -71,7 +71,7 @@ diff -r -u --color up/node/src/node_binding.cc nw/node/src/node_binding.cc
            dlib->Close();
            THROW_ERR_DLOPEN_FAILED(
                env, "Module did not self-register: '%s'.", *filename);
-@@ -531,6 +554,7 @@
+@@ -532,6 +555,7 @@
  
      // Do not keep the lock while running userland addon loading code.
      Mutex::ScopedUnlock unlock(lock);
@@ -79,7 +79,7 @@ diff -r -u --color up/node/src/node_binding.cc nw/node/src/node_binding.cc
      if (mp->nm_context_register_func != nullptr) {
        mp->nm_context_register_func(exports, module, context, mp->nm_priv);
      } else if (mp->nm_register_func != nullptr) {
-@@ -622,7 +646,8 @@
+@@ -623,7 +647,8 @@
    node::Utf8Value module_v(isolate, module);
    Local<Object> exports;
  

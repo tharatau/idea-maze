@@ -1,6 +1,6 @@
 diff -r -u --color up/node/deps/base64/base64.gyp nw/node/deps/base64/base64.gyp
---- up/node/deps/base64/base64.gyp	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/deps/base64/base64.gyp	2023-02-19 17:37:30.195593323 +0000
+--- up/node/deps/base64/base64.gyp	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/deps/base64/base64.gyp	2023-02-25 19:08:10.778009049 +0000
 @@ -79,6 +79,15 @@
              'OTHER_CFLAGS': [ '-mssse3' ]
            },

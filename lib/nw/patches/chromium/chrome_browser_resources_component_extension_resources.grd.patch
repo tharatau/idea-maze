@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/resources/component_extension_resources.grd nw/chromium/chrome/browser/resources/component_extension_resources.grd
 --- up/chromium/chrome/browser/resources/component_extension_resources.grd	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/resources/component_extension_resources.grd	2023-02-24 20:54:07.780516967 +0000
++++ nw/chromium/chrome/browser/resources/component_extension_resources.grd	2023-02-25 19:07:09.493779569 +0000
 @@ -12,6 +12,9 @@
    </outputs>
    <release seq="1">

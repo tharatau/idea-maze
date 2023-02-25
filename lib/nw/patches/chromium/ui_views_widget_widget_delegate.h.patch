@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/widget/widget_delegate.h nw/chromium/ui/views/widget/widget_delegate.h
 --- up/chromium/ui/views/widget/widget_delegate.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/views/widget/widget_delegate.h	2023-02-24 20:54:39.224345539 +0000
++++ nw/chromium/ui/views/widget/widget_delegate.h	2023-02-25 19:07:49.557999641 +0000
 @@ -125,6 +125,7 @@
  
    // Called whenever the widget's position changes.

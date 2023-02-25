@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/devtools/protocol/emulation_handler.cc nw/chromium/content/browser/devtools/protocol/emulation_handler.cc
 --- up/chromium/content/browser/devtools/protocol/emulation_handler.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/devtools/protocol/emulation_handler.cc	2023-02-24 20:54:12.652494502 +0000
++++ nw/chromium/content/browser/devtools/protocol/emulation_handler.cc	2023-02-25 19:07:16.081818352 +0000
 @@ -602,13 +602,18 @@
    if (touch_emulation_enabled_) {
      if (auto* touch_emulator =

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/component_updater/registration.cc nw/chromium/chrome/browser/component_updater/registration.cc
 --- up/chromium/chrome/browser/component_updater/registration.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/component_updater/registration.cc	2023-02-24 20:54:07.060520287 +0000
++++ nw/chromium/chrome/browser/component_updater/registration.cc	2023-02-25 19:07:08.493773418 +0000
 @@ -102,13 +102,15 @@
  namespace component_updater {
  

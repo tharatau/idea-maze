@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/script_context_set.h nw/chromium/extensions/renderer/script_context_set.h
 --- up/chromium/extensions/renderer/script_context_set.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/renderer/script_context_set.h	2023-02-24 20:54:13.776489319 +0000
++++ nw/chromium/extensions/renderer/script_context_set.h	2023-02-25 19:07:17.709827226 +0000
 @@ -56,6 +56,7 @@
    // This may also include invalid contexts. TODO(kalman): Useful?
    size_t size() const { return contexts_.size(); }

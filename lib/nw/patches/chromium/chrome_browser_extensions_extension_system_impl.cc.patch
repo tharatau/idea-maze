@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/extension_system_impl.cc nw/chromium/chrome/browser/extensions/extension_system_impl.cc
 --- up/chromium/chrome/browser/extensions/extension_system_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/extension_system_impl.cc	2023-02-24 20:54:07.232519494 +0000
++++ nw/chromium/chrome/browser/extensions/extension_system_impl.cc	2023-02-25 19:07:08.737774919 +0000
 @@ -77,6 +77,8 @@
  #include "components/user_manager/user_manager.h"
  #endif

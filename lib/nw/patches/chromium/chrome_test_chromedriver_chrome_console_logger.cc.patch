@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/test/chromedriver/chrome/console_logger.cc nw/chromium/chrome/test/chromedriver/chrome/console_logger.cc
 --- up/chromium/chrome/test/chromedriver/chrome/console_logger.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/test/chromedriver/chrome/console_logger.cc	2023-02-24 20:54:08.908511766 +0000
++++ nw/chromium/chrome/test/chromedriver/chrome/console_logger.cc	2023-02-25 19:07:11.065789239 +0000
 @@ -120,11 +120,11 @@
        if (!url->empty())
          origin = *url;

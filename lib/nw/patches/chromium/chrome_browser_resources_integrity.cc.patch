@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/resources_integrity.cc nw/chromium/chrome/browser/resources_integrity.cc
 --- up/chromium/chrome/browser/resources_integrity.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/resources_integrity.cc	2023-02-24 20:54:07.912516359 +0000
++++ nw/chromium/chrome/browser/resources_integrity.cc	2023-02-25 19:07:09.709780898 +0000
 @@ -109,10 +109,10 @@
    base::span<const uint8_t, crypto::kSHA256Length> resources_hash =
        kSha256_resources_pak;

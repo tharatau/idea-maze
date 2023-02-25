@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/global_shortcut_listener_ozone.cc nw/chromium/chrome/browser/extensions/global_shortcut_listener_ozone.cc
 --- up/chromium/chrome/browser/extensions/global_shortcut_listener_ozone.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/global_shortcut_listener_ozone.cc	2023-02-24 20:54:07.236519476 +0000
++++ nw/chromium/chrome/browser/extensions/global_shortcut_listener_ozone.cc	2023-02-25 19:07:08.741774944 +0000
 @@ -58,7 +58,8 @@
    const bool registered =
        platform_global_shortcut_listener_->RegisterAccelerator(

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/url_request_util.cc nw/chromium/extensions/browser/url_request_util.cc
 --- up/chromium/extensions/browser/url_request_util.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/url_request_util.cc	2023-02-24 20:54:13.728489540 +0000
++++ nw/chromium/extensions/browser/url_request_util.cc	2023-02-25 19:07:17.629826790 +0000
 @@ -127,7 +127,8 @@
    if (is_guest) {
      // An extension's resources should only be accessible to WebViews owned by

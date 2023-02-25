@@ -1,7 +1,7 @@
 diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
---- up/node/src/node.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node.cc	2023-02-19 17:37:33.287599264 +0000
-@@ -43,12 +43,18 @@
+--- up/node/src/node.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node.cc	2023-02-25 19:08:13.830006776 +0000
+@@ -44,12 +44,18 @@
  #include "node_v8_platform-inl.h"
  #include "node_version.h"
  
@@ -20,8 +20,8 @@ diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
  #endif
  
  #if HAVE_INSPECTOR
-@@ -124,6 +130,10 @@
- #include <string>
+@@ -126,6 +132,10 @@
+ #include <tuple>
  #include <vector>
  
 +extern "C" {
@@ -31,7 +31,7 @@ diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
  namespace node {
  
  using v8::EscapableHandleScope;
-@@ -134,6 +144,15 @@
+@@ -136,6 +146,15 @@
  using v8::V8;
  using v8::Value;
  
@@ -47,7 +47,7 @@ diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
  namespace per_process {
  
  // node_revert.h
-@@ -337,7 +356,7 @@
+@@ -358,7 +377,7 @@
      return StartExecution(env, "internal/main/watch_mode");
    }
  
@@ -56,7 +56,7 @@ diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
      return StartExecution(env, "internal/main/run_main_module");
    }
  
-@@ -754,11 +773,13 @@
+@@ -775,11 +794,13 @@
    // Register built-in bindings
    binding::RegisterBuiltinBindings();
  
@@ -70,7 +70,7 @@ diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
  
    // Cache the original command line to be
    // used in diagnostic reports.
-@@ -808,7 +829,7 @@
+@@ -829,7 +850,7 @@
    if (!per_process::cli_options->title.empty())
      uv_set_process_title(per_process::cli_options->title.c_str());
  
@@ -79,7 +79,7 @@ diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
    if (!(flags & ProcessInitializationFlags::kNoICU)) {
      // If the parameter isn't given, use the env variable.
      if (per_process::cli_options->icu_data_dir.empty())
-@@ -859,6 +880,115 @@
+@@ -880,6 +901,115 @@
    return ExitCode::kNoFailure;
  }
  
@@ -195,7 +195,7 @@ diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
  int InitializeNodeWithArgs(std::vector<std::string>* argv,
                             std::vector<std::string>* exec_argv,
                             std::vector<std::string>* errors,
-@@ -892,9 +1022,9 @@
+@@ -913,9 +1043,9 @@
      }
    }
  
@@ -208,7 +208,7 @@ diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
      int lp_result = node::MapStaticCodeToLargePages();
      if (per_process::cli_options->use_largepages == "on" && lp_result != 0) {
        result->errors_.emplace_back(node::LargePagesError(lp_result));
-@@ -1034,6 +1164,22 @@
+@@ -1055,6 +1185,22 @@
  #endif  // HAVE_OPENSSL && !defined(OPENSSL_IS_BORINGSSL)
    }
  
@@ -231,7 +231,7 @@ diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
    if (!(flags & ProcessInitializationFlags::kNoInitializeNodeV8Platform)) {
      per_process::v8_platform.Initialize(
          static_cast<int>(per_process::cli_options->v8_thread_pool_size));
-@@ -1044,7 +1190,7 @@
+@@ -1065,7 +1211,7 @@
      V8::Initialize();
    }
  
@@ -240,7 +240,7 @@ diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
    per_process::v8_initialized = true;
  
    return result;
-@@ -1244,6 +1390,10 @@
+@@ -1273,6 +1419,10 @@
    return 0;
  }
  
@@ -251,7 +251,7 @@ diff -r -u --color up/node/src/node.cc nw/node/src/node.cc
  }  // namespace node
  
  #if !HAVE_INSPECTOR
-@@ -1251,3 +1401,460 @@
+@@ -1280,3 +1430,460 @@
  
  NODE_BINDING_CONTEXT_AWARE_INTERNAL(inspector, Initialize)
  #endif  // !HAVE_INSPECTOR

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/html/forms/color_input_type.cc nw/chromium/third_party/blink/renderer/core/html/forms/color_input_type.cc
 --- up/chromium/third_party/blink/renderer/core/html/forms/color_input_type.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/html/forms/color_input_type.cc	2023-02-24 20:54:17.772467557 +0000
++++ nw/chromium/third_party/blink/renderer/core/html/forms/color_input_type.cc	2023-02-25 19:07:23.029856279 +0000
 @@ -150,7 +150,7 @@
      return;
  

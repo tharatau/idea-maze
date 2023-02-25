@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/controls/menu/native_menu_win.h nw/chromium/ui/views/controls/menu/native_menu_win.h
 --- up/chromium/ui/views/controls/menu/native_menu_win.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/views/controls/menu/native_menu_win.h	2023-02-24 20:54:39.176345820 +0000
++++ nw/chromium/ui/views/controls/menu/native_menu_win.h	2023-02-25 19:07:49.493999257 +0000
 @@ -37,6 +37,9 @@
    void Rebuild(MenuInsertionDelegateWin* delegate);
    void UpdateStates();

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/status_icons/status_tray_win.cc nw/chromium/chrome/browser/ui/views/status_icons/status_tray_win.cc
 --- up/chromium/chrome/browser/ui/views/status_icons/status_tray_win.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/status_icons/status_tray_win.cc	2023-02-24 20:54:08.472513776 +0000
++++ nw/chromium/chrome/browser/ui/views/status_icons/status_tray_win.cc	2023-02-25 19:07:10.513785843 +0000
 @@ -4,6 +4,7 @@
  
  #include "chrome/browser/ui/views/status_icons/status_tray_win.h"

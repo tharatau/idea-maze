@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.cc nw/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.cc
 --- up/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.cc	2023-02-24 20:54:18.476463581 +0000
++++ nw/chromium/third_party/blink/renderer/platform/scheduler/worker/non_main_thread_impl.cc	2023-02-25 19:07:24.029861767 +0000
 @@ -24,6 +24,18 @@
  #include "third_party/blink/renderer/platform/scheduler/worker/worker_scheduler_proxy.h"
  #include "third_party/blink/renderer/platform/scheduler/worker/worker_thread_scheduler.h"

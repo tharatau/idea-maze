@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/api/web_request/web_request_api.cc nw/chromium/extensions/browser/api/web_request/web_request_api.cc
 --- up/chromium/extensions/browser/api/web_request/web_request_api.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/api/web_request/web_request_api.cc	2023-02-24 20:54:13.696489688 +0000
++++ nw/chromium/extensions/browser/api/web_request/web_request_api.cc	2023-02-25 19:07:17.585826551 +0000
 @@ -2200,7 +2200,7 @@
    if (request.is_web_view) {
      // If this is a navigation request, then we can skip this check. IDs will

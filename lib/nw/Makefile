@@ -5,3 +5,7 @@ build:
 patch:
 	chmod 755 ./scripts/patch
 	bash ./scripts/patch
+
+split:
+	chmod 755 ./scripts/split
+	bash ./scripts/split

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/gpu/gpu_process_host.cc nw/chromium/content/browser/gpu/gpu_process_host.cc
 --- up/chromium/content/browser/gpu/gpu_process_host.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/gpu/gpu_process_host.cc	2023-02-24 20:54:12.680494373 +0000
++++ nw/chromium/content/browser/gpu/gpu_process_host.cc	2023-02-25 19:07:16.121818570 +0000
 @@ -711,7 +711,8 @@
        valid_(true),
        in_process_(false),

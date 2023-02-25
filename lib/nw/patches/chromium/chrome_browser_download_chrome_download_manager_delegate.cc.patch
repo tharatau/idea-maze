@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/download/chrome_download_manager_delegate.cc nw/chromium/chrome/browser/download/chrome_download_manager_delegate.cc
 --- up/chromium/chrome/browser/download/chrome_download_manager_delegate.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/download/chrome_download_manager_delegate.cc	2023-02-24 20:54:07.096520121 +0000
++++ nw/chromium/chrome/browser/download/chrome_download_manager_delegate.cc	2023-02-25 19:07:08.545773738 +0000
 @@ -455,12 +455,14 @@
  
    download_manager_ = dm;

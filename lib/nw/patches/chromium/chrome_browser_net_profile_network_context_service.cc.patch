@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/net/profile_network_context_service.cc nw/chromium/chrome/browser/net/profile_network_context_service.cc
 --- up/chromium/chrome/browser/net/profile_network_context_service.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/net/profile_network_context_service.cc	2023-02-24 20:54:07.408518683 +0000
++++ nw/chromium/chrome/browser/net/profile_network_context_service.cc	2023-02-25 19:07:08.993776494 +0000
 @@ -608,6 +608,10 @@
    proxy_config_monitor_.FlushForTesting();
  }

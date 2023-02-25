@@ -1,6 +1,6 @@
 diff -r -u --color up/node/deps/uv/src/unix/kqueue.c nw/node/deps/uv/src/unix/kqueue.c
---- up/node/deps/uv/src/unix/kqueue.c	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/deps/uv/src/unix/kqueue.c	2023-02-19 17:37:31.683596182 +0000
+--- up/node/deps/uv/src/unix/kqueue.c	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/deps/uv/src/unix/kqueue.c	2023-02-25 19:08:12.221999592 +0000
 @@ -47,6 +47,8 @@
  
  static void uv__fs_event(uv_loop_t* loop, uv__io_t* w, unsigned int fflags);

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/gcm_driver/instance_id/instance_id_driver.h nw/chromium/components/gcm_driver/instance_id/instance_id_driver.h
 --- up/chromium/components/gcm_driver/instance_id/instance_id_driver.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/gcm_driver/instance_id/instance_id_driver.h	2023-02-24 20:54:10.924502470 +0000
++++ nw/chromium/components/gcm_driver/instance_id/instance_id_driver.h	2023-02-25 19:07:13.685805292 +0000
 @@ -25,6 +25,9 @@
  // Create instances of this class with |InstanceIDProfileServiceFactory|.
  class InstanceIDDriver {

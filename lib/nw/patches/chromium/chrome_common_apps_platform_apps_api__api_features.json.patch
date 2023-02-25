@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/common/apps/platform_apps/api/_api_features.json nw/chromium/chrome/common/apps/platform_apps/api/_api_features.json
 --- up/chromium/chrome/common/apps/platform_apps/api/_api_features.json	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/common/apps/platform_apps/api/_api_features.json	2023-02-24 20:54:08.768512411 +0000
++++ nw/chromium/chrome/common/apps/platform_apps/api/_api_features.json	2023-02-25 19:07:10.873788058 +0000
 @@ -7,10 +7,6 @@
  // well as feature.h, simple_feature.h, and feature_provider.h.
  

@@ -1,6 +1,6 @@
 diff -r -u --color up/v8/src/objects/js-function.cc nw/v8/src/objects/js-function.cc
 --- up/v8/src/objects/js-function.cc	2023-02-10 19:02:29.000000000 +0000
-+++ nw/v8/src/objects/js-function.cc	2023-02-19 17:37:43.559623022 +0000
++++ nw/v8/src/objects/js-function.cc	2023-02-25 19:08:24.074056083 +0000
 @@ -1243,6 +1243,13 @@
      return NativeCodeFunctionSourceString(shared_info);
    }

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/chrome_extensions_browser_api_provider.cc nw/chromium/chrome/browser/extensions/chrome_extensions_browser_api_provider.cc
 --- up/chromium/chrome/browser/extensions/chrome_extensions_browser_api_provider.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/chrome_extensions_browser_api_provider.cc	2023-02-24 20:54:07.212519586 +0000
++++ nw/chromium/chrome/browser/extensions/chrome_extensions_browser_api_provider.cc	2023-02-25 19:07:08.709774747 +0000
 @@ -8,6 +8,8 @@
  #include "chrome/browser/extensions/api/preference/preference_api.h"
  #include "extensions/browser/extension_function_registry.h"

@@ -1,6 +1,6 @@
 diff -r -u --color up/node/deps/openssl/openssl_common.gypi nw/node/deps/openssl/openssl_common.gypi
---- up/node/deps/openssl/openssl_common.gypi	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/deps/openssl/openssl_common.gypi	2023-02-19 17:37:31.643596105 +0000
+--- up/node/deps/openssl/openssl_common.gypi	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/deps/openssl/openssl_common.gypi	2023-02-25 19:08:12.177999880 +0000
 @@ -12,6 +12,8 @@
      'config/',
    ],

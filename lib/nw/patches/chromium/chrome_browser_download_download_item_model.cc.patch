@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/download/download_item_model.cc nw/chromium/chrome/browser/download/download_item_model.cc
 --- up/chromium/chrome/browser/download/download_item_model.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/download/download_item_model.cc	2023-02-24 20:54:07.100520103 +0000
++++ nw/chromium/chrome/browser/download/download_item_model.cc	2023-02-25 19:07:08.553773788 +0000
 @@ -764,9 +764,11 @@
        // filename. Don't base an "Always open" decision based on it. Also
        // exclude extensions.

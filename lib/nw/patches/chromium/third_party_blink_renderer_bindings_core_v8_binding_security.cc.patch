@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/bindings/core/v8/binding_security.cc nw/chromium/third_party/blink/renderer/bindings/core/v8/binding_security.cc
 --- up/chromium/third_party/blink/renderer/bindings/core/v8/binding_security.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/bindings/core/v8/binding_security.cc	2023-02-24 20:54:17.508469048 +0000
++++ nw/chromium/third_party/blink/renderer/bindings/core/v8/binding_security.cc	2023-02-25 19:07:22.657854237 +0000
 @@ -167,12 +167,14 @@
        // Assert that because the agent clusters are different than the
        // WindowAgentFactories must also be different unless they differ in

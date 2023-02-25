@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/widget/widget_hwnd_utils.cc nw/chromium/ui/views/widget/widget_hwnd_utils.cc
 --- up/chromium/ui/views/widget/widget_hwnd_utils.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/views/widget/widget_hwnd_utils.cc	2023-02-24 20:54:39.224345539 +0000
++++ nw/chromium/ui/views/widget/widget_hwnd_utils.cc	2023-02-25 19:07:49.557999641 +0000
 @@ -11,6 +11,7 @@
  #include "ui/base/l10n/l10n_util_win.h"
  #include "ui/base/ui_base_features.h"

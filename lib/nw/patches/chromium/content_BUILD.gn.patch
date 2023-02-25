@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/BUILD.gn nw/chromium/content/BUILD.gn
 --- up/chromium/content/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/BUILD.gn	2023-02-24 20:54:12.576494852 +0000
++++ nw/chromium/content/BUILD.gn	2023-02-25 19:07:15.973817763 +0000
 @@ -60,6 +60,7 @@
  # linking problems) for when check is enabled.
  

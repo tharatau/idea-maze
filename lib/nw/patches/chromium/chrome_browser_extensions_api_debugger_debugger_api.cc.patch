@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/api/debugger/debugger_api.cc nw/chromium/chrome/browser/extensions/api/debugger/debugger_api.cc
 --- up/chromium/chrome/browser/extensions/api/debugger/debugger_api.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/api/debugger/debugger_api.cc	2023-02-24 20:54:07.152519863 +0000
++++ nw/chromium/chrome/browser/extensions/api/debugger/debugger_api.cc	2023-02-25 19:07:08.629774255 +0000
 @@ -362,10 +362,12 @@
    if (Manifest::IsPolicyLocation(extension_->location()))
      return true;

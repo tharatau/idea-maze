@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/frame/location.cc nw/chromium/third_party/blink/renderer/core/frame/location.cc
 --- up/chromium/third_party/blink/renderer/core/frame/location.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/frame/location.cc	2023-02-24 20:54:17.748467693 +0000
++++ nw/chromium/third_party/blink/renderer/core/frame/location.cc	2023-02-25 19:07:22.993856081 +0000
 @@ -107,7 +107,10 @@
         frame = frame->Tree().Parent()) {
      origins->Append(

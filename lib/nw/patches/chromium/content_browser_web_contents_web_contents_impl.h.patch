@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/web_contents/web_contents_impl.h nw/chromium/content/browser/web_contents/web_contents_impl.h
 --- up/chromium/content/browser/web_contents/web_contents_impl.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/web_contents/web_contents_impl.h	2023-02-24 20:54:12.892493395 +0000
++++ nw/chromium/content/browser/web_contents/web_contents_impl.h	2023-02-25 19:07:16.417820184 +0000
 @@ -693,7 +693,7 @@
                           int main_frame_widget_route_id,
                           WindowOpenDisposition disposition,

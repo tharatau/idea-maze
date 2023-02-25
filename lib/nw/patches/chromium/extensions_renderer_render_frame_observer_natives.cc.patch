@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/render_frame_observer_natives.cc nw/chromium/extensions/renderer/render_frame_observer_natives.cc
 --- up/chromium/extensions/renderer/render_frame_observer_natives.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/renderer/render_frame_observer_natives.cc	2023-02-24 20:54:13.772489337 +0000
++++ nw/chromium/extensions/renderer/render_frame_observer_natives.cc	2023-02-25 19:07:17.701827183 +0000
 @@ -17,6 +17,8 @@
  #include "v8/include/v8-function.h"
  #include "v8/include/v8-primitive.h"

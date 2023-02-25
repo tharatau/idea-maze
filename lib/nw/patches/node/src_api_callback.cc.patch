@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/api/callback.cc nw/node/src/api/callback.cc
---- up/node/src/api/callback.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/api/callback.cc	2023-02-19 17:37:33.275599241 +0000
+--- up/node/src/api/callback.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/api/callback.cc	2023-02-25 19:08:13.814006688 +0000
 @@ -3,6 +3,10 @@
  #include "env-inl.h"
  #include "v8.h"

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/renderer_host/render_widget_host_impl.cc nw/chromium/content/browser/renderer_host/render_widget_host_impl.cc
 --- up/chromium/content/browser/renderer_host/render_widget_host_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/renderer_host/render_widget_host_impl.cc	2023-02-24 20:54:12.832493672 +0000
++++ nw/chromium/content/browser/renderer_host/render_widget_host_impl.cc	2023-02-25 19:07:16.337819748 +0000
 @@ -4,6 +4,8 @@
  
  #include "content/browser/renderer_host/render_widget_host_impl.h"

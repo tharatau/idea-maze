@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/download/download_status_updater_linux.cc nw/chromium/chrome/browser/download/download_status_updater_linux.cc
 --- up/chromium/chrome/browser/download/download_status_updater_linux.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/download/download_status_updater_linux.cc	2023-02-24 20:54:07.104520084 +0000
++++ nw/chromium/chrome/browser/download/download_status_updater_linux.cc	2023-02-25 19:07:08.557773812 +0000
 @@ -118,6 +118,7 @@
  bool IsRunning() {
    return inspector && get_unity_running && get_unity_running(inspector);

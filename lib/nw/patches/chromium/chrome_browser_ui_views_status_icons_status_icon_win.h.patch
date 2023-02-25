@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/status_icons/status_icon_win.h nw/chromium/chrome/browser/ui/views/status_icons/status_icon_win.h
 --- up/chromium/chrome/browser/ui/views/status_icons/status_icon_win.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/status_icons/status_icon_win.h	2023-02-24 20:54:08.468513795 +0000
++++ nw/chromium/chrome/browser/ui/views/status_icons/status_icon_win.h	2023-02-25 19:07:10.513785843 +0000
 @@ -60,7 +60,7 @@
  
   protected:

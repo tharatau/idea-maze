@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/workers/worker_backing_thread.cc nw/chromium/third_party/blink/renderer/core/workers/worker_backing_thread.cc
 --- up/chromium/third_party/blink/renderer/core/workers/worker_backing_thread.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/workers/worker_backing_thread.cc	2023-02-24 20:54:18.084465795 +0000
++++ nw/chromium/third_party/blink/renderer/core/workers/worker_backing_thread.cc	2023-02-25 19:07:23.461858650 +0000
 @@ -9,6 +9,18 @@
  #include "base/location.h"
  #include "base/synchronization/lock.h"

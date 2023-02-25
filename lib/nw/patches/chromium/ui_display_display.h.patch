@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/display/display.h nw/chromium/ui/display/display.h
 --- up/chromium/ui/display/display.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/display/display.h	2023-02-24 20:54:38.456350023 +0000
++++ nw/chromium/ui/display/display.h	2023-02-25 19:07:49.021996423 +0000
 @@ -14,6 +14,11 @@
  #include "ui/gfx/display_color_spaces.h"
  #include "ui/gfx/geometry/rect.h"

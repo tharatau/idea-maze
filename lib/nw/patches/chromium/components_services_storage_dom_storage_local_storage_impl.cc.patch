@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/services/storage/dom_storage/local_storage_impl.cc nw/chromium/components/services/storage/dom_storage/local_storage_impl.cc
 --- up/chromium/components/services/storage/dom_storage/local_storage_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/services/storage/dom_storage/local_storage_impl.cc	2023-02-24 20:54:11.728498762 +0000
++++ nw/chromium/components/services/storage/dom_storage/local_storage_impl.cc	2023-02-25 19:07:14.829811528 +0000
 @@ -155,13 +155,13 @@
  
    // To avoid excessive IO we apply limits to the amount of data being written

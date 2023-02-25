@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/node_contextify.cc nw/node/src/node_contextify.cc
---- up/node/src/node_contextify.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_contextify.cc	2023-02-19 17:37:33.291599271 +0000
+--- up/node/src/node_contextify.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_contextify.cc	2023-02-25 19:08:13.830006776 +0000
 @@ -33,6 +33,7 @@
  #include "util-inl.h"
  
@@ -9,7 +9,7 @@ diff -r -u --color up/node/src/node_contextify.cc nw/node/src/node_contextify.cc
  namespace contextify {
  
  using errors::TryCatchScope;
-@@ -268,6 +269,11 @@
+@@ -266,6 +267,11 @@
    // the context from its constructor.
    v8_context->SetEmbedderData(ContextEmbedderIndex::kSandboxObject,
                                sandbox_obj);

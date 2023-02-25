@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/base/x/x11_global_shortcut_listener.h nw/chromium/ui/base/x/x11_global_shortcut_listener.h
 --- up/chromium/ui/base/x/x11_global_shortcut_listener.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/base/x/x11_global_shortcut_listener.h	2023-02-24 20:54:37.264356838 +0000
++++ nw/chromium/ui/base/x/x11_global_shortcut_listener.h	2023-02-25 19:07:48.781994982 +0000
 @@ -48,11 +48,13 @@
    bool RegisterAccelerator(KeyboardCode key_code,
                             bool is_alt_down,

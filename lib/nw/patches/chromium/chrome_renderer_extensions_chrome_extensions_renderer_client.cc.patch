@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/renderer/extensions/chrome_extensions_renderer_client.cc nw/chromium/chrome/renderer/extensions/chrome_extensions_renderer_client.cc
 --- up/chromium/chrome/renderer/extensions/chrome_extensions_renderer_client.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/renderer/extensions/chrome_extensions_renderer_client.cc	2023-02-24 20:54:08.860511987 +0000
++++ nw/chromium/chrome/renderer/extensions/chrome_extensions_renderer_client.cc	2023-02-25 19:07:10.997788820 +0000
 @@ -8,6 +8,8 @@
  #include <utility>
  

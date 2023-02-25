@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/child/child_thread_impl.cc nw/chromium/content/child/child_thread_impl.cc
 --- up/chromium/content/child/child_thread_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/child/child_thread_impl.cc	2023-02-24 20:54:12.920493266 +0000
++++ nw/chromium/content/child/child_thread_impl.cc	2023-02-25 19:07:16.457820402 +0000
 @@ -673,7 +673,7 @@
    // Requires base::PowerMonitor to be initialized first.
    power_scheduler::PowerModeArbiter::GetInstance()->OnThreadPoolAvailable();

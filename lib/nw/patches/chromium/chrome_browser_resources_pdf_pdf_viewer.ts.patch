@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/resources/pdf/pdf_viewer.ts nw/chromium/chrome/browser/resources/pdf/pdf_viewer.ts
 --- up/chromium/chrome/browser/resources/pdf/pdf_viewer.ts	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/resources/pdf/pdf_viewer.ts	2023-02-24 20:54:07.828516746 +0000
++++ nw/chromium/chrome/browser/resources/pdf/pdf_viewer.ts	2023-02-25 19:07:09.561779988 +0000
 @@ -824,6 +824,7 @@
    /** Handles a navigation request from the current controller. */
    private handleNavigate_(url: string, disposition: WindowOpenDisposition):

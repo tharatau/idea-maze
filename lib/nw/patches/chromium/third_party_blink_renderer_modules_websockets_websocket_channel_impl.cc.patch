@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/modules/websockets/websocket_channel_impl.cc nw/chromium/third_party/blink/renderer/modules/websockets/websocket_channel_impl.cc
 --- up/chromium/third_party/blink/renderer/modules/websockets/websocket_channel_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/modules/websockets/websocket_channel_impl.cc	2023-02-24 20:54:18.324464440 +0000
++++ nw/chromium/third_party/blink/renderer/modules/websockets/websocket_channel_impl.cc	2023-02-25 19:07:23.809860560 +0000
 @@ -1011,7 +1011,7 @@
      uint32_t readable_size;
      const MojoResult begin_result = readable_->BeginReadData(

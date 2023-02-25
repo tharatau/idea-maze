@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/renderer/render_process_impl.cc nw/chromium/content/renderer/render_process_impl.cc
 --- up/chromium/content/renderer/render_process_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/renderer/render_process_impl.cc	2023-02-24 20:54:13.028492768 +0000
++++ nw/chromium/content/renderer/render_process_impl.cc	2023-02-25 19:07:16.617821274 +0000
 @@ -278,6 +278,12 @@
      v8::V8::EnableWebAssemblyTrapHandler(use_v8_signal_handler);
    }

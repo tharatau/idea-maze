@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/renderer/api/app_window_custom_bindings.cc nw/chromium/extensions/renderer/api/app_window_custom_bindings.cc
 --- up/chromium/extensions/renderer/api/app_window_custom_bindings.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/renderer/api/app_window_custom_bindings.cc	2023-02-24 20:54:13.756489411 +0000
++++ nw/chromium/extensions/renderer/api/app_window_custom_bindings.cc	2023-02-25 19:07:17.677827052 +0000
 @@ -5,6 +5,8 @@
  #include "extensions/renderer/api/app_window_custom_bindings.h"
  

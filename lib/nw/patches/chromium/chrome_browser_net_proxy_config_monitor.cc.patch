@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/net/proxy_config_monitor.cc nw/chromium/chrome/browser/net/proxy_config_monitor.cc
 --- up/chromium/chrome/browser/net/proxy_config_monitor.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/net/proxy_config_monitor.cc	2023-02-24 20:54:07.408518683 +0000
++++ nw/chromium/chrome/browser/net/proxy_config_monitor.cc	2023-02-25 19:07:08.993776494 +0000
 @@ -105,6 +105,10 @@
    proxy_config_client_set_.FlushForTesting();
  }

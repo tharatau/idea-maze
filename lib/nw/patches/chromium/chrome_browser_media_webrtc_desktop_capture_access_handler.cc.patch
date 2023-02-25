@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/media/webrtc/desktop_capture_access_handler.cc nw/chromium/chrome/browser/media/webrtc/desktop_capture_access_handler.cc
 --- up/chromium/chrome/browser/media/webrtc/desktop_capture_access_handler.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/media/webrtc/desktop_capture_access_handler.cc	2023-02-24 20:54:07.348518959 +0000
++++ nw/chromium/chrome/browser/media/webrtc/desktop_capture_access_handler.cc	2023-02-25 19:07:08.905775953 +0000
 @@ -101,6 +101,7 @@
  bool ShouldDisplayNotification(const extensions::Extension* extension) {
    return !(extension &&

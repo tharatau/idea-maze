@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/extension_function_dispatcher.cc nw/chromium/extensions/browser/extension_function_dispatcher.cc
 --- up/chromium/extensions/browser/extension_function_dispatcher.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/extension_function_dispatcher.cc	2023-02-24 20:54:13.704489651 +0000
++++ nw/chromium/extensions/browser/extension_function_dispatcher.cc	2023-02-25 19:07:17.597826616 +0000
 @@ -214,6 +214,14 @@
    base::debug::ScopedCrashKeyString extension_id_;
  };

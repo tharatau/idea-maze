@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/common/content_switches_internal.cc nw/chromium/content/common/content_switches_internal.cc
 --- up/chromium/content/common/content_switches_internal.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/common/content_switches_internal.cc	2023-02-24 20:54:12.924493247 +0000
++++ nw/chromium/content/common/content_switches_internal.cc	2023-02-25 19:07:16.465820445 +0000
 @@ -98,7 +98,7 @@
  #if BUILDFLAG(GOOGLE_CHROME_BRANDING)
    std::string title = "Google Chrome";

@@ -1,6 +1,6 @@
 diff -r -u --color up/node/node.gyp nw/node/node.gyp
---- up/node/node.gyp	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/node.gyp	2023-02-19 17:37:33.271599233 +0000
+--- up/node/node.gyp	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/node.gyp	2023-02-25 19:08:13.814006688 +0000
 @@ -1,17 +1,30 @@
  {
    'variables': {
@@ -373,7 +373,7 @@ diff -r -u --color up/node/node.gyp nw/node/node.gyp
  
    'targets': [
      {
-@@ -446,10 +751,19 @@
+@@ -447,11 +752,19 @@
        'includes': [
          'node.gypi',
        ],
@@ -385,16 +385,20 @@ diff -r -u --color up/node/node.gyp nw/node/node.gyp
  
        'include_dirs': [
          'src',
-+        'deps/openssl/openssl/include',
-+        #'../boringssl/src/include',
+         'deps/postject',
++        'deps/ada',
          '<(SHARED_INTERMEDIATE_DIR)' # for node_natives.h
 +        '../../v8', # include/v8_platform.h
 +        '../../v8/include'
        ],
        'dependencies': [
          'deps/base64/base64.gyp:base64',
-@@ -459,6 +773,19 @@
+@@ -459,10 +772,24 @@
+         'deps/histogram/histogram.gyp:histogram',
+         'deps/uvwasi/uvwasi.gyp:uvwasi',
          'deps/simdutf/simdutf.gyp:simdutf',
+-        'deps/ada/ada.gyp:ada',
++        #'deps/ada/ada.gyp:ada',
        ],
  
 +      'direct_dependent_settings': {
@@ -411,9 +415,11 @@ diff -r -u --color up/node/node.gyp nw/node/node.gyp
 +      },
 +
        'sources': [
++        'deps/ada/ada.cpp',
          'src/api/async_resource.cc',
          'src/api/callback.cc',
-@@ -490,6 +817,7 @@
+         'src/api/embed_helpers.cc',
+@@ -493,6 +820,7 @@
          'src/js_udp_wrap.cc',
          'src/module_wrap.cc',
          'src/node.cc',
@@ -421,7 +427,7 @@ diff -r -u --color up/node/node.gyp nw/node/node.gyp
          'src/node_api.cc',
          'src/node_binding.cc',
          'src/node_blob.cc',
-@@ -552,11 +880,11 @@
+@@ -555,11 +883,11 @@
          'src/tcp_wrap.cc',
          'src/timers.cc',
          'src/timer_wrap.cc',
@@ -438,16 +444,16 @@ diff -r -u --color up/node/node.gyp nw/node/node.gyp
          'src/tty_wrap.cc',
          'src/udp_wrap.cc',
          'src/util.cc',
-@@ -674,7 +1002,7 @@
+@@ -678,7 +1006,7 @@
          'src/util.h',
          'src/util-inl.h',
          # Dependency headers
 -        'deps/v8/include/v8.h',
 +        #'deps/v8/include/v8.h',
+         'deps/postject/postject-api.h'
          # javascript files to make for an even more pleasant IDE experience
          '<@(library_files)',
-         '<@(deps_files)',
-@@ -695,6 +1023,12 @@
+@@ -700,6 +1028,12 @@
          'NODE_WANT_INTERNALS=1',
          # Warn when using deprecated V8 APIs.
          'V8_DEPRECATION_WARNINGS=1',
@@ -460,7 +466,7 @@ diff -r -u --color up/node/node.gyp nw/node/node.gyp
          'NODE_OPENSSL_SYSTEM_CERT_PATH="<(openssl_system_ca_path)"',
        ],
  
-@@ -703,6 +1037,12 @@
+@@ -708,6 +1042,12 @@
        'msvs_disabled_warnings!': [4244],
  
        'conditions': [
@@ -473,7 +479,7 @@ diff -r -u --color up/node/node.gyp nw/node/node.gyp
          [ 'openssl_default_cipher_list!=""', {
            'defines': [
              'NODE_OPENSSL_DEFAULT_CIPHER_LIST="<(openssl_default_cipher_list)"'
-@@ -746,15 +1086,14 @@
+@@ -751,15 +1091,14 @@
            'conditions': [
              [ 'node_intermediate_lib_type!="static_library"', {
                'sources': [
@@ -495,7 +501,7 @@ diff -r -u --color up/node/node.gyp nw/node/node.gyp
            ],
          }],
          [ 'node_use_openssl=="true"', {
-@@ -985,7 +1324,7 @@
+@@ -960,7 +1299,7 @@
        'include_dirs': [
          'src',
          'tools/msvs/genfiles',

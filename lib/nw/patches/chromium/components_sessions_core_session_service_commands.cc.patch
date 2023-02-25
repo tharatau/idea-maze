@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/sessions/core/session_service_commands.cc nw/chromium/components/sessions/core/session_service_commands.cc
 --- up/chromium/components/sessions/core/session_service_commands.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/sessions/core/session_service_commands.cc	2023-02-24 20:54:11.744498689 +0000
++++ nw/chromium/components/sessions/core/session_service_commands.cc	2023-02-25 19:07:14.853811658 +0000
 @@ -165,9 +165,10 @@
    PERSISTED_SHOW_STATE_MAXIMIZED = 3,
    // SHOW_STATE_INACTIVE (4) never persisted.

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.h nw/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.h
 --- up/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.h	2023-02-24 20:54:11.628499223 +0000
++++ nw/chromium/components/remote_cocoa/app_shim/views_nswindow_delegate.h	2023-02-25 19:07:14.689810764 +0000
 @@ -54,10 +54,10 @@
  // a backing store). |notification| is optional and can be set when redirecting
  // a notification such as NSApplicationDidHideNotification.

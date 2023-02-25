@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/metrics/extensions_metrics_provider.cc nw/chromium/chrome/browser/metrics/extensions_metrics_provider.cc
 --- up/chromium/chrome/browser/metrics/extensions_metrics_provider.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/metrics/extensions_metrics_provider.cc	2023-02-24 20:54:07.372518849 +0000
++++ nw/chromium/chrome/browser/metrics/extensions_metrics_provider.cc	2023-02-25 19:07:08.937776149 +0000
 @@ -145,6 +145,7 @@
      case Manifest::TYPE_LEGACY_PACKAGED_APP:
        return ExtensionInstallProto::LEGACY_PACKAGED_APP;

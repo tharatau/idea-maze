@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/views/frame/browser_window_property_manager_win.cc nw/chromium/chrome/browser/ui/views/frame/browser_window_property_manager_win.cc
 --- up/chromium/chrome/browser/ui/views/frame/browser_window_property_manager_win.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/views/frame/browser_window_property_manager_win.cc	2023-02-24 20:54:08.412514053 +0000
++++ nw/chromium/chrome/browser/ui/views/frame/browser_window_property_manager_win.cc	2023-02-25 19:07:10.429785327 +0000
 @@ -54,12 +54,13 @@
    std::wstring app_id =
        browser->is_type_app() || browser->is_type_app_popup() ||

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/test/BUILD.gn nw/chromium/chrome/test/BUILD.gn
 --- up/chromium/chrome/test/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/test/BUILD.gn	2023-02-24 20:54:08.892511840 +0000
++++ nw/chromium/chrome/test/BUILD.gn	2023-02-25 19:07:11.041789091 +0000
 @@ -230,7 +230,7 @@
      "//chrome:strings",
      "//chrome/browser:browser_process",

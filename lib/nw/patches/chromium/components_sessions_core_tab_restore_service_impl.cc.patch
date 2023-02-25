@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/sessions/core/tab_restore_service_impl.cc nw/chromium/components/sessions/core/tab_restore_service_impl.cc
 --- up/chromium/components/sessions/core/tab_restore_service_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/sessions/core/tab_restore_service_impl.cc	2023-02-24 20:54:11.748498670 +0000
++++ nw/chromium/components/sessions/core/tab_restore_service_impl.cc	2023-02-25 19:07:14.853811658 +0000
 @@ -181,6 +181,7 @@
    kSerializedShowStateMaximized = 3,
    kSerializedShowStateInactive = 4,

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/sync/sync_service_factory.cc nw/chromium/chrome/browser/sync/sync_service_factory.cc
 --- up/chromium/chrome/browser/sync/sync_service_factory.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/sync/sync_service_factory.cc	2023-02-24 20:54:08.024515842 +0000
++++ nw/chromium/chrome/browser/sync/sync_service_factory.cc	2023-02-25 19:07:09.861781833 +0000
 @@ -171,6 +171,7 @@
                                       : syncer::SyncServiceImpl::MANUAL_START;
    }

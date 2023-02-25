@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/common/api/bluetooth/bluetooth_manifest_data.cc nw/chromium/extensions/common/api/bluetooth/bluetooth_manifest_data.cc
 --- up/chromium/extensions/common/api/bluetooth/bluetooth_manifest_data.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/common/api/bluetooth/bluetooth_manifest_data.cc	2023-02-24 20:54:13.732489522 +0000
++++ nw/chromium/extensions/common/api/bluetooth/bluetooth_manifest_data.cc	2023-02-25 19:07:17.633826812 +0000
 @@ -31,6 +31,8 @@
      const Extension* extension,
      const BluetoothPermissionRequest& request) {

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/frame/local_frame.cc nw/chromium/third_party/blink/renderer/core/frame/local_frame.cc
 --- up/chromium/third_party/blink/renderer/core/frame/local_frame.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/frame/local_frame.cc	2023-02-24 20:54:17.744467715 +0000
++++ nw/chromium/third_party/blink/renderer/core/frame/local_frame.cc	2023-02-25 19:07:22.989856060 +0000
 @@ -2347,6 +2347,8 @@
  
  // static

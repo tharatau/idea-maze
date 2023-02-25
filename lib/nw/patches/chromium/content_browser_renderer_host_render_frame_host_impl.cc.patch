@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/renderer_host/render_frame_host_impl.cc nw/chromium/content/browser/renderer_host/render_frame_host_impl.cc
 --- up/chromium/content/browser/renderer_host/render_frame_host_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/renderer_host/render_frame_host_impl.cc	2023-02-24 20:54:12.820493727 +0000
++++ nw/chromium/content/browser/renderer_host/render_frame_host_impl.cc	2023-02-25 19:07:16.321819660 +0000
 @@ -1,6 +1,7 @@
  // Copyright 2013 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be

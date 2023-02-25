@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/node/node.py nw/chromium/third_party/node/node.py
 --- up/chromium/third_party/node/node.py	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/node/node.py	2023-02-24 20:54:33.588377855 +0000
++++ nw/chromium/third_party/node/node.py	2023-02-25 19:07:44.625970010 +0000
 @@ -7,8 +7,11 @@
  import platform
  import subprocess

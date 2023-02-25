@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/metrics/metrics_state_manager.cc nw/chromium/components/metrics/metrics_state_manager.cc
 --- up/chromium/components/metrics/metrics_state_manager.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/metrics/metrics_state_manager.cc	2023-02-24 20:54:11.028501990 +0000
++++ nw/chromium/components/metrics/metrics_state_manager.cc	2023-02-25 19:07:13.841806142 +0000
 @@ -411,6 +411,7 @@
    // so the command-line checks wouldn't be needed here.
    // Currently, kForceEnableMetricsReporting is used by Java UkmTest and

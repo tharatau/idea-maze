@@ -1,7 +1,7 @@
 diff -r -u --color up/node/src/util.cc nw/node/src/util.cc
---- up/node/src/util.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/util.cc	2023-02-19 17:37:33.311599310 +0000
-@@ -567,13 +567,9 @@
+--- up/node/src/util.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/util.cc	2023-02-25 19:08:13.850006885 +0000
+@@ -582,13 +582,9 @@
      return String::Empty(isolate);
    }
    if (is_one_byte()) {

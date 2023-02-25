@@ -1,7 +1,7 @@
 diff -r -u --color up/node/src/node_metadata.cc nw/node/src/node_metadata.cc
---- up/node/src/node_metadata.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_metadata.cc	2023-02-19 17:37:33.295599279 +0000
-@@ -20,7 +20,8 @@
+--- up/node/src/node_metadata.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_metadata.cc	2023-02-25 19:08:13.834006798 +0000
+@@ -21,7 +21,8 @@
  #endif
  #endif  // HAVE_OPENSSL
  
@@ -11,7 +11,7 @@ diff -r -u --color up/node/src/node_metadata.cc nw/node/src/node_metadata.cc
  #include <ngtcp2/version.h>
  #include <nghttp3/version.h>
  #endif
-@@ -109,7 +110,7 @@
+@@ -110,7 +111,7 @@
    unicode = U_UNICODE_VERSION;
  #endif  // NODE_HAVE_I18N_SUPPORT
  

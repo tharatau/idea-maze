@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/web_applications/web_app_helpers.cc nw/chromium/chrome/browser/web_applications/web_app_helpers.cc
 --- up/chromium/chrome/browser/web_applications/web_app_helpers.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/web_applications/web_app_helpers.cc	2023-02-24 20:54:08.712512670 +0000
++++ nw/chromium/chrome/browser/web_applications/web_app_helpers.cc	2023-02-25 19:07:10.781787492 +0000
 @@ -33,7 +33,7 @@
  // for the name of this directory.  Hosts can't include an underscore.
  // By starting this string with an underscore, we ensure that there

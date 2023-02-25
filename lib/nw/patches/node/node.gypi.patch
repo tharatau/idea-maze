@@ -1,6 +1,6 @@
 diff -r -u --color up/node/node.gypi nw/node/node.gypi
---- up/node/node.gypi	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/node.gypi	2023-02-19 17:37:33.271599233 +0000
+--- up/node/node.gypi	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/node.gypi	2023-02-25 19:08:13.814006688 +0000
 @@ -69,12 +69,12 @@
          'NOMINMAX',
          '_UNICODE=1',

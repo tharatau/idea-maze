@@ -1,7 +1,7 @@
 diff -r -u --color up/node/src/node_options.cc nw/node/src/node_options.cc
---- up/node/src/node_options.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_options.cc	2023-02-19 17:37:33.295599279 +0000
-@@ -945,14 +945,15 @@
+--- up/node/src/node_options.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_options.cc	2023-02-25 19:08:13.834006798 +0000
+@@ -959,14 +959,15 @@
              &PerProcessOptions::trace_sigint,
              kAllowedInEnvvar);
  

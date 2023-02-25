@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/base/message_loop/message_pump_mac.h nw/chromium/base/message_loop/message_pump_mac.h
 --- up/chromium/base/message_loop/message_pump_mac.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/base/message_loop/message_pump_mac.h	2023-02-24 20:54:05.200528638 +0000
++++ nw/chromium/base/message_loop/message_pump_mac.h	2023-02-25 19:07:06.009758140 +0000
 @@ -156,7 +156,7 @@
    // Get the current mode mask from |enabled_modes_|.
    int GetModeMask() const;

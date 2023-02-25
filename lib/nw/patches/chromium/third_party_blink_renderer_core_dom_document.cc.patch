@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/dom/document.cc nw/chromium/third_party/blink/renderer/core/dom/document.cc
 --- up/chromium/third_party/blink/renderer/core/dom/document.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/dom/document.cc	2023-02-24 20:54:17.652468235 +0000
++++ nw/chromium/third_party/blink/renderer/core/dom/document.cc	2023-02-25 19:07:22.857855335 +0000
 @@ -6043,14 +6043,14 @@
    if (!GetFrame())
      return scoped_refptr<const SecurityOrigin>();

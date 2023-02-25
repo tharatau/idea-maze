@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/favicon/core/favicon_driver_impl.cc nw/chromium/components/favicon/core/favicon_driver_impl.cc
 --- up/chromium/components/favicon/core/favicon_driver_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/favicon/core/favicon_driver_impl.cc	2023-02-24 20:54:10.884502654 +0000
++++ nw/chromium/components/favicon/core/favicon_driver_impl.cc	2023-02-25 19:07:13.625804964 +0000
 @@ -33,7 +33,7 @@
          favicon_service_, this, FaviconDriverObserver::TOUCH_LARGEST));
    } else {

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/chrome_content_verifier_delegate.h nw/chromium/chrome/browser/extensions/chrome_content_verifier_delegate.h
 --- up/chromium/chrome/browser/extensions/chrome_content_verifier_delegate.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/chrome_content_verifier_delegate.h	2023-02-24 20:54:07.212519586 +0000
++++ nw/chromium/chrome/browser/extensions/chrome_content_verifier_delegate.h	2023-02-25 19:07:08.709774747 +0000
 @@ -81,7 +81,9 @@
    std::set<base::FilePath> GetBrowserImagePaths(
        const extensions::Extension* extension) override;

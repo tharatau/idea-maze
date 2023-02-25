@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/browser_extension_window_controller.cc nw/chromium/chrome/browser/extensions/browser_extension_window_controller.cc
 --- up/chromium/chrome/browser/extensions/browser_extension_window_controller.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/browser_extension_window_controller.cc	2023-02-24 20:54:07.208519605 +0000
++++ nw/chromium/chrome/browser/extensions/browser_extension_window_controller.cc	2023-02-25 19:07:08.705774722 +0000
 @@ -64,7 +64,7 @@
    // is null and allowing access to all windows. It would be better if we could
    // pass in Feature::Context or some way to detect caller type.

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/api/execute_code_function.cc nw/chromium/extensions/browser/api/execute_code_function.cc
 --- up/chromium/extensions/browser/api/execute_code_function.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/api/execute_code_function.cc	2023-02-24 20:54:13.672489798 +0000
++++ nw/chromium/extensions/browser/api/execute_code_function.cc	2023-02-25 19:07:17.557826398 +0000
 @@ -6,6 +6,7 @@
  #define EXTENSIONS_BROWSER_API_EXECUTE_CODE_FUNCTION_IMPL_H_
  

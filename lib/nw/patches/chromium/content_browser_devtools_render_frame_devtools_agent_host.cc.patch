@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/browser/devtools/render_frame_devtools_agent_host.cc nw/chromium/content/browser/devtools/render_frame_devtools_agent_host.cc
 --- up/chromium/content/browser/devtools/render_frame_devtools_agent_host.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/browser/devtools/render_frame_devtools_agent_host.cc	2023-02-24 20:54:12.656494483 +0000
++++ nw/chromium/content/browser/devtools/render_frame_devtools_agent_host.cc	2023-02-25 19:07:16.085818374 +0000
 @@ -227,6 +227,8 @@
    }
    RenderProcessHost* rph = rfh->GetProcess();

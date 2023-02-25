@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/nacl/loader/BUILD.gn nw/chromium/components/nacl/loader/BUILD.gn
 --- up/chromium/components/nacl/loader/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/nacl/loader/BUILD.gn	2023-02-24 20:54:11.048501898 +0000
++++ nw/chromium/components/nacl/loader/BUILD.gn	2023-02-25 19:07:13.869806295 +0000
 @@ -153,6 +153,12 @@
      if (!export_libcxxabi_from_executables) {
        configs -= [ "//build/config/compiler:export_dynamic" ]

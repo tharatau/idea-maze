@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/api/preference/preference_helpers.cc nw/chromium/chrome/browser/extensions/api/preference/preference_helpers.cc
 --- up/chromium/chrome/browser/extensions/api/preference/preference_helpers.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/api/preference/preference_helpers.cc	2023-02-24 20:54:07.188519697 +0000
++++ nw/chromium/chrome/browser/extensions/api/preference/preference_helpers.cc	2023-02-25 19:07:08.673774526 +0000
 @@ -101,7 +101,11 @@
        DCHECK(!args.empty());
        DCHECK(args[0].is_dict());

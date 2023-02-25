@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/public/browser/web_contents.h nw/chromium/content/public/browser/web_contents.h
 --- up/chromium/content/public/browser/web_contents.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/public/browser/web_contents.h	2023-02-24 20:54:12.984492971 +0000
++++ nw/chromium/content/public/browser/web_contents.h	2023-02-25 19:07:16.557820947 +0000
 @@ -338,6 +338,11 @@
  
    ~WebContents() override = default;

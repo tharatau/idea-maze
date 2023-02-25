@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/gl/gl_features.cc nw/chromium/ui/gl/gl_features.cc
 --- up/chromium/ui/gl/gl_features.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/gl/gl_features.cc	2023-02-24 20:54:39.004346829 +0000
++++ nw/chromium/ui/gl/gl_features.cc	2023-02-25 19:07:49.253997816 +0000
 @@ -75,7 +75,7 @@
               base::FEATURE_DISABLED_BY_DEFAULT);
  #endif

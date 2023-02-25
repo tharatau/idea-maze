@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/content/renderer/render_thread_impl.cc nw/chromium/content/renderer/render_thread_impl.cc
 --- up/chromium/content/renderer/render_thread_impl.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/content/renderer/render_thread_impl.cc	2023-02-24 20:54:13.028492768 +0000
++++ nw/chromium/content/renderer/render_thread_impl.cc	2023-02-25 19:07:16.621821296 +0000
 @@ -996,6 +996,13 @@
        std::move(closure));
  }

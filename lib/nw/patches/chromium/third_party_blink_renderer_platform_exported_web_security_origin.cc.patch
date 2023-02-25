@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/platform/exported/web_security_origin.cc nw/chromium/third_party/blink/renderer/platform/exported/web_security_origin.cc
 --- up/chromium/third_party/blink/renderer/platform/exported/web_security_origin.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/platform/exported/web_security_origin.cc	2023-02-24 20:54:18.368464191 +0000
++++ nw/chromium/third_party/blink/renderer/platform/exported/web_security_origin.cc	2023-02-25 19:07:23.869860889 +0000
 @@ -141,4 +141,9 @@
  }
  #endif

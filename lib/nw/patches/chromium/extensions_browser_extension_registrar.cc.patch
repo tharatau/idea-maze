@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/extension_registrar.cc nw/chromium/extensions/browser/extension_registrar.cc
 --- up/chromium/extensions/browser/extension_registrar.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/extension_registrar.cc	2023-02-24 20:54:13.708489632 +0000
++++ nw/chromium/extensions/browser/extension_registrar.cc	2023-02-25 19:07:17.601826638 +0000
 @@ -8,6 +8,9 @@
  #include "base/callback_helpers.h"
  #include "base/check_op.h"

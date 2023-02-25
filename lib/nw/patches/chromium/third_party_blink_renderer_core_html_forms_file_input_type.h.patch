@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/third_party/blink/renderer/core/html/forms/file_input_type.h nw/chromium/third_party/blink/renderer/core/html/forms/file_input_type.h
 --- up/chromium/third_party/blink/renderer/core/html/forms/file_input_type.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/third_party/blink/renderer/core/html/forms/file_input_type.h	2023-02-24 20:54:17.776467535 +0000
++++ nw/chromium/third_party/blink/renderer/core/html/forms/file_input_type.h	2023-02-25 19:07:23.033856301 +0000
 @@ -104,7 +104,7 @@
  
    // FileChooserClient implementation.

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/extensions/chrome_extension_web_contents_observer.cc nw/chromium/chrome/browser/extensions/chrome_extension_web_contents_observer.cc
 --- up/chromium/chrome/browser/extensions/chrome_extension_web_contents_observer.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/extensions/chrome_extension_web_contents_observer.cc	2023-02-24 20:54:07.212519586 +0000
++++ nw/chromium/chrome/browser/extensions/chrome_extension_web_contents_observer.cc	2023-02-25 19:07:08.709774747 +0000
 @@ -29,13 +29,47 @@
  #include "extensions/common/switches.h"
  #include "third_party/blink/public/common/chrome_debug_urls.h"

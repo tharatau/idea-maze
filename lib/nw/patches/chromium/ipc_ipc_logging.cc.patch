@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ipc/ipc_logging.cc nw/chromium/ipc/ipc_logging.cc
 --- up/chromium/ipc/ipc_logging.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ipc/ipc_logging.cc	2023-02-24 20:54:14.964483417 +0000
++++ nw/chromium/ipc/ipc_logging.cc	2023-02-25 19:07:19.181835250 +0000
 @@ -242,7 +242,7 @@
        }
      }

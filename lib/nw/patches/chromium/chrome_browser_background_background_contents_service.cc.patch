@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/background/background_contents_service.cc nw/chromium/chrome/browser/background/background_contents_service.cc
 --- up/chromium/chrome/browser/background/background_contents_service.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/background/background_contents_service.cc	2023-02-24 20:54:06.996520582 +0000
++++ nw/chromium/chrome/browser/background/background_contents_service.cc	2023-02-25 19:07:08.401772853 +0000
 @@ -782,6 +782,7 @@
  
  void BackgroundContentsService::HandleExtensionCrashed(

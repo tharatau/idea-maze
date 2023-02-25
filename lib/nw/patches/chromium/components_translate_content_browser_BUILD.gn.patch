@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/translate/content/browser/BUILD.gn nw/chromium/components/translate/content/browser/BUILD.gn
 --- up/chromium/components/translate/content/browser/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/translate/content/browser/BUILD.gn	2023-02-24 20:54:12.276496235 +0000
++++ nw/chromium/components/translate/content/browser/BUILD.gn	2023-02-25 19:07:15.573815583 +0000
 @@ -36,7 +36,7 @@
      "//components/services/language_detection/public/cpp",
      "//components/services/language_detection/public/mojom",

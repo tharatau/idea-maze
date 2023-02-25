@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/ui/webui/print_preview/print_preview_handler.h nw/chromium/chrome/browser/ui/webui/print_preview/print_preview_handler.h
 --- up/chromium/chrome/browser/ui/webui/print_preview/print_preview_handler.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/ui/webui/print_preview/print_preview_handler.h	2023-02-24 20:54:08.560513371 +0000
++++ nw/chromium/chrome/browser/ui/webui/print_preview/print_preview_handler.h	2023-02-25 19:07:10.637786606 +0000
 @@ -41,6 +41,16 @@
  class WebContents;
  }

@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/omnibox/browser/search_provider.cc nw/chromium/components/omnibox/browser/search_provider.cc
 --- up/chromium/components/omnibox/browser/search_provider.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/omnibox/browser/search_provider.cc	2023-02-24 20:54:11.112501603 +0000
++++ nw/chromium/components/omnibox/browser/search_provider.cc	2023-02-25 19:07:13.973806861 +0000
 @@ -1,7 +1,7 @@
  // Copyright 2012 The Chromium Authors
  // Use of this source code is governed by a BSD-style license that can be

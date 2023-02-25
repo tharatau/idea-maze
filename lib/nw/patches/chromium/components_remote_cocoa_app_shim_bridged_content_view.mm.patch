@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/components/remote_cocoa/app_shim/bridged_content_view.mm nw/chromium/components/remote_cocoa/app_shim/bridged_content_view.mm
 --- up/chromium/components/remote_cocoa/app_shim/bridged_content_view.mm	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/components/remote_cocoa/app_shim/bridged_content_view.mm	2023-02-24 20:54:11.628499223 +0000
++++ nw/chromium/components/remote_cocoa/app_shim/bridged_content_view.mm	2023-02-25 19:07:14.685810743 +0000
 @@ -201,6 +201,7 @@
  @synthesize bridge = _bridge;
  @synthesize drawMenuBackgroundForBlur = _drawMenuBackgroundForBlur;

@@ -1,6 +1,6 @@
 diff -r -u --color up/v8/src/api/api.cc nw/v8/src/api/api.cc
 --- up/v8/src/api/api.cc	2023-02-10 19:02:29.000000000 +0000
-+++ nw/v8/src/api/api.cc	2023-02-19 17:37:43.255622288 +0000
++++ nw/v8/src/api/api.cc	2023-02-25 19:08:23.790054828 +0000
 @@ -175,6 +175,31 @@
  namespace v8 {
  

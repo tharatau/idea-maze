@@ -1,7 +1,7 @@
 diff -r -u --color up/node/src/env_properties.h nw/node/src/env_properties.h
---- up/node/src/env_properties.h	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/env_properties.h	2023-02-19 17:37:33.283599256 +0000
-@@ -353,6 +353,7 @@
+--- up/node/src/env_properties.h	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/env_properties.h	2023-02-25 19:08:13.822006732 +0000
+@@ -354,6 +354,7 @@
    V(microtask_queue_ctor_template, v8::FunctionTemplate)                       \
    V(pipe_constructor_template, v8::FunctionTemplate)                           \
    V(promise_wrap_template, v8::ObjectTemplate)                                 \

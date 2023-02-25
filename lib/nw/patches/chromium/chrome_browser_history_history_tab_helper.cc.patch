@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/chrome/browser/history/history_tab_helper.cc nw/chromium/chrome/browser/history/history_tab_helper.cc
 --- up/chromium/chrome/browser/history/history_tab_helper.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/browser/history/history_tab_helper.cc	2023-02-24 20:54:07.288519236 +0000
++++ nw/chromium/chrome/browser/history/history_tab_helper.cc	2023-02-25 19:07:08.821775436 +0000
 @@ -163,11 +163,13 @@
  HistoryTabHelper::HistoryTabHelper(WebContents* web_contents)
      : content::WebContentsObserver(web_contents),

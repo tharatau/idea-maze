@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/ui/views/controls/menu/native_menu_win.cc nw/chromium/ui/views/controls/menu/native_menu_win.cc
 --- up/chromium/ui/views/controls/menu/native_menu_win.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/ui/views/controls/menu/native_menu_win.cc	2023-02-24 20:54:39.176345820 +0000
++++ nw/chromium/ui/views/controls/menu/native_menu_win.cc	2023-02-25 19:07:49.493999257 +0000
 @@ -53,7 +53,9 @@
                    !system_menu_for),
        system_menu_for_(system_menu_for),

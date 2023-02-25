@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/node_platform.cc nw/node/src/node_platform.cc
---- up/node/src/node_platform.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_platform.cc	2023-02-19 17:37:33.299599287 +0000
+--- up/node/src/node_platform.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_platform.cc	2023-02-25 19:08:13.838006820 +0000
 @@ -345,8 +345,8 @@
    // TODO(addaleax): It's a bit icky that we use global state here, but we can't
    // really do anything about it unless V8 starts exposing a way to access the

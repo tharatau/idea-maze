@@ -1,6 +1,6 @@
 diff -r -u --color up/node/deps/uv/src/unix/fs.c nw/node/deps/uv/src/unix/fs.c
---- up/node/deps/uv/src/unix/fs.c	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/deps/uv/src/unix/fs.c	2023-02-19 17:37:31.683596182 +0000
+--- up/node/deps/uv/src/unix/fs.c	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/deps/uv/src/unix/fs.c	2023-02-25 19:08:12.217999618 +0000
 @@ -25,6 +25,8 @@
   * return -1 with errno set. The dispatcher in uv__fs_work() takes care of
   * getting the errno to the right place (req->result or as the return value.)

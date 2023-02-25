@@ -1,6 +1,6 @@
 diff -r -u --color up/node/tools/js2c.py nw/node/tools/js2c.py
---- up/node/tools/js2c.py	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/tools/js2c.py	2023-02-19 17:37:33.919600478 +0000
+--- up/node/tools/js2c.py	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/tools/js2c.py	2023-02-25 19:08:14.478010318 +0000
 @@ -130,7 +130,10 @@
    initializers.append(initializer)
  

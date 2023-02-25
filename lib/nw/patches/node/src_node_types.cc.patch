@@ -1,6 +1,6 @@
 diff -r -u --color up/node/src/node_types.cc nw/node/src/node_types.cc
---- up/node/src/node_types.cc	2023-02-14 22:09:05.000000000 +0000
-+++ nw/node/src/node_types.cc	2023-02-19 17:37:33.303599295 +0000
+--- up/node/src/node_types.cc	2023-02-20 19:32:04.000000000 +0000
++++ nw/node/src/node_types.cc	2023-02-25 19:08:13.842006841 +0000
 @@ -38,7 +38,6 @@
    V(Proxy)                                                                    \
    V(ModuleNamespaceObject)                                                    \

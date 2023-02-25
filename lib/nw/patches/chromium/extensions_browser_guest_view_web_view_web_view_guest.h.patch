@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/extensions/browser/guest_view/web_view/web_view_guest.h nw/chromium/extensions/browser/guest_view/web_view/web_view_guest.h
 --- up/chromium/extensions/browser/guest_view/web_view/web_view_guest.h	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/extensions/browser/guest_view/web_view/web_view_guest.h	2023-02-24 20:54:13.716489595 +0000
++++ nw/chromium/extensions/browser/guest_view/web_view/web_view_guest.h	2023-02-25 19:07:17.609826681 +0000
 @@ -64,6 +64,8 @@
        int embedder_process_id,
        int web_view_instance_id);

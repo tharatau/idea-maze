@@ -1,6 +1,6 @@
 diff -r -u --color up/chromium/build/config/gcc/BUILD.gn nw/chromium/build/config/gcc/BUILD.gn
 --- up/chromium/build/config/gcc/BUILD.gn	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/build/config/gcc/BUILD.gn	2023-02-24 20:54:05.348527980 +0000
++++ nw/chromium/build/config/gcc/BUILD.gn	2023-02-25 19:07:06.229759493 +0000
 @@ -67,10 +67,10 @@
      # Note: Android, Aix don't support rpath. Chromecast has its own logic for
      # setting the rpath in //build/config/chromecast.
