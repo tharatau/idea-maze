@@ -4,7 +4,7 @@ DEPOT_TOOLS_DIR="depot_tools"
 DEPOT_TOOLS_URI="https://chromium.googlesource.com/chromium/tools/depot_tools.git"
 
 CHROMIUM_DIR="chromium"
-CHROMIUM_URI="https://github.com/tharatau/nw-chromium"
+CHROMIUM_URI="https://github.com/nwjs/chromium.src"
 
 NODE_DIR="third_party/node-nw"
 NODE_URI="https://github.com/nwjs/node"
@@ -37,15 +37,15 @@ cd src
 # ./build/install-build-deps.sh
 
 if [[ ! -d $NW_DIR ]]; then
-    git clone -b nw72 --depth=1 $NW_URI $NW_DIR
+    git clone -b nw73 --depth=1 $NW_URI $NW_DIR
 fi
 
 if [[ ! -d $NODE_DIR ]]; then
-    git clone -b nw72 --depth=1 $NODE_URI $NODE_DIR
+    git clone -b nw73 --depth=1 $NODE_URI $NODE_DIR
 fi
 
 if [[ ! -d $V8_DIR ]]; then
-    git clone -b nw72 --depth=1 $V8_URI $v8_DIR
+    git clone -b nw73 --depth=1 $V8_URI $v8_DIR
 fi
 
 cat <<CONFIG > "./build/util/LASTCHANGE"
@@ -53,11 +53,11 @@ LASTCHANGE=0000000000000000000000000000000000000000-0000000000000000000000000000
 LASTCHANGE_YEAR=1970
 CONFIG
 
-# gclient sync --verbose
+gclient sync --verbose
 
-# gn gen out/nw --args='is_component_build=true symbol_level=0 enable_nacl=false blink_symbol_level=0 v8_symbol_level=0'
+gn gen out/nw --args='is_component_build=true symbol_level=0 enable_nacl=false blink_symbol_level=0 v8_symbol_level=0'
 
-# ninja -C out/nw nwjs
+ninja -C out/nw nwjs
 
 # TODO: change to component build
 export GYP_CHROMIUM_NO_ACTION=0

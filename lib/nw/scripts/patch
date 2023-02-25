@@ -15,6 +15,15 @@ NODE_VER="19.7.0"
 V8_URI="https://github.com/v8/v8"
 V8_VER="11.0.226.16"
 
+deps=(
+    "patchutils"
+)
+
+sudo apt update
+for dep in "${deps[@]}"; do
+    sudo apt install -y $dep
+done
+
 if [[ ! -d "diff" ]]; then
     mkdir diff
 fi
@@ -67,3 +76,25 @@ diff -r -u --color $UP_DIR/node $NW_DIR/node > 0.$NW_VER.x/node.patch
 diff -r -u --color $UP_DIR/v8 $NW_DIR/v8 > 0.$NW_VER.x/v8.patch
 
 rm -rf nw up
+
+if [[ ! -d "patches" ]]; then
+    mkdir patches
+fi
+
+if [[ ! -d "patches/chromium" ]]; then
+    mkdir patches/chromium
+fi
+
+if [[ ! -d "patches/node" ]]; then
+    mkdir patches/node
+fi
+
+if [[ ! -d "patches/v8" ]]; then
+    mkdir patches/v8
+fi
+
+splitdiff -a -p 2 -d -D ./patches/chromium ./diff/0.$NW_VER.x/chromium.patch
+
+splitdiff -a -p 2 -d -D ./patches/node ./diff/0.$NW_VER.x/node.patch
+
+splitdiff -a -p 2 -d -D ./patches/v8 ./diff/0.$NW_VER.x/v8.patch
