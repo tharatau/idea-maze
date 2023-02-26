@@ -1,63 +1,69 @@
 #!/bin/bash
 
-CHROMIUM_DIR="chromium_src"
-CHROMIUM_URI="https://github.com/nwjs/chromium.src"
+NW_VER=73
+
+CHROMIUM_DIR=src
+CHROMIUM_URI=https://github.com/nwjs/chromium.src.git
 
 NODE_DIR="third_party/node-nw"
-NODE_URI="https://github.com/nwjs/node"
+NODE_URI="https://github.com/nwjs/node.git"
 
 NW_DIR="content/nw"
-NW_URI="https://github.com/nwjs/nw.js"
+NW_URI="https://github.com/nwjs/nw.js.git"
 
 V8_DIR="v8"
-V8_URI="https://github.com/nwjs/v8"
+V8_URI="https://github.com/nwjs/v8.git"
 
-if [[ ! -d $CHROMIUM_DIR ]]; then
-    mkdir $CHROMIUM_DIR
-fi
+mkdir $CHROMIUM_DIR
 
-cd $CHROMIUM_DIR
+gclient config --name=$CHROMIUM_DIR $CHROMIUM_URI
 
-if [[ ! -f ".gclient" ]]; then
-    gclient config --name=src $CHROMIUM_URI
-    gclient sync --no-history
-fi
+gclient sync --no-history
 
-cd src
+# cd $CHROMIUM_DIR
 
-# ./build/install-build-deps.sh
+# bash ./build/install-build-deps.sh
 
-if [[ ! -d $NW_DIR ]]; then
-    git clone -b nw73 --depth=1 $NW_URI $NW_DIR
-fi
+# cd $CHROMIUM_DIR
 
-if [[ ! -d $NODE_DIR ]]; then
-    git clone -b nw73 --depth=1 $NODE_URI $NODE_DIR
-fi
+# if [[ $1 == "--fresh" ]]; then
+#     gclient sync --no-history --nohooks --with_branch_heads
+#     bash ./build/install-build-deps.sh
+# fi
 
-if [[ ! -d $V8_DIR ]]; then
-    git clone -b nw73 --depth=1 $V8_URI $v8_DIR
-fi
+# if [[ ! -d $NW_DIR ]]; then
+#     git clone -b nw$NW_VER --depth=1 $NW_URI $NW_DIR
+# fi
 
-cat <<CONFIG > "./build/util/LASTCHANGE"
-LASTCHANGE=0000000000000000000000000000000000000000-0000000000000000000000000000000000000000
-LASTCHANGE_YEAR=1970
-CONFIG
+# if [[ ! -d $NODE_DIR ]]; then
+#     git clone -b nw$NW_VER --depth=1 $NODE_URI $NODE_DIR
+# fi
 
-gclient sync --verbose
+# if [[ ! -d $V8_DIR ]]; then
+#     git clone -b nw$NW_VER --depth=1 $V8_URI $V8_DIR
+# fi
 
-gn gen out/nw --args='is_component_build=true symbol_level=0 enable_nacl=false blink_symbol_level=0 v8_symbol_level=0'
+# touch ./build/util/LASTCHANGE
 
-ninja -C out/nw nwjs
+# cat <<CONFIG > "./build/util/LASTCHANGE"
+# LASTCHANGE=0000000000000000000000000000000000000000-0000000000000000000000000000000000000000
+# LASTCHANGE_YEAR=1970
+# CONFIG
 
-# TODO: change to component build
-export GYP_CHROMIUM_NO_ACTION=0
-export GYP_DEFINES=target_arch=x64 building_nw=1 clang=1 nwjs_sdk=1 disable_nacl=0
-export GYP_GENERATORS=ninja
-export GYP_GENERATOR_FLAGS=output_dir=out
-export C_INCLUDE_PATH=$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu:$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include
-export CPLUS_INCLUDE_PATH=$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu:$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include
+# gclient sync --verbose
 
-python3 third_party/node-nw/tools/gyp/gyp_main.py -I third_party/node-nw/common.gypi -D component=shared_library third_party/node-nw/node.gyp
+# gn gen out/nw --args='is_component_build=true symbol_level=0 enable_nacl=false blink_symbol_level=0 v8_symbol_level=0'
 
-ninja -C out/Release node
+# ninja -C out/nw nwjs
+
+# # TODO: change to component build
+# export GYP_CHROMIUM_NO_ACTION=0
+# export GYP_DEFINES=target_arch=x64 building_nw=1 clang=1 nwjs_sdk=1 disable_nacl=0
+# export GYP_GENERATORS=ninja
+# export GYP_GENERATOR_FLAGS=output_dir=out
+# export C_INCLUDE_PATH=$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu:$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include
+# export CPLUS_INCLUDE_PATH=$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include/x86_64-linux-gnu:$PWD/build/linux/debian_bullseye_amd64-sysroot/usr/include
+
+# python3 third_party/node-nw/tools/gyp/gyp_main.py -I third_party/node-nw/common.gypi -D component=shared_library third_party/node-nw/node.gyp
+
+# ninja -C out/Release node
