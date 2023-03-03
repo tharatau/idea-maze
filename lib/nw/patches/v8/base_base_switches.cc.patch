@@ -1,9 +1,0 @@
-diff -r -u --color up/chromium/base/base_switches.cc nw/chromium/base/base_switches.cc
---- up/chromium/base/base_switches.cc	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/base/base_switches.cc	2023-02-24 20:54:05.156528834 +0000
-@@ -186,4 +186,5 @@
- const char kSchedulerBoostUrgent[] = "scheduler-boost-urgent";
- #endif
- 
-+const char kNWJS[] = "nwjs";
- }  // namespace switches

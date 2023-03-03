@@ -1,8 +1,0 @@
-diff -r -u --color up/chromium/chrome/app/chrome_exe.ver nw/chromium/chrome/app/chrome_exe.ver
---- up/chromium/chrome/app/chrome_exe.ver	2023-02-21 19:03:23.000000000 +0000
-+++ nw/chromium/chrome/app/chrome_exe.ver	2023-02-25 19:07:06.813763085 +0000
-@@ -1,2 +1,2 @@
--INTERNAL_NAME=chrome_exe
--ORIGINAL_FILENAME=chrome.exe
-+INTERNAL_NAME=nw_exe
-+ORIGINAL_FILENAME=nw.exe
