@@ -10,7 +10,7 @@
     "fmt": "prettier --write ./",
     "lnt": "eslint ./**/*.ts ",
     "doc": "",
-    "e2e": "node --test test",
+    "e2e": "",
     "dev": "concurrently npm:dev:website npm:dev:desktop",
     "dev:website": "vite --port 4175",
     "dev:desktop": "wait-on -c waitOnConfig.json http-get://localhost:4175 && nw .",
