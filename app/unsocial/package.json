@@ -26,7 +26,7 @@
     "npm": ">= 9.4.0"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.211",
+    "@types/chrome": "^0.0.219",
     "@types/node": "^18.11.18",
     "@types/nw.js": "^0.13.16",
     "@types/react": "^18.0.27",
