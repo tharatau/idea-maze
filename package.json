@@ -15,7 +15,7 @@
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.11.10",
     "@testing-library/react": "^14.0.0",
-    "@types/chrome": "^0.0.219",
+    "@types/chrome": "^0.0.220",
     "@types/jest": "^29.4.0",
     "@types/node": "^18.14.0",
     "@types/nw.js": "^0.13.16",
