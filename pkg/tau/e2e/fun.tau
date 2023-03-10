@@ -1,3 +1,0 @@
-fun f(x: int8): int8 {
-    return 0;
-};
