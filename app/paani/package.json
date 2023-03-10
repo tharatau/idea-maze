@@ -3,12 +3,19 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "fmt": "",
-    "lnt": "",
+    "fmt": "prettier --write \"./**/*.{css,html,js,json}\"",
+    "lnt": "eslint ./src",
     "e2e": "",
     "doc": "",
-    "dev": "serve ./src",
+    "dev": "",
     "bld": "",
-    "pkg": "gh-pages -d src -e paani"
+    "pkg": ""
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0",
+    "jsdoc": "^4.0.2",
+    "nw-builder": "^4.1.0-beta.3",
+    "prettier": "^2.8.4",
+    "vsx": "*"
   }
 }

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+PKGS=(
+    "patchutils"
+)
+
+sudo apt update
+
+for pkg in "${PKGS[@]}"; do
+    sudo apt install $pkg
+done

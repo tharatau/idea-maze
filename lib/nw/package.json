@@ -1,0 +1,19 @@
+{
+    "name": "nw",
+    "type": "module",
+    "scripts": {
+        "e2e": "node --test e2e/index.js",
+        "exe": "nw ./e2e/7994",
+        "patch:deps": "bash ./scripts/deps",
+        "patch:diff": "bash ./scripts/diff",
+        "patch:split":"bash ./scripts/split"
+    },
+    "engines": {
+        "node": ">= 19.7.0",
+        "npm": ">= 9.6.0"
+    },
+    "devDependencies": {
+        "nw": "^0.73.0-sdk",
+        "selenium-webdriver": "^4.8.1"
+    }
+}

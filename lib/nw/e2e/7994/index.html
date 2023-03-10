@@ -1,0 +1,19 @@
+<html>
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (nw === undefined) {
+                document.getElementById("result").innerHTML = "nw is undefined";
+            } else {
+                document.getElementById("result").innerHTML = "nw is defined";
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <span id="result"></span>
+</body>
+
+</html>

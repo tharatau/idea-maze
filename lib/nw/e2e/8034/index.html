@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            let customEvent = new CustomEvent("customEvent", { bubbles: true, cancelable: false });
+
+            window.addEventListener("customEvent", (e) => {
+                document.getElementById("result").innerHTML = "Custom event dispatched";
+            });
+       
+            window.dispatchEvent(customEvent);
+        });
+
+    </script>
+</head>
+
+<body>
+    <span id="result"></span>
+</body>
+
+</html>
