@@ -31,8 +31,8 @@ jobs:
         if: steps.cache-patches.outputs.cache-hit != 'true'
         run: npm run patch:diff
 
-      # - name: Split patches
-      #   run: npm run patch:split
+      - name: Split patches
+        run: npm run patch:split
 
       - name: Cache patches
         id: cache-patches
@@ -46,5 +46,5 @@ jobs:
         with:
           access_token: ${{ github.token }}
           commit_message: "ci: update patches"
-          files: patches/
+          files: diff/ patches/
           force: true
