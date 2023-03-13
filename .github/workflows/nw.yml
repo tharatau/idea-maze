@@ -46,5 +46,4 @@ jobs:
         with:
           access_token: ${{ github.token }}
           commit_message: "ci: update patches"
-          files: diff/ patches/
           force: true
