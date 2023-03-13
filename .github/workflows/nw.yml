@@ -36,7 +36,7 @@ jobs:
 
       - name: Cache patches
         id: cache-patches
-        uses: actions/cache@v3.2.6
+        uses: actions/cache@v3.3.1
         with:
           path: nw-toolkit/patches
           key: ${{ runner.os }}-patches
