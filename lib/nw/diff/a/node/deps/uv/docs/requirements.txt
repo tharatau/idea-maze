@@ -5,7 +5,7 @@ Sphinx==3.5.4
 alabaster==0.7.12
 appdirs==1.4.3
 Babel==2.9.0
-CacheControl==0.12.6
+CacheControl==0.12.11
 certifi==2019.11.28
 chardet==3.0.4
 colorama==0.4.3
