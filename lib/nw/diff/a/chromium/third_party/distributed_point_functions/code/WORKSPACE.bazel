@@ -127,10 +127,10 @@ http_archive(
 # riegeli for file IO
 http_archive(
   name = "com_github_google_riegeli",
-  sha256 = "3919f42bae25c890b89bf96525939debdd3679abfc6a81725a11397694cfbe07",
-  strip_prefix = "riegeli-accecad7fbbbe1af525ba5e35c6260f63eebf8c5",
+  sha256 = "276f0559cdbfa1541832f328e43e7ce3e62a8eda79bc5c14d275c81c36e8612d",
+  strip_prefix = "riegeli-8bfa2cb12715cad7b7f65fa8122f41b5ab5a7103",
   urls = [
-    "https://github.com/google/riegeli/archive/accecad7fbbbe1af525ba5e35c6260f63eebf8c5.zip",
+    "https://github.com/google/riegeli/archive/8bfa2cb12715cad7b7f65fa8122f41b5ab5a7103.zip",
   ],
 )
 
