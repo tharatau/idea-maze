@@ -53,11 +53,11 @@ go_register_toolchains(version = "1.15.5")
 # Install gtest.
 http_archive(
     name = "com_github_google_googletest",
-    sha256 = "1315261a037d90405714830edf4243fccd89950556353aa3d21095b6a1430ead",
-    strip_prefix = "googletest-6a5eb807493214be733d4cbb9f07f22fde25284f",
+    sha256 = "6e85b4467b6fe974ba7b6f2556654ef18f794ed7c73c06c1bfaefe5aa8561f6b",
+    strip_prefix = "googletest-391ce627def20c1e8a54d10b12949b15086473dd",
     urls = [
-        "https://mirror.bazel.build/github.com/google/googletest/archive/6a5eb807493214be733d4cbb9f07f22fde25284f.zip",
-        "https://github.com/google/googletest/archive/6a5eb807493214be733d4cbb9f07f22fde25284f.zip",
+        "https://mirror.bazel.build/github.com/google/googletest/archive/391ce627def20c1e8a54d10b12949b15086473dd.zip",
+        "https://github.com/google/googletest/archive/391ce627def20c1e8a54d10b12949b15086473dd.zip",
     ],
 )
 
