@@ -21,11 +21,11 @@ rules_proto_toolchains()
 # rules_cc defines rules for generating C++ code from Protocol Buffers.
 http_archive(
     name = "rules_cc",
-    sha256 = "e0e0e15cd88a8cdc153268dddf698c921550c7a1819bba987b57d41b643d8e0a",
-    strip_prefix = "rules_cc-0a198b994a5d61412ea1622ce681d17dbdbdd027",
+    sha256 = "2ec47508f4a3d84fd57aaa1e26c964d5113a6426489fb46ca8b6ec2496099c38",
+    strip_prefix = "rules_cc-be9ff3eb412c5781eabd4a4b7b81de8b95da7b84",
     urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/rules_cc/archive/0a198b994a5d61412ea1622ce681d17dbdbdd027.zip",
-        "https://github.com/bazelbuild/rules_cc/archive/0a198b994a5d61412ea1622ce681d17dbdbdd027.zip",
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_cc/archive/be9ff3eb412c5781eabd4a4b7b81de8b95da7b84.zip",
+        "https://github.com/bazelbuild/rules_cc/archive/be9ff3eb412c5781eabd4a4b7b81de8b95da7b84.zip",
     ],
 )
 
