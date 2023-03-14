@@ -137,9 +137,9 @@ http_archive(
 # cppitertools for logging
 http_archive(
   name = "com_github_ryanhaining_cppitertools",
-  sha256 = "83aedc4f593212d8112eac0b32b5f191219604f3db922cc218fd733ea448118c",
-  strip_prefix = "cppitertools-b2b98e60438f1ed6b04b77cdb6cc5d5516af301b",
+  sha256 = "1608ddbe3c12b0c6e653b992ff63b5dceab9af5347ad93be8714d05e5dc17afb",
+  strip_prefix = "cppitertools-add5acc932dea2c78acd80747bab71ec0b5bce27",
   urls = [
-    "https://github.com/ryanhaining/cppitertools/archive/b2b98e60438f1ed6b04b77cdb6cc5d5516af301b.zip",
+    "https://github.com/ryanhaining/cppitertools/archive/add5acc932dea2c78acd80747bab71ec0b5bce27.zip",
   ]
 )
