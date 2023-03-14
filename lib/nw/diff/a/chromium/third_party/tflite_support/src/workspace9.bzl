@@ -240,11 +240,11 @@ def tflite_support_workspace9():
 
     http_archive(
         name = "com_google_glog",
-        sha256 = "50a05b9119802beffe6ec9f8302aa1ab770db10f2297b659b8e8f15e55854aed",
-        strip_prefix = "glog-c515e1ae2fc8b36ca19362842f9347e9429be7ad",
+        sha256 = "c0d0d7dff16d69bcf13693488e451537d20b547bdb7e44ac76ee578d58b66232",
+        strip_prefix = "glog-674283420118bb919f83ceb3d9dee31ef43ff3aa",
         urls = [
-            "https://mirror.bazel.build/github.com/google/glog/archive/c515e1ae2fc8b36ca19362842f9347e9429be7ad.tar.gz",
-            "https://github.com/google/glog/archive/c515e1ae2fc8b36ca19362842f9347e9429be7ad.tar.gz",
+            "https://mirror.bazel.build/github.com/google/glog/archive/674283420118bb919f83ceb3d9dee31ef43ff3aa.tar.gz",
+            "https://github.com/google/glog/archive/674283420118bb919f83ceb3d9dee31ef43ff3aa.tar.gz",
         ],
     )
 
