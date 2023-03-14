@@ -348,10 +348,10 @@ def tflite_support_workspace9():
 
     http_archive(
         name = "libedgetpu",
-        sha256 = "a179016a5874c58db969a5edd3fecf57610604e751b5c4d6d82ad58c383ffd64",
-        strip_prefix = "libedgetpu-ea1eaddbddece0c9ca1166e868f8fd03f4a3199e",
+        sha256 = "13398917f5db3d3581763f6d4388b90f1431d4c1e8f1a0f662c11b15a54336e0",
+        strip_prefix = "libedgetpu-ddfa7bde33c23afd8c2892182faa3e5b4e6ad94e",
         urls = [
-            "https://github.com/google-coral/libedgetpu/archive/ea1eaddbddece0c9ca1166e868f8fd03f4a3199e.tar.gz",
+            "https://github.com/google-coral/libedgetpu/archive/ddfa7bde33c23afd8c2892182faa3e5b4e6ad94e.tar.gz",
         ],
     )
 
