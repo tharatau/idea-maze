@@ -19,10 +19,10 @@ http_archive(
 
 http_archive(
     name = "com_github_google_benchmark",
-    sha256 = "2a778d821997df7d8646c9c59b8edb9a573a6e04c534c01892a40aa524a7b68c",
-    strip_prefix = "benchmark-bf585a2789e30585b4e3ce6baf11ef2750b54677",
+    sha256 = "0208ff38b6452c049a4244e703e6a63e23850a4bf563edf6d86d5ee8ef2e5bb8",
+    strip_prefix = "benchmark-9f7dc386be54976c251775c5d0f38919f0df0083",
     urls = [
-        "https://github.com/google/benchmark/archive/bf585a2789e30585b4e3ce6baf11ef2750b54677.zip",
+        "https://github.com/google/benchmark/archive/9f7dc386be54976c251775c5d0f38919f0df0083.zip",
     ],
 )
 

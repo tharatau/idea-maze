@@ -40,9 +40,9 @@ http_archive(
 # Google benchmark.
 http_archive(
     name = "com_github_google_benchmark",  # 2021-09-20T09:19:51Z
-    sha256 = "62e2f2e6d8a744d67e4bbc212fcfd06647080de4253c97ad5c6749e09faf2cb0",
-    strip_prefix = "benchmark-0baacde3618ca617da95375e0af13ce1baadea47",
-    urls = ["https://github.com/google/benchmark/archive/0baacde3618ca617da95375e0af13ce1baadea47.zip"],
+    sha256 = "0208ff38b6452c049a4244e703e6a63e23850a4bf563edf6d86d5ee8ef2e5bb8",
+    strip_prefix = "benchmark-9f7dc386be54976c251775c5d0f38919f0df0083",
+    urls = ["https://github.com/google/benchmark/archive/9f7dc386be54976c251775c5d0f38919f0df0083.zip"],
 )
 
 # Bazel Skylib.

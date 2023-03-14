@@ -84,11 +84,11 @@ http_archive(
 # Benchmarks
 http_archive(
     name = "com_github_google_benchmark",
-    sha256 = "d37d3fb186bbcc30018962185606869c032e866bc9ad376a6112fbb64fe6935f",
-    strip_prefix = "benchmark-5e387e7d33a55b8d6b7c5025379b97cc9418fabf",
+    sha256 = "0208ff38b6452c049a4244e703e6a63e23850a4bf563edf6d86d5ee8ef2e5bb8",
+    strip_prefix = "benchmark-9f7dc386be54976c251775c5d0f38919f0df0083",
     urls = [
-        "https://mirror.bazel.build/github.com/google/benchmark/archive/5e387e7d33a55b8d6b7c5025379b97cc9418fabf.zip",
-        "https://github.com/google/benchmark/archive/5e387e7d33a55b8d6b7c5025379b97cc9418fabf.zip",
+        "https://mirror.bazel.build/github.com/google/benchmark/archive/9f7dc386be54976c251775c5d0f38919f0df0083.zip",
+        "https://github.com/google/benchmark/archive/9f7dc386be54976c251775c5d0f38919f0df0083.zip",
     ],
 )
 
