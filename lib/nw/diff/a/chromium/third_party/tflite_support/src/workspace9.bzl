@@ -77,11 +77,11 @@ def tflite_support_workspace9():
 
     http_archive(
         name = "io_bazel_rules_closure",
-        sha256 = "5b00383d08dd71f28503736db0500b6fb4dda47489ff5fc6bed42557c07c6ba9",
-        strip_prefix = "rules_closure-308b05b2419edb5c8ee0471b67a40403df940149",
+        sha256 = "13601fd4eb4f7e583a80f6de2c58d8b5ca19f346cbf959e66b9d57d32f15b617",
+        strip_prefix = "rules_closure-7860dec6f1d7870d720ea6ef3f599c0397866fc9",
         urls = [
-            "https://storage.googleapis.com/mirror.tensorflow.org/github.com/bazelbuild/rules_closure/archive/308b05b2419edb5c8ee0471b67a40403df940149.tar.gz",
-            "https://github.com/bazelbuild/rules_closure/archive/308b05b2419edb5c8ee0471b67a40403df940149.tar.gz",  # 2019-06-13
+            "https://storage.googleapis.com/mirror.tensorflow.org/github.com/bazelbuild/rules_closure/archive/7860dec6f1d7870d720ea6ef3f599c0397866fc9.tar.gz",
+            "https://github.com/bazelbuild/rules_closure/archive/7860dec6f1d7870d720ea6ef3f599c0397866fc9.tar.gz",  # 2019-06-13
         ],
     )
 
