@@ -290,9 +290,9 @@ def tflite_support_workspace9():
 
     http_archive(
         name = "stblib",
-        strip_prefix = "stb-b42009b3b9d4ca35bc703f5310eedc74f584be58",
-        sha256 = "13a99ad430e930907f5611325ec384168a958bf7610e63e60e2fd8e7b7379610",
-        urls = ["https://github.com/nothings/stb/archive/b42009b3b9d4ca35bc703f5310eedc74f584be58.tar.gz"],
+        strip_prefix = "stb-5736b15f7ea0ffb08dd38af21067c314d6a3aae9",
+        sha256 = "d00921d49b06af62aa6bfb97c1b136bec661dd11dd4eecbcb0da1f6da7cedb4c",
+        urls = ["https://github.com/nothings/stb/archive/5736b15f7ea0ffb08dd38af21067c314d6a3aae9.tar.gz"],
         build_file = Label("//third_party:stblib.BUILD"),
     )
 
