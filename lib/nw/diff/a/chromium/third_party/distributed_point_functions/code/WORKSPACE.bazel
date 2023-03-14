@@ -36,11 +36,11 @@ rules_cc_dependencies()
 # io_bazel_rules_go defines rules for generating C++ code from Protocol Buffers.
 http_archive(
     name = "io_bazel_rules_go",
-    sha256 = "c1a2f7457c060aaeab0ed9b711b14a75c758297062a7b20fefbecd3504427677",
-    strip_prefix = "rules_go-707c634bf8f7ca5b57c2a923bec16fa62ced1fc7",
+    sha256 = "92b01fa514c2d2374be2426bfc477d907676e3c694610fdfc3869a7dc27e26c4",
+    strip_prefix = "rules_go-21d5a295b6c4456068fb2bb1c0dd1aa95c761a48",
     urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/archive/707c634bf8f7ca5b57c2a923bec16fa62ced1fc7.zip",
-        "https://github.com/bazelbuild/rules_go/archive/707c634bf8f7ca5b57c2a923bec16fa62ced1fc7.zip",
+        "https://mirror.bazel.build/github.com/bazelbuild/rules_go/archive/21d5a295b6c4456068fb2bb1c0dd1aa95c761a48.zip",
+        "https://github.com/bazelbuild/rules_go/archive/21d5a295b6c4456068fb2bb1c0dd1aa95c761a48.zip",
     ],
 )
 
