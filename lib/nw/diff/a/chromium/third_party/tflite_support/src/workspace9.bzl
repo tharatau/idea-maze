@@ -211,10 +211,10 @@ def tflite_support_workspace9():
 
     http_archive(
         name = "com_googlesource_code_re2",
-        sha256 = "e06b718c129f4019d6e7aa8b7631bee38d3d450dd980246bfaf493eb7db67868",
-        strip_prefix = "re2-fe4a310131c37f9a7e7f7816fa6ce2a8b27d65a8",
+        sha256 = "a59a6369ea653c77f2220132c55c6beefd67c877bc23e354ecc170edb6e1a96b",
+        strip_prefix = "re2-b059ae85c83ca6b1f29dba20e92e4acb85cb5b29",
         urls = [
-            "https://github.com/google/re2/archive/fe4a310131c37f9a7e7f7816fa6ce2a8b27d65a8.tar.gz",
+            "https://github.com/google/re2/archive/b059ae85c83ca6b1f29dba20e92e4acb85cb5b29.tar.gz",
         ],
     )
 
