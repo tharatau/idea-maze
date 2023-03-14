@@ -88,9 +88,9 @@ def tflite_support_workspace9():
     # GoogleTest/GoogleMock framework. Used by most unit-tests.
     http_archive(
         name = "com_google_googletest",
-        urls = ["https://github.com/google/googletest/archive/4ec4cd23f486bf70efcc5d2caa40f24368f752e3.zip"],
-        strip_prefix = "googletest-4ec4cd23f486bf70efcc5d2caa40f24368f752e3",
-        sha256 = "de682ea824bfffba05b4e33b67431c247397d6175962534305136aa06f92e049",
+        urls = ["https://github.com/google/googletest/archive/391ce627def20c1e8a54d10b12949b15086473dd.zip"],
+        strip_prefix = "googletest-391ce627def20c1e8a54d10b12949b15086473dd",
+        sha256 = "6e85b4467b6fe974ba7b6f2556654ef18f794ed7c73c06c1bfaefe5aa8561f6b",
     )
 
     # Apple and Swift rules.
