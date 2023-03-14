@@ -59,9 +59,9 @@ git_repository(
 # Logging
 http_archive(
     name = "com_github_google_glog",
-    urls = ["https://github.com/google/glog/archive/96a2f23dca4cc7180821ca5f32e526314395d26a.zip"],
-    strip_prefix = "glog-96a2f23dca4cc7180821ca5f32e526314395d26a",
-    sha256 = "6281aa4eeecb9e932d7091f99872e7b26fa6aacece49c15ce5b14af2b7ec050f",
+    urls = ["https://github.com/google/glog/archive/674283420118bb919f83ceb3d9dee31ef43ff3aa.zip"],
+    strip_prefix = "glog-674283420118bb919f83ceb3d9dee31ef43ff3aa",
+    sha256 = "db82c4a45ce13a8545a04dbfb4f6bea71e72b086a2c7c8ac9e15d407591201cb",
 )
 
 # gflags, needed for glog

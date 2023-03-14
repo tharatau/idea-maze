@@ -106,11 +106,11 @@ http_archive(
 # glog for logging
 http_archive(
     name = "com_github_google_glog",
-    sha256 = "8476f6b3be29b3ebecc7de058183d510acec6e6dcef35d416cc3ac407a3a5645",
-    strip_prefix = "glog-a79416bab739907a31a1e139540921ff0492f010",
+    sha256 = "db82c4a45ce13a8545a04dbfb4f6bea71e72b086a2c7c8ac9e15d407591201cb",
+    strip_prefix = "glog-674283420118bb919f83ceb3d9dee31ef43ff3aa",
     urls = [
-        "https://mirror.bazel.build/github.com/google/glog/archive/a79416bab739907a31a1e139540921ff0492f010.zip",
-        "https://github.com/google/glog/archive/a79416bab739907a31a1e139540921ff0492f010.zip",
+        "https://mirror.bazel.build/github.com/google/glog/archive/674283420118bb919f83ceb3d9dee31ef43ff3aa.zip",
+        "https://github.com/google/glog/archive/674283420118bb919f83ceb3d9dee31ef43ff3aa.zip",
     ],
 )
 
