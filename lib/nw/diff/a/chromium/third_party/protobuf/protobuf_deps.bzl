@@ -55,9 +55,9 @@ def protobuf_deps():
     if not native.existing_rule("rules_proto"):
         http_archive(
             name = "rules_proto",
-            sha256 = "a4382f78723af788f0bc19fd4c8411f44ffe0a72723670a34692ffad56ada3ac",
-            strip_prefix = "rules_proto-f7a30f6f80006b591fa7c437fe5a951eb10bcbcf",
-            urls = ["https://github.com/bazelbuild/rules_proto/archive/f7a30f6f80006b591fa7c437fe5a951eb10bcbcf.zip"],
+            sha256 = "5bc47cecbc756b40f88ec13029864ffe582bcb2688c17587e4a23a0bd009a268",
+            strip_prefix = "rules_proto-71c4fc69900946093ac5c82d81efd19fa522d060",
+            urls = ["https://github.com/bazelbuild/rules_proto/archive/71c4fc69900946093ac5c82d81efd19fa522d060.zip"],
         )
 
     if not native.existing_rule("rules_python"):
