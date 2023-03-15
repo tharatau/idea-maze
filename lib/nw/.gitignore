@@ -2,5 +2,5 @@
 node_modules
 
 # application
-patches/a
-patches/b
+diff/a
+diff/b
