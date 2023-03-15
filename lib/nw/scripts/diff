@@ -2,18 +2,18 @@
 
 NW_DIR="b"
 NW_URI=https://github.com/nwjs
-NW_VER=72
+NW_VER=74
 
 UP_DIR="a"
 
 CHROMIUM_URI="https://github.com/chromium/chromium"
-CHROMIUM_VER="109.0.5414.87"
+CHROMIUM_VER="111.0.5563.65"
 
 NODE_URI="https://github.com/nodejs/node"
-NODE_VER="19.3.0"
+NODE_VER="19.7.0"
 
 V8_URI="https://github.com/v8/v8"
-V8_VER="10.8.168.21"
+V8_VER="11.1.277.13"
 
 if [[ ! -d "diff" ]]; then
     mkdir diff
@@ -71,4 +71,4 @@ diff -r -u --color $UP_DIR/node $NW_DIR/node > 0.$NW_VER.x/node.patch
 
 diff -r -u --color $UP_DIR/v8 $NW_DIR/v8 > 0.$NW_VER.x/v8.patch
 
-rm -rf nw up
+rm -rf $NW_DIR $UP_DIR
