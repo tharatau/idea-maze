@@ -1,5 +1,0 @@
-include_rules = [
-  "+cc/metrics",
-  "+chromeos/login/login_state",
-  "+chromeos/metrics",
-]

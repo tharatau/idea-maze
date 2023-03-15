@@ -1,4 +1,0 @@
-include_rules = [
-  "+components/sqlite_proto",
-  "+third_party/protobuf/src/google/protobuf",
-]

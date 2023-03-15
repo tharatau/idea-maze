@@ -1,4 +1,0 @@
-include_rules = [
-  "+net/http/structured_headers.h",
-  "+services/network/public/cpp",
-]
